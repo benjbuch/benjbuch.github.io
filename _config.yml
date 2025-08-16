@@ -7,17 +7,18 @@ baseurl: ""
 
 # Enable a 'sections" collection
 collections:
-	sections:
-		output: true
-		permalink: /sections/:name/
+  sections:
+    output: true
+    permalink: /sections/:name/
 
 markdown: kramdown
 
 theme: null
 
 defaults:
-	- scope:
-		path: ""
-		type: "sections"
-	values:
-		layout: card
+  - scope:
+      path: ""
+      type: "sections"
+    values:
+      layout: card
+
