@@ -2,6 +2,7 @@
 	/* Layout */
 	--max-width: 980px;
 	--header: 64px;
+	--footer: 56px;
 
 	/* Spacing scale */
 	--space-small: 0.25rem;
@@ -55,6 +56,7 @@ main {
 	overflow-y: scroll;
 	scroll-snap-type: y mandatory;
 	scroll-padding-top: var(--header);
+	padding-bottom: var(--footer-h);
 }
 section {
 	scroll-snap-align: start;
@@ -64,6 +66,22 @@ section {
 	align-items: flex-start;
 	justify-content: center;
 	padding: var(--section-pad-y) var(--pad);
+}
+
+/* Footer */
+footer {
+	position: fixed;
+	left: 0; right: 0; bottom: 0;
+	height: var(--footer-h);
+	display: grid;
+	place-items: center;
+	background: rgba(248,250,252,.85);
+	backdrop-filter: blur(8px);
+	border-top: 1px solid var(--active);
+	z-index: 40;
+	padding: 2rem var(--pad);
+	color: var(--muted-fg);
+	text-align: center;
 }
 
 /* Top nav */
@@ -196,12 +214,6 @@ a:active {
 	.grid.cols-2 {
 		grid-template-columns: 1fr 1fr;
 	}
-}
-
-footer {
-	padding: 2rem var(--pad);
-	color: var(--muted-fg);
-	text-align: center;
 }
 
 /* Utility */
