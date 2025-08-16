@@ -39,6 +39,7 @@ html, body {
 	margin: 0;
 	padding: 0;
 	height: 100%;
+	overflow-y: auto;
 }
 body {
 	font-family: system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji", "Segoe UI Emoji";
@@ -53,7 +54,8 @@ html {
 }
 main {
 	height: 100%;
-	overflow-y: scroll;
+	min-height: 100vh;
+	overflow-y: visible;
 	scroll-snap-type: y mandatory;
 	scroll-padding-top: var(--header);
 	padding-bottom: var(--footer-h);
