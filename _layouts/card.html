@@ -1,0 +1,8 @@
+<section id="{{ page.id | default: page.title | slugify }}">
+	<div class="card">
+		{% if page.show_title != false and page.title %}
+			<h2>{{ page.title }}</h2>
+		{% endif %}
+		{{ content }}
+	</div>
+</section>
