@@ -1,6 +1,6 @@
 ---
 title: Research
-id: research
+anchor: research
 weight: 02
 layout: card
 ---

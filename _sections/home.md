@@ -1,6 +1,6 @@
 ---
 title: Home
-id: home
+anchor: home
 weight: 01
 layout: hero
 show_title: false
