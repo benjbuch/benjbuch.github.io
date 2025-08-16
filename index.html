@@ -1,0 +1,166 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1" />
+	<title>Benjamin Buchmuller · Home</title>
+	<meta name="description" content="Personal research homepage" />
+	<style>
+		:root {
+			--maxw: 980px;
+			--pad: 1.2rem;
+			--radius: 16px;
+			--shadow: 0 10px 30px rgba(0,0,0,.08);
+		}
+
+		/* Reset-ish */
+		* { box-sizing: border-box; }
+		html, body { margin: 0; padding: 0; height: 100%; }
+		body { font-family: system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji", "Segoe UI Emoji"; line-height: 1.55; color: #0f172a; background: #f8fafc; }
+
+		/* Smooth section snap + gentle drag feel */
+		html { scroll-behavior: smooth; }
+		main { height: 100%; overflow-y: scroll; scroll-snap-type: y mandatory; scroll-padding-top: 64px; }
+		section { scroll-snap-align: start; min-height: calc(100vh - 64px); display: grid; place-items: center; padding: 4rem 1rem; }
+
+		/* Top nav */
+		head er { position: sticky; top: 0; z-index: 50; background: rgba(248,250,252,.85); backdrop-filter: blur(8px); border-bottom: 1px solid #e2e8f0; }
+		.nav { max-width: var(--maxw); margin: 0 auto; display: flex; align-items: center; justify-content: space-between; padding: .6rem var(--pad); }
+		.brand { font-weight: 700; letter-spacing: .2px; }
+		.nav a { text-decoration: none; color: #0f172a; padding: .5rem .75rem; border-radius: 999px; }
+		.nav a.active { background: #0ea5e9; color: white; }
+		.nav a:hover { background: #e2e8f0; }
+		.menu { display: flex; gap: .25rem; align-items: center; }
+
+		/* Responsive burger */
+		.burger { display: none; background: transparent; border: 0; font-size: 1.25rem; padding: .5rem; border-radius: 8px; }
+		@media (max-width: 760px) {
+			.menu { display: none; position: absolute; left: var(--pad); right: var(--pad); top: 56px; background: white; box-shadow: var(--shadow); border: 1px solid #e2e8f0; border-radius: var(--radius); padding: .5rem; }
+			.menu.open { display: grid; grid-template-columns: 1fr; }
+			.burger { display: inline-grid; place-items: center; }
+		}
+
+		/* Card look */
+		.card { width: min(100%, var(--maxw)); background: white; border: 1px solid #e2e8f0; border-radius: var(--radius); padding: 2rem; box-shadow: var(--shadow); }
+		.card h2 { margin-top: 0; }
+		.grid { display: grid; gap: 1rem; }
+		@media (min-width: 880px) { .grid.cols-2 { grid-template-columns: 1fr 1fr; } }
+
+		footer { padding: 2rem var(--pad); color: #475569; text-align: center; }
+
+		/* Utility */
+		.muted { color: #64748b; }
+		.tag { display: inline-block; padding: .2rem .55rem; border-radius: 999px; border: 1px solid #cbd5e1; font-size: .75rem; color: #334155; background: #f1f5f9; margin-right: .35rem; }
+	</style>
+</head>
+<body>
+	<header>
+		<nav class="nav" aria-label="Primary">
+			<div class="brand">Benjamin Buchmuller</div>
+			<button class="burger" aria-label="Toggle menu" aria-expanded="false">☰</button>
+			<div class="menu" id="menu">
+				<a href="#home">Home</a>
+				<a href="#research">Research</a>
+				<a href="#protocols">Protocols</a>
+				<a href="#publications">Publications</a>
+				<a href="#contact">Contact</a>
+				<!-- Example of a true subpage link:
+				<a href="/protocols/" title="Opens a separate page">Protocols ↗</a>
+				-->
+			</div>
+		</nav>
+	</header>
+
+	<main id="content">
+		<section id="home">
+			<div class="card">
+				<h2>Hi — I'm Ben.</h2>
+				<p class="muted">Chemical biology · chromatin · synthetic genomics.</p>
+				<p>
+					<span class="tag">scroll-snap</span>
+					<span class="tag">no frameworks</span>
+					<span class="tag">mobile ready</span>
+				</p>
+			</div>
+		</section>
+
+		<section id="research">
+			<div class="card grid cols-2">
+				<div>
+					<h2>Research</h2>
+					<p>Short overview paragraph.</p>
+					<p><a href="/research/">Open the research subpage ↗</a></p>
+				</div>
+				<div>
+					<ul>
+						<li>Histone mutations in cancer</li>
+						<li>Designer epigenomes & synthetic chromatin</li>
+						<li>Single-cell & pooled screens</li>
+					</ul>
+				</div>
+			</div>
+		</section>
+
+		<section id="protocols">
+			<div class="card">
+				<h2>Protocols</h2>
+				<p>Under construction.</p>
+				<ul>
+					<li><a href="https://github.com/">Protocol repository</a></li>
+					<li><a href="/protocols/">Protocols overview ↗</a> (subpage example)</li>
+				</ul>
+			</div>
+		</section>
+
+		<section id="publications">
+			<div class="card">
+				<h2>Publications</h2>
+				<p class="muted">Under construction.</p>
+				<ol>
+					<li>Lastname, B. (2025). Title. <em>Journal</em>.</li>
+				</ol>
+			</div>
+		</section>
+
+		<section id="contact">
+			<div class="card">
+				<h2>Contact</h2>
+				<p>Email: <a href="mailto:you@example.com">you@example.com</a> · GitHub: <a href="https://github.com/benjbuch">@benjbuch</a></p>
+			</div>
+		</section>
+	</main>
+
+	<footer>
+		<small>© <span id="year"></span> Benjamin Buchmuller · Built with plain HTML/CSS/JS · Hosted on GitHub Pages</small>
+	</footer>
+
+	<script>
+		// Year
+		document.getElementById('year').textContent = new Date().getFullYear();
+
+		// Mobile menu
+		const btn = document.querySelector('.burger');
+		const menu = document.getElementById('menu');
+		btn.addEventListener('click', () => {
+			menu.classList.toggle('open');
+			btn.setAttribute('aria-expanded', menu.classList.contains('open'));
+		});
+
+		// Active link highlighting based on section in view
+		const links = Array.from(menu.querySelectorAll('a[href^="#"]'));
+		const map = new Map(links.map(a => [a.getAttribute('href').slice(1), a]));
+		const io = new IntersectionObserver((entries) => {
+			entries.forEach(entry => {
+				const id = entry.target.id;
+				const link = map.get(id);
+				if (!link) return;
+				if (entry.isIntersecting) {
+					links.forEach(a => a.classList.remove('active'));
+					link.classList.add('active');
+				}
+			});
+		}, { root: document.querySelector('main'), threshold: .6 });
+		document.querySelectorAll('section').forEach(sec => io.observe(sec));
+	</script>
+</body>
+</html>
