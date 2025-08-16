@@ -1,0 +1,23 @@
+title: "Benjamin Buchmuller"
+author: "Benjamin Buchmuller"
+description: "Personal research homepage"
+
+url: "https://benjbuch.github.io"
+baseurl: ""
+
+# Enable a 'sections" collection
+collections:
+	sections:
+		output: true
+		permalink: /sections/:name/
+
+markdown: kramdown
+
+theme: null
+
+defaults:
+	- scope:
+		path: ""
+		type: "sections"
+	values:
+		layout: card
