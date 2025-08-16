@@ -3,11 +3,11 @@
 		<div class="brand">{{ site.title }}</div>
 		<button class="burger" aria-label="Toggle menu" aria-expanded="false">☰</button>
 		<div class="menu" id="menu">
-			<a href="#home">Home</a>
-			<a href="#research">Research</a>
-			<a href="#publications">Publications</a>
-			<a href="#protocols">Protocols</a>
-			<a href="#contact">Contact</a>
+			<a href="{{ '/' | relative_url }}#home">Home</a>
+			<a href="{{ '/' | relative_url }}#research">Research</a>
+			<a href="{{ '/' | relative_url }}#publications">Publications</a>
+			<a href="{{ '/' | relative_url }}#protocols">Protocols</a>
+			<a href="{{ '/' | relative_url }}#contact">Contact</a>
 		</div>
 	</nav>
 </header>
