@@ -8,6 +8,5 @@ show_title: false
 
 Chemical biology · chromatin · synthetic genomics.
 
-- scroll-snap
-- no frameworks
-- mobile ready
+**scroll-snap**{:.tag} **no frameworks**{:.tag} **mobile ready**{:.tag}
+
