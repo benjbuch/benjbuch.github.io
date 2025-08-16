@@ -62,7 +62,7 @@ const observer = new IntersectionObserver((entries) => {
 			link.classList.add('active');
 		}
 	});
-}, { root: main, threshold: 0.6 });
+}, { root: null, threshold: 0.6 });
 
 // Observe all sections once
 document.querySelectorAll('section').forEach(sec => observer.observe(sec));
