@@ -25,7 +25,7 @@
 		section { scroll-snap-align: start; scroll-margin-top: var(--header); min-height: calc(100vh - 64px); display: flex; place-items: flex-start; justify-content: center; padding: 4rem 1rem; }
 
 		/* Top nav */
-		head er { position: sticky; top: 0; z-index: 50; background: rgba(248,250,252,.85); backdrop-filter: blur(8px); border-bottom: 1px solid #cbd5e1; }
+		header { position: sticky; top: 0; z-index: 50; background: rgba(248,250,252,.85); backdrop-filter: blur(8px); border-bottom: 1px solid #cbd5e1; }
 		.nav { max-width: var(--maxw); margin: 0 auto; display: flex; align-items: center; justify-content: space-between; padding: .6rem var(--pad); }
 		.brand { font-weight: 700; letter-spacing: .2px; }
 		.nav a { text-decoration: none; color: #0f172a; padding: .25rem .5rem; border-radius: 6px; }
@@ -66,24 +66,25 @@
 		.tag { display: inline-block; padding: .2rem .55rem; border-radius: 999px; border: 1px solid #cbd5e1; font-size: .75rem; color: #334155; background: #f1f5f9; margin-right: .35rem; }
 	</style>
 </head>
-<body>
-	<header>
-		<nav class="nav" aria-label="Primary">
-			<div class="brand">Benjamin Buchmuller</div>
-			<button class="burger" aria-label="Toggle menu" aria-expanded="false">☰</button>
-			<div class="menu" id="menu">
-				<a href="#home">Home</a>
-				<a href="#research">Research</a>
-				<a href="#protocols">Protocols</a>
-				<a href="#publications">Publications</a>
-				<a href="#contact">Contact</a>
-				<!-- Example of a true subpage link:
-				<a href="/protocols/" title="Opens a separate page">Protocols ↗</a>
-				-->
-			</div>
-		</nav>
-	</header>
 
+<header>
+	<nav class="nav" aria-label="Primary">
+		<div class="brand">Benjamin Buchmuller</div>
+		<button class="burger" aria-label="Toggle menu" aria-expanded="false">☰</button>
+		<div class="menu" id="menu">
+			<a href="#home">Home</a>
+			<a href="#research">Research</a>
+			<a href="#protocols">Protocols</a>
+			<a href="#publications">Publications</a>
+			<a href="#contact">Contact</a>
+			<!-- Example of a true subpage link:
+			<a href="/protocols/" title="Opens a separate page">Protocols ↗</a>
+			-->
+		</div>
+	</nav>
+</header>
+	
+<body>
 	<main id="content">
 		<section id="home">
 			<div class="hero">
@@ -175,12 +176,18 @@
 		document.querySelectorAll('section').forEach(sec => io.observe(sec));
 
 		// Close mobile menu after click
-		menu.querySelectorAll('a').forEach(a => {
-    		a.addEventListener('click', () => {
-      		menu.classList.remove('open');
-      		btn.setAttribute('aria-expanded', 'false');
-    	});
-  });
+		menu.querySelectorAll('a[href^="#"]').forEach(a => {
+	  	a.addEventListener('click', (e) => {
+    		e.preventDefault(); // prevent body jump
+    			const id = a.getAttribute('href').slice(1);
+    			const target = document.getElementById(id);
+    		if (target) {
+      			target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    		}
+    	menu.classList.remove('open');
+    	btn.setAttribute('aria-expanded', 'false');
+  		});
+	});
 	</script>
 </body>
 </html>
