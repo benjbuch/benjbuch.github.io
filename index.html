@@ -21,7 +21,7 @@
 		/* Smooth section snap + gentle drag feel */
 		html { scroll-behavior: smooth; }
 		main { height: 100%; overflow-y: scroll; scroll-snap-type: y mandatory; scroll-padding-top: 64px; }
-		section { scroll-snap-align: start; min-height: calc(100vh - 64px); display: grid; place-items: center; padding: 4rem 1rem; }
+		section { scroll-snap-align: start; min-height: calc(100vh - 64px); display: flex; place-items: flex-start; justify-content: center; padding: 4rem 1rem; }
 
 		/* Top nav */
 		head er { position: sticky; top: 0; z-index: 50; background: rgba(248,250,252,.85); backdrop-filter: blur(8px); border-bottom: 1px solid #cbd5e1; }
