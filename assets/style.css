@@ -71,6 +71,7 @@ section {
 /* Footer */
 footer {
 	position: fixed;
+	z-index: 40;
 	left: 0; right: 0; bottom: 0;
 	height: var(--footer-h);
 	display: grid;
@@ -78,7 +79,6 @@ footer {
 	background: rgba(248,250,252,.85);
 	backdrop-filter: blur(8px);
 	border-top: 1px solid var(--active);
-	z-index: 40;
 	padding: 2rem var(--pad);
 	color: var(--muted-fg);
 	text-align: center;
@@ -87,8 +87,8 @@ footer {
 /* Top nav */
 header {
 	position: sticky;
-	top: 0;
 	z-index: 50;
+	top: 0;
 	background: rgba(248,250,252,.85);
 	backdrop-filter: blur(8px);
 	border-bottom: 1px solid var(--active);
