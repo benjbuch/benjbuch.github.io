@@ -71,6 +71,11 @@ section {
 	justify-content: center;
 	padding: var(--section-pad-y) var(--pad);
 }
+p {
+	padding-bottom: 1rem;
+	line-height: 1.5;
+}
+
 
 /* Footer */
 footer {
