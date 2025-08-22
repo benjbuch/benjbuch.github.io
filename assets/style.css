@@ -160,7 +160,6 @@ a:active {
 	.menu {
 		display: none;
 		position: absolute;
-		left: var(--pad);
 		right: var(--pad);
 		top: 56px;
 		width: 260px;
