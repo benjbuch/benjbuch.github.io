@@ -177,7 +177,6 @@ a:active {
 		transition: opacity .22s ease, transform .22s cubic-bezier(.2, .7, .2, 1);
 	}
 	.menu.open {
-	display: grid;
 	grid-template-columns: 1fr;
 	/* Animation */
 	opacity: 1;
