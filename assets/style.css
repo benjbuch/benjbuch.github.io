@@ -163,6 +163,7 @@ a:active {
 		left: var(--pad);
 		right: var(--pad);
 		top: 56px;
+		width: 260px;
 		background: var(--card-bg);
 		box-shadow: var(--shadow);
 		border: 1px solid var(--hover);
