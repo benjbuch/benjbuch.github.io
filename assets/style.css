@@ -159,7 +159,7 @@ a:active {
 	/* (max-width: var(--bp-small)) may not be supported by CSS processor */
 	.menu {
 		z-index: 55;
-		display: block;
+		display: grid;
 		position: absolute;
 		right: var(--pad);
 		top: 56px;
