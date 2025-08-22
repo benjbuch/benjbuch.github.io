@@ -1,1 +1,15 @@
+# Jekyll output
+_site/
+.sass-cache/
+.jekyll-cache/
+.jekyll-metadata
+
+# Bundler
+/vendor/
+/.bundle/
+/Gemfile.lock
+
+# OS
 .DS_Store
+*.swp
+
