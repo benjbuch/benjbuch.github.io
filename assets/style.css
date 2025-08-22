@@ -158,7 +158,8 @@ a:active {
 @media (max-width: 760px) {
 	/* (max-width: var(--bp-small)) may not be supported by CSS processor */
 	.menu {
-		display: none;
+		z-index: 55;
+		display: block;
 		position: absolute;
 		right: var(--pad);
 		top: 56px;
@@ -168,15 +169,34 @@ a:active {
 		border: 1px solid var(--hover);
 		border-radius: var(--radius-medium);
 		padding: var(--space-medium);
+		/* Animation */
+		opacity: 0;
+		transform: translate(0.5rem, -0.5rem);
+		transform-origin: top right;
+		pointer-events: none;
+		transition: opacity .22s ease, transform .22s cubic-bezier(.2, .7, .2, 1);
 	}
 	.menu.open {
 	display: grid;
 	grid-template-columns: 1fr;
-}
+	/* Animation */
+	opacity: 1;
+	transform: translate(0, 0);
+	pointer-events: auto;
+	}
 	.burger {
 	display: inline-grid;
 	place-items: center;
-}
+	}
+	@media (prefers-reduced-motion: reduce) {
+		.menu {
+			transition: none;
+			transform: none;
+		}
+		.menu.open {
+			opacity: 1;
+		}
+	}
 }
 
 /* Hero */
