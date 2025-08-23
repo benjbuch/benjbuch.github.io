@@ -1,9 +1,12 @@
-title: "Benjamin Buchmuller"
+title: "Benjamin C. Buchmuller"
 author: "Benjamin Buchmuller"
 description: "Personal research homepage"
 
 url: "https://benjbuch.github.io"
 baseurl: ""
+github_username: "benjbuch"
+orcid_id: "0000-0002-4915-5949"
+googlescholar_id: "H3kb0RQAAAAJ"
 
 # Enable a 'sections" collection
 collections:
