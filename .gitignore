@@ -13,3 +13,5 @@ _site/
 .DS_Store
 *.swp
 
+# Raw files
+/assets/img/portrait/*.svg
