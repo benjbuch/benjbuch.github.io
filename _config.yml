@@ -4,9 +4,11 @@ description: "Personal research homepage"
 
 url: "https://benjbuch.github.io"
 baseurl: ""
+
 github_username: "benjbuch"
-orcid_id: "0000-0002-4915-5949"
 googlescholar_id: "H3kb0RQAAAAJ"
+linkedin_id: "benjamin-buchmuller"
+orcid_id: "0000-0002-4915-5949"
 
 # Enable a 'sections" collection
 collections:
