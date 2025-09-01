@@ -1,0 +1,72 @@
+// TeX Gyre Fonts
+//
+// Copyright (c) 2006–2021 GUST — Polish TeX Users Group
+// Licensed under the GUST Font License.
+// See https://tug.org/fonts/licenses/GUST-FONT-LICENSE.txt for details.
+
+
+/* Serif: TeX Gyre Pagella */
+@font-face {
+	font-family: "TeX Gyre Pagella";
+	src: url("/assets/fonts/pagella/texgyrepagella-regular.woff2") format("woff2");
+	font-weight: 400; font-style: normal; font-display: swap;
+}
+@font-face {
+	font-family: "TeX Gyre Pagella";
+	src: url("/assets/fonts/pagella/texgyrepagella-italic.woff2") format("woff2");
+	font-weight: 400; font-style: italic; font-display: swap;
+}
+@font-face {
+	font-family: "TeX Gyre Pagella";
+	src: url("/assets/fonts/pagella/texgyrepagella-bold.woff2") format("woff2");
+	font-weight: 700; font-style: normal; font-display: swap;
+}
+@font-face {
+	font-family: "TeX Gyre Pagella";
+	src: url("/assets/fonts/pagella/texgyrepagella-bolditalic.woff2") format("woff2");
+	font-weight: 700; font-style: italic; font-display: swap;
+}
+
+/* Sans: TeX Gyre Heros */
+@font-face {
+	font-family: "TeX Gyre Heros";
+	src: url("/assets/fonts/heros/texgyreheros-regular.woff2") format("woff2");
+	font-weight: 400; font-style: normal; font-display: swap;
+}
+@font-face {
+	font-family: "TeX Gyre Heros";
+	src: url("/assets/fonts/heros/texgyreheros-italic.woff2") format("woff2");
+	font-weight: 400; font-style: italic; font-display: swap;
+}
+@font-face {
+	font-family: "TeX Gyre Heros";
+	src: url("/assets/fonts/heros/texgyreheros-bold.woff2") format("woff2");
+	font-weight: 700; font-style: normal; font-display: swap;
+}
+@font-face {
+	font-family: "TeX Gyre Heros";
+	src: url("/assets/fonts/heros/texgyreheros-bolditalic.woff2") format("woff2");
+	font-weight: 700; font-style: italic; font-display: swap;
+}
+
+/* Mono: TeX Gyre Cursor */
+@font-face {
+	font-family: "TeX Gyre Cursor";
+	src: url("/assets/fonts/mono/texgyrecursor-regular.woff2") format("woff2");
+	font-weight: 400; font-style: normal; font-display: swap;
+}
+@font-face {
+	font-family: "TeX Gyre Cursor";
+	src: url("/assets/fonts/mono/texgyrecursor-italic.woff2") format("woff2");
+	font-weight: 400; font-style: italic; font-display: swap;
+}
+@font-face {
+	font-family: "TeX Gyre Cursor";
+	src: url("/assets/fonts/mono/texgyrecursor-bold.woff2") format("woff2");
+	font-weight: 700; font-style: normal; font-display: swap;
+}
+@font-face {
+	font-family: "TeX Gyre Cursor";
+	src: url("/assets/fonts/mono/texgyrecursor-bolditalic.woff2") format("woff2");
+	font-weight: 700; font-style: italic; font-display: swap;
+}
