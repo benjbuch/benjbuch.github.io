@@ -25,3 +25,9 @@ defaults:
     values:
       layout: card
 
+plugins:
+  - jekyll-sass-converter
+
+sass:
+  sass_dir: _sass
+  style: compressed
