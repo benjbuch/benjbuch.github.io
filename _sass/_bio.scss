@@ -1,8 +1,3 @@
-@use "colors" as *;
-@use "fonts" as *;
-@use "typography" as *;
-@use "base" as *;
-
 .bio-card {
 	background: #{$stone-100};
 	border-radius: var(--radius);

@@ -1,6 +1,9 @@
 ---
 ---
-@use "base" as *;
-@use "cards" as *;
-@use "bio" as *;
-//@use "protocol" as *;
+@import "colors";
+@import "fonts";
+@import "typography";
+@import "base";
+@import "cards";
+@import "bio";
+//@import "protocol";
