@@ -201,7 +201,7 @@ section {
 .hero {
 	border: none;
 	box-shadow: none;
-	padding: var(--pad-l) 0;
+	padding: var(--pad-m) 0;
 	background: none;
 	text-align: center;
 }
@@ -225,6 +225,7 @@ section {
 	border-radius: 90%;
 	box-shadow: var(--shadow);
 	height: #{$portrait-w};
+	margin: 0 auto #{space-s};
 	object-fit: cover;
 	overflow: hidden;
 	width: #{$portrait-w};

@@ -12,16 +12,17 @@
 
 .bio-card h3 {
 	margin-top: 0;
+	margin-bottom: var(--pad-s);
 }
 
 .bio-centerline {
 	// Vertical spacing between items
 	--gap: var(--pad-m);
 	// Vertical space the card lifts on hover/focus
-	--lift: 1.6rem;
+	--lift: calc(2 * var(--pad-l));
 	--overlap: calc(var(--lift) + var(--tuck));
 	--radius: #{$round-m};
-	--tuck: 26px;
+	--tuck: var(--pad-s);
 	// Color palette
 	--active: #{$stone-300};
 	--hover:  #{$stone-200};
