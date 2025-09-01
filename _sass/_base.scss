@@ -31,7 +31,7 @@ $spine: 3.0px;
 	--fg-muted: #{$slate-500};
 	--active:   #{$slate-300};
 	--hover:    #{$slate-200};
-	--link:     #{$slate-600};
+	--link:     #{$slate-500};
 	/* Fonts */
 	--font-serif: "TeX Gyre Pagella", "Palatino", "Palatino Linotype", "Book Antiqua", "URW Palladio L", serif;
 	--font-sans:  "TeX Gyre Heros", system-ui, -apple-system, "Segoe UI", Helvetica, Arial, sans-serif;
@@ -63,9 +63,9 @@ html {
 }
 
 a {
-	border-radius: #{$round-s};
+//	border-radius: #{$round-s};
 	color: var(--link);
-	padding: 0.1rem 0.3rem;
+//	padding: 0.1rem 0.2rem;
 	text-decoration: none;
 }
 
@@ -74,11 +74,12 @@ a:visited {
 }
 
 a:hover {
-	background: var(--hover);
+//	background: var(--hover);
+	text-decoration: underline;
 }
 
 a:active {
-	background: var(--active);
+//	background: var(--active);
 	color: var(--fg-color);
 }
 
