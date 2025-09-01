@@ -1,0 +1,17 @@
+@use "colors" as *;
+@use "fonts" as *;
+@use "typography" as *;
+@use "base" as *;
+
+.card {
+	background: #{$slate-100};
+	border-radius: #{$round-m};
+	border: #{$line-s} solid var(--hover);
+	box-shadow: var(--shadow);
+	padding: var(--pad-l);
+	width: min(100%, #{$bp-l});
+}
+
+.card h2 {
+	margin-top: 0;
+}
