@@ -15,23 +15,18 @@
 {%- for sec in sections -%}
   {%- assign parts = sec | split: "::" -%}
   {%- assign section_name = parts[0] -%}
-
-  {%- comment -%}
-    parts[1..] gives you all the group identifiers for this section
-  {%- endcomment -%}
   {%- assign groups = parts | slice: 1, parts.size -%}
 
-  {%- if groups.size == 1 -%}
-    {%- assign items = site.data.publications | where: "group", groups[0] -%}
-  {%- else -%}
-    {%- assign expr = "" -%}
+  {%- assign items = "" | split: "" -%}
+  {%- for g in groups -%}
+    {%- assign chunk = site.data.publications | where: "group", g -%}
+    {%- assign items = items | concat: chunk -%}
+  {%- endfor -%}
+  {%- if items == empty -%}
     {%- for g in groups -%}
-      {%- assign expr = expr | append: "i.group == '" | append: g | append: "'" -%}
-      {%- unless forloop.last -%}
-        {%- assign expr = expr | append: " or " -%}
-      {%- endunless -%}
+      {%- assign chunk = site.data.publications | where: "type", g -%}
+      {%- assign items = items | concat: chunk -%}
     {%- endfor -%}
-    {%- assign items = site.data.publications | where_exp: "i", expr -%}
   {%- endif -%}
 
   {%- if items and items != empty -%}
