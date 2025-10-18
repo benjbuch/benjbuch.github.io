@@ -1,8 +1,8 @@
 /* ---- List container ---- */
 .publist {
-	padding-left: 1.25rem;
-	margin: 0 0 1rem 0;
-//	text-align: justify;
+	padding-right: var(--pad-l);
+	text-align: justify;
+	text-justify: inter-word;
 }
 
 ul.publist {
@@ -12,7 +12,6 @@ ul.publist {
 ol.publist {
 	list-style: decimal;
 	list-style-position: outside;
-	padding-left: 1.5rem;
 }
 
 /* ---- Single publication item ---- */
@@ -28,6 +27,9 @@ ol.publist {
 /* ---- Main line ---- */
 .pub-main {
 	line-height: 1.45;
+	hyphens: auto;
+	-webkit-hyphens: auto;
+	-ms-hyphens: auto;
 }
 
 .pub-authors .me {
@@ -47,6 +49,8 @@ ol.publist {
 .pub-doi, .pub-pmid, .pub-pmcid {
 	margin-right: 0.5ch;
 	white-space: nowrap;
+	overflow-wrap: anywhere;
+	word-break: break-word;
 }
 
 /* ---- Keyword badges ---- */
@@ -91,6 +95,8 @@ ol.publist {
 /* ---- Footnote ---- */
 .pub-footnote {
 	color: var(--fg-color);
+	font-size: 0.9em;
+	margin-top: var(--pad-l);
 }
 
 /* ---- Section headers ---- */

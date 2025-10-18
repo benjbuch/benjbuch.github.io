@@ -130,14 +130,14 @@ main {
 }
 
 p + p {
-	padding-top: #{$space-l};
+	padding-top: #{$space-m};
 }
 
 section {
 	align-items: flex-start;
 	display: flex;
 	justify-content: center;
-	min-height: calc(100vh - var(--footer-height) + var(--pad-l));
+//	min-height: calc(100vh - var(--footer-height) + var(--pad-l));
 	padding: var(--pad-l) var(--pad-l);
 	scroll-margin-top: calc(var(--header-height) - var(--pad-l));
 	scroll-snap-align: start;
@@ -223,14 +223,13 @@ section {
 	border-radius: 90%;
 	box-shadow: var(--shadow);
 	height: #{$portrait-w};
-	margin: 0 auto #{space-s};
 	object-fit: cover;
 	overflow: hidden;
 	width: #{$portrait-w};
 }
 
 .hero p {
-	margin: 0 auto;
+	margin: #{space-m} auto;
 	max-width: 40rem;
 }
 
