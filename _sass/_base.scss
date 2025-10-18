@@ -7,9 +7,9 @@ $card-w: 720px;
 $menu-w: 160px;
 $portrait-w: 140px;
 // Round edges
-$round-s: 04.0px;
-$round-m: 08.0px;
-$round-l: 16.0px;
+$round-s: 0.25rem;
+$round-m: 0.50rem;
+$round-l: 1.00rem;
 // Spaces
 $space-s: 0.25rem;
 $space-m: 0.50rem;
@@ -106,7 +106,6 @@ footer {
 	left: 0;
 	padding: var(--pad-l);
 	place-items: center;
-	position: fixed;
 	right: 0;
 	text-align: center;
 	z-index: 40;
@@ -128,7 +127,6 @@ header {
 main {
 	flex: 1;
 	overflow: visible;
-	padding-bottom: var(--footer-height);
 }
 
 p + p {
@@ -139,9 +137,9 @@ section {
 	align-items: flex-start;
 	display: flex;
 	justify-content: center;
-	min-height: calc(100vh - var(--footer-height));
+	min-height: calc(100vh - var(--footer-height) + var(--pad-l));
 	padding: var(--pad-l) var(--pad-l);
-	scroll-margin-top: var(--header-height);
+	scroll-margin-top: calc(var(--header-height) - var(--pad-l));
 	scroll-snap-align: start;
 	scroll-snap-stop: always;
 }
@@ -234,6 +232,15 @@ section {
 .hero p {
 	margin: 0 auto;
 	max-width: 40rem;
+}
+
+// OTHER
+
+.line-split {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	width: 100%;
 }
 
 // SMALL DEVICES
