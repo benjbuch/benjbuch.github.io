@@ -2,7 +2,10 @@
 {%- assign style = include.style | default: "acs" -%}
 {%- assign show_keywords = include.show_keywords | default: true -%}
 {%- assign show_sections = include.show_sections | default: true -%}
-{%- assign cofirst_any = pubs | where_exp: "i", "i.first_authors and i.first_authors != ''" -%}
+{%- assign cofirst_any = pubs 
+  | where_exp: "i", "i.first_authors"
+  | where_exp: "i", "i.first_authors != ''"
+-%}
 {%- assign show_cofirst_note = cofirst_any.size | default: 0 -%}
 
 {%- assign sections =
