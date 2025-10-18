@@ -3,11 +3,11 @@
 		<div class="brand">{{ site.title }}</div>
 		<button class="burger" aria-label="Toggle menu" aria-expanded="false">☰</button>
 		<div class="menu" id="menu">
-			<a href="{{ '/' | relative_url }}#about">About</a>
-			<a href="{{ '/' | relative_url }}#research">Research</a>
-			<a href="{{ '/' | relative_url }}#publications">Publications</a>
-			<a href="{{ '/' | relative_url }}#protocols">Protocols</a>
-			<a href="{{ '/' | relative_url }}#contact">Contact</a>
+			{%- assign items = site.sections | where_exp: "s", "s.anchor and s.weight" | sort: "weight" -%}
+			{%- for s in items -%}
+				<a href="{{ '/' | relative_url }}#{{ s.anchor }}">{{ s.nav_title | default: s.title }}</a>
+			{%- endfor -%}
 		</div>
 	</nav>
 </header>
+
