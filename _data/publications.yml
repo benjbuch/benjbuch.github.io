@@ -1,0 +1,573 @@
+- id: PMID:xxx
+  type: dummy
+  title: ''
+  authors: ''
+  year: ''
+  group: research or research-article or review or chapter or thesis
+  priority: high/medium/low
+  keywords: topic1, topic2, topic3
+  audience: specialist/broad
+  impact: Key finding or significance
+  myrole: My specific contribution
+  first_authors: '1'
+- id: PMID:38284298
+  type: article
+  title: Evolved Readers of 5‐Carboxylcytosine CpG Dyads Reveal a High Versatility of the Methyl‐CpG‐Binding Domain for Recognition
+    of Noncanonical Epigenetic Marks
+  authors: Kosel, Brinja and Bigler, Katrin and Buchmuller, Benjamin C. and Acharyya, Suchandra R. and Linser, Rasmus and
+    Summerer, Daniel
+  year: 2024
+  journal: Angew. Chem. Int. Ed.
+  doi: 10.1002/anie.202318837
+  pmid: '38284298'
+  abstract: Mammalian genomes are regulated by epigenetic cytosine (C) modifications in palindromic CpG dyads. Including canonical
+    cytosine 5‐methylation (mC), a total of four different 5‐modifications can theoretically co‐exist in the two strands of
+    a CpG, giving rise to a complex array of combinatorial marks with unique regulatory potentials. While tailored readers
+    for individual marks could serve as versatile tools to study their functions, it has been unclear whether a natural protein
+    scaffold would allow selective recognition of marks that vastly differ from canonical, symmetrically methylated CpGs.
+    We conduct directed evolution experiments to generate readers of 5‐carboxylcytosine (caC) dyads based on the methyl‐CpG‐binding
+    domain (MBD), the widely conserved natural reader of mC. Despite the stark steric and chemical differences to mC, we discover
+    highly selective, low nanomolar binders of symmetric and asymmetric caC‐dyads. Together with mutational and modelling
+    studies, our findings reveal a striking evolutionary flexibility of the MBD scaffold, allowing it to completely abandon
+    its conserved mC recognition mode in favour of noncanonical dyad recognition, highlighting its potential for epigenetic
+    reader design. Cytosine 5‐modifications–occurring in different combinations in the two DNA strands of CpG dyads–are central
+    to human chromatin regulation, but the customized recognition of such combinatorial marks is challenging. By re‐evolving
+    MBDs, the readers of canonical 5‐methylated CpGs, we identify strong and selective readers of noncanonical 5‐carboxylcytosine‐containing
+    CpGs that have fully abandoned the conserved recognition of methylated CpGs.
+  volume: '63'
+  number: '17'
+  pages: e202318837
+  issn: 1433-7851
+  group: original-research
+  priority: medium
+  keywords: DNA Modifications
+  audience: specialist
+- id: PMID:36919612
+  type: article
+  title: Epigenetic CpG duplex marks probed by an evolved DNA reader via a well-tempered conformational plasticity
+  authors: Singh, Himanshu and Das, Chandan K and Buchmuller, Benjamin C and Schäfer, Lars V and Summerer, Daniel and Linser,
+    Rasmus
+  year: 2023
+  journal: Nucleic Acids Res.
+  doi: 10.1093/nar/gkad134
+  pmid: '36919612'
+  pmcid: PMC10325892
+  abstract: 5-methylcytosine (mC) and its TET-oxidized derivatives exist in CpG dyads of mammalian DNA and regulate cell fate,
+    but how their individual combinations in the two strands of a CpG act as distinct regulatory signals is poorly understood.
+    Readers that selectively recognize such novel ‘CpG duplex marks’ could be versatile tools for studying their biological
+    functions, but their design represents an unprecedented selectivity challenge. By mutational studies, NMR relaxation,
+    and MD simulations, we here show that the selectivity of the first designer reader for an oxidized CpG duplex mark hinges
+    on precisely tempered conformational plasticity of the scaffold adopted during directed evolution. Our observations reveal
+    the critical aspect of defined motional features in this novel reader for affinity and specificity in the DNA/protein
+    interaction, providing unexpected prospects for further design progress in this novel area of DNA recognition.
+  volume: '51'
+  number: '12'
+  pages: 6495–6506
+  issn: 0305-1048
+  group: original-research
+  priority: medium
+  keywords: DNA Modifications, Protein Binding
+  audience: specialist
+- id: PMID:36946649
+  type: article
+  title: A translational repression reporter assay for the analysis of RNA-binding protein consensus sites
+  authors: Nowacki, Jessica and Malenica, Mateo and Schmeing, Stefan and Schiller, Damian and Buchmuller, Benjamin and Amrahova,
+    Gulshan and ‘t Hart, Peter
+  year: 2023
+  journal: RNA Biol.
+  doi: 10.1080/15476286.2023.2192553
+  pmid: '36946649'
+  pmcid: PMC10038052
+  abstract: RNA-binding proteins are essential regulators of RNA processing and function. Translational repression assays
+    can be used to study how they interact with specific RNA sequences by insertion of such a consensus sequence into the
+    5’ untranslated region of a reporter mRNA and measuring reporter protein translation. The straightforward set-up of these
+    translational repression assays avoids the need for the isolation of the protein or the RNA providing speed, robustness
+    and a low-cost method. Here, we report the optimization of the assay to function with linear RNA sequences instead of
+    the previously reported hairpin type sequences to allow the study of a wider variety of RNA-binding proteins. Multiplication
+    of a consensus sequence strongly improves the signal allowing analysis by both fluorescence intensity measurements and
+    flow cytometry.
+  volume: '20'
+  number: '1'
+  pages: 85–94
+  issn: 1547-6286
+  group: original-research
+  priority: low
+  keywords: RNA Translation
+  audience: specialist
+- id: PMID:36545435
+  type: article
+  title: A high-throughput effector screen identifies a novel small molecule scaffold for inhibition of ten-eleven translocation
+    dioxygenase 2†
+  authors: Palei, Shubhendu and Weisner, Jörn and Vogt, Melina and Gontla, Rajesh and Buchmuller, Benjamin and Ehrt, Christiane
+    and Grabe, Tobias and Kleinbölting, Silke and Müller, Matthias and Clever, Guido H. and Rauh, Daniel and Summerer, Daniel
+  year: 2022
+  journal: RSC Med. Chem.
+  doi: 10.1039/d2md00186a
+  pmid: '36545435'
+  pmcid: PMC9749932
+  abstract: Ten-eleven translocation dioxygenases (TETs) are the erasers of 5-methylcytosine (mC), the central epigenetic
+    regulator of mammalian DNA. TETs convert mC to three oxidized derivatives with unique physicochemical properties and inherent
+    regulatory potential, and it initializes active demethylation by the base excision repair pathway. Potent small molecule
+    inhibitors would be useful tools to study TET functions by conditional control. To facilitate the discovery of such tools,
+    we here report a high-throughput screening pipeline and its application to screen and validate 31.5k compounds for inhibition
+    of TET2. Using a homogenous fluorescence assay, we discover a novel quinoline-based scaffold that we further validate
+    with an orthogonal semi-high throughput MALDI-MS assay for direct monitoring of substrate turnover. Structure–activity
+    relationship (SAR) studies involving >20 derivatives of this scaffold led to the identification of optimized inhibitors,
+    and together with computational studies suggested a plausible model for its mode of action.
+  volume: '13'
+  number: '12'
+  pages: 1540–1548
+  group: original-research
+  priority: low
+  keywords: DNA Modifications, Medicinal Chemistry
+  audience: specialist
+- id: PMID:36693632
+  type: article
+  title: Imaging-Based In Situ Analysis of 5‑Methylcytosine at Low Repetitive Single Gene Loci with Transcription-Activator-Like
+    Effector Probes
+  authors: Jung, Anne and Munõz-López, Álvaro and Buchmuller, Benjamin C. and Banerjee, Sudakshina and Summerer, Daniel
+  year: 2023
+  journal: ACS Chem. Biol.
+  doi: 10.1021/acschembio.2c00857
+  pmid: '36693632'
+  pmcid: PMC9942090
+  abstract: Transcription-activator-like effectors (TALEs) are programmable DNA binding proteins that can be used for sequence-specific,
+    imaging-based analysis of cellular 5-methylcytosine. However, this has so far been limited to highly repetitive satellite
+    DNA. To expand this approach to the analysis of coding single gene loci, we here explore a number of signal amplification
+    strategies for increasing imaging sensitivity with TALEs. We develop a straightforward amplification protocol and employ
+    it to target the MUC4 gene, which features only a small cluster of repeat sequences. This offers high sensitivity imaging
+    of MUC4, and in costaining experiments with pairs of one TALE selective for unmethylated cytosine and one universal control
+    TALE enables analyzing methylation changes in the target independently of changes in target accessibility. These advancements
+    offer prospects for 5-methylcytosine analysis at coding, nonrepetitive gene loci by the use of designed TALE probe collections.
+  volume: '18'
+  number: '2'
+  pages: 230–236
+  issn: 1554-8929
+  group: original-research
+  priority: low
+  keywords: DNA Modifications, Imaging, Methods
+  audience: specialist
+- id: PMID:35157801
+  type: article
+  title: Evolved DNA Duplex Readers for Strand-Asymmetrically Modified 5‑Hydroxymethylcytosine/5-Methylcytosine CpG Dyads
+  authors: Buchmuller, Benjamin C. and Dröden, Jessica and Singh, Himanshu and Palei, Shubhendu and Drescher, Malte and Linser,
+    Rasmus and Summerer, Daniel
+  year: 2022
+  journal: JACS
+  doi: 10.1021/jacs.1c10678
+  pmid: '35157801'
+  pmcid: PMC8874921
+  abstract: 5-Methylcytosine (mC) and 5-hydroxymethylcytosine (hmC), the two main epigenetic modifications of mammalian DNA,
+    exist in symmetric and asymmetric combinations in the two strands of CpG dyads. However, revealing such combinations in
+    single DNA duplexes is a significant challenge. Here, we evolve methyl-CpG-binding domains (MBDs) derived from MeCP2 by
+    bacterial cell surface display, resulting in the first affinity probes for hmC/mC CpGs. One mutant has low nanomolar affinity
+    for a single hmC/mC CpG, discriminates against all 14 other modified CpG dyads, and rivals the selectivity of wild-type
+    MeCP2. Structural studies indicate that this protein has a conserved scaffold and recognizes hmC and mC with two dedicated
+    sets of residues. The mutant allows us to selectively address and enrich hmC/mC-containing DNA fragments from genomic
+    DNA backgrounds. We anticipate that this novel probe will be a versatile tool to unravel the function of hmC/mC marks
+    in diverse aspects of chromatin biology.
+  volume: '144'
+  number: '7'
+  pages: 2987–2993
+  issn: 0002-7863
+  group: original-research
+  priority: high
+  keywords: DNA Modifications, Protein Engineering
+  audience: broad
+  impact: First selective readers for asymmetric epigenetic marks
+  myrole: Led directed evolution, characterized binding selectivity, performed enrichment studies
+- id: Buchmuller2021
+  type: phdthesis
+  title: Deciphering strand-asymmetrically modified CpG dyads in the DNA double-helix
+  authors: Buchmuller, Benjamin Christopher
+  year: 2021
+  school: TU Dortmund University
+  doi: 10.17877/DE290R-22422
+  address: Dortmund, Germany
+  month: '10'
+  note: 'Advisors: Rasmus Linser and Daniel Summerer'
+  group: monograph
+  priority: high
+  keywords: DNA Modifications, Protein Engineering, Methods
+  audience: specialist
+- id: PMID:32822046
+  type: incollection
+  title: DNA Modifications, Methods and Protocols
+  authors: Buchmuller, Benjamin and Muñoz-López, Álvaro and Gieß, Mario and Summerer, Daniel
+  year: 2021
+  booktitle: Methods in Molecular Biology
+  doi: 10.1007/978-1-0716-0876-0_29
+  pmid: '32822046'
+  abstract: Transcription-activator like effectors (TALEs) are DNA-binding proteins used for genome targeting. TALEs contain
+    a central domain of concatenated repeats, of which each selectively recognizes one nucleobase at the DNA major groove.
+    Based on this simple and predictable interaction with little context dependence, TALEs offer programmable targeting of
+    user-defined DNA sequences. Since many epigenetic DNA modifications protrude into the DNA major groove, natural and engineered
+    TALE repeats can provide “epigenetic” selectivity, making TALEs a flexible platform to design probes for the analysis
+    of epigenetic DNA modifications. Here, we describe guidelines for the design of TALE proteins with selectivity for epigenetic
+    cytosine 5-modifications, the validation of their interaction with modified DNA nucleobases, and their employment in affinity
+    enrichment assays. These techniques enable quantification of epigenetic nucleobases in user-defined genomic DNA sequences
+    with nucleotide and strand resolution.
+  volume: '2198'
+  pages: 381–399
+  publisher: Springer
+  address: New York, NY
+  issn: 1064-3745
+  group: chapter
+  priority: low
+  keywords: DNA Modifications, Imaging, Methods
+  audience: broad
+- id: PMID:33588304
+  type: article
+  title: Programmable tools for targeted analysis of epigenetic DNA modifications
+  authors: Buchmuller, Benjamin and Jung, Anne and Muñoz-López, Álvaro and Summerer, Daniel
+  year: 2021
+  journal: Curr. Opin. Chem. Biol.
+  doi: 10.1016/j.cbpa.2021.01.002
+  pmid: '33588304'
+  abstract: Modifications of the cytosine 5-position are dynamic epigenetic marks of mammalian DNA with important regulatory
+    roles in development and disease. Unraveling biological functions of such modified nucleobases is tightly connected with
+    the potential of available methods for their analysis. Whereas genome-wide nucleobase quantification and mapping are first-line
+    analyses, targeted analyses move into focus the more genomic sites with high biological significance are identified. We
+    here review recent developments in an emerging field that addresses such targeted analyses via probes that combine a programmable,
+    sequence-specific DNA-binding domain with the ability to directly recognize or cross-link an epigenetically modified nucleobase
+    of interest. We highlight how such probes offer simple, high-resolution nucleobase analyses in vitro and enable in situ
+    correlations between a nucleobase and other chromatin regulatory elements at user-defined loci on the single-cell level
+    by imaging.
+  volume: '63'
+  pages: 1–10
+  issn: 1367-5931
+  group: review
+  priority: low
+  keywords: DNA Modifications, Imaging, Methods
+  audience: broad
+- id: PMID:32991020
+  type: article
+  title: Engineered TALE Repeats for Enhanced Imaging‐Based Analysis of Cellular 5‐Methylcytosine
+  authors: Muñoz‐López, Álvaro and Jung, Anne and Buchmuller, Benjamin and Wolffgramm, Jan and Maurer, Sara and Witte, Anna
+    and Summerer, Daniel
+  year: 2021
+  journal: ChemBioChem
+  doi: 10.1002/cbic.202000563
+  pmid: '32991020'
+  pmcid: PMC7894354
+  abstract: 'Transcription‐activator‐like effectors (TALEs) are repeat‐based, programmable DNA‐binding proteins that can be
+    engineered to recognize sequences of canonical and epigenetically modified nucleobases. Fluorescent TALEs can be used
+    for the imaging‐based analysis of cellular 5‐methylcytosine (5 mC) in repetitive DNA sequences. This is based on recording
+    fluorescence ratios from cell co‐stains with two TALEs: an analytical TALE targeting the cytosine (C) position of interest
+    through a C‐selective repeat that is blocked by 5 mC, and a control TALE targeting the position with a universal repeat
+    that binds both C and 5 mC. To enhance this approach, we report herein the development of novel 5 mC‐selective repeats
+    and their integration into TALEs that can replace universal TALEs in imaging‐based 5 mC analysis, resulting in a methylation‐dependent
+    response of both TALEs. We screened a library of size‐reduced repeats and identified several 5 mC binders. Compared to
+    the 5 mC‐binding repeat of natural TALEs and to the universal repeat, two repeats containing aromatic residues showed
+    enhancement of 5 mC binding and selectivity in cellular transcription activation and electromobility shift assays, respectively.
+    In co‐stains of cellular SATIII DNA with a corresponding C‐selective TALE, this selectivity results in a positive methylation
+    response of the new TALE, offering perspectives for studying 5 mC functions in chromatin regulation by in situ imaging
+    with increased dynamic range. Two‐TALE test: Engineered transcription‐activator‐like effector (TALE) repeats can be used
+    to design programmable receptors for improved in situ imaging‐based analysis of 5 mC in user‐defined DNA sequences. Pairs
+    of natural 5 mC‐discriminating and engineered 5 mC‐binding TALEs allow nucleotide resolution analysis of 5 mC with response
+    of both TALEs. This provides an impulse for the design of programmable imaging probes for studying 5 mC functions in chromatin
+    regulation with increased dynamic range.'
+  volume: '22'
+  number: '4'
+  pages: 645–651
+  issn: 1439-4227
+  group: review
+  priority: low
+  keywords: DNA Modifications, Imaging, Methods
+  audience: broad
+- id: PMID:33826797
+  type: article
+  title: Light‐Activation of DNA‐Methyltransferases
+  authors: Wolffgramm, Jan and Buchmuller, Benjamin and Palei, Shubhendu and Muñoz‐López, Álvaro and Kanne, Julian and Janning,
+    Petra and Schweiger, Michal R. and Summerer, Daniel
+  year: 2021
+  journal: Angew. Chem. Int. Ed.
+  doi: 10.1002/anie.202103945
+  pmid: '33826797'
+  pmcid: PMC8251764
+  abstract: 5‐Methylcytosine (5mC), the central epigenetic mark of mammalian DNA, plays fundamental roles in chromatin regulation.
+    5mC is written onto genomes by DNA methyltransferases (DNMT), and perturbation of this process is an early event in carcinogenesis.
+    However, studying 5mC functions is limited by the inability to control individual DNMTs with spatiotemporal resolution
+    in vivo. We report light‐control of DNMT catalysis by genetically encoding a photocaged cysteine as a catalytic residue.
+    This enables translation of inactive DNMTs, their rapid activation by light‐decaging, and subsequent monitoring of de
+    novo DNA methylation. We provide insights into how cancer‐related DNMT mutations alter de novo methylation in vivo, and
+    demonstrate local and tuneable cytosine methylation by light‐controlled DNMTs fused to a programmable transcription activator‐like
+    effector domain targeting pericentromeric satellite‐3 DNA. We further study early events of transcriptome alterations
+    upon DNMT‐catalyzed cytosine methylation. Our study sets a basis to dissect the order and kinetics of diverse chromatin‐associated
+    events triggered by normal and aberrant DNA methylation. We report light activation of DNA methyltransferases (DNMT) through
+    the genetic encoding of a photocaged cysteine. This enables insights into the impact of cancer‐related DNMT mutations
+    on in vivo catalysis, enables local and tuneable methylation via DNMT‐TAL‐effector fusions, and provides insights into
+    methylation‐triggered transcriptome dynamics.
+  volume: '60'
+  number: '24'
+  pages: 13507–13512
+  issn: 1433-7851
+  group: original-research
+  priority: medium
+  keywords: Chemical Biology, DNA Modifications, Methods
+  audience: broad
+  myrole: Contributed methylation analysis
+- id: PMID:32286069
+  type: article
+  title: Light-Activatable TET-Dioxygenases Reveal Dynamics of 5‑Methylcytosine Oxidation and Transcriptome Reorganization
+  authors: Palei, Shubhendu and Buchmuller, Benjamin and Wolffgramm, Jan and Muñoz-Lopez, Álvaro and Jung, Sascha and Czodrowski,
+    Paul and Summerer, Daniel
+  year: 2020
+  journal: JACS
+  doi: 10.1021/jacs.0c01193
+  pmid: '32286069'
+  abstract: Ten-eleven-translocation (TET) dioxygenases catalyze the oxidation of 5-methylcytosine (5mC), the central epigenetic
+    regulator of mammalian DNA. This activity dynamically reshapes the epigenome and transcriptome by depositing oxidized
+    5mC derivatives and initiating active DNA demethylation. However, studying this dynamic is hampered by the inability to
+    selectively activate individual TETs with temporal control in cells. We report activation of TETs in mammalian cells by
+    incorporation of genetically encoded 4,5-dimethoxy-2-nitrobenzyl-l-serine as a transient active-site block, and its subsequent
+    deprotection with light. Our approach enables precise insights into the impact of cancer-associated TET2 mutations on
+    the kinetics of TET2 catalysis in vivo, and allows time-resolved monitoring of target gene activation and transcriptome
+    reorganization. This sets a basis for dissecting the order and kinetics of chromatin-associated events triggered by TET
+    catalysis, ranging from DNA demethylation to chromatin and transcription regulation.
+  volume: '142'
+  number: '16'
+  pages: 7289–7294
+  month: '04'
+  issn: 0002-7863
+  group: original-research
+  priority: high
+  keywords: Chemical Biology, DNA Modifications, Methods
+  audience: broad
+- id: PMID:32406907
+  type: article
+  title: CRISPR-Cas12a–assisted PCR tagging of mammalian genes
+  authors: Fueller, Julia and Herbst, Konrad and Meurer, Matthias and Gubicza, Krisztina and Kurtulmus, Bahtiyar and Knopf,
+    Julia D. and Kirrmaier, Daniel and Buchmuller, Benjamin C. and Pereira, Gislene and Lemberg, Marius K. and Knop, Michael
+  year: 2020
+  journal: J. Cell Biol.
+  doi: 10.1083/jcb.201910210
+  pmid: '32406907'
+  pmcid: PMC7265327
+  abstract: Here we describe a time-efficient strategy for endogenous C-terminal gene tagging in mammalian tissue culture
+    cells. An online platform is used to design two long gene-specific oligonucleotides for PCR with generic template cassettes
+    to create linear dsDNA donors, termed PCR cassettes. PCR cassettes encode the tag (e.g., GFP), a Cas12a CRISPR RNA for
+    cleavage of the target locus, and short homology arms for directed integration via homologous recombination. The integrated
+    tag is coupled to a generic terminator shielding the tagged gene from the co-inserted auxiliary sequences. Co-transfection
+    of PCR cassettes with a Cas12a-encoding plasmid leads to robust endogenous expression of tagged genes, with tagging efficiency
+    of up to 20% without selection, and up to 60% when selection markers are used. We used target-enrichment sequencing to
+    investigate all potential sources of artifacts. Our work outlines a quick strategy particularly suitable for exploratory
+    studies using endogenous expression of fluorescent protein–tagged genes.
+  volume: '219'
+  number: '6'
+  pages: e201910210
+  month: '05'
+  issn: 0021-9525
+  group: original-research
+  priority: high
+  keywords: CRISPR, Functional Genomics, Methods
+  audience: broad
+- id: PMID:32167219
+  type: article
+  title: Designer Receptors for Nucleotide‐Resolution Analysis of Genomic 5‐Methylcytosine by Cellular Imaging
+  authors: Muñoz‐López, Álvaro and Buchmuller, Benjamin and Wolffgramm, Jan and Jung, Anne and Hussong, Michelle and Kanne,
+    Julian and Schweiger, Michal R. and Summerer, Daniel
+  year: 2020
+  journal: Angew. Chem. Int. Ed.
+  doi: 10.1002/anie.202001935
+  pmid: '32167219'
+  pmcid: PMC7318601
+  abstract: 'We report programmable receptors for the imaging‐based analysis of 5‐methylcytosine (5mC) in user‐defined DNA
+    sequences of single cells. Using fluorescent transcription‐activator‐like effectors (TALEs) that can recognize sequences
+    of canonical and epigenetic nucleobases through selective repeats, we imaged cellular SATIII DNA, the origin of nuclear
+    stress bodies (nSB). We achieve high nucleobase selectivity of natural repeats in imaging and demonstrate universal nucleobase
+    binding by an engineered repeat. We use TALE pairs differing in only one such repeat in co‐stains to detect 5mC in SATIII
+    sequences with nucleotide resolution independently of differences in target accessibility. Further, we directly correlate
+    the presence of heat shock factor 1 with 5mC at its recognition sequence, revealing a potential function of 5mC in its
+    recruitment as initial step of nSB formation. This opens a new avenue for studying 5mC functions in chromatin regulation
+    in situ with nucleotide, locus, and cell resolution. It needs two TALEs to tango: Programmable receptors for the imaging‐based
+    analysis of 5‐methylcytosine (5mC) in DNA sequences of single cells are reported. Staining of SATIII DNA with pairs of
+    5mC‐sensitive and 5mC‐insensitive transcription‐activator‐like effectors (TALEs) allows the analysis of 5mC at a target
+    nucleotide position and its direct correlation with the recruitment of transcription factor HSF1 as the initial step of
+    nuclear stress body formation.'
+  volume: '59'
+  number: '23'
+  pages: 8927–8931
+  month: '03'
+  issn: 1433-7851
+  group: original-research
+  priority: high
+  keywords: DNA Modifications, Methods
+  audience: specialist
+- id: PMID:32132616
+  type: article
+  title: Complete Profiling of Methyl-CpG-Binding Domains for Combinations of Cytosine Modifications at CpG Dinucleotides
+    Reveals Differential Read-out in Normal and Rett-Associated States
+  authors: Buchmuller, Benjamin C. and Kosel, Brinja and Summerer, Daniel
+  year: 2020
+  journal: Sci. Rep.
+  doi: 10.1038/s41598-020-61030-1
+  pmid: '32132616'
+  pmcid: PMC7055227
+  abstract: 5-Methylcytosine (mC) exists in CpG dinucleotides of mammalian DNA and plays key roles in chromatin regulation
+    during development and disease. As a main regulatory pathway, fully methylated CpG are recognized by methyl-CpG-binding
+    domain (MBD) proteins that act in concert with chromatin remodelers, histone deacetylases and methyltransferases to trigger
+    transcriptional downregulation. In turn, MBD mutations can alter CpG binding, and in case of the MBD protein MeCP2 can
+    cause the neurological disorder Rett syndrome (RTT). An additional layer of complexity in CpG recognition is added by
+    ten-eleven-translocation (TET) dioxygenases that oxidize mC to 5-hydroxymethyl-, 5-formyl- and 5-carboxylcytosine, giving
+    rise to fifteen possible combinations of cytosine modifications in the two CpG strands. We report a comprehensive, comparative
+    interaction analysis of the human MBD proteins MeCP2, MBD1, MBD2, MBD3, and MBD4 with all CpG combinations and observe
+    individual preferences of each MBD for distinct combinations. In addition, we profile four MeCP2 RTT mutants and reveal
+    that although interactions to methylated CpGs are similarly affected by the mutations, interactions to oxidized mC combinations
+    are differentially affected. These findings argue for a complex interplay between local TET activity/processivity and
+    CpG recognition by MBDs, with potential consequences for the transcriptional landscape in normal and RTT states.
+  volume: '10'
+  number: '1'
+  pages: '4053'
+  month: '03'
+  group: original-research
+  priority: high
+  keywords: Chromatin, DNA Modifications, Human Disease
+  audience: broad
+  impact: Revealed differential recognition of oxidized CpG marks by disease-associated MeCP2 mutations
+  myrole: Designed binding assays, profiled all MBD proteins and Rett mutants
+- id: PMID:31273196
+  type: article
+  title: Pooled clone collections by multiplexed CRISPR-Cas12a-assisted gene tagging in yeast
+  authors: Buchmuller, Benjamin C. and Herbst, Konrad and Meurer, Matthias and Kirrmaier, Daniel and Sass, Ehud and Levy,
+    Emmanuel D. and Knop, Michael
+  year: 2019
+  journal: Nat. Commun.
+  doi: 10.1038/s41467-019-10816-7
+  pmid: '31273196'
+  pmcid: PMC6609715
+  abstract: Clone collections of modified strains (“libraries”) are a major resource for systematic studies with the yeast
+    Saccharomyces cerevisiae. Construction of such libraries is time-consuming, costly and confined to the genetic background
+    of a specific yeast strain. To overcome these limitations, we present CRISPR-Cas12a (Cpf1)-assisted tag library engineering
+    (CASTLING) for multiplexed strain construction. CASTLING uses microarray-synthesized oligonucleotide pools and in vitro
+    recombineering to program the genomic insertion of long DNA constructs via homologous recombination. One simple transformation
+    yields pooled libraries with >90% of correctly tagged clones. Up to several hundred genes can be tagged in a single step
+    and, on a genomic scale, approximately half of all genes are tagged with only {~} 10-fold oversampling. We report several
+    parameters that affect tagging success and provide a quantitative targeted next-generation sequencing method to analyze
+    such pooled collections. Thus, CASTLING unlocks avenues for increasing throughput in functional genomics and cell biology
+    research. Construction of yeast libraries is time-consuming, costly and limited to the genetic background of the chosen
+    strain. Here the authors present CASTLING which uses CRISPR-Cas12a and oligonucleotide pools to rapidly generate pooled
+    libraries with large insertions such as fluorescent protein tags.
+  volume: '10'
+  number: '1'
+  pages: '2960'
+  month: '07'
+  group: original-research
+  priority: high
+  keywords: Functional Genomics, Yeast, Methods, CRISPR
+  audience: specialist
+  impact: Enables rapid construction of tagged strain libraries
+  myrole: Co-developed CASTLING method, optimized protocol, performed validations
+  first_authors: '2'
+- id: PMID:31180648
+  type: article
+  title: Programmable Protein–DNA Cross-Linking for the Direct Capture and Quantification of 5‑Formylcytosine
+  authors: Gieß, Mario and Muñoz-López, Álvaro and Buchmuller, Benjamin and Kubik, Grzegorz and Summerer, Daniel
+  year: 2019
+  journal: JACS
+  doi: 10.1021/jacs.9b01432
+  pmid: '31180648'
+  abstract: 5-Formylcytosine (5fC) is an epigenetic nucleobase of mammalian genomes that occurs as intermediate of active
+    DNA demethylation. 5fC uniquely interacts and reacts with key nuclear proteins, indicating functions in genome regulation.
+    Transcription-activator-like effectors (TALEs) are repeat-based DNA binding proteins that can serve as probes for the
+    direct, programmable recognition and analysis of epigenetic nucleobases. However, no TALE repeats for the selective recognition
+    of 5fC are available, and the typically low genomic levels of 5fC represent a particular sensitivity challenge. We here
+    advance TALE-based nucleobase targeting from recognition to covalent cross-linking. We report TALE repeats bearing the
+    ketone-amino acid p-acetylphenylalanine (pAcF) that universally bind all mammalian cytosine nucleobases, but selectively
+    form diaminooxy-linker-mediated dioxime cross-links to 5fC. We identify repeat-linker combinations enabling single CpG
+    resolution, and demonstrate the direct quantification of 5fC levels in a human genome background by covalent enrichment.
+    This strategy provides a new avenue to expand the application scope of programmable probes with selectivity beyond A,
+    G, T and C for epigenetic studies.
+  volume: '141'
+  number: '24'
+  pages: 9453–9457
+  month: '06'
+  issn: 0002-7863
+  group: original-research
+  priority: low
+  keywords: DNA Modifications, Methods
+  audience: specialist
+- id: PMID:30288245
+  type: article
+  title: 'Overcoming conservation in TALE–DNA interactions: a minimal repeat scaffold enables selective recognition of an
+    oxidized 5-methylcytosine'
+  authors: Maurer, Sara and Buchmuller, Benjamin and Ehrt, Christiane and Jasper, Julia and Koch, Oliver and Summerer, Daniel
+  year: 2018
+  journal: Chem. Sci.
+  doi: 10.1039/c8sc01958d
+  pmid: '30288245'
+  pmcid: PMC6148557
+  abstract: 'Transcription-activator-like effectors (TALEs) are repeat-based proteins featuring programmable DNA binding.
+    The repulsion of TALE repeats by 5-methylcytosine (5mC) and its oxidized forms makes TALEs potential probes for their
+    programmable analysis. However, this potential has been limited by the inability to engineer repeats capable of actual,
+    fully selective binding of an (oxidized) 5mC: the extremely conserved and simple nucleobase recognition mode of TALE repeats
+    and their extensive involvement in inter-repeat interactions that stabilize the TALE fold represent major engineering
+    hurdles. We evaluated libraries of alternative, strongly truncated repeat scaffolds and discovered a repeat that selectively
+    recognizes 5-carboxylcytosine (5caC), enabling construction of the first programmable receptors for an oxidized 5mC. In
+    computational studies, this unusual scaffold executes a dual function via a critical arginine that provides inter-repeat
+    stabilization and selectively interacts with the 5caC carboxyl group via a salt-bridge. These findings argue for an unexpected
+    adaptability of TALE repeats and provide a new impulse for the design of programmable probes for nucleobases beyond A,
+    G, T and C.'
+  volume: '9'
+  number: '36'
+  pages: 7247–7252
+  issn: 2041-6520
+  group: original-research
+  priority: low
+  keywords: DNA Modifications, Protein Engineering
+  audience: specialist
+- id: PMID:29988096
+  type: article
+  title: Genome-wide C-SWAT library for high-throughput yeast genome tagging
+  authors: Meurer, Matthias and Duan, Yuanqiang and Sass, Ehud and Kats, Ilia and Herbst, Konrad and Buchmuller, Benjamin
+    C. and Dederer, Verena and Huber, Florian and Kirrmaier, Daniel and Štefl, Martin and Laer, Koen Van and Dick, Tobias
+    P. and Lemberg, Marius K. and Khmelinskii, Anton and Levy, Emmanuel D. and Knop, Michael
+  year: 2018
+  journal: Nat. Methods
+  doi: 10.1038/s41592-018-0045-8
+  pmid: '29988096'
+  abstract: Here we describe a C-SWAT library for high-throughput tagging of Saccharomyces cerevisiae open reading frames
+    (ORFs). In 5,661 strains, we inserted an acceptor module after each ORF that can be efficiently replaced with tags or
+    regulatory elements. We validated the library with targeted sequencing and tagged the proteome with bright fluorescent
+    proteins to quantify the effect of heterologous transcription terminators on protein expression and to localize previously
+    undetected proteins. A C-SWAT acceptor library allows the user to easily insert any tag of choice after yeast ORFs by
+    swapping it for the acceptor module.
+  volume: '15'
+  number: '8'
+  pages: 598–600
+  issn: 1548-7091
+  group: original-research
+  priority: medium
+  keywords: Functional Genomics, Yeast, Methods
+  audience: specialist
+- id: PMID:29432691
+  type: article
+  title: Monomeric and Dimeric 68Ga-Labeled Bombesin Analogues for Positron Emission Tomography (PET) Imaging of Tumors Expressing
+    Gastrin-Releasing Peptide Receptors (GRPrs)
+  authors: Liolios, Christos and Buchmuller, Benjamin and Bauder-Wüst, Ulrike and Schäfer, Martin and Leotta, Karin and
+    Haberkorn, Uwe and Eder, Matthias and Kopka, Klaus
+  year: 2018
+  journal: J. Med. Chem.
+  doi: 10.1021/acs.jmedchem.7b01856
+  pmid: '29432691'
+  abstract: 'The GRPr, highly expressed in prostate PCa and breast cancer BCa, is a promising target for the development of
+    new PET radiotracers. The chelator HBED-CC (N,N′-bis­[2-hydroxy-5-(carboxyethyl)­benzyl]­ethylenediamine-N,N′-diacetic
+    acid) was coupled to the bombesin peptides: HBED-C-BN(2–14) 1, HBED-CC-PEG2-[d-Tyr6,β-Ala11,Thi13,Nle14]-BN­(6–14) 2,
+    HBED-CC-Y-[d-Phe6,Sta13,Leu14]-BN­(6–14) (Y = 4-amino-1-carboxymethyl­piperidine) 3, and HBED-CC-{\} {PEG2-Y-[d-Phe6,Sta13,Leu14]-BN­(6–14){\}
+    }2 4 (homodimer). Compounds 1–4 presented high binding affinities for GRPr (T47D, 0.56–3.51 nM; PC-3, 2.12–4.68 nM). In
+    PC-3 and T47D cells, agonists [68Ga]1 and [68Ga]2 were mainly internalized while antagonists [68Ga]3 and [68Ga]4 were
+    surface bound. Cell-related radioactivity reached a maximum after 45 min, while tracer levels followed GRPr expression
+    (PC-3 > T47D > LNCaP > MDA-MB-231). [68Ga]4 showed the highest cell-bound radioactivity (PC-3 and T47D). In vivo, tumor
+    (PC-3) targeting for [68Ga]3 and [68Ga]4 increased over time, with dynamic μPET showing clearer tumors images at later
+    time points. [68Ga]3 and [68Ga]4 can be considered suitable PET tracers for imaging PCa and BCa expressing GRPr.'
+  volume: '61'
+  number: '5'
+  pages: 2062–2074
+  month: '03'
+  issn: 0022-2623
+  group: original-research
+  priority: low
+  keywords: Cancer, Medicinal Chemistry, Imaging
+  audience: specialist
+  impact: Potential diagnostic tools for prostate and breast cancer
+  myrole: Performed radiochemical synthesis and characterized GRPr-targeting PET tracers
