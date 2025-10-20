@@ -3,8 +3,6 @@
 // Copyright (c) 2006–2021 GUST — Polish TeX Users Group
 // Licensed under the GUST Font License.
 // See https://tug.org/fonts/licenses/GUST-FONT-LICENSE.txt for details.
-
-
 /* Serif: TeX Gyre Pagella */
 @font-face {
 	font-family: "TeX Gyre Pagella";
@@ -26,7 +24,6 @@
 	src: url("/assets/fonts/pagella/texgyrepagella-bolditalic.woff2") format("woff2");
 	font-weight: 700; font-style: italic; font-display: swap;
 }
-
 /* Sans: TeX Gyre Heros */
 @font-face {
 	font-family: "TeX Gyre Heros";
@@ -48,7 +45,6 @@
 	src: url("/assets/fonts/heros/texgyreheros-bolditalic.woff2") format("woff2");
 	font-weight: 700; font-style: italic; font-display: swap;
 }
-
 /* Mono: TeX Gyre Cursor */
 @font-face {
 	font-family: "TeX Gyre Cursor";

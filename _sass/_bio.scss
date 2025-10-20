@@ -9,12 +9,10 @@
 	text-align: left;
 	z-index: 2;
 }
-
 .bio-card h3 {
 	margin-top: 0;
 	margin-bottom: var(--pad-s);
 }
-
 .bio-centerline {
 	// Vertical spacing between items
 	--gap: var(--pad-m);
@@ -33,12 +31,11 @@
 	padding: var(--pad-l) var(--pad-m) 0 var(--pad-l);
 	position: relative;
 }
-
 .bio-centerline::before {
 	background: linear-gradient(
-		180deg, 
+		180deg,
 		transparent 0,
-		#{$stone-300} 16px, 
+		#{$stone-300} 16px,
 		#{$stone-300} calc(100% - 16px),
 		transparent 100%);
 	border-radius: #{$line-l};
@@ -50,9 +47,7 @@
 	transform: translateX(-50%);
 	width: #{$spine};
 }
-
 // Each item contains the node and a panel that is revealed
-
 .bio-item {
 	display: grid;
 	grid-template-columns: minmax(0, #{$card-w});
@@ -62,15 +57,14 @@
 	position: relative;
 	z-index: 0;
 }
-
 .bio-reveal {
 	background: linear-gradient(
-		180deg, 
-		#{$stone-300}, 
+		180deg,
+		#{$stone-300},
 		#{$stone-200});
 	border-radius: 0 0 var(--radius) var(--radius);
 	border: #{$line-s} solid #{$stone-100};
-	clip-path: 
+	clip-path:
 		inset(0 0 100% 0 round 0 0 var(--radius) var(--radius));
 	margin-top: calc(var(--overlap) * -1);
 	max-width: #{$card-w};
@@ -85,18 +79,15 @@
 	will-change: opacity, transform;
 	z-index: 1;
 }
-
 .bio-title {
 	margin: 0 0 var(--pad-s) 0;
-	text-align: center; 
+	text-align: center;
 }
-
 .bio-list {
 	list-style: none;
 	padding: 0;
 	margin: 0;
 }
-
 // Lift the node and reveal the panel on hover or keyboard focus
 .bio-item:hover .bio-card, .bio-item:focus-within .bio-card {
 	box-shadow: var(--shadow);
@@ -104,7 +95,6 @@
 	transition-delay: 0s;
 	will-change: transform;
 }
-
 .bio-item:hover .bio-reveal, .bio-item:focus-within .bio-reveal {
 	clip-path:
 		inset(0 0 0 0 round 0 0 var(--radius) var(--radius));
@@ -113,32 +103,25 @@
 	transform: translateY(0);
 	transition-delay: .04s;
 }
-
 @media (max-width: #{$card-w}) {
-	
 	.bio-centerline {
 		--lift: 0rem;
 	}
-	
 	.bio-reveal {
 		clip-path: inset(0 0 0 0 round 0 0 var(--radius) var(--radius));
 		max-height: none;
 		opacity: 1;
 		transform: none;
 	}
-	
 	.bio-item:hover, .bio-item:focus-within {
 		transform: none;
-		z-index: 0; 
+		z-index: 0;
 	}
 }
-
 @media (prefers-reduced-motion: no-preference) {
-	
 	.bio-card {
-		transition: 
+		transition:
 			transform .20s ease,
 			box-shadow .20s ease
 	}
-	
 }

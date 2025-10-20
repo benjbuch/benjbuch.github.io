@@ -19,9 +19,7 @@ $line-s: 1.0px;
 $line-m: 1.3px;
 $line-l: 2.0px;
 $spine: 3.0px;
-
 // DEFAULT INHERITANCE
-
 :root {
 	--footer-height: 56px;
 	--header-height: 64px;
@@ -43,46 +41,36 @@ $spine: 3.0px;
 	/* Shadows */
 	--shadow: 0 #{$round-m} #{$round-l} #{$black-a};
 };
-
 // RULES FOR ALL ELEMENTS
-
 * {
 	box-sizing: border-box;
 }
-
 // HTML ELEMENTS
-
 html, body {
 	height: 100%;
 	margin: 0;
 	padding: 0;
 }
-
 html {
 	scroll-behavior: smooth;
 }
-
 a {
 //	border-radius: #{$round-s};
 	color: var(--link);
 //	padding: 0.1rem 0.2rem;
 	text-decoration: none;
 }
-
 a:visited {
 	color: var(--link);
 }
-
 a:hover {
 //	background: var(--hover);
 	text-decoration: underline;
 }
-
 a:active {
 //	background: var(--active);
 	color: var(--fg-color);
 }
-
 body {
 	background: var(--bg-color);
 	color: var(--fg-color);
@@ -94,7 +82,6 @@ body {
 	scroll-padding-top: var(--header-height);
 	scroll-snap-type: y mandatory;
 }
-
 footer {
 	backdrop-filter: blur(8px);
 	background: #{$slate-50-a};
@@ -110,7 +97,6 @@ footer {
 	text-align: center;
 	z-index: 40;
 }
-
 header {
 	backdrop-filter: blur(8px);
 	background: #{$slate-50-a};
@@ -123,16 +109,13 @@ header {
 	will-change: transform;
 	z-index: 1000;
 }
-
 main {
 	flex: 1;
 	overflow: visible;
 }
-
 p + p {
 	padding-top: #{$space-m};
 }
-
 section {
 	align-items: flex-start;
 	display: flex;
@@ -143,21 +126,17 @@ section {
 	scroll-snap-align: start;
 	scroll-snap-stop: always;
 }
-
 // TOP NAV
-
 .brand {
 	font-weight: 700;
 	letter-spacing: .2px;
 }
-
 .menu {
 	align-items: center;
 	display: flex;
 	gap: var(--pad-m);
 	z-index: 55;
 }
-
 .nav {
 	align-items: center;
 	display: flex;
@@ -166,25 +145,20 @@ section {
 	max-width: #{$bp-l};
 	padding: var(--pad-m) var(--pad-l);
 }
-
 .nav a {
 	border-radius: #{$round-s};
 	color: var(--fg-color);
 	padding: 0.1rem 0.6rem;
 	text-decoration: none;
 }
-
 .nav a.active {
 	background: var(--active);
 	color: var(--fg-color);
 }
-
 .nav a:hover {
 	background: var(--hover);
 }
-
 // RESPONSIVE BURGER
-
 .burger {
 	background: transparent;
 	border-radius: #{$round-m};
@@ -193,9 +167,7 @@ section {
 	font-size: 1.25rem;
 	padding: var(--pad-m);
 }
-
 // OPENING PARAGRAPH
-
 .hero {
 	border: none;
 	box-shadow: none;
@@ -203,21 +175,17 @@ section {
 	background: none;
 	text-align: center;
 }
-
 .hero-content {
 	align-items: center;
 	display: flex;
 	flex-direction: column;
 	gap: var(--pad-l);
-	
 	@media (min-width #{$card-w}) {
 		align-items: flex-start;
 		flex-direction: row;
 		justify-content: center;
 	}
-	
 }
-
 .hero-portrait {
 	border: none;
 	border-radius: 90%;
@@ -227,30 +195,23 @@ section {
 	overflow: hidden;
 	width: #{$portrait-w};
 }
-
 .hero p {
 	margin: #{space-m} auto;
 	max-width: 40rem;
 }
-
 // OTHER
-
 .line-split {
 	display: flex;
 	justify-content: space-between;
 	align-items: center;
 	width: 100%;
 }
-
 // SMALL DEVICES
-
 @media (max-width: #{$bp-l}) {
-	
 	.burger {
 		display: inline-grid;
 		place-items: center;
 	}
-	
 	.menu {
 		background: var(--bg-color);
 		border-radius: #{$round-m};
@@ -270,48 +231,35 @@ section {
 			transform .22s cubic-bezier(.2, .7, .2, 1);
 		width: #{$menu-w};
 	}
-	
 	.menu.open {
 		grid-template-columns: 1fr;
 		opacity: 1;
 		pointer-events: auto;
 		transform: translate(0, 0);
 	}
-	
 }
-
 @media (max-width: #{$bp-m}) {
-	
 	.grid.cols-2 {
 		grid-template-columns: 1fr 1fr;
 	}
-	
 }
-
 @media (prefers-reduced-motion: reduce) {
-	
 	.menu {
 		transition: none;
 		transform: none;
 	}
-	
 	.menu.open {
 		opacity: 1;
 	}
-	
 }
-	
 // UTILITY
-
 .grid {
 	display: grid;
 	gap: var(--pad-l);
 }
-
 .muted {
 	color: var(--fg-muted);
 }
-
 .tag {
 	background: #{$slate-100};
 	border-radius: 999px;
