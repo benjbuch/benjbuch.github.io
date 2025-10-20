@@ -2,4 +2,8 @@
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>{{ page.title | default: site.title }}</title>
 <meta name="description" content="{{ site.description }}" />
+<!-- Preload main fonts -->
+<link rel="preload" href="{{ '/assets/fonts/pagella/texgyrepagella-regular.woff2' | relative_url }}" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="{{ '/assets/fonts/heros/texgyreheros-regular.woff2' | relative_url }}" as="font" type="font/woff2" crossorigin>
+<!-- Stylesheet -->
 <link rel="stylesheet" href="{{ '/assets/css/style.css' | relative_url }}">
