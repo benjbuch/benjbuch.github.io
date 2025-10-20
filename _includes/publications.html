@@ -2,21 +2,28 @@
 {%- assign style = include.style | default: "acs" -%}
 {%- assign show_keywords = include.show_keywords | default: true -%}
 {%- assign show_sections = include.show_sections | default: true -%}
-{%- assign cofirst_any = pubs 
+{%- assign cofirst_any = pubs
   | where_exp: "i", "i.first_authors"
   | where_exp: "i", "i.first_authors != ''"
 -%}
 {%- assign show_cofirst_note = cofirst_any.size | default: 0 -%}
-
 {%- assign sections =
   "Preprints::preprint|Original Research::original-research|Reviews, Book Chapters, Monographs::chapter::monograph::review"
   | split: "|" -%}
-
+<div class="priority-toggle">
+  <label class="switch">
+    <input type="checkbox" id="priority-toggle" aria-label="Show key publications">
+    <span class="switch-ui" aria-hidden="true"></span>
+    <span class="switch-text">
+      <span class="off">All</span>
+      <span class="on">Select publications</span>
+    </span>
+  </label>
+</div>
 {%- for sec in sections -%}
   {%- assign parts = sec | split: "::" -%}
   {%- assign section_name = parts[0] -%}
   {%- assign groups = parts | slice: 1, parts.size -%}
-
   {%- assign items = "" | split: "" -%}
   {%- for g in groups -%}
     {%- assign chunk = site.data.publications | where: "group", g -%}
@@ -28,20 +35,11 @@
       {%- assign items = items | concat: chunk -%}
     {%- endfor -%}
   {%- endif -%}
-
   {%- if items and items != empty -%}
     {%- if show_sections -%}<h3 class="pub-section">{{ section_name }}</h3>{%- endif -%}
-    {%- assign count = items | size -%}
-    {%- if include.ordered -%}
-      <ol class="publist" reversed start="{{ count }}">
-    {%- else -%}
-      <ul class="publist">
-    {%- endif -%}
-    
+      <ul class="publist" id="pub-list">
       {%- for pub in items -%}
-      
         {%- assign nfirst = pub.first_authors | default: 0 | plus: 0 -%}
-        
         {%- assign authors = pub.authors -%}
         {%- if authors.first -%}
           {%- comment -%}Already an array{%- endcomment -%}
@@ -49,7 +47,6 @@
           {%- comment -%}Normalize separators then split{%- endcomment -%}
           {%- assign authors = authors | replace: "; ", " and " | split: " and " -%}
         {%- endif -%}
-        
         {%- assign formatted_authors = "" -%}
         {%- for a in authors -%}
           {%- assign a = a | strip -%}
@@ -92,17 +89,14 @@
             {%- endfor -%}
             {%- assign abbr_name = initials | append: last -%}
           {%- endif -%}
-          
           {%- capture lname -%}{{ last | strip | downcase }}{%- endcapture -%}
           {%- if lname == 'buchmuller' -%}
               {%- assign abbr_name = '<span class="me">' | append: abbr_name | append: '</span>' -%}
           {%- endif -%}
-          
           {%- comment -%}Co-first indicator if applicable{%- endcomment -%}
           {%- if forloop.index0 < nfirst -%}
             {%- assign abbr_name = abbr_name | append: "*" -%}
           {%- endif -%}
-
           {%- comment -%}Separator{%- endcomment -%}
           {%- unless forloop.last -%}
             {%- if style == "acs" -%}
@@ -111,11 +105,8 @@
               {%- assign abbr_name = abbr_name | append: ", " -%}
             {%- endif -%}
           {%- endunless -%}
-
           {%- assign formatted_authors = formatted_authors | append: abbr_name -%}
-          
         {%- endfor -%}
-
         {%- assign kw_list = nil -%}
         {%- if pub.keywords -%}
           {%- if pub.keywords.first -%}
@@ -126,7 +117,6 @@
             {%- assign kw_list = pub.keywords | split: "|" -%}
           {%- endif -%}
         {%- endif -%}
-
         {%- assign slug_list = "" | split: "" -%}
         {%- if kw_list -%}
           {%- for k in kw_list -%}
@@ -141,13 +131,11 @@
           {%- endfor -%}
           {%- assign slug_list = slug_list | uniq -%}
         {%- endif -%}
-        
         {%- assign tag_slugs = "" -%}
         {%- for s in slug_list -%}
           {%- assign tag_slugs = tag_slugs | append: " tag-" | append: s -%}
         {%- endfor -%}
-        
-        <li class="pub{{ tag_slugs }}">
+        <li class="pub{{ tag_slugs }}" data-priority="{{ pub.priority | default: 'medium' }}" data-num="{{ items.size | minus: forloop.index0 }}">
           <div class="pub-main">
             <span class="pub-authors">{{ formatted_authors }}</span>
             {%- if pub.title -%}{% if style == "acs" %}. {% else %} — {% endif %}<span class="pub-title">“{{ pub.title }}”</span>{%- endif -%}
@@ -160,7 +148,6 @@
             {%- if pub.pmid %} <a class="pub-pmid" href="https://pubmed.ncbi.nlm.nih.gov/{{ pub.pmid }}/">PMID:{{ pub.pmid }}</a>{% endif -%}
             {%- if pub.pmcid %} <a class="pub-pmcid" href="https://pmc.ncbi.nlm.nih.gov/articles/{{ pub.pmcid }}/">{{ pub.pmcid }}</a>{% endif -%}
           </div>
-
           {%- if show_keywords and kw_list -%}
             <div class="pub-tags">
               {%- for k in kw_list -%}
@@ -175,7 +162,6 @@
               {%- endfor -%}
             </div>
           {%- endif -%}
-
           {%- if pub.impact or pub.myrole -%}
             <div class="pub-notes">
               {%- if pub.impact %}<span class="note"><strong>Impact:</strong> {{ pub.impact }}</span>{% endif -%}
@@ -183,14 +169,9 @@
           {%- endif -%}
         </li>
       {%- endfor -%}
-    {%- if include.ordered -%}
-      </ol>
-    {%- else -%}
       </ul>
-    {%- endif -%}
   {%- endif -%}
 {%- endfor -%}
-
 <div class="line-split">
   {%- if show_cofirst_note != 0 -%}
   <span class="pub-footnote">* <i>denotes equal contribution</i></span>

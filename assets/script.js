@@ -140,9 +140,26 @@ document.addEventListener('click', (e) => {
 
 	const slug = btn.dataset.tag;
 	const current = document.body.dataset.pubfilter || '';
-	const next = (current === slug) ? '' : slug; // toggle
+	const next = (current === slug) ? '' : slug;
 
 	setPublicationFilterGlobal(next);
 	setParam('tag', next);
 });
 
+// Toggle select publications
+document.addEventListener('DOMContentLoaded', () => {
+	const toggle = document.getElementById('priority-toggle');
+	const items = document.querySelectorAll('#publications .publist .pub[data-priority]');
+	if (!toggle || items.length === 0) return;
+
+	function applyFilter() {
+		const showHighOnly = toggle.checked;
+		items.forEach(li => {
+			const isHigh = (li.dataset.priority || 'medium').toLowerCase() === 'high';
+			li.classList.toggle('is-hidden', showHighOnly && !isHigh);
+		});
+	}
+
+	toggle.addEventListener('change', applyFilter);
+	applyFilter();
+});
