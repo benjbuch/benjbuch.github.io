@@ -95,12 +95,7 @@
           
           {%- capture lname -%}{{ last | strip | downcase }}{%- endcapture -%}
           {%- if lname == 'buchmuller' -%}
-            {%- if pub.myrole and pub.myrole != "" -%}
-              {%- capture role_tip -%}{{ pub.myrole | escape }}{%- endcapture -%}
-              {%- assign abbr_name = '<span class="me" title="' | append: role_tip | append: '">' | append: abbr_name | append: '</span>' -%}
-            {%- else -%}
               {%- assign abbr_name = '<span class="me">' | append: abbr_name | append: '</span>' -%}
-            {%- endif -%}
           {%- endif -%}
           
           {%- comment -%}Co-first indicator if applicable{%- endcomment -%}
