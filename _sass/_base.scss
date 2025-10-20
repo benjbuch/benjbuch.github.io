@@ -101,10 +101,10 @@ header {
 	backdrop-filter: blur(8px);
 	background: #{$slate-50-a};
 	border-bottom: #{$line-s} solid var(--active);
-	position: fixed;
 	inset: 0 0 auto 0;
 	margin: 0;
 	max-width: none;
+	position: fixed;
 	width: 100%;
 	will-change: transform;
 	z-index: 1000;

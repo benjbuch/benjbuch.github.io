@@ -1,7 +1,7 @@
 .publist {
 	list-style: none;
-	padding-right: var(--pad-l);
 	padding-left: 0;
+	padding-right: var(--pad-l);
 	text-align: justify;
 	text-justify: inter-word;
 }
@@ -10,12 +10,12 @@
 	margin-right: 0.5rem;
 }
 .publist .pub {
+	align-items: start;
+	column-gap: 0.75rem;
 	display: grid;
 	grid-template-columns: 3ch 1fr;
-	column-gap: 0.75rem;
-	row-gap: 0.25rem;
-	align-items: start;
 	margin-bottom: 0.75rem;
+	row-gap: 0.25rem;
 }
 .publist .pub::before {
 	content: attr(data-num) ".";
@@ -41,10 +41,10 @@
 }
 /* ---- Main line ---- */
 .pub-main {
-	line-height: 1.45;
-	hyphens: auto;
-	-webkit-hyphens: auto;
 	-ms-hyphens: auto;
+	-webkit-hyphens: auto;
+	hyphens: auto;
+	line-height: 1.45;
 }
 .pub-authors .me {
 	text-decoration: underline;
@@ -56,8 +56,8 @@
 /* ---- Identifiers ---- */
 .pub-doi, .pub-pmid, .pub-pmcid {
 	margin-right: 0.5ch;
-	white-space: nowrap;
 	overflow-wrap: anywhere;
+	white-space: nowrap;
 	word-break: break-word;
 }
 /* ---- Keyword badges ---- */
@@ -65,15 +65,15 @@
 	margin: var(--pad-s) 0;
 }
 .tag {
+	border: 1px solid var(--fg-muted);
+	border-radius: #{$round-m};
+	cursor: pointer;
 	display: inline-block;
 	font-size: 0.8rem;
-	padding: 0.15em 0.50em;
-	border-radius: #{$round-m};
-	border: 1px solid var(--fg-muted);
-	opacity: 0.75;
 	margin-right: 0.35rem;
 	margin-top: 0.25rem;
-	cursor: pointer;
+	opacity: 0.75;
+	padding: 0.15em 0.50em;
 	&:focus-visible {
 		outline: 2px solid #888;
 		outline-offset: 2px;
@@ -84,37 +84,45 @@
 	outline-offset: 2px;
 }
 /* ---- Toggle switch ---- */
-.priority-toggle { margin: 0 0 0.75rem 0; }
+.priority-toggle {
+	margin: 0 0 0.75rem 0;
+}
 .switch {
-	display: inline-flex; align-items: center; gap: .5rem; cursor: pointer;
+	align-items: center;
+	cursor: pointer;
+	display: inline-flex;
+	gap: .5rem;
 	user-select: none;
 }
 // Hide native checkbox but keep it accessible
 .switch input {
-	position: absolute; opacity: 0; width: 0; height: 0;
+	height: 0;
+	opacity: 0;
+	position: absolute;
+	width: 0;
 }
 // Track + thumb
 .switch-ui {
 	--w: 2.5rem; --h: 1.5rem; --pad: 2px; --thumb: calc(var(--h) - 2 * var(--pad));
-	position: relative;
-	width: var(--w);
-	height: var(--h);
-	display: inline-block;
 	background: #cbd5e1;
 	border-radius: var(--h);
+	display: inline-block;
+	height: var(--h);
+	position: relative;
 	transition: background .18s ease;
+	width: var(--w);
 }
 .switch-ui::after {
+	background: #ffffff;
+	border-radius: 50%;
+	box-shadow: 0 1px 2px rgba(0, 0, 0, .2);
 	content: "";
+	height: var(--thumb);
+	left: var(--pad);
 	position: absolute;
 	top: var(--pad);
-	left: var(--pad);
-	width: var(--thumb);
-	height: var(--thumb);
-	border-radius: 50%;
-	background: #ffffff;
-	box-shadow: 0 1px 2px rgba(0, 0, 0, .2);
 	transition: transform .18s ease;
+	width: var(--thumb);
 }
 .switch input:checked + .switch-ui {
 	background: var(--fg-muted);
@@ -123,8 +131,8 @@
 	transform: translateX(calc(var(--w) - var(--h)));
 }
 .switch-text {
-	font-size: 0.9rem;
 	color: var(--fg-color);
+	font-size: 0.9rem;
 }
 .switch-text .on {
 	display: none; }
@@ -138,17 +146,14 @@
 .pub-notes {
 	color: var(--fg-muted);
 	font-size: 0.9em;
-	opacity: 0.9;
 	margin: var(--pad-s) 0;
-//	.note + .note {
-//		margin-left: 1ch;
-//	}
+	opacity: 0.9;
 }
 /* ---- Footnote ---- */
 .pub-footnote {
 	color: var(--fg-color);
-	font-size: 0.9em;
 	margin-top: var(--pad-l);
+	font-size: 0.9em;
 }
 /* ---- Section headers ---- */
 .pub-section {
