@@ -1,6 +1,6 @@
 .publist {
 	list-style: none;
-	padding-left: 0;
+	padding-left: var(--pad-l);
 	padding-right: var(--pad-l);
 	text-align: justify;
 	text-justify: inter-word;
@@ -13,7 +13,7 @@
 	align-items: start;
 	column-gap: 0.75rem;
 	display: grid;
-	grid-template-columns: 3ch 1fr;
+	grid-template-columns: 4ch 1fr;
 	margin-bottom: 0.75rem;
 	row-gap: 0.25rem;
 }
