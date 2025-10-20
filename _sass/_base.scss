@@ -60,6 +60,11 @@ a {
 //	padding: 0.1rem 0.2rem;
 	text-decoration: none;
 }
+a[target="_blank"]::before {
+  content: "↗";
+  margin-right: var(--pad-s);
+  opacity: 0.3;
+}
 a:visited {
 	color: var(--link);
 }

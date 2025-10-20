@@ -11,6 +11,19 @@ function setParam(name, value) {
 	history.replaceState(null, '', url.toString());
 }
 
+// Open external links in new tab
+document.addEventListener("DOMContentLoaded", () => {
+  const host = window.location.hostname;
+
+  document.querySelectorAll('a[href^="http"]').forEach(link => {
+    if (!link.hostname.includes(host)) {
+      link.setAttribute("target", "_blank");
+      link.setAttribute("rel", "noopener noreferrer");
+    }
+  });
+});
+
+
 // Year
 document.getElementById('year').textContent = new Date().getFullYear();
 

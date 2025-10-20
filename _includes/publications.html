@@ -12,7 +12,7 @@
   | split: "|" -%}
 <div class="priority-toggle">
   <label class="switch">
-    <input type="checkbox" id="priority-toggle" aria-label="Show key publications">
+    <input type="checkbox" id="priority-toggle" aria-label="Show key publications" checked>
     <span class="switch-ui" aria-hidden="true"></span>
     <span class="switch-text">
       <span class="off">All</span>
@@ -178,7 +178,7 @@
   {%- endif -%}
   <span class="pub-footnote">
 		{% if site.owner.orcid %}
-		  <a href="{{ site.owner.orcid }}" target="_blank" rel="noopener">
+		  <a href="{{ site.owner.orcid }}">
 		    ORCID: {{ site.owner.orcid | split: "/" | last }}
 		  </a>
 		{% endif %}
