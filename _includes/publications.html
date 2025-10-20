@@ -176,5 +176,11 @@
   {%- if show_cofirst_note != 0 -%}
   <span class="pub-footnote">* <i>denotes equal contribution</i></span>
   {%- endif -%}
-  <span class="pub-footnote"><a href="https://orcid.org/{{ site.orcid_id }}">ORCID {{ site.orcid_id }}</a></span>
+  <span class="pub-footnote">
+		{% if site.owner.orcid %}
+		  <a href="{{ site.owner.orcid }}" target="_blank" rel="noopener">
+		    ORCID: {{ site.owner.orcid | split: "/" | last }}
+		  </a>
+		{% endif %}
+  </span>
 </div>

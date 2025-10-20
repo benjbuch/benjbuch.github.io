@@ -1,35 +1,89 @@
+# Site identity
 title: "Benjamin C. Buchmuller"
 author: "Benjamin Buchmuller"
 description: "Personal research homepage"
 
+# Site settings
 url: "https://benjbuch.github.io"
 baseurl: ""
+lang: "en"
+timezone: "ET"
 
-github_username: "benjbuch"
-googlescholar_id: "H3kb0RQAAAAJ"
-linkedin_id: "benjamin-buchmuller"
-orcid_id: "0000-0002-4915-5949"
+# Profile
+owner:
+  name: "Benjamin Buchmuller"
+  title: "Senior Research Associate"
+  affiliation: "Princeton University"
+  orcid: "https://orcid.org/0000-0002-4915-5949"
+  scholar: "https://scholar.google.com/citations?user=H3kb0RQAAAAJ"
+  github: "https://github.com/benjbuch"
+  linkedin: "https://www.linkedin.com/in/benjamin-buchmuller/"
+social:
+  name: "Benjamin Buchmuller"
+  links:
+    - "https://orcid.org/0000-0002-4915-5949"
+    - "https://scholar.google.com/citations?user=H3kb0RQAAAAJ"
+    - "https://github.com/benjbuch"
+    - "https://www.linkedin.com/in/benjamin-buchmuller/"
 
-# Enable a 'sections" collection
+# Collections
 collections:
   sections:
     output: true
     permalink: /sections/:name/
 
-markdown: kramdown
-
+# Site rendering
 theme: null
+permalink: pretty
 
+# Markdown and code highlighting
+markdown: kramdown
+highlighter: rouge
+kramdown:
+  input: GFM
+  hard_wrap: false
+  syntax_highlighter_opts:
+    line_numbers: false
+
+# SASS/CSS
+sass:
+  sass_dir: _sass
+  style: compressed
+
+# Defaults
 defaults:
+  - scope:
+      path: ""
+      type: "pages"
+    values:
+      layout: default
+      lang: "en"
+      # image: "/assets/img/og.jpg"  # default OpenGraph image
   - scope:
       path: ""
       type: "sections"
     values:
       layout: card
 
+# Keep builds tidy
+include:
+  - robots.txt
+
+exclude:
+  - .github/
+  - Makefile
+  - node_modules/
+  - README.md
+  - scripts/
+  - vendor/
+
+# Plugins supported on GitHub Pages
 plugins:
   - jekyll-sass-converter
+  - jekyll-sitemap
+  - jekyll-seo-tag
 
-sass:
-  sass_dir: _sass
-  style: compressed
+# Prevent GitHub Pages from rebuilding things twice
+future: true
+lsi: false
+safe: true
