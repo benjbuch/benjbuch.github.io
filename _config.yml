@@ -67,7 +67,7 @@ defaults:
 
 # Keep builds tidy
 include:
-  - robots.txt.liquid
+  - robots.txt
 
 exclude:
   - .github/
