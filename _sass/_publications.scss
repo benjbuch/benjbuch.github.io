@@ -152,6 +152,9 @@
 .switch input:checked ~ .switch-text .on	{
 	display: inline;
 }
+.priority-toggle input[type="checkbox"]:focus-visible + .switch-ui {
+  box-shadow: 0 0 0 3px var(--bg-color), 0 0 0 5px var(--link);
+}
 /* ---- Notes ---- */
 .pub-notes {
 	color: var(--fg-muted);
