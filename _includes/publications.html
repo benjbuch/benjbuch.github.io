@@ -6,6 +6,20 @@
 {%- assign show_keywords = include.show_keywords | default: true -%}
 {%- assign show_sections = include.show_sections | default: true -%}
 
+{%- assign total_count = pubs | size -%}
+
+<!-- {%- comment -%}Count first authorships{%- endcomment -%}
+{%- assign first_auth_count = 0 -%}
+{%- for pub in pubs -%}
+  {%- assign authors = pub.authors | replace: "; ", " and " | split: " and " -%}
+  {%- if authors.size > 0 -%}
+    {%- assign first_author = authors[0] | strip | downcase -%}
+    {%- if first_author contains page_last -%}
+      {%- assign first_auth_count = first_auth_count | plus: 1 -%}
+    {%- endif -%}
+  {%- endif -%}
+{%- endfor -%} -->
+
 {%- comment -%}Check if any publications have co-first authors{%- endcomment -%}
 {%- assign show_cofirst_note = false -%}
 {%- for pub in pubs -%}
@@ -24,7 +38,7 @@
     <span class="switch-ui" aria-hidden="true"></span>
     <span class="switch-text">
       <span class="off">All</span>
-      <span class="on">Select publications</span>
+      <span class="on">Select publications (out of {{ total_count }} works)</span>
     </span>
   </label>
 </div>
