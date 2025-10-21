@@ -1,3 +1,5 @@
+{%- assign page_author = page.author | default: site.owner.name | default: site.author -%}
+{%- assign page_last   = page_author | split: ' ' | last | downcase -%}
 {%- assign pubs = site.data.publications -%}
 {%- assign style = include.style | default: "acs" -%}
 {%- assign show_keywords = include.show_keywords | default: true -%}
@@ -90,7 +92,7 @@
             {%- assign abbr_name = initials | append: last -%}
           {%- endif -%}
           {%- capture lname -%}{{ last | strip | downcase }}{%- endcapture -%}
-          {%- if lname == 'buchmuller' -%}
+          {%- if lname == page_last -%}
               {%- assign abbr_name = '<span class="me">' | append: abbr_name | append: '</span>' -%}
           {%- endif -%}
           {%- comment -%}Co-first indicator if applicable{%- endcomment -%}

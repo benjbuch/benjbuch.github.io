@@ -1,9 +1,9 @@
+{%- assign page_author = page.author | default: site.owner.name | default: site.author -%}
+{%- assign page_last   = page_author | split: ' ' | last | downcase -%}
 {%- assign pubs = site.data.publications -%}
-
 {%- comment -%} Collect pinned {%- endcomment -%}
 {%- assign pinned = pubs | where: "priority", "pinned" -%}
 {%- assign pinned_ids = pinned | map: "id" -%}
-
 {%- comment -%} Sort highs by year desc and exclude pinned {%- endcomment -%}
 {%- assign highs_all = pubs | where: "priority", "high" | sort: "year" | reverse -%}
 {%- assign highs_filtered = "" | split: "" -%}
@@ -34,8 +34,25 @@
           {%- assign authors = authors | replace: "; ", " and " | split: " and " -%}
         {%- endif -%}
         {%- if authors and authors.first -%}
-          {%- for a in authors -%}{ "name": {{ a | jsonify }} }{% unless forloopub.last %}, {% endunless %}{%- endfor -%}
-        {%- else -%}
+          {%- for a in authors -%}
+              {%- assign raw = a -%}
+              {%- if a contains "," -%}
+                {%- assign last = a | split: "," | first | strip -%}
+                {%- assign first = a | split: "," | last | strip -%}
+              {%- else -%}
+                {%- assign last = a | split: ' ' | last  | strip -%}
+                {%- assign first = a | remove: last | strip -%}
+              {%- endif -%}
+              {%- assign pub_last = last | downcase -%}
+              {%- if pub_last == page_last -%}
+                { "name": {{ page_author | jsonify }} }
+              {%- else -%}
+                {%- assign full = first | append: ' ' | append: last -%}
+                { "name": {{ full | strip | jsonify }} }
+              {%- endif -%}
+              {%- unless forloop.last %}, {% endunless -%}
+            {%- endfor -%}
+            {%- else -%}
           { "name": {{ pub.authors | default: site.owner.name | jsonify }} }
         {%- endif -%}
       ],
