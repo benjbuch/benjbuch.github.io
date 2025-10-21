@@ -1,0 +1,44 @@
+{%- assign pubs = site.data.publications -%}
+
+{%- comment -%} Collect pinned {%- endcomment -%}
+{%- assign pinned = site.data.publications | where: "priority", "pinned" -%}
+{%- assign pinned_ids = pinned | map: "id" -%}
+
+{%- assign high_sorted = site.data.publications | where: "priority", "high" | sort: "year" | reverse -%}
+
+{%- assign high_filtered = "" | split: "" -%}
+{%- for p in high_sorted -%}
+  {%- unless pinned_ids contains p.id -%}
+    {%- assign high_filtered = high_filtered | push: p -%}
+  {%- endunless -%}
+{%- endfor -%}
+
+{%- assign high_five = high_filtered | slice: 0, 5 -%}
+{%- assign selected = pinned | concat: high_five -%}
+
+{%- if selected and selected.size > 0 -%}
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {%- for p in selected -%}
+    {
+      "@type": "ScholarlyArticle",
+      "name": {{ p.title | jsonify }},
+      "author": [
+        {%- if p.authors and p.authors.first -%}
+          {%- for a in p.authors -%}{ "name": {{ a | jsonify }} }{% unless forloop.last %}, {% endunless %}{%- endfor -%}
+        {%- else -%}
+          { "name": {{ p.authors | default: site.owner.name | jsonify }} }
+        {%- endif -%}
+      ],
+      {%- if p.journal -%}"isPartOf": { "name": {{ p.journal | jsonify }} },{% endif -%}
+      {%- if p.year -%}"datePublished": "{{ p.year }}",{% endif -%}
+      {%- if p.doi -%}"identifier": {{ p.doi | jsonify }},{% endif -%}
+      "url": {{ p.url | default: p.doi | default: page.url | absolute_url | jsonify }}
+    }{% unless forloop.last %}, {% endunless %}
+    {%- endfor -%}
+  ]
+}
+</script>
+{%- endif -%}

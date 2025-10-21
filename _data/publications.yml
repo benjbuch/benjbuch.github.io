@@ -579,7 +579,7 @@
   number: '1'
   pmcid: PMC6609715
   pmid: '31273196'
-  priority: high
+  priority: pinned
   title: Pooled clone collections by multiplexed CRISPR-Cas12a-assisted
     gene tagging in yeast
   type: article

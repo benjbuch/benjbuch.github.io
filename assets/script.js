@@ -163,6 +163,7 @@ document.addEventListener('click', (e) => {
 document.addEventListener('DOMContentLoaded', () => {
   const toggle = document.getElementById('priority-toggle');
   const lists  = Array.from(document.querySelectorAll('#publications .publist'));
+  const isKey = p => p === 'high' || p === 'pinned'
   if (!toggle || lists.length === 0) return;
 
   function applyFilter() {
@@ -171,8 +172,8 @@ document.addEventListener('DOMContentLoaded', () => {
     lists.forEach(list => {
       const items = list.querySelectorAll('.pub[data-priority]');
       items.forEach(li => {
-        const isHigh = (li.dataset.priority || 'medium').toLowerCase() === 'high';
-        li.classList.toggle('is-hidden', highOnly && !isHigh);
+        const p = (li.dataset.priority || 'medium').toLowerCase();
+        li.classList.toggle('is-hidden', highOnly && !isKey(p));
       });
       // allow CSS to react (numbers ↔ bullets, etc.)
       list.classList.toggle('high-only', highOnly);
