@@ -88,7 +88,9 @@
 .pub-doi,
 .pub-pmid,
 .pub-pmcid {
-  margin-right: 0.5ch;
+  hyphenate-limit-chars: 6 3 2;
+  margin-right: 2ch;
+  word-break: break-word;
 }
 
 .pub-doi {
@@ -96,8 +98,6 @@
   -ms-hyphens: auto;
   -webkit-hyphens: auto;
   hyphens: auto;
-  hyphenate-limit-chars: 6 3 2;
-  word-break: break-word;
 }
 
 // ============================================================================
