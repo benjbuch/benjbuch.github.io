@@ -1,42 +1,58 @@
 {%- assign pubs = site.data.publications -%}
 
 {%- comment -%} Collect pinned {%- endcomment -%}
-{%- assign pinned = site.data.publications | where: "priority", "pinned" -%}
+{%- assign pinned = pubs | where: "priority", "pinned" -%}
 {%- assign pinned_ids = pinned | map: "id" -%}
 
-{%- assign high_sorted = site.data.publications | where: "priority", "high" | sort: "year" | reverse -%}
-
-{%- assign high_filtered = "" | split: "" -%}
-{%- for p in high_sorted -%}
-  {%- unless pinned_ids contains p.id -%}
-    {%- assign high_filtered = high_filtered | push: p -%}
+{%- comment -%} Sort highs by year desc and exclude pinned {%- endcomment -%}
+{%- assign highs_all = pubs | where: "priority", "high" | sort: "year" | reverse -%}
+{%- assign highs_filtered = "" | split: "" -%}
+{%- for p in highs_all -%}
+  {%- unless pinned_ids contains pub.id -%}
+    {%- assign highs_filtered = highs_filtered | push: p -%}
   {%- endunless -%}
 {%- endfor -%}
+{%- assign highs_top5 = highs_filtered | slice: 0, 5 -%}
 
-{%- assign high_five = high_filtered | slice: 0, 5 -%}
-{%- assign selected = pinned | concat: high_five -%}
+{%- assign selected = pinned | concat: highs_top5 -%}
 
 {%- if selected and selected.size > 0 -%}
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
   "@graph": [
-    {%- for p in selected -%}
+    {%- for pub in selected -%}
     {
       "@type": "ScholarlyArticle",
-      "name": {{ p.title | jsonify }},
+      "name": {{ pub.title | jsonify }},
       "author": [
-        {%- if p.authors and p.authors.first -%}
-          {%- for a in p.authors -%}{ "name": {{ a | jsonify }} }{% unless forloop.last %}, {% endunless %}{%- endfor -%}
+        {%- assign authors = pub.authors -%}
+        {%- if authors.first -%}
+          {%- comment -%}Already an array{%- endcomment -%}
         {%- else -%}
-          { "name": {{ p.authors | default: site.owner.name | jsonify }} }
+          {%- comment -%}Normalize separators then split{%- endcomment -%}
+          {%- assign authors = authors | replace: "; ", " and " | split: " and " -%}
+        {%- endif -%}
+        {%- if authors and authors.first -%}
+          {%- for a in authors -%}{ "name": {{ a | jsonify }} }{% unless forloopub.last %}, {% endunless %}{%- endfor -%}
+        {%- else -%}
+          { "name": {{ pub.authors | default: site.owner.name | jsonify }} }
         {%- endif -%}
       ],
-      {%- if p.journal -%}"isPartOf": { "name": {{ p.journal | jsonify }} },{% endif -%}
-      {%- if p.year -%}"datePublished": "{{ p.year }}",{% endif -%}
-      {%- if p.doi -%}"identifier": {{ p.doi | jsonify }},{% endif -%}
-      "url": {{ p.url | default: p.doi | default: page.url | absolute_url | jsonify }}
-    }{% unless forloop.last %}, {% endunless %}
+      {%- if pub.journal -%}
+      "isPartOf": { "@type": "Periodical", "name": {{ pub.journal | jsonify }} },
+      {%- endif -%}
+      {%- if pub.year -%}"datePublished": "{{ pub.year }}",{% endif -%}
+      {%- if pub.volume or pub.number or pub.pages -%}
+      "pagination": {{ pub.pages | default: pub.page_first | append: "-" | append: pub.page_last | jsonify }},
+      {%- endif -%}
+      {%- if pub.doi -%}
+      "identifier": { "@type": "PropertyValue", "propertyID": "DOI", "value": {{ pub.doi | jsonify }} },
+      "url": {{ ("https://doi.org/" | append: pub.doi) | jsonify }}
+      {%- else -%}
+      "url": {{ pub.url | default: page.url | absolute_url | jsonify }}
+      {%- endif -%}
+    }{% unless forloopub.last %}, {% endunless %}
     {%- endfor -%}
   ]
 }
