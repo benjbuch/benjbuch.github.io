@@ -88,13 +88,17 @@
 .pub-doi,
 .pub-pmid,
 .pub-pmcid {
+  margin-right: 0.5ch;
+  overflow-wrap: anywhere;
+  white-space: nowrap;
+}
+
+.pub-doi {
   -moz-hyphens: auto;
   -ms-hyphens: auto;
   -webkit-hyphens: auto;
   hyphens: auto;
   hyphenate-limit-chars: 6 3 2;
-  margin-right: 0.5ch;
-  overflow-wrap: anywhere;
   word-break: break-word;
 }
 
@@ -158,7 +162,7 @@
   --pad: 2px;
   --thumb: calc(var(--h) - 2 * var(--pad));
   --w: 2.5rem;
-  background: #cbd5e1;
+  background: #{$slate-300};
   border-radius: var(--h);
   display: inline-block;
   height: var(--h);
@@ -169,7 +173,7 @@
 
 // Switch thumb
 .switch-ui::after {
-  background: #ffffff;
+  background: #{$white};
   border-radius: 50%;
   box-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
   content: "";
