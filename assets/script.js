@@ -161,18 +161,25 @@ document.addEventListener('click', (e) => {
 
 // Toggle select publications
 document.addEventListener('DOMContentLoaded', () => {
-	const toggle = document.getElementById('priority-toggle');
-	const items = document.querySelectorAll('#publications .publist .pub[data-priority]');
-	if (!toggle || items.length === 0) return;
+  const toggle = document.getElementById('priority-toggle');
+  const lists  = Array.from(document.querySelectorAll('#publications .publist'));
+  if (!toggle || lists.length === 0) return;
 
-	function applyFilter() {
-		const showHighOnly = toggle.checked;
-		items.forEach(li => {
-			const isHigh = (li.dataset.priority || 'medium').toLowerCase() === 'high';
-			li.classList.toggle('is-hidden', showHighOnly && !isHigh);
-		});
-	}
+  function applyFilter() {
+    const highOnly = toggle.checked;
 
-	toggle.addEventListener('change', applyFilter);
-	applyFilter();
+    lists.forEach(list => {
+      const items = list.querySelectorAll('.pub[data-priority]');
+      items.forEach(li => {
+        const isHigh = (li.dataset.priority || 'medium').toLowerCase() === 'high';
+        li.classList.toggle('is-hidden', highOnly && !isHigh);
+      });
+      // allow CSS to react (numbers ↔ bullets, etc.)
+      list.classList.toggle('high-only', highOnly);
+    });
+  }
+
+  toggle.addEventListener('change', applyFilter);
+  applyFilter(); // initialize based on current toggle state
 });
+

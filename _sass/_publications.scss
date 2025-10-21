@@ -23,6 +23,10 @@
 	grid-row: 1;
 	justify-self: end;
 }
+.publist.high-only .pub::before {
+	content: "–";
+	justify-self: center;
+}
 .publist .pub .pub-main,
 .publist .pub .pub-tags,
 .publist .pub .pub-notes {
@@ -135,7 +139,8 @@
 	font-size: 0.9rem;
 }
 .switch-text .on {
-	display: none; }
+	display: none;
+}
 .switch input:checked ~ .switch-text .off {
 	display: none;
 }
