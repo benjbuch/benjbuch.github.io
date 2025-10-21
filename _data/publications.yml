@@ -33,6 +33,7 @@
   journal: Angew. Chem. Int. Ed.
   keywords: DNA Modifications
   number: '17'
+  pages: e202318837
   pmid: '38284298'
   priority: medium
   title: Evolved Readers of 5‐Carboxylcytosine CpG Dyads Reveal a High Versatility
@@ -41,7 +42,7 @@
   type: article
   url: https://doi.org/10.1002/anie.202318837
   volume: '63'
-  year: 2024
+  year: '2024'
 - abstract: >-
     5-methylcytosine (mC) and its TET-oxidized derivatives exist in CpG
     dyads of mammalian DNA and regulate cell fate, but how their individual
@@ -67,6 +68,9 @@
   journal: Nucleic Acids Res.
   keywords: DNA Modifications, Protein Binding
   number: '12'
+  page_first: 6495
+  page_last: 6506
+  pages: 6495–6506
   pmcid: PMC10325892
   pmid: '36919612'
   priority: medium
@@ -75,7 +79,7 @@
   type: article
   url: https://doi.org/10.1093/nar/gkad134
   volume: '51'
-  year: 2023
+  year: '2023'
 - abstract: >-
     RNA-binding proteins are essential regulators of RNA processing and
     function. Translational repression assays can be used to study how they
@@ -100,6 +104,9 @@
   journal: RNA Biol.
   keywords: RNA Translation
   number: '1'
+  page_first: 85
+  page_last: 94
+  pages: 85–94
   pmcid: PMC10038052
   pmid: '36946649'
   priority: low
@@ -108,7 +115,7 @@
   type: article
   url: https://doi.org/10.1080/15476286.2023.2192553
   volume: '20'
-  year: 2023
+  year: '2023'
 - abstract: >-
     Ten-eleven translocation dioxygenases (TETs) are the erasers of 5-methylcytosine
     (mC), the central epigenetic regulator of mammalian DNA. TETs convert
@@ -136,6 +143,9 @@
   journal: RSC Med. Chem.
   keywords: DNA Modifications, Medicinal Chemistry
   number: '12'
+  page_first: 1540
+  page_last: 1548
+  pages: 1540–1548
   pmcid: PMC9749932
   pmid: '36545435'
   priority: low
@@ -144,7 +154,7 @@
   type: article
   url: https://doi.org/10.1039/d2md00186a
   volume: '13'
-  year: 2022
+  year: '2022'
 - abstract: >-
     Transcription-activator-like effectors (TALEs) are programmable DNA
     binding proteins that can be used for sequence-specific, imaging-based
@@ -170,6 +180,9 @@
   journal: ACS Chem. Biol.
   keywords: DNA Modifications, Imaging, Methods
   number: '2'
+  page_first: 230
+  page_last: 236
+  pages: 230–236
   pmcid: PMC9942090
   pmid: '36693632'
   priority: low
@@ -178,7 +191,7 @@
   type: article
   url: https://doi.org/10.1021/acschembio.2c00857
   volume: '18'
-  year: 2023
+  year: '2023'
 - abstract: >-
     5-Methylcytosine (mC) and 5-hydroxymethylcytosine (hmC), the two main
     epigenetic modifications of mammalian DNA, exist in symmetric and asymmetric
@@ -206,6 +219,9 @@
   journal: JACS
   keywords: DNA Modifications, Protein Engineering
   number: '7'
+  page_first: 2987
+  page_last: 2993
+  pages: 2987–2993
   pmcid: PMC8874921
   pmid: '35157801'
   priority: high
@@ -214,7 +230,7 @@
   type: article
   url: https://doi.org/10.1021/jacs.1c10678
   volume: '144'
-  year: 2022
+  year: '2022'
 - address: Dortmund, Germany
   audience: specialist
   authors: Buchmuller, Benjamin Christopher
@@ -222,15 +238,15 @@
   group: monograph
   id: Buchmuller2021
   keywords: DNA Modifications, Protein Engineering, Methods
-  month: 10
+  month: '10'
   note: 'Advisors: Rasmus Linser and Daniel Summerer'
   priority: high
   school: TU Dortmund University
   title: Deciphering strand-asymmetrically modified CpG dyads in the DNA
     double-helix
-  type: phdthesis
+  type: Dissertation
   url: https://doi.org/10.17877/DE290R-22422
-  year: 2021
+  year: '2021'
 - abstract: >-
     Transcription-activator like effectors (TALEs) are DNA-binding proteins
     used for genome targeting. TALEs contain a central domain of concatenated
@@ -256,6 +272,9 @@
   id: PMID:32822046
   issn: 1064-3745
   keywords: DNA Modifications, Imaging, Methods
+  page_first: 381
+  page_last: 399
+  pages: 381–399
   pmid: '32822046'
   priority: low
   publisher: Springer
@@ -263,7 +282,7 @@
   type: incollection
   url: https://doi.org/10.1007/978-1-0716-0876-0_29
   volume: '2198'
-  year: 2021
+  year: '2021'
 - abstract: >-
     Modifications of the cytosine 5-position are dynamic epigenetic marks
     of mammalian DNA with important regulatory roles in development and
@@ -289,13 +308,16 @@
   issn: 1367-5931
   journal: Curr. Opin. Chem. Biol.
   keywords: DNA Modifications, Imaging, Methods
+  page_first: 1
+  page_last: 10
+  pages: 1–10
   pmid: '33588304'
   priority: low
   title: Programmable tools for targeted analysis of epigenetic DNA modifications
   type: article
   url: https://doi.org/10.1016/j.cbpa.2021.01.002
   volume: '63'
-  year: 2021
+  year: '2021'
 - abstract: >-
     Transcription‐activator‐like effectors (TALEs) are repeat‐based, programmable
     DNA‐binding proteins that can be engineered to recognize sequences of
@@ -335,6 +357,9 @@
   journal: ChemBioChem
   keywords: DNA Modifications, Imaging, Methods
   number: '4'
+  page_first: 645
+  page_last: 651
+  pages: 645–651
   pmcid: PMC7894354
   pmid: '32991020'
   priority: low
@@ -343,7 +368,7 @@
   type: article
   url: https://doi.org/10.1002/cbic.202000563
   volume: '22'
-  year: 2021
+  year: '2021'
 - abstract: >-
     5‐Methylcytosine (5mC), the central epigenetic mark of mammalian DNA,
     plays fundamental roles in chromatin regulation. 5mC is written onto
@@ -377,6 +402,9 @@
   journal: Angew. Chem. Int. Ed.
   keywords: Chemical Biology, DNA Modifications, Methods
   number: '24'
+  page_first: 13507
+  page_last: 13512
+  pages: 13507–13512
   pmcid: PMC8251764
   pmid: '33826797'
   priority: medium
@@ -384,7 +412,7 @@
   type: article
   url: https://doi.org/10.1002/anie.202103945
   volume: '60'
-  year: 2021
+  year: '2021'
 - abstract: >-
     Ten-eleven-translocation (TET) dioxygenases catalyze the oxidation of
     5-methylcytosine (5mC), the central epigenetic regulator of mammalian
@@ -410,8 +438,11 @@
   issn: 0002-7863
   journal: JACS
   keywords: Chemical Biology, DNA Modifications, Methods
-  month: 4
+  month: '04'
   number: '16'
+  page_first: 7289
+  page_last: 7294
+  pages: 7289–7294
   pmid: '32286069'
   priority: high
   title: Light-Activatable TET-Dioxygenases Reveal Dynamics of 5‑Methylcytosine
@@ -419,7 +450,7 @@
   type: article
   url: https://doi.org/10.1021/jacs.0c01193
   volume: '142'
-  year: 2020
+  year: '2020'
 - abstract: >-
     Here we describe a time-efficient strategy for endogenous C-terminal
     gene tagging in mammalian tissue culture cells. An online platform is
@@ -447,8 +478,9 @@
   issn: 0021-9525
   journal: J. Cell Biol.
   keywords: CRISPR, Functional Genomics, Methods
-  month: 5
+  month: '05'
   number: '6'
+  pages: e201910210
   pmcid: PMC7265327
   pmid: '32406907'
   priority: high
@@ -456,7 +488,7 @@
   type: article
   url: https://doi.org/10.1083/jcb.201910210
   volume: '219'
-  year: 2020
+  year: '2020'
 - abstract: >-
     We report programmable receptors for the imaging‐based analysis of 5‐methylcytosine
     (5mC) in user‐defined DNA sequences of single cells. Using fluorescent
@@ -489,8 +521,11 @@
   issn: 1433-7851
   journal: Angew. Chem. Int. Ed.
   keywords: DNA Modifications, Methods
-  month: 3
+  month: '03'
   number: '23'
+  page_first: 8927
+  page_last: 8931
+  pages: 8927–8931
   pmcid: PMC7318601
   pmid: '32167219'
   priority: high
@@ -499,7 +534,7 @@
   type: article
   url: https://doi.org/10.1002/anie.202001935
   volume: '59'
-  year: 2020
+  year: '2020'
 - abstract: >-
     5-Methylcytosine (mC) exists in CpG dinucleotides of mammalian DNA and
     plays key roles in chromatin regulation during development and disease.
@@ -531,8 +566,9 @@
     MeCP2 mutations
   journal: Sci. Rep.
   keywords: Chromatin, DNA Modifications, Human Disease
-  month: 3
+  month: '03'
   number: '1'
+  pages: '4053'
   pmcid: PMC7055227
   pmid: '32132616'
   priority: high
@@ -542,7 +578,7 @@
   type: article
   url: https://doi.org/10.1038/s41598-020-61030-1
   volume: '10'
-  year: 2020
+  year: '2020'
 - abstract: >-
     Clone collections of modified strains (“libraries”) are a major resource
     for systematic studies with the yeast Saccharomyces cerevisiae. Construction
@@ -575,8 +611,9 @@
   impact: Enables rapid construction of tagged strain libraries
   journal: Nat. Commun.
   keywords: Functional Genomics, Yeast, Methods, CRISPR
-  month: 7
+  month: '07'
   number: '1'
+  pages: '2960'
   pmcid: PMC6609715
   pmid: '31273196'
   priority: pinned
@@ -585,7 +622,7 @@
   type: article
   url: https://doi.org/10.1038/s41467-019-10816-7
   volume: '10'
-  year: 2019
+  year: '2019'
 - abstract: >-
     5-Formylcytosine (5fC) is an epigenetic nucleobase of mammalian genomes
     that occurs as intermediate of active DNA demethylation. 5fC uniquely
@@ -613,8 +650,11 @@
   issn: 0002-7863
   journal: JACS
   keywords: DNA Modifications, Methods
-  month: 6
+  month: '06'
   number: '24'
+  page_first: 9453
+  page_last: 9457
+  pages: 9453–9457
   pmid: '31180648'
   priority: low
   title: Programmable Protein–DNA Cross-Linking for the Direct Capture and
@@ -622,7 +662,7 @@
   type: article
   url: https://doi.org/10.1021/jacs.9b01432
   volume: '141'
-  year: 2019
+  year: '2019'
 - abstract: >-
     Transcription-activator-like effectors (TALEs) are repeat-based proteins
     featuring programmable DNA binding. The repulsion of TALE repeats by
@@ -652,6 +692,9 @@
   journal: Chem. Sci.
   keywords: DNA Modifications, Protein Engineering
   number: '36'
+  page_first: 7247
+  page_last: 7252
+  pages: 7247–7252
   pmcid: PMC6148557
   pmid: '30288245'
   priority: low
@@ -660,7 +703,7 @@
   type: article
   url: https://doi.org/10.1039/c8sc01958d
   volume: '9'
-  year: 2018
+  year: '2018'
 - abstract: >-
     Here we describe a C-SWAT library for high-throughput tagging of Saccharomyces
     cerevisiae open reading frames (ORFs). In 5,661 strains, we inserted
@@ -684,13 +727,16 @@
   journal: Nat. Methods
   keywords: Functional Genomics, Yeast, Methods
   number: '8'
+  page_first: 598
+  page_last: 600
+  pages: 598–600
   pmid: '29988096'
   priority: medium
   title: Genome-wide C-SWAT library for high-throughput yeast genome tagging
   type: article
   url: https://doi.org/10.1038/s41592-018-0045-8
   volume: '15'
-  year: 2018
+  year: '2018'
 - abstract: >-
     The GRPr, highly expressed in prostate PCa and breast cancer BCa, is
     a promising target for the development of new PET radiotracers. The
@@ -719,8 +765,11 @@
   issn: 0022-2623
   journal: J. Med. Chem.
   keywords: Cancer, Medicinal Chemistry, Imaging
-  month: 3
+  month: '03'
   number: '5'
+  page_first: 2062
+  page_last: 2074
+  pages: 2062–2074
   pmid: '29432691'
   priority: low
   title: Monomeric and Dimeric 68Ga-Labeled Bombesin Analogues for Positron
@@ -729,4 +778,4 @@
   type: article
   url: https://doi.org/10.1021/acs.jmedchem.7b01856
   volume: '61'
-  year: 2018
+  year: '2018'
