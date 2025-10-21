@@ -1,15 +1,17 @@
 {%- assign page_author = page.author | default: site.owner.name | default: site.author -%}
 {%- assign page_last   = page_author | split: ' ' | last | downcase -%}
 {%- assign pubs = site.data.publications -%}
+
 {%- comment -%} Collect pinned {%- endcomment -%}
 {%- assign pinned = pubs | where: "priority", "pinned" -%}
 {%- assign pinned_ids = pinned | map: "id" -%}
+
 {%- comment -%} Sort highs by year desc and exclude pinned {%- endcomment -%}
 {%- assign highs_all = pubs | where: "priority", "high" | sort: "year" | reverse -%}
 {%- assign highs_filtered = "" | split: "" -%}
-{%- for p in highs_all -%}
+{%- for pub in highs_all -%}
   {%- unless pinned_ids contains pub.id -%}
-    {%- assign highs_filtered = highs_filtered | push: p -%}
+    {%- assign highs_filtered = highs_filtered | push: pub -%}
   {%- endunless -%}
 {%- endfor -%}
 {%- assign highs_top5 = highs_filtered | slice: 0, 5 -%}
@@ -35,41 +37,90 @@
         {%- endif -%}
         {%- if authors and authors.first -%}
           {%- for a in authors -%}
-              {%- assign raw = a -%}
-              {%- if a contains "," -%}
-                {%- assign last = a | split: "," | first | strip -%}
-                {%- assign first = a | split: "," | last | strip -%}
-              {%- else -%}
-                {%- assign last = a | split: ' ' | last  | strip -%}
-                {%- assign first = a | remove: last | strip -%}
-              {%- endif -%}
-              {%- assign pub_last = last | downcase -%}
-              {%- if pub_last == page_last -%}
-                { "name": {{ page_author | jsonify }} }
-              {%- else -%}
-                {%- assign full = first | append: ' ' | append: last -%}
-                { "name": {{ full | strip | jsonify }} }
-              {%- endif -%}
-              {%- unless forloop.last %}, {% endunless -%}
-            {%- endfor -%}
+            {%- if a contains "," -%}
+              {%- assign last = a | split: "," | first | strip -%}
+              {%- assign first = a | split: "," | last | strip -%}
             {%- else -%}
-          { "name": {{ pub.authors | default: site.owner.name | jsonify }} }
+              {%- assign last = a | split: ' ' | last | strip -%}
+              {%- assign first = a | remove: last | strip -%}
+            {%- endif -%}
+            {%- assign pub_last = last | downcase -%}
+            {%- if pub_last == page_last -%}
+              { "@type": "Person", "name": {{ page_author | jsonify }} }
+            {%- else -%}
+              {%- assign full = first | append: ' ' | append: last -%}
+              { "@type": "Person", "name": {{ full | strip | jsonify }} }
+            {%- endif -%}
+            {%- unless forloop.last -%}, {% endunless -%}
+          {%- endfor -%}
+        {%- else -%}
+          { "@type": "Person", "name": {{ pub.authors | default: site.owner.name | jsonify }} }
         {%- endif -%}
-      ],
-      {%- if pub.journal -%}
-      "isPartOf": { "@type": "Periodical", "name": {{ pub.journal | jsonify }} },
+      ]
+      {%- if pub.journal -%},
+      "isPartOf": { "@type": "Periodical", "name": {{ pub.journal | jsonify }} }
       {%- endif -%}
-      {%- if pub.year -%}"datePublished": "{{ pub.year }}",{% endif -%}
-      {%- if pub.volume or pub.number or pub.pages -%}
-      "pagination": {{ pub.pages | default: pub.page_first | append: "-" | append: pub.page_last | jsonify }},
+      {%- if pub.year -%},
+      "datePublished": "{{ pub.year }}"
       {%- endif -%}
-      {%- if pub.doi -%}
-      "identifier": { "@type": "PropertyValue", "propertyID": "DOI", "value": {{ pub.doi | jsonify }} },
-      "url": {{ ("https://doi.org/" | append: pub.doi) | jsonify }}
-      {%- else -%}
-      "url": {{ pub.url | default: page.url | absolute_url | jsonify }}
+      {%- if pub.pages -%},
+      "pagination": {{ pub.pages | jsonify }}
       {%- endif -%}
-    }{% unless forloopub.last %}, {% endunless %}
+      {%- if pub.doi or pub.pmid or pub.pmcid -%},
+      "identifier": [
+        {%- assign first_id = true -%}
+        {%- if pub.doi -%}
+          {%- if first_id == false -%}, {% endif -%}
+          { "@type": "PropertyValue", "propertyID": "DOI", "value": {{ pub.doi | jsonify }} }
+          {%- assign first_id = false -%}
+        {%- endif -%}
+        {%- if pub.pmid -%}
+          {%- if first_id == false -%}, {% endif -%}
+          { "@type": "PropertyValue", "propertyID": "PMID", "value": {{ pub.pmid | replace: 'PMID:', '' | jsonify }} }
+          {%- assign first_id = false -%}
+        {%- endif -%}
+        {%- if pub.pmcid -%}
+          {%- if first_id == false -%}, {% endif -%}
+          { "@type": "PropertyValue", "propertyID": "PMCID", "value": {{ pub.pmcid | replace: 'PMC', '' | prepend: 'PMC' | jsonify }} }
+        {%- endif -%}
+      ]
+      {%- endif -%}
+      {%- if pub.doi or pub.pmid or pub.pmcid -%},
+      "sameAs": [
+        {%- assign urls = "" | split: "" -%}
+        {%- if pub.doi -%}
+          {%- assign doi_url = "https://doi.org/" | append: pub.doi -%}
+          {%- assign urls = urls | push: doi_url -%}
+        {%- endif -%}
+        {%- if pub.pmid -%}
+          {%- assign pmid_clean = pub.pmid | replace: 'PMID:', '' -%}
+          {%- assign pmid_url = "https://pubmed.ncbi.nlm.nih.gov/" | append: pmid_clean -%}
+          {%- assign urls = urls | push: pmid_url -%}
+        {%- endif -%}
+        {%- if pub.pmcid -%}
+          {%- assign pmcid_clean = pub.pmcid | replace: 'PMC', '' | prepend: 'PMC' -%}
+          {%- assign pmcid_url = "https://www.ncbi.nlm.nih.gov/pmc/articles/" | append: pmcid_clean -%}
+          {%- assign urls = urls | push: pmcid_url -%}
+        {%- endif -%}
+        {%- for u in urls -%}
+          {{ u | jsonify }}
+          {%- unless forloop.last -%}, {% endunless -%}
+        {%- endfor -%}
+      ]
+      {%- endif -%}
+      {%- if pub.keywords -%},
+      "keywords": {{ pub.keywords | jsonify }}
+      {%- endif -%}
+      {%- if pub.language or pub.lang -%},
+      "inLanguage": {{ pub.language | default: pub.lang | jsonify }}
+      {%- endif -%}
+      {%- if pub.doi -%},
+      "url": {{ "https://doi.org/" | append: pub.doi | jsonify }}
+      {%- elsif pub.url -%},
+      "url": {{ pub.url | jsonify }}
+      {%- endif -%}
+    }
+    {%- unless forloop.last -%}, {% endunless -%}
     {%- endfor -%}
   ]
 }
