@@ -1,22 +1,25 @@
 body {
-	font-family: var(--font-sans);
-	line-height: 1.5;
-	// Optional: Improve font smoothing on macOS
-	-webkit-font-smoothing: antialiased;
-	-moz-osx-font-smoothing: grayscale;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-font-smoothing: antialiased;
+  font-family: var(--font-sans);
+  line-height: 1.5;
 }
+
 h1, h2, h3, h4 {
-	font-family: var(--font-serif);
-	line-height: 1.2;
-	font-weight: 700;
+  font-family: var(--font-serif);
+  font-weight: 700;
+  line-height: 1.2;
 }
+
 h3 {
-	font-style: italic;
+  font-style: italic;
 }
+
 em, i {
-	font-style: italic;
+  font-style: italic;
 }
+
 code, pre, kbd, samp {
-	font-family: var(--font-mono);
-	font-size: .95em;
+  font-family: var(--font-mono);
+  font-size: 0.95em;
 }

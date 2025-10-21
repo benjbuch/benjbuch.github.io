@@ -1,11 +1,12 @@
 .card {
-	background: #{$slate-100};
-	border-radius: #{$round-m};
-	border: #{$line-s} solid var(--hover);
-	box-shadow: var(--shadow);
-	padding: var(--pad-l);
-	width: min(100%, #{$bp-l});
+  background: #{$slate-100};
+  border: #{$line-s} solid var(--hover);
+  border-radius: #{$round-m};
+  box-shadow: var(--shadow);
+  padding: var(--pad-l);
+  width: min(100%, #{$bp-l});
 }
+
 .card h2 {
-	margin-top: 0;
+  margin-top: 0;
 }

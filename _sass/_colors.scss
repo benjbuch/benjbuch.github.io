@@ -29,16 +29,16 @@ $stone-700:  rgba( 68,  64,  60, 1.0); // #44403c
 $stone-800:  rgba( 41,  37,  36, 1.0); // #292524
 $stone-900:  rgba( 28,  25,  23, 1.0); // #1c1917
 // ISO 3864 colors
-$iso-warning:     rgba(255, 173,   0, 1.0); // RAL 1003
-$iso-prohibition: rgba(204,   0,  34, 1.0); // RAL 3001
-$iso-mandatory:   rgba(  0,  51, 102, 1.0); // RAL 5005
-$iso-safe:        rgba(  0, 170,  68, 1.0); // RAL 6032
 $iso-background:  rgba(255, 255, 255, 1.0); // RAL 9003
-$iso-symbol:      rgba( 10,  10,  10, 1.0); // RAL 9004
+$iso-mandatory:   rgba(  0,  51, 102, 1.0); // RAL 5005
+$iso-prohibition: rgba(204,   0,  34, 1.0); // RAL 3001
+$iso-risk-high:   rgba(204,   0,  34, 1.0); // same as prohibition
 $iso-risk-low:    rgba(255, 173,   0, 1.0); // same as warning
 $iso-risk-medium: rgba(255,  43,   0, 1.0); // RAL 2010
-$iso-risk-high:   rgba(204,   0,  34, 1.0); // same as prohibition
+$iso-safe:        rgba(  0, 170,  68, 1.0); // RAL 6032
+$iso-symbol:      rgba( 10,  10,  10, 1.0); // RAL 9004
+$iso-warning:     rgba(255, 173,   0, 1.0); // RAL 1003
 // ANSI colors
-$ansi-safety-red:    rgba(230,  0,   19, 1.0); // RAL 3020
-$ansi-safety-orange: rgba(230,  92,   0, 1.0); // RAL 2009
 $ansi-safety-blue:   rgba(  0,  51, 102, 1.0); // RAL 5005
+$ansi-safety-orange: rgba(230,  92,   0, 1.0); // RAL 2009
+$ansi-safety-red:    rgba(230,  0,   19, 1.0); // RAL 3020

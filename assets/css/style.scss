@@ -1,10 +1,12 @@
 ---
 ---
-@import "colors";
+// Foundations
 @import "fonts";
-@import "typography";
+@import "colors";
 @import "base";
+@import "typography";
+
+// Components
 @import "cards";
-@import "bio";
 @import "publications";
 //@import "protocol";

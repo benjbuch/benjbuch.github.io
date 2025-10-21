@@ -1,186 +1,254 @@
+// ============================================================================
+// Publication List
+// ============================================================================
+
 .publist {
-	list-style: none;
-	padding-left: var(--pad-l);
-	padding-right: var(--pad-l);
-	text-align: justify;
-	text-justify: inter-word;
+  list-style: none;
+  padding-left: var(--pad-l);
+  padding-right: var(--pad-l);
+  text-align: justify;
+  text-justify: inter-word;
 }
-.publist .pub::before {
-	content: attr(data-num) ". ";
-	margin-right: 0.5rem;
-}
+
+// Publication item structure
 .publist .pub {
-	align-items: start;
-	column-gap: 0.75rem;
-	display: grid;
-	grid-template-columns: 4ch 1fr;
-	margin-bottom: 0.75rem;
-	row-gap: 0.25rem;
+  align-items: start;
+  column-gap: 0.75rem;
+  display: grid;
+  grid-template-columns: 4ch 1fr;
+  margin-bottom: 0.75rem;
+  row-gap: 0.25rem;
 }
+
+// Numbering
 .publist .pub::before {
-	content: attr(data-num) ".";
-	grid-column: 1;
-	grid-row: 1;
-	justify-self: end;
+  content: attr(data-num) ".";
+  grid-column: 1;
+  grid-row: 1;
+  justify-self: end;
 }
+
 .publist.high-only .pub::before {
-	content: "–";
-	justify-self: center;
+  content: "–";
+  justify-self: center;
 }
+
+// Layout
 .publist .pub .pub-main,
 .publist .pub .pub-tags,
 .publist .pub .pub-notes {
-	grid-column: 2;
+  grid-column: 2;
 }
-/* ---- Single publication item ---- */
+
+// ============================================================================
+// Individual Publication
+// ============================================================================
+
 .pub {
-	margin: 0 0 0.75rem 0;
+  margin: 0 0 0.75rem 0;
 }
+
 .pub.dim {
-	opacity: 0.25;
-	transition: opacity 160ms ease;
+  opacity: 0.25;
+  transition: opacity 160ms ease;
 }
+
 .pub.is-hidden {
-	display: none;
+  display: none;
 }
-/* ---- Main line ---- */
+
+// ============================================================================
+// Publication Content
+// ============================================================================
+
+// Main content area
 .pub-main {
-	-ms-hyphens: auto;
-	-moz-hyphens: auto;
-	-webkit-hyphens: auto;
-	hyphens: auto;
-	line-height: 1.45;
+  -moz-hyphens: auto;
+  -ms-hyphens: auto;
+  -webkit-hyphens: auto;
+  hyphens: auto;
+  line-height: 1.45;
 }
+
+// Author highlighting
 .pub-authors .me {
-	text-decoration: underline;
-	text-underline-offset: 2px;
+  text-decoration: underline;
+  text-underline-offset: 2px;
 }
+
+// Title styling
 .pub-title {
-	font-style: normal;
+  font-style: normal;
 }
-/* ---- Identifiers ---- */
-.pub-doi, .pub-pmid, .pub-pmcid {
-	-ms-hyphens: auto;
-	-moz-hyphens: auto;
-	-webkit-hyphens: auto;
-	hyphens: auto;
-	hyphenate-limit-chars: 6 3 2;
-	margin-right: 0.5ch;
-	overflow-wrap: anywhere;
-	word-break: break-word;
+
+// ============================================================================
+// Identifiers (DOI, PMID, PMCID)
+// ============================================================================
+
+.pub-doi,
+.pub-pmid,
+.pub-pmcid {
+  -moz-hyphens: auto;
+  -ms-hyphens: auto;
+  -webkit-hyphens: auto;
+  hyphens: auto;
+  hyphenate-limit-chars: 6 3 2;
+  margin-right: 0.5ch;
+  overflow-wrap: anywhere;
+  word-break: break-word;
 }
-/* ---- Keyword badges ---- */
+
+// ============================================================================
+// Keyword Tags
+// ============================================================================
+
 .pub-tags {
-	margin: var(--pad-s) 0;
+  margin: var(--pad-s) 0;
 }
+
 .tag {
-	border: 1px solid var(--fg-muted);
-	border-radius: #{$round-m};
-	cursor: pointer;
-	display: inline-block;
-	font-size: 0.8rem;
-	margin-right: 0.35rem;
-	margin-top: 0.25rem;
-	opacity: 0.75;
-	padding: 0.15em 0.50em;
-	&:focus-visible {
-		outline: 2px solid #888;
-		outline-offset: 2px;
-	}
+  border: 1px solid var(--fg-muted);
+  border-radius: #{$round-m};
+  cursor: pointer;
+  display: inline-block;
+  font-size: 0.8rem;
+  margin-right: 0.35rem;
+  margin-top: 0.25rem;
+  opacity: 0.75;
+  padding: 0.15em 0.50em;
+
+  &:focus-visible {
+    outline: 2px solid #888;
+    outline-offset: 2px;
+  }
 }
+
 .tag.is-active {
-	outline: 2px solid var(--fg-muted);
-	outline-offset: 2px;
+  outline: 2px solid var(--fg-muted);
+  outline-offset: 2px;
 }
-/* ---- Toggle switch ---- */
+
+// ============================================================================
+// Priority Toggle Switch
+// ============================================================================
+
 .priority-toggle {
-	margin: 0 0 0.75rem 0;
+  margin: 0 0 0.75rem 0;
 }
+
 .switch {
-	align-items: center;
-	cursor: pointer;
-	display: inline-flex;
-	gap: .5rem;
-	user-select: none;
+  align-items: center;
+  cursor: pointer;
+  display: inline-flex;
+  gap: 0.5rem;
+  user-select: none;
 }
-// Hide native checkbox but keep it accessible
+
+// Hide native checkbox but keep accessible
 .switch input {
-	height: 0;
-	opacity: 0;
-	position: absolute;
-	width: 0;
+  height: 0;
+  opacity: 0;
+  position: absolute;
+  width: 0;
 }
-// Track + thumb
+
+// Switch track
 .switch-ui {
-	--w: 2.5rem; --h: 1.5rem; --pad: 2px; --thumb: calc(var(--h) - 2 * var(--pad));
-	background: #cbd5e1;
-	border-radius: var(--h);
-	display: inline-block;
-	height: var(--h);
-	position: relative;
-	transition: background .18s ease;
-	width: var(--w);
+  --h: 1.5rem;
+  --pad: 2px;
+  --thumb: calc(var(--h) - 2 * var(--pad));
+  --w: 2.5rem;
+  background: #cbd5e1;
+  border-radius: var(--h);
+  display: inline-block;
+  height: var(--h);
+  position: relative;
+  transition: background 0.18s ease;
+  width: var(--w);
 }
+
+// Switch thumb
 .switch-ui::after {
-	background: #ffffff;
-	border-radius: 50%;
-	box-shadow: 0 1px 2px rgba(0, 0, 0, .2);
-	content: "";
-	height: var(--thumb);
-	left: var(--pad);
-	position: absolute;
-	top: var(--pad);
-	transition: transform .18s ease;
-	width: var(--thumb);
+  background: #ffffff;
+  border-radius: 50%;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+  content: "";
+  height: var(--thumb);
+  left: var(--pad);
+  position: absolute;
+  top: var(--pad);
+  transition: transform 0.18s ease;
+  width: var(--thumb);
 }
+
+// Checked state
 .switch input:checked + .switch-ui {
-	background: var(--fg-muted);
+  background: var(--fg-muted);
 }
+
 .switch input:checked + .switch-ui::after {
-	transform: translateX(calc(var(--w) - var(--h)));
+  transform: translateX(calc(var(--w) - var(--h)));
 }
-.switch-text {
-	color: var(--fg-color);
-	font-size: 0.9rem;
-}
-.switch-text .on {
-	display: none;
-}
-.switch input:checked ~ .switch-text .off {
-	display: none;
-}
-.switch input:checked ~ .switch-text .on	{
-	display: inline;
-}
-.priority-toggle input[type="checkbox"]:focus-visible + .switch-ui {
+
+// Keyboard focus
+.switch input:focus-visible + .switch-ui {
   box-shadow: 0 0 0 3px var(--bg-color), 0 0 0 5px var(--link);
 }
-/* ---- Notes ---- */
+
+// Switch text labels
+.switch-text {
+  color: var(--fg-color);
+  font-size: 0.9rem;
+}
+
+.switch-text .on {
+  display: none;
+}
+
+.switch input:checked ~ .switch-text .off {
+  display: none;
+}
+
+.switch input:checked ~ .switch-text .on {
+  display: inline;
+}
+
+// ============================================================================
+// Additional Content
+// ============================================================================
+
+// Notes (impact, role, etc.)
 .pub-notes {
-	color: var(--fg-muted);
-	font-size: 0.9em;
-	margin: var(--pad-s) 0;
-	opacity: 0.9;
+  color: var(--fg-muted);
+  font-size: 0.9em;
+  margin: var(--pad-s) 0;
+  opacity: 0.9;
 }
-/* ---- Footnote ---- */
+
+// Footnotes
 .pub-footnote {
-	color: var(--fg-color);
-	margin-top: var(--pad-l);
-	font-size: 0.9em;
+  color: var(--fg-color);
+  font-size: 0.9em;
+  margin-top: var(--pad-l);
 }
-/* ---- Section headers ---- */
+
+// Section headers
 .pub-section {
-	margin-top: var(--pad-l);
+  margin-top: var(--pad-l);
 }
-/* ---- Dark mode ---- */
+
+// ============================================================================
+// Media Queries
+// ============================================================================
+
 @media (prefers-color-scheme: dark) {
-	.tag {
-		opacity: 0.85;
-	}
+  .tag {
+    opacity: 0.85;
+  }
 }
-/* ---- Reduce motion ---- */
+
 @media (prefers-reduced-motion: reduce) {
-	* {
-		transition: none !important;
-	}
+  * {
+    transition: none !important;
+  }
 }
