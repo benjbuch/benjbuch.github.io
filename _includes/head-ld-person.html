@@ -1,0 +1,16 @@
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Person",
+  "name": {{ site.owner.name | default: site.title | jsonify }},
+  "jobTitle": {{ site.owner.title | default: "" | jsonify }},
+  "affiliation": {{ site.owner.affiliation | default: "" | jsonify }},
+  "url": {{ "/" | absolute_url | jsonify }},
+  "sameAs": [
+    {% assign links = site.social.links | default: "" %}
+    {% if site.owner.orcid %}{{ site.owner.orcid | jsonify }}{% endif %}
+    {% if links and site.owner.orcid %},{% endif %}
+    {% if links %}{{ links | join: '","' | prepend: '"' | append: '"' }}{% endif %}
+  ]
+}
+</script>
