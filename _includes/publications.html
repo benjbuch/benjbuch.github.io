@@ -1,17 +1,23 @@
 {%- assign page_author = page.author | default: site.owner.name | default: site.author -%}
 {%- assign page_last   = page_author | split: ' ' | last | downcase -%}
 {%- assign pubs = site.data.publications -%}
+
 {%- assign style = include.style | default: "acs" -%}
 {%- assign show_keywords = include.show_keywords | default: true -%}
 {%- assign show_sections = include.show_sections | default: true -%}
-{%- assign cofirst_any = pubs
-  | where_exp: "i", "i.first_authors"
-  | where_exp: "i", "i.first_authors != ''"
--%}
-{%- assign show_cofirst_note = cofirst_any.size | default: 0 -%}
-{%- assign sections =
-  "Preprints::preprint|Original Research::original-research|Reviews, Book Chapters, Monographs::chapter::monograph::review"
-  | split: "|" -%}
+
+{%- comment -%}Check if any publications have co-first authors{%- endcomment -%}
+{%- assign show_cofirst_note = false -%}
+{%- for pub in pubs -%}
+  {%- if pub.first_authors and pub.first_authors != '' -%}
+    {%- assign show_cofirst_note = true -%}
+    {%- break -%}
+  {%- endif -%}
+{%- endfor -%}
+
+{%- comment -%}Define sections: "Display Name::group1::group2::..."{%- endcomment -%}
+{%- assign sections = "Preprints::preprint|Original Research::original-research|Reviews, Book Chapters, Monographs::chapter::monograph::review" | split: "|" -%}
+
 <div class="priority-toggle">
   <label class="switch">
     <input type="checkbox" id="priority-toggle" aria-label="Show key publications" checked>
@@ -22,167 +28,172 @@
     </span>
   </label>
 </div>
+
 {%- for sec in sections -%}
   {%- assign parts = sec | split: "::" -%}
   {%- assign section_name = parts[0] -%}
   {%- assign groups = parts | slice: 1, parts.size -%}
+  
+  {%- comment -%}Collect items matching any of the groups{%- endcomment -%}
   {%- assign items = "" | split: "" -%}
-  {%- for g in groups -%}
-    {%- assign chunk = site.data.publications | where: "group", g -%}
-    {%- assign items = items | concat: chunk -%}
-  {%- endfor -%}
-  {%- if items == empty -%}
+  {%- for pub in pubs -%}
+    {%- assign matches = false -%}
     {%- for g in groups -%}
-      {%- assign chunk = site.data.publications | where: "type", g -%}
-      {%- assign items = items | concat: chunk -%}
+      {%- if pub.group == g or pub.type == g -%}
+        {%- assign matches = true -%}
+        {%- break -%}
+      {%- endif -%}
     {%- endfor -%}
-  {%- endif -%}
-  {%- if items and items != empty -%}
+    {%- if matches -%}
+      {%- assign items = items | push: pub -%}
+    {%- endif -%}
+  {%- endfor -%}
+  
+  {%- if items.size > 0 -%}
     {%- if show_sections -%}<h3 class="pub-section">{{ section_name }}</h3>{%- endif -%}
-      <ul class="publist" id="pub-list">
-      {%- for pub in items -%}
-        {%- assign nfirst = pub.first_authors | default: 0 | plus: 0 -%}
-        {%- assign authors = pub.authors -%}
-        {%- if authors.first -%}
-          {%- comment -%}Already an array{%- endcomment -%}
+    <ul class="publist" id="pub-list-{{ forloop.index }}">
+    {%- for pub in items -%}
+      {%- assign nfirst = pub.first_authors | default: 0 | plus: 0 -%}
+      
+      {%- comment -%}Parse authors{%- endcomment -%}
+      {%- assign authors = pub.authors | replace: "; ", " and " | split: " and " -%}
+      
+      {%- comment -%}Format authors with initials{%- endcomment -%}
+      {%- assign formatted_authors = "" -%}
+      {%- for a in authors -%}
+        {%- assign a = a | strip -%}
+        
+        {%- comment -%}Parse name: "Last, First" or "First Last"{%- endcomment -%}
+        {%- if a contains "," -%}
+          {%- assign last = a | split: "," | first | strip -%}
+          {%- assign first_block = a | split: "," | last | strip -%}
         {%- else -%}
-          {%- comment -%}Normalize separators then split{%- endcomment -%}
-          {%- assign authors = authors | replace: "; ", " and " | split: " and " -%}
+          {%- assign parts = a | split: " " -%}
+          {%- assign last = parts | last -%}
+          {%- assign first_parts = "" | split: "" -%}
+          {%- for p in parts -%}
+            {%- unless forloop.last -%}
+              {%- assign first_parts = first_parts | push: p -%}
+            {%- endunless -%}
+          {%- endfor -%}
+          {%- assign first_block = first_parts | join: " " -%}
         {%- endif -%}
-        {%- assign formatted_authors = "" -%}
-        {%- for a in authors -%}
-          {%- assign a = a | strip -%}
-          {%- comment -%}Detect "Last, First ..." vs "First ... Last"{%- endcomment -%}
-          {%- if a contains "," -%}
-            {%- assign last = a | split: "," | first | strip -%}
-            {%- assign first_block = a | split: "," | last | strip -%}
-            {%- assign first_parts = first_block | split: " " -%}
-            {%- assign initials = "" -%}
-            {%- for p in first_parts -%}
-              {%- if p != "" -%}
-                {%- assign chunk = p | replace: ".", "" -%}
-                {%- assign hy = chunk | split: "-" -%}
-                {%- assign joined = "" -%}
-                {%- for h in hy -%}
-                  {%- assign init = h | strip | slice: 0, 1 | upcase -%}
-                  {%- assign joined = joined | append: init | append: "." -%}
-                  {%- unless forloop.last -%}{%- assign joined = joined | append: "-" -%}{%- endunless -%}
-                {%- endfor -%}
-                {%- assign initials = initials | append: joined | append: " " -%}
-              {%- endif -%}
-            {%- endfor -%}
-            {%- assign abbr_name = initials | append: last -%}
-          {%- else -%}
-            {%- assign parts = a | split: " " -%}
-            {%- assign last = parts | last -%}
-            {%- assign initials = "" -%}
-            {%- for p in parts -%}
+        
+        {%- comment -%}Generate initials from first names{%- endcomment -%}
+        {%- assign first_parts = first_block | split: " " -%}
+        {%- assign initials = "" -%}
+        {%- for p in first_parts -%}
+          {%- if p != "" -%}
+            {%- assign chunk = p | replace: ".", "" -%}
+            {%- assign hy = chunk | split: "-" -%}
+            {%- assign joined = "" -%}
+            {%- for h in hy -%}
+              {%- assign init = h | strip | slice: 0, 1 | upcase -%}
+              {%- assign joined = joined | append: init | append: "." -%}
               {%- unless forloop.last -%}
-                {%- assign chunk = p | replace: ".", "" -%}
-                {%- assign hy = chunk | split: "-" -%}
-                {%- assign joined = "" -%}
-                {%- for h in hy -%}
-                  {%- assign init = h | strip | slice: 0, 1 | upcase -%}
-                  {%- assign joined = joined | append: init | append: "." -%}
-                  {%- unless forloop.last -%}{%- assign joined = joined | append: "-" -%}{%- endunless -%}
-                {%- endfor -%}
-                {%- assign initials = initials | append: joined | append: " " -%}
+                {%- assign joined = joined | append: "-" -%}
               {%- endunless -%}
             {%- endfor -%}
-            {%- assign abbr_name = initials | append: last -%}
+            {%- assign initials = initials | append: joined | append: " " -%}
           {%- endif -%}
-          {%- capture lname -%}{{ last | strip | downcase }}{%- endcapture -%}
-          {%- if lname == page_last -%}
-              {%- assign abbr_name = '<span class="me">' | append: abbr_name | append: '</span>' -%}
-          {%- endif -%}
-          {%- comment -%}Co-first indicator if applicable{%- endcomment -%}
-          {%- if forloop.index0 < nfirst -%}
-            {%- assign abbr_name = abbr_name | append: "*" -%}
-          {%- endif -%}
-          {%- comment -%}Separator{%- endcomment -%}
-          {%- unless forloop.last -%}
-            {%- if style == "acs" -%}
-              {%- assign abbr_name = abbr_name | append: "; " -%}
-            {%- else -%}
-              {%- assign abbr_name = abbr_name | append: ", " -%}
-            {%- endif -%}
-          {%- endunless -%}
-          {%- assign formatted_authors = formatted_authors | append: abbr_name -%}
         {%- endfor -%}
-        {%- assign kw_list = nil -%}
-        {%- if pub.keywords -%}
-          {%- if pub.keywords.first -%}
-            {%- assign kw_list = pub.keywords -%}
-          {%- elsif pub.keywords contains "," -%}
-            {%- assign kw_list = pub.keywords | split: "," -%}
+        
+        {%- assign abbr_name = initials | append: last -%}
+        
+        {%- comment -%}Highlight page author{%- endcomment -%}
+        {%- assign lname = last | strip | downcase -%}
+        {%- if lname == page_last -%}
+          {%- assign abbr_name = '<span class="me">' | append: abbr_name | append: '</span>' -%}
+        {%- endif -%}
+        
+        {%- comment -%}Add co-first author marker{%- endcomment -%}
+        {%- if forloop.index0 < nfirst -%}
+          {%- assign abbr_name = abbr_name | append: "*" -%}
+        {%- endif -%}
+        
+        {%- comment -%}Add separator{%- endcomment -%}
+        {%- unless forloop.last -%}
+          {%- if style == "acs" -%}
+            {%- assign abbr_name = abbr_name | append: "; " -%}
           {%- else -%}
-            {%- assign kw_list = pub.keywords | split: "|" -%}
+            {%- assign abbr_name = abbr_name | append: ", " -%}
           {%- endif -%}
-        {%- endif -%}
-        {%- assign slug_list = "" | split: "" -%}
-        {%- if kw_list -%}
-          {%- for k in kw_list -%}
-            {%- assign t = k | strip -%}
-            {%- assign slug = t | downcase
-              | replace: " ", "-"
-              | replace: ".", ""
-              | replace: ",", ""
-              | replace: "’", ""
-              | replace: "'", "" -%}
-            {%- assign slug_list = slug_list | push: slug -%}
-          {%- endfor -%}
-          {%- assign slug_list = slug_list | uniq -%}
-        {%- endif -%}
-        {%- assign tag_slugs = "" -%}
-        {%- for s in slug_list -%}
-          {%- assign tag_slugs = tag_slugs | append: " tag-" | append: s -%}
-        {%- endfor -%}
-        <li class="pub{{ tag_slugs }}" data-priority="{{ pub.priority | default: 'medium' }}" data-num="{{ items.size | minus: forloop.index0 }}">
-          <div class="pub-main">
-            <span class="pub-authors">{{ formatted_authors }}</span>
-            {%- if pub.title -%}{% if style == "acs" %}. {% else %} — {% endif %}<span class="pub-title">“{{ pub.title }}”</span>{%- endif -%}
-            {%- if pub.journal %} <em>{{ pub.journal }}</em>{% endif -%}
-            {%- if pub.year %} <strong>{{ pub.year }}</strong>{% endif -%}
-            {%- if pub.volume %}, {{ pub.volume }}{% endif -%}
-            {%- if pub.number %}({{ pub.number }}){% endif -%}
-            {%- if pub.pages %}, {{ pub.pages }}{% endif -%}.
-            {%- if pub.doi %} <a class="pub-doi" href="https://doi.org/{{ pub.doi }}">doi:{{ pub.doi }}</a>{% endif -%}
-            {%- if pub.pmid %} <a class="pub-pmid" href="https://pubmed.ncbi.nlm.nih.gov/{{ pub.pmid }}/">PMID:{{ pub.pmid }}</a>{% endif -%}
-            {%- if pub.pmcid %} <a class="pub-pmcid" href="https://pmc.ncbi.nlm.nih.gov/articles/{{ pub.pmcid }}/">{{ pub.pmcid }}</a>{% endif -%}
-          </div>
-          {%- if show_keywords and kw_list -%}
-            <div class="pub-tags">
-              {%- for k in kw_list -%}
-                {%- assign t = k | strip -%}
-                {%- assign slug = t | downcase
-                  | replace: " ", "-"
-                  | replace: ".", ""
-                  | replace: ",", ""
-                  | replace: "’", ""
-                  | replace: "'", "" -%}
-                <button class="tag" type="button" data-tag="{{ slug }}">{{ t }}</button>
-              {%- endfor -%}
-            </div>
-          {%- endif -%}
-          {%- if pub.impact or pub.myrole -%}
-            <div class="pub-notes">
-              {%- if pub.impact %}<span class="note"><strong>Impact:</strong> {{ pub.impact }}</span>{% endif -%}
-            </div>
-          {%- endif -%}
-        </li>
+        {%- endunless -%}
+        
+        {%- assign formatted_authors = formatted_authors | append: abbr_name -%}
       {%- endfor -%}
-      </ul>
+      
+      {%- comment -%}Parse keywords and create slugs{%- endcomment -%}
+      {%- assign kw_list = nil -%}
+      {%- if pub.keywords -%}
+        {%- if pub.keywords contains "," -%}
+          {%- assign kw_list = pub.keywords | split: "," -%}
+        {%- elsif pub.keywords contains "|" -%}
+          {%- assign kw_list = pub.keywords | split: "|" -%}
+        {%- else -%}
+          {%- assign kw_list = pub.keywords | split: "," -%}
+        {%- endif -%}
+      {%- endif -%}
+      
+      {%- assign tag_slugs = "" -%}
+      {%- if kw_list -%}
+        {%- for k in kw_list -%}
+          {%- assign t = k | strip -%}
+          {%- assign slug = t | downcase | replace: " ", "-" | replace: ".", "" | replace: ",", "" | replace: "'", "" -%}
+          {%- assign tag_slugs = tag_slugs | append: " tag-" | append: slug -%}
+        {%- endfor -%}
+      {%- endif -%}
+      
+      <li class="pub{{ tag_slugs }}" data-priority="{{ pub.priority | default: 'medium' }}" data-num="{{ items.size | minus: forloop.index0 }}">
+        <div class="pub-main">
+          <span class="pub-authors">{{ formatted_authors }}</span>
+          {%- if pub.title -%}
+            {%- if style == "acs" %}. <span class="pub-title">{{ pub.title }}. </span>{% else %} — <span class="pub-title">"{{ pub.title }}" </span>{% endif -%}
+          {%- endif -%}
+          {%- if pub.journal or pub.booktitle -%}
+            <em>{{ pub.journal | default: pub.booktitle }}</em>
+          {%- endif -%}
+          {%- if pub.year %} <strong>{{ pub.year }}</strong>{% endif -%}
+          {%- if pub.volume %}, <em>{{ pub.volume }}</em>{% endif -%}
+          {%- if pub.number %}({{ pub.number }}){% endif -%}
+          {%- if pub.pages %}, {{ pub.pages }}{% endif -%}.
+          {%- if pub.doi %} <a class="pub-doi" href="https://doi.org/{{ pub.doi }}">doi:{{ pub.doi }}</a>{% endif -%}
+          {%- if pub.pmid -%}
+            {%- assign pmid_clean = pub.pmid | replace: 'PMID:', '' -%}
+            <a class="pub-pmid" href="https://pubmed.ncbi.nlm.nih.gov/{{ pmid_clean }}/">PMID:{{ pmid_clean }}</a>
+          {%- endif -%}
+          {%- if pub.pmcid %} <a class="pub-pmcid" href="https://pmc.ncbi.nlm.nih.gov/articles/{{ pub.pmcid }}/">{{ pub.pmcid }}</a>{% endif -%}
+        </div>
+        
+        {%- if show_keywords and kw_list -%}
+          <div class="pub-tags">
+            {%- for k in kw_list -%}
+              {%- assign t = k | strip -%}
+              {%- assign slug = t | downcase | replace: " ", "-" | replace: ".", "" | replace: ",", "" | replace: "'", "" -%}
+              <button class="tag" type="button" data-tag="{{ slug }}">{{ t }}</button>
+            {%- endfor -%}
+          </div>
+        {%- endif -%}
+        
+        {%- if pub.impact or pub.myrole -%}
+          <div class="pub-notes">
+            {%- if pub.impact %}<span class="note"><strong>Impact:</strong> {{ pub.impact }}</span>{% endif -%}
+            {%- if pub.myrole %}<span class="note"><strong>Role:</strong> {{ pub.myrole }}</span>{% endif -%}
+          </div>
+        {%- endif -%}
+      </li>
+    {%- endfor -%}
+    </ul>
   {%- endif -%}
 {%- endfor -%}
+
 <div class="line-split">
-  {%- if show_cofirst_note != 0 -%}
-  <span class="pub-footnote">* <i>denotes equal contribution</i></span>
+  {%- if show_cofirst_note -%}
+    <span class="pub-footnote">* <i>denotes equal contribution</i></span>
   {%- endif -%}
-  <span class="pub-footnote">
-		{% if site.owner.orcid %}
-		  <a href="{{ site.owner.orcid }}">
-		    ORCID: {{ site.owner.orcid | split: "/" | last }}
-		  </a>
-		{% endif %}
-  </span>
+  {%- if site.owner.orcid -%}
+    <span class="pub-footnote">
+      <a href="{{ site.owner.orcid }}">ORCID: {{ site.owner.orcid | split: "/" | last }}</a>
+    </span>
+  {%- endif -%}
 </div>
