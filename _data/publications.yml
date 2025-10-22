@@ -364,10 +364,10 @@
   authors: Muñoz‐López, Álvaro and Jung, Anne and Buchmuller, Benjamin and
     Wolffgramm, Jan and Maurer, Sara and Witte, Anna and Summerer, Daniel
   doi: 10.1002/cbic.202000563
-  group: review
+  group: original-research
   id: PMID:32991020
-  impact: Engineered 5mC-binding TALE repeats enabling methylation-dependent
-    dual-TALE imaging approaches
+  impact: Engineered 5mC-binding TALE repeats for imaging-based quantification
+    of DNA methylation at repetitive loci
   issn: 1439-4227
   journal: ChemBioChem
   keywords: DNA Modifications, Imaging, Methods
@@ -495,8 +495,9 @@
   doi: 10.1083/jcb.201910210
   group: original-research
   id: PMID:32406907
-  impact: Extended CASTLING approach to mammalian cells with up to 60% tagging
-    efficiency; widely adopted for endogenous protein tagging studies
+  impact: Extended our CASTLING approach to mammalian cells with up to 60%
+    tagging efficiency; now widely adopted for endogenous protein tagging
+    studies
   issn: 0021-9525
   journal: J. Cell Biol.
   keywords: CRISPR, Functional Genomics, Methods
