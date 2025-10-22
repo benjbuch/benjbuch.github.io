@@ -76,6 +76,11 @@
   text-underline-offset: 2px;
 }
 
+// Individual lines
+.pub-line {
+  padding-bottom: var(--pad-s);
+}
+
 // Title styling
 .pub-title {
   font-style: normal;
@@ -88,9 +93,8 @@
 .pub-doi,
 .pub-pmid,
 .pub-pmcid {
-  hyphenate-limit-chars: 6 3 2;
+  hyphens: none;
   margin-right: 1ch;
-  word-break: break-word;
 }
 
 .pub-doi {
@@ -98,6 +102,31 @@
   -ms-hyphens: auto;
   -webkit-hyphens: auto;
   hyphens: auto;
+  word-break: break-word;
+}
+
+// ============================================================================
+// Additional Content
+// ============================================================================
+
+// Notes (impact, role, etc.)
+.pub-notes {
+  color: var(--fg-muted);
+  font-size: 0.9em;
+  margin: var(--pad-s) 0;
+  opacity: 0.9;
+}
+
+// Footnotes
+.pub-footnote {
+  color: var(--fg-color);
+  font-size: 0.9em;
+  margin-top: var(--pad-l);
+}
+
+// Section headers
+.pub-section {
+  margin-top: var(--pad-l);
 }
 
 // ============================================================================
@@ -105,17 +134,16 @@
 // ============================================================================
 
 .pub-tags {
-  margin: var(--pad-s) 0;
+  margin: 0;
 }
 
 .tag {
-  border: 1px solid var(--fg-muted);
+  border: 1px solid var(--active);
   border-radius: #{$round-m};
   cursor: pointer;
   display: inline-block;
   font-size: 0.8rem;
-  margin-right: 0.35rem;
-  margin-top: 0.25rem;
+  margin: 0 0.35rem 0 0;
   opacity: 0.75;
   padding: 0.15em 0.50em;
 
@@ -126,7 +154,7 @@
 }
 
 .tag.is-active {
-  outline: 2px solid var(--fg-muted);
+  outline: 2px solid var(--active);
   outline-offset: 2px;
 }
 
@@ -213,30 +241,6 @@
 
 .switch input:checked ~ .switch-text .on {
   display: inline;
-}
-
-// ============================================================================
-// Additional Content
-// ============================================================================
-
-// Notes (impact, role, etc.)
-.pub-notes {
-  color: var(--fg-muted);
-  font-size: 0.9em;
-  margin: var(--pad-s) 0;
-  opacity: 0.9;
-}
-
-// Footnotes
-.pub-footnote {
-  color: var(--fg-color);
-  font-size: 0.9em;
-  margin-top: var(--pad-l);
-}
-
-// Section headers
-.pub-section {
-  margin-top: var(--pad-l);
 }
 
 // ============================================================================
