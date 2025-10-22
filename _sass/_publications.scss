@@ -79,6 +79,7 @@
 // Individual lines
 .pub-line {
   padding-bottom: var(--pad-s);
+  display: inline;
 }
 
 // Title styling
@@ -246,6 +247,12 @@
 // ============================================================================
 // Media Queries
 // ============================================================================
+
+@media (min-width: #{$bp-s}) {
+  .pub-line {
+    display: block;
+  }
+}
 
 @media (prefers-color-scheme: dark) {
   .tag {

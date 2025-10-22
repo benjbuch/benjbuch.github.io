@@ -6,6 +6,6 @@ layout: card
 ---
 
 {::nomarkdown}
-{% include publications.html style="acs" placement="lines" keywords=true %}
+{% include publications.html style="acs" keywords=true %}
 {:/nomarkdown}
 

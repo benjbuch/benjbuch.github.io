@@ -3,7 +3,6 @@
 {%- assign pubs = site.data.publications -%}
 
 {%- assign style = include.style | default: "acs" -%}
-{%- assign wrap_by_lines = include.placement == "line" -%}
 {%- assign show_keywords = include.keywords != "false" -%}
 
 {%- assign total_count = pubs | size -%}
@@ -160,22 +159,22 @@
       
       <li class="pub{{ tag_slugs }}" data-priority="{{ pub.priority | default: 'medium' }}" data-num="{{ items.size | minus: forloop.index0 }}">
         <div class="pub-main">
-          {%- if wrap_by_lines %}<div class="pub-line">{% endif -%}
+          <div class="pub-line">
             <span class="pub-authors">
               {{ formatted_authors }}
               {%- if style == "acs" %}. {% endif -%}
             </span>
-          {%- if wrap_by_lines %}</div>{% endif -%}
+          </div>
             {%- if pub.title -%}
-          {%- if wrap_by_lines %}<div class="pub-line">{% endif -%}
+          <div class="pub-line">
             <span class="pub-title">
               {%- if style == "acs" %}{{ pub.title }}. 
               {% else %}"{{ pub.title }}" 
               {% endif -%}
             </span>
-          {%- if wrap_by_lines %}</div>{% endif -%}
+          </div>
             {%- endif -%}
-          {%- if wrap_by_lines %}<div class="pub-line">{% endif -%}
+          <div class="pub-line">
           {%- if pub.journal or pub.booktitle -%}
             <em>{{ pub.journal | default: pub.booktitle }}</em>
           {%- endif -%}
@@ -189,7 +188,7 @@
             <a class="pub-pmid" href="https://pubmed.ncbi.nlm.nih.gov/{{ pmid_clean }}/">PMID:{{ pmid_clean }}</a>
           {%- endif -%}
           {%- if pub.pmcid %} <a class="pub-pmcid" href="https://pmc.ncbi.nlm.nih.gov/articles/{{ pub.pmcid }}/">{{ pub.pmcid }}</a>{% endif -%}
-          {%- if wrap_by_lines %}</div>{% endif -%}
+          </div>
         </div>
         
         {%- if show_keywords and kw_list -%}
