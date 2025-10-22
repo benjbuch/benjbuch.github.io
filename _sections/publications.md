@@ -5,5 +5,5 @@ weight: 02
 layout: card
 ---
 
-{% include publications.html style="acs" show_keywords=true %}
+{% include publications.html style="acs" break="lines" show_keywords=true %}
 
