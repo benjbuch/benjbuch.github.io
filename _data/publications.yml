@@ -29,6 +29,9 @@
   doi: 10.1002/anie.202318837
   group: original-research
   id: PMID:38284298
+  impact: Demonstrated the MBD scaffold can be evolved towards 5-carboxylcytosine
+    recognition despite the stark chemical differences from the natural
+    substrate
   issn: 1433-7851
   journal: Angew. Chem. Int. Ed.
   keywords: DNA Modifications
@@ -64,6 +67,9 @@
   doi: 10.1093/nar/gkad134
   group: original-research
   id: PMID:36919612
+  impact: Revealed molecular basis of hmC/mC reader selectivity through
+    conformational plasticity using combined insights from NMR spectroscopy,
+    MD simulations, and directed evolution
   issn: 0305-1048
   journal: Nucleic Acids Res.
   keywords: DNA Modifications, Protein Binding
@@ -100,6 +106,8 @@
   doi: 10.1080/15476286.2023.2192553
   group: original-research
   id: PMID:36946649
+  impact: Expanded the translational repression assay for linear RNA sequences
+    enabling broader RNA-binding protein studies
   issn: 1547-6286
   journal: RNA Biol.
   keywords: RNA Translation
@@ -140,6 +148,8 @@
   doi: 10.1039/d2md00186a
   group: original-research
   id: PMID:36545435
+  impact: Identified a novel quinoline-based TET2 inhibitor scaffold through
+    high-throughput screening of 31,500 compounds
   journal: RSC Med. Chem.
   keywords: DNA Modifications, Medicinal Chemistry
   number: '12'
@@ -176,6 +186,8 @@
   doi: 10.1021/acschembio.2c00857
   group: original-research
   id: PMID:36693632
+  impact: Extended TALE imaging to low-repetitive single gene loci through
+    signal amplification strategies
   issn: 1554-8929
   journal: ACS Chem. Biol.
   keywords: DNA Modifications, Imaging, Methods
@@ -214,7 +226,8 @@
   doi: 10.1021/jacs.1c10678
   group: original-research
   id: PMID:35157801
-  impact: First selective readers for asymmetric epigenetic marks
+  impact: First affinity probes enabling selective enrichment of strand-asymmetric
+    epigenetic DNA marks from genomic DNA
   issn: 0002-7863
   journal: JACS
   keywords: DNA Modifications, Protein Engineering
@@ -353,6 +366,8 @@
   doi: 10.1002/cbic.202000563
   group: review
   id: PMID:32991020
+  impact: Engineered 5mC-binding TALE repeats enabling methylation-dependent
+    dual-TALE imaging approaches
   issn: 1439-4227
   journal: ChemBioChem
   keywords: DNA Modifications, Imaging, Methods
@@ -398,6 +413,8 @@
   doi: 10.1002/anie.202103945
   group: original-research
   id: PMID:33826797
+  impact: First direct optical control of DNMT catalysis enabling insights
+    into cancer-related mutations and programmable site-specific methylation
   issn: 1433-7851
   journal: Angew. Chem. Int. Ed.
   keywords: Chemical Biology, DNA Modifications, Methods
@@ -435,6 +452,9 @@
   doi: 10.1021/jacs.0c01193
   group: original-research
   id: PMID:32286069
+  impact: First temporal control of TET dioxygenase activity in mammalian
+    cells enabling time-resolved monitoring of methylation dynamics and
+    transcriptome reorganization
   issn: 0002-7863
   journal: JACS
   keywords: Chemical Biology, DNA Modifications, Methods
@@ -475,6 +495,8 @@
   doi: 10.1083/jcb.201910210
   group: original-research
   id: PMID:32406907
+  impact: Extended CASTLING approach to mammalian cells with up to 60% tagging
+    efficiency; widely adopted for endogenous protein tagging studies
   issn: 0021-9525
   journal: J. Cell Biol.
   keywords: CRISPR, Functional Genomics, Methods
@@ -518,6 +540,9 @@
   doi: 10.1002/anie.202001935
   group: original-research
   id: PMID:32167219
+  impact: First nucleotide-resolution imaging of 5mC in single cells; enabled
+    direct correlation between epigenetic marks and transcription factor
+    recruitment
   issn: 1433-7851
   journal: Angew. Chem. Int. Ed.
   keywords: DNA Modifications, Methods
@@ -562,7 +587,8 @@
   doi: 10.1038/s41598-020-61030-1
   group: original-research
   id: PMID:32132616
-  impact: Revealed differential recognition of oxidized CpG marks by disease-associated
+  impact: First comprehensive profiling of the human MBD protein family
+    revealing differential recognition of oxidized CpG marks by Rett syndrome-associated
     MeCP2 mutations
   journal: Sci. Rep.
   keywords: Chromatin, DNA Modifications, Human Disease
@@ -608,7 +634,9 @@
   first_authors: '2'
   group: original-research
   id: PMID:31273196
-  impact: Enables rapid construction of tagged strain libraries
+  impact: Enabled rapid construction of multiplexed yeast libraries with
+    >90% tagging efficiency; method adapted for mammalian gene tagging (Fueller
+    et al. 2020, J Cell Biol) and cited in advanced Cas12a engineering studies
   journal: Nat. Commun.
   keywords: Functional Genomics, Yeast, Methods, CRISPR
   month: '07'
@@ -647,6 +675,8 @@
   doi: 10.1021/jacs.9b01432
   group: original-research
   id: PMID:31180648
+  impact: Advanced TALE-based nucleobase targeting from recognition to covalent
+    crosslinking for sensitive 5fC quantification
   issn: 0002-7863
   journal: JACS
   keywords: DNA Modifications, Methods
@@ -688,6 +718,8 @@
   doi: 10.1039/c8sc01958d
   group: original-research
   id: PMID:30288245
+  impact: First programmable receptors for oxidized 5mC through minimal
+    TALE repeat scaffold engineering
   issn: 2041-6520
   journal: Chem. Sci.
   keywords: DNA Modifications, Protein Engineering
@@ -723,6 +755,9 @@
   doi: 10.1038/s41592-018-0045-8
   group: original-research
   id: PMID:29988096
+  impact: Created a genome-wide acceptor library (5,661 strains) enabling
+    rapid swapping of tags and regulatory elements; widely adopted for yeast
+    functional genomics
   issn: 1548-7091
   journal: Nat. Methods
   keywords: Functional Genomics, Yeast, Methods
@@ -761,7 +796,8 @@
   doi: 10.1021/acs.jmedchem.7b01856
   group: original-research
   id: PMID:29432691
-  impact: Potential diagnostic tools for prostate and breast cancer
+  impact: Developed GRPr-targeting PET tracers with high binding affinity
+    as potential diagnostic imaging tools for prostate and breast cancer
   issn: 0022-2623
   journal: J. Med. Chem.
   keywords: Cancer, Medicinal Chemistry, Imaging
