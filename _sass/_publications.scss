@@ -127,7 +127,7 @@
 
 // Section headers
 .pub-section {
-  margin-top: var(--pad-l);
+  margin-top: calc(2 * var(--pad-l));
 }
 
 // ============================================================================
