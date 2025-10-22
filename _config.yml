@@ -42,6 +42,7 @@ highlighter: rouge
 kramdown:
   input: GFM
   hard_wrap: false
+  parse_block_html: true
   syntax_highlighter_opts:
     line_numbers: false
 
