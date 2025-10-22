@@ -125,6 +125,45 @@
   volume: '20'
   year: '2023'
 - abstract: >-
+    Transcription-activator-like effectors (TALEs) are programmable DNA
+    binding proteins that can be used for sequence-specific, imaging-based
+    analysis of cellular 5-methylcytosine. However, this has so far been
+    limited to highly repetitive satellite DNA. To expand this approach
+    to the analysis of coding single gene loci, we here explore a number
+    of signal amplification strategies for increasing imaging sensitivity
+    with TALEs. We develop a straightforward amplification protocol and
+    employ it to target the MUC4 gene, which features only a small cluster
+    of repeat sequences. This offers high sensitivity imaging of MUC4, and
+    in costaining experiments with pairs of one TALE selective for unmethylated
+    cytosine and one universal control TALE enables analyzing methylation
+    changes in the target independently of changes in target accessibility.
+    These advancements offer prospects for 5-methylcytosine analysis at
+    coding, nonrepetitive gene loci by the use of designed TALE probe collections.
+  audience: specialist
+  authors: Jung, Anne and Munõz-López, Álvaro and Buchmuller, Benjamin
+    C. and Banerjee, Sudakshina and Summerer, Daniel
+  doi: 10.1021/acschembio.2c00857
+  group: original-research
+  id: PMID:36693632
+  impact: Extended TALE imaging to low-repetitive single gene loci through
+    signal amplification strategies
+  issn: 1554-8929
+  journal: ACS Chem. Biol.
+  keywords: DNA Modifications, Imaging, Methods
+  number: '2'
+  page_first: 230
+  page_last: 236
+  pages: 230–236
+  pmcid: PMC9942090
+  pmid: '36693632'
+  priority: low
+  title: Imaging-Based In Situ Analysis of 5‑Methylcytosine at Low Repetitive
+    Single Gene Loci with Transcription-Activator-Like Effector Probes
+  type: article
+  url: https://doi.org/10.1021/acschembio.2c00857
+  volume: '18'
+  year: '2023'
+- abstract: >-
     Ten-eleven translocation dioxygenases (TETs) are the erasers of 5-methylcytosine
     (mC), the central epigenetic regulator of mammalian DNA. TETs convert
     mC to three oxidized derivatives with unique physicochemical properties
@@ -165,45 +204,6 @@
   url: https://doi.org/10.1039/d2md00186a
   volume: '13'
   year: '2022'
-- abstract: >-
-    Transcription-activator-like effectors (TALEs) are programmable DNA
-    binding proteins that can be used for sequence-specific, imaging-based
-    analysis of cellular 5-methylcytosine. However, this has so far been
-    limited to highly repetitive satellite DNA. To expand this approach
-    to the analysis of coding single gene loci, we here explore a number
-    of signal amplification strategies for increasing imaging sensitivity
-    with TALEs. We develop a straightforward amplification protocol and
-    employ it to target the MUC4 gene, which features only a small cluster
-    of repeat sequences. This offers high sensitivity imaging of MUC4, and
-    in costaining experiments with pairs of one TALE selective for unmethylated
-    cytosine and one universal control TALE enables analyzing methylation
-    changes in the target independently of changes in target accessibility.
-    These advancements offer prospects for 5-methylcytosine analysis at
-    coding, nonrepetitive gene loci by the use of designed TALE probe collections.
-  audience: specialist
-  authors: Jung, Anne and Munõz-López, Álvaro and Buchmuller, Benjamin
-    C. and Banerjee, Sudakshina and Summerer, Daniel
-  doi: 10.1021/acschembio.2c00857
-  group: original-research
-  id: PMID:36693632
-  impact: Extended TALE imaging to low-repetitive single gene loci through
-    signal amplification strategies
-  issn: 1554-8929
-  journal: ACS Chem. Biol.
-  keywords: DNA Modifications, Imaging, Methods
-  number: '2'
-  page_first: 230
-  page_last: 236
-  pages: 230–236
-  pmcid: PMC9942090
-  pmid: '36693632'
-  priority: low
-  title: Imaging-Based In Situ Analysis of 5‑Methylcytosine at Low Repetitive
-    Single Gene Loci with Transcription-Activator-Like Effector Probes
-  type: article
-  url: https://doi.org/10.1021/acschembio.2c00857
-  volume: '18'
-  year: '2023'
 - abstract: >-
     5-Methylcytosine (mC) and 5-hydroxymethylcytosine (hmC), the two main
     epigenetic modifications of mammalian DNA, exist in symmetric and asymmetric
