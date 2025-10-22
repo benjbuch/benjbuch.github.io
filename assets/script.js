@@ -136,6 +136,16 @@ document.addEventListener('DOMContentLoaded', () => {
 })();
 
 // Highlight publications based on subject area
+function setPublicationFilterGlobal(slug) {
+	const root = document.body;
+	if (slug) root.dataset.pubfilter = slug;
+	else delete root.dataset.pubfilter;
+
+	document.querySelectorAll('.tag[data-tag]').forEach(btn => {
+		btn.setAttribute('aria-pressed', String(btn.dataset.tag === slug));
+	});
+}
+
 document.addEventListener('DOMContentLoaded', () => {
   document.querySelectorAll('.tag[data-tag]')
     .forEach(btn => btn.hasAttribute('aria-pressed') || btn.setAttribute('aria-pressed', 'false'));
