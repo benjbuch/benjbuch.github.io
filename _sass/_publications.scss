@@ -28,6 +28,10 @@
   justify-self: end;
 }
 
+#publications .publist.high-only .pub:not([data-priority="high"]):not([data-priority="pinned"]) {
+  display: none;
+}
+
 .publist.high-only .pub::before {
   content: "–";
   justify-self: center;
@@ -51,10 +55,6 @@
 .pub.dim {
   opacity: 0.25;
   transition: opacity 160ms ease;
-}
-
-.pub.is-hidden {
-  display: none;
 }
 
 // ============================================================================
