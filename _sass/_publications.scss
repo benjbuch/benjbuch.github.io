@@ -83,7 +83,7 @@
 
 // Title styling
 .pub-title {
-  font-style: normal;
+  color: #{$dark-blue};
 }
 
 // ============================================================================
@@ -111,8 +111,9 @@
 
 // Notes (impact, role, etc.)
 .pub-notes {
-  color: var(--fg-muted);
+  color: #{$slate-600};
   font-size: 0.9em;
+  font-style: italic;
   margin: var(--pad-s) 0;
   opacity: 0.9;
 }
@@ -138,13 +139,12 @@
 }
 
 .tag {
-  border: 1px solid var(--active);
+  border: 1px solid #{$slate-200};
   border-radius: #{$round-m};
   cursor: pointer;
   display: inline-block;
   font-size: 0.8rem;
   margin: 0 0.35rem 0 0;
-  opacity: 0.75;
   padding: 0.15em 0.50em;
 
   &:focus-visible {
