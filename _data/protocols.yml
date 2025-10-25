@@ -1,0 +1,27 @@
+- id: 0017
+  title: Lentiviral generation of stable mammalian cell lines
+  topic: Gene Delivery
+  status: public
+  pdf: /assets/protocols/SOP0017.pdf
+  updated: 2025-10-21
+
+- id: 0031
+  title: Designing and performing dilutions
+  topic: Core Skills
+  status: public
+  pdf: /assets/protocols/SOP0031.pdf
+  updated: 2025-10-24
+
+- id: 0025
+  title: Nuclear extraction and chromatin fractionation
+  topic: Chromatin Prep
+  status: internal
+  pdf:
+  updated: 2025-10-17
+
+- id: 0101
+  title: Version control and project management using GitHub
+  topic: Lab Infrastructure
+  status: drafting
+  pdf:
+  updated: 2025-10-20
