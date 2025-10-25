@@ -1,8 +1,4 @@
-{% assign grouped = site.data.protocols | group_by: "topic" %}
-
-{% for block in grouped %}
-<h3> {{ block.name }} </h3>
-<table class="protocol-table" id="protocolTable">
+<table class="protocol-table sortable-protocol-table">
   <thead>
     <tr>
       <th data-sort="sop">SOP</th>
@@ -13,22 +9,13 @@
     </tr>
   </thead>
   <tbody>
-  {% for p in site.data.protocols %}
+  {% assign sorted = site.data.protocols | sort: "id" %}
+  {% for p in sorted %}
     <tr>
       <td data-value="SOP{{ p.id }}">SOP{{ p.id }}</td>
       <td data-value="{{ p.title | escape }}">{{ p.title }}</td>
       <td data-value="{{ p.topic | escape }}">{{ p.topic }}</td>
-      <td data-value="{{ p.status | escape }}">
-        {% if p.status == "public" %}
-          Public
-        {% elsif p.status == "internal" %}
-          Internal review
-        {% elsif p.status == "drafting" %}
-          In preparation
-        {% else %}
-          {{ p.status }}
-        {% endif %}
-      </td>
+      <td data-value="{{ p.status | escape }}">{{ p.status | capitalize }}</td>
       <td data-value="{% if p.pdf %}1{% else %}0{% endif %}">
         {% if p.pdf %}
           <a href="{{ p.pdf }}">PDF</a>
@@ -40,4 +27,5 @@
   {% endfor %}
   </tbody>
 </table>
-{% endfor %}
+
+<script src="/assets/js/protocol-index.js" defer></script>
