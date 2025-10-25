@@ -11,6 +11,9 @@
 	</main>
 
 	{% include footer.html %}
-	<script src="{{ '/assets/script.js' | relative_url }}" defer></script>
+	<script src="{{ '/assets/js/script.js' | relative_url }}" defer></script>
+	{% if page.url == "/protocols/" %}
+		<script src="/assets/js/script-protocol_index.js" defer></script>
+	{% endif %}
 </body>
 </html>
