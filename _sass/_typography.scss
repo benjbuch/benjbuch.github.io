@@ -13,6 +13,8 @@ h1, h2, h3, h4 {
 
 h3 {
   font-style: italic;
+  margin-bottom: var(--pad-s);
+  margin-top: calc(2 * var(--pad-l));
 }
 
 em, i {

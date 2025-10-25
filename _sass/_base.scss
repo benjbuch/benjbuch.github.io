@@ -259,6 +259,12 @@ section {
 // Utility Classes
 // ============================================================================
 
+.footnote {
+  color: var(--fg-color);
+  font-size: 0.9em;
+  margin-top: var(--pad-l);
+}
+
 .grid {
   display: grid;
   gap: var(--pad-l);
