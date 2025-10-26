@@ -91,19 +91,23 @@
 // Identifiers (DOI, PMID, PMCID)
 // ============================================================================
 
-.pub-doi,
-.pub-pmid,
-.pub-pmcid {
-  hyphens: none;
+.pub-id {
+  display: inline-block;
   margin-right: 1ch;
+  white-space: nowrap;
 }
 
-.pub-doi {
-  -moz-hyphens: auto;
-  -ms-hyphens: auto;
-  -webkit-hyphens: auto;
-  hyphens: auto;
-  word-break: break-word;
+.pub-id a {
+  display: inline-flex;
+  align-items: baseline;
+  gap: 0;
+}
+
+.pub-id-full {
+  display: inline;
+}
+.pub-id-short {
+  display: none;
 }
 
 // ============================================================================
@@ -239,6 +243,18 @@
 @media (min-width: #{$bp-m}) {
   .pub-line {
     display: block;
+  }
+}
+
+@media (max-width: #{$bp-s}) {
+  .pub-id-full {
+    display: none;
+  }
+  .pub-id-short {
+    display: inline;
+  }
+  .pub-id {
+    margin-right: 0.6ch;
   }
 }
 

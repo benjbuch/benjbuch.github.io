@@ -182,12 +182,31 @@
           {%- if pub.volume %}, <em>{{ pub.volume }}</em>{% endif -%}
           {%- if pub.number %}({{ pub.number }}){% endif -%}
           {%- if pub.pages %}, {{ pub.pages }}{% endif -%}.
-          {%- if pub.doi %} <a class="pub-doi" href="https://doi.org/{{ pub.doi }}">doi:{{ pub.doi }}</a>{% endif -%}
+          {%- if pub.doi %}
+            <span class="pub-id">
+              <a href="https://doi.org/{{ pub.doi }}" class="pub-doi">
+                <span class="pub-id-full">doi:{{ pub.doi }}</span>
+                <span class="pub-id-short">DOI</span>
+              </a>
+            </span>
+          {% endif -%}
           {%- if pub.pmid -%}
             {%- assign pmid_clean = pub.pmid | replace: 'PMID:', '' -%}
-            <a class="pub-pmid" href="https://pubmed.ncbi.nlm.nih.gov/{{ pmid_clean }}/">PMID:{{ pmid_clean }}</a>
+            <span class="pub-id">
+              <a href="https://pubmed.ncbi.nlm.nih.gov/{{ pmid_clean }}/" class="pub-pmid">
+                <span class="pub-id-full">PMID:{{ pmid_clean }}</span>
+                <span class="pub-id-short">PMID</span>
+              </a>
+            </span>
           {%- endif -%}
-          {%- if pub.pmcid %} <a class="pub-pmcid" href="https://pmc.ncbi.nlm.nih.gov/articles/{{ pub.pmcid }}/">{{ pub.pmcid }}</a>{% endif -%}
+          {%- if pub.pmcid %}
+            <span class="pub-id">
+              <a href="https://pmc.ncbi.nlm.nih.gov/articles/{{ pub.pmcid }}/" class="pub-pmcid">
+                <span class="pub-id-full">{{ pub.pmcid }}</span>
+                <span class="pub-id-short">PMC</span>
+              </a>
+            </span>
+          {% endif -%}
           </div>
         </div>
         
