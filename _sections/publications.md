@@ -1,8 +1,8 @@
 ---
-title: Publications
 anchor: publications
-weight: 02
 layout: card
+title: Publications
+weight: 02
 ---
 
 {::nomarkdown}

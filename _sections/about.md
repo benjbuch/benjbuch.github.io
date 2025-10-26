@@ -1,11 +1,11 @@
 ---
-title: About me
 anchor: about
-weight: 01
-layout: hero
-show_title: false
 hero: Ben
+layout: hero
 portrait: /assets/img/portrait/ben-buch.png
+show_title: false
+title: About me
+weight: 01
 ---
 
 Hi, I’m {{ page.hero }}!
