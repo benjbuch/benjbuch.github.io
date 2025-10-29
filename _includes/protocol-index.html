@@ -22,7 +22,7 @@
       <td data-value="{{ item.id }}">{{ item.id }}</td>
       <td data-value="{{ item.title | escape }}">
         {%- if is_allowed and found_pdf > 0 -%}
-          <a class="no-ext-arrow" href="{{ pdf_path }}" target="_blank" rel="noopener">{{ item.title }}</a>
+          <a href="{{ pdf_path }}">{{ item.title }}</a>
         {%- else -%}
           {{ item.title }}
         {%- endif -%}
