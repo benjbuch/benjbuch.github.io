@@ -1,0 +1,24 @@
+---
+layout: null
+permalink: /assets/protocols/history.json
+content_type: application/json
+---
+
+[
+{%- assign entries = site.data.protocols_metadata.history -%}
+{%- for item in entries -%}
+  {%- if forloop.index0 > 0 -%},{%- endif -%}
+  {
+    "id": {{ item.id | jsonify }},
+    "changes": [
+      {%- for change in item.changes -%}
+        {%- if forloop.index0 > 0 -%},{%- endif -%}
+        {
+          "time": {{ change.time | jsonify }},
+          "text": {{ change.text | jsonify }}
+        }
+      {%- endfor -%}
+    ]
+  }
+{%- endfor -%}
+]

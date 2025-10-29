@@ -1,0 +1,19 @@
+---
+layout: null
+permalink: /assets/protocols/index.json
+content_type: application/json
+---
+
+[
+{%- assign entries = site.data.protocols_metadata.hash -%}
+{%- for entry in entries -%}
+  {%- if entry.hash and entry.id -%}
+    {%- if forloop.index0 > 0 -%},{%- endif -%}
+    {
+      "hash": {{ entry.hash | jsonify }},
+      "id": {{ entry.id | jsonify }},
+      "time": {{ entry.time | jsonify }}
+    }
+  {%- endif -%}
+{%- endfor -%}
+]
