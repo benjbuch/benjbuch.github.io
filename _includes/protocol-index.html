@@ -1,27 +1,41 @@
 <table class="protocol-table sortable-protocol-table">
   <thead>
     <tr>
-      <th data-sort="sop">SOP</th>
+      <th data-sort="sop">Number</th>
       <th data-sort="title">Title</th>
       <th data-sort="topic">Topic</th>
       <th data-sort="status">Status</th>
+      <th data-sort="date">Last commit</th>
       <th data-sort="pdf">Download</th>
     </tr>
   </thead>
   <tbody>
-  {% assign sorted = site.data.protocols | sort: "id" %}
-  {% for p in sorted %}
-    <tr>
-      <td data-value="SOP{{ p.id }}">SOP{{ p.id }}</td>
-      <td data-value="{{ p.title | escape }}">{{ p.title }}</td>
-      <td data-value="{{ p.topic | escape }}">{{ p.topic }}</td>
-      <td data-value="{{ p.status | escape }}">{{ p.status | capitalize }}</td>
-      <td data-value="{% if p.pdf %}1{% else %}0{% endif %}">
-        {% if p.pdf %}
-          <a href="{{ p.pdf }}">PDF</a>
-        {% else %}
+  {% assign sorted = site.data.protocols_metadata.summary | sort: "id" %}
+  {% for item in sorted %}
+    {%- assign pdf_path = '/assets/protocols/pdf/' | append: item.id | append: '.pdf' -%}
+    {%- assign is_allowed = item.visibility == 'public' or item.visibility == 'draft' -%}
+    {%- assign found_pdf = site.static_files
+          | where: 'path', pdf_path
+          | size
+    -%}
+    <tr title="{{ item.abstract | escape }}">
+      <td data-value="{{ item.id }}">{{ item.id }}</td>
+      <td data-value="{{ item.title | escape }}">
+        {%- if is_allowed and found_pdf > 0 -%}
+          <a class="no-ext-arrow" href="{{ pdf_path }}" target="_blank" rel="noopener">{{ item.title }}</a>
+        {%- else -%}
+          {{ item.title }}
+        {%- endif -%}
+      </td>
+      <td data-value="{{ item.keywords | escape }}">{{ item.keywords }}</td>
+      <td data-value="{{ item.visibility | escape }}">{{ item.visibility | capitalize }}</td>
+      <td data-value="{{ item.current_commit_time | escape }}">{{ item.current_commit_time | date: "%Y-%m-%d" }}</td>
+      <td data-value="{%- if is_allowed and found_pdf > 0 -%}1{%- else -%}0{%- endif -%}">
+        {%- if is_allowed and found_pdf > 0 -%}
+          <a href="{{ pdf_path }}" download>PDF</a>
+        {%- else -%}
           <em>—</em>
-        {% endif %}
+        {%- endif -%}
       </td>
     </tr>
   {% endfor %}

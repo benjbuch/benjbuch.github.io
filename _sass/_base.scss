@@ -118,6 +118,10 @@ a:active {
   color: var(--fg-color);
 }
 
+.no-ext-arrow[target="_blank"]::before {
+  content: none !important;
+}
+
 // Paragraphs
 p + p {
   padding-top: #{$space-m};

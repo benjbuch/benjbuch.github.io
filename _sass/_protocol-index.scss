@@ -18,6 +18,12 @@
   white-space: nowrap;
 }
 
+.protocol-table th::after {
+  content: "▼";
+  margin-left:0.4rem;
+  font-size: 0.7rem;
+}
+
 .protocol-table th.sorted-asc::after {
   content: "▲";
   margin-left: 0.4rem;
