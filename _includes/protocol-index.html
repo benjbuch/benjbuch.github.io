@@ -34,7 +34,7 @@
           {{ item.title }}
         {%- endif -%}
       </td>
-      <td data-value="{{ domains | escape }}">{{ domains }}</td>
+      <td data-value="{{ domains | escape }}">{{ domains | capitalize }}</td>
       <td data-value="{{ item.visibility | escape }}">{{ item.visibility | capitalize }}</td>
       <td data-value="{{ item.current_commit_time | escape }}">{{ item.current_commit_time | date: "%Y-%m-%d" }}</td>
       <td data-value="{%- if is_allowed and found_pdf > 0 -%}1{%- else -%}0{%- endif -%}">
