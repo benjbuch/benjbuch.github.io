@@ -17,3 +17,5 @@ _site/
 
 # Raw files
 /assets/img/portrait/*.svg
+/assets/protocols/pdf/
+/assets/protocols/yaml/
