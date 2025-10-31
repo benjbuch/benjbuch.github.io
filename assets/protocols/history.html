@@ -5,7 +5,7 @@ content_type: application/json
 ---
 
 [
-{%- assign entries = site.data.protocols_metadata.history -%}
+{%- assign entries = site.data.protocols.history -%}
 {%- for item in entries -%}
   {%- if forloop.index0 > 0 -%},{%- endif -%}
   {

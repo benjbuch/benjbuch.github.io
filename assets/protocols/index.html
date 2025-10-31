@@ -5,7 +5,7 @@ content_type: application/json
 ---
 
 [
-{%- assign entries = site.data.protocols_metadata.hash -%}
+{%- assign entries = site.data.protocols.hash -%}
 {%- for entry in entries -%}
   {%- if entry.hash and entry.id -%}
     {%- if forloop.index0 > 0 -%},{%- endif -%}

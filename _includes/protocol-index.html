@@ -12,7 +12,7 @@
     </tr>
   </thead>
   <tbody>
-  {% assign sorted = site.data.protocols_metadata.summary | sort: "id" %}
+  {% assign sorted = site.data.protocols.summary | sort: "id" %}
   {% for item in sorted %}
     {%- assign pdf_path = '/assets/protocols/pdf/' | append: item.id | append: '.pdf' -%}
     {%- assign is_allowed = item.visibility == 'public' or item.visibility == 'draft' -%}

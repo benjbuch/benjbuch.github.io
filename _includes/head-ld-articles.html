@@ -1,6 +1,6 @@
 {%- assign page_author = page.author | default: site.owner.name | default: site.author -%}
 {%- assign page_last   = page_author | split: ' ' | last | downcase -%}
-{%- assign pubs = site.data.publications -%}
+{%- assign pubs = site.data.publications.publications -%}
 
 {%- comment -%} Collect pinned {%- endcomment -%}
 {%- assign pinned = pubs | where: "priority", "pinned" -%}
