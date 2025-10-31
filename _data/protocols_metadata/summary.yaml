@@ -1,9 +1,19 @@
 - id: "SOP0101"
+  version: "1"
+  license: "CC-BY-SA-4.0"
+  open_license: true
   title: "Version control using Git and GitHub"
   visibility: "public"
-  keywords: []
-  current_commit_hash: "5ca0a99"
-  current_commit_time: "2025-10-27T21:43:34-04:00"
-  abstract: "Git is a source control management tool that tracks changes to files over time and allows users to manage and document the evolution of a project. GitHub is a web-based platform that hosts Git repositories and provides additional tools for …"
+  keywords:
+    - domain: data management
+    - level: getting started
+    - topic: version control
+    - topic: reproducible research
+    - technique: Git
+    - technique: GitHub
+    - workflow: repository management
+  current_commit_hash: "d198e66"
+  current_commit_time: "2025-10-30T23:52:58-04:00"
+  abstract: "Git is a source control management tool that tracks changes to files over time and allows users to manage and document the evolution of a project. GitHub is a web-based platform th…"
   pdf: ""
 
