@@ -1,0 +1,7 @@
+User-agent: *
+Allow: /
+Disallow: /research/
+Disallow: /protocols/
+Crawl-delay: 10
+
+Sitemap: https://benjbuch.github.io/sitemap.xml
