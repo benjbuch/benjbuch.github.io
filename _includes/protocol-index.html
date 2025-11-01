@@ -14,7 +14,7 @@
   <tbody>
   {% assign sorted = site.data.protocols.summary | sort: "id" %}
   {% for item in sorted %}
-    {%- assign pdf_path = '/assets/protocols/pdf/' | append: item.id | append: '.pdf' -%}
+    {%- assign pdf_path = '/assets/protocols/pdf/' | append: item.pdf  -%}
     {%- assign is_allowed = item.visibility == 'public' or item.visibility == 'draft' -%}
     {%- assign found_pdf = site.static_files
           | where: 'path', pdf_path
@@ -33,7 +33,7 @@
         {%- if is_allowed and found_pdf > 0 -%}
           <a href="{{ pdf_path }}">{{ item.title }} (Version {{ item.version }})</a>
         {%- else -%}
-          {{ item.title }}
+          {{ item.title }} (Version {{ item.version }}
         {%- endif -%}
       </td>
       <td data-value="{{ domains | escape }}">{{ domains | capitalize }}</td>
