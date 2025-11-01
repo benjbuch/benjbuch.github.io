@@ -4,3 +4,5 @@
       text: "Initial commit."
     - time: "2025-10-25"
       text: "Clarified branch/merge workflow and revised code."
+    - time: "2025-10-31"
+      text: "Clarified credential manager setup."
