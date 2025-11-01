@@ -1,0 +1,6 @@
+- id: "SOP0101"
+  changes:
+    - time: "2025-07-26"
+      text: "Initial commit."
+    - time: "2025-10-25"
+      text: "Clarified branch/merge workflow and revised code."
