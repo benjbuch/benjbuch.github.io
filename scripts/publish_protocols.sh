@@ -176,7 +176,7 @@ else
     if git commit -m "Publish site ($(date -Iseconds))"; then
       echo ""
       echo "[*] Pushing to $REMOTE/$DEPLOY_BRANCH..."
-      git push "$REMOTE" "$DEPLOY_BRANCH"
+      git push --force "$REMOTE" "$DEPLOY_BRANCH"
       echo "[*] Published to $DEPLOY_BRANCH"
     else
       echo "[*] No changes to publish"
