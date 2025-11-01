@@ -1,0 +1,16 @@
+# artifacts.yaml
+
+namespace: gh-pages
+
+pull:
+  - from: public/lab-protocols/pdf/*.pdf
+    to: assets/protocols/pdf/
+    required: true
+    
+  - from: public/lab-protocols/metadata/*.yml
+    to: _data/protocols/
+    required: true
+    
+  - from: public/lab-publications/my_publications_abbr.yml
+    to: _data/publications/publications.yml
+    required: true
