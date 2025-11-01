@@ -16,7 +16,7 @@ trap cleanup EXIT INT TERM
 
 DRY_RUN=0
 FORCE=0
-ARTIFACTS_PATH="../protocol-artifacts"
+ARTIFACTS_PATH="../lab-protocols/artifacts/public/"
 REMOTE="origin"
 DEPLOY_BRANCH="gh-pages"
 
