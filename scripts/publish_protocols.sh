@@ -1,17 +1,11 @@
 #!/usr/bin/env bash
 set -euo pipefail
 
-# Trap to ensure cleanup and branch recovery
+# Trap to ensure cleanup
 cleanup() {
   local exit_code=$?
   [[ -n "${BUILD_DIR:-}" ]] && rm -rf "$BUILD_DIR"
-  # Return to original branch if we switched away
-  if [[ -n "${SOURCE_BRANCH:-}" ]] && [[ "$(git rev-parse --abbrev-ref HEAD 2>/dev/null)" != "$SOURCE_BRANCH" ]]; then
-    echo "[*] Returning to branch: $SOURCE_BRANCH"
-    # Reset any uncommitted changes on deploy branch before switching
-    git reset --hard 2>/dev/null || true
-    git checkout "$SOURCE_BRANCH" 2>/dev/null || true
-  fi
+  [[ -n "${PAGES_WORKTREE:-}" ]] && git worktree remove --force "$PAGES_WORKTREE" 2>/dev/null || true
   exit $exit_code
 }
 trap cleanup EXIT INT TERM
@@ -138,54 +132,65 @@ if ! (cd "$REPO_ROOT" && JEKYLL_ENV=production bundle exec jekyll build --destin
   exit 1
 fi
 
-# --- 4) SWITCH TO `$DEPLOY_BRANCH` AND DEPLOY --------------------------
+# --- 4) DEPLOY TO `$DEPLOY_BRANCH` WITHOUT SWITCHING --------------------------
 echo ""
-echo "[*] Switching to $DEPLOY_BRANCH branch..."
-cd "$REPO_ROOT"
-git fetch "$REMOTE" "$DEPLOY_BRANCH":"$DEPLOY_BRANCH" 2>/dev/null || true
-git checkout "$DEPLOY_BRANCH"
+echo "[*] Deploying to $DEPLOY_BRANCH branch..."
 
-echo "[*] Deploying built site..."
+# Fetch latest gh-pages
+git fetch "$REMOTE" "$DEPLOY_BRANCH":"$DEPLOY_BRANCH" 2>/dev/null || true
+
+# Create a temporary worktree for gh-pages
+PAGES_WORKTREE="$(mktemp -d "/tmp/$(basename "$REPO_ROOT")-pages.XXXXXX")"
+git worktree add "$PAGES_WORKTREE" "$DEPLOY_BRANCH"
+
+# Deploy built site to the worktree
 rsync -av \
   --delete \
   --exclude ".git" \
   --exclude "README.md" \
   --exclude ".nojekyll" \
-  "$BUILD_DIR"/ ./
+  "$BUILD_DIR"/ "$PAGES_WORKTREE"/
 
-git add -A
-
-echo ""
-echo "========================================================================"
-git status
-echo "========================================================================"
-
-if [[ $DRY_RUN -eq 1 ]]; then
+# Commit and push from the worktree
+(
+  cd "$PAGES_WORKTREE"
+  git add -A
+  
   echo ""
-  echo "[*] Dry-run mode: Changes staged but not committed"
-  git diff --staged --stat
-  echo ""
-  echo "[*] To publish these changes, run with --force-publish"
-else
-  echo ""
-  echo "[*] Changes ready to commit and push to $DEPLOY_BRANCH"
-  echo ""
-  read -p "Continue with commit and push? [y/N] " -n 1 -r
-  echo
-  if [[ $REPLY =~ ^[Yy]$ ]]; then
-    if git commit -m "Publish site ($(date -Iseconds))"; then
-      echo ""
-      echo "[*] Pushing to $REMOTE/$DEPLOY_BRANCH..."
-      git push --force "$REMOTE" "$DEPLOY_BRANCH"
-      echo "[*] Published to $DEPLOY_BRANCH"
-    else
-      echo "[*] No changes to publish"
-    fi
+  echo "========================================================================"
+  git status
+  echo "========================================================================"
+  
+  if [[ $DRY_RUN -eq 1 ]]; then
+    echo ""
+    echo "[*] Dry-run mode: Changes staged but not committed"
+    git diff --staged --stat
+    echo ""
+    echo "[*] To publish these changes, run with --force-publish"
   else
-    echo "[*] Aborted by user"
-    exit 1
+    echo ""
+    echo "[*] Changes ready to commit and push to $DEPLOY_BRANCH"
+    echo ""
+    read -p "Continue with commit and push? [y/N] " -n 1 -r
+    echo
+    if [[ $REPLY =~ ^[Yy]$ ]]; then
+      if git commit -m "Publish site ($(date -Iseconds))"; then
+        echo ""
+        echo "[*] Pushing to $REMOTE/$DEPLOY_BRANCH..."
+        git push --force "$REMOTE" "$DEPLOY_BRANCH"
+        echo "[*] Published to $DEPLOY_BRANCH"
+      else
+        echo "[*] No changes to publish"
+      fi
+    else
+      echo "[*] Aborted by user"
+      exit 1
+    fi
   fi
-fi
+)
+
+# Clean up worktree
+git worktree remove "$PAGES_WORKTREE"
 
 echo ""
 echo "[*] Done"
