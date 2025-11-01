@@ -166,7 +166,7 @@ rsync -av \
     echo "[*] Dry-run mode: Changes staged but not committed"
     git diff --staged --stat
     echo ""
-    echo "[*] To publish these changes, run with --force-publish"
+    echo "[*] To publish, push current branch to remote first or use --force-publish"
   else
     echo ""
     echo "[*] Changes ready to commit and push to $DEPLOY_BRANCH"
