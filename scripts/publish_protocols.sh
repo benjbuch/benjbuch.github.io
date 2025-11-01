@@ -8,6 +8,8 @@ cleanup() {
   # Return to original branch if we switched away
   if [[ -n "${SOURCE_BRANCH:-}" ]] && [[ "$(git rev-parse --abbrev-ref HEAD 2>/dev/null)" != "$SOURCE_BRANCH" ]]; then
     echo "[*] Returning to branch: $SOURCE_BRANCH"
+    # Reset any uncommitted changes on deploy branch before switching
+    git reset --hard 2>/dev/null || true
     git checkout "$SOURCE_BRANCH" 2>/dev/null || true
   fi
   exit $exit_code
@@ -86,7 +88,7 @@ fi
 
 # --- 1) PRIME WORKING TREE WITH ARTIFACTS ----------------------
 echo ""
-echo "[*] Copying artifacts to working tree ..."
+echo "[*] Copying artifacts to working tree..."
 
 # Copy artifacts: update existing files AND add new files
 # Do NOT delete files that exist in destination but not in source
@@ -114,7 +116,19 @@ for dir in "${ARTIFACT_DIRS[@]}"; do
   sync_artifacts "$src_path" "$dest_path"
 done
 
-# --- 2) BUILD INTO TMP OUTSIDE REPO ----------------------------
+
+# --- 2) COMMIT TRACKED ARTIFACTS (e.g., YAML files) ------------
+echo ""
+echo "[*] Committing tracked artifacts to $SOURCE_BRANCH..."
+git add .
+if git diff --cached --quiet; then
+  echo "[*] No changes to tracked artifacts"
+else
+  git commit -m "Update $DEST_SUBDIR data from artifacts ($(date -Iseconds))"
+  echo "[*] Committed changes to tracked artifacts"
+fi
+
+# --- 3) BUILD INTO TMP OUTSIDE REPO ----------------------------
 BUILD_DIR="$(mktemp -d "/tmp/$(basename "$REPO_ROOT")-site.XXXXXX")"
 echo ""
 echo "[*] Building Jekyll site into: $BUILD_DIR"
@@ -124,7 +138,7 @@ if ! (cd "$REPO_ROOT" && JEKYLL_ENV=production bundle exec jekyll build --destin
   exit 1
 fi
 
-# --- 3) SWITCH TO `$DEPLOY_BRANCH` AND DEPLOY --------------------------
+# --- 4) SWITCH TO `$DEPLOY_BRANCH` AND DEPLOY --------------------------
 echo ""
 echo "[*] Switching to $DEPLOY_BRANCH branch..."
 cd "$REPO_ROOT"
