@@ -1,57 +1,59 @@
-<table class="protocol-table sortable-protocol-table">
-  <thead>
-    <tr>
-      <th data-sort="sop">Number</th>
-      <th data-sort="title">Title</th>
-      <th data-sort="topic">Topic</th>
-      <th data-sort="status">Status</th>
-      <th data-sort="date">Last commit</th>
-      {%- comment -%}
-      <th data-sort="pdf">Download</th>
-      {%- endcomment -%}
-    </tr>
-  </thead>
-  <tbody>
-  {% assign sorted = site.data.protocols.summary | sort: "id" %}
-  {% for item in sorted %}
-    {%- assign pdf_path = '/assets/protocols/pdf/' | append: item.pdf  -%}
-    {%- assign is_allowed = item.visibility == 'public' or item.visibility == 'draft' -%}
-    {%- assign found_pdf = site.static_files
-          | where: 'path', pdf_path
-          | size
-    -%}
-    {% assign domains = "" | split: "" %}
-    {% for kw in item.keywords %}
-      {% if kw.domain %}
-        {% assign domains = domains | push: kw.domain %}
-      {% endif %}
+<div class="scrollable-table">
+  <table class="protocol-table sortable-protocol-table">
+    <thead>
+      <tr>
+        <th data-sort="sop">Identifier</th>
+        <th data-sort="title">Title</th>
+        <th data-sort="topic">Topic</th>
+        <th data-sort="status">Status</th>
+        <th data-sort="date">Last commit</th>
+        {%- comment -%}
+        <th data-sort="pdf">Download</th>
+        {%- endcomment -%}
+      </tr>
+    </thead>
+    <tbody>
+    {% assign sorted = site.data.protocols.summary | sort: "id" %}
+    {% for item in sorted %}
+      {%- assign pdf_path = '/assets/protocols/pdf/' | append: item.pdf  -%}
+      {%- assign is_allowed = item.visibility == 'public' or item.visibility == 'draft' -%}
+      {%- assign found_pdf = site.static_files
+            | where: 'path', pdf_path
+            | size
+      -%}
+      {% assign domains = "" | split: "" %}
+      {% for kw in item.keywords %}
+        {% if kw.domain %}
+          {% assign domains = domains | push: kw.domain %}
+        {% endif %}
+      {% endfor %}
+      {% assign domains = domains | join: ", " %}
+      <tr title="{{ item.abstract | escape }}">
+        <td data-value="{{ item.id }}">{{ item.id }}</td>
+        <td data-value="{{ item.title | escape }}">
+          {%- if is_allowed and found_pdf > 0 -%}
+            <a href="{{ pdf_path }}">{{ item.title }} (Version {{ item.version }})</a>
+          {%- else -%}
+            {{ item.title }} (Version {{ item.version }}
+          {%- endif -%}
+        </td>
+        <td data-value="{{ domains | escape }}">{{ domains | capitalize }}</td>
+        <td data-value="{{ item.visibility | escape }}">{{ item.visibility | capitalize }}</td>
+        <td data-value="{{ item.current_commit_time | escape }}">{{ item.current_commit_time | date: "%Y-%m-%d" }}</td>
+        {%- comment -%}
+        <td data-value="{%- if is_allowed and found_pdf > 0 -%}1{%- else -%}0{%- endif -%}">
+          {%- if is_allowed and found_pdf > 0 -%}
+            <a href="{{ pdf_path }}" download>PDF</a>
+          {%- else -%}
+            <em>—</em>
+          {%- endif -%}
+        </td>
+        {%- endcomment -%}
+      </tr>
     {% endfor %}
-    {% assign domains = domains | join: ", " %}
-    <tr title="{{ item.abstract | escape }}">
-      <td data-value="{{ item.id }}">{{ item.id }}</td>
-      <td data-value="{{ item.title | escape }}">
-        {%- if is_allowed and found_pdf > 0 -%}
-          <a href="{{ pdf_path }}">{{ item.title }} (Version {{ item.version }})</a>
-        {%- else -%}
-          {{ item.title }} (Version {{ item.version }}
-        {%- endif -%}
-      </td>
-      <td data-value="{{ domains | escape }}">{{ domains | capitalize }}</td>
-      <td data-value="{{ item.visibility | escape }}">{{ item.visibility | capitalize }}</td>
-      <td data-value="{{ item.current_commit_time | escape }}">{{ item.current_commit_time | date: "%Y-%m-%d" }}</td>
-      {%- comment -%}
-      <td data-value="{%- if is_allowed and found_pdf > 0 -%}1{%- else -%}0{%- endif -%}">
-        {%- if is_allowed and found_pdf > 0 -%}
-          <a href="{{ pdf_path }}" download>PDF</a>
-        {%- else -%}
-          <em>—</em>
-        {%- endif -%}
-      </td>
-      {%- endcomment -%}
-    </tr>
-  {% endfor %}
-  </tbody>
-</table>
+    </tbody>
+  </table>
+</div>
 
 <div class="line-split">
   <span class="footnote">🚧 <em>This section is still growing</em></span>

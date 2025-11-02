@@ -285,6 +285,27 @@ section {
   color: var(--fg-muted);
 }
 
+.scrollable-table {
+  // This is about 10 table rows
+  max-height: 25em;
+  overflow-y: auto;
+  border: 1px solid var(--hover);
+  border-radius: 4px;
+  
+  table {
+    border-collapse: separate;
+    border-spacing: 0;
+  }
+  
+  thead th {
+    background: #{$slate-200};
+    position: sticky;
+    top: 0;
+    z-index: 10;
+  }
+  
+}
+
 .tag {
   background: #{$slate-100};
   border: #{$line-s} solid var(--active);
