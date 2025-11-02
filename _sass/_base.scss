@@ -118,7 +118,7 @@ a:active {
   color: var(--fg-color);
 }
 
-.no-ext-arrow[target="_blank"]::before {
+.no-ext-arrow::before {
   content: none !important;
 }
 
