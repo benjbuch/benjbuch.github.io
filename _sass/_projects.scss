@@ -1,6 +1,12 @@
-.project-container p {
+.project-container p, ol, ul {
   text-align: justify;
   margin-right: 8em;
   hyphens: auto;
   -webkit-hyphens: auto;
+}
+
+.project-container strong,
+.project-container b {
+  box-shadow: inset 0 -0.4em 0 rgba(255, 255, 0, 0.4);
+  font-weight: bold;
 }
