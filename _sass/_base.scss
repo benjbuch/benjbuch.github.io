@@ -286,6 +286,7 @@ section {
   overflow-y: auto;
   border: 1px solid var(--hover);
   border-radius: 4px;
+  margin-top: var(--pad-l);
   
   table {
     border-collapse: separate;
