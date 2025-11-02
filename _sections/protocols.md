@@ -6,7 +6,7 @@ layout: card
 github: https://github.com/benjbuch/lab-protocols.git
 ---
 
-I've been interested in addressing a common lab problem: **knowing whether your printed protocol is still current**. These home-grown, version-controlled documents make that easy.
+I've become interested in tackling a common lab problem: **knowing whether your printed protocol is still current** and what to do about all the scribbled notes. These self-curated, version-controlled documents can make that easier.
 
 {::nomarkdown}
 {% include protocol-index.html %}
