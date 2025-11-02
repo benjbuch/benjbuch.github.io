@@ -151,7 +151,7 @@ rsync -av \
 )
 
 # Clean up worktree
-git worktree remove "$PAGES_WORKTREE"
+git worktree remove --force "$PAGES_WORKTREE"
 
 echo ""
 echo "[OK] Done"
