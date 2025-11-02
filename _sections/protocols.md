@@ -20,7 +20,7 @@ I've become interested in tackling a common lab problem: **knowing whether your 
 
 ### Contributing
 
-- **Want to help build?** [Learn how these documents are made](/projects/about-pipeline)
+- **Want to help build?** [Learn how these documents are made](/projects/protocols-about)
 - **Found an error?** [Open an issue on GitHub to let me know *(coming soon)*]({{ page.github }}/issues)
 - **Want to say thanks?** [Buy me a coffee](https://buymeacoffee.com/benjbuch)
 
