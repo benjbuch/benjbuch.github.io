@@ -94,7 +94,7 @@
   audience: specialist
   authors: Nowacki, Jessica and Malenica, Mateo and Schmeing, Stefan and
     Schiller, Damian and Buchmuller, Benjamin and Amrahova, Gulshan and
-    Hart, Peter ‘t
+    ‘t Hart, Peter
   doi: 10.1080/15476286.2023.2192553
   group: original-research
   id: PMID:36946649
@@ -389,6 +389,43 @@
   type: article
   volume: '60'
   year: 2021
+- abstract: Ten-eleven-translocation (TET) dioxygenases catalyze the oxidation
+    of 5-methylcytosine (5mC), the central epigenetic regulator of mammalian
+    DNA. This activity dynamically reshapes the epigenome and transcriptome
+    by depositing oxidized 5mC derivatives and initiating active DNA demethylation.
+    However, studying this dynamic is hampered by the inability to selectively
+    activate individual TETs with temporal control in cells. We report activation
+    of TETs in mammalian cells by incorporation of genetically encoded 4,5-dimethoxy-2-nitrobenzyl-l-serine
+    as a transient active-site block, and its subsequent deprotection with
+    light. Our approach enables precise insights into the impact of cancer-associated
+    TET2 mutations on the kinetics of TET2 catalysis in vivo, and allows
+    time-resolved monitoring of target gene activation and transcriptome
+    reorganization. This sets a basis for dissecting the order and kinetics
+    of chromatin-associated events triggered by TET catalysis, ranging from
+    DNA demethylation to chromatin and transcription regulation.
+  audience: broad
+  authors: Palei, Shubhendu and Buchmuller, Benjamin and Wolffgramm, Jan
+    and Muñoz-Lopez, Álvaro and Jung, Sascha and Czodrowski, Paul and
+    Summerer, Daniel
+  doi: 10.1021/jacs.0c01193
+  group: original-research
+  id: PMID:32286069
+  impact: First temporal control of TET dioxygenase activity in mammalian
+    cells enabling time-resolved monitoring of methylation dynamics and
+    transcriptome reorganization
+  issn: 0002-7863
+  journal: JACS
+  keywords: Chemical Biology, DNA Modifications, Methods
+  month: '04'
+  number: '16'
+  pages: 7289–7294
+  pmid: '32286069'
+  priority: high
+  title: Light-Activatable TET-Dioxygenases Reveal Dynamics of 5‑Methylcytosine
+    Oxidation and Transcriptome Reorganization
+  type: article
+  volume: '142'
+  year: 2020
 - abstract: Here we describe a time-efficient strategy for endogenous C-terminal
     gene tagging in mammalian tissue culture cells. An online platform is
     used to design two long gene-specific oligonucleotides for PCR with
@@ -427,43 +464,6 @@
   title: CRISPR-Cas12a–assisted PCR tagging of mammalian genes
   type: article
   volume: '219'
-  year: 2020
-- abstract: Ten-eleven-translocation (TET) dioxygenases catalyze the oxidation
-    of 5-methylcytosine (5mC), the central epigenetic regulator of mammalian
-    DNA. This activity dynamically reshapes the epigenome and transcriptome
-    by depositing oxidized 5mC derivatives and initiating active DNA demethylation.
-    However, studying this dynamic is hampered by the inability to selectively
-    activate individual TETs with temporal control in cells. We report activation
-    of TETs in mammalian cells by incorporation of genetically encoded 4,5-dimethoxy-2-nitrobenzyl-l-serine
-    as a transient active-site block, and its subsequent deprotection with
-    light. Our approach enables precise insights into the impact of cancer-associated
-    TET2 mutations on the kinetics of TET2 catalysis in vivo, and allows
-    time-resolved monitoring of target gene activation and transcriptome
-    reorganization. This sets a basis for dissecting the order and kinetics
-    of chromatin-associated events triggered by TET catalysis, ranging from
-    DNA demethylation to chromatin and transcription regulation.
-  audience: broad
-  authors: Palei, Shubhendu and Buchmuller, Benjamin and Wolffgramm, Jan
-    and Muñoz-Lopez, Álvaro and Jung, Sascha and Czodrowski, Paul and
-    Summerer, Daniel
-  doi: 10.1021/jacs.0c01193
-  group: original-research
-  id: PMID:32286069
-  impact: First temporal control of TET dioxygenase activity in mammalian
-    cells enabling time-resolved monitoring of methylation dynamics and
-    transcriptome reorganization
-  issn: 0002-7863
-  journal: JACS
-  keywords: Chemical Biology, DNA Modifications, Methods
-  month: '04'
-  number: '16'
-  pages: 7289–7294
-  pmid: '32286069'
-  priority: high
-  title: Light-Activatable TET-Dioxygenases Reveal Dynamics of 5‑Methylcytosine
-    Oxidation and Transcriptome Reorganization
-  type: article
-  volume: '142'
   year: 2020
 - abstract: 'We report programmable receptors for the imaging‐based analysis
     of 5‐methylcytosine (5mC) in user‐defined DNA sequences of single cells.
@@ -578,11 +578,13 @@
     Michael
   doi: 10.1038/s41467-019-10816-7
   first_authors: '2'
+  group: original-research
   id: PMID:31273196
   impact: CASTLING enables rapid construction of yeast clone libraries with
     >90% tagging efficiency; method adapted for mammalian gene tagging (Fueller
     et al. 2020, J Cell Biol) and cited in advanced Cas12a engineering studies
   journal: Nat. Commun.
+  keywords: Functional Genomics, Yeast, Methods, CRISPR
   month: '07'
   number: '1'
   pages: '2960'
@@ -633,44 +635,6 @@
   type: article
   volume: '141'
   year: 2019
-- abstract: 'The GRPr, highly expressed in prostate PCa and breast cancer
-    BCa, is a promising target for the development of new PET radiotracers.
-    The chelator HBED-CC (N,N′-bis­[2-hydroxy-5-(carboxyethyl)­benzyl]­ethylenediamine-N,N′-diacetic
-    acid) was coupled to the bombesin peptides: HBED-C-BN(2–14) 1, HBED-CC-PEG2-[d-Tyr6,β-Ala11,Thi13,Nle14]-BN­(6–14)
-    2, HBED-CC-Y-[d-Phe6,Sta13,Leu14]-BN­(6–14) (Y = 4-amino-1-carboxymethyl­piperidine)
-    3, and HBED-CC-{\} {PEG2-Y-[d-Phe6,Sta13,Leu14]-BN­(6–14){\} }2 4 (homodimer).
-    Compounds 1–4 presented high binding affinities for GRPr (T47D, 0.56–3.51
-    nM; PC-3, 2.12–4.68 nM). In PC-3 and T47D cells, agonists [68Ga]1 and
-    [68Ga]2 were mainly internalized while antagonists [68Ga]3 and [68Ga]4
-    were surface bound. Cell-related radioactivity reached a maximum after
-    45 min, while tracer levels followed GRPr expression (PC-3 > T47D >
-    LNCaP > MDA-MB-231). [68Ga]4 showed the highest cell-bound radioactivity
-    (PC-3 and T47D). In vivo, tumor (PC-3) targeting for [68Ga]3 and [68Ga]4
-    increased over time, with dynamic μPET showing clearer tumors images
-    at later time points. [68Ga]3 and [68Ga]4 can be considered suitable
-    PET tracers for imaging PCa and BCa expressing GRPr.'
-  audience: specialist
-  authors: Liolios, Christos and Buchmuller, Benjamin and Bauder-Wüst,
-    Ulrike and Schäfer, Martin and Leotta, Karin and Haberkorn, Uwe and
-    Eder, Matthias and Kopka, Klaus
-  doi: 10.1021/acs.jmedchem.7b01856
-  group: original-research
-  id: PMID:29432691
-  impact: Potential diagnostic tools for prostate and breast cancer
-  issn: 0022-2623
-  journal: J. Med. Chem.
-  keywords: Cancer, Medicinal Chemistry, Imaging
-  month: '03'
-  number: '5'
-  pages: 2062–2074
-  pmid: '29432691'
-  priority: low
-  title: Monomeric and Dimeric 68Ga-Labeled Bombesin Analogues for Positron
-    Emission Tomography (PET) Imaging of Tumors Expressing Gastrin-Releasing
-    Peptide Receptors (GRPrs)
-  type: article
-  volume: '61'
-  year: 2018
 - abstract: 'Transcription-activator-like effectors (TALEs) are repeat-based
     proteins featuring programmable DNA binding. The repulsion of TALE repeats
     by 5-methylcytosine (5mC) and its oxidized forms makes TALEs potential
@@ -741,4 +705,42 @@
   title: Genome-wide C-SWAT library for high-throughput yeast genome tagging
   type: article
   volume: '15'
+  year: 2018
+- abstract: 'The GRPr, highly expressed in prostate PCa and breast cancer
+    BCa, is a promising target for the development of new PET radiotracers.
+    The chelator HBED-CC (N,N′-bis­[2-hydroxy-5-(carboxyethyl)­benzyl]­ethylenediamine-N,N′-diacetic
+    acid) was coupled to the bombesin peptides: HBED-C-BN(2–14) 1, HBED-CC-PEG2-[d-Tyr6,β-Ala11,Thi13,Nle14]-BN­(6–14)
+    2, HBED-CC-Y-[d-Phe6,Sta13,Leu14]-BN­(6–14) (Y = 4-amino-1-carboxymethyl­piperidine)
+    3, and HBED-CC-{\} {PEG2-Y-[d-Phe6,Sta13,Leu14]-BN­(6–14){\} }2 4 (homodimer).
+    Compounds 1–4 presented high binding affinities for GRPr (T47D, 0.56–3.51
+    nM; PC-3, 2.12–4.68 nM). In PC-3 and T47D cells, agonists [68Ga]1 and
+    [68Ga]2 were mainly internalized while antagonists [68Ga]3 and [68Ga]4
+    were surface bound. Cell-related radioactivity reached a maximum after
+    45 min, while tracer levels followed GRPr expression (PC-3 > T47D >
+    LNCaP > MDA-MB-231). [68Ga]4 showed the highest cell-bound radioactivity
+    (PC-3 and T47D). In vivo, tumor (PC-3) targeting for [68Ga]3 and [68Ga]4
+    increased over time, with dynamic μPET showing clearer tumors images
+    at later time points. [68Ga]3 and [68Ga]4 can be considered suitable
+    PET tracers for imaging PCa and BCa expressing GRPr.'
+  audience: specialist
+  authors: Liolios, Christos and Buchmuller, Benjamin and Bauder-Wüst,
+    Ulrike and Schäfer, Martin and Leotta, Karin and Haberkorn, Uwe and
+    Eder, Matthias and Kopka, Klaus
+  doi: 10.1021/acs.jmedchem.7b01856
+  group: original-research
+  id: PMID:29432691
+  impact: Potential diagnostic tools for prostate and breast cancer
+  issn: 0022-2623
+  journal: J. Med. Chem.
+  keywords: Cancer, Medicinal Chemistry, Imaging
+  month: '03'
+  number: '5'
+  pages: 2062–2074
+  pmid: '29432691'
+  priority: low
+  title: Monomeric and Dimeric 68Ga-Labeled Bombesin Analogues for Positron
+    Emission Tomography (PET) Imaging of Tumors Expressing Gastrin-Releasing
+    Peptide Receptors (GRPrs)
+  type: article
+  volume: '61'
   year: 2018
