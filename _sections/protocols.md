@@ -6,7 +6,7 @@ layout: card
 github: https://github.com/benjbuch/lab-protocols.git
 ---
 
-I've become interested in tackling a common lab problem: **knowing whether your printed protocol is still current** and what to do about all the scribbled notes. These self-curated, version-controlled documents can make that easier.
+I've become interested in tackling a common lab problem: **knowing whether your printed protocol is still current** and what to do about all the scribbled notes. I fancied version control could make that easier. So I made these. Give them a try:
 
 {::nomarkdown}
 {% include protocol-index.html %}
@@ -20,7 +20,7 @@ I've become interested in tackling a common lab problem: **knowing whether your 
 
 ### Contributing
 
-- **Want to help build?** [Learn how these documents are made](/blog/about-pipeline)
+- **Want to help build?** [Learn how these documents are made](/projects/about-pipeline)
 - **Found an error?** [Open an issue on GitHub to let me know *(coming soon)*]({{ page.github }}/issues)
 - **Want to say thanks?** [Buy me a coffee](https://buymeacoffee.com/benjbuch)
 
