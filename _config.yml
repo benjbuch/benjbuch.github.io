@@ -31,6 +31,9 @@ collections:
   sections:
     output: true
     permalink: /sections/:name/
+  projects:
+    output: true
+    permalink: /projects/:name/
 
 # Site rendering
 theme: null

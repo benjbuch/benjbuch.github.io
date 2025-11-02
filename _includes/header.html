@@ -11,6 +11,7 @@
 			{%- for s in items -%}
 				<a href="{{ '/' | relative_url }}#{{ s.anchor }}">{{ s.nav_title | default: s.title }}</a>
 			{%- endfor -%}
+			<a href="{{ '/projects/' | relative_url }}">Projects</a>
 		</div>
 	</nav>
 </header>
