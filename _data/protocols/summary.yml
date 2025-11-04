@@ -1,23 +1,3 @@
-- id: "SOP0101"
-  version: "1"
-  license: "CC-BY-SA-4.0"
-  open_license: true
-  title: "Version control using Git and GitHub"
-  visibility: "public"
-  keywords:
-    - domain: data management
-    - level: introductory
-    - technique: Git
-    - technique: GitHub
-    - technique: version control
-    - topic: reproducible research
-    - topic: data management
-    - workflow: documentation
-  current_commit_hash: "c516bc1"
-  current_commit_time: "2025-11-03T20:31:53-05:00"
-  abstract: "Git is a source control management tool that tracks changes to files over time and allows users to manage and document the evolution of a project. GitHub is a web-based platform th…"
-  pdf: "sop_0101-v1-github"
-
 - id: "SOP0001"
   version: "1"
   license: "CC-BY-SA-4.0"
@@ -25,17 +5,15 @@
   title: "Isolation of nuclei from tissue culture cells"
   visibility: "public"
   keywords:
-    - domain: cell biology
-    - level: basic
-    - technique: cell lysis
-    - technique: nuclear isolation
-    - topic: chromatin biology
-    - topic: sub-cellular fractionation
-    - workflow: sample preparation
+    topic: [chromatin biology, sub-cellular fractionation]
+    workflow: sample preparation
+    technique: [cell lysis, nuclear isolation]
+    domain: cell biology
+    level: basic
   current_commit_hash: "646be6f"
   current_commit_time: "2025-11-03T21:10:17-05:00"
   abstract: "The nucleus is the largest and densest organelle of a mammalian cell. It can be easily purified by sedimentation in aqueous and non-aqueous solutions. The purified nuclei can be di…"
-  pdf: "sop_0001-v1-isolation_nuclei"
+  filename: "sop_0001-v1-isolation_nuclei"
 
 - id: "SOP0030"
   version: "1"
@@ -44,16 +22,30 @@
   title: "Making reagents and buffers"
   visibility: "public"
   keywords:
-    - domain: core skills
-    - level: introductory
-    - technique: buffer preparation
-    - technique: pH adjustment
-    - technique: sample storage
-    - topic: reagent preparation
-    - topic: solution handling
-    - workflow: sample preparation
-  current_commit_hash: "532805a"
-  current_commit_time: "2025-11-03T21:18:15-05:00"
+    topic: [reagent preparation, solution handling]
+    level: introductory
+    technique: [buffer preparation, pH adjustment, sample storage]
+    workflow: sample preparation
+    domain: core skills
+  current_commit_hash: "5253fee"
+  current_commit_time: "2025-11-03T21:26:52-05:00"
   abstract: "Making buffers and reagents is one of the most essential skills in laboratory work. While not difficult, it requires care and precision. At first glance it may seem that all you ha…"
-  pdf: "sop_0030-v1-preparation_reagents"
+  filename: "sop_0030-v1-preparation_reagents"
+
+- id: "SOP0101"
+  version: "1"
+  license: "CC-BY-SA-4.0"
+  open_license: true
+  title: "Version control using Git and GitHub"
+  visibility: "public"
+  keywords:
+    technique: [Git, GitHub, version control]
+    level: introductory
+    domain: data management
+    topic: [reproducible research, data management]
+    workflow: documentation
+  current_commit_hash: "c516bc1"
+  current_commit_time: "2025-11-03T20:31:53-05:00"
+  abstract: "Git is a source control management tool that tracks changes to files over time and allows users to manage and document the evolution of a project. GitHub is a web-based platform th…"
+  filename: "sop_0101-v1-github"
 
