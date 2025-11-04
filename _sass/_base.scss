@@ -220,6 +220,22 @@ section {
   padding: var(--pad-m);
 }
 
+input[type="search"] {
+  -webkit-appearance: none;
+  appearance: none;
+  min-height: 2.2em;
+  padding: 0.4em 0.6em;
+  font-size: 1rem;
+  border: 1px solid #{$slate-300};
+  border-radius: 6px;
+  box-sizing: border-box;
+}
+
+input[type="search"]:focus {
+  outline: none;
+  border-color: #999;
+}
+
 // ============================================================================
 // Hero Section
 // ============================================================================
