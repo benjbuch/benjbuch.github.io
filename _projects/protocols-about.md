@@ -61,9 +61,4 @@ Currently, this is a personal system that works for me, and I'm not claiming it'
 
 Right now, I'm sharing a small, personal collection. I use these protocols. I revise them. I track their history. But I'm curious whether others too find value in this work. If you're working in a related field, try one. If you're technically curious, check out how it's built. If you spot an error or have feedback, let me know.
 
-Maybe this will resonate with someone else who's tired of `Protocol_final_v3_ACTUAL_final.docx`. Maybe it won't. Either way, it's been a useful exercise and **the protocols look damn good**.
-
-### Want to dive deeper?
-
-- [Take me back to the protocol index](/#protocols)
-- [Check out the GitHub repository](https://github.com/benjbuch/lab-protocols) *(coming soon)*
+Maybe this will resonate with someone else who's tired of `Protocol_final_v3_ACTUAL_final.docx`. Maybe it won't. Either way, it's been a useful exercise and **the protocols look damn good**. :-)
