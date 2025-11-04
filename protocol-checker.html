@@ -223,13 +223,13 @@ document.addEventListener("DOMContentLoaded", function () {
   // ---- core lookup flow
   function runLookup(queryHash) {
     if (!inputEl || !resultsEl) {
-      console.error("Checker error: required DOM nodes not found.");
+      console.error("Error: Required DOM nodes not found.");
       return;
     }
 
-    if (!queryHash) {
+    if (!queryHash || queryHash.length < 7) {
       inputEl.textContent = "No commit hash provided.";
-      resultsEl.innerHTML = "<p>Please enter a commit hash (first 7+ characters) above.</p>";
+      resultsEl.innerHTML = "";
       return;
     }
 
@@ -270,13 +270,13 @@ document.addEventListener("DOMContentLoaded", function () {
       }
 
       // record = { hash, id, time }
-      const sopId = record.id;
+      const documentId = record.id;
       const snapshotTimeMs = parseDateToMs(record.time);
       
-      const latestLink = `/assets/protocols/pdf/${sopId}.pdf`
+      const latestLink = `/assets/protocols/pdf/${documentId}.pdf`
 
       // 2. find changelog for that SOP
-      const changelog = historyData.find(item => item.id === sopId);
+      const changelog = historyData.find(item => item.id === documentId);
 
       let newerChanges = [];
       if (changelog && changelog.changes && snapshotTimeMs !== null) {
@@ -315,6 +315,9 @@ document.addEventListener("DOMContentLoaded", function () {
 
         statusHtml = `
           <p><strong>Status:</strong> <span class="status-badge status-outdated">Outdated</span></p>
+          <p><a href="${latestLink}" target="_blank" rel="noopener">
+              Open the most recent version of ${documentId}
+            </a></p>
           <p>We have ${newerChanges.length} recorded update${newerChanges.length > 1 ? "s" : ""} after ${snapshotDateStr}:</p>
           <ul class="updates-list">${listItems}</ul>
         `;
@@ -324,14 +327,9 @@ document.addEventListener("DOMContentLoaded", function () {
       inputEl.textContent = "";
       resultsEl.innerHTML = `
         <section class="check-result">
-          <h2>${sopId}</h2>
+          <h2>${documentId}</h2>
           <div><strong>Commit:</strong> <code>${record.hash}</code></div>
           <div><strong>Snapshot time:</strong> ${snapshotDateStr}</div>
-          <div>
-            <a href="${latestLink}" target="_blank" rel="noopener">
-              Open the most recent version of ${sopId}
-            </a>
-          </div>
           
           <div class="result-status">
             ${statusHtml}
