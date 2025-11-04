@@ -6,14 +6,54 @@
   visibility: "public"
   keywords:
     - domain: data management
-    - level: getting started
-    - topic: version control
-    - topic: reproducible research
+    - level: introductory
     - technique: Git
     - technique: GitHub
-    - workflow: repository management
-  current_commit_hash: "f9a8bb4"
-  current_commit_time: "2025-11-01T16:30:41-04:00"
+    - technique: version control
+    - topic: reproducible research
+    - topic: data management
+    - workflow: documentation
+  current_commit_hash: "c516bc1"
+  current_commit_time: "2025-11-03T20:31:53-05:00"
   abstract: "Git is a source control management tool that tracks changes to files over time and allows users to manage and document the evolution of a project. GitHub is a web-based platform th…"
-  pdf: "sop_0101-v1-github.pdf"
+  pdf: "sop_0101-v1-github"
+
+- id: "SOP0001"
+  version: "1"
+  license: "CC-BY-SA-4.0"
+  open_license: true
+  title: "Isolation of nuclei from tissue culture cells"
+  visibility: "public"
+  keywords:
+    - domain: cell biology
+    - level: basic
+    - technique: cell lysis
+    - technique: nuclear isolation
+    - topic: chromatin biology
+    - topic: sub-cellular fractionation
+    - workflow: sample preparation
+  current_commit_hash: "646be6f"
+  current_commit_time: "2025-11-03T21:10:17-05:00"
+  abstract: "The nucleus is the largest and densest organelle of a mammalian cell. It can be easily purified by sedimentation in aqueous and non-aqueous solutions. The purified nuclei can be di…"
+  pdf: "sop_0001-v1-isolation_nuclei"
+
+- id: "SOP0030"
+  version: "1"
+  license: "CC-BY-SA-4.0"
+  open_license: true
+  title: "Making reagents and buffers"
+  visibility: "public"
+  keywords:
+    - domain: core skills
+    - level: introductory
+    - technique: buffer preparation
+    - technique: pH adjustment
+    - technique: sample storage
+    - topic: reagent preparation
+    - topic: solution handling
+    - workflow: sample preparation
+  current_commit_hash: "532805a"
+  current_commit_time: "2025-11-03T21:18:15-05:00"
+  abstract: "Making buffers and reagents is one of the most essential skills in laboratory work. While not difficult, it requires care and precision. At first glance it may seem that all you ha…"
+  pdf: "sop_0030-v1-preparation_reagents"
 
