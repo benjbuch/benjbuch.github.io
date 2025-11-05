@@ -45,12 +45,12 @@
         data-technique="{{ attr_technique }}"
         data-workflow="{{ attr_workflow }}"
         title="{{ item.abstract | escape }}">
-        <td data-value="{{ item.id }}">{{ item.id }}</td>
+        <td data-value="{{ item.id }}">{{ item.id }}.{{ item.version }}</td>
         <td data-value="{{ item.title | escape }}">
           {%- if is_share and has_file > 0 -%}
-            <a href="{{ pdf_path }}">{{ item.title }} (Version {{ item.version }})</a>
+            <a href="{{ pdf_path }}">{{ item.title }}</a>
           {%- else -%}
-            {{ item.title }} (Version {{ item.version }})
+            {{ item.title }}
           {%- endif -%}
         </td>
         <td data-value="{{ attr_domain | escape }}">{{ attr_domain | capitalize }}</td>
