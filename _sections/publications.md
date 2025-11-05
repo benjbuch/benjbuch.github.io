@@ -1,9 +1,8 @@
 ---
-title: Publications
 anchor: publications
-weight: 02
 layout: card
-include_articles_ld: true
+title: Publications
+weight: 02
 ---
 
 <!-- Begin JSON-LD -->
