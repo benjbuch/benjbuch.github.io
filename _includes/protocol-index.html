@@ -1,3 +1,14 @@
+<div class="line-split">
+  <input
+    id="protocol-table-query"
+    type="search"
+    placeholder="Search protocols (use '+' or '&' to combine terms)"
+    autocomplete="off" autocorrect="off" autocapitalize="off"
+    spellcheck="false"
+    style="flex:1 1 auto;"
+>
+</div>
+
 <div class="scrollable-table">
   <table class="protocol-table sortable-protocol-table">
     <thead>
@@ -15,34 +26,39 @@
     <tbody>
     {% assign sorted = site.data.protocols.summary | sort: "id" %}
     {% for item in sorted %}
-      {%- assign pdf_path = '/assets/protocols/pdf/' | append: item.pdf | append: '.pdf' -%}
-      {%- assign is_allowed = item.visibility == 'public' or item.visibility == 'draft' -%}
-      {%- assign found_pdf = site.static_files
+      {%- assign is_share = item.visibility == 'public' or item.visibility == 'draft' -%}
+      {%- assign pdf_path = '/assets/protocols/pdf/' | append: item.filename | append: '.pdf' -%}
+      {%- assign has_file = site.static_files
             | where: 'path', pdf_path
             | size
       -%}
-      {% assign domains = "" | split: "" %}
-      {% for kw in item.keywords %}
-        {% if kw.domain %}
-          {% assign domains = domains | push: kw.domain %}
-        {% endif %}
-      {% endfor %}
-      {% assign domains = domains | join: ", " %}
-      <tr title="{{ item.abstract | escape }}">
+      {% assign kw = item.keywords %}
+      {% assign attr_domain = kw.domain | join: ';' | downcase %}
+      {% assign attr_level  = kw.level  | join: ';' | downcase %}
+      {% assign attr_topic  = kw.topic  | join: ';' | downcase %}
+      {% assign attr_technique  = kw.technique  | join: ';' | downcase %}
+      {% assign attr_workflow   = kw.workflow   | join: ';' | downcase %}
+      <tr 
+        data-domain="{{ attr_domain }}"
+        data-level="{{ attr_level }}"
+        data-topic="{{ attr_topic }}"
+        data-technique="{{ attr_technique }}"
+        data-workflow="{{ attr_workflow }}"
+        title="{{ item.abstract | escape }}">
         <td data-value="{{ item.id }}">{{ item.id }}</td>
         <td data-value="{{ item.title | escape }}">
-          {%- if is_allowed and found_pdf > 0 -%}
+          {%- if is_share and has_file > 0 -%}
             <a href="{{ pdf_path }}">{{ item.title }} (Version {{ item.version }})</a>
           {%- else -%}
             {{ item.title }} (Version {{ item.version }})
           {%- endif -%}
         </td>
-        <td data-value="{{ domains | escape }}">{{ domains | capitalize }}</td>
+        <td data-value="{{ attr_domain | escape }}">{{ attr_domain | capitalize }}</td>
         <td data-value="{{ item.visibility | escape }}">{{ item.visibility | capitalize }}</td>
         <td data-value="{{ item.current_commit_time | escape }}">{{ item.current_commit_time | date: "%Y-%m-%d" }}</td>
         {%- comment -%}
-        <td data-value="{%- if is_allowed and found_pdf > 0 -%}1{%- else -%}0{%- endif -%}">
-          {%- if is_allowed and found_pdf > 0 -%}
+        <td data-value="{%- if is_share and has_file > 0 -%}1{%- else -%}0{%- endif -%}">
+          {%- if is_share and has_file > 0 -%}
             <a href="{{ pdf_path }}" download>PDF</a>
           {%- else -%}
             <em>—</em>
@@ -60,6 +76,8 @@
 <div class="line-split">
   <span class="footnote">🚧 <em>This table is still growing</em></span>
   <span class="footnote">
+    <a href="https://buymeacoffee.com/benjbuch" rel="noopener">Buy me a coffee</a>
+    ·
     <!-- <a href="{{ page.github }}" target="_blank" rel="noopener">View project on GitHub</a> -->
     <span class="muted">GitHub: <em>(not yet public)</em></span>
   </span>
