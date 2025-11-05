@@ -1,0 +1,399 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+
+<!-- Begin Jekyll SEO tag v2.8.0 -->
+<title>Protocol version check | Benjamin C. Buchmuller</title>
+<meta name="generator" content="Jekyll v3.10.0" />
+<meta property="og:title" content="Protocol version check" />
+<meta name="author" content="Benjamin Buchmuller" />
+<meta property="og:locale" content="en" />
+<meta name="description" content="Personal research homepage" />
+<meta property="og:description" content="Personal research homepage" />
+<link rel="canonical" href="https://benjbuch.github.io/check/" />
+<meta property="og:url" content="https://benjbuch.github.io/check/" />
+<meta property="og:site_name" content="Benjamin C. Buchmuller" />
+<meta property="og:type" content="website" />
+<meta name="twitter:card" content="summary" />
+<meta property="twitter:title" content="Protocol version check" />
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"WebPage","author":{"@type":"Person","name":"Benjamin Buchmuller"},"description":"Personal research homepage","headline":"Protocol version check","url":"https://benjbuch.github.io/check/"}</script>
+<!-- End Jekyll SEO tag -->
+
+<!-- Preload main fonts -->
+<link rel="preload" href="/assets/fonts/pagella/texgyrepagella-regular.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="/assets/fonts/heros/texgyreheros-regular.woff2" as="font" type="font/woff2" crossorigin>
+<!-- Stylesheet -->
+<link rel="stylesheet" href="/assets/css/style.css">
+<!-- Favicon -->
+<link rel="icon" type="image/png" sizes="32x32" href="/assets/img/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/assets/img/favicon-16x16.png">
+<link rel="apple-touch-icon" sizes="180x180" href="/assets/img/apple-touch-icon.png">
+
+</head>
+<body>
+	<header>
+	<nav class="nav" aria-label="Primary">
+		<div class="brand">Benjamin C. Buchmuller</div>
+		<button class="burger" aria-label="Toggle menu" aria-expanded="false">☰</button>
+		<div class="menu" id="menu"><a href="/#about">About me</a><a href="/#research">Research</a><a href="/#publications">Publications</a><a href="/#protocols">Protocols</a><a href="/projects/">Projects</a>
+		</div>
+	</nav>
+</header>
+
+
+
+	<main id="content">
+		<div class="checker">
+  <h1>Protocol version check</h1>
+
+  <!-- Query form -->
+  <form id="checker-form" class="checker-form">
+    <label for="hash-input">Enter 7+ characters of the commit hash printed on your PDF:</label>
+    <div class="row">
+      <input id="hash-input" name="q" type="text" maxlength="64" inputmode="latin" autocomplete="off" placeholder="e.g. 5ca0a99" />
+      <button type="submit">Check</button>
+    </div>
+  </form>
+
+  <!-- Status line -->
+  <p id="input-hash"></p>
+
+  <!-- Results -->
+  <div id="results"><p>Waiting for input…</p></div>
+</div>
+
+<style>
+.checker {
+  max-width: 60ch;
+  margin: 2rem auto;
+  line-height: 1.5;
+  font-size: 0.95rem;
+}
+.checker h1 {
+  font-size: 1.25rem;
+  margin-bottom: 0.75rem;
+}
+
+/* form styling */
+.checker-form {
+  margin-bottom: 1rem;
+  font-size: 0.9rem;
+  line-height: 1.4;
+}
+.checker-form label {
+  display: block;
+  margin-bottom: 0.4rem;
+  font-weight: 500;
+}
+.checker-form .row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+.checker-form input[type="text"] {
+  flex: 1 1 12ch;
+  min-width: 12ch;
+  max-width: 20ch;
+  font-family: monospace;
+  font-size: 0.9rem;
+  line-height: 1.2rem;
+  padding: 0.4rem 0.5rem;
+  border: 1px solid #bbb;
+  border-radius: 0.4rem;
+}
+.checker-form button {
+  flex: 0 0 auto;
+  border: 1px solid #888;
+  border-radius: 0.4rem;
+  background: #eee;
+  font-size: 0.9rem;
+  line-height: 1.2rem;
+  padding: 0.4rem 0.75rem;
+  cursor: pointer;
+}
+.checker-form button:hover {
+  background: #e2e2e2;
+}
+
+/* results styling */
+.check-result {
+  border: 1px solid #ccc;
+  border-radius: 0.5rem;
+  padding: 1rem;
+  margin: 1rem 0;
+  background: #fafafa;
+  font-size: 0.9rem;
+  line-height: 1.4;
+  display: flex !important;
+  flex-direction: column !important;
+}
+
+.check-result > div,
+.check-result > h2,
+.check-result > p {
+  display: block !important;
+  width: 100% !important;
+  margin: 0 0 0.5rem 0 !important;
+}
+
+.check-result h2 {
+  font-size: 1rem;
+  font-weight: 600;
+  margin: 0 0 0.75rem 0 !important;
+}
+
+.check-result strong {
+  display: inline !important;
+  font-weight: 600;
+}
+
+.check-result code {
+  display: inline !important;
+}
+
+/* Status section */
+.result-status {
+  padding-top: 0.75rem;
+  margin-top: 0.75rem;
+  border-top: 1px solid #ddd;
+}
+
+.result-status p {
+  margin: 0 0 0.5rem;
+}
+
+/* Status badges */
+.status-badge {
+  display: inline-block;
+  padding: 0.15rem 0.5rem;
+  border-radius: 0.25rem;
+  font-size: 0.85rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.02em;
+}
+
+.status-current {
+  background: #d1fae5;
+  color: #065f46;
+  border: 1px solid #6ee7b7;
+}
+
+.status-outdated {
+  background: #fef3c7;
+  color: #92400e;
+  border: 1px solid #fcd34d;
+}
+
+/* Updates list - only used when there are actual updates */
+.updates-list {
+  margin: 0.75rem 0 0 0;
+  padding-left: 1.5rem;
+  list-style-type: disc;
+}
+
+.updates-list li {
+  margin-bottom: 0.5rem;
+}
+
+.updates-list li:last-child {
+  margin-bottom: 0;
+}
+
+.check-result code {
+  font-family: monospace;
+  font-size: 0.85rem;
+  background: #f0f0f0;
+  padding: 0.1rem 0.3rem;
+  border-radius: 0.2rem;
+  word-break: break-all;
+}
+</style>
+
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+  // Grab DOM elements
+  const formEl = document.getElementById('checker-form');
+  const inputField = document.getElementById('hash-input');
+  const inputEl = document.getElementById('input-hash');
+  const resultsEl = document.getElementById('results');
+
+  // Parse query param (?q=...)
+  const params = new URLSearchParams(window.location.search);
+  const initialRaw = (params.get("q") || "");
+  const initialHash = initialRaw.trim().slice(0, 64);
+
+  // Pre-fill the box if URL already has ?q
+  if (inputField && initialHash) {
+    inputField.value = initialHash;
+  }
+
+  // Attach form submit handler (so user can type/paste a hash)
+  if (formEl) {
+    formEl.addEventListener("submit", function (evt) {
+      evt.preventDefault();
+      const newHash = (inputField.value || "").trim();
+
+      // Update the URL without navigating
+      const url = new URL(window.location.href);
+      if (newHash) {
+        url.searchParams.set("q", newHash);
+      } else {
+        url.searchParams.delete("q");
+      }
+      window.history.replaceState(null, "", url.toString());
+
+      runLookup(newHash);
+    });
+  }
+
+  // Run lookup immediately if we came in with ?q=...
+  runLookup(initialHash);
+
+  // ---- helper: parse date into ms for comparison
+  function parseDateToMs(str) {
+    // Handles both full timestamps ("2025-10-27T21:43:34-04:00")
+    // and just dates ("2025-10-25")
+    const d = new Date(str);
+    if (isNaN(d)) return null;
+    return d.getTime();
+  }
+
+  // ---- core lookup flow
+  function runLookup(queryHash) {
+    if (!inputEl || !resultsEl) {
+      console.error("Error: Required DOM nodes not found.");
+      return;
+    }
+
+    if (!queryHash || queryHash.length < 7) {
+      inputEl.textContent = "No commit hash provided.";
+      resultsEl.innerHTML = "";
+      return;
+    }
+
+    inputEl.textContent = `Looking for commit "${queryHash}"…`;
+
+    const base = "";
+    const indexURL = base + "/assets/protocols/index.json";
+    const historyURL = base + "/assets/protocols/history.json";
+
+    Promise.all([
+      fetch(indexURL).then(r => {
+        if (!r.ok) throw new Error("index.json HTTP " + r.status);
+        return r.json();
+      }),
+      fetch(historyURL).then(r => {
+        if (!r.ok) throw new Error("history.json HTTP " + r.status);
+        return r.json();
+      })
+    ])
+    .then(([indexData, historyData]) => {
+      // 1. normalize query to lowercase and match by prefix
+      const qLower = queryHash.toLowerCase();
+
+      const record = indexData.find(entry => {
+        if (!entry.hash) return false;
+        const eLower = String(entry.hash).toLowerCase();
+        return eLower.startsWith(qLower);
+      });
+
+      if (!record) {
+        inputEl.textContent = "";
+        resultsEl.innerHTML = `
+          <div class="check-result">
+            <p><strong>Error:</strong> Unrecognized commit <code>${queryHash}</code>.</p>
+            <p>This PDF may be outdated or not generated from this site.</p>
+          </div>`;
+        return;
+      }
+
+      // record = { hash, id, time }
+      const documentId = record.id;
+      const snapshotTimeMs = parseDateToMs(record.time);
+      
+      const latestLink = `/assets/protocols/pdf/${documentId}.pdf`
+
+      // 2. find changelog for that SOP
+      const changelog = historyData.find(item => item.id === documentId);
+
+      let newerChanges = [];
+      if (changelog && changelog.changes && snapshotTimeMs !== null) {
+        // keep ALL changes strictly after snapshot
+        newerChanges = changelog.changes.filter(change => {
+          const changeMs = parseDateToMs(change.time);
+          return changeMs !== null && changeMs > snapshotTimeMs;
+        });
+
+        // sort ascending (oldest -> newest), so user sees full progression
+        newerChanges.sort(
+          (a, b) => parseDateToMs(a.time) - parseDateToMs(b.time)
+        );
+      }
+
+      // 3. pretty-print snapshot date
+      let snapshotDateStr = "";
+      if (snapshotTimeMs !== null) {
+        const d = new Date(snapshotTimeMs);
+        snapshotDateStr = d.toISOString().slice(0,10); // YYYY-MM-DD
+      } else {
+        snapshotDateStr = record.time;
+      }
+
+      // 4. build status section
+      let statusHtml = "";
+      if (newerChanges.length === 0) {
+        statusHtml = `
+          <p><strong>Status:</strong> <span class="status-badge status-current">Current</span></p>
+          <p>No recorded changes after ${snapshotDateStr}.</p>
+        `;
+      } else {
+        const listItems = newerChanges.map(ch => {
+          return `<li><strong>${ch.time}:</strong> ${ch.text}</li>`;
+        }).join("");
+
+        statusHtml = `
+          <p><strong>Status:</strong> <span class="status-badge status-outdated">Outdated</span></p>
+          <p><a href="${latestLink}" target="_blank" rel="noopener">
+              Open the most recent version of ${documentId}
+            </a></p>
+          <p>We have ${newerChanges.length} recorded update${newerChanges.length > 1 ? "s" : ""} after ${snapshotDateStr}:</p>
+          <ul class="updates-list">${listItems}</ul>
+        `;
+      }
+
+      // 5. render block with clean structure
+      inputEl.textContent = "";
+      resultsEl.innerHTML = `
+        <section class="check-result">
+          <h2>${documentId}</h2>
+          <div><strong>Commit:</strong> <code>${record.hash}</code></div>
+          <div><strong>Snapshot time:</strong> ${snapshotDateStr}</div>
+          
+          <div class="result-status">
+            ${statusHtml}
+          </div>
+        </section>
+      `;
+    })
+    .catch(err => {
+      console.error("Lookup error:", err);
+      inputEl.textContent = "";
+      resultsEl.innerHTML = "<div class='check-result'><p><strong>Error:</strong> Could not load protocol index.</p></div>";
+    });
+  }
+});
+</script>
+
+	</main>
+
+	<footer>
+	<small>© <span id="year"></span> Benjamin Buchmuller · Built with Jekyll on GitHub Pages</small>
+</footer>
+
+	<script src="/assets/js/script.js" defer></script>
+</body>
+</html>
