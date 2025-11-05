@@ -19,19 +19,19 @@
 }
 
 .protocol-table th::after {
-  content: "▼";
+  content: "";
   margin-left:0.4rem;
   font-size: 0.7rem;
 }
 
 .protocol-table th.sorted-asc::after {
-  content: "▲";
+  content: "▼";
   margin-left: 0.4rem;
   font-size: 0.7rem;
 }
 
 .protocol-table th.sorted-desc::after {
-  content: "▼";
+  content: "▲";
   margin-left: 0.4rem;
   font-size: 0.7rem;
 }
