@@ -297,8 +297,9 @@ input[type="search"]:focus {
 }
 
 .scrollable-table {
+  max-height: 50vh;
   // This is about 10 table rows
-  max-height: 25em;
+  min-height: 25em;
   overflow-y: auto;
   border: 1px solid var(--hover);
   border-radius: 4px;
