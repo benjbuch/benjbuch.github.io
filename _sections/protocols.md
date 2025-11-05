@@ -6,21 +6,8 @@ layout: card
 github: https://github.com/benjbuch/lab-protocols.git
 ---
 
-I've become interested in tackling a common lab problem: **knowing whether your printed protocol is still current** and what to do about all the scribbled notes. I fancied version control could make that easier. So I made these. Give them a try:
+Good protocols evolve over time, but printed copies often don't. Here, I share [version-controlled write-ups](/projects/protocols-about) to help track changes. You can [check whether your printed copy is current](/check), or just browse for the latest method:
 
 {::nomarkdown}
 {% include protocol-index.html %}
 {:/nomarkdown}
-
-### Using these protocols
-
-- **Download** — Click on any protocol above to get the current PDF
-- **Reference** — Use the stable identifier (e.g., `SOP0101-v1`) in your notes
-- **Verify** — [Check](/check) if your printed copy is still up to date
-
-### Contributing
-
-- **Want to help build?** [Learn how these documents are made](/projects/protocols-about)
-- **Found an error?** [Open an issue on GitHub to let me know *(coming soon)*]({{ page.github }}/issues)
-- **Want to say thanks?** [Buy me a coffee](https://buymeacoffee.com/benjbuch)
-
