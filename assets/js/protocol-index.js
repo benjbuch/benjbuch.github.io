@@ -28,7 +28,7 @@
     headers.forEach((th, colIndex) => {
       th.style.cursor = "pointer";
       th.addEventListener("click", () => {
-        const isNumeric = ["sop", "pdf"].includes(th.getAttribute("data-sort"));
+        // const isNumeric = ["pdf"].includes(th.getAttribute("data-sort"));
         
         if (lastSortedCol === colIndex) {
           lastDirection = -lastDirection;
