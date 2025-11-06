@@ -1,3 +1,49 @@
+- abstract: '5-Methylcytosine (mC) and 5-hydroxymethylcytosine (hmC) are
+    the main epigenetic modifications of mammalian DNA, and play crucial
+    roles in cell differentiation, development, and tumorigenesis. Both
+    modifications co-exist with unmodified cytosine in palindromic CpG dyads
+    in different symmetric and asymmetric combinations across the two DNA
+    strands, each having unique regulatory potential. To facilitate investigating
+    the individual functions of such dyad modifications, we report HM-DyadCap.
+    This method employs an evolved methyl-CpG-binding domain (MECP2 HM)
+    for the direct capture and sequencing of DNA fragments containing the
+    CpG dyad hmC/mC. Binding studies reveal a high discrimination of MECP2
+    HM against off-target dinucleotides. We conduct comparative mapping
+    experiments for mESC genomes with HM-DyadCap, standard MethylCap employing
+    wild type MECP2, as well as MeDIP and hMeDIP protocols. We find that
+    MECP2 HM is blocked by hmC glucosylation, and conduct control enrichments
+    with glucosylated genomes that indicate highly selective enrichment
+    of hmC/mC dyads by MECP2 HM. Metagene profiles correlate hmC/mC marks
+    with actively transcribed genes, and reveal global enrichment in gene
+    bodies as well as depletion at transcription start sites. We anticipate
+    that HM-DyadCap will enable effective enrichment and mapping of hmC/mC
+    marks with broad applicability for unravelling the function of this
+    dyad in chromatin biology and cancer.Competing Interest StatementThe
+    authors declare the following competing financial interest: TU Dortmund
+    University has filed a patent application for the engineered MBD employed
+    in the present study (PCT/EP2020/087979, pending). No further competing
+    financial interests have been declared.Deutsche Forschungsgemeinschaft,
+    SU726/10-1Ministry of Culture and Science of the State of Northrhine
+    Westphalia, Netzwerke 2021, CANTAR, NRW Returning Scholars ProgramEuropean
+    Research Council, https://ror.org/0472cxd90, 101100794 COMBICODE'
+  audience: specialist
+  authors: Engelhard, Lena and Schiller, Damian and Zambrano-Mila, Marlon
+    S. and Keliuotyte, Kotryna and Buchmuller, Benjamin and Tiwari, Shashank
+    and Imig, Jochen and Simeone, Angela and Schröter, Christian and Becker,
+    Sidney and Summerer, Daniel
+  doi: 10.1101/2025.10.29.685270
+  first_authors: '2'
+  group: preprint
+  id: Engelhard2025.10.29.685270
+  journal: bioRxiv
+  keywords: DNA Modifications, Genomics
+  priority: high
+  publisher: Cold Spring Harbor Laboratory
+  title: HM-DyadCap – Capture and Mapping of 5-Hydroxymethylcytosine/5-Methylcytosine
+    CpG Dyads in Mammalian DNA
+  type: article
+  url: https://www.biorxiv.org/content/early/2025/10/30/2025.10.29.685270
+  year: 2025
 - abstract: Mammalian genomes are regulated by epigenetic cytosine (C) modifications
     in palindromic CpG dyads. Including canonical cytosine 5‐methylation
     (mC), a total of four different 5‐modifications can theoretically co‐exist
