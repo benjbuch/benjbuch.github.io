@@ -1,4 +1,6 @@
-# Makefile for website with artifact management and deployment
+include ../artifacts/common.mk
+.DEFAULT_GOAL := help  # GNU make
+.MAIN: help            # BSD make
 
 MAKEFLAGS += --silent
 
@@ -13,54 +15,6 @@ S_DEPLOY  := scripts/publish_protocols.sh
 # --------------------------------------------------------------------
 REMOTE := origin
 SOURCE_BRANCH := $(shell git rev-parse --abbrev-ref HEAD)
-
-# --------------------------------------------------------------------
-# Colored, aligned logging
-# --------------------------------------------------------------------
-YELLOW  := \033[1;33m
-GREEN   := \033[1;32m
-RED     := \033[1;31m
-BLUE    := \033[1;34m
-BOLD    := \033[1m
-RESET   := \033[0m
-
-INFO = printf "$(YELLOW)[INFO] $(RESET)  %s\n"
-OK   = printf "$(GREEN)[OK]   $(RESET)  %s\n"
-ERR  = printf "$(RED)[ERROR]$(RESET)  %s\n"
-WARN = printf "$(BLUE)[WARN] $(RESET)  %s\n"
-
-COLORIZE_TAGS = awk '\
-  {gsub(/\[OK\]/,      "$(GREEN)[OK]$(RESET)");} \
-  {gsub(/\[UPDATE\]/,  "$(YELLOW)[UPDATE]$(RESET)");} \
-  {gsub(/\[CREATE\]/,  "$(YELLOW)[CREATE]$(RESET)");} \
-  {gsub(/\[MISSING\]/, "$(RED)[MISSING]$(RESET)");} \
-  {gsub(/\[INFO\]/,    "$(YELLOW)[INFO]$(RESET)");} \
-  {gsub(/\[ERROR\]/,   "$(RED)[ERROR]$(RESET)");} \
-  {print} \
-'
-
-HDR = printf "\n$(BLUE)%s$(RESET)\n"
-KV  = printf "  %-14s %s\n"
-
-# Boolean flag: prints "enabled"/"disabled" based on common truthy values
-define FLAG_BOOL
-	@$(KV) "$(1):" "$(if $(filter true 1 yes on,$($(1))),enabled,disabled)"
-endef
-
-# Enum/string flag: prints the raw value (if empty, prints "—")
-define FLAG_ENUM
-	@$(KV) "$(1):" "$(if $($(1)),$($(1)),—)"
-endef
-
-# Git working tree helper
-define PRINT_GIT_STATUS
-	@$(HDR) "Git working tree"
-	@if [ -z "$$(git status --porcelain 2>/dev/null)" ]; then \
-		$(OK) "Working tree clean"; \
-	else \
-		git status --short; \
-	fi
-endef
 
 # --------------------------------------------------------------------
 # Help
@@ -105,35 +59,6 @@ all: update deploy
 # --------------------------------------------------------------------
 .PHONY: update
 update: pull-artifacts commit-changes
-
-.PHONY: pull-artifacts
-pull-artifacts:
-	@if [ -f artifacts.yaml ]; then \
-		$(INFO) "Pulling artifacts..."; \
-		$(ARTIFACTS) pull; \
-	else \
-		$(WARN) "No artifacts.yaml found, skipping pull"; \
-	fi
-
-.PHONY: commit-changes
-commit-changes:
-	@$(INFO) "Checking for changes to tracked files..."
-	@git add .
-	@if git diff --cached --quiet; then \
-		$(INFO) "No changes to commit"; \
-	else \
-		git commit -m "Update data from artifacts ($$(date -Iseconds))" && \
-		$(OK) "Committed changes to $(SOURCE_BRANCH)"; \
-	fi
-
-.PHONY: artifacts-status
-artifacts-status:
-	@$(HDR) "Artifact status"
-	@if [ -f artifacts.yaml ]; then \
-		$(ARTIFACTS) status | $(COLORIZE_TAGS); \
-	else \
-		$(WARN) "No 'artifacts.yaml' found"; \
-	fi
 
 # --------------------------------------------------------------------
 # Deploy: Build and publish site
