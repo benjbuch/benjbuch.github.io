@@ -3,14 +3,10 @@
 MAKEFLAGS += --silent
 
 # --------------------------------------------------------------------
-# Artifact manager
+# Scripts
 # --------------------------------------------------------------------
 ARTIFACTS := python artifacts.py
-
-# --------------------------------------------------------------------
-# Deployment script
-# --------------------------------------------------------------------
-DEPLOY_SCRIPT := scripts/publish_protocols.sh
+S_DEPLOY  := scripts/publish_protocols.sh
 
 # --------------------------------------------------------------------
 # Git settings
@@ -25,6 +21,7 @@ YELLOW  := \033[1;33m
 GREEN   := \033[1;32m
 RED     := \033[1;31m
 BLUE    := \033[1;34m
+BOLD    := \033[1m
 RESET   := \033[0m
 
 INFO = printf "$(YELLOW)[INFO] $(RESET)  %s\n"
@@ -32,8 +29,71 @@ OK   = printf "$(GREEN)[OK]   $(RESET)  %s\n"
 ERR  = printf "$(RED)[ERROR]$(RESET)  %s\n"
 WARN = printf "$(BLUE)[WARN] $(RESET)  %s\n"
 
+COLORIZE_TAGS = awk '\
+  {gsub(/\[OK\]/,     "$(GREEN)[OK]$(RESET)");} \
+  {gsub(/\[UPDATE\]/, "$(YELLOW)[UPDATE]$(RESET)");} \
+  {gsub(/\[INFO\]/,   "$(YELLOW)[INFO]$(RESET)");} \
+  {gsub(/\[ERROR\]/,  "$(RED)[ERROR]$(RESET)");} \
+  {print} \
+'
+
+HDR = printf "\n$(BLUE)%s$(RESET)\n"
+KV  = printf "  %-14s %s\n"
+
+# Boolean flag: prints "enabled"/"disabled" based on common truthy values
+define FLAG_BOOL
+	@$(KV) "$(1):" "$(if $(filter true 1 yes on,$($(1))),enabled,disabled)"
+endef
+
+# Enum/string flag: prints the raw value (if empty, prints "—")
+define FLAG_ENUM
+	@$(KV) "$(1):" "$(if $($(1)),$($(1)),—)"
+endef
+
+# Git working tree helper
+define PRINT_GIT_STATUS
+	@$(HDR) "Git working tree"
+	@if [ -z "$$(git status --porcelain 2>/dev/null)" ]; then \
+		$(OK) "Working tree clean"; \
+	else \
+		git status --short; \
+	fi
+endef
+
 # --------------------------------------------------------------------
-# Default: update artifacts and deploy
+# Help
+# --------------------------------------------------------------------
+.PHONY: help
+help:
+	@printf "\n$(BOLD)Website Publishing Pipeline (GitHub Pages)$(RESET)\n\n"
+	@printf "  Update site data and publish to GitHub Pages.\n\n"
+	@printf "$(BLUE)Targets$(RESET):\n"
+	@printf "  %-20s %s\n" "all"            "Update artifacts and deploy site"
+	@printf "  %-20s %s\n" "publish"        "Alias for 'all'"
+	@printf "\n"
+	@printf "  %-20s %s\n" "update"         "Pull artifacts and commit changes"
+	@printf "  %-20s %s\n" "commit-changes" "Commit tracked artifact changes"
+	@printf "\n"
+	@printf "  %-20s %s\n" "deploy"         "Build and deploy site to 'gh-pages'"
+	@printf "  %-20s %s\n" "deploy-dry"     "Deploy with '--dry-run'"
+	@printf "  %-20s %s\n" "deploy-force"   "Deploy with '--force-publish'"
+	@printf "\n"
+	@printf "  %-20s %s\n" "serve"          "Start Jekyll development server"
+	@printf "  %-20s %s\n" "build"          "Build Jekyll site locally"
+	@printf "\n"
+	@printf "  %-20s %s\n" "status"         "Show artifact and git status"
+	@printf "  %-20s %s\n" "help"           "Show this message"
+	@printf "\n$(BLUE)Artifact management$(RESET):\n"
+	@printf "  %-20s %s\n" "pull-artifacts" "Pull artifacts from shared directory"
+	@printf "  %-20s %s\n" "push-artifacts" "Push artifacts to shared directory"
+	@printf "  %-20s %s\n" "artifacts-status" "Show artifact status"
+	@printf "\n$(BLUE)Examples$(RESET):\n"
+	@printf "  make publish\n"
+	@printf "  make deploy-dry\n"
+	@printf "\n"
+
+# --------------------------------------------------------------------
+# All: Update artifacts and deploy
 # --------------------------------------------------------------------
 .PHONY: all
 all: update deploy
@@ -64,35 +124,44 @@ commit-changes:
 		$(OK) "Committed changes to $(SOURCE_BRANCH)"; \
 	fi
 
+.PHONY: artifacts-status
+artifacts-status:
+	@$(HDR) "Artifact status"
+	@if [ -f artifacts.yaml ]; then \
+		$(ARTIFACTS) status | $(COLORIZE_TAGS); \
+	else \
+		$(WARN) "No 'artifacts.yaml' found"; \
+	fi
+
 # --------------------------------------------------------------------
 # Deploy: Build and publish site
 # --------------------------------------------------------------------
 .PHONY: deploy
 deploy:
-	@if [ ! -f "$(DEPLOY_SCRIPT)" ]; then \
-		$(ERR) "Deploy script not found: $(DEPLOY_SCRIPT)"; \
+	@if [ ! -f "$(S_DEPLOY)" ]; then \
+		$(ERR) "Deploy script not found: $(S_DEPLOY)"; \
 		exit 1; \
 	fi
 	@$(INFO) "Running deployment script..."
-	@bash $(DEPLOY_SCRIPT)
+	@bash $(S_DEPLOY)
 
 .PHONY: deploy-dry
 deploy-dry:
-	@if [ ! -f "$(DEPLOY_SCRIPT)" ]; then \
-		$(ERR) "Deploy script not found: $(DEPLOY_SCRIPT)"; \
+	@if [ ! -f "$(S_DEPLOY)" ]; then \
+		$(ERR) "Deploy script not found: $(S_DEPLOY)"; \
 		exit 1; \
 	fi
 	@$(INFO) "Running deployment script (dry-run)..."
-	@bash $(DEPLOY_SCRIPT) --dry-run
+	@bash $(S_DEPLOY) --dry-run
 
 .PHONY: deploy-force
 deploy-force:
-	@if [ ! -f "$(DEPLOY_SCRIPT)" ]; then \
-		$(ERR) "Deploy script not found: $(DEPLOY_SCRIPT)"; \
+	@if [ ! -f "$(S_DEPLOY)" ]; then \
+		$(ERR) "Deploy script not found: $(S_DEPLOY)"; \
 		exit 1; \
 	fi
 	@$(INFO) "Running deployment script (force publish)..."
-	@bash $(DEPLOY_SCRIPT) --force-publish
+	@bash $(S_DEPLOY) --force-publish
 
 # --------------------------------------------------------------------
 # Publish: Full pipeline (update + deploy)
@@ -105,24 +174,15 @@ publish: update deploy
 # Status: Show artifact and git status
 # --------------------------------------------------------------------
 .PHONY: status
-status:
-	@$(INFO) "Repository status:"
-	@echo "  Branch:       $(SOURCE_BRANCH)"
-	@echo "  Remote:       $(REMOTE)"
+status: artifacts-status
+	@$(HDR) "Repository status"
+	@$(KV) "Branch:"  "$(SOURCE_BRANCH)"
+	@$(KV) "Remote:"  "$(REMOTE)"
+	$(PRINT_GIT_STATUS)
+	@$(HDR) "Flags"
+	$(call FLAG_BOOL,DRY_RUN)
+	$(call FLAG_BOOL,FORCE_PUBLISH)
 	@echo ""
-	@if [ -f artifacts.yaml ]; then \
-		$(INFO) "Artifact status:"; \
-		$(ARTIFACTS) status; \
-	else \
-		$(WARN) "No artifacts.yaml found"; \
-	fi
-	@echo ""
-	@$(INFO) "Git working tree:"
-	@if [ -z "$$(git status --porcelain)" ]; then \
-		$(OK) "Working tree clean"; \
-	else \
-		git status --short; \
-	fi
 
 # --------------------------------------------------------------------
 # Jekyll local development
@@ -137,28 +197,3 @@ build:
 	@$(INFO) "Building Jekyll site..."
 	@JEKYLL_ENV=production bundle exec jekyll build
 	@$(OK) "Built site to _site/"
-
-# --------------------------------------------------------------------
-# Help
-# --------------------------------------------------------------------
-.PHONY: help
-help:
-	@echo "Website deployment with artifact management"
-	@echo ""
-	@echo "Targets:"
-	@echo "  all (default)    Update artifacts and deploy site"
-	@echo "  publish          Same as 'all'"
-	@echo ""
-	@echo "  update           Pull artifacts and commit changes"
-	@echo "  pull-artifacts   Pull artifacts from shared directory"
-	@echo "  commit-changes   Commit tracked artifact changes"
-	@echo ""
-	@echo "  deploy           Build and deploy site to gh-pages"
-	@echo "  deploy-dry       Deploy with --dry-run flag"
-	@echo "  deploy-force     Deploy with --force-publish flag"
-	@echo ""
-	@echo "  serve            Start Jekyll development server"
-	@echo "  build            Build Jekyll site locally"
-	@echo ""
-	@echo "  status           Show artifact and git status"
-	@echo "  help             Show this message"
