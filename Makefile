@@ -30,10 +30,12 @@ ERR  = printf "$(RED)[ERROR]$(RESET)  %s\n"
 WARN = printf "$(BLUE)[WARN] $(RESET)  %s\n"
 
 COLORIZE_TAGS = awk '\
-  {gsub(/\[OK\]/,     "$(GREEN)[OK]$(RESET)");} \
-  {gsub(/\[UPDATE\]/, "$(YELLOW)[UPDATE]$(RESET)");} \
-  {gsub(/\[INFO\]/,   "$(YELLOW)[INFO]$(RESET)");} \
-  {gsub(/\[ERROR\]/,  "$(RED)[ERROR]$(RESET)");} \
+  {gsub(/\[OK\]/,      "$(GREEN)[OK]$(RESET)");} \
+  {gsub(/\[UPDATE\]/,  "$(YELLOW)[UPDATE]$(RESET)");} \
+  {gsub(/\[CREATE\]/,  "$(YELLOW)[CREATE]$(RESET)");} \
+  {gsub(/\[MISSING\]/, "$(RED)[MISSING]$(RESET)");} \
+  {gsub(/\[INFO\]/,    "$(YELLOW)[INFO]$(RESET)");} \
+  {gsub(/\[ERROR\]/,   "$(RED)[ERROR]$(RESET)");} \
   {print} \
 '
 
