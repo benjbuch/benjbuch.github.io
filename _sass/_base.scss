@@ -312,14 +312,14 @@ footer {
 // ============================================================================
 
 .callout {
-  padding: var(--pad-l);
-  margin: 1.5rem 0;
-  border-radius: 0 #{$round-m} #{$round-m} 0;
-  font-size: 0.95rem;
+  padding: 0 var(--pad-m);
+  margin: var(--pad-l) -3px;
+  border-radius: 0 #{$round-s} #{$round-s} 0;
+  font-size: 0.9rem;
 
   .label {
     font-family: var(--font-mono);
-    font-size: 0.7rem;
+    font-size: 0.75rem;
     font-weight: 700;
     text-transform: uppercase;
     letter-spacing: 0.06em;
@@ -332,6 +332,7 @@ footer {
   @extend .callout;
   background: var(--accent-gold-a);
   border-left: 3px solid var(--accent-gold);
+  color: var(--accent-gold);
   .label { color: var(--accent-gold); }
 }
 
@@ -339,6 +340,7 @@ footer {
   @extend .callout;
   background: var(--accent-blue-a);
   border-left: 3px solid var(--accent-blue);
+  color: var(--accent-blue);
   .label { color: var(--accent-blue); }
 }
 
@@ -346,6 +348,7 @@ footer {
   @extend .callout;
   background: var(--accent-green-a);
   border-left: 3px solid var(--accent-green);
+  color: var(--accent-green);
   .label { color: var(--accent-green); }
 }
 
