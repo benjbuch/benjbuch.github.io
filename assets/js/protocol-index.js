@@ -1,7 +1,7 @@
 (function() {
   console.log("[protocol-index] script loaded");
 
-  function sortTableByColumn(table, colIndex, numeric, direction) {
+  function sortTableByColumn(table, colIndex, isSortCol, direction) {
     const tbody = table.tBodies[0];
     const rows = Array.from(tbody.querySelectorAll("tr"));
 
@@ -9,7 +9,7 @@
       const av = a.children[colIndex].getAttribute("data-value") || "";
       const bv = b.children[colIndex].getAttribute("data-value") || "";
 
-      if (numeric) {
+      if (isSortCol) {
         const an = parseFloat(av.replace(/[^0-9.]/g, "")) || 0;
         const bn = parseFloat(bv.replace(/[^0-9.]/g, "")) || 0;
         return direction * (an - bn);
@@ -28,7 +28,7 @@
     headers.forEach((th, colIndex) => {
       th.style.cursor = "pointer";
       th.addEventListener("click", () => {
-        // const isNumeric = ["pdf"].includes(th.getAttribute("data-sort"));
+        const isSortCol = ["pdf"].includes(th.getAttribute("data-sort"));
         
         if (lastSortedCol === colIndex) {
           lastDirection = -lastDirection;
@@ -37,7 +37,7 @@
           lastDirection = 1;
         }
 
-        sortTableByColumn(table, colIndex, isNumeric, lastDirection);
+        sortTableByColumn(table, colIndex, isSortCol, lastDirection);
         headers.forEach(h => h.classList.remove("sorted-asc", "sorted-desc"));
         th.classList.add(lastDirection === 1 ? "sorted-asc" : "sorted-desc");
       });
