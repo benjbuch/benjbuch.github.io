@@ -5,343 +5,270 @@ permalink: /check/
 ---
 
 <div class="checker">
-  <h1>Protocol version check</h1>
+  <h2>Protocol version check</h2>
 
   <!-- Query form -->
+  <p>
   <form id="checker-form" class="checker-form">
     <label for="hash-input">Enter 7+ characters of the commit hash printed on your PDF:</label>
     <div class="row">
-      <input id="hash-input" name="q" type="text" maxlength="64" inputmode="latin" autocomplete="off" placeholder="e.g. 5ca0a99" />
+      <input id="hash-input" name="q" type="search" maxlength="64" inputmode="latin" autocomplete="off" placeholder="e.g. 5ca0a99" />
       <button type="submit">Check</button>
     </div>
   </form>
+</p>
 
   <!-- Status line -->
   <p id="input-hash"></p>
 
   <!-- Results -->
-  <div id="results"><p>Waiting for input…</p></div>
+  <div id="results"><p class="muted">Waiting for input…</p></div>
 </div>
 
 <style>
-.checker {
-  max-width: 60ch;
-  margin: 2rem auto;
-  line-height: 1.5;
-  font-size: 0.95rem;
-}
-.checker h1 {
-  font-size: 1.25rem;
-  margin-bottom: 0.75rem;
-}
 
-/* form styling */
-.checker-form {
-  margin-bottom: 1rem;
-  font-size: 0.9rem;
-  line-height: 1.4;
-}
-.checker-form label {
-  display: block;
-  margin-bottom: 0.4rem;
-  font-weight: 500;
-}
-.checker-form .row {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.5rem;
-}
-.checker-form input[type="text"] {
-  flex: 1 1 12ch;
-  min-width: 12ch;
-  max-width: 20ch;
-  font-family: monospace;
-  font-size: 0.9rem;
-  line-height: 1.2rem;
-  padding: 0.4rem 0.5rem;
-  border: 1px solid #bbb;
-  border-radius: 0.4rem;
-}
-.checker-form button {
-  flex: 0 0 auto;
-  border: 1px solid #888;
-  border-radius: 0.4rem;
-  background: #eee;
-  font-size: 0.9rem;
-  line-height: 1.2rem;
-  padding: 0.4rem 0.75rem;
-  cursor: pointer;
-}
-.checker-form button:hover {
-  background: #e2e2e2;
-}
+  .checker {
+    margin: 2rem auto;
+    max-width: 60ch;
+  }
+  .checker h1 {
+    margin-bottom: 0.75rem;
+  }
 
-/* results styling */
-.check-result {
-  border: 1px solid #ccc;
-  border-radius: 0.5rem;
-  padding: 1rem;
-  margin: 1rem 0;
-  background: #fafafa;
-  font-size: 0.9rem;
-  line-height: 1.4;
-  display: flex !important;
-  flex-direction: column !important;
-}
+  /* Form */
 
-.check-result > div,
-.check-result > h2,
-.check-result > p {
-  display: block !important;
-  width: 100% !important;
-  margin: 0 0 0.5rem 0 !important;
-}
+  .checker-form {
+    margin-bottom: var(--pad-l);
+  }
+  .checker-form label {
+    margin-bottom: var(--pad-m);
+    display: block;
+  }
+  .checker-form .row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--pad-m);
+  }
+  
+  .checker-form button {
+    background: var(--surface-raised);
+  }
+  .checker-form input {
+    background: var(--surface-raised);
+  }
 
-.check-result h2 {
-  font-size: 1rem;
-  font-weight: 600;
-  margin: 0 0 0.75rem 0 !important;
-}
+  /* Results */
+  
+  .check-result {
+    border: 1px solid var(--border);
+    border-radius: 0.5rem;
+    padding: var(--pad-l);
+    margin: var(--pad-l) 0;
+    background: var(--surface-raised);
+    display: flex !important;
+    flex-direction: column !important;
+  }
+  .check-result > div,
+  .check-result > h2,
+  .check-result > p {
+    display: block !important;
+    width: 100% !important;
+    margin: 0 0 var(--pad-m) 0 !important;
+  }
 
-.check-result strong {
-  display: inline !important;
-  font-weight: 600;
-}
+  /* status section */
+  .result-status {
+    border-top: 1px solid var(--border);
+  }
 
-.check-result code {
-  display: inline !important;
-}
+  /* status badges */
+  .status-badge {
+    display: inline-block;
+    padding: var(--pad-s) var(--pad-m);
+    border-radius: 0.5rem;
+    font-family: var(--font-mono);
+    font-size: 0.9rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.02em;
+  }
+  .status-current {
+    background: var(--accent-green-a);
+    color: var(--accent-green);
+    border: 1px solid var(--accent-green);
+  }
+  .status-outdated {
+    background: var(--accent-gold-a);
+    color: var(--accent-gold);
+    border: 1px solid var(--accent-gold);
+  }
 
-/* Status section */
-.result-status {
-  padding-top: 0.75rem;
-  margin-top: 0.75rem;
-  border-top: 1px solid #ddd;
-}
+  /* updates list */
+  .updates-list {
+    margin: var(--pad-m) 0 0 0;
+    padding-left: var(--pad-l);
+    list-style-type: disc;
+  }
+  .updates-list li {
+    margin-bottom: var(--pad-m);
+  }
+  .updates-list li:last-child {
+    margin-bottom: 0;
+  }
 
-.result-status p {
-  margin: 0 0 0.5rem;
-}
-
-/* Status badges */
-.status-badge {
-  display: inline-block;
-  padding: 0.15rem 0.5rem;
-  border-radius: 0.25rem;
-  font-size: 0.85rem;
-  font-weight: 600;
-  text-transform: uppercase;
-  letter-spacing: 0.02em;
-}
-
-.status-current {
-  background: #d1fae5;
-  color: #065f46;
-  border: 1px solid #6ee7b7;
-}
-
-.status-outdated {
-  background: #fef3c7;
-  color: #92400e;
-  border: 1px solid #fcd34d;
-}
-
-/* Updates list - only used when there are actual updates */
-.updates-list {
-  margin: 0.75rem 0 0 0;
-  padding-left: 1.5rem;
-  list-style-type: disc;
-}
-
-.updates-list li {
-  margin-bottom: 0.5rem;
-}
-
-.updates-list li:last-child {
-  margin-bottom: 0;
-}
-
-.check-result code {
-  font-family: monospace;
-  font-size: 0.85rem;
-  background: #f0f0f0;
-  padding: 0.1rem 0.3rem;
-  border-radius: 0.2rem;
-  word-break: break-all;
-}
+  /* Inline code inside results */
+  .check-result code {
+    background: var(--surface-inset);
+  }
 </style>
 
 <script>
-document.addEventListener("DOMContentLoaded", function () {
-  // Grab DOM elements
-  const formEl = document.getElementById('checker-form');
-  const inputField = document.getElementById('hash-input');
-  const inputEl = document.getElementById('input-hash');
-  const resultsEl = document.getElementById('results');
-
-  // Parse query param (?q=...)
-  const params = new URLSearchParams(window.location.search);
-  const initialRaw = (params.get("q") || "");
-  const initialHash = initialRaw.trim().slice(0, 64);
-
-  // Pre-fill the box if URL already has ?q
-  if (inputField && initialHash) {
-    inputField.value = initialHash;
-  }
-
-  // Attach form submit handler (so user can type/paste a hash)
-  if (formEl) {
-    formEl.addEventListener("submit", function (evt) {
-      evt.preventDefault();
-      const newHash = (inputField.value || "").trim();
-
-      // Update the URL without navigating
-      const url = new URL(window.location.href);
-      if (newHash) {
-        url.searchParams.set("q", newHash);
-      } else {
-        url.searchParams.delete("q");
-      }
-      window.history.replaceState(null, "", url.toString());
-
-      runLookup(newHash);
-    });
-  }
-
-  // Run lookup immediately if we came in with ?q=...
-  runLookup(initialHash);
-
-  // ---- helper: parse date into ms for comparison
-  function parseDateToMs(str) {
-    // Handles both full timestamps ("2025-10-27T21:43:34-04:00")
-    // and just dates ("2025-10-25")
-    const d = new Date(str);
-    if (isNaN(d)) return null;
-    return d.getTime();
-  }
-
-  // ---- core lookup flow
-  function runLookup(queryHash) {
-    if (!inputEl || !resultsEl) {
-      console.error("Error: Required DOM nodes not found.");
-      return;
+  document.addEventListener("DOMContentLoaded", function () {
+    const formEl       = document.getElementById('checker-form');
+    const inputField   = document.getElementById('hash-input');
+    const inputEl      = document.getElementById('input-hash');
+    const resultsEl    = document.getElementById('results');
+    
+    const params       = new URLSearchParams(window.location.search);
+    const initialRaw   = (params.get("q") || "");
+    const initialHash  = initialRaw.trim().slice(0, 64);
+    
+    if (inputField && initialHash) {               
+      inputField.value = initialHash;
     }
 
-    if (!queryHash || queryHash.length < 7) {
-      inputEl.textContent = "No commit hash provided.";
-      resultsEl.innerHTML = "";
-      return;
-    }
-
-    inputEl.textContent = `Looking for commit "${queryHash}"…`;
-
-    const base = "";
-    const indexURL = base + "/assets/protocols/index.json";
-    const historyURL = base + "/assets/protocols/history.json";
-
-    Promise.all([
-      fetch(indexURL).then(r => {
-        if (!r.ok) throw new Error("index.json HTTP " + r.status);
-        return r.json();
-      }),
-      fetch(historyURL).then(r => {
-        if (!r.ok) throw new Error("history.json HTTP " + r.status);
-        return r.json();
-      })
-    ])
-    .then(([indexData, historyData]) => {
-      // 1. normalize query to lowercase and match by prefix
-      const qLower = queryHash.toLowerCase();
-
-      const record = indexData.find(entry => {
-        if (!entry.hash) return false;
-        const eLower = String(entry.hash).toLowerCase();
-        return eLower.startsWith(qLower);
+    if (formEl) {
+      formEl.addEventListener("submit", function (evt) {
+        evt.preventDefault();
+        const newHash = (inputField.value || "").trim();
+        const url     = new URL(window.location.href);
+        if (newHash) {
+          url.searchParams.set("q", newHash);
+        } else {
+          url.searchParams.delete("q");
+        }
+        window.history.replaceState(null, "", url.toString());
+        runLookup(newHash);
       });
+    }
 
-      if (!record) {
-        inputEl.textContent = "";
-        resultsEl.innerHTML = `
-          <div class="check-result">
-            <p><strong>Error:</strong> Unrecognized commit <code>${queryHash}</code>.</p>
-            <p>This PDF may be outdated or not generated from this site.</p>
-          </div>`;
+    runLookup(initialHash);
+
+    function parseDateToMs(str) {
+      const d = new Date(str);
+      if (isNaN(d)) return null;
+      return d.getTime();
+    }
+
+    function runLookup(queryHash) {
+      if (!inputEl || !resultsEl) {
+        console.error("Error: Required DOM nodes not found.");
         return;
       }
 
-      // record = { hash, id, time }
-      const documentId = record.id;
-      const snapshotTimeMs = parseDateToMs(record.time);
-      
-      const latestLink = `/assets/protocols/pdf/${documentId}.pdf`
+      if (!queryHash || queryHash.length < 7) {
+        inputEl.textContent = "No commit hash provided.";
+        resultsEl.innerHTML = "";
+        return;
+      }
 
-      // 2. find changelog for that SOP
-      const changelog = historyData.find(item => item.id === documentId);
+      inputEl.textContent = 'Looking for commit "' + queryHash + '"…';
 
-      let newerChanges = [];
-      if (changelog && changelog.changes && snapshotTimeMs !== null) {
-        // keep ALL changes strictly after snapshot
-        newerChanges = changelog.changes.filter(change => {
-          const changeMs = parseDateToMs(change.time);
-          return changeMs !== null && changeMs > snapshotTimeMs;
+      var base       = "";
+      var indexURL   = base + "/assets/protocols/index.json";
+      var historyURL = base + "/assets/protocols/history.json";
+
+      Promise.all([
+        fetch(indexURL).then(function (r) {
+          if (!r.ok) throw new Error("index.json HTTP " + r.status);
+          return r.json();
+        }),
+        fetch(historyURL).then(function (r) {
+          if (!r.ok) throw new Error("history.json HTTP " + r.status);
+          return r.json();
+        })
+      ])
+      .then(function (data) {
+        var indexData   = data[0];
+        var historyData = data[1];
+
+        var qLower = queryHash.toLowerCase();
+
+        var record = indexData.find(function (entry) {
+          if (!entry.hash) return false;
+          var eLower = String(entry.hash).toLowerCase();
+          return eLower.startsWith(qLower);
         });
 
-        // sort ascending (oldest -> newest), so user sees full progression
-        newerChanges.sort(
-          (a, b) => parseDateToMs(a.time) - parseDateToMs(b.time)
-        );
-      }
+        if (!record) {
+          inputEl.textContent = "";
+          resultsEl.innerHTML = 
+          '<div class = "check-result">' +
+          '<p><strong>Error:</strong> Unrecognized commit <code>' + queryHash + '</code>.</p>' +
+          '<p>This PDF may be outdated or not generated from this site.</p>' +
+          '</div>';
+          return;
+        }
 
-      // 3. pretty-print snapshot date
-      let snapshotDateStr = "";
-      if (snapshotTimeMs !== null) {
-        const d = new Date(snapshotTimeMs);
-        snapshotDateStr = d.toISOString().slice(0,10); // YYYY-MM-DD
-      } else {
-        snapshotDateStr = record.time;
-      }
+        var documentId = record.id;
+        var snapshotTimeMs = parseDateToMs(record.time);
+        var latestLink = "/assets/protocols/pdf/" + documentId + ".pdf";
 
-      // 4. build status section
-      let statusHtml = "";
-      if (newerChanges.length === 0) {
-        statusHtml = `
-          <p><strong>Status:</strong> <span class="status-badge status-current">Current</span></p>
-          <p>No recorded changes after ${snapshotDateStr}.</p>
-        `;
-      } else {
-        const listItems = newerChanges.map(ch => {
-          return `<li><strong>${ch.time}:</strong> ${ch.text}</li>`;
-        }).join("");
+        var changelog = historyData.find(function (item) { return item.id === documentId; });
 
-        statusHtml = `
-          <p><strong>Status:</strong> <span class="status-badge status-outdated">Outdated</span></p>
-          <p><a href="${latestLink}" target="_blank" rel="noopener">
-              Open the most recent version of ${documentId}
-            </a></p>
-          <p>We have ${newerChanges.length} recorded update${newerChanges.length > 1 ? "s" : ""} after ${snapshotDateStr}:</p>
-          <ul class="updates-list">${listItems}</ul>
-        `;
-      }
+        var newerChanges = [];
+        if (changelog && changelog.changes && snapshotTimeMs !== null) {
+          newerChanges = changelog.changes.filter(function (change) {
+            var changeMs = parseDateToMs(change.time);
+            return changeMs !== null && changeMs > snapshotTimeMs;
+          });
+          newerChanges.sort(function (a, b) {
+            return parseDateToMs(a.time) - parseDateToMs(b.time);
+          });
+        }
 
-      // 5. render block with clean structure
-      inputEl.textContent = "";
-      resultsEl.innerHTML = `
-        <section class="check-result">
-          <h2>${documentId}</h2>
-          <div><strong>Commit:</strong> <code>${record.hash}</code></div>
-          <div><strong>Snapshot time:</strong> ${snapshotDateStr}</div>
-          
-          <div class="result-status">
-            ${statusHtml}
-          </div>
-        </section>
-      `;
-    })
-    .catch(err => {
-      console.error("Lookup error:", err);
-      inputEl.textContent = "";
-      resultsEl.innerHTML = "<div class='check-result'><p><strong>Error:</strong> Could not load protocol index.</p></div>";
-    });
-  }
-});
+        var snapshotDateStr = "";
+        if (snapshotTimeMs !== null) {
+          var d = new Date(snapshotTimeMs);
+          snapshotDateStr = d.toISOString().slice(0, 10);
+        } else {
+          snapshotDateStr = record.time;
+        }
+
+        var statusHtml = "";
+        if (newerChanges.lgth === 0) {
+          statusHtml = 
+          '<p><strong>Status:</strong> <span class = "status-badge status-current">Current</span></p>' +
+          '<p>No recorded changes after ' + snapshotDateStr + '.</p>';
+        } else {
+          var listItems = newerChanges.map(function (ch) {
+            return '<li><strong>' + ch.time + ':</strong> ' + ch.text + '</li>';
+          }).join("");
+
+          statusHtml = 
+          '<p><strong>Status:</strong> <span class = "status-badge status-outdated">Outdated</span></p>' +
+          '<p><a href = "' + latestLink + '" target="_blank" rel="noopener">' +
+          'Open the most recent version of ' + documentId +
+          '</a></p>' +
+          '<p>We have ' + newerChanges.length + ' recorded update' +
+          (newerChanges.length > 1 ? 's' : '') + ' after ' + snapshotDateStr + ':</p>' +
+          '<ul class = "updates-list">' + listItems + '</ul>';
+        }
+
+        inputEl.textContent = "";
+        resultsEl.innerHTML = 
+        '<section class = "check-result">' +
+        '<h2>' + documentId + '</h2>' +
+        '<div><strong>Commit:</strong> <code>' + record.hash + '</code></div>' +
+        '<div><strong>Snapshot time:</strong> ' + snapshotDateStr + '</div>' +
+        '<div class  = "result-status">' + statusHtml + '</div>' +
+        '</section>';
+      })
+      .catch(function (err) {
+        console.error("Lookup error:", err);
+        inputEl.textContent = "";
+        resultsEl.innerHTML = '<div class="check-result"><p><strong>Error:</strong> Could not load protocol index.</p></div>';
+      });
+    }
+  });
 </script>
