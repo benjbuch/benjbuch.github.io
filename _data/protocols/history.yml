@@ -1,4 +1,5 @@
 - id: "SOP0001"
+  filename: "sop_0001-v1-isolation_nuclei"
   changes:
     - time: "2020-03-22"
       text: "Initial version (Detergent-free isolation of nuclei)."
@@ -8,13 +9,8 @@
       text: "Updated inhibitor cocktail."
     - time: "2025-02-22"
       text: "Corrected references."
-- id: "SOP0030"
-  changes:
-    - time: "2021-12-20"
-      text: "Adaptation as SOP."
-    - time: "2023-11-19"
-      text: "Reformatting."
 - id: "SOP0101"
+  filename: "sop_0101-v1-github"
   changes:
     - time: "2025-07-26"
       text: "Initial commit."
@@ -22,3 +18,10 @@
       text: "Clarified branch/merge workflow and revised code."
     - time: "2025-10-31"
       text: "Clarified credential manager setup."
+- id: "SOP0030"
+  filename: "sop_0030-v1-preparation_reagents"
+  changes:
+    - time: "2021-12-20"
+      text: "Adaptation as SOP."
+    - time: "2023-11-19"
+      text: "Reformatting."

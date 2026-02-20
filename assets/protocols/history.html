@@ -10,6 +10,7 @@ content_type: application/json
   {%- if forloop.index0 > 0 -%},{%- endif -%}
   {
     "id": {{ item.id | jsonify }},
+    "filename": {{ item.filename | jsonify }},
     "changes": [
       {%- for change in item.changes -%}
         {%- if forloop.index0 > 0 -%},{%- endif -%}
