@@ -51,67 +51,100 @@
 				
 					<h1>Protocols that know their own history</h1>
 				
-				<h2 id="the-problem-at-the-bench">The Problem at the Bench</h2>
+				<div class="callout-blue" label="Note">
+  <p><span class="label">Note</span>
+  The original post about the <em>Lab Protocol</em> project was rewritten as a fictional interview in 2026. While the project is real, any resemblance to actual interviews is purely coincidental.</p>
+</div>
 
-<p>Picture this: You’re at the bench with a printed protocol from your colleague. There are handwritten notes in the margins which could be theirs, or maybe someone else’s from three years ago. A concentration is crossed out and rewritten. A step number is circled with “skip this?” scrawled next to it. The printout is coffee-stained and dog-eared, so you’re not sure if it’s the current version or one from two revisions ago.</p>
+<h4 id="a-youve-built-a-version-controlled-protocol-system-for-the-lab-bench-tell-us-more-about-the-problem-you-wanted-to-solve"><strong><em>A: You’ve built a version-controlled protocol system for the lab bench. Tell us more about the problem you wanted to solve.</em></strong></h4>
 
-<p>Lab protocols live in a messy world. They get passed around as Word files like <code class="language-plaintext highlighter-rouge">Protocol_final_v3_ACTUAL_final.docx</code>, they’re photocopied from papers, excerpted from lab notebooks, or typed up quickly and never quite finished. Critical details get buried in email threads, authorship becomes murky. And when methods evolve (as they always do), you end up with a dozen conflicting variants floating around.</p>
+<p><strong><em>B:</em></strong> Picture this: You’re at the bench with a printed protocol from your colleague. There are handwritten notes in the margins which could be theirs, or maybe someone else’s from three years ago. A concentration is crossed out and rewritten. A step number is circled with “skip this?” scrawled next to it …</p>
 
-<p>I got tired of that chaos.</p>
+<h4 id="a--and-i-know-this-scene-the-printout-is-coffee-stained-and-dog-eared-youre-not-sure-if-its-the-current-version-or-one-from-two-revisions-ago"><strong><em>A: — and I know this scene. The printout is coffee-stained and dog-eared, you’re not sure if it’s the current version or one from two revisions ago.</em></strong></h4>
 
-<h2 id="why-i-built-this">Why I Built This</h2>
+<p><strong><em>B:</em></strong> Exactly. Lab protocols live in a messy world. They get passed around as Word files like “Protocol_final_v3_ACTUAL_final.docx” while some critical details may still be buried in email threads. After a while, when methods evolve, as they always do, you end up with a dozen conflicting variants floating around. I got tired of that chaos.</p>
 
-<p>Honestly? It started as a typesetting exercise. In Word, making a protocol look good takes forever. You wrestle with formatting, adjust margins, fiddle with indentation, and then, inevitably, you decide to change the layout six months later and have to do it all over again. What do you even do with the old versions? Archive them in a folder called <code class="language-plaintext highlighter-rouge">old_protocols</code>? Hope for the best?</p>
+<h4 id="a-so-you-typed-your-own-stack-of-protocols-to-get-lost"><strong><em>A: So you typed your own stack of protocols to get lost?!</em></strong></h4>
 
-<p>I wanted to see if I could build something cleaner, something that separated content from presentation in a meaningful way. That way, I could <strong>focus on <em>what</em> a protocol says, not <em>how</em> it looks</strong>. And if I ever wanted to change the design, I could update the template once and regenerate everything.</p>
+<p><strong><em>B:</em></strong> Not quite.</p>
 
-<p>That separation also meant version control could work the way it does for code. Instead of tracking binary Word files, I could track plain text XML. Git (a free version-control system) would <strong>show me exactly what changed, line by line</strong>. No more guessing whether step 7 was different in the last version.</p>
+<h4 id="a-i-always-wondered-why--people-retype-protocols-in-the-first-place-from-what-i-can-tell-its-usually-because-the-original-file-doesnt-exist-anymore-or-because-nobody-can-stand-looking-at-whatever-came-out-of-a-1960s-typewriter-or-a-table-that-word-generated-in-2003"><strong><em>A: I always wondered why  people retype protocols in the first place? From what I can tell, it’s usually because the original file doesn’t exist anymore, or because nobody can stand looking at whatever came out of a 1960s typewriter or a table that Word generated in 2003.</em></strong></h4>
 
-<p>It also opened up <strong>possibilities for extracting data from the “codebase.”</strong> Want all your recipes in one document? Extract them. Want a bullet-point summary of a protocol? Generate it. The structure is there, you just need to render it differently. (I haven’t built all of this yet, but the foundation is there. Someone cover my salary for two months and I’ll work on it full-time. Half-joking.)</p>
+<p><strong><em>B:</em></strong> That’s unfortunately often true. There are two traps really: one is losing the source document, the other is entangling content and form from the start. In Word, the <em>what it says</em> and the <em>how it looks</em> are fused together. You can’t touch the layout essentially without saving a new copy of the file —</p>
 
-<p>The ideal tool for this was ConTeXt, a general-purpose document processor similar to LaTeX. It can directly process XML documents and generate beautiful PDFs, which is great because people still print protocols to take to the bench. I certainly do. And XML can be converted to HTML, so web-based rendering is on the horizon. Someday.</p>
+<h4 id="a--and-what-do-people-even-do-with-all-those-versions-archive-them-in-a-folder-called-old-protocols-and-hope-for-the-best"><strong><em>A: — and what do people even do with all those versions? Archive them in a folder called “old protocols” and hope for the best?</em></strong></h4>
 
-<h2 id="what-i-learned-along-the-way">What I Learned Along the Way</h2>
+<p><strong><em>B:</em></strong> Yeah. I wanted to see if I could build something cleaner. What’s a protocol, really? It has steps, recipes, safety information, troubleshooting advice, references. Once you separate that content from its representation in a consistent and meaningful way, authors can <em>focus on what a protocol says, not how it looks.</em></p>
 
-<h3 id="designing-a-vocabulary">Designing a vocabulary</h3>
+<h4 id="a-your-protocols-do-look-damn-good-what-tool-did-you-use"><strong><em>A: Your protocols do look damn good. What tool did you use?</em></strong></h4>
 
-<p>The first challenge was creating an XML schema that made sense. What’s a protocol, really? It has steps for sure, but also metadata, recipes, safety information, troubleshooting advice, references. How do you structure all of that in a way that’s flexible but consistent?</p>
+<p><strong><em>B:</em></strong> I used ConTeXt, a general-purpose document processor similar to LaTeX. It works on the principle of a markup language. The author only needs to identify the <em>role</em> of each element. Is this a step? A caution? A recipe? The interpreter handles all the formatting. If you ever want to change the formatting, you update the template in one place and regenerate all published output on the fly.</p>
 
-<p>I started documenting the vocabulary as I went. That turned out to be one of the best decisions I made. Although I intended that piece of documentation just being for “future me,” it turned out very useful for instructing LLMs to <strong>validate syntax</strong> or <strong>reformat</strong> old Word documents into the new XML structure.</p>
+<p>Since the source can be XML files in ConTeXt, one can use the same document to generate beautiful PDFs for the bench <em>and</em> convert them into HTML for the web.</p>
 
-<h3 id="versioning-printed-protocols">Versioning printed protocols</h3>
+<p>That separation also means version control can work the way it does for code. Instead of backing up binary Word files, one can track changes to the XML documents. Git, a free version-control system, will <em>show exactly what changed, line by line.</em> No more guessing whether step 7 was different in the last version.</p>
 
-<p>I also had to figure out how to track whether a printed copy was still current. DOIs didn’t feel right as they’re too heavyweight and formal for a personal protocol collection. So, I borrowed from semantic versioning:</p>
+<h4 id="a-sounds-like-your-approach-is-on-a-par-with-the-development-of-the-printing-press"><strong><em>A: Sounds like your approach is on a par with the development of the printing press.</em></strong></h4>
+
+<p><strong><em>B:</em></strong> In terms of “amplifying” information, it kind of is. With markup documents you have endless <em>possibilities for extracting data from the “codebase.”</em> Want all your recipes in one document? Extract them. Want a bullet-point summary of a protocol? Generate it. The structure is there, you just need to render it differently.</p>
+
+<p>And because recipes are modular, updating a buffer composition in one place can propagate to all documents that reference that information. <em>No more hunting through a dozen files</em> to change a concentration.</p>
+
+<h4 id="a-you-made-all-of-this-already"><strong><em>A: You made all of this already?</em></strong></h4>
+
+<p><strong><em>B:</em></strong> I haven’t built all of this yet, but the foundation is there. While the PDF protocols and recipe book are available online, I’d be thrilled about an interactive HTML version of them. Someday, or if someone covered my salary for two months, I’ll work on it full-time.</p>
+
+<h4 id="a-so-this-is-much-more-involved-than-it-sounds"><strong><em>A: So, this is much more involved than it sounds?</em></strong></h4>
+
+<p><strong><em>B:</em></strong> I’d be lying if I said this approach was easy or universally applicable. It requires more upfront work than opening Word and typing. You need to be comfortable with text editors, version control, and a bit of command-line work. The toolchain (ConTeXt, Lua, Git) has a learning curve. And if a colleague doesn’t want to memorize the XML semantics, they might be less likely to contribute.</p>
+
+<p>I’m confident that machine learning will lower that bar. I started documenting the vocabulary as I went which turned out to be one of the best decisions I made. Although I intended that piece of documentation just for “future me,” I could already use it for instructing LLMs to <em>validate syntax</em> or <em>reformat</em> old Word documents into the new XML structure.</p>
+
+<h4 id="a-will-there-be-a-surge-in-protocol-releases-soon"><strong><em>A: Will there be a surge in protocol releases soon?</em></strong></h4>
+
+<p><strong><em>B:</em></strong> Let’s say the barrier to entry just got lower.</p>
+
+<h4 id="a-going-back-to-the-bench-people-still-print-protocols-how-can-they-make-sure-their-version-is-up-to-date"><strong><em>A: Going back to the bench, people still print protocols. How can they make sure their version is up to date?</em></strong></h4>
+
+<p><strong><em>B:</em></strong> Everyone carries a smartphone. Taking a picture is quick. So, what if you could just scan a QR code on the printout to check whether you have the latest version?</p>
+
+<h4 id="a--like-digital-menus-in-a-restaurant"><strong><em>A: — Like digital menus in a restaurant.</em></strong></h4>
+
+<p><strong><em>B:</em></strong> Yes. You scan the QR code and get the chef’s latest innovations and the price for tonight’s dinner. However, our version checker is much more transparent. It provides a summary of the changes between the document at hand and the most recent version, so the user can decide whether they need or want to try out the newest protocol or not.</p>
+
+<h4 id="a-i-noticed-the-qr-code-only-encodes-a-short-hash-isnt-that-fragile-surely-you-could-have-a-proper-doi-instead"><strong><em>A: I noticed the QR code only encodes a short hash. Isn’t that fragile? Surely you could have a proper DOI instead?</em></strong></h4>
+
+<p><strong><em>B:</em></strong> Digital object identifiers (DOIs) are designed for discrete releases, something complete enough to cite in a paper. But a protocol that gets a typo fixed at 11 p.m. doesn’t need a new DOI, it just needs a commit. The overhead of formal registration would actually discourage exactly the kind of small, frequent updates that make this system useful. And practically speaking, the 7-digit hash works anywhere the QR code doesn’t, scribbled in a notebook, dropped in an email.</p>
+
+<h4 id="a-what-counts-as-a-new-version"><strong><em>A: What counts as a new version?</em></strong></h4>
+
+<p><strong><em>B:</em></strong> I borrowed from semantic versioning:</p>
 
 <ul>
-  <li><strong>Typos or trivial fixes</strong> just get a Git commit. Let’s still call it “up to date” because nothing meaningful changed.</li>
-  <li><strong>Additions or clarifications</strong> are reflected in a changelog entry like “Added section on troubleshooting low yields.” That’s when we start reporting a newer protocol is available, similar to a minor version bump.</li>
-  <li><strong>Major rewrites</strong> get a new major version (e.g., <code class="language-plaintext highlighter-rouge">protocol-v2.xml</code>). Unlike starting fresh with a new document, the changelog preserves the reasoning and evolution.</li>
+  <li><em>Typos or trivial fixes</em> just get a Git commit. We still call it “up to date” as nothing meaningful changed.</li>
+  <li><em>Additions or clarifications</em> are reflected in an additional changelog entry such as, “Added advice on troubleshooting low yields.” That’s when we start reporting that a newer protocol is available, similar to a minor version bump.</li>
+  <li><em>Major rewrites</em> get a new major version. We actually change the file name “protocol-v2.xml”, so people unfamiliar with Git can still find version 1 if needed. However, unlike starting fresh with a new document, the changelog preserves the reasoning and evolution.</li>
 </ul>
 
 <p>It’s not a perfect system, but it’s practical. And that’s what matters.</p>
 
-<h3 id="the-discipline-of-structure">The discipline of structure</h3>
+<h4 id="a-did-setting-up-this-structure-teach-you-anything-about-protocol-writing"><strong><em>A: Did setting up this structure teach you anything about protocol writing?</em></strong></h4>
 
-<p>One unexpected benefit is that writing protocols in structured XML forces you to be clearer. You can’t just throw a vague note into the middle of a step; you have to decide: Is this an action? A note of caution? A troubleshooting advice? That discipline <strong>improves the clarity of the protocol</strong> itself.</p>
+<p><strong><em>B:</em></strong> One unexpected benefit is that writing protocols in structured XML forces you to be clearer. You can’t just throw a vague note into the middle of a step; you have to decide what it’s for. Is this an action? A note of caution? A piece of troubleshooting advice? That discipline <em>improves the clarity of the protocol</em> itself.</p>
 
-<p>Changelogs have the same effect. Knowing you’ll document what changed makes you more thoughtful about edits. It’s not just fix-and-forget anymore.</p>
+<h4 id="a-very-philosophical-can-anyone-contribute"><strong><em>A: Very philosophical! Can anyone contribute?</em></strong></h4>
 
-<p>And because recipes are modular, updating a buffer composition in one place propagates to all documents that use that information. <strong>No more hunting through a dozen files</strong> to change a concentration.</p>
+<p><strong><em>B:</em></strong> I believe that everyone in a lab should be able to contribute and get credit for their work in the version history. However, having a handful of curators (or editors) who regularly incorporate changes, may improve consistency. Knowing you’ll document what changed makes you more thoughtful about edits. It’s not just fix-and-forget anymore.</p>
 
-<h2 id="the-tradeoffs">The Tradeoffs</h2>
+<h4 id="a-is-this-a-project-for-the-world-or-just-for-you"><strong><em>A: Is this a project for the world or just for you?</em></strong></h4>
 
-<p>I’d be lying if I said this approach was easy or universally applicable. This approach requires more upfront work than opening Word and typing. You need to be comfortable with text editors, version control, and a bit of command-line work. The toolchain (ConTeXt, Lua, Git) has a learning curve and if a colleague doesn’t want to learn XML, they might be less likely to contribute. Maybe automation will lower the bar.</p>
+<p><strong><em>B:</em></strong> Currently, this is a personal system that works for me, and I’m not claiming it’s the right solution for everyone. But for the problems I wanted to solve — clarity, reproducibility, version tracking, modularity — it works.</p>
 
-<p>Currently, this is a personal system that works for me, and I’m not claiming it’s the right solution for everyone. However, for the problems I wanted to solve (clarity, reproducibility, version tracking, and modularity) it works.</p>
+<h4 id="a-whats-next"><strong><em>A: What’s next?</em></strong></h4>
 
-<h2 id="whats-next-the-field-trip">What’s Next: The Field Trip</h2>
+<p><strong><em>B:</em></strong> Right now, I’ve started sharing my small personal collection. I use these protocols. I revise them. I track their history. But I’m curious whether others find value in this work too. So, if you’re working in a related field, try one. If you’re technically curious, check out how it’s built. If you spot an error or have feedback, let me know. Maybe this will resonate with someone who’s tired of “Protocol_final_v3_ACTUAL_final.docx.” Maybe it won’t.</p>
 
-<p>Right now, I started sharing my small personal collection. I use these protocols. I revise them. I track their history. But I’m curious whether others too find value in this work.</p>
-
-<p>So, if you’re working in a related field, try one. If you’re technically curious, check out how it’s built. If you spot an error or have feedback, let me know.</p>
-
-<p>Maybe this will resonate with someone else who’s tired of <code class="language-plaintext highlighter-rouge">Protocol_final_v3_ACTUAL_final.docx</code>. Maybe it won’t. Either way, it’s been a useful exercise and <strong>the protocols look damn good</strong>. :-)</p>
+<h4 id="a-i-shall-look-forward-to-scanning-the-qr-code-on-my-next-printed-protocol-then-assuming-i-can-find-it-under-the-coffee-stains"><strong><em>A: I shall look forward to scanning the QR code on my next printed protocol then. Assuming, I can find it under the coffee stains.</em></strong></h4>
 
 			</div>
 		</section>
