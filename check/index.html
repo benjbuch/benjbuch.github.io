@@ -254,9 +254,9 @@
 
         var documentId = record.id;
         var snapshotTimeMs = parseDateToMs(record.time);
-        var latestLink = "/assets/protocols/pdf/" + record.filename + ".pdf";
 
         var changelog = historyData.find(function (item) { return item.id === documentId; });
+        var latestLink = "/assets/protocols/pdf/" + changelog.filename + ".pdf";
 
         var newerChanges = [];
         if (changelog && changelog.changes && snapshotTimeMs !== null) {

@@ -1,4 +1,31 @@
 [{
+    "id": "SOP0031",
+    "changes": [{
+          "time": "2021-12-20",
+          "text": "Adaptation as SOP."
+        },{
+          "time": "2023-11-22",
+          "text": "Reformating."
+        },{
+          "time": "2025-04-24",
+          "text": "Added guidance on pipetting and two-dimensional serial dilutions."
+        }]
+  },{
+    "id": "SOP0035",
+    "changes": [{
+          "time": "2025-04-02",
+          "text": "Initial version."
+        },{
+          "time": "2025-08-14",
+          "text": "Added sections on XML validation and organization using Git or GitHub; ChatGPT 5 (OpenAI) advised on XSD and Schematron use (XSLT-1 sekelton)."
+        }]
+  },{
+    "id": "SOP0036",
+    "changes": [{
+          "time": "2025-04-10",
+          "text": "Initial draft, based on content from SOP0019."
+        }]
+  },{
     "id": "SOP0001",
     "changes": [{
           "time": "2020-03-22",
@@ -14,15 +41,6 @@
           "text": "Corrected references."
         }]
   },{
-    "id": "SOP0030",
-    "changes": [{
-          "time": "2021-12-20",
-          "text": "Adaptation as SOP."
-        },{
-          "time": "2023-11-19",
-          "text": "Reformatting."
-        }]
-  },{
     "id": "SOP0101",
     "changes": [{
           "time": "2025-07-26",
@@ -33,5 +51,14 @@
         },{
           "time": "2025-10-31",
           "text": "Clarified credential manager setup."
+        }]
+  },{
+    "id": "SOP0030",
+    "changes": [{
+          "time": "2021-12-20",
+          "text": "Adaptation as SOP."
+        },{
+          "time": "2023-11-19",
+          "text": "Reformatting."
         }]
   }]
