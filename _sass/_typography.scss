@@ -1,28 +1,46 @@
 body {
   -moz-osx-font-smoothing: grayscale;
   -webkit-font-smoothing: antialiased;
-  font-family: var(--font-sans);
+  font-family: var(--font-serif);
   line-height: 1.5;
 }
 
 h1, h2, h3, h4 {
   font-family: var(--font-serif);
   font-weight: 700;
-  line-height: 1.2;
+  line-height: 1.25;
   margin-top: 0;
   margin-bottom: 0;
 }
 
-h3 {
-  font-style: italic;
+h1 {
+  font-size: 1.8rem;
+  letter-spacing: -0.01em;
 }
 
-section > h1:first-child,
-section > h2:first-child,
-.card > h1:first-child,
-.card > h2:first-child {
-  margin-top: 0;
+h2 {
+  font-size: 1.4rem;
+  font-weight: 700;
 }
+
+
+h3 {
+  font-size: 1.1rem;
+  font-style: italic;
+  font-weight: 700;
+}
+
+// Heading proximity: more space above than below
+
+:is(p, div, ul, ol, table) + :is(h1, h2) {
+  margin-top: 2.5rem;
+}
+
+:is(p, div, ul, ol, table) + :is(h3, h4) {
+  margin-top: 1.8rem;
+}
+
+// Adjacent headings: tight
 
 h1 + h2,
 h2 + h3,
@@ -30,11 +48,23 @@ h3 + h4 {
   margin-top: var(--pad-m);
 }
 
+// Lists following headings: snug
+
 h1 + ul, h1 + ol,
 h2 + ul, h2 + ol,
 h3 + ul, h3 + ol,
 h4 + ul, h4 + ol {
   margin-top: var(--pad-s);
+}
+
+
+// Headings at start of containers: no top margin
+
+section > h1:first-child,
+section > h2:first-child,
+.card > h1:first-child,
+.card > h2:first-child {
+  margin-top: 0;
 }
 
 p {
@@ -53,5 +83,5 @@ em, i {
 
 code, pre, kbd, samp {
   font-family: var(--font-mono);
-  font-size: 0.95em;
+  font-size: 0.88em;
 }

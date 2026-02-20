@@ -4,6 +4,7 @@
 
 .publist {
   list-style: none;
+  padding-top: var(--pad-m);
   padding-left: var(--pad-l);
   padding-right: var(--pad-l);
   text-align: justify;
@@ -11,6 +12,7 @@
 }
 
 // Publication item structure
+
 .publist .pub {
   align-items: start;
   column-gap: 0.75rem;
@@ -21,6 +23,7 @@
 }
 
 // Numbering
+
 .publist .pub::before {
   content: attr(data-num) ".";
   grid-column: 1;
@@ -38,6 +41,7 @@
 }
 
 // Layout
+
 .publist .pub .pub-main,
 .publist .pub .pub-tags,
 .publist .pub .pub-notes {
@@ -62,29 +66,33 @@
 // ============================================================================
 
 // Main content area
+
 .pub-main {
   -moz-hyphens: auto;
   -ms-hyphens: auto;
   -webkit-hyphens: auto;
   hyphens: auto;
-  line-height: 1.45;
+  line-height: 1.5;
 }
 
 // Author highlighting
+
 .pub-authors .me {
   text-decoration: underline;
   text-underline-offset: 2px;
 }
 
 // Individual lines
+
 .pub-line {
   padding-bottom: var(--pad-s);
   display: inline;
 }
 
 // Title styling
+ 
 .pub-title {
-  color: #{$dark-blue};
+  font-style: italic;
 }
 
 // ============================================================================
@@ -115,10 +123,10 @@
 // ============================================================================
 
 // Notes (impact, role, etc.)
+ 
 .pub-notes {
-  color: #{$slate-600};
+  color: var(--text-secondary);
   font-size: 0.9em;
-  font-style: italic;
   margin: var(--pad-s) 0;
   opacity: 0.9;
 }
@@ -131,14 +139,13 @@
   margin: 0;
 }
 
-.tag {
-  border: 1px solid #{$slate-200};
+.pub-tags .tag {
   border-radius: #{$round-m};
   cursor: pointer;
   display: inline-block;
-  font-size: 0.8rem;
-  margin: 0 0.35rem 0 0;
-  padding: 0.15em 0.50em;
+  font-size: 0.75rem;
+  margin: 0 0.3rem 0.3rem 0;
+  padding: 0.1em 0.45em;
 
   &:focus-visible {
     outline: 2px solid #888;
@@ -168,6 +175,7 @@
 }
 
 // Hide native checkbox but keep accessible
+ 
 .switch input {
   height: 0;
   opacity: 0;
@@ -175,53 +183,21 @@
   width: 0;
 }
 
-// Switch track
-.switch-ui {
-  --h: 1.5rem;
-  --pad: 2px;
-  --thumb: calc(var(--h) - 2 * var(--pad));
-  --w: 2.5rem;
-  background: #{$slate-300};
-  border-radius: var(--h);
-  display: inline-block;
-  height: var(--h);
-  position: relative;
-  transition: background 0.18s ease;
-  width: var(--w);
-}
-
-// Switch thumb
-.switch-ui::after {
-  background: #{$white};
-  border-radius: 50%;
-  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
-  content: "";
-  height: var(--thumb);
-  left: var(--pad);
-  position: absolute;
-  top: var(--pad);
-  transition: transform 0.18s ease;
-  width: var(--thumb);
-}
-
 // Checked state
+ 
 .switch input:checked + .switch-ui {
-  background: var(--fg-muted);
+  background: var(--border);
 }
 
 .switch input:checked + .switch-ui::after {
   transform: translateX(calc(var(--w) - var(--h)));
 }
 
-// Keyboard focus
-.switch input:focus-visible + .switch-ui {
-  box-shadow: 0 0 0 3px var(--bg-color), 0 0 0 5px var(--link);
-}
-
 // Switch text labels
+ 
 .switch-text {
-  color: var(--fg-color);
-  font-size: 0.9rem;
+  color: var(--text-secondary);
+  font-family: var(--font-sans);
 }
 
 .switch-text .on {

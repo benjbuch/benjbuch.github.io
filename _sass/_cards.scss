@@ -1,8 +1,16 @@
 .card {
-  background: #{$slate-100};
-  border: #{$line-s} solid var(--hover);
+  background: var(--surface-raised);
+  border: #{$line-s} solid var(--border-subtle);
   border-radius: #{$round-m};
-  box-shadow: var(--shadow);
+  box-shadow: none;
   padding: var(--pad-l);
   width: min(100%, #{$bp-l});
+}
+
+.card code {
+  background: var(--surface-inset);
+}
+
+.card .tag {
+  background: var(--surface-inset);
 }

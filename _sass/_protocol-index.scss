@@ -1,3 +1,8 @@
+#protocols .scrollable-table {
+  max-height: 50vh;
+  min-height: 25em;
+}
+
 .protocol-table {
   width: 100%;
   border-collapse: collapse;
@@ -6,36 +11,27 @@
 
 .protocol-table th,
 .protocol-table td {
-  text-align: left;
+  border-bottom: 1px solid var(--border-subtle);
   padding: 0.4rem 0.6rem;
-  border-bottom: 1px solid #{$slate-200};
-  vertical-align: top;
-}
-
-.protocol-table th {
-  font-weight: 600;
-  user-select: none;
-  white-space: nowrap;
+  text-align: left;
+  vertical-align: baseline;
 }
 
 .protocol-table th::after {
-  content: "";
-  margin-left:0.4rem;
-  font-size: 0.7rem;
+  content: "\2001";
+  margin-left: 0.4rem;
+  width: 0;
+  overflow: visible;
+  display: inline-block;
 }
 
 .protocol-table th.sorted-asc::after {
-  content: "▼";
-  margin-left: 0.4rem;
-  font-size: 0.7rem;
+  content: "↑";
 }
-
 .protocol-table th.sorted-desc::after {
-  content: "▲";
-  margin-left: 0.4rem;
-  font-size: 0.7rem;
+  content: "↓";
 }
 
 .protocol-table tbody tr:hover {
-  background-color: rgba(0,0,0,0.03);
+  background-color: var(--hover);
 }
