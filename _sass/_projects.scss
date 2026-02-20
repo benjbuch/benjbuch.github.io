@@ -1,4 +1,8 @@
-.project-container p, 
+.project-container h1, 
+.project-container h2, 
+.project-container h3, 
+.project-container h4, 
+.project-container p,
 .project-container ol, 
 .project-container ul {
   text-align: justify;
@@ -7,8 +11,8 @@
   -webkit-hyphens: auto;
 }
 
-.project-container strong,
-.project-container b {
-  box-shadow: inset 0 -0.4em 0 rgba(255, 255, 0, 0.4);
-  font-weight: bold;
-}
+//.project-container strong,
+//.project-container b {
+//  box-shadow: inset 0 -0.4em 0 rgba(255, 255, 0, 0.4);
+//  font-weight: bold;
+//}
