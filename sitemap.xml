@@ -1,7 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9 http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd" xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 <url>
-<loc>https://benjbuch.github.io/projects/protocols-about/</loc>
+<loc>https://benjbuch.github.io/essays/lab-protocols/</loc>
+</url>
+<url>
+<loc>https://benjbuch.github.io/essays/modifications-asymmetric/</loc>
 </url>
 <url>
 <loc>https://benjbuch.github.io/sections/about/</loc>
@@ -16,7 +19,7 @@
 <loc>https://benjbuch.github.io/sections/research/</loc>
 </url>
 <url>
-<loc>https://benjbuch.github.io/projects/</loc>
+<loc>https://benjbuch.github.io/essays/</loc>
 </url>
 <url>
 <loc>https://benjbuch.github.io/</loc>
