@@ -3,12 +3,19 @@ layout: projects
 title: Protocols that know their own history
 weight: 1
 author: Benjamin Buchmuller
+minutes: 8 min
+last_modified_at: 2026-02-20
 excerpt: How lab protocols can be tracked, built, and published in print and online
 ---
 
-<div class="callout-blue" label="Note">
-  <span class="label">Note</span>
-  The original post about the *Lab Protocol* project was rewritten as a fictional interview in 2026. While the project is real, any resemblance to actual interviews is purely coincidental.
+<div class="project-summary">
+  <p>Many protocol collections share the same fate. They become coffee-stained printouts or end up in a folder called "old protocols". This project is an attempt to do better with version-controlled documents that keep their own history.</p>
+  <ul>
+    <li>Version-controlled SOPs with full changelog</li>
+    <li>XML source rendered to PDF and HTML</li>
+    <li>Online version checker for printed copies</li>
+  </ul>
+   <p class="meta">⏱️ {{ page.minutes }} read · Updated {{ page.last_modified_at | date: "%B %d, %Y" }}</p>
 </div>
 
 #### ___A: You've built a version-controlled protocol system for the lab bench. Tell us more about the problem you wanted to solve.___
@@ -98,3 +105,7 @@ ___B:___ Currently, this is a personal system that works for me, and I'm not cla
 ___B:___ Right now, I've started sharing my small personal collection. I use these protocols. I revise them. I track their history. But I'm curious whether others find value in this work too. So, if you're working in a related field, try one. If you're technically curious, check out how it's built. If you spot an error or have feedback, let me know. Maybe this will resonate with someone who's tired of "Protocol_final_v3_ACTUAL_final.docx." Maybe it won't.
 
 #### ___A: I shall look forward to scanning the QR code on my next printed protocol then. Assuming, I can find it under the coffee stains.___
+
+<div class="project-history">
+  <p>The original post was rewritten as fictional interview in 2026. While the project is real, any resemblance to actual interviews is purely coincidental.</p>
+</div>
