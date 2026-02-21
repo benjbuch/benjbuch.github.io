@@ -1,21 +1,22 @@
 ---
-layout: projects
+layout: essays
 title: Protocols that know their own history
 weight: 1
 author: Benjamin Buchmuller
-minutes: 8 min
-last_modified_at: 2026-02-20
-excerpt: How lab protocols can be tracked, built, and published in print and online
+status: Active
+last_modified: 2026-02-20
+reads_in: 8 min
+excerpt: How lab protocols can be tracked, built, and published
 ---
 
-<div class="project-summary">
+<div class="essay-summary">
   <p>Many protocol collections share the same fate. They become coffee-stained printouts or end up in a folder called "old protocols". This project is an attempt to do better with version-controlled documents that keep their own history.</p>
   <ul>
     <li>Version-controlled SOPs with full changelog</li>
     <li>XML source rendered to PDF and HTML</li>
     <li>Online version checker for printed copies</li>
   </ul>
-   <p class="meta">⏱️ {{ page.minutes }} read · Updated {{ page.last_modified_at | date: "%B %d, %Y" }}</p>
+   <p class="meta">⏱️ {{ page.reads_in }} read · Updated {{ page.last_modified | date: "%B %d, %Y" }}</p>
 </div>
 
 #### ___A: You've built a version-controlled protocol system for the lab bench. Tell us more about the problem you wanted to solve.___
@@ -106,6 +107,6 @@ ___B:___ Right now, I've started sharing my small personal collection. I use the
 
 #### ___A: I shall look forward to scanning the QR code on my next printed protocol then. Assuming, I can find it under the coffee stains.___
 
-<div class="project-history">
+<div class="essay-history">
   <p>The original post was rewritten as fictional interview in 2026. While the project is real, any resemblance to actual interviews is purely coincidental.</p>
 </div>

@@ -1,10 +1,10 @@
 ---
 layout: default
-title: Projects
+title: Essays
 ---
 
-<main class="projects-index">
-  {%- assign projects = site.projects | sort: 'weight' -%}
+<main class="essays-index">
+  {%- assign essays = site.essays | where_exp: "item", "item.weight" | sort: 'weight' -%}
   <section id="{{ page.anchor | default: page.title | slugify }}">
     <div class="card">
       <h2>{{ page.title }}</h2>
@@ -15,14 +15,16 @@ title: Projects
               <th>Title</th>
               <th>Description</th>
               <th>Status</th>
+              <th>Last update</th>
             </tr>
           </thead>
           <tbody>
-          {%- for project in projects -%}
+          {%- for essay in essays -%}
             <tr>
-              <td><a href="{{ project.url | relative_url }}">{{ project.title }}</a></td>
-              <td>{{ project.excerpt | strip_html | truncatewords: 20 }}</td>
-              <td>{{ project.status | default: "Active" }}</td>
+              <td><a href="{{ essay.url | relative_url }}">{{ essay.title }}</a></td>
+              <td>{{ essay.excerpt | strip_html | truncatewords: 20 }}</td>
+              <td>{{ essay.status | default: "Active" }}</td>
+              <td>{{ essay.last_modified }}</td>
             </tr>
           {%- endfor -%}
           </tbody>

@@ -1,23 +1,23 @@
-.project-container {
+.essay-container {
   text-align: justify;
   hyphens: auto;
 }
 
-.project-container .card {
+.essay-container .card {
   margin-right: 0;
 }
 
-.project-container .card > *:not(.project-summary) {
+.essay-container .card > *:not(.essay-summary) {
   margin-right: clamp(1rem, 8vw, 8em);
 }
 
-//.project-container strong,
-//.project-container b {
+//.essay-container strong,
+//.essay-container b {
 //  box-shadow: inset 0 -0.4em 0 rgba(255, 255, 0, 0.4);
 //  font-weight: bold;
 //}
 
-.project-summary {
+.essay-summary {
   background: var(--accent-blue-a);
   border-left: #{$spine} solid var(--accent-blue);
   border-radius: 0 #{$round-s} #{$round-s} 0;
@@ -30,26 +30,26 @@
   width: 50ch;
 }
 
-.project-summary p:first-of-type::before {
+.essay-summary p:first-of-type::before {
   content: "In brief: ";
   font-weight: 700;
   font-variant: small-caps;
   letter-spacing: 0.05em;
 };
 
-.project-summary .meta {
+.essay-summary .meta {
   color: var(--text-secondary);
   margin-top: var(--pad-m);
   margin-bottom: var(--pad-s);
 }
 
-.project-history {
+.essay-history {
   margin-top: calc(2 * var(--pad-l));
   border-top: #{$line-m} solid var(--border-subtle);
   color: var(--text-secondary);
 }
 
-.project-history p::before {
+.essay-history p::before {
   content: "Update: ";
   font-weight: 700;
   font-variant: small-caps;
@@ -69,7 +69,7 @@
 }
 
 @media (max-width: #{$card-w}) {
-  .project-container .card > * {
+  .essay-container .card > * {
     margin-right: 0;
   }
 }
