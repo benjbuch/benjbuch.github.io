@@ -503,6 +503,11 @@ input {
 
     --shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
   }
+  
+  .tag {
+    opacity: 0.85;
+  }
+  
 }
 
 // Tablet and mobile
@@ -560,6 +565,11 @@ input {
 // Reduced motion preference
 
 @media (prefers-reduced-motion: reduce) {
+  
+  * {
+    transition: none !important;
+  }
+  
   .menu {
     transform: none;
     transition: none;

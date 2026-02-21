@@ -233,15 +233,3 @@
     margin-right: 0.6ch;
   }
 }
-
-@media (prefers-color-scheme: dark) {
-  .tag {
-    opacity: 0.85;
-  }
-}
-
-@media (prefers-reduced-motion: reduce) {
-  * {
-    transition: none !important;
-  }
-}
