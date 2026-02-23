@@ -10,7 +10,7 @@ $bp-s: 760px;
 // Dimensions
 $card-w: 720px;
 $menu-w: 160px;
-$portrait-w: 140px;
+$portrait-w: 180px;
 
 // Border radius
 $round-l: 1.00rem;
@@ -306,6 +306,7 @@ footer {
   height: #{$portrait-w};
   object-fit: cover;
   overflow: hidden;
+  margin-bottom: var(--section-gap);
   width: #{$portrait-w};
 }
 

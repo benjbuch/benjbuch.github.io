@@ -20,6 +20,8 @@ I am an Associate Research Scholar and former EMBO Postdoctoral Research Fellow 
 
 In 2021, I received my PhD in Chemical Biology, advised by [Prof. Daniel Summerer](https://ccb.tu-dortmund.de/en/professorships/cb/summerer/), for developing **proteins that recognize rare DNA modifications** in the human genome.
 
+<br>
+
 [ORCID]({{ site.owner.orcid }})
 ·
 [Google Scholar]({{ site.owner.scholar }})
