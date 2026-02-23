@@ -76,6 +76,8 @@ $spine: 3.0px;
   --pad-l: #{$space-l};
   --pad-m: #{$space-m};
   --pad-s: #{$space-s};
+  
+  --section-gap: 3rem;
 
   // Effects
   --shadow: 0 1px 3px rgba(0, 0, 0, 0.06), 0 1px 2px rgba(0, 0, 0, 0.04);
@@ -147,11 +149,11 @@ a {
   text-decoration-skip-ink: auto;
 }
 
-a[target="_blank"]::before {
-  content: "↗";
-  margin-right: var(--pad-s);
-  opacity: 0.3;
-}
+//a[target="_blank"]::before {
+//  content: "↗";
+//  margin-right: var(--pad-s);
+//  opacity: 0.5;
+//}
 
 a:visited {
   color: var(--link);
@@ -213,7 +215,7 @@ section {
   align-items: flex-start;
   display: flex;
   justify-content: center;
-  padding: var(--pad-l) var(--pad-l);
+  padding: var(--section-gap) var(--pad-l);
   scroll-margin-top: calc(var(--header-height) - var(--pad-l));
 }
 
@@ -388,6 +390,7 @@ footer {
   
   thead th {
     background: var(--surface-inset);
+  border-bottom: 1px solid var(--border-subtle);
     font-weight: 600;
     position: sticky;
     top: 0;
@@ -395,6 +398,10 @@ footer {
     white-space: nowrap;
     z-index: 10;
   }
+  
+//  tr:nth-child(even) {
+//    background: var(--surface-inset);
+//  }
   
 }
 
@@ -485,8 +492,8 @@ input {
     --surface-raised:  #{$dark-200};
     --surface-inset:   #{$dark-300};
 
-    --border:          #{$dark-400};
-    --border-subtle:   #{$dark-500};
+    --border:          #{$dark-500};
+    --border-subtle:   #{$dark-400};
 
     --text-primary:    #{$dark-900};
     --text-secondary:  #{$dark-600};
