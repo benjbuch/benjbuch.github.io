@@ -1,35 +1,29 @@
 ---
-layout: default
+layout: overviews
 title: Essays
 ---
 
-<main class="essays-index">
-  {%- assign essays = site.essays | where_exp: "item", "item.weight" | sort: 'weight' -%}
-  <section id="{{ page.anchor | default: page.title | slugify }}">
-    <div class="card">
-      <h2>{{ page.title }}</h2>
-        <div class="scrollable-table">
-        <table class="protocol-table">
-          <thead>
-            <tr>
-              <th>Title</th>
-              <th>Description</th>
-              <th>Status</th>
-              <th>Last update</th>
-            </tr>
-          </thead>
-          <tbody>
-          {%- for essay in essays -%}
-            <tr>
-              <td><a href="{{ essay.url | relative_url }}">{{ essay.title }}</a></td>
-              <td>{{ essay.excerpt | strip_html | truncatewords: 20 }}</td>
-              <td>{{ essay.status | default: "Active" }}</td>
-              <td>{{ essay.last_modified }}</td>
-            </tr>
-          {%- endfor -%}
-          </tbody>
-        </table>
-      </div>
-    </div>
-  </section>
-</main>
+{%- assign essays = site.essays | where_exp: "item", "item.weight" | sort: 'weight' -%}
+
+<div class="scrollable-table">
+<table class="protocol-table">
+	<thead>
+		<tr>
+			<th>Title</th>
+			<th>Description</th>
+			<th>Status</th>
+			<th>Last update</th>
+		</tr>
+	</thead>
+	<tbody>
+	{%- for essay in essays -%}
+		<tr>
+			<td><a href="{{ essay.url | relative_url }}">{{ essay.title }}</a></td>
+			<td>{{ essay.excerpt | strip_html | truncatewords: 20 }}</td>
+			<td>{{ essay.status | default: "Active" }}</td>
+			<td>{{ essay.last_modified }}</td>
+		</tr>
+	{%- endfor -%}
+	</tbody>
+</table>
+</div>
