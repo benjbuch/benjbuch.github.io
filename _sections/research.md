@@ -1,12 +1,10 @@
 ---
-title: Research
+title: Research interests
 anchor: research
+nav_title: Research
 weight: 01
 layout: card
-show_title: false
 ---
-
-## Research interests
 
 My work focuses on:
 
