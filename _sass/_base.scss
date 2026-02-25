@@ -36,37 +36,37 @@ $spine: 3.0px;
   // Layout
   --footer-height: 56px;
   --header-height: 64px;
-
-  // Surfaces (3 tiers)
-  --surface-page:    #{$warm-100};
-  --surface-page-a:  #{$warm-200-a};
-  --surface-footer:  #{$warm-300};
-  --surface-raised:  #{$warm-200};     // cards, panels
-  --surface-inset:   #{$warm-300};     // code blocks, highlights on cards
-
-  // Borders
-  --border:          #{$warm-500};
-  --border-subtle:   #{$warm-400};
-
+  
   // Text
-  --text-primary:    #{$warm-900};     // body text
+  --text-strong:     #{$warm-900};
+  --text-primary:    #{$warm-800};     // body text
   --text-secondary:  #{$warm-600};     // captions, muted content
   --text-tertiary:   #{$warm-500};     // placeholders, disabled
 
   // Interactive
   --link:            #{$accent-blue};  // links, interactive text
-  --hover:           #{$warm-300};     // hover backgrounds on page-level
-  --hover-raised:    #{$warm-400};     // hover backgrounds on cards
   --focus-ring:      #{$accent-blue};  // focus outlines
 
   // Accents
   --accent-gold:     #{$accent-gold};
-  --accent-gold-a:   #{$accent-gold-a};
   --accent-blue:     #{$accent-blue};
-  --accent-blue-a:   #{$accent-blue-a};
   --accent-green:    #{$accent-green};
-  --accent-green-a:  #{$accent-green-a};
 
+  // Surfaces (3 tiers)
+  --surface-page:    #{$warm-100};
+  --surface-accent:  #{$warm-300};
+  --surface-raised:  #{$white};  // cards, panels
+  
+  // code blocks, highlights on cards
+  --surface-inset: color-mix(in srgb, var(--text-strong) 6%, var(--surface-raised));     
+  
+  // hover backgrounds on page-level
+  --hover: var(--surface-accent);
+  --hover-raised: color-mix(in srgb, var(--hover) 70%, white);
+  
+  --border-subtle: color-mix(in srgb, var(--text-primary) 15%, transparent);
+  --border-strong: color-mix(in srgb, var(--text-primary) 30%, transparent);
+  
   // Fonts
   --font-mono: "TeX Gyre Cursor", ui-monospace, "SF Mono", "Menlo", "Consolas", "Liberation Mono", monospace;
   --font-sans: "TeX Gyre Heros", system-ui, -apple-system, "Segoe UI", Helvetica, Arial, sans-serif;
@@ -80,7 +80,7 @@ $spine: 3.0px;
   --section-gap: 3rem;
 
   // Effects
-  --shadow: 0 1px 3px rgba(0, 0, 0, 0.06), 0 1px 2px rgba(0, 0, 0, 0.04);
+  --shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
 }
 
 :focus {
@@ -89,7 +89,7 @@ $spine: 3.0px;
 }
 
 // ============================================================================
-// Global Reset
+// Base Elements
 // ============================================================================
 
 * {
@@ -102,10 +102,6 @@ body {
   margin: 0;
   padding: 0;
 }
-
-// ============================================================================
-// Base Elements
-// ============================================================================
 
 html {
   scroll-behavior: smooth;
@@ -123,14 +119,14 @@ body {
 }
 
 code {
-  background: var(--surface-raised);
+  background: var(--surface-inset);
   border-radius: #{$round-s};
   padding: 0.1em 0.35em;
 }
 
 pre {
   background: var(--surface-raised);
-  border: 1px solid var(--border);
+  border: 1px solid var(--border-strong);
   border-radius: #{$round-s};
   overflow-x: auto;
   padding: var(--pad-l);
@@ -166,7 +162,7 @@ a:hover {
 }
 
 a:active {
-  color: var(--fg-color);
+  color: var(--text-primary);
 }
 
 .no-ext-arrow::before {
@@ -177,13 +173,36 @@ a:active {
 // Layout Sections
 // ============================================================================
 
+footer,
+header {
+  font-family: var(--font-sans);
+}
+
+footer {
+  backdrop-filter: blur(8px);
+  background: color-mix(in srgb, var(--surface-accent) 98%, black);
+  border-top: #{$line-s} solid var(--border-subtle);
+  bottom: 0;
+  color: var(--text-secondary);
+  display: grid;
+  height: var(--footer-height);
+  left: 0;
+  padding-block: var(--pad-l);
+  place-items: center;
+  right: 0;
+  text-align: center;
+  z-index: 40;
+}
+
 header {
   backdrop-filter: blur(8px);
-  background: var(--surface-page-a);
-  border-bottom: #{$line-s} solid var(--border);
+  background: color-mix(in srgb, var(--surface-accent) 30%, transparent);
+  border-bottom: #{$line-s} solid var(--border-subtle);
+  box-shadow: 0 1px 0 rgba(0,0,0,0.04);
   inset: 0 0 auto 0;
   margin: 0;
   max-width: none;
+  padding-block: var(--pad-s);
   position: fixed;
   width: 100%;
   will-change: transform;
@@ -195,38 +214,43 @@ main {
   overflow: visible;
 }
 
-footer {
-  backdrop-filter: blur(8px);
-  background: var(--surface-footer);
-  border-top: #{$line-s} solid var(--border);
-  bottom: 0;
-  color: var(--fg-muted);
-  display: grid;
-  height: var(--footer-height);
-  left: 0;
-  padding: var(--pad-l);
-  place-items: center;
-  right: 0;
-  text-align: center;
-  z-index: 40;
-}
-
 section {
   align-items: flex-start;
   display: flex;
   justify-content: center;
   padding: var(--section-gap) var(--pad-l);
-  scroll-margin-top: calc(var(--header-height) - var(--pad-l));
+  scroll-margin-top: calc(var(--header-height) - var(--section-gap));
+}
+
+.page {
+  display: block;
+}
+
+.section-header {
+  padding-left: var(--pad-l);
+  margin-bottom: var(--pad-l);
+  position: relative;
+}
+
+.section-header::before {
+  background: var(--accent-blue);
+  border-radius: 999px;
+  content: "";
+  height: 100%;
+  left: 0;
+  position: absolute;
+  width: #{$spine};
 }
 
 // ============================================================================
 // Navigation
 // ============================================================================
 
-.nav,
-.nav a,
-footer {
-  font-family: var(--font-sans);
+.menu {
+  align-items: center;
+  display: flex;
+  gap: var(--pad-m);
+  z-index: 55;
 }
 
 .nav {
@@ -239,6 +263,7 @@ footer {
 }
 
 .nav a {
+//  border: 1px solid transparent;
   border-radius: #{$round-s};
   color: var(--text-secondary);
   padding: 0.1rem 0.6rem;
@@ -247,28 +272,24 @@ footer {
 
 .nav a:hover {
   background: var(--hover);
+//  border: 1px solid var(--border-strong);
 }
 
 .nav a.active {
-  background: var(--active);
+  background: var(--hover-raised);
+//  border: 1px solid var(--border-subtle);
   color: var(--text-primary);
 }
 
 .brand {
+  color: var(--text-primary);
   font-weight: 700;
   letter-spacing: 0.2px;
 }
 
-.menu {
-  align-items: center;
-  display: flex;
-  gap: var(--pad-m);
-  z-index: 55;
-}
-
 .burger {
   background: transparent;
-  border: 0;
+  border: none;
   border-radius: #{$round-m};
   display: none;
   font-size: 1.25rem;
@@ -288,8 +309,7 @@ footer {
 }
 
 .hero p {
-  margin: #{$space-m} auto;
-  max-width: 40rem;
+  max-width: 50ch;
 }
 
 .hero-content {
@@ -380,7 +400,7 @@ footer {
 .scrollable-table {
   // This is about 10 table rows
   border-radius: #{$round-s};
-  border: 1px solid var(--border-subtle);
+  border: 1px solid var(--border-strong);
   margin-top: var(--pad-l);
   overflow-y: auto;
   
@@ -390,14 +410,18 @@ footer {
   }
   
   thead th {
-    background: var(--surface-inset);
-  border-bottom: 1px solid var(--border-subtle);
+    background: var(--surface-accent);
+    border-bottom: 1px solid var(--border-subtle);
     font-weight: 600;
     position: sticky;
     top: 0;
     user-select: none;
     white-space: nowrap;
     z-index: 10;
+  }
+
+  tbody tr:hover {
+    background-color: var(--surface-inset);
   }
   
 //  tr:nth-child(even) {
@@ -407,7 +431,7 @@ footer {
 }
 
 .tag {
-  background: var(--surface-raised);
+  background: var(--surface-inset);
   border: #{$line-s} solid var(--border-subtle);
   border-radius: #{$round-l};
   color: var(--text-secondary);
@@ -422,13 +446,18 @@ footer {
 // Interactive elements
 // ============================================================================
 
-button {
-  background: var(--surface-page);
+button, 
+input {
+  background: var(--surface-raised);
+  border: 1px solid var(--border-subtle);
   border-radius: #{$round-s};
-  border: 1px solid var(--border);
   color: var(--text-secondary);
-  cursor: pointer;
+  font-size: 1rem;
   padding: 0.4em 0.6em;
+}
+
+button {
+  cursor: pointer;
 }
 
 button:hover {
@@ -438,14 +467,8 @@ button:hover {
 input {
   -webkit-appearance: none;
   appearance: none;
-  background: var(--surface-page);
-  border-radius: #{$round-s};
-  border: 1px solid var(--border);
-  color: var(--text-secondary);
   box-sizing: border-box;
-  font-size: 1rem;
   min-height: 2.2em;
-  padding: 0.4em 0.6em;
 }
 
 // Switch track
@@ -488,21 +511,15 @@ input {
 @media (prefers-color-scheme: dark) {
   :root {
     --surface-page:    #{$dark-100};
-    --surface-page-a:  #{$dark-100-a};
-    --surface-footer:  #{$dark-200};
+    --surface-accent:  #{$dark-200};
     --surface-raised:  #{$dark-200};
-    --surface-inset:   #{$dark-300};
 
-    --border:          #{$dark-500};
-    --border-subtle:   #{$dark-400};
-
-    --text-primary:    #{$dark-900};
+    --text-strong:     #{$dark-900};
+    --text-primary:    #{$dark-800};
     --text-secondary:  #{$dark-600};
     --text-tertiary:   #{$dark-500};
 
     --link:            #{$accent-blue-light};
-    --hover:           #{$dark-300};
-    --hover-raised:    #{$dark-400};
     --focus-ring:      #{$accent-blue-light};
 
     --accent-gold:     #{$accent-gold-light};
@@ -527,7 +544,7 @@ input {
   }
 
   .menu {
-    background: var(--bg-color);
+    background: var(--surface-raised);
     border: #{$line-s} solid var(--hover);
     border-radius: #{$round-m};
     box-shadow: var(--shadow);

@@ -5,7 +5,7 @@ permalink: /check/
 ---
 
 <div class="checker">
-  <h2>Protocol version check</h2>
+  <h1 class="section-header">Protocol version check</h1>
 
   <!-- Query form -->
   <p>
@@ -31,95 +31,75 @@ permalink: /check/
     margin: 2rem auto;
     max-width: 60ch;
   }
-  .checker h1 {
-    margin-bottom: 0.75rem;
-  }
 
   /* Form */
 
-  .checker-form {
-    margin-bottom: var(--pad-l);
-  }
   .checker-form label {
-    margin-bottom: var(--pad-m);
     display: block;
+    margin-bottom: var(--pad-m);
   }
+  
   .checker-form .row {
     display: flex;
     flex-wrap: wrap;
     gap: var(--pad-m);
   }
-  
-  .checker-form button {
-    background: var(--surface-raised);
-  }
-  .checker-form input {
-    background: var(--surface-raised);
-  }
 
   /* Results */
   
   .check-result {
-    border: 1px solid var(--border);
-    border-radius: 0.5rem;
-    padding: var(--pad-l);
-    margin: var(--pad-l) 0;
     background: var(--surface-raised);
+    border-radius: 0.5rem;
+    border: 1px solid var(--border-strong);
     display: flex !important;
     flex-direction: column !important;
+    padding: var(--pad-l);
   }
   .check-result > div,
   .check-result > h2,
   .check-result > p {
     display: block !important;
-    width: 100% !important;
     margin: 0 0 var(--pad-m) 0 !important;
+    width: 100% !important;
   }
-
-  /* status section */
-  .result-status {
-    border-top: 1px solid var(--border);
-  }
-
-  /* status badges */
+  
+  /* Status badges */
+  
   .status-badge {
-    display: inline-block;
-    padding: var(--pad-s) var(--pad-m);
     border-radius: 0.5rem;
+    display: inline-block;
     font-family: var(--font-mono);
     font-size: 0.9rem;
     font-weight: 700;
-    text-transform: uppercase;
     letter-spacing: 0.02em;
+    padding: 0.1rem var(--pad-m);
+    text-transform: uppercase;
   }
   .status-current {
-    background: var(--accent-green-a);
-    color: var(--accent-green);
+    background: color-mix(in srgb, var(--accent-green) 10%, transparent);
     border: 1px solid var(--accent-green);
+    color: var(--accent-green);
   }
   .status-outdated {
-    background: var(--accent-gold-a);
-    color: var(--accent-gold);
+    background: color-mix(in srgb, var(--accent-gold) 10%, transparent);
     border: 1px solid var(--accent-gold);
+    color: var(--accent-gold);
   }
 
-  /* updates list */
+  /* Updates list */
+  
   .updates-list {
+    list-style-type: disc;
     margin: var(--pad-m) 0 0 0;
     padding-left: var(--pad-l);
-    list-style-type: disc;
   }
   .updates-list li {
     margin-bottom: var(--pad-m);
   }
   .updates-list li:last-child {
-    margin-bottom: 0;
+    margin-bottom: var(--pad-s);
   }
 
-  /* Inline code inside results */
-  .check-result code {
-    background: var(--surface-inset);
-  }
 </style>
 
 <script>
