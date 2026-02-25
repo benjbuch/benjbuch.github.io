@@ -131,6 +131,10 @@
   opacity: 0.9;
 }
 
+.pub-notes strong {
+  color: var(--text-primary);
+}
+
 // ============================================================================
 // Keyword Tags
 // ============================================================================
@@ -154,7 +158,7 @@
 }
 
 .tag.is-active {
-  outline: 2px solid var(--active);
+  outline: 2px solid var(--surface-inset);
   outline-offset: 2px;
 }
 
@@ -186,7 +190,7 @@
 // Checked state
  
 .switch input:checked + .switch-ui {
-  background: var(--border);
+  background: var(--border-strong);
 }
 
 .switch input:checked + .switch-ui::after {
@@ -196,7 +200,7 @@
 // Switch text labels
  
 .switch-text {
-  color: var(--text-secondary);
+  color: var(--text-primary);
   font-family: var(--font-sans);
 }
 

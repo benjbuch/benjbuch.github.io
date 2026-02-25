@@ -1,7 +1,7 @@
 <section id="{{ page.anchor | default: page.title | slugify }}">
-	<div class="card">
+	<div class="container card">
 		{% if page.show_title != false and page.title %}
-			<h2>{{ page.title }}</h2>
+			<h1 class="section-header">{{ page.title }}</h1>
 		{% endif %}
 		{{ content }}
 	</div>

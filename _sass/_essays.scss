@@ -1,39 +1,28 @@
-.essay-container {
+.essay {
   text-align: justify;
   hyphens: auto;
 }
 
-.essay-container .card {
-  margin-right: 0;
+.essay > *:not(.essay-summary) {
+  margin-right: clamp(30ch, 8vw, 8em);
 }
-
-.essay-container .card > *:not(.essay-summary) {
-  margin-right: clamp(1rem, 8vw, 8em);
-}
-
-//.essay-container strong,
-//.essay-container b {
-//  box-shadow: inset 0 -0.4em 0 rgba(255, 255, 0, 0.4);
-//  font-weight: bold;
-//}
 
 .essay-summary {
-  background: var(--accent-blue-a);
+  background: color-mix(in srgb, var(--accent-blue) 30%, transparent);
   border-left: #{$spine} solid var(--accent-blue);
   border-radius: 0 #{$round-s} #{$round-s} 0;
   float: right;
   font-family: var(--font-sans);
   font-size: 0.9rem;
-  margin-top: calc(1.5 * var(--pad-m));
-  margin-left: var(--pad-l);
-  padding: 0 var(--pad-m) var(--pad-s) var(--pad-m);
+  margin: var(--pad-l) var(--section-gap)  0;
+  padding: var(--pad-s) var(--pad-l);
   width: 50ch;
 }
 
 .essay-summary p:first-of-type::before {
   content: "In brief: ";
   font-weight: 700;
-  font-variant: small-caps;
+//  font-variant: small-caps;
   letter-spacing: 0.05em;
 };
 
@@ -44,7 +33,7 @@
 }
 
 .essay-history {
-  margin-top: calc(2 * var(--pad-l));
+  margin-top: var(--section-gap);
   border-top: #{$line-m} solid var(--border-subtle);
   color: var(--text-secondary);
 }
@@ -52,7 +41,7 @@
 .essay-history p::before {
   content: "Update: ";
   font-weight: 700;
-  font-variant: small-caps;
+//  font-variant: small-caps;
   letter-spacing: 0.05em;
 }
 
@@ -60,16 +49,14 @@
 // Media Queries
 // ============================================================================
 
-@media (max-width: #{$bp-l}) {
-  .protocol-summary {
+@media (max-width: #{$card-w}) {
+  .essay-summary {
     float: none;
     width: 100%;
-    margin: var(--pad-l) 0;
+    margin: 0;
+    
   }
-}
-
-@media (max-width: #{$card-w}) {
-  .essay-container .card > * {
+  .essay > *:not(.essay-summary) {
     margin-right: 0;
   }
 }
