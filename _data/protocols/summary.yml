@@ -68,19 +68,19 @@
 
 - id: "SOP0031"
   version: "1"
-  license: "CC-BY-SA-4.0"
-  open_license: true
+  license: CC-BY-SA-4.0
+  open_license: "true"
   title: "Designing and performing dilutions"
-  visibility: "internal"
+  visibility: "public"
   keywords:
     topic: [reagent preparation, solution handling]
     level: introductory
     workflow: sample preparation
     domain: core skills
     technique: [pipetting, serial dilution, concentration control, standard curve generation]
-  current_commit_hash: "c516bc1"
-  current_commit_time: "2025-11-03T20:31:53-05:00"
-  abstract: ""
+  current_commit_hash: "9084783"
+  current_commit_time: "2026-02-26T23:32:45-05:00"
+  abstract: "Whether adjusting concentrations, preparing a standard curve, titrating a reagent, or normalizing samples across experiments, thoughtful dilution design can improve accuracy, repro…"
   filename: "sop_0031-v1-serial_dilutions"
 
 - id: "SOP0016"
@@ -136,18 +136,18 @@
 
 - id: "SOP0030"
   version: "1"
-  license: "CC-BY-SA-4.0"
-  open_license: true
+  license: CC-BY-SA-4.0
+  open_license: "true"
   title: "Making reagents and buffers"
   visibility: "public"
   keywords:
-    domain: core skills
-    level: introductory
     technique: [buffer preparation, pH adjustment, sample storage]
     topic: [reagent preparation, solution handling]
+    domain: core skills
+    level: introductory
     workflow: sample preparation
-  current_commit_hash: "5253fee"
-  current_commit_time: "2025-11-03T21:26:52-05:00"
+  current_commit_hash: "985f01a"
+  current_commit_time: "2026-02-26T01:22:15-05:00"
   abstract: "Making buffers and reagents is one of the most essential skills in laboratory work. While not difficult, it requires care and precision. At first glance it may seem that all you ha…"
   filename: "sop_0030-v1-preparation_reagents"
 
@@ -272,19 +272,19 @@
 
 - id: "SOP0007"
   version: "1"
-  license: "CC-BY-SA-4.0"
-  open_license: true
-  title: "Denaturating SDS polyacrylamide gel electrophoresis"
-  visibility: "internal"
+  license: CC-BY-SA-4.0
+  open_license: "true"
+  title: "Denaturing SDS polyacrylamide gel electrophoresis"
+  visibility: "public"
   keywords:
-    workflow: analysis
+    technique: [SDS-PAGE, gel casting, gel electrophoresis, denaturing electrophoresis]
+    topic: [protein analysis, protein separation]
     level: basic
     domain: biochemistry
-    topic: [protein analysis, protein separation]
-    technique: [SDS-PAGE, gel casting, gel electrophoresis, denaturing electrophoresis]
-  current_commit_hash: ""
-  current_commit_time: ""
-  abstract: ""
+    workflow: analysis
+  current_commit_hash: "e5f133e"
+  current_commit_time: "2026-02-27T00:59:10-05:00"
+  abstract: "In the presence of anionic detergents like sodium dodecyl sulfate (SDS), proteins lose their tertiary structure and acquire a uniform negative charge. Since most secondary structur…"
   filename: "sop_0007-v1-sds_page"
 
 - id: "SOP0020"
@@ -357,20 +357,37 @@
 
 - id: "SOP0035"
   version: "1"
-  license: "CC-BY-SA-4.0"
-  open_license: true
+  license: CC-BY-SA-4.0
+  open_license: "true"
   title: "Writing a good protocol"
   visibility: "internal"
   keywords:
+    technique: [XML markup, ConTeXt conversion]
     domain: core skills
     workflow: documentation
     level: advanced
-    technique: [XML markup, ConTeXt conversion]
     topic: reproducible research
-  current_commit_hash: "c516bc1"
-  current_commit_time: "2025-11-03T20:31:53-05:00"
+  current_commit_hash: "9817172"
+  current_commit_time: "2026-02-25T13:05:55-05:00"
   abstract: ""
   filename: "sop_0035-v1-protocol_writing"
+
+- id: "SOP0036"
+  version: "1"
+  license: CC-BY-SA-4.0
+  open_license: "true"
+  title: "Banking, tracking, and sharing of materials"
+  visibility: "internal"
+  keywords:
+    domain: core skills
+    level: introductory
+    workflow: documentation
+    technique: [cryopreservation, inventory management, sample storage, record keeping]
+    topic: [reproducible research, data management]
+  current_commit_hash: "9817172"
+  current_commit_time: "2026-02-25T13:05:55-05:00"
+  abstract: ""
+  filename: "sop_0036-v1-banking_and_tracking"
 
 - id: "SOP0032"
   version: "1"
@@ -391,18 +408,18 @@
 
 - id: "SOP0001"
   version: "1"
-  license: "CC-BY-SA-4.0"
-  open_license: true
+  license: CC-BY-SA-4.0
+  open_license: "true"
   title: "Isolation of nuclei from tissue culture cells"
   visibility: "public"
   keywords:
-    workflow: sample preparation
-    technique: [cell lysis, nuclear isolation]
-    topic: [chromatin biology, sub-cellular fractionation]
     domain: cell biology
+    topic: [chromatin biology, sub-cellular fractionation]
+    workflow: sample preparation
     level: basic
-  current_commit_hash: "646be6f"
-  current_commit_time: "2025-11-03T21:10:17-05:00"
+    technique: [cell lysis, nuclear isolation]
+  current_commit_hash: "4e55129"
+  current_commit_time: "2026-02-27T01:06:44-05:00"
   abstract: "The nucleus is the largest and densest organelle of a mammalian cell. It can be easily purified by sedimentation in aqueous and non-aqueous solutions. The purified nuclei can be di…"
   filename: "sop_0001-v1-isolation_nuclei"
 
@@ -442,19 +459,19 @@
 
 - id: "SOP0008"
   version: "1"
-  license: "CC-BY-SA-4.0"
-  open_license: true
+  license: CC-BY-SA-4.0
+  open_license: "true"
   title: "Western blotting"
-  visibility: "internal"
+  visibility: "public"
   keywords:
-    domain: biochemistry
-    workflow: analysis
     technique: [Western blot, transfer]
-    topic: [protein analysis, protein detection]
+    workflow: analysis
     level: basic
-  current_commit_hash: ""
-  current_commit_time: ""
-  abstract: ""
+    domain: biochemistry
+    topic: [protein analysis, protein detection]
+  current_commit_hash: "5fc1cf0"
+  current_commit_time: "2026-02-27T01:02:18-05:00"
+  abstract: "Western blotting transfers proteins from a gel onto a solid support such as a nitrocellulose or polyvinylidene fluoride (PVDF) membrane. Once transferred, individual proteins, prot…"
   filename: "sop_0008-v1-blotting_western"
 
 - id: "SOP0009"
@@ -493,18 +510,18 @@
 
 - id: "SOP0101"
   version: "1"
-  license: "CC-BY-SA-4.0"
-  open_license: true
+  license: CC-BY-SA-4.0
+  open_license: "true"
   title: "Version control using Git and GitHub"
   visibility: "public"
   keywords:
-    topic: [reproducible research, data management]
-    workflow: documentation
     level: introductory
-    domain: data management
+    topic: [reproducible research, data management]
     technique: [Git, GitHub, version control]
-  current_commit_hash: "c516bc1"
-  current_commit_time: "2025-11-03T20:31:53-05:00"
+    workflow: documentation
+    domain: data management
+  current_commit_hash: "9817172"
+  current_commit_time: "2026-02-25T13:05:55-05:00"
   abstract: "Git is a source control management tool that tracks changes to files over time and allows users to manage and document the evolution of a project. GitHub is a web-based platform th…"
   filename: "sop_0101-v1-github"
 
@@ -643,23 +660,6 @@
   current_commit_time: ""
   abstract: ""
   filename: "sop_0033-v1-restriction_ligation_cloning"
-
-- id: "SOP0036"
-  version: "1"
-  license: "CC-BY-SA-4.0"
-  open_license: true
-  title: "Banking, tracking, and sharing of materials"
-  visibility: "internal"
-  keywords:
-    level: introductory
-    domain: core skills
-    topic: [reproducible research, data management]
-    technique: [cryopreservation, inventory management, sample storage, record keeping]
-    workflow: documentation
-  current_commit_hash: "c516bc1"
-  current_commit_time: "2025-11-03T20:31:53-05:00"
-  abstract: ""
-  filename: "sop_0036-v1-banking_and_tracking"
 
 - id: "SOP0023"
   version: "1"
