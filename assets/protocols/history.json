@@ -1,19 +1,50 @@
 [{
-    "id": "SOP0035",
-    "filename": "sop_0035-v1-protocol_writing",
+    "id": "SOP0005",
+    "filename": "sop_0005-v2-production_histone_octamers",
     "changes": [{
-          "time": "2025-04-02",
+          "time": "2020-06-12",
           "text": "Initial version."
         },{
-          "time": "2025-08-14",
-          "text": "Added sections on XML validation and organization using Git or GitHub; ChatGPT 5 (OpenAI) advised on XSD and Schematron use (XSLT-1 sekelton)."
+          "time": "2020-07-12",
+          "text": "Updated sample preparation for FPLC."
+        },{
+          "time": "2022-09-11",
+          "text": "Adaptation as SOP; convert to molar concentrations."
+        },{
+          "time": "2025-03-27",
+          "text": "Revised size-exclusion protocol."
         }]
   },{
-    "id": "SOP0036",
-    "filename": "sop_0036-v1-banking_and_tracking",
+    "id": "SOP0006",
+    "filename": "sop_0006-v2-production_nucleosome",
     "changes": [{
-          "time": "2025-04-10",
-          "text": "Initial draft, based on content from SOP0019."
+          "time": "2020-06-12",
+          "text": "Initial version of salt dialysis reconstitution."
+        },{
+          "time": "2020-06-12",
+          "text": "Initial version of Alternative A."
+        },{
+          "time": "2020-06-12",
+          "text": "Initial version of Alternative B."
+        },{
+          "time": "2022-09-12",
+          "text": "Adaptation as SOP."
+        },{
+          "time": "2023-03-23",
+          "text": "Incorporation of nucleosome array protocols."
+        }]
+  },{
+    "id": "SOP0003",
+    "filename": "sop_0003-v1-native_page",
+    "changes": [{
+          "time": "2022-07-23",
+          "text": "Initial version."
+        },{
+          "time": "2025-03-18",
+          "text": "Revised and expanded."
+        },{
+          "time": "2025-03-30",
+          "text": "Optimized APS and TEMED concentration for stacking layer."
         }]
   },{
     "id": "SOP0007",
@@ -35,6 +66,248 @@
           "text": "Adjusted volumes of resolving gels to accomodate three gels with 1.5 millimeter spacer or four gels with 1.0 millimeter."
         }]
   },{
+    "id": "SOP0013",
+    "filename": "sop_0013-v1-transfection_electroporation",
+    "changes": [{
+          "time": "2020-03-20",
+          "text": "Initial protocol for RNA transfection; Alexander Ploss lab."
+        },{
+          "time": "2020-03-27",
+          "text": "Initial protocol for protein transfection; Tom Muir lab."
+        },{
+          "time": "2023-03-09",
+          "text": "Adaptation as SOP."
+        }]
+  },{
+    "id": "SOP0026",
+    "filename": "sop_0026-v1-histone_extraction",
+    "changes": [{
+          "time": "2023-10-26",
+          "text": "Adaptation as SOP."
+        }]
+  },{
+    "id": "SOP0002",
+    "filename": "sop_0002-v1-whole_cell_extraction_mammalian_cells",
+    "changes": [{
+          "time": "2020-03-22",
+          "text": "Initial version."
+        },{
+          "time": "2025-02-22",
+          "text": "Adaptation as SOP."
+        }]
+  },{
+    "id": "SOP0014",
+    "filename": "sop_0014-v1-counting_cells",
+    "changes": [{
+          "time": "2000-01-01",
+          "text": "Initial protocol; Jue Chen lab."
+        },{
+          "time": "2015-08-07",
+          "text": "Haemocytometer types; online resource (Agar Scientific Ltd.)."
+        },{
+          "time": "2020-05-27",
+          "text": "Initial protocol; Tom Muir lab."
+        },{
+          "time": "2023-03-14",
+          "text": "Adaptation as SOP."
+        }]
+  },{
+    "id": "SOP0018",
+    "filename": "sop_0018-v1-stable_cell_lines_transposase",
+    "changes": [{
+          "time": "2023-11-12",
+          "text": "Adaptation as SOP."
+        }]
+  },{
+    "id": "SOP0039",
+    "filename": "sop_0039-v1-pcr_qualitative",
+    "changes": [{
+          "time": "2011-11-08",
+          "text": "Colony PCR from yeast cells with self-made Taq DNA polymerase."
+        },{
+          "time": "2014-08-08",
+          "text": "Generic buffers for high-fidelity DNA polymerases (VELOCITY)."
+        },{
+          "time": "2025-06-08",
+          "text": "Adaptation as SOP."
+        }]
+  },{
+    "id": "SOP0004",
+    "filename": "sop_0004-v3-production_recombinant_histones",
+    "changes": [{
+          "time": "2020-09-01",
+          "text": "Initial version."
+        },{
+          "time": "2022-08-17",
+          "text": "Adaptation as SOP; added glucose repression; simplified inclusion body isolation protocol."
+        },{
+          "time": "2024-04-30",
+          "text": "Reduced thiourea concentration to 2 molar as used in common extraction protocols to increase solubility."
+        },{
+          "time": "2025-03-23",
+          "text": "Include an alternative ultracentrifugation protocol."
+        }]
+  },{
+    "id": "SOP0011",
+    "filename": "sop_0011-v1-protein_gel_silver_staining",
+    "changes": [{
+          "time": "2006-11-22",
+          "text": "Initial, peer-reviewed protocol article."
+        },{
+          "time": "2023-01-16",
+          "text": "Adaptation as SOP."
+        },{
+          "time": "2025-04-05",
+          "text": "Revised protocol sections."
+        }]
+  },{
+    "id": "SOP0015",
+    "filename": "sop_0015-v1-routine_cell_culture_HeLa",
+    "changes": [{
+          "time": "2012-04-14",
+          "text": "Released the HeLa S3 suspension protocol of The Scripps Research Institute on ResearchGate"
+        },{
+          "time": "2017-02-15",
+          "text": "Published in part as Woods Hole Physiology Course 2006 (doi:10.1575/1912/8720)"
+        },{
+          "time": "2023-03-13",
+          "text": "Adaptation as SOP."
+        }]
+  },{
+    "id": "SOP0025",
+    "filename": "sop_0025-v1-nuclear_extraction",
+    "changes": [{
+          "time": "2023-10-18",
+          "text": "Adaptation as SOP."
+        },{
+          "time": "2023-12-10",
+          "text": "Revised figures; replaced washing step in isosmotic sucrose with commonly used TEK buffer; included useful hints from PMID:32457909."
+        }]
+  },{
+    "id": "SOP0034",
+    "filename": "sop_0034-v1-transformation",
+    "changes": [{
+          "time": "2012-02-06",
+          "text": "Initial protocol for preparation of chemically competent HB101."
+        },{
+          "time": "2015-11-03",
+          "text": "Integration of heat shock and electroporation methods; high-efficiency competent cell protocol."
+        },{
+          "time": "2019-11-27",
+          "text": "Initial protocol for preparation of electrocompetent cells for library transformation; Daniel Summerer lab."
+        },{
+          "time": "2020-03-25",
+          "text": "TSS transformation of non-competent E. coli cells."
+        },{
+          "time": "2025-02-19",
+          "text": "Modularization and adaptation as SOP; added troubleshooting and efficiency guidelines."
+        }]
+  },{
+    "id": "SOP0017",
+    "filename": "sop_0017-v3-stable_cell_lines_lentiviral",
+    "changes": [{
+          "time": "2023-03-09",
+          "text": "Adaptation as SOP."
+        },{
+          "time": "2025-04-07",
+          "text": "Revised abstract to clarify packaging system and tropism; expanded transduction procedure; added comprehensive biosafety guidance including spill response, waste handling, and infectious material clearance. Updated dilution series table and MOI analysis. Reorganized production steps and annotated media changes."
+        },{
+          "time": "2025-07-18",
+          "text": "Added reference to lateral flow assay to determine viral titer; corrected seeding density for transduction from 5e4 unitless to 3e5 unitless; corrected Polybrene® stock concentration from 0.1 gram per liter to 0.2 gram per liter."
+        },{
+          "time": "2025-07-25",
+          "text": "Added low-speed PEG 8000 concentration protocol adapted from the Xin Chen lab (Johns Hopkins University) and the Functional Genomics Core (MD Anderson Cancer Center); Added high-speed concentration protocols from the cited references."
+        }]
+  },{
+    "id": "SOP0033",
+    "filename": "sop_0033-v1-restriction_ligation_cloning",
+    "changes": [{
+          "time": "2010-09-21",
+          "text": "Original protocol."
+        },{
+          "time": "2024-07-22",
+          "text": "Additions. Adaptation as SOP."
+        }]
+  },{
+    "id": "SOP0012",
+    "filename": "sop_0012-v2-transfection_chemical",
+    "changes": [{
+          "time": "2017-05-15",
+          "text": "Initial calcium chloride protocol; Daniel Summerer lab."
+        },{
+          "time": "2020-05-20",
+          "text": "Initial Lipofectamine® protocol; Tom Muir lab."
+        },{
+          "time": "2023-01-27",
+          "text": "Adaptation as SOP."
+        },{
+          "time": "2023-02-09",
+          "text": "Added FuGENE® and PEI protocols."
+        },{
+          "time": "2023-04-04",
+          "text": "Updated Lipofectamine® volumes."
+        },{
+          "time": "2025-04-05",
+          "text": "Harmonized provisions. Updated safety information for PEI."
+        }]
+  },{
+    "id": "SOP0029",
+    "filename": "sop_0029-v1-cell_cycle_flow_cytometry",
+    "changes": [{
+          "time": "2023-11-12",
+          "text": "Adaptation as SOP."
+        },{
+          "time": "2025-04-17",
+          "text": "Full revision and restructuring."
+        }]
+  },{
+    "id": "SOP0010",
+    "filename": "sop_0010-v1-protein_gel_coomassie_staining",
+    "changes": [{
+          "time": "2020-06-12",
+          "text": "Initial protocol."
+        },{
+          "time": "2023-01-16",
+          "text": "Adaptation as SOP. Replaced methanol with less toxic isopropyl alcohol."
+        }]
+  },{
+    "id": "SOP0032",
+    "filename": "sop_0032-v1-agarose_gel_electrophoresis",
+    "changes": [{
+          "time": "2021-04-01",
+          "text": "Origianl protocol."
+        },{
+          "time": "2023-11-26",
+          "text": "Adaptation as SOP."
+        }]
+  },{
+    "id": "SOP0023",
+    "filename": "sop_0023-v1-rna_isolation_trizol",
+    "changes": [{
+          "time": "2023-06-10",
+          "text": "Adaptation as SOP."
+        }]
+  },{
+    "id": "SOP0022",
+    "filename": "sop_0022-v1-gel_extraction",
+    "changes": [{
+          "time": "2021-04-01",
+          "text": "Original protocol."
+        },{
+          "time": "2023-11-26",
+          "text": "Adaptation as SOP."
+        }]
+  },{
+    "id": "SOP0028",
+    "filename": "sop_0028-v2-cell_cycle_synchronization",
+    "changes": [{
+          "time": "2023-11-12",
+          "text": "Adaptation as SOP."
+        },{
+          "time": "2025-04-17",
+          "text": "Clarified G2/M release issues and added RO-3306 alternative. Replaced in-protocol viability analysis with SOP0031 pointer."
+        }]
+  },{
     "id": "SOP0001",
     "filename": "sop_0001-v1-isolation_nuclei",
     "changes": [{
@@ -51,6 +324,13 @@
           "text": "Corrected references."
         }]
   },{
+    "id": "SOP0021",
+    "filename": "sop_0021-v1-purification_nucleic_acids",
+    "changes": [{
+          "time": "2023-06-10",
+          "text": "Adaptation as SOP."
+        }]
+  },{
     "id": "SOP0031",
     "filename": "sop_0031-v1-serial_dilutions",
     "changes": [{
@@ -65,6 +345,40 @@
         },{
           "time": "2026-02-26",
           "text": "Integrate resource table into procedure."
+        }]
+  },{
+    "id": "SOP0009",
+    "filename": "sop_0009-v1-immunoblotting",
+    "changes": [{
+          "time": "2020-03-22",
+          "text": "Initial protocol."
+        },{
+          "time": "2023-01-15",
+          "text": "Adaptation as SOP. Added section on chemiluminescent detection and membrane stripping."
+        }]
+  },{
+    "id": "SOP0035",
+    "filename": "sop_0035-v1-protocol_writing",
+    "changes": [{
+          "time": "2025-04-02",
+          "text": "Initial version."
+        },{
+          "time": "2025-08-14",
+          "text": "Added sections on XML validation and organization using Git or GitHub; ChatGPT 5 (OpenAI) advised on XSD and Schematron use (XSLT-1 sekelton)."
+        }]
+  },{
+    "id": "SOP0024",
+    "filename": "sop_0024-v1-dna_isolation_mammalian_cells",
+    "changes": [{
+          "time": "2023-11-11",
+          "text": "Adaptation as SOP."
+        }]
+  },{
+    "id": "SOP0027",
+    "filename": "sop_0027-v1-immunoprecipitation",
+    "changes": [{
+          "time": "2025-04-13",
+          "text": "Adaptation as SOP."
         }]
   },{
     "id": "SOP0101",
@@ -93,6 +407,26 @@
           "text": "Language improvement in formula section; add water quality and autoclave validation note."
         }]
   },{
+    "id": "SOP0020",
+    "filename": "sop_0020-v1-plasmid_isolation",
+    "changes": [{
+          "time": "2016-03-15",
+          "text": "Alkaline lysis with ethanol precipitation"
+        },{
+          "time": "2023-05-30",
+          "text": "Adaptation as SOP"
+        }]
+  },{
+    "id": "SOP0016",
+    "filename": "sop_0016-v1-routine_cell_culture_MCF10A",
+    "changes": [{
+          "time": "2015-03-15",
+          "text": "Initial protocols for two-dimensional and three-dimensional culture"
+        },{
+          "time": "2023-03-14",
+          "text": "Adaptation as SOP."
+        }]
+  },{
     "id": "SOP0008",
     "filename": "sop_0008-v1-blotting_western",
     "changes": [{
@@ -101,5 +435,29 @@
         },{
           "time": "2023-01-13",
           "text": "Adaptation as SOP. Added selection guide from Carl Roth GmbH + Co. KG."
+        }]
+  },{
+    "id": "SOP0038",
+    "filename": "sop_0038-v1-crispr_design",
+    "changes": [{
+          "time": "2024-07-08",
+          "text": "Design and cloning of pX330-based plasmids based on protocols from the Feng Zhang lab and the transgenic core at Cornell University"
+        },{
+          "time": "2025-05-28",
+          "text": "Initial version."
+        }]
+  },{
+    "id": "SOP0019",
+    "filename": "sop_0019-v1-selection_screening_mammalian_cells",
+    "changes": [{
+          "time": "2023-04-28",
+          "text": "Adaptation as SOP."
+        }]
+  },{
+    "id": "SOP0036",
+    "filename": "sop_0036-v1-banking_and_tracking",
+    "changes": [{
+          "time": "2025-04-10",
+          "text": "Initial draft, based on content from SOP0019."
         }]
   }]
