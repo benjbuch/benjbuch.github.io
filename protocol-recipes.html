@@ -6,26 +6,19 @@ permalink: /recipes/
 
 <div class="recipes-page">
   <h1 class="section-header">Recipe reference</h1>
-
-  <!-- Status line -->
   <p id="recipe-status" class="muted"></p>
 
-  <!-- Main content area -->
   <div id="recipe-content" class="recipe-layout">
-
     <!-- Left panel: search + list -->
     <div class="recipe-list-panel">
       <form id="recipe-form" class="recipe-form" onsubmit="return false">
-        <div class="row">
-          <input id="recipe-search" type="search" autocomplete="off" placeholder="e.g. EDTA, R0017, Tris" />
-        </div>
+        <input id="recipe-search" type="search" autocomplete="off"
+               placeholder="e.g. EDTA, R0017, Tris" />
       </form>
       <div id="recipe-list" class="recipe-list"></div>
     </div>
-
     <!-- Right panel: recipe detail -->
     <div id="recipe-detail" class="recipe-detail"></div>
-
   </div>
 </div>
 
@@ -36,71 +29,56 @@ permalink: /recipes/
     flex-direction: column;
     height: calc(100vh - var(--footer-height) - var(--header-height) - 2 * var(--pad-l));
     margin: var(--pad-l) auto;
-    max-width: 95ch;
+    max-width: min(95ch, 100% - 2 * var(--pad-l));
   }
-
-  /* ---- Form ---- */
-
-  .recipe-form .row {
-    display: flex;
-    flex-wrap: wrap;
-    gap: var(--pad-m);
-    margin-bottom: var(--pad-l);
-  }
-
-  .recipe-form input[type="search"] {
-    flex: 1;
-    min-width: 20ch;
-  }
-
+  
   /* ---- Two-column layout ---- */
 
   .recipe-layout {
     display: flex;
-    flex: 1 1 auto;
     gap: var(--pad-l);
     padding: var(--pad-s);
-    align-items: stretch;
-    height: 100vh;
-    overflow: hidden;
+    min-height: 0;
+    flex: 1 1 0;
   }
+
+  /* ---- Left panel ---- */
   
   .recipe-list-panel {
-    flex: 0 0 20ch;
+    width: 24ch;
+    flex: 0 0 auto;
     display: flex;
-    height: 100%;
     flex-direction: column;
   }
-
-  .recipe-list {
-    flex: 1 1 auto;
-    min-width: 20ch;
-    overflow-y: auto;
-    border: 1px solid var(--border-subtle);
-    padding: 4px;
-    border-radius: 0.25rem;
-    overflow-y: scroll;
-    align-self: flex-start;
-    scrollbar-gutter: stable;
+  
+  .recipe-form {
+    margin-bottom: var(--pad-m);
   }
   
-
-  .recipe-list.full-width {
-    flex: 1 1 100%;
+  .recipe-form input[type="search"] {
+    width: 100%;
+    box-sizing: border-box;
   }
-
-  .recipe-detail {
-    flex: 1 1 60ch;
-    min-width: 0;
+  
+  .recipe-list {
+    flex: 1 1 0;
     min-height: 0;
-    padding-right: var(--pad-s);
     overflow-y: auto;
     scrollbar-gutter: stable;
+    border: 1px solid var(--border-subtle);
+    border-radius: 0.25rem;
+    padding: 4px;
   }
-
-  .recipe-detail:empty ~ .recipe-list,
-  .recipe-detail:empty + .recipe-list {
-    flex: 1 1 100%;
+  
+  /* ---- Right panel ---- */
+  
+  .recipe-detail {
+    flex: 1 1 0;
+    min-width: 0;
+    min-height: 0;
+    overflow-y: auto;
+    scrollbar-gutter: stable;
+    padding-right: var(--pad-l);
   }
 
   /* ---- List items ---- */
@@ -374,35 +352,34 @@ permalink: /recipes/
 
   .rc-body {
     font-size: 0.8rem;
-    line-height: 1.55;
     padding: var(--pad-l) var(--pad-s) var(--pad-s);
   }
 
   .rc-workup {
-    margin-bottom: var(--pad-s);
+    margin-bottom: var(--pad-m);
   }
 
   .rc-storage {
-    color: var(--fg-muted);
-    margin-bottom: var(--pad-s);
+    color: var(--text-secondary);
+    margin-bottom: var(--pad-l);
   }
 
   .rc-note {
-    margin-bottom: 0.2rem;
+    margin-bottom: var(--pad-m);
+    padding-left: var(--pad-m);
+    border-left: 3px solid var(--border-strong);
+  }
+  
+  .rc-note emph {
+    text-transform: capitalize;
+    font-weight: 600;
   }
 
   .rc-note-typed {
-    border-left: 3px solid var(--border-strong);
-    padding-left: var(--pad-s);
   }
 
   .rc-note-critical {
-    background: color-mix(in srgb, var(--accent-red, #dc2626) 8%, transparent);
-    border-left: 3px solid var(--accent-red, #dc2626);
-    border-radius: 0.2rem;
-    color: var(--accent-red, #991b1b);
-    font-weight: 500;
-    padding: 0.2rem var(--pad-s);
+    border-color: var(--text-primary);
   }
 
   /* Safety block */
@@ -412,6 +389,10 @@ permalink: /recipes/
     line-height: 1.5;
     margin-top: var(--pad-m);
     padding: var(--pad-s) var(--pad-m);
+  }
+  
+  .rc-safety:first-of-type {
+    margin-top: var(--pad-l);
   }
 
   .rc-safety-danger {
@@ -480,16 +461,25 @@ permalink: /recipes/
   /* ---- Responsive ---- */
 
   @media (max-width: 640px) {
+    .recipes-page {
+      max-width: none;
+      margin: var(--pad-l);
+    }
     .recipe-layout {
       flex-direction: column;
     }
     .recipe-list-panel {
-      flex: 1 1 100%;
-      max-height: none;
-      border-right: none;
+      width: 100%;
+      flex: 0 0 auto;
+      padding-right: var(--pad-l);
+    }
+    .recipe-list {
+      max-height: calc(2 * var(--line-height, 2.4em));
+      flex: 0 0 auto;
     }
     .recipe-detail {
-      flex: 1 1 100%;
+      flex: 1 1 0;
+      min-height: 0;
     }
   }
 
@@ -515,7 +505,7 @@ document.addEventListener("DOMContentLoaded", function () {
     bar: "bar", millibar: "mbar", psi: "psi",
     basepair: "bp", colonyformingunit: "cfu", enzymeunit: "U",
     "enzymeunit per microliter": "U/\u00B5L", "enzymeunit per liter": "U/L",
-    fold: "\u00D7", gauge: "G", gforce: "\u00D7\u2009g", kb: "kb", nucleotides: "nt",
+    fold: "x", gauge: "G", gforce: "\u00D7\u2009g", kb: "kb", nucleotides: "nt",
     rpm: "rpm", ppm: "ppm", ppt: "ppt", torr: "Torr",
     unitless: "", vol: "vol", pound: "lb", inch: "in"
   };
@@ -884,13 +874,13 @@ document.addEventListener("DOMContentLoaded", function () {
     // Storage / shelflife
     if (recipe.shelflife || recipe.storage) {
       h += '<div class="rc-storage">';
-      if (recipe.shelflife) {
+      if (recipe.shelflife && recipe.shelflife.trim() !== "") {
         h += "Stable for " + recipe.shelflife;
         if (recipe.storage && recipe.shelflife.indexOf("store") === -1) {
           h += " at " + recipe.storage.html;
         }
         h += ".";
-      } else if (recipe.storage) {
+      } else if (recipe.storage  && recipe.storage.html.trim() !== "") {
         h += "Store at " + recipe.storage.html + ".";
       }
       h += "</div>";
@@ -901,11 +891,12 @@ document.addEventListener("DOMContentLoaded", function () {
       var note = recipe.notes[n];
       var isCritical = note.type === "critical" || note.type === "safety";
       if (isCritical) {
-        h += '<div class="rc-note rc-note-critical"><strong>Important:</strong> ' + note.html + "</div>";
+        h += '<div class="rc-note rc-note-critical"><strong>Important:</strong> ' + note.html + "!</div>";
       } else if (note.type) {
-        h += '<div class="rc-note rc-note-typed">' + note.html + "</div>";
+        h += '<div class="rc-note rc-note-typed"><emph>' +
+          note.type + ':</emph> ' + note.html + ".</div>";
       } else {
-        h += '<div class="rc-note">' + note.html + "</div>";
+        h += '<div class="rc-note">' + note.html + ".</div>";
       }
     }
 
@@ -916,14 +907,14 @@ document.addEventListener("DOMContentLoaded", function () {
       h += '<div class="rc-safety ' + cls + '">';
       if (sig) {
         var scls = sig === "danger" ? "rc-signal-danger" : "rc-signal-warning";
-        h += '<span class="rc-signal ' + scls + '">' + sig + "</span><br/>";
+        h += '<span class="rc-safety rc-signal ' + scls + '">' + sig + "</span><br/>";
       }
       var visible = recipe.safety.hazards.filter(function (hz) { return !hz.hide; });
       if (visible.length) {
         h += visible.map(function (hz) { return hz.text; }).join("; ");
       }
       for (var pc = 0; pc < recipe.safety.precautions.length; pc++) {
-        h += '<div class="rc-safety-precaution">' + recipe.safety.precautions[pc] + "</div>";
+        h += '<div class="rc-safety rc-safety-precaution">' + recipe.safety.precautions[pc] + "</div>";
       }
       for (var dp = 0; dp < recipe.safety.disposals.length; dp++) {
         h += "<div>" + recipe.safety.disposals[dp] + "</div>";
