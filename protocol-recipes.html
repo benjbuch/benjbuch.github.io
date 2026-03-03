@@ -27,9 +27,6 @@ permalink: /recipes/
     <div id="recipe-detail" class="recipe-detail"></div>
 
   </div>
-
-  <!-- Footer -->
-  <p class="recipe-footer muted">Amounts scale proportionally with total solvent volume.</p>
 </div>
 
 <style>
@@ -170,7 +167,7 @@ permalink: /recipes/
     background: var(--surface-raised);
     border: 1px solid var(--border-subtle);
     border-radius: 0.5rem;
-    padding: var(--pad-l);
+    padding: var(--pad-l) var(--pad-l) var(--pad-s) var(--pad-l);
     overflow: hidden;
   }
 
@@ -314,12 +311,11 @@ permalink: /recipes/
   .rc-scale {
     align-items: center;
     background: var(--surface-inset);
-/*    border-top: 1px solid var(--border-subtle);*/
     border: none;
     display: flex;
     flex-wrap: wrap;
-    gap: var(--pad-m);
-    padding: var(--pad-l);
+    gap: var(--pad-l);
+    padding: var(--pad-s) var(--pad-l);
   }
 
   .rc-scale-label {
@@ -356,8 +352,7 @@ permalink: /recipes/
 
   .rc-scale-btn {
     background: transparent;
-    border: 1px solid var(--border-subtle);
-    border-radius: 0.25rem;
+    border: 2px solid transparent;
     color: var(--text-tertiary);
     cursor: pointer;
     font-family: inherit;
@@ -367,18 +362,20 @@ permalink: /recipes/
   }
 
   .rc-scale-btn.active {
-    background: var(--hover-raised);
-    border-color: var(--border-strong);
+    border: 2px solid var(--surface-raised);
     color: var(--text-primary);
+  }
+  
+  .rc-scale-btn:hover {
+    background: none;
   }
 
   /* Body: workup, storage, notes, safety */
 
   .rc-body {
-/*    border-top: 1px solid var(--border-strong);*/
-    font-size: 0.85rem;
+    font-size: 0.8rem;
     line-height: 1.55;
-    padding: var(--pad-m) var(--pad-l) var(--pad-l);
+    padding: var(--pad-l) var(--pad-s) var(--pad-s);
   }
 
   .rc-workup {
@@ -387,12 +384,10 @@ permalink: /recipes/
 
   .rc-storage {
     color: var(--fg-muted);
-    font-size: 0.82rem;
     margin-bottom: var(--pad-s);
   }
 
   .rc-note {
-    font-size: 0.82rem;
     margin-bottom: 0.2rem;
   }
 
@@ -414,7 +409,6 @@ permalink: /recipes/
 
   .rc-safety {
     border-radius: 0.25rem;
-    font-size: 0.82rem;
     line-height: 1.5;
     margin-top: var(--pad-m);
     padding: var(--pad-s) var(--pad-m);
@@ -467,18 +461,20 @@ permalink: /recipes/
   /* Source */
 
   .rc-sources {
-    color: var(--fg-muted);
-    font-size: 0.72rem;
-    margin-top: var(--pad-m);
+    border-top: 2px solid var(--border-subtle);
+    border-radius: 0;
+    color: var(--text-tertiary);
+    margin-top: calc(2 * var(--pad-l));
+    padding: var(--pad-m) var(--pad-s);
   }
-
-  /* Footer */
-
-  .recipe-footer {
-    border-top: 1px solid var(--border-strong);
-    font-size: 0.72rem;
-    margin-top: 2rem;
-    padding-top: var(--pad-m);
+  
+  .rc-sources p {
+    margin: 0;
+    padding-top: var(--pad-s);
+  }
+  
+  .rc-sources a {
+    color: var(--text-secondary);
   }
 
   /* ---- Responsive ---- */
@@ -546,9 +542,9 @@ document.addEventListener("DOMContentLoaded", function () {
 
   function parseUnitStr(raw) {
     if (!raw) return "";
-    var rm = raw.match(/^([\d,._]+)\s+to\s+([\d,._]+)\s+(.+)$/);
+    var rm = raw.match(/^([-\d,._]+)\s+to\s+([-\d,._]+)\s+(.+)$/);
     if (rm) return rm[1].replace(/_/g,"") + "\u2013" + rm[2].replace(/_/g,"") + " " + convertUnit(rm[3]);
-    var sm = raw.match(/^([\d,._]+)\s+(.+)$/);
+    var sm = raw.match(/^([-\d,._]+)\s+(.+)$/);
     if (sm) return (sm[1].replace(/_/g,"") + " " + convertUnit(sm[2])).trim();
     return raw;
   }
@@ -937,13 +933,18 @@ document.addEventListener("DOMContentLoaded", function () {
 
     // Sources
     if (recipe.sources.length) {
-      h += '<div class="rc-sources">Source: ';
+      h += '<div class="rc-sources">';
+      h += "<p>Amounts scale proportionally with total solvent volume.</p>";
+      h += "<p>Source: ";
       h += recipe.sources.map(function (s) {
-        var label = s.type + " " + s.id + " v" + s.version;
+        var label = 
+        "<a href='/assets/protocols/pdf/" + s.filename + ".pdf'>" +
+          s.doc_type + " " + s.id + " v" + s.version +
+        "</a>";
         if (s.primary) label += " (shown)";
         return label;
       }).join(", ");
-      h += "</div>";
+      h += "</p></div>";
     }
 
     h += "</div>"; // rc-body
