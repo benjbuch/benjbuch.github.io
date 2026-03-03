@@ -937,8 +937,6 @@ document.addEventListener("DOMContentLoaded", function () {
       var sel = r.id === selectedId ? " selected" : "";
       h += '<button class="recipe-item' + sel + '" data-id="' + r.id + '">';
       h += '<span class="recipe-item-name">' + r.nameHtml;
-      if (!hasDetail && r.abbrHtml) h += ' <span class="rc-ing-props">(' + r.abbrHtml + ")</span>";
-      if (!hasDetail && r.stock) h += ' <span class="rc-ing-props" style="margin-left:0.3rem">' + r.stock + "</span>";
       h += "</span>";
       h += '<span class="recipe-item-id">' + r.id + "</span>";
       h += "</button>";
