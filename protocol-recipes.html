@@ -778,7 +778,7 @@ document.addEventListener("DOMContentLoaded", function () {
       var presets = [0.5, 1, 2, 5, 10];
       h += '<div class="rc-scale">';
       h += '<span class="rc-scale-label">Scale:</span>';
-      h += '<input type="number" class="rc-scale-input" id="rc-vol-input" value="' + customVol + '" min="0" step="any" />';
+      h += '<input class="rc-scale-input" id="rc-vol-input" type="text" value="' + customVol + '"/>';
       h += '<span class="rc-scale-unit">' + baseUnit + "</span>";
       h += '<div class="rc-scale-presets">';
       for (var p = 0; p < presets.length; p++) {
@@ -984,17 +984,23 @@ document.addEventListener("DOMContentLoaded", function () {
     if (e.target.id === "rc-vol-input" && selectedId) {
       var recipe = allRecipes.find(r => r.id === selectedId);
       if (!recipe || !recipe.solvent || !recipe.solvent.amount) return;
+
       var baseVol = recipe.solvent.amount.value;
       var v = parseFloat(e.target.value);
+
       if (!isNaN(v) && v > 0 && baseVol > 0) {
         currentScale = v / baseVol;
-        renderDetail();
-      } else {
-        // Optional: reset to minimum value
-        e.target.value = baseVol;
+        // DO NOT renderDetail() here
       }
     }
   });
+
+  // Re-render only when user leaves field
+  detailEl.addEventListener("blur", function(e) {
+    if (e.target.id === "rc-vol-input") {
+      renderDetail();
+    }
+  }, true);
 
   /* ==== URL parameter support ==== */
 
