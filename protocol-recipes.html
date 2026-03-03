@@ -62,11 +62,13 @@ permalink: /recipes/
     display: flex;
     flex: 1 1 auto;     /* grow to fill remaining vertical space */
     gap: var(--pad-l);
+    padding: var(--pad-s);
     align-items: flex-start;
     overflow: hidden;   /* prevent accidental overflow */
   }
+  
   .recipe-list-panel {
-    flex: 0 0 28ch;  /* fixed width */
+    flex: 0 0 30ch;  /* fixed width */
     display: flex;
     height: 100%;
     flex-direction: column;
@@ -74,10 +76,13 @@ permalink: /recipes/
 
   .recipe-list {
     flex: 1 1 auto;     /* fills vertical space in panel */
+    min-width: 30ch;
     overflow-y: auto;
     padding-right: var(--pad-l);
     border: 1px solid var(--border-subtle);
     border-radius: 0.5rem;
+    overflow-y: scroll;  /* always show scrollbar gutter */
+    scrollbar-gutter: stable; /* for modern browsers */
   }
   
 
