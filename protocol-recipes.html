@@ -464,11 +464,11 @@ permalink: /recipes/
   /* Source */
 
   .rc-sources {
-    border-top: 2px solid var(--border-subtle);
+    border-top: 2px solid var(--text-tertiary);
     border-radius: 0;
     color: var(--text-tertiary);
     margin-top: calc(2 * var(--pad-l));
-    padding: var(--pad-m) var(--pad-s);
+    padding: var(--pad-m) 0;
   }
   
   .rc-sources p {
@@ -1004,7 +1004,7 @@ document.addEventListener("DOMContentLoaded", function () {
     // Sources
     if (recipe.sources.length) {
       h += '<div class="rc-sources">';
-      h += "<p>Amounts scale proportionally with total solvent volume.</p>";
+      h += "<p>For research use. Users are responsible for compliance with local regulations and institutional policies. Amounts scale proportionally with total solvent volume.</p>";
       h += "<p>Source: ";
       h += recipe.sources.map(function (s) {
         var label = 
