@@ -11,6 +11,10 @@ pull:
     to: _data/protocols/
     required: true
     
+  - from: public/lab-protocols/metadata/*.xml
+    to: _data/protocols/
+    required: true
+    
   - from: public/lab-publications/my_publications_abbr.yml
     to: _data/publications/publications.yml
     required: true

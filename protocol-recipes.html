@@ -1,0 +1,1094 @@
+---
+layout: default
+title: Recipe reference
+permalink: /recipes/
+---
+
+<div class="recipes-page">
+  <h1 class="section-header">Recipe reference</h1>
+
+  <!-- Search -->
+  <p>
+  <form id="recipe-form" class="recipe-form" onsubmit="return false">
+    <label for="recipe-search">Find a recipe by name, abbreviation, or identifier:</label>
+    <div class="row">
+      <input id="recipe-search" type="search" autocomplete="off" placeholder="e.g. EDTA, R0017, Tris" />
+    </div>
+  </form>
+  </p>
+
+  <!-- Category filters -->
+  <div id="recipe-categories" class="recipe-categories"></div>
+
+  <!-- Status line -->
+  <p id="recipe-status" class="muted"></p>
+
+  <!-- Main content area -->
+  <div id="recipe-content" class="recipe-layout">
+    <div id="recipe-list" class="recipe-list"></div>
+    <div id="recipe-detail" class="recipe-detail"></div>
+  </div>
+
+  <!-- Footer -->
+  <p class="recipe-footer muted">Amounts scale proportionally with total solvent volume.</p>
+</div>
+
+<style>
+
+  .recipes-page {
+    margin: 2rem auto;
+    max-width: 80ch;
+  }
+
+  /* ---- Form ---- */
+
+  .recipe-form label {
+    display: block;
+    margin-bottom: var(--pad-m);
+  }
+
+  .recipe-form .row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--pad-m);
+  }
+
+  .recipe-form input[type="search"] {
+    flex: 1;
+    min-width: 20ch;
+  }
+
+  /* ---- Category filter buttons ---- */
+
+  .recipe-categories {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--pad-s);
+    margin-bottom: var(--pad-l);
+  }
+
+  .cat-btn {
+    background: var(--surface-raised);
+    border: 1px solid var(--border-strong);
+    border-radius: 0.25rem;
+    color: inherit;
+    cursor: pointer;
+    font-family: inherit;
+    font-size: 0.8rem;
+    padding: 0.1rem 0.55rem;
+  }
+
+  .cat-btn.active {
+    background: var(--fg);
+    border-color: var(--fg);
+    color: var(--bg);
+  }
+
+  .cat-btn .cat-count {
+    opacity: 0.5;
+  }
+
+  /* ---- Two-column layout ---- */
+
+  .recipe-layout {
+    display: flex;
+    gap: var(--pad-l);
+    align-items: flex-start;
+  }
+
+  .recipe-list {
+    flex: 0 0 28ch; /* wider column for readability */
+    max-height: 50vh; /* scrollable */
+    overflow-y: auto;
+    padding-right: 0.5rem; /* allow scrollbar space */
+    border-right: 1px solid var(--border-strong);
+  }
+
+  .recipe-list.full-width {
+    flex: 1 1 100%;
+  }
+
+  .recipe-detail {
+    flex: 1 1 40ch;
+    min-width: 0;
+  }
+
+  .recipe-detail:empty ~ .recipe-list,
+  .recipe-detail:empty + .recipe-list {
+    flex: 1 1 100%;
+  }
+
+  /* ---- List items ---- */
+
+  .recipe-item {
+    background: none;
+    border: 1px solid transparent;
+    border-radius: 0.25rem;
+    color: inherit;
+    cursor: pointer;
+    display: flex;
+    font-family: inherit;
+    font-size: 0.88rem;
+    justify-content: space-between;
+    align-items: baseline;
+    padding: 0.3rem 0.55rem;
+    text-align: left;
+    width: 100%;
+    box-sizing: border-box;
+  }
+
+  .recipe-item:hover {
+    background: var(--surface-raised);
+  }
+
+  .recipe-item.selected {
+    background: var(--surface-raised);
+    border-color: var(--fg);
+  }
+
+  .recipe-item-name {
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  .recipe-item-id {
+    color: var(--fg-muted);
+    font-family: var(--font-mono);
+    font-size: 0.7rem;
+    flex-shrink: 0;
+    margin-left: var(--pad-s);
+  }
+
+  /* ---- Recipe card ---- */
+
+  .recipe-card {
+    background: var(--surface-raised);
+    border: 1px solid var(--border-strong);
+    border-radius: 0.5rem;
+    overflow: hidden;
+  }
+
+  /* Header */
+
+  .rc-header {
+    border-bottom: 2px solid var(--fg);
+    padding: var(--pad-m) var(--pad-l) var(--pad-m);
+  }
+
+  .rc-header-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+  }
+
+  .rc-header h2 {
+    font-size: 1.05rem;
+    font-style: italic;
+    line-height: 1.35;
+    margin: 0;
+  }
+
+  .rc-header h2 .rc-abbr {
+    color: var(--fg-muted);
+    font-style: normal;
+    font-weight: normal;
+  }
+
+  .rc-header h2 .rc-stock {
+    font-style: normal;
+    font-weight: normal;
+  }
+
+  .rc-header .rc-props {
+    color: var(--fg-muted);
+    font-size: 0.85rem;
+    margin-top: 0.1rem;
+  }
+
+  .rc-header .rc-id {
+    color: var(--fg-muted);
+    font-family: var(--font-mono);
+    font-size: 0.72rem;
+  }
+
+  .rc-close {
+    background: none;
+    border: 1px solid var(--border-strong);
+    border-radius: 0.25rem;
+    color: var(--fg-muted);
+    cursor: pointer;
+    font-size: 1rem;
+    line-height: 1;
+    margin-left: var(--pad-m);
+    padding: 0 0.4rem;
+  }
+
+  /* Ingredients table */
+
+  .rc-table {
+    border-collapse: collapse;
+    font-size: 0.85rem;
+    width: 100%;
+  }
+
+  .rc-table thead tr {
+    border-bottom: 1px solid var(--fg-muted);
+  }
+
+  .rc-table th {
+    font-size: 0.75rem;
+    font-weight: 600;
+    color: var(--fg-muted);
+    padding: 0.3rem 0.5rem;
+  }
+
+  .rc-table th.col-amount,
+  .rc-table th.col-stock,
+  .rc-table th.col-final {
+    text-align: right;
+  }
+
+  .rc-table th.col-unit {
+    width: 3ch;
+  }
+
+  .rc-table td {
+    padding: 0.3rem 0.5rem;
+    border-bottom: 1px solid var(--border-strong);
+    vertical-align: baseline;
+  }
+
+  .rc-table .col-amount {
+    font-variant-numeric: tabular-nums;
+    text-align: right;
+    white-space: nowrap;
+    font-weight: 500;
+  }
+
+  .rc-table .col-unit {
+    color: var(--fg-muted);
+    font-size: 0.8rem;
+    white-space: nowrap;
+  }
+
+  .rc-table .col-stock,
+  .rc-table .col-final {
+    color: var(--fg-muted);
+    font-size: 0.8rem;
+    text-align: right;
+    white-space: nowrap;
+  }
+
+  .rc-table .col-final {
+    color: var(--fg);
+  }
+
+  .rc-table .solvent-row td {
+    border-top: 1px solid var(--fg-muted);
+    border-bottom: none;
+    color: var(--fg-muted);
+  }
+
+  .rc-ing-props {
+    color: var(--fg-muted);
+  }
+
+  .rc-ing-optional {
+    color: var(--fg-muted);
+    font-style: italic;
+  }
+
+  .rc-ref-link {
+    background: none;
+    border: none;
+    color: var(--accent-link, #2563eb);
+    cursor: pointer;
+    font-family: var(--font-mono);
+    font-size: 0.72rem;
+    padding: 0;
+    margin-left: 0.3rem;
+    text-decoration: underline;
+    text-underline-offset: 2px;
+  }
+
+  .rc-cas {
+    color: var(--fg-muted);
+    font-size: 0.68rem;
+    margin-left: 0.3rem;
+    opacity: 0.6;
+  }
+
+  /* Scale controls */
+
+  .rc-scale {
+    align-items: center;
+    background: var(--bg);
+    border-top: 1px solid var(--border-strong);
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--pad-m);
+    padding: var(--pad-s) var(--pad-l);
+  }
+
+  .rc-scale-label {
+    color: var(--fg-muted);
+    font-size: 0.8rem;
+  }
+
+  .rc-scale-input {
+    font-size: 0.85rem;
+    font-variant-numeric: tabular-nums;
+    text-align: right;
+    width: 5em;
+  }
+
+  .rc-scale-unit {
+    color: var(--fg-muted);
+    font-size: 0.8rem;
+  }
+
+  .rc-scale-presets {
+    display: flex;
+    gap: 0.2rem;
+  }
+
+  .rc-scale-btn {
+    background: var(--surface-raised);
+    border: 1px solid var(--border-strong);
+    border-radius: 0.25rem;
+    color: inherit;
+    cursor: pointer;
+    font-family: inherit;
+    font-size: 0.75rem;
+    font-weight: 500;
+    padding: 0.15rem 0.5rem;
+  }
+
+  .rc-scale-btn.active {
+    background: var(--fg);
+    border-color: var(--fg);
+    color: var(--bg);
+  }
+
+  /* Body: workup, storage, notes, safety */
+
+  .rc-body {
+    border-top: 1px solid var(--border-strong);
+    font-size: 0.85rem;
+    line-height: 1.55;
+    padding: var(--pad-m) var(--pad-l) var(--pad-l);
+  }
+
+  .rc-workup {
+    margin-bottom: var(--pad-s);
+  }
+
+  .rc-storage {
+    color: var(--fg-muted);
+    font-size: 0.82rem;
+    margin-bottom: var(--pad-s);
+  }
+
+  .rc-note {
+    font-size: 0.82rem;
+    margin-bottom: 0.2rem;
+  }
+
+  .rc-note-typed {
+    border-left: 3px solid var(--border-strong);
+    padding-left: var(--pad-s);
+  }
+
+  .rc-note-critical {
+    background: color-mix(in srgb, var(--accent-red, #dc2626) 8%, transparent);
+    border-left: 3px solid var(--accent-red, #dc2626);
+    border-radius: 0.2rem;
+    color: var(--accent-red, #991b1b);
+    font-weight: 500;
+    padding: 0.2rem var(--pad-s);
+  }
+
+  /* Safety block */
+
+  .rc-safety {
+    border-radius: 0.25rem;
+    font-size: 0.82rem;
+    line-height: 1.5;
+    margin-top: var(--pad-m);
+    padding: var(--pad-s) var(--pad-m);
+  }
+
+  .rc-safety-danger {
+    background: color-mix(in srgb, var(--accent-red, #dc2626) 8%, transparent);
+    border: 1px solid color-mix(in srgb, var(--accent-red, #dc2626) 30%, transparent);
+    color: var(--accent-red, #991b1b);
+  }
+
+  .rc-safety-warning {
+    background: color-mix(in srgb, var(--accent-gold, #d97706) 8%, transparent);
+    border: 1px solid color-mix(in srgb, var(--accent-gold, #d97706) 30%, transparent);
+    color: var(--accent-gold, #92400e);
+  }
+
+  .rc-safety-none {
+    background: color-mix(in srgb, var(--accent-green, #16a34a) 8%, transparent);
+    border: 1px solid color-mix(in srgb, var(--accent-green, #16a34a) 30%, transparent);
+    color: var(--accent-green, #166534);
+  }
+
+  .rc-signal {
+    border-radius: 0.2rem;
+    display: inline-block;
+    font-family: var(--font-mono);
+    font-size: 0.68rem;
+    font-weight: 700;
+    letter-spacing: 0.04em;
+    margin-bottom: 0.2rem;
+    padding: 0.05rem 0.45rem;
+    text-transform: uppercase;
+  }
+
+  .rc-signal-danger {
+    background: var(--accent-red, #dc2626);
+    color: #fff;
+  }
+
+  .rc-signal-warning {
+    background: var(--accent-gold, #d97706);
+    color: #fff;
+  }
+
+  .rc-safety-precaution {
+    font-style: italic;
+  }
+
+  /* Source */
+
+  .rc-sources {
+    color: var(--fg-muted);
+    font-size: 0.72rem;
+    margin-top: var(--pad-m);
+  }
+
+  /* Footer */
+
+  .recipe-footer {
+    border-top: 1px solid var(--border-strong);
+    font-size: 0.72rem;
+    margin-top: 2rem;
+    padding-top: var(--pad-m);
+  }
+
+  /* ---- Responsive ---- */
+
+  @media (max-width: 640px) {
+    .recipe-layout {
+      flex-direction: column;
+    }
+    .recipe-list {
+      flex: 1 1 100% !important;
+    }
+    .recipe-detail {
+      flex: 1 1 100%;
+    }
+  }
+
+</style>
+
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+
+  /* ==== Unit conversion ==== */
+
+  var UNIT_MAP = {
+    gram: "g", kilogram: "kg", milligram: "mg", microgram: "\u00B5g", nanogram: "ng",
+    liter: "L", milliliter: "mL", microliter: "\u00B5L",
+    meter: "m", millimeter: "mm", micrometer: "\u00B5m", nanometer: "nm", centimeter: "cm",
+    second: "s", minute: "min", hour: "h",
+    celsius: "\u00B0C", fahrenheit: "\u00B0F", kelvin: "K",
+    molar: "M", millimolar: "mM", micromolar: "\u00B5M", nanomolar: "nM",
+    percent: "%",
+    "gram per mol": "g/mol", "gram per liter": "g/L", "gram per milliliter": "g/mL",
+    "milligram per liter": "mg/L", "milligram per milliliter": "mg/mL",
+    "microgram per milliliter": "\u00B5g/mL", "microgram per liter": "\u00B5g/L",
+    "milliliter per liter": "mL/L", "square centimeter": "cm\u00B2",
+    bar: "bar", millibar: "mbar", psi: "psi",
+    basepair: "bp", colonyformingunit: "cfu", enzymeunit: "U",
+    "enzymeunit per microliter": "U/\u00B5L", "enzymeunit per liter": "U/L",
+    fold: "\u00D7", gauge: "G", gforce: "\u00D7\u2009g", kb: "kb", nucleotides: "nt",
+    rpm: "rpm", ppm: "ppm", ppt: "ppt", torr: "Torr",
+    unitless: "", vol: "vol", pound: "lb", inch: "in"
+  };
+
+  var PREFIXES = [["milli","m"],["micro","\u00B5"],["nano","n"],["kilo","k"]];
+
+  function convertUnit(raw) {
+    if (!raw) return "";
+    if (UNIT_MAP[raw] !== undefined) return UNIT_MAP[raw];
+    for (var i = 0; i < PREFIXES.length; i++) {
+      var pre = PREFIXES[i][0], sym = PREFIXES[i][1];
+      if (raw.indexOf(pre) === 0) {
+        var base = raw.slice(pre.length);
+        if (UNIT_MAP[base] !== undefined) return sym + UNIT_MAP[base];
+      }
+    }
+    var m = raw.match(/^(.+?)\s+per\s+(.+)$/);
+    if (m) {
+      var n = convertUnit(m[1]), d = convertUnit(m[2]);
+      if (n && d) return n + "/" + d;
+    }
+    return raw;
+  }
+
+  function parseUnitStr(raw) {
+    if (!raw) return "";
+    var rm = raw.match(/^([\d,._]+)\s+to\s+([\d,._]+)\s+(.+)$/);
+    if (rm) return rm[1].replace(/_/g,"") + "\u2013" + rm[2].replace(/_/g,"") + " " + convertUnit(rm[3]);
+    var sm = raw.match(/^([\d,._]+)\s+(.+)$/);
+    if (sm) return (sm[1].replace(/_/g,"") + " " + convertUnit(sm[2])).trim();
+    return raw;
+  }
+
+  /* ==== XML helpers ==== */
+
+  function directChildren(el, tag) {
+    var out = [];
+    for (var i = 0; i < el.childNodes.length; i++) {
+      var c = el.childNodes[i];
+      if (c.nodeType === 1 && c.tagName === tag) out.push(c);
+    }
+    return out;
+  }
+
+  function firstChild(el, tag) {
+    for (var i = 0; i < el.childNodes.length; i++) {
+      var c = el.childNodes[i];
+      if (c.nodeType === 1 && c.tagName === tag) return c;
+    }
+    return null;
+  }
+
+  function textOf(el) {
+    if (!el) return "";
+    var t = "";
+    for (var i = 0; i < el.childNodes.length; i++) {
+      var n = el.childNodes[i];
+      if (n.nodeType === 3) t += n.textContent;
+      else if (n.nodeType === 1) {
+        if (n.tagName === "unit") t += parseUnitStr((n.textContent||"").trim());
+        else if (n.tagName === "pH") t += "pH " + n.textContent;
+        else t += textOf(n);
+      }
+    }
+    return t.trim();
+  }
+
+  function htmlOf(el) {
+    if (!el) return "";
+    var h = "";
+    for (var i = 0; i < el.childNodes.length; i++) {
+      var n = el.childNodes[i];
+      if (n.nodeType === 3) { h += n.textContent; continue; }
+      if (n.nodeType !== 1) continue;
+      var tag = n.tagName;
+      if (tag === "chemical") {
+        var raw = n.textContent || "";
+        raw = raw.replace(/_(\d+)/g, "<sub>$1</sub>");
+        raw = raw.replace(/_\{([^}]+)\}/g, "<sub>$1</sub>");
+        raw = raw.replace(/\^(\d+)/g, "<sup>$1</sup>");
+        raw = raw.replace(/\^\{([^}]+)\}/g, "<sup>$1</sup>");
+        h += raw;
+      } else if (tag === "pH") h += "pH&nbsp;" + n.textContent;
+      else if (tag === "sc") h += '<span style="font-variant:small-caps">' + n.textContent + "</span>";
+      else if (tag === "unit") h += parseUnitStr((n.textContent||"").trim());
+      else if (tag === "high") h += "<sup>" + n.textContent + "</sup>";
+      else if (tag === "it") h += "<em>" + n.textContent + "</em>";
+      else h += htmlOf(n);
+    }
+    return h;
+  }
+
+  function parseAmt(str) {
+    if (!str) return { value: null, unit: "" };
+    var m = str.match(/^([\d.]+)\s+(.+)$/);
+    if (m) return { value: parseFloat(m[1]), unit: convertUnit(m[2]) };
+    return { value: null, unit: str };
+  }
+
+  /* ==== Parse recipe element ==== */
+
+  function parseRecipe(el) {
+    var nameEl = firstChild(el, "name");
+    var abbrEl = firstChild(el, "abbreviation");
+    var stockEl = firstChild(el, "stock");
+    var solventEl = firstChild(el, "solvent");
+    var storageEl = firstChild(el, "storage");
+    var shelflifeEl = firstChild(el, "shelflife");
+    var safetyEl = firstChild(el, "safety");
+
+    var solvent = null;
+    if (solventEl) {
+      var sn = firstChild(solventEl, "name");
+      var sa = firstChild(solventEl, "amount");
+      var sp = firstChild(solventEl, "property");
+      solvent = {
+        nameHtml: sn ? htmlOf(sn) : "",
+        property: sp ? textOf(sp) : "",
+        amount: sa ? parseAmt(textOf(sa)) : null
+      };
+    }
+
+    var ingredients = directChildren(el, "ingredient").map(function (ing) {
+      var iName = firstChild(ing, "name");
+      var iAbbr = firstChild(ing, "abbreviation");
+      var iStock = firstChild(ing, "stock");
+      var iAmt = firstChild(ing, "amount");
+      var iFinal = firstChild(ing, "final");
+      var iProps = directChildren(ing, "property").map(function (p) { return htmlOf(p); });
+      return {
+        refId: ing.getAttribute("id") || "",
+        cas: ing.getAttribute("CAS") || "",
+        type: ing.getAttribute("type") || "",
+        nameHtml: iName ? htmlOf(iName) : "",
+        abbrHtml: iAbbr ? htmlOf(iAbbr) : "",
+        props: iProps,
+        stock: iStock ? parseUnitStr(textOf(iStock)) : "",
+        amount: iAmt ? parseAmt(textOf(iAmt)) : null,
+        final: iFinal ? parseUnitStr(textOf(iFinal)) : ""
+      };
+    });
+
+    var workups = directChildren(el, "workup").map(function (w) { return htmlOf(w); });
+    var notes = directChildren(el, "note").map(function (n) {
+      return { type: n.getAttribute("type") || "", html: htmlOf(n) };
+    });
+
+    var safety = null;
+    if (safetyEl) {
+      safety = {
+        signal: safetyEl.getAttribute("signal") || "",
+        hazards: directChildren(safetyEl, "hazard").map(function (h) {
+          return { hide: h.getAttribute("hide") === "yes", text: textOf(h) };
+        }),
+        precautions: directChildren(safetyEl, "precaution").map(function (p) { return textOf(p); }),
+        disposals: directChildren(safetyEl, "disposal").map(function (d) { return htmlOf(d); })
+      };
+    }
+
+    var storage = storageEl ? { html: htmlOf(storageEl) } : null;
+    var sources = directChildren(el, "source").map(function (s) {
+      return {
+        type: s.getAttribute("type") || "",
+        id: s.getAttribute("id") || "",
+        version: s.getAttribute("version") || "",
+        primary: s.getAttribute("primary") === "yes",
+        filename: textOf(s)
+      };
+    });
+
+    return {
+      id: el.getAttribute("id") || "",
+      name: nameEl ? textOf(nameEl) : "",
+      nameHtml: nameEl ? htmlOf(nameEl) : "",
+      abbreviation: abbrEl ? textOf(abbrEl) : "",
+      abbrHtml: abbrEl ? htmlOf(abbrEl) : "",
+      stock: stockEl ? parseUnitStr(textOf(stockEl)) : "",
+      properties: directChildren(el, "property").map(function (p) { return htmlOf(p); }),
+      solvent: solvent,
+      ingredients: ingredients,
+      workups: workups,
+      storage: storage,
+      shelflife: shelflifeEl ? htmlOf(shelflifeEl) : "",
+      notes: notes,
+      safety: safety,
+      categories: directChildren(el, "category").map(function (c) { return textOf(c); }),
+      sources: sources
+    };
+  }
+
+  /* ==== Formatting ==== */
+
+  function fmt(val) {
+    if (val === null) return "";
+    if (Math.abs(val) >= 100) return val.toFixed(0);
+    if (Math.abs(val) >= 10) return val.toFixed(1);
+    if (Math.abs(val) >= 1) return val.toFixed(2);
+    return val.toFixed(3);
+  }
+
+  /* ==== Rendering ==== */
+
+  function renderIngRow(ing, scale) {
+    var sv = ing.amount && ing.amount.value !== null ? fmt(ing.amount.value * scale) : "";
+    var propsHtml = ing.props.map(function (p) { return ', <span class="rc-ing-props">' + p + "</span>"; }).join("");
+    var typeHtml = "";
+    if (ing.type === "optional") typeHtml = ' <span class="rc-ing-optional">(optional)</span>';
+    else if (ing.type === "fresh") typeHtml = ' <span class="rc-ing-optional">(add fresh)</span>';
+    var refHtml = ing.refId ? ' <button class="rc-ref-link" data-ref="' + ing.refId + '">[' + ing.refId + "]</button>" : "";
+    var casHtml = ing.cas ? ' <span class="rc-cas">[' + ing.cas + "]</span>" : "";
+    var abbrHtml = ing.abbrHtml ? ' <span class="rc-ing-props">(' + ing.abbrHtml + ")</span>" : "";
+
+    return "<tr>" +
+      '<td class="col-amount">' + sv + "</td>" +
+      '<td class="col-unit">' + (ing.amount ? ing.amount.unit : "") + "</td>" +
+      "<td>" + ing.nameHtml + abbrHtml + propsHtml + typeHtml + refHtml + casHtml + "</td>" +
+      '<td class="col-stock">' + ing.stock + "</td>" +
+      '<td class="col-final">' + ing.final + "</td>" +
+      "</tr>";
+  }
+
+  function renderCard(recipe, scale) {
+    var h = "";
+    // Header
+    h += '<div class="rc-header"><div class="rc-header-top"><div>';
+    h += "<h2>";
+    h += '<span class="rc-name">' + recipe.nameHtml + "</span>";
+    if (recipe.abbrHtml) h += ' <span class="rc-abbr">(' + recipe.abbrHtml + ")</span>";
+    if (recipe.stock) h += ', <span class="rc-stock">' + recipe.stock + "</span>";
+    h += "</h2>";
+    if (recipe.properties.length) {
+      h += '<div class="rc-props">';
+      h += recipe.properties.join(", ");
+      h += "</div>";
+    }
+    h += "</div>";
+    h += '<div style="display:flex;align-items:center;gap:0.5rem">';
+    h += '<span class="rc-id">' + recipe.id + "</span>";
+    h += '<button class="rc-close" id="rc-close">\u00D7</button>';
+    h += "</div></div></div>";
+
+    // Table
+    h += '<table class="rc-table"><thead><tr>';
+    h += '<th class="col-amount">Amount</th><th class="col-unit"></th>';
+    h += "<th>Ingredient</th>";
+    h += '<th class="col-stock">Stock</th><th class="col-final">Final</th>';
+    h += "</tr></thead><tbody>";
+    for (var i = 0; i < recipe.ingredients.length; i++) {
+      h += renderIngRow(recipe.ingredients[i], scale);
+    }
+    if (recipe.solvent) {
+      var sv = recipe.solvent.amount && recipe.solvent.amount.value !== null
+        ? "to " + fmt(recipe.solvent.amount.value * scale) : "";
+      h += '<tr class="solvent-row"><td class="col-amount">' + sv + "</td>";
+      h += '<td class="col-unit">' + (recipe.solvent.amount ? recipe.solvent.amount.unit : "") + "</td>";
+      h += "<td colspan=3>" + recipe.solvent.nameHtml;
+      if (recipe.solvent.property) h += ", " + recipe.solvent.property;
+      h += "</td></tr>";
+    }
+    h += "</tbody></table>";
+
+    // Scale controls
+    var baseVol = recipe.solvent && recipe.solvent.amount ? recipe.solvent.amount.value : null;
+    var baseUnit = recipe.solvent && recipe.solvent.amount ? recipe.solvent.amount.unit : "";
+    if (baseVol && baseVol > 0) {
+      var customVol = baseVol * scale;
+      var presets = [0.5, 1, 2, 5, 10];
+      h += '<div class="rc-scale">';
+      h += '<span class="rc-scale-label">Scale:</span>';
+      h += '<input type="number" class="rc-scale-input" id="rc-vol-input" value="' + customVol + '" min="0" step="any" />';
+      h += '<span class="rc-scale-unit">' + baseUnit + "</span>";
+      h += '<div class="rc-scale-presets">';
+      for (var p = 0; p < presets.length; p++) {
+        var active = Math.abs(scale - presets[p]) < 0.001 ? " active" : "";
+        h += '<button class="rc-scale-btn' + active + '" data-scale="' + presets[p] + '">\u00D7 ' + presets[p] + "</button>";
+      }
+      h += "</div></div>";
+    }
+
+    // Body
+    h += '<div class="rc-body">';
+
+    // Workup
+    if (recipe.workups.length) {
+      h += '<div class="rc-workup">';
+      h += recipe.workups.join(". ") + ".";
+      h += "</div>";
+    }
+
+    // Storage / shelflife
+    if (recipe.shelflife || recipe.storage) {
+      h += '<div class="rc-storage">';
+      if (recipe.shelflife) {
+        h += "Stable for " + recipe.shelflife;
+        if (recipe.storage && recipe.shelflife.indexOf("store") === -1) {
+          h += " at " + recipe.storage.html;
+        }
+        h += ".";
+      } else if (recipe.storage) {
+        h += "Store at " + recipe.storage.html + ".";
+      }
+      h += "</div>";
+    }
+
+    // Notes
+    for (var n = 0; n < recipe.notes.length; n++) {
+      var note = recipe.notes[n];
+      var isCritical = note.type === "critical" || note.type === "safety";
+      if (isCritical) {
+        h += '<div class="rc-note rc-note-critical"><strong>Important:</strong> ' + note.html + "</div>";
+      } else if (note.type) {
+        h += '<div class="rc-note rc-note-typed">' + note.html + "</div>";
+      } else {
+        h += '<div class="rc-note">' + note.html + "</div>";
+      }
+    }
+
+    // Safety
+    if (recipe.safety) {
+      var sig = recipe.safety.signal;
+      var cls = sig === "danger" ? "rc-safety-danger" : sig === "warning" ? "rc-safety-warning" : "rc-safety-none";
+      h += '<div class="rc-safety ' + cls + '">';
+      if (sig) {
+        var scls = sig === "danger" ? "rc-signal-danger" : "rc-signal-warning";
+        h += '<span class="rc-signal ' + scls + '">' + sig + "</span><br/>";
+      }
+      var visible = recipe.safety.hazards.filter(function (hz) { return !hz.hide; });
+      if (visible.length) {
+        h += visible.map(function (hz) { return hz.text; }).join("; ");
+      }
+      for (var pc = 0; pc < recipe.safety.precautions.length; pc++) {
+        h += '<div class="rc-safety-precaution">' + recipe.safety.precautions[pc] + "</div>";
+      }
+      for (var dp = 0; dp < recipe.safety.disposals.length; dp++) {
+        h += "<div>" + recipe.safety.disposals[dp] + "</div>";
+      }
+      h += "</div>";
+    }
+
+    // Sources
+    if (recipe.sources.length) {
+      h += '<div class="rc-sources">Source: ';
+      h += recipe.sources.map(function (s) {
+        var label = s.type + " " + s.id + " v" + s.version;
+        if (s.primary) label += " (shown)";
+        return label;
+      }).join(", ");
+      h += "</div>";
+    }
+
+    h += "</div>"; // rc-body
+    return h;
+  }
+
+  /* ==== State ==== */
+
+  var allRecipes = [];
+  var activeCats = {};
+  var selectedId = null;
+  var currentScale = 1;
+
+  var searchEl     = document.getElementById("recipe-search");
+  var categoriesEl = document.getElementById("recipe-categories");
+  var statusEl     = document.getElementById("recipe-status");
+  var listEl       = document.getElementById("recipe-list");
+  var detailEl     = document.getElementById("recipe-detail");
+
+  /* ==== Filtering ==== */
+
+  function getFiltered() {
+    var q = (searchEl.value || "").toLowerCase();
+    var hasCats = false;
+    for (var k in activeCats) { if (activeCats[k]) { hasCats = true; break; } }
+
+    return allRecipes.filter(function (r) {
+      if (q) {
+        var match = (r.name || "").toLowerCase().includes(q) ||
+                    (r.abbreviation || "").toLowerCase().includes(q) ||
+                    (r.id || "").toLowerCase().includes(q) ||
+                    (r.stock || "").toLowerCase().includes(q);
+                if (!match) return false;
+      }
+      if (hasCats) {
+        var catMatch = false;
+        for (var i = 0; i < r.categories.length; i++) {
+          if (activeCats[r.categories[i]]) { catMatch = true; break; }
+        }
+        if (!catMatch) return false;
+      }
+      return true;
+    });
+  }
+
+  /* ==== Render list ==== */
+
+  function renderList() {
+    var filtered = getFiltered();
+    var hasDetail = selectedId !== null;
+
+    statusEl.textContent = filtered.length + " recipe" + (filtered.length !== 1 ? "s" : "");
+    listEl.className = "recipe-list" + (hasDetail ? "" : " full-width");
+
+    var h = "";
+    for (var i = 0; i < filtered.length; i++) {
+      var r = filtered[i];
+      var sel = r.id === selectedId ? " selected" : "";
+      h += '<button class="recipe-item' + sel + '" data-id="' + r.id + '">';
+      h += '<span class="recipe-item-name">' + r.nameHtml;
+      if (!hasDetail && r.abbrHtml) h += ' <span class="rc-ing-props">(' + r.abbrHtml + ")</span>";
+      if (!hasDetail && r.stock) h += ' <span class="rc-ing-props" style="margin-left:0.3rem">' + r.stock + "</span>";
+      h += "</span>";
+      h += '<span class="recipe-item-id">' + r.id + "</span>";
+      h += "</button>";
+    }
+    listEl.innerHTML = h;
+
+    // Attach click handlers
+    var items = listEl.querySelectorAll(".recipe-item");
+    for (var j = 0; j < items.length; j++) {
+      items[j].addEventListener("click", function () {
+        var id = this.getAttribute("data-id");
+        if (selectedId === id) { selectedId = null; currentScale = 1; }
+        else { selectedId = id; currentScale = 1; }
+        renderList();
+        renderDetail();
+      });
+    }
+  }
+
+  /* ==== Render detail ==== */
+
+  function renderDetail() {
+    if (!selectedId) { detailEl.innerHTML = ""; return; }
+    var recipe = allRecipes.find(function (r) { return r.id === selectedId; });
+    if (!recipe) { detailEl.innerHTML = ""; return; }
+
+    detailEl.innerHTML = '<div class="recipe-card">' + renderCard(recipe, currentScale) + "</div>";
+
+  }
+  
+  // Delegated click events for close button, scale buttons, cross-reference links
+  detailEl.addEventListener("click", function(e) {
+    // Close button
+    if (e.target.id === "rc-close") {
+      selectedId = null;
+      currentScale = 1;
+      renderList();
+      renderDetail();
+    }
+
+    // Scale preset buttons
+    if (e.target.classList.contains("rc-scale-btn")) {
+      currentScale = parseFloat(e.target.getAttribute("data-scale"));
+      renderDetail();
+    }
+
+    // Cross-reference links
+    if (e.target.classList.contains("rc-ref-link")) {
+      e.stopPropagation();
+      var refId = e.target.getAttribute("data-ref");
+      var target = allRecipes.find(r => r.id === refId);
+      if (target) {
+        selectedId = refId;
+        currentScale = 1;
+        renderList();
+        renderDetail();
+      }
+    }
+  });
+
+  // Delegated input event for volume input
+  detailEl.addEventListener("input", function(e) {
+    if (e.target.id === "rc-vol-input" && selectedId) {
+      var recipe = allRecipes.find(r => r.id === selectedId);
+      if (!recipe || !recipe.solvent || !recipe.solvent.amount) return;
+      var baseVol = recipe.solvent.amount.value;
+      var v = parseFloat(e.target.value);
+      if (!isNaN(v) && v > 0 && baseVol > 0) {
+        currentScale = v / baseVol;
+        renderDetail();
+      } else {
+        // Optional: reset to minimum value
+        e.target.value = baseVol;
+      }
+    }
+  });
+
+  /* ==== Render categories ==== */
+
+  function renderCategories() {
+    var filteredCounts = {};
+    var filteredRecipes = getFiltered();
+    filteredRecipes.forEach(function(r) {
+      r.categories.forEach(function(c) {
+        filteredCounts[c] = (filteredCounts[c] || 0) + 1;
+      });
+    });
+    var sorted = Object.keys(filteredCounts).sort(function (a, b) { return filteredCounts[b] - filteredCounts[a]; });
+
+    var h = "";
+    for (var i = 0; i < sorted.length; i++) {
+      var c = sorted[i];
+      var cls = activeCats[c] ? " active" : "";
+      h += '<button class="cat-btn' + cls + '" data-cat="' + c + '">';
+      h += c + ' <span class="cat-count">(' + (filteredCounts[c] || 0) + ")</span></button>";
+    }
+    categoriesEl.innerHTML = h;
+
+    var btns = categoriesEl.querySelectorAll(".cat-btn");
+    for (var j = 0; j < btns.length; j++) {
+      btns[j].addEventListener("click", function () {
+        var cat = this.getAttribute("data-cat");
+        activeCats[cat] = !activeCats[cat];
+        renderCategories();
+        renderList();
+      });
+    }
+  }
+
+  /* ==== URL parameter support ==== */
+
+  function checkUrlParams() {
+    var params = new URLSearchParams(window.location.search);
+    var q = params.get("q") || params.get("id") || "";
+    if (q) {
+      // Try exact ID match first
+      var exact = allRecipes.find(function (r) { return r.id.toLowerCase() === q.toLowerCase(); });
+      if (exact) {
+        selectedId = exact.id;
+      } else {
+        searchEl.value = q;
+      }
+    }
+  }
+
+  /* ==== Load XML ==== */
+
+  var xmlUrl = "/assets/protocols/recipes.xml";
+
+  fetch(xmlUrl)
+    .then(function (r) {
+      if (!r.ok) throw new Error("recipes.xml HTTP " + r.status);
+      return r.text();
+    })
+    .then(function (xmlText) {
+      var parser = new DOMParser();
+      var doc = parser.parseFromString(xmlText, "text/xml");
+      var errorNode = doc.querySelector("parsererror");
+      if (errorNode) throw new Error("XML parse error");
+
+      var els = doc.getElementsByTagName("recipe");
+      for (var i = 0; i < els.length; i++) {
+        var el = els[i];
+        if (!el.getAttribute("id")) continue;
+        if (directChildren(el, "ingredient").length === 0) continue;
+        allRecipes.push(parseRecipe(el));
+      }
+
+      checkUrlParams();
+      renderCategories();
+      renderList();
+      renderDetail();
+
+      // Search input
+      searchEl.addEventListener("input", function () {
+        renderList();
+      });
+    })
+    .catch(function (err) {
+      console.error("Recipe load error:", err);
+      statusEl.textContent = "";
+      detailEl.innerHTML = '<div class="recipe-card" style="padding:1rem">' +
+        "<p><strong>Error:</strong> Could not load recipe data.</p></div>";
+    });
+});
+</script>
