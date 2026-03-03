@@ -6,7 +6,6 @@ permalink: /recipes/
 
 <div class="recipes-page">
   <h1 class="section-header">Recipe reference</h1>
-  <p id="recipe-status" class="muted"></p>
 
   <div id="recipe-content" class="recipe-layout">
     <!-- Left panel: search + list -->
@@ -1030,7 +1029,6 @@ document.addEventListener("DOMContentLoaded", function () {
   var currentScale = 1;
 
   var searchEl     = document.getElementById("recipe-search");
-  var statusEl     = document.getElementById("recipe-status");
   var listEl       = document.getElementById("recipe-list");
   var detailEl     = document.getElementById("recipe-detail");
 
@@ -1051,7 +1049,6 @@ document.addEventListener("DOMContentLoaded", function () {
     var filtered = getFiltered();
     var hasDetail = selectedId !== null;
 
-    statusEl.textContent = filtered.length + " recipe" + (filtered.length !== 1 ? "s" : "");
     listEl.className = "recipe-list" + (hasDetail ? "" : " full-width");
 
     var h = "";
@@ -1270,7 +1267,6 @@ document.addEventListener("DOMContentLoaded", function () {
     })
     .catch(function (err) {
       console.error("Recipe load error:", err);
-      statusEl.textContent = "";
       detailEl.innerHTML = '<div class="recipe-card" style="padding:1rem">' +
         "<p><strong>Error:</strong> Could not load recipe data.</p></div>";
     });
