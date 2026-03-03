@@ -65,6 +65,8 @@
       text: "Initial version."
     - time: "2025-02-22"
       text: "Adaptation as SOP."
+    - time: "2026-03-03"
+      text: "Corrected volumes for final DTT concentration."
 - id: "SOP0014"
   filename: "sop_0014-v1-counting_cells"
   changes:
