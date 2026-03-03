@@ -775,7 +775,7 @@ document.addEventListener("DOMContentLoaded", function () {
     if (ing.cas) {
       var label = '[' + ing.cas + ']';
       casHtml = ing.pubchem
-        ? ' <a class="rc-cas" href="https://pubchem.ncbi.nlm.nih.gov/' + ing.pubchem + '" target="_blank" rel="noopener">' + label + '</a>'
+        ? ' <a class="rc-cas" href="https://pubchem.ncbi.nlm.nih.gov/' + ing.pubchem + '" target="_blank" rel="noopener noreferrer">' + label + '</a>'
         : ' <span class="rc-cas">' + label + '</span>';
     }
 
@@ -1008,7 +1008,7 @@ document.addEventListener("DOMContentLoaded", function () {
       h += "<p>Source: ";
       h += recipe.sources.map(function (s) {
         var label = 
-        "<a href='/assets/protocols/pdf/" + s.filename + ".pdf'>" +
+        '<a target="_blank" rel="noopener noreferrer" href="/assets/protocols/pdf/' + s.filename + '.pdf">' +
           s.doc_type + " " + s.id + " v" + s.version +
         "</a>";
         if (s.primary) label += " (shown)";
