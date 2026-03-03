@@ -39,7 +39,7 @@ permalink: /recipes/
     flex-direction: column;
     height: calc(100vh - var(--footer-height) - var(--header-height) - 2 * var(--pad-l));
     margin: var(--pad-l) auto;
-    max-width: 80ch;
+    max-width: 90ch;
   }
 
   /* ---- Form ---- */
@@ -60,11 +60,12 @@ permalink: /recipes/
 
   .recipe-layout {
     display: flex;
-    flex: 1 1 auto;     /* grow to fill remaining vertical space */
+    flex: 1 1 auto;
     gap: var(--pad-l);
     padding: var(--pad-s);
-    align-items: flex-start;
-    overflow: hidden;   /* prevent accidental overflow */
+    align-items: stretch;
+    height: 100vh;
+    overflow: hidden;
   }
   
   .recipe-list-panel {
@@ -82,6 +83,7 @@ permalink: /recipes/
     padding: 4px;
     border-radius: 0.25rem;
     overflow-y: scroll;
+    align-self: flex-start;
     scrollbar-gutter: stable;
   }
   
@@ -91,9 +93,12 @@ permalink: /recipes/
   }
 
   .recipe-detail {
-    flex: 1 1 50ch;
+    flex: 1 1 60ch;
     min-width: 0;
+    min-height: 0;
+    padding-right: var(--pad-s);
     overflow-y: auto;
+    scrollbar-gutter: stable;
   }
 
   .recipe-detail:empty ~ .recipe-list,
@@ -271,6 +276,7 @@ permalink: /recipes/
   .rc-table .solvent-row td {
     border-top: 2px solid var(--border-strong);
     border-bottom: none;
+    padding-bottom: var(--pad-m);
   }
 
   .rc-ing-optional {
@@ -306,7 +312,8 @@ permalink: /recipes/
   .rc-scale {
     align-items: center;
     background: var(--surface-inset);
-    border-top: 1px solid var(--border-strong);
+/*    border-top: 1px solid var(--border-subtle);*/
+    border: none;
     display: flex;
     flex-wrap: wrap;
     gap: var(--pad-m);
@@ -332,6 +339,7 @@ permalink: /recipes/
     margin: 0;
     margin-left: var(--pad-m);
     width: 5ch;
+    outline: none;
   }
 
   .rc-scale-unit {
@@ -345,19 +353,19 @@ permalink: /recipes/
   }
 
   .rc-scale-btn {
-    background: var(--surface-raised);
+    background: transparent;
     border: 1px solid var(--border-subtle);
     border-radius: 0.25rem;
     color: var(--text-tertiary);
     cursor: pointer;
     font-family: inherit;
-    font-size: 0.7rem;
+    font-size: 0.8rem;
     font-weight: 500;
-    padding: 0.1rem 0.5rem;
+    padding: 0.05rem 0.4rem;
   }
 
   .rc-scale-btn.active {
-    background: var(--surface-accent);
+    background: var(--hover-raised);
     border-color: var(--border-strong);
     color: var(--text-primary);
   }
@@ -365,7 +373,7 @@ permalink: /recipes/
   /* Body: workup, storage, notes, safety */
 
   .rc-body {
-    border-top: 1px solid var(--border-strong);
+/*    border-top: 1px solid var(--border-strong);*/
     font-size: 0.85rem;
     line-height: 1.55;
     padding: var(--pad-m) var(--pad-l) var(--pad-l);
