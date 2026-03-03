@@ -7,16 +7,6 @@ permalink: /recipes/
 <div class="recipes-page">
   <h1 class="section-header">Recipe reference</h1>
 
-  <!-- Search -->
-  <p>
-  <form id="recipe-form" class="recipe-form" onsubmit="return false">
-    <label for="recipe-search">Find a recipe by name, abbreviation, or identifier:</label>
-    <div class="row">
-      <input id="recipe-search" type="search" autocomplete="off" placeholder="e.g. EDTA, R0017, Tris" />
-    </div>
-  </form>
-  </p>
-
   <!-- Category filters -->
   <div id="recipe-categories" class="recipe-categories"></div>
 
@@ -25,8 +15,20 @@ permalink: /recipes/
 
   <!-- Main content area -->
   <div id="recipe-content" class="recipe-layout">
-    <div id="recipe-list" class="recipe-list"></div>
+
+    <!-- Left panel: search + list -->
+    <div class="recipe-list-panel">
+      <form id="recipe-form" class="recipe-form" onsubmit="return false">
+        <div class="row">
+          <input id="recipe-search" type="search" autocomplete="off" placeholder="e.g. EDTA, R0017, Tris" />
+        </div>
+      </form>
+      <div id="recipe-list" class="recipe-list"></div>
+    </div>
+
+    <!-- Right panel: recipe detail -->
     <div id="recipe-detail" class="recipe-detail"></div>
+
   </div>
 
   <!-- Footer -->
@@ -36,21 +38,20 @@ permalink: /recipes/
 <style>
 
   .recipes-page {
-    margin: 2rem auto;
+    display: flex;
+    flex-direction: column;
+    height: calc(100vh - var(--footer-height) - var(--header-height) - 2 * var(--pad-l));
+    margin: var(--pad-l) auto;
     max-width: 80ch;
   }
 
   /* ---- Form ---- */
 
-  .recipe-form label {
-    display: block;
-    margin-bottom: var(--pad-m);
-  }
-
   .recipe-form .row {
     display: flex;
     flex-wrap: wrap;
     gap: var(--pad-m);
+    margin-bottom: var(--pad-l);
   }
 
   .recipe-form input[type="search"] {
@@ -92,17 +93,26 @@ permalink: /recipes/
 
   .recipe-layout {
     display: flex;
+    flex: 1 1 auto;     /* grow to fill remaining vertical space */
     gap: var(--pad-l);
     align-items: flex-start;
+    overflow: hidden;   /* prevent accidental overflow */
+  }
+  .recipe-list-panel {
+    flex: 0 0 28ch;  /* fixed width */
+    display: flex;
+    height: 100%;
+    flex-direction: column;
   }
 
   .recipe-list {
-    flex: 0 0 28ch; /* wider column for readability */
-    max-height: 50vh; /* scrollable */
+    flex: 1 1 auto;     /* fills vertical space in panel */
     overflow-y: auto;
-    padding-right: 0.5rem; /* allow scrollbar space */
-    border-right: 1px solid var(--border-strong);
+    padding-right: var(--pad-l);
+    border: 1px solid var(--border-subtle);
+    border-radius: 0.5rem;
   }
+  
 
   .recipe-list.full-width {
     flex: 1 1 100%;
@@ -111,6 +121,7 @@ permalink: /recipes/
   .recipe-detail {
     flex: 1 1 40ch;
     min-width: 0;
+    overflow-y: auto; /* allow scrolling if detail is long */
   }
 
   .recipe-detail:empty ~ .recipe-list,
@@ -485,8 +496,10 @@ permalink: /recipes/
     .recipe-layout {
       flex-direction: column;
     }
-    .recipe-list {
-      flex: 1 1 100% !important;
+    .recipe-list-panel {
+      flex: 1 1 100%;
+      max-height: none;
+      border-right: none;
     }
     .recipe-detail {
       flex: 1 1 100%;
