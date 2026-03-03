@@ -511,42 +511,66 @@ permalink: /recipes/
   
   @media print {
     .recipe-list-panel,
-    .recipe-form,
-    #recipe-status {
-      display: none;
-    }
+      .recipe-form {
+        display: none;
+      }
 
-    .recipes-page {
-      height: auto;
-      max-width: none;
-    }
+      .recipes-page {
+        height: auto;
+        max-width: none;
+        overflow: visible;
+        margin: 0;
+        padding: 0;
+      }
 
-    .recipe-layout {
-      display: block;
-      overflow: visible;
-    }
+      .recipe-layout {
+        display: block;
+        overflow: visible;
+        height: auto;
+        padding: 0;
+      }
 
-    .recipe-detail {
-      overflow: visible;
-      padding-right: 0;
-    }
-    
-    .recipe-card {
+      .recipe-detail {
+        overflow: visible;
+        height: auto;
+        flex: none;
+        padding: 0;
+      }
+
+      .recipe-card {
+        overflow: visible;
+        break-inside: auto;
+      }
+
+      .rc-header {
+        break-inside: avoid;
+        break-after: avoid;
+      }
+
+      .rc-table {
+        break-inside: auto;
+      }
+
+      .rc-table tr {
         break-inside: avoid;
       }
 
-      .rc-header,
-      .rc-table {
-        break-inside: avoid;
+      .rc-table thead {
+        break-after: avoid;
       }
 
       .rc-body {
-        break-before: auto;
+        break-inside: auto;
+      }
+
+      .rc-note,
+      .rc-safety,
+      .rc-sources {
         break-inside: avoid;
       }
 
-      .rc-safety {
-        break-inside: avoid;
+      .rc-scale {
+        display: none;
       }
   }
 

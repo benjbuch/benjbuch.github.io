@@ -610,8 +610,15 @@ input {
 
 @media print {
   
-  header {
-    display: none;
+  html, body, main, #content {
+    height: auto !important;
+    overflow: visible !important;
+    display: block !important;
+    position: static !important;
+  }
+
+  header, nav, footer {
+    display: none !important;
   }
   
 }
