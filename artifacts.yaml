@@ -11,8 +11,8 @@ pull:
     to: _data/protocols/
     required: true
     
-  - from: public/lab-protocols/metadata/*.xml
-    to: _data/protocols/
+  - from: public/lab-protocols/metadata/recipes.xml
+    to: assets/protocols/recipes.xml
     required: true
     
   - from: public/lab-publications/my_publications_abbr.yml
