@@ -7,9 +7,6 @@ permalink: /recipes/
 <div class="recipes-page">
   <h1 class="section-header">Recipe reference</h1>
 
-  <!-- Category filters -->
-  <div id="recipe-categories" class="recipe-categories"></div>
-
   <!-- Status line -->
   <p id="recipe-status" class="muted"></p>
 
@@ -57,36 +54,6 @@ permalink: /recipes/
   .recipe-form input[type="search"] {
     flex: 1;
     min-width: 20ch;
-  }
-
-  /* ---- Category filter buttons ---- */
-
-  .recipe-categories {
-    display: flex;
-    flex-wrap: wrap;
-    gap: var(--pad-s);
-    margin-bottom: var(--pad-l);
-  }
-
-  .cat-btn {
-    background: var(--surface-raised);
-    border: 1px solid var(--border-strong);
-    border-radius: 0.25rem;
-    color: inherit;
-    cursor: pointer;
-    font-family: inherit;
-    font-size: 0.8rem;
-    padding: 0.1rem 0.55rem;
-  }
-
-  .cat-btn.active {
-    background: var(--fg);
-    border-color: var(--fg);
-    color: var(--bg);
-  }
-
-  .cat-btn .cat-count {
-    opacity: 0.5;
   }
 
   /* ---- Two-column layout ---- */
@@ -168,6 +135,14 @@ permalink: /recipes/
     font-size: 0.7rem;
     flex-shrink: 0;
     margin-left: var(--pad-s);
+  }
+  
+  .recipe-item.disabled {
+    opacity: 0.5;
+    cursor: pointer;
+    font-style: italic;
+    justify-content: center;
+    pointer-events: auto; /* allow click to clear filters */
   }
 
   /* ---- Recipe card ---- */
@@ -891,7 +866,6 @@ document.addEventListener("DOMContentLoaded", function () {
   var currentScale = 1;
 
   var searchEl     = document.getElementById("recipe-search");
-  var categoriesEl = document.getElementById("recipe-categories");
   var statusEl     = document.getElementById("recipe-status");
   var listEl       = document.getElementById("recipe-list");
   var detailEl     = document.getElementById("recipe-detail");
@@ -932,24 +906,42 @@ document.addEventListener("DOMContentLoaded", function () {
     listEl.className = "recipe-list" + (hasDetail ? "" : " full-width");
 
     var h = "";
-    for (var i = 0; i < filtered.length; i++) {
-      var r = filtered[i];
-      var sel = r.id === selectedId ? " selected" : "";
-      h += '<button class="recipe-item' + sel + '" data-id="' + r.id + '">';
-      h += '<span class="recipe-item-name">' + r.nameHtml;
-      h += "</span>";
-      h += '<span class="recipe-item-id">' + r.id + "</span>";
+
+    if (filtered.length === 0) {
+      // Placeholder disabled item
+      h += '<button class="recipe-item disabled" disabled>';
+      h += 'No recipes found. <span class="recipe-item-id">Clear filters</span>';
       h += "</button>";
+    } else {
+      for (var i = 0; i < filtered.length; i++) {
+        var r = filtered[i];
+        var sel = r.id === selectedId ? " selected" : "";
+        h += '<button class="recipe-item' + sel + '" data-id="' + r.id + '">';
+        h += '<span class="recipe-item-name">' + r.nameHtml + "</span>";
+        h += '<span class="recipe-item-id">' + r.id + "</span>";
+        h += "</button>";
+      }
     }
+
     listEl.innerHTML = h;
 
     // Attach click handlers
     var items = listEl.querySelectorAll(".recipe-item");
     for (var j = 0; j < items.length; j++) {
       items[j].addEventListener("click", function () {
+        if (this.disabled) {
+          // Clear filters on click of placeholder
+          activeCats = {};
+          recipeSearch.value = "";
+          selectedId = null;
+          currentScale = 1;
+          renderList();
+          renderDetail();
+          return;
+        }
         var id = this.getAttribute("data-id");
-        if (selectedId === id) { selectedId = null; currentScale = 1; }
-        else { selectedId = id; currentScale = 1; }
+        selectedId = selectedId === id ? null : id;
+        currentScale = 1;
         renderList();
         renderDetail();
       });
@@ -1014,38 +1006,6 @@ document.addEventListener("DOMContentLoaded", function () {
     }
   });
 
-  /* ==== Render categories ==== */
-
-  function renderCategories() {
-    var filteredCounts = {};
-    var filteredRecipes = getFiltered();
-    filteredRecipes.forEach(function(r) {
-      r.categories.forEach(function(c) {
-        filteredCounts[c] = (filteredCounts[c] || 0) + 1;
-      });
-    });
-    var sorted = Object.keys(filteredCounts).sort(function (a, b) { return filteredCounts[b] - filteredCounts[a]; });
-
-    var h = "";
-    for (var i = 0; i < sorted.length; i++) {
-      var c = sorted[i];
-      var cls = activeCats[c] ? " active" : "";
-      h += '<button class="cat-btn' + cls + '" data-cat="' + c + '">';
-      h += c + ' <span class="cat-count">(' + (filteredCounts[c] || 0) + ")</span></button>";
-    }
-    categoriesEl.innerHTML = h;
-
-    var btns = categoriesEl.querySelectorAll(".cat-btn");
-    for (var j = 0; j < btns.length; j++) {
-      btns[j].addEventListener("click", function () {
-        var cat = this.getAttribute("data-cat");
-        activeCats[cat] = !activeCats[cat];
-        renderCategories();
-        renderList();
-      });
-    }
-  }
-
   /* ==== URL parameter support ==== */
 
   function checkUrlParams() {
@@ -1086,7 +1046,6 @@ document.addEventListener("DOMContentLoaded", function () {
       }
 
       checkUrlParams();
-      renderCategories();
       renderList();
       renderDetail();
 
