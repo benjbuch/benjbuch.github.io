@@ -605,3 +605,13 @@ input {
     opacity: 1;
   }
 }
+
+// Print
+
+@media print {
+  
+  header {
+    display: none;
+  }
+  
+}
