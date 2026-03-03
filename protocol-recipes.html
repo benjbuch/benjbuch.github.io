@@ -197,7 +197,6 @@ permalink: /recipes/
   .rc-close {
     background: none;
     border: none;
-    cursor: pointer;
     color: var(--text-tertiary);
     cursor: pointer;
     padding: 0;
@@ -370,14 +369,11 @@ permalink: /recipes/
     border-left: 3px solid var(--border-strong);
   }
   
-  .rc-note emph {
+  .rc-note em {
     text-transform: capitalize;
     font-weight: 600;
   }
-
-  .rc-note-typed {
-  }
-
+  
   .rc-note-critical {
     border-color: var(--text-primary);
   }
@@ -851,10 +847,6 @@ document.addEventListener("DOMContentLoaded", function () {
     // Regular ingredient rows
     for (var i = 0; i < recipe.ingredients.length; i++) {
       h += renderIngRow(recipe.ingredients[i], scale);
-      var ing = recipe.ingredients[i];
-      var amt = ing.amount && ing.amount.value !== null
-        ? fmt(ing.amount.value * scale)
-        : "";
     }
   
     // ------------------
@@ -953,8 +945,8 @@ document.addEventListener("DOMContentLoaded", function () {
       if (isCritical) {
         h += '<div class="rc-note rc-note-critical"><strong>Important:</strong> ' + note.html + "!</div>";
       } else if (note.type) {
-        h += '<div class="rc-note rc-note-typed"><emph>' +
-          note.type + ':</emph> ' + note.html + ".</div>";
+        h += '<div class="rc-note rc-note-typed"><em>' +
+          note.type + ':</em> ' + note.html + ".</div>";
       } else {
         h += '<div class="rc-note">' + note.html + ".</div>";
       }
@@ -1138,13 +1130,8 @@ document.addEventListener("DOMContentLoaded", function () {
 
     // Update volume input
     var input = detailEl.querySelector("#rc-vol-input");
-    if (input) {
-      var recipe = allRecipes.find(r => r.id === selectedId);
-      var baseVol = recipe?.solvent?.amount?.value;
-
-      if (baseVol) {
-        input.value = fmt(baseVol * currentScale);
-      }
+    if (input && baseVol) {
+      input.value = fmt(baseVol * currentScale);
     }
 
     // Update preset button highlight
