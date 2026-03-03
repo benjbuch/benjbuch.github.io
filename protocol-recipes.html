@@ -68,21 +68,21 @@ permalink: /recipes/
   }
   
   .recipe-list-panel {
-    flex: 0 0 30ch;  /* fixed width */
+    flex: 0 0 20ch;
     display: flex;
     height: 100%;
     flex-direction: column;
   }
 
   .recipe-list {
-    flex: 1 1 auto;     /* fills vertical space in panel */
-    min-width: 30ch;
+    flex: 1 1 auto;
+    min-width: 20ch;
     overflow-y: auto;
-    padding-right: var(--pad-l);
     border: 1px solid var(--border-subtle);
-    border-radius: 0.5rem;
-    overflow-y: scroll;  /* always show scrollbar gutter */
-    scrollbar-gutter: stable; /* for modern browsers */
+    padding: 4px;
+    border-radius: 0.25rem;
+    overflow-y: scroll;
+    scrollbar-gutter: stable;
   }
   
 
@@ -91,9 +91,9 @@ permalink: /recipes/
   }
 
   .recipe-detail {
-    flex: 1 1 40ch;
+    flex: 1 1 50ch;
     min-width: 0;
-    overflow-y: auto; /* allow scrolling if detail is long */
+    overflow-y: auto;
   }
 
   .recipe-detail:empty ~ .recipe-list,
@@ -106,18 +106,27 @@ permalink: /recipes/
   .recipe-item {
     background: none;
     border: 1px solid transparent;
-    border-radius: 0.25rem;
     color: inherit;
     cursor: pointer;
     display: flex;
     font-family: inherit;
-    font-size: 0.88rem;
+    font-size: 0.8rem;
     justify-content: space-between;
-    align-items: baseline;
-    padding: 0.3rem 0.55rem;
+    align-items: center;
     text-align: left;
     width: 100%;
     box-sizing: border-box;
+    outline: none;
+  }
+  
+  .recipe-item:focus {
+    outline: none;
+  }
+  
+  .recipe-item:focus-visible {
+    outline: 2px solid var(--focus-ring);
+    outline-offset: 2px;
+    border-radius: 4px;
   }
 
   .recipe-item:hover {
@@ -125,8 +134,7 @@ permalink: /recipes/
   }
 
   .recipe-item.selected {
-    background: var(--surface-raised);
-    border-color: var(--fg);
+    background: var(--surface-accent);
   }
 
   .recipe-item-name {
@@ -135,9 +143,10 @@ permalink: /recipes/
   }
 
   .recipe-item-id {
-    color: var(--fg-muted);
+    color: var(--text-secondary);
     font-family: var(--font-mono);
     font-size: 0.7rem;
+    font-weight: 700;
     flex-shrink: 0;
     margin-left: var(--pad-s);
   }
@@ -147,7 +156,7 @@ permalink: /recipes/
     cursor: pointer;
     font-style: italic;
     justify-content: center;
-    pointer-events: auto; /* allow click to clear filters */
+    pointer-events: auto;
   }
 
   /* ---- Recipe card ---- */
@@ -162,7 +171,7 @@ permalink: /recipes/
   /* Header */
 
   .rc-header {
-    border-bottom: 2px solid var(--fg);
+    border-bottom: 2px solid var(--border-strong);
     padding: var(--pad-m) var(--pad-l) var(--pad-m);
   }
 
@@ -172,15 +181,19 @@ permalink: /recipes/
     align-items: flex-start;
   }
 
+  .rc-header-actions {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: var(--pad-l);
+  }
+
   .rc-header h2 {
-    font-size: 1.05rem;
     font-style: italic;
-    line-height: 1.35;
-    margin: 0;
+    margin-top: var(--pad-m);
   }
 
   .rc-header h2 .rc-abbr {
-    color: var(--fg-muted);
     font-style: normal;
     font-weight: normal;
   }
@@ -188,55 +201,45 @@ permalink: /recipes/
   .rc-header h2 .rc-stock {
     font-style: normal;
     font-weight: normal;
+    white-space: nowrap;
   }
 
   .rc-header .rc-props {
-    color: var(--fg-muted);
-    font-size: 0.85rem;
-    margin-top: 0.1rem;
+    color: var(--text-secondary);
+    margin-top: var(--pad-s);
   }
 
   .rc-header .rc-id {
-    color: var(--fg-muted);
+    color: var(--text-secondary);
     font-family: var(--font-mono);
-    font-size: 0.72rem;
   }
 
   .rc-close {
     background: none;
-    border: 1px solid var(--border-strong);
-    border-radius: 0.25rem;
-    color: var(--fg-muted);
+    border: none;
     cursor: pointer;
-    font-size: 1rem;
-    line-height: 1;
-    margin-left: var(--pad-m);
-    padding: 0 0.4rem;
+    color: var(--text-tertiary);
+    cursor: pointer;
+    padding: 0;
+    outline: none;
+    font-size: 1.2rem;
   }
 
   /* Ingredients table */
 
   .rc-table {
     border-collapse: collapse;
-    font-size: 0.85rem;
+    font-size: 0.8rem;
     width: 100%;
   }
 
   .rc-table thead tr {
-    border-bottom: 1px solid var(--fg-muted);
+    border-bottom: 2px solid var(--border-strong);
+    text-align: left;
   }
 
   .rc-table th {
-    font-size: 0.75rem;
-    font-weight: 600;
-    color: var(--fg-muted);
-    padding: 0.3rem 0.5rem;
-  }
-
-  .rc-table th.col-amount,
-  .rc-table th.col-stock,
-  .rc-table th.col-final {
-    text-align: right;
+    padding: var(--pad-s) var(--pad-m);
   }
 
   .rc-table th.col-unit {
@@ -244,8 +247,8 @@ permalink: /recipes/
   }
 
   .rc-table td {
-    padding: 0.3rem 0.5rem;
-    border-bottom: 1px solid var(--border-strong);
+    padding: var(--pad-s) var(--pad-m);
+    border-bottom: 1px solid var(--border-subtle);
     vertical-align: baseline;
   }
 
@@ -253,112 +256,105 @@ permalink: /recipes/
     font-variant-numeric: tabular-nums;
     text-align: right;
     white-space: nowrap;
-    font-weight: 500;
   }
 
   .rc-table .col-unit {
-    color: var(--fg-muted);
-    font-size: 0.8rem;
     white-space: nowrap;
   }
 
   .rc-table .col-stock,
   .rc-table .col-final {
-    color: var(--fg-muted);
-    font-size: 0.8rem;
     text-align: right;
     white-space: nowrap;
   }
 
-  .rc-table .col-final {
-    color: var(--fg);
-  }
-
   .rc-table .solvent-row td {
-    border-top: 1px solid var(--fg-muted);
+    border-top: 2px solid var(--border-strong);
     border-bottom: none;
-    color: var(--fg-muted);
-  }
-
-  .rc-ing-props {
-    color: var(--fg-muted);
   }
 
   .rc-ing-optional {
-    color: var(--fg-muted);
+    color: var(--text-secondary);
     font-style: italic;
   }
 
   .rc-ref-link {
     background: none;
     border: none;
-    color: var(--accent-link, #2563eb);
+    color: var(--link);
     cursor: pointer;
     font-family: var(--font-mono);
-    font-size: 0.72rem;
+    font-size: 0.7rem;
+    font-weight: 700;
     padding: 0;
     margin-left: 0.3rem;
+  }
+  
+  .rc-ref-link:hover {
     text-decoration: underline;
     text-underline-offset: 2px;
   }
 
   .rc-cas {
-    color: var(--fg-muted);
-    font-size: 0.68rem;
-    margin-left: 0.3rem;
-    opacity: 0.6;
+    color: var(--text-secondary);
+    font-size: 0.7rem;
+    margin-left: var(--pad-m);
   }
 
   /* Scale controls */
 
   .rc-scale {
     align-items: center;
-    background: var(--bg);
+    background: var(--surface-inset);
     border-top: 1px solid var(--border-strong);
     display: flex;
     flex-wrap: wrap;
     gap: var(--pad-m);
-    padding: var(--pad-s) var(--pad-l);
+    padding: var(--pad-l);
   }
 
   .rc-scale-label {
-    color: var(--fg-muted);
+    color: var(--text-secondary);
     font-size: 0.8rem;
   }
 
   .rc-scale-input {
-    font-size: 0.85rem;
+    border: none;
+    border-bottom: 1px solid var(--border-subtle);
+    background: transparent;
+    color: var(--text-primary);
+    font-size: 0.8rem;
     font-variant-numeric: tabular-nums;
     text-align: right;
     width: 5em;
   }
 
   .rc-scale-unit {
-    color: var(--fg-muted);
+    color: var(--text-secondary);
     font-size: 0.8rem;
   }
 
   .rc-scale-presets {
     display: flex;
-    gap: 0.2rem;
+    gap: var(--pad-m);
   }
 
   .rc-scale-btn {
     background: var(--surface-raised);
-    border: 1px solid var(--border-strong);
+    border: 1px solid var(--border-subtle);
     border-radius: 0.25rem;
-    color: inherit;
+    color: var(--text-tertiary);
     cursor: pointer;
     font-family: inherit;
-    font-size: 0.75rem;
+    font-size: 0.7rem;
     font-weight: 500;
-    padding: 0.15rem 0.5rem;
+    padding: 0.1rem 0.5rem;
   }
 
   .rc-scale-btn.active {
-    background: var(--fg);
-    border-color: var(--fg);
-    color: var(--bg);
+    background: var(--surface-accent);
+    border-color: var(--border-strong);
+    color: var(--text-primary);
   }
 
   /* Body: workup, storage, notes, safety */
@@ -760,16 +756,22 @@ document.addEventListener("DOMContentLoaded", function () {
     if (recipe.abbrHtml) h += ' <span class="rc-abbr">(' + recipe.abbrHtml + ")</span>";
     if (recipe.stock) h += ', <span class="rc-stock">' + recipe.stock + "</span>";
     h += "</h2>";
+
     if (recipe.properties.length) {
       h += '<div class="rc-props">';
       h += recipe.properties.join(", ");
       h += "</div>";
     }
-    h += "</div>";
-    h += '<div style="display:flex;align-items:center;gap:0.5rem">';
-    h += '<span class="rc-id">' + recipe.id + "</span>";
+
+    h += "</div>"; // close left block
+
+    // Right side (stacked)
+    h += '<div class="rc-header-actions">';
     h += '<button class="rc-close" id="rc-close">\u00D7</button>';
-    h += "</div></div></div>";
+    h += '<span class="rc-id">' + recipe.id + "</span>";
+    h += "</div>";
+
+    h += "</div></div>";
 
     // Table
     h += '<table class="rc-table"><thead><tr>';
