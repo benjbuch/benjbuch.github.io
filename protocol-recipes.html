@@ -39,7 +39,7 @@ permalink: /recipes/
     flex-direction: column;
     height: calc(100vh - var(--footer-height) - var(--header-height) - 2 * var(--pad-l));
     margin: var(--pad-l) auto;
-    max-width: 90ch;
+    max-width: 95ch;
   }
 
   /* ---- Form ---- */
@@ -135,11 +135,11 @@ permalink: /recipes/
   }
 
   .recipe-item:hover {
-    background: var(--surface-raised);
+    background: var(--hover);
   }
 
   .recipe-item.selected {
-    background: var(--surface-accent);
+    background: var(--hover-raised);
   }
 
   .recipe-item-name {
@@ -168,8 +168,9 @@ permalink: /recipes/
 
   .recipe-card {
     background: var(--surface-raised);
-    border: 1px solid var(--border-strong);
+    border: 1px solid var(--border-subtle);
     border-radius: 0.5rem;
+    padding: var(--pad-l);
     overflow: hidden;
   }
 
@@ -177,7 +178,7 @@ permalink: /recipes/
 
   .rc-header {
     border-bottom: 2px solid var(--border-strong);
-    padding: var(--pad-m) var(--pad-l) var(--pad-m);
+    padding-bottom: var(--pad-l);
   }
 
   .rc-header-top {
@@ -190,12 +191,11 @@ permalink: /recipes/
     display: flex;
     flex-direction: column;
     align-items: flex-end;
-    gap: var(--pad-l);
+    gap: var(--pad-m);
   }
 
   .rc-header h2 {
     font-style: italic;
-    margin-top: var(--pad-m);
   }
 
   .rc-header h2 .rc-abbr {
@@ -294,11 +294,13 @@ permalink: /recipes/
     font-weight: 700;
     padding: 0;
     margin-left: 0.3rem;
+    outline: none;
   }
   
   .rc-ref-link:hover {
     text-decoration: underline;
     text-underline-offset: 2px;
+    background: none;
   }
 
   .rc-cas {
