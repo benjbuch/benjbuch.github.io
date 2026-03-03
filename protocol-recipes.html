@@ -1245,6 +1245,7 @@ document.addEventListener("DOMContentLoaded", function () {
         if (!el.getAttribute("id")) continue;
         if (directChildren(el, "ingredient").length === 0) continue;
         allRecipes.push(parseRecipe(el));
+        allRecipes.sort(function (a, b) { return a.name.localeCompare(b.name); });
       }
       
       allRecipes.forEach(r => {
