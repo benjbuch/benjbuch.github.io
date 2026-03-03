@@ -873,27 +873,12 @@ document.addEventListener("DOMContentLoaded", function () {
   /* ==== Filtering ==== */
 
   function getFiltered() {
-    var q = (searchEl.value || "").toLowerCase();
-    var hasCats = false;
-    for (var k in activeCats) { if (activeCats[k]) { hasCats = true; break; } }
+    const query = document.getElementById("recipe-search").value || "";
+    const tokens = query.toLowerCase().trim().split(/\s+/).filter(Boolean);
 
-    return allRecipes.filter(function (r) {
-      if (q) {
-        var match = (r.name || "").toLowerCase().includes(q) ||
-                    (r.abbreviation || "").toLowerCase().includes(q) ||
-                    (r.id || "").toLowerCase().includes(q) ||
-                    (r.stock || "").toLowerCase().includes(q);
-                if (!match) return false;
-      }
-      if (hasCats) {
-        var catMatch = false;
-        for (var i = 0; i < r.categories.length; i++) {
-          if (activeCats[r.categories[i]]) { catMatch = true; break; }
-        }
-        if (!catMatch) return false;
-      }
-      return true;
-    });
+    if (!tokens.length) return allRecipes;
+
+    return allRecipes.filter(r => tokens.every(t => r._hay.includes(t)));
   }
 
   /* ==== Render list ==== */
@@ -910,7 +895,7 @@ document.addEventListener("DOMContentLoaded", function () {
     if (filtered.length === 0) {
       // Placeholder disabled item
       h += '<button class="recipe-item disabled" disabled>';
-      h += 'No recipes found. <span class="recipe-item-id">Clear filters</span>';
+      h += 'No recipes found';
       h += "</button>";
     } else {
       for (var i = 0; i < filtered.length; i++) {
@@ -1044,6 +1029,17 @@ document.addEventListener("DOMContentLoaded", function () {
         if (directChildren(el, "ingredient").length === 0) continue;
         allRecipes.push(parseRecipe(el));
       }
+      
+      allRecipes.forEach(r => {
+        if (!r._hay) {
+          r._hay = [
+            r.name,
+            r.abbreviation,
+            r.id,
+            (r.categories || []).join(" ")
+          ].join(" ").toLowerCase();
+        }
+      });
 
       checkUrlParams();
       renderList();
