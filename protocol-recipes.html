@@ -678,7 +678,7 @@ document.addEventListener("DOMContentLoaded", function () {
     var storage = storageEl ? { html: htmlOf(storageEl) } : null;
     var sources = directChildren(el, "source").map(function (s) {
       return {
-        type: s.getAttribute("type") || "",
+        doc_type: s.getAttribute("doc_type") || "",
         id: s.getAttribute("id") || "",
         version: s.getAttribute("version") || "",
         primary: s.getAttribute("primary") === "yes",
