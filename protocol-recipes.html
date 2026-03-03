@@ -320,13 +320,18 @@ permalink: /recipes/
 
   .rc-scale-input {
     border: none;
-    border-bottom: 1px solid var(--border-subtle);
+    border-bottom: 2px solid var(--border-subtle);
+    border-radius: 0;
     background: transparent;
     color: var(--text-primary);
     font-size: 0.8rem;
     font-variant-numeric: tabular-nums;
+    font-weight: 700;
     text-align: right;
-    width: 5em;
+    padding: 0;
+    margin: 0;
+    margin-left: var(--pad-m);
+    width: 5ch;
   }
 
   .rc-scale-unit {
@@ -772,42 +777,91 @@ document.addEventListener("DOMContentLoaded", function () {
     h += "</div>";
 
     h += "</div></div>";
-
-    // Table
+    
+    // --- Base volume ---
+    var baseVol = recipe.solvent && recipe.solvent.amount
+      ? recipe.solvent.amount.value
+      : null;
+  
+    var baseUnit = recipe.solvent && recipe.solvent.amount
+      ? recipe.solvent.amount.unit
+      : "";
+      
+    var scale = currentScale;
+  
+    // ------------------
+    // TABLE
+    // ------------------
+  
     h += '<table class="rc-table"><thead><tr>';
     h += '<th class="col-amount">Amount</th><th class="col-unit"></th>';
     h += "<th>Ingredient</th>";
     h += '<th class="col-stock">Stock</th><th class="col-final">Final</th>';
     h += "</tr></thead><tbody>";
+  
+    // Regular ingredient rows
     for (var i = 0; i < recipe.ingredients.length; i++) {
       h += renderIngRow(recipe.ingredients[i], scale);
+      var ing = recipe.ingredients[i];
+      var amt = ing.amount && ing.amount.value !== null
+        ? fmt(ing.amount.value * scale)
+        : "";
     }
+  
+    // ------------------
+    // SOLVENT ROW (authoritative volume)
+    // ------------------
+  
     if (recipe.solvent) {
-      var sv = recipe.solvent.amount && recipe.solvent.amount.value !== null
-        ? "to " + fmt(recipe.solvent.amount.value * scale) : "";
-      h += '<tr class="solvent-row"><td class="col-amount">' + sv + "</td>";
-      h += '<td class="col-unit">' + (recipe.solvent.amount ? recipe.solvent.amount.unit : "") + "</td>";
-      h += "<td colspan=3>" + recipe.solvent.nameHtml;
-      if (recipe.solvent.property) h += ", " + recipe.solvent.property;
-      h += "</td></tr>";
-    }
-    h += "</tbody></table>";
+      var baseVol = recipe.solvent.amount && recipe.solvent.amount.value !== null
+        ? recipe.solvent.amount.value
+        : null;
 
-    // Scale controls
-    var baseVol = recipe.solvent && recipe.solvent.amount ? recipe.solvent.amount.value : null;
-    var baseUnit = recipe.solvent && recipe.solvent.amount ? recipe.solvent.amount.unit : "";
+      var scaledVol = baseVol && currentScale
+        ? baseVol * currentScale
+        : null;
+
+      h += '<tr class="solvent-row">';
+
+      h += '<td class="col-amount">';
+      if (scaledVol !== null) {
+        h += 'To <input class="rc-scale-input" id="rc-vol-input" type="text" value="' + fmt(scaledVol) + '"/>';
+      } else {
+        h += '';
+      }
+      h += '</td>';
+
+      h += '<td class="col-unit">' +
+           (recipe.solvent.amount ? recipe.solvent.amount.unit : "") +
+           '</td>';
+
+      h += '<td colspan="3">' + recipe.solvent.nameHtml;
+
+      if (recipe.solvent.property)
+        h += ', ' + recipe.solvent.property;
+
+      h += '</td></tr>';
+    }
+  
+    h += "</tbody></table>";
+    
     if (baseVol && baseVol > 0) {
-      var customVol = baseVol * scale;
+
       var presets = [0.5, 1, 2, 5, 10];
+
       h += '<div class="rc-scale">';
       h += '<span class="rc-scale-label">Scale:</span>';
-      h += '<input class="rc-scale-input" id="rc-vol-input" type="text" value="' + customVol + '"/>';
-      h += '<span class="rc-scale-unit">' + baseUnit + "</span>";
       h += '<div class="rc-scale-presets">';
+
       for (var p = 0; p < presets.length; p++) {
+
         var active = Math.abs(scale - presets[p]) < 0.001 ? " active" : "";
-        h += '<button class="rc-scale-btn' + active + '" data-scale="' + presets[p] + '">\u00D7 ' + presets[p] + "</button>";
+
+        h += '<button class="rc-scale-btn' + active + '" data-scale="' + presets[p] + '">';
+        h += "× " + presets[p];
+        h += "</button>";
       }
+
       h += "</div></div>";
     }
 
@@ -994,8 +1048,13 @@ document.addEventListener("DOMContentLoaded", function () {
 
     // Update volume input
     var input = detailEl.querySelector("#rc-vol-input");
-    if (input && baseVol > 0) {
-      input.value = fmt(baseVol * currentScale);
+    if (input) {
+      var recipe = allRecipes.find(r => r.id === selectedId);
+      var baseVol = recipe?.solvent?.amount?.value;
+
+      if (baseVol) {
+        input.value = fmt(baseVol * currentScale);
+      }
     }
 
     // Update preset button highlight
@@ -1020,16 +1079,16 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 
     // Scale preset buttons
-    if (e.target.classList.contains("rc-scale-btn")) {
-      var recipe = allRecipes.find(r => r.id === selectedId);
-      if (!recipe || !recipe.solvent || !recipe.solvent.amount) return;
+    if (e.target.classList.contains("rc-scale-btn") && selectedId) {
 
-      var baseVol = recipe.solvent.amount.value;
+        var scale = parseFloat(e.target.dataset.scale);
+        if (isNaN(scale) || scale <= 0) return;
 
-      currentScale = parseFloat(e.target.getAttribute("data-scale"));
-      syncScaleUI();
-      updateScaledValues();
-    }
+        currentScale = scale;
+
+        syncScaleUI();
+        updateScaledValues();
+      }
 
     // Cross-reference links
     if (e.target.classList.contains("rc-ref-link")) {
@@ -1048,17 +1107,20 @@ document.addEventListener("DOMContentLoaded", function () {
   // Delegated input event for volume input
   detailEl.addEventListener("input", function(e) {
     if (e.target.id === "rc-vol-input" && selectedId) {
+
+      var v = parseFloat(e.target.value);
+      if (isNaN(v) || v <= 0) return;
+
       var recipe = allRecipes.find(r => r.id === selectedId);
       if (!recipe || !recipe.solvent || !recipe.solvent.amount) return;
 
       var baseVol = recipe.solvent.amount.value;
-      var v = parseFloat(e.target.value);
+      if (!baseVol || baseVol <= 0) return;
 
-      if (!isNaN(v) && v > 0 && baseVol > 0) {
-        currentScale = v / baseVol;
-        syncScaleUI();
-        updateScaledValues();
-      }
+      currentScale = v / baseVol;
+
+      updateScaledValues();
+      // DO NOT call syncScaleUI() here
     }
   });
 
