@@ -147,6 +147,10 @@ permalink: /recipes/
     padding: var(--pad-l) var(--pad-l) var(--pad-s) var(--pad-l);
     overflow: hidden;
   }
+  
+  .recipe-card + .recipe-card {
+    margin-top: var(--pad-l);
+  }
 
   /* Header */
 
@@ -504,6 +508,47 @@ permalink: /recipes/
       min-height: 0;
     }
   }
+  
+  @media print {
+    .recipe-list-panel,
+    .recipe-form,
+    #recipe-status {
+      display: none;
+    }
+
+    .recipes-page {
+      height: auto;
+      max-width: none;
+    }
+
+    .recipe-layout {
+      display: block;
+      overflow: visible;
+    }
+
+    .recipe-detail {
+      overflow: visible;
+      padding-right: 0;
+    }
+    
+    .recipe-card {
+        break-inside: avoid;
+      }
+
+      .rc-header,
+      .rc-table {
+        break-inside: avoid;
+      }
+
+      .rc-body {
+        break-before: auto;
+        break-inside: avoid;
+      }
+
+      .rc-safety {
+        break-inside: avoid;
+      }
+  }
 
 </style>
 
@@ -816,7 +861,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
     // Right side (stacked)
     h += '<div class="rc-header-actions">';
-    h += '<button class="rc-close" id="rc-close">\u00D7</button>';
+    h += '<button class="rc-close">\u00D7</button>';
     h += '<span class="rc-id">' + recipe.id + "</span>";
     h += "</div>";
 
@@ -831,7 +876,7 @@ document.addEventListener("DOMContentLoaded", function () {
       ? recipe.solvent.amount.unit
       : "";
       
-    var scale = currentScale;
+    var scale = getScale(recipe.id);
   
     // ------------------
     // TABLE
@@ -857,15 +902,15 @@ document.addEventListener("DOMContentLoaded", function () {
         ? recipe.solvent.amount.value
         : null;
 
-      var scaledVol = baseVol && currentScale
-        ? baseVol * currentScale
+      var scaledVol = baseVol && scale
+        ? baseVol * scale
         : null;
 
       h += '<tr class="solvent-row">';
 
       h += '<td class="col-amount">';
       if (scaledVol !== null) {
-        h += 'To <input class="rc-scale-input" id="rc-vol-input" type="text" value="' + fmt(scaledVol) + '"/>';
+        h += 'To <input class="rc-scale-input rc-vol-input" type="text" value="' + fmt(scaledVol) + '"/>';
       } else {
         h += '';
       }
@@ -1025,8 +1070,11 @@ document.addEventListener("DOMContentLoaded", function () {
 
   var allRecipes = [];
   var activeCats = {};
-  var selectedId = null;
-  var currentScale = 1;
+  var selectedIds = [];
+  var scaleMap = {};  // recipe id -> scale factor
+
+  function getScale(id) { return scaleMap[id] || 1; }
+  function setScale(id, s) { scaleMap[id] = s; }
 
   var searchEl     = document.getElementById("recipe-search");
   var listEl       = document.getElementById("recipe-list");
@@ -1047,21 +1095,20 @@ document.addEventListener("DOMContentLoaded", function () {
 
   function renderList() {
     var filtered = getFiltered();
-    var hasDetail = selectedId !== null;
+    var hasDetail = selectedIds.length > 0;
 
     listEl.className = "recipe-list" + (hasDetail ? "" : " full-width");
 
     var h = "";
 
     if (filtered.length === 0) {
-      // Placeholder disabled item
       h += '<button class="recipe-item disabled" disabled>';
       h += 'No recipes found';
       h += "</button>";
     } else {
       for (var i = 0; i < filtered.length; i++) {
         var r = filtered[i];
-        var sel = r.id === selectedId ? " selected" : "";
+        var sel = selectedIds.indexOf(r.id) !== -1 ? " selected" : "";
         h += '<button class="recipe-item' + sel + '" data-id="' + r.id + '">';
         h += '<span class="recipe-item-name">' + r.nameHtml + "</span>";
         h += '<span class="recipe-item-id">' + r.id + "</span>";
@@ -1071,23 +1118,25 @@ document.addEventListener("DOMContentLoaded", function () {
 
     listEl.innerHTML = h;
 
-    // Attach click handlers
     var items = listEl.querySelectorAll(".recipe-item");
     for (var j = 0; j < items.length; j++) {
       items[j].addEventListener("click", function () {
         if (this.disabled) {
-          // Clear filters on click of placeholder
           activeCats = {};
-          recipeSearch.value = "";
-          selectedId = null;
-          currentScale = 1;
+          searchEl.value = "";
+          selectedIds = [];
+          scaleMap = {};
           renderList();
           renderDetail();
           return;
         }
         var id = this.getAttribute("data-id");
-        selectedId = selectedId === id ? null : id;
-        currentScale = 1;
+        var idx = selectedIds.indexOf(id);
+        if (idx !== -1) {
+          selectedIds.splice(idx, 1);
+        } else {
+          selectedIds.push(id);
+        }
         renderList();
         renderDetail();
       });
@@ -1097,105 +1146,115 @@ document.addEventListener("DOMContentLoaded", function () {
   /* ==== Render detail ==== */
 
   function renderDetail() {
-    if (!selectedId) { detailEl.innerHTML = ""; return; }
-    var recipe = allRecipes.find(function (r) { return r.id === selectedId; });
-    if (!recipe) { detailEl.innerHTML = ""; return; }
+    if (!selectedIds.length) { detailEl.innerHTML = ""; return; }
 
-    detailEl.innerHTML = '<div class="recipe-card">' + renderCard(recipe, currentScale) + "</div>";
+    var h = "";
+    for (var i = 0; i < selectedIds.length; i++) {
+      var recipe = allRecipes.find(function (r) { return r.id === selectedIds[i]; });
+      if (recipe) {
+        h += '<div class="recipe-card" data-recipe-id="' + recipe.id + '">'
+          + renderCard(recipe, 1) + '</div>';
+      }
+    }
+    detailEl.innerHTML = h;
     updateScaledValues();
     syncScaleUI();
-    
   }
   
   function updateScaledValues() {
-    const nodes = detailEl.querySelectorAll(".rc-amt");
-
-    nodes.forEach(node => {
-      const base = parseFloat(node.dataset.base);
-      if (isNaN(base)) return;
-
-      const scaled = base * currentScale;
-      node.textContent = fmt(scaled);
+    var cards = detailEl.querySelectorAll(".recipe-card");
+    cards.forEach(function (card) {
+      var id = card.getAttribute("data-recipe-id");
+      var s = getScale(id);
+      card.querySelectorAll(".rc-amt").forEach(function (node) {
+        var base = parseFloat(node.dataset.base);
+        if (!isNaN(base)) node.textContent = fmt(base * s);
+      });
     });
   }
   
   function syncScaleUI() {
-    var recipe = allRecipes.find(r => r.id === selectedId);
-    if (!recipe || !recipe.solvent || !recipe.solvent.amount) return;
+    var cards = detailEl.querySelectorAll(".recipe-card");
+    cards.forEach(function (card) {
+      var id = card.getAttribute("data-recipe-id");
+      var recipe = allRecipes.find(function (r) { return r.id === id; });
+      if (!recipe || !recipe.solvent || !recipe.solvent.amount) return;
 
-    var baseVol = recipe.solvent.amount.value;
+      var baseVol = recipe.solvent.amount.value;
+      var s = getScale(id);
 
-    // Update volume input
-    var input = detailEl.querySelector("#rc-vol-input");
-    if (input && baseVol) {
-      input.value = fmt(baseVol * currentScale);
-    }
-
-    // Update preset button highlight
-    detailEl.querySelectorAll(".rc-scale-btn").forEach(btn => {
-      var btnScale = parseFloat(btn.getAttribute("data-scale"));
-      if (Math.abs(btnScale - currentScale) < 1e-6) {
-        btn.classList.add("active");
-      } else {
-        btn.classList.remove("active");
+      var input = card.querySelector(".rc-vol-input");
+      if (input && baseVol) {
+        input.value = fmt(baseVol * s);
       }
+
+      card.querySelectorAll(".rc-scale-btn").forEach(function (btn) {
+        var btnScale = parseFloat(btn.getAttribute("data-scale"));
+        if (Math.abs(btnScale - s) < 1e-6) {
+          btn.classList.add("active");
+        } else {
+          btn.classList.remove("active");
+        }
+      });
     });
   }
   
   // Delegated click events for close button, scale buttons, cross-reference links
   detailEl.addEventListener("click", function(e) {
+    var card = e.target.closest(".recipe-card");
+    if (!card) return;
+    var id = card.getAttribute("data-recipe-id");
+
     // Close button
-    if (e.target.id === "rc-close") {
-      selectedId = null;
-      currentScale = 1;
+    if (e.target.classList.contains("rc-close")) {
+      var idx = selectedIds.indexOf(id);
+      if (idx !== -1) selectedIds.splice(idx, 1);
+      delete scaleMap[id];
       renderList();
       renderDetail();
+      return;
     }
 
     // Scale preset buttons
-    if (e.target.classList.contains("rc-scale-btn") && selectedId) {
-
-        var scale = parseFloat(e.target.dataset.scale);
-        if (isNaN(scale) || scale <= 0) return;
-
-        currentScale = scale;
-
-        syncScaleUI();
-        updateScaledValues();
-      }
+    if (e.target.classList.contains("rc-scale-btn")) {
+      var scale = parseFloat(e.target.dataset.scale);
+      if (isNaN(scale) || scale <= 0) return;
+      setScale(id, scale);
+      syncScaleUI();
+      updateScaledValues();
+      return;
+    }
 
     // Cross-reference links
     if (e.target.classList.contains("rc-ref-link")) {
       e.stopPropagation();
       var refId = e.target.getAttribute("data-ref");
-      var target = allRecipes.find(r => r.id === refId);
-      if (target) {
-        selectedId = refId;
-        currentScale = 1;
-        renderList();
-        renderDetail();
+      var target = allRecipes.find(function (r) { return r.id === refId; });
+      if (target && selectedIds.indexOf(refId) === -1) {
+        selectedIds.push(refId);
       }
+      renderList();
+      renderDetail();
     }
   });
 
-  // Delegated input event for volume input
   detailEl.addEventListener("input", function(e) {
-    if (e.target.id === "rc-vol-input" && selectedId) {
+    if (!e.target.classList.contains("rc-vol-input")) return;
+    var card = e.target.closest(".recipe-card");
+    if (!card) return;
+    var id = card.getAttribute("data-recipe-id");
 
-      var v = parseFloat(e.target.value);
-      if (isNaN(v) || v <= 0) return;
+    var v = parseFloat(e.target.value);
+    if (isNaN(v) || v <= 0) return;
 
-      var recipe = allRecipes.find(r => r.id === selectedId);
-      if (!recipe || !recipe.solvent || !recipe.solvent.amount) return;
+    var recipe = allRecipes.find(function (r) { return r.id === id; });
+    if (!recipe || !recipe.solvent || !recipe.solvent.amount) return;
 
-      var baseVol = recipe.solvent.amount.value;
-      if (!baseVol || baseVol <= 0) return;
+    var baseVol = recipe.solvent.amount.value;
+    if (!baseVol || baseVol <= 0) return;
 
-      currentScale = v / baseVol;
-
-      updateScaledValues();
-      // DO NOT call syncScaleUI() here
-    }
+    setScale(id, v / baseVol);
+    updateScaledValues();
   });
 
   // Re-render only when user leaves field
@@ -1214,7 +1273,7 @@ document.addEventListener("DOMContentLoaded", function () {
       // Try exact ID match first
       var exact = allRecipes.find(function (r) { return r.id.toLowerCase() === q.toLowerCase(); });
       if (exact) {
-        selectedId = exact.id;
+        selectedIds = [exact.id];
       } else {
         searchEl.value = q;
       }
@@ -1242,8 +1301,8 @@ document.addEventListener("DOMContentLoaded", function () {
         if (!el.getAttribute("id")) continue;
         if (directChildren(el, "ingredient").length === 0) continue;
         allRecipes.push(parseRecipe(el));
-        allRecipes.sort(function (a, b) { return a.name.localeCompare(b.name); });
       }
+      allRecipes.sort(function (a, b) { return a.name.localeCompare(b.name); });
       
       allRecipes.forEach(r => {
         if (!r._hay) {
