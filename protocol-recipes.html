@@ -1148,7 +1148,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
     var items = listEl.querySelectorAll(".recipe-item");
     for (var j = 0; j < items.length; j++) {
-      items[j].addEventListener("click", function () {
+      items[j].addEventListener("click", function (e) {
         if (this.disabled) {
           activeCats = {};
           searchEl.value = "";
@@ -1159,12 +1159,27 @@ document.addEventListener("DOMContentLoaded", function () {
           return;
         }
         var id = this.getAttribute("data-id");
-        var idx = selectedIds.indexOf(id);
-        if (idx !== -1) {
-          selectedIds.splice(idx, 1);
+
+        if (e.metaKey || e.ctrlKey) {
+          // Multi-select: toggle this card
+          var idx = selectedIds.indexOf(id);
+          if (idx !== -1) {
+            selectedIds.splice(idx, 1);
+            delete scaleMap[id];
+          } else {
+            selectedIds.push(id);
+          }
         } else {
-          selectedIds.push(id);
+          // Single-select: toggle or replace
+          if (selectedIds.length === 1 && selectedIds[0] === id) {
+            selectedIds = [];
+            delete scaleMap[id];
+          } else {
+            selectedIds = [id];
+            scaleMap = {};
+          }
         }
+
         renderList();
         renderDetail();
       });
