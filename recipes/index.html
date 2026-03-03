@@ -1,0 +1,1428 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+
+<!-- Begin Jekyll SEO tag v2.8.0 -->
+<title>Recipe reference | Benjamin C. Buchmuller</title>
+<meta name="generator" content="Jekyll v3.10.0" />
+<meta property="og:title" content="Recipe reference" />
+<meta name="author" content="Benjamin Buchmuller" />
+<meta property="og:locale" content="en" />
+<meta name="description" content="Personal research homepage" />
+<meta property="og:description" content="Personal research homepage" />
+<link rel="canonical" href="https://benjbuch.github.io/recipes/" />
+<meta property="og:url" content="https://benjbuch.github.io/recipes/" />
+<meta property="og:site_name" content="Benjamin C. Buchmuller" />
+<meta property="og:type" content="website" />
+<meta name="twitter:card" content="summary" />
+<meta property="twitter:title" content="Recipe reference" />
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"WebPage","author":{"@type":"Person","name":"Benjamin Buchmuller"},"description":"Personal research homepage","headline":"Recipe reference","url":"https://benjbuch.github.io/recipes/"}</script>
+<!-- End Jekyll SEO tag -->
+
+<!-- Preload main fonts -->
+<link rel="preload" href="/assets/fonts/pagella/texgyrepagella-regular.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="/assets/fonts/heros/texgyreheros-regular.woff2" as="font" type="font/woff2" crossorigin>
+<!-- Stylesheet -->
+<link rel="stylesheet" href="/assets/css/style.css">
+<!-- Favicon -->
+<link rel="icon" type="image/png" sizes="32x32" href="/assets/img/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/assets/img/favicon-16x16.png">
+<link rel="apple-touch-icon" sizes="180x180" href="/assets/img/apple-touch-icon.png">
+
+</head>
+<body>
+	<header>
+	<nav class="nav" aria-label="Primary">
+		<div class="brand">Benjamin C. Buchmuller</div>
+		<button class="burger" aria-label="Toggle menu" aria-expanded="false">☰</button>
+		<div class="menu" id="menu"><a href="/#about">About me</a><a href="/#research">Research</a><a href="/#publications">Publications</a><a href="/#protocols">Protocols</a><a href="/essays/">Essays</a>
+		</div>
+	</nav>
+</header>
+
+
+
+	<main id="content">
+		<div class="recipes-page">
+  <h1 class="section-header">Recipe reference</h1>
+
+  <div id="recipe-content" class="recipe-layout">
+    <!-- Left panel: search + list -->
+    <div class="recipe-list-panel">
+      <form id="recipe-form" class="recipe-form" onsubmit="return false">
+        <input id="recipe-search" type="search" autocomplete="off"
+               placeholder="e.g. EDTA, R0017, Tris" />
+      </form>
+      <div id="recipe-list" class="recipe-list"></div>
+    </div>
+    <!-- Right panel: recipe detail -->
+    <div id="recipe-detail" class="recipe-detail"></div>
+  </div>
+</div>
+
+<style>
+
+  .recipes-page {
+    display: flex;
+    flex-direction: column;
+    height: calc(100vh - var(--footer-height) - var(--header-height) - 2 * var(--pad-l));
+    margin: var(--pad-l) auto;
+    max-width: min(95ch, 100% - 2 * var(--pad-l));
+  }
+  
+  /* ---- Two-column layout ---- */
+
+  .recipe-layout {
+    display: flex;
+    gap: var(--pad-l);
+    padding: var(--pad-s);
+    min-height: 0;
+    flex: 1 1 0;
+  }
+
+  /* ---- Left panel ---- */
+  
+  .recipe-list-panel {
+    width: 24ch;
+    flex: 0 0 auto;
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .recipe-form {
+    margin-bottom: var(--pad-m);
+  }
+  
+  .recipe-form input[type="search"] {
+    width: 100%;
+    box-sizing: border-box;
+  }
+  
+  .recipe-list {
+    flex: 1 1 0;
+    min-height: 0;
+    overflow-y: auto;
+    scrollbar-gutter: stable;
+    border: 1px solid var(--border-subtle);
+    border-radius: 0.25rem;
+    padding: 4px;
+  }
+  
+  /* ---- Right panel ---- */
+  
+  .recipe-detail {
+    flex: 1 1 0;
+    min-width: 0;
+    min-height: 0;
+    overflow-y: auto;
+    scrollbar-gutter: stable;
+    padding-right: var(--pad-l);
+  }
+
+  /* ---- List items ---- */
+
+  .recipe-item {
+    background: none;
+    border: 1px solid transparent;
+    color: inherit;
+    cursor: pointer;
+    display: flex;
+    font-family: inherit;
+    font-size: 0.8rem;
+    justify-content: space-between;
+    align-items: center;
+    text-align: left;
+    width: 100%;
+    box-sizing: border-box;
+    outline: none;
+  }
+  
+  .recipe-item:focus {
+    outline: none;
+  }
+  
+  .recipe-item:focus-visible {
+    outline: 2px solid var(--focus-ring);
+    outline-offset: 2px;
+    border-radius: 4px;
+  }
+
+  .recipe-item:hover {
+    background: var(--hover);
+  }
+
+  .recipe-item.selected {
+    background: var(--hover-raised);
+  }
+
+  .recipe-item-name {
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  .recipe-item-id {
+    color: var(--text-secondary);
+    font-family: var(--font-mono);
+    font-size: 0.7rem;
+    font-weight: 700;
+    flex-shrink: 0;
+    margin-left: var(--pad-s);
+  }
+  
+  .recipe-item.disabled {
+    opacity: 0.5;
+    cursor: pointer;
+    font-style: italic;
+    justify-content: center;
+    pointer-events: auto;
+  }
+
+  /* ---- Recipe card ---- */
+
+  .recipe-card {
+    background: var(--surface-raised);
+    border: 1px solid var(--border-subtle);
+    border-radius: 0.5rem;
+    padding: var(--pad-l) var(--pad-l) var(--pad-s) var(--pad-l);
+    overflow: hidden;
+  }
+  
+  .recipe-card + .recipe-card {
+    margin-top: var(--pad-l);
+  }
+
+  /* Header */
+
+  .rc-header {
+    border-bottom: 2px solid var(--border-strong);
+    padding-bottom: var(--pad-l);
+  }
+
+  .rc-header-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+  }
+
+  .rc-header-actions {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: var(--pad-m);
+  }
+
+  .rc-header h2 {
+    font-style: italic;
+  }
+
+  .rc-header h2 .rc-abbr {
+    font-style: normal;
+    font-weight: normal;
+  }
+
+  .rc-header h2 .rc-stock {
+    font-style: normal;
+    font-weight: normal;
+    white-space: nowrap;
+  }
+
+  .rc-header .rc-props {
+    color: var(--text-secondary);
+    margin-top: var(--pad-s);
+  }
+
+  .rc-header .rc-id {
+    color: var(--text-secondary);
+    font-family: var(--font-mono);
+  }
+
+  .rc-close {
+    background: none;
+    border: none;
+    color: var(--text-tertiary);
+    cursor: pointer;
+    padding: 0;
+    outline: none;
+    font-size: 1.2rem;
+  }
+  
+  .rc-close:hover {
+    background: none;
+  }
+
+  /* Ingredients table */
+
+  .rc-table {
+    border-collapse: collapse;
+    font-size: 0.8rem;
+    width: 100%;
+  }
+
+  .rc-table thead tr {
+    border-bottom: 2px solid var(--border-strong);
+    text-align: left;
+  }
+
+  .rc-table th {
+    padding: var(--pad-s) var(--pad-m);
+  }
+
+  .rc-table th.col-unit {
+    width: 3ch;
+  }
+
+  .rc-table td {
+    padding: var(--pad-s) var(--pad-m);
+    border-bottom: 1px solid var(--border-subtle);
+    vertical-align: baseline;
+  }
+
+  .rc-table .col-amount {
+    font-variant-numeric: tabular-nums;
+    text-align: right;
+    white-space: nowrap;
+  }
+
+  .rc-table .col-unit {
+    white-space: nowrap;
+  }
+
+  .rc-table .col-stock,
+  .rc-table .col-final {
+    text-align: right;
+    white-space: nowrap;
+  }
+
+  .rc-table .solvent-row td {
+    border-top: 2px solid var(--border-strong);
+    border-bottom: none;
+    padding-bottom: var(--pad-m);
+  }
+
+  .rc-ing-optional {
+    color: var(--text-secondary);
+    font-style: italic;
+  }
+
+  .rc-ref-link {
+    background: none;
+    border: none;
+    color: var(--link);
+    cursor: pointer;
+    font-family: var(--font-mono);
+    font-size: 0.7rem;
+    font-weight: 700;
+    padding: 0;
+    margin-left: 0.3rem;
+    outline: none;
+  }
+  
+  .rc-ref-link:hover {
+    text-decoration: underline;
+    text-underline-offset: 2px;
+    background: none;
+  }
+
+  .rc-cas {
+    color: var(--text-secondary);
+    font-size: 0.7rem;
+    margin-left: var(--pad-m);
+  }
+
+  /* Scale controls */
+
+  .rc-scale {
+    align-items: center;
+    background: var(--surface-inset);
+    border: none;
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--pad-l);
+    padding: var(--pad-s) var(--pad-l);
+  }
+
+  .rc-scale-label {
+    color: var(--text-secondary);
+    font-size: 0.8rem;
+  }
+
+  .rc-scale-input {
+    border: none;
+    border-bottom: 2px solid var(--border-subtle);
+    border-radius: 0;
+    background: transparent;
+    color: var(--text-primary);
+    font-size: 0.8rem;
+    font-variant-numeric: tabular-nums;
+    font-weight: 700;
+    text-align: right;
+    padding: 0;
+    margin: 0;
+    margin-left: var(--pad-m);
+    width: 5ch;
+    outline: none;
+  }
+
+  .rc-scale-unit {
+    color: var(--text-secondary);
+    font-size: 0.8rem;
+  }
+
+  .rc-scale-presets {
+    display: flex;
+    gap: var(--pad-m);
+  }
+
+  .rc-scale-btn {
+    background: transparent;
+    border: 2px solid transparent;
+    color: var(--text-tertiary);
+    cursor: pointer;
+    font-family: inherit;
+    font-size: 0.8rem;
+    font-weight: 500;
+    padding: 0.05rem 0.4rem;
+  }
+
+  .rc-scale-btn.active {
+    border: 2px solid var(--surface-raised);
+    color: var(--text-primary);
+  }
+  
+  .rc-scale-btn:hover {
+    background: none;
+  }
+
+  /* Body: workup, storage, notes, safety */
+
+  .rc-body {
+    font-size: 0.8rem;
+    padding: var(--pad-l) var(--pad-s) var(--pad-s);
+  }
+
+  .rc-workup {
+    margin-bottom: var(--pad-m);
+  }
+
+  .rc-storage {
+    color: var(--text-secondary);
+    margin-bottom: var(--pad-l);
+  }
+
+  .rc-note {
+    margin-bottom: var(--pad-m);
+    padding-left: var(--pad-m);
+    border-left: 3px solid var(--border-strong);
+  }
+  
+  .rc-note em {
+    text-transform: capitalize;
+    font-weight: 600;
+  }
+  
+  .rc-note-critical {
+    border-color: var(--text-primary);
+  }
+
+/* ---- Safety block (outer wrapper only) ---- */
+
+.rc-safety {
+/*  border-radius: 0.25rem;*/
+  line-height: 1.5;
+  font-size: 0.8rem;
+  margin-top: var(--pad-l);
+  padding: var(--pad-m);
+}
+
+.rc-safety-danger {
+  background: color-mix(in srgb, var(--accent-red) 8%, transparent);
+  border: 1px solid color-mix(in srgb, var(--accent-red) 30%, transparent);
+}
+
+.rc-safety-warning {
+  background: color-mix(in srgb, var(--accent-gold) 8%, transparent);
+  border: 1px solid color-mix(in srgb, var(--accent-gold) 30%, transparent);
+}
+
+.rc-safety-none {
+  background: color-mix(in srgb, var(--accent-green, #16a34a) 8%, transparent);
+  border: 1px solid color-mix(in srgb, var(--accent-green, #16a34a) 30%, transparent);
+}
+
+/* ---- Signal word badge ---- */
+
+.rc-signal {
+  display: inline-block;
+/*  font-family: var(--font-mono);*/
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  padding: 0.05rem 0.25rem;
+}
+
+.rc-signal-danger {
+  background: var(--accent-red, #dc2626);
+  color: #fff;
+}
+
+.rc-signal-warning {
+  background: var(--accent-gold, #d97706);
+  color: #fff;
+}
+
+/* ---- Header: pictograms + signal, side by side ---- */
+
+.rc-safety-header {
+  display: flex;
+  align-items: center;
+  gap: var(--pad-m);
+  margin-bottom: var(--pad-m);
+}
+
+.rc-ghs-pictograms {
+  display: flex;
+  gap: var(--pad-s);
+}
+
+.rc-ghs-icon {
+  width: 3em;
+  height: 3em;
+  /* GHS diamonds render best without extra borders */
+}
+
+/* ---- Inner sections: no inherited box styling ---- */
+
+.rc-safety-hazards {
+  margin-bottom: var(--pad-s);
+}
+
+.rc-precaution {
+  font-style: italic;
+  margin: 0;
+  padding: 0;
+}
+
+.rc-disposal {
+  margin: var(--pad-s) 0 0;
+  padding: 0;
+}
+
+  /* Source */
+
+  .rc-sources {
+    border-top: 2px solid var(--text-tertiary);
+    border-radius: 0;
+    color: var(--text-tertiary);
+    margin-top: calc(2 * var(--pad-l));
+    padding: var(--pad-m) 0;
+  }
+  
+  .rc-sources p {
+    margin: 0;
+    padding-top: var(--pad-s);
+  }
+  
+  .rc-sources a {
+    color: var(--text-secondary);
+  }
+
+  /* ---- Responsive ---- */
+
+  @media (max-width: 640px) {
+    .recipes-page {
+      max-width: none;
+      margin: var(--pad-l);
+    }
+    .recipe-layout {
+      flex-direction: column;
+    }
+    .recipe-list-panel {
+      width: 100%;
+      flex: 0 0 auto;
+      padding-right: var(--pad-l);
+    }
+    .recipe-list {
+      max-height: calc(2 * var(--line-height, 2.4em));
+      flex: 0 0 auto;
+    }
+    .recipe-detail {
+      flex: 1 1 0;
+      min-height: 0;
+    }
+  }
+  
+  @media print {
+    .recipe-list-panel,
+      .recipe-form {
+        display: none;
+      }
+
+      .recipes-page {
+        height: auto;
+        max-width: none;
+        overflow: visible;
+        margin: 0;
+        padding: 0;
+      }
+
+      .recipe-layout {
+        display: block;
+        overflow: visible;
+        height: auto;
+        padding: 0;
+      }
+
+      .recipe-detail {
+        overflow: visible;
+        height: auto;
+        flex: none;
+        padding: 0;
+      }
+
+      .recipe-card {
+        overflow: visible;
+        break-inside: auto;
+      }
+
+      .rc-header {
+        break-inside: avoid;
+        break-after: avoid;
+      }
+
+      .rc-table {
+        break-inside: auto;
+      }
+
+      .rc-table tr {
+        break-inside: avoid;
+      }
+
+      .rc-table thead {
+        break-after: avoid;
+      }
+
+      .rc-body {
+        break-inside: auto;
+      }
+
+      .rc-note,
+      .rc-safety,
+      .rc-sources {
+        break-inside: avoid;
+      }
+
+      .rc-scale {
+        display: none;
+      }
+  }
+
+</style>
+
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+
+  /* ==== Unit conversion ==== */
+
+  var UNIT_MAP = {
+    gram: "g", kilogram: "kg", milligram: "mg", microgram: "\u00B5g", nanogram: "ng",
+    liter: "L", milliliter: "mL", microliter: "\u00B5L",
+    meter: "m", millimeter: "mm", micrometer: "\u00B5m", nanometer: "nm", centimeter: "cm",
+    second: "s", minute: "min", hour: "h",
+    celsius: "\u00B0C", fahrenheit: "\u00B0F", kelvin: "K",
+    molar: "M", millimolar: "mM", micromolar: "\u00B5M", nanomolar: "nM",
+    percent: "%",
+    "gram per mol": "g/mol", "gram per liter": "g/L", "gram per milliliter": "g/mL",
+    "milligram per liter": "mg/L", "milligram per milliliter": "mg/mL",
+    "microgram per milliliter": "\u00B5g/mL", "microgram per liter": "\u00B5g/L",
+    "milliliter per liter": "mL/L", "square centimeter": "cm\u00B2",
+    bar: "bar", millibar: "mbar", psi: "psi",
+    basepair: "bp", colonyformingunit: "cfu", enzymeunit: "U",
+    "enzymeunit per microliter": "U/\u00B5L", "enzymeunit per liter": "U/L",
+    fold: "x", gauge: "G", gforce: "\u00D7\u2009g", kb: "kb", nucleotides: "nt",
+    rpm: "rpm", ppm: "ppm", ppt: "ppt", torr: "Torr",
+    unitless: "", vol: "vol", pound: "lb", inch: "in"
+  };
+
+  var PREFIXES = [["milli","m"],["micro","\u00B5"],["nano","n"],["kilo","k"]];
+
+  function convertUnit(raw) {
+    if (!raw) return "";
+    if (UNIT_MAP[raw] !== undefined) return UNIT_MAP[raw];
+    for (var i = 0; i < PREFIXES.length; i++) {
+      var pre = PREFIXES[i][0], sym = PREFIXES[i][1];
+      if (raw.indexOf(pre) === 0) {
+        var base = raw.slice(pre.length);
+        if (UNIT_MAP[base] !== undefined) return sym + UNIT_MAP[base];
+      }
+    }
+    var m = raw.match(/^(.+?)\s+per\s+(.+)$/);
+    if (m) {
+      var n = convertUnit(m[1]), d = convertUnit(m[2]);
+      if (n && d) return n + "/" + d;
+    }
+    return raw;
+  }
+
+  function parseUnitStr(raw) {
+    if (!raw) return "";
+    var rm = raw.match(/^([-\d,._]+)\s+to\s+([-\d,._]+)\s+(.+)$/);
+    if (rm) return rm[1].replace(/_/g,"") + "\u2013" + rm[2].replace(/_/g,"") + " " + convertUnit(rm[3]);
+    var sm = raw.match(/^([-\d,._]+)\s+(.+)$/);
+    if (sm) return (sm[1].replace(/_/g,"") + " " + convertUnit(sm[2])).trim();
+    return raw;
+  }
+
+  /* ==== XML helpers ==== */
+
+  function directChildren(el, tag) {
+    var out = [];
+    for (var i = 0; i < el.childNodes.length; i++) {
+      var c = el.childNodes[i];
+      if (c.nodeType === 1 && c.tagName === tag) out.push(c);
+    }
+    return out;
+  }
+
+  function firstChild(el, tag) {
+    for (var i = 0; i < el.childNodes.length; i++) {
+      var c = el.childNodes[i];
+      if (c.nodeType === 1 && c.tagName === tag) return c;
+    }
+    return null;
+  }
+
+  function textOf(el) {
+    if (!el) return "";
+    var t = "";
+    for (var i = 0; i < el.childNodes.length; i++) {
+      var n = el.childNodes[i];
+      if (n.nodeType === 3) t += n.textContent;
+      else if (n.nodeType === 1) {
+        if (n.tagName === "unit") t += parseUnitStr((n.textContent||"").trim());
+        else if (n.tagName === "pH") t += "pH " + n.textContent;
+        else t += textOf(n);
+      }
+    }
+    return t.trim();
+  }
+
+  function htmlOf(el) {
+    if (!el) return "";
+    var h = "";
+    for (var i = 0; i < el.childNodes.length; i++) {
+      var n = el.childNodes[i];
+      if (n.nodeType === 3) { h += n.textContent; continue; }
+      if (n.nodeType !== 1) continue;
+      var tag = n.tagName;
+      if (tag === "chemical") {
+        var raw = n.textContent || "";
+        raw = raw.replace(/_(\d+)/g, "<sub>$1</sub>");
+        raw = raw.replace(/_\{([^}]+)\}/g, "<sub>$1</sub>");
+        raw = raw.replace(/\^(\d+)/g, "<sup>$1</sup>");
+        raw = raw.replace(/\^\{([^}]+)\}/g, "<sup>$1</sup>");
+        h += raw;
+      } else if (tag === "pH") h += "pH&nbsp;" + n.textContent;
+      else if (tag === "sc") h += '<span style="font-variant:small-caps">' + n.textContent + "</span>";
+      else if (tag === "unit") h += parseUnitStr((n.textContent||"").trim());
+      else if (tag === "high") h += "<sup>" + n.textContent + "</sup>";
+      else if (tag === "it") h += "<em>" + n.textContent + "</em>";
+      else h += htmlOf(n);
+    }
+    return h;
+  }
+
+  function parseAmt(str) {
+    if (!str) return { value: null, unit: "" };
+    var m = str.match(/^([\d.]+)\s+(.+)$/);
+    if (m) return { value: parseFloat(m[1]), unit: convertUnit(m[2]) };
+    return { value: null, unit: str };
+  }
+
+  /* ==== Parse recipe element ==== */
+
+  function parseRecipe(el) {
+    var nameEl = firstChild(el, "name");
+    var abbrEl = firstChild(el, "abbreviation");
+    var stockEl = firstChild(el, "stock");
+    var solventEl = firstChild(el, "solvent");
+    var storageEl = firstChild(el, "storage");
+    var shelflifeEl = firstChild(el, "shelflife");
+    var safetyEl = firstChild(el, "safety");
+
+    var solvent = null;
+    if (solventEl) {
+      var sn = firstChild(solventEl, "name");
+      var sa = firstChild(solventEl, "amount");
+      var sp = firstChild(solventEl, "property");
+      solvent = {
+        nameHtml: sn ? htmlOf(sn) : "",
+        property: sp ? textOf(sp) : "",
+        amount: sa ? parseAmt(textOf(sa)) : null,
+        cas: solventEl.getAttribute("CAS") || "",
+        pubchem: solventEl.getAttribute("PubChem") || ""
+      };
+    }
+
+    var ingredients = directChildren(el, "ingredient").map(function (ing) {
+      var iName = firstChild(ing, "name");
+      var iAbbr = firstChild(ing, "abbreviation");
+      var iStock = firstChild(ing, "stock");
+      var iAmt = firstChild(ing, "amount");
+      var iFinal = firstChild(ing, "final");
+      var iProps = directChildren(ing, "property").map(function (p) { return htmlOf(p); });
+      return {
+        refId: ing.getAttribute("id") || "",
+        cas: ing.getAttribute("CAS") || "",
+        pubchem: ing.getAttribute("PubChem") || "",
+        type: ing.getAttribute("type") || "",
+        nameHtml: iName ? htmlOf(iName) : "",
+        abbrHtml: iAbbr ? htmlOf(iAbbr) : "",
+        props: iProps,
+        stock: iStock ? parseUnitStr(textOf(iStock)) : "",
+        amount: iAmt ? parseAmt(textOf(iAmt)) : null,
+        final: iFinal ? parseUnitStr(textOf(iFinal)) : "",
+      };
+    });
+
+    var workups = directChildren(el, "workup").map(function (w) { return htmlOf(w); });
+    var notes = directChildren(el, "note").map(function (n) {
+      return { type: n.getAttribute("type") || "", html: htmlOf(n) };
+    });
+    
+    var safety = null;
+    if (safetyEl) {
+      var hazards = directChildren(safetyEl, "hazard").map(function (h) {
+        return {
+          hide: h.getAttribute("hide") === "yes",
+          type: h.getAttribute("type") || "",
+          category: h.getAttribute("category") || "",
+          text: textOf(h)
+        };
+      });
+
+      // Derive unique pictogram set from hazard types
+      var seen = {};
+      var pictograms = [];
+      for (var hi = 0; hi < hazards.length; hi++) {
+        var t = hazards[hi].type;
+        if (t && !seen[t]) {
+          seen[t] = true;
+          pictograms.push(t);
+        }
+      }
+
+      safety = {
+        signal: safetyEl.getAttribute("signal") || "",
+        hazards: hazards,
+        pictograms: pictograms,
+        precautions: directChildren(safetyEl, "precaution").map(function (p) { return textOf(p); }),
+        disposals: directChildren(safetyEl, "disposal").map(function (d) { return htmlOf(d); })
+      };
+    }
+
+    var storage = storageEl ? { html: htmlOf(storageEl) } : null;
+    var sources = directChildren(el, "source").map(function (s) {
+      return {
+        doc_type: s.getAttribute("doc_type") || "",
+        id: s.getAttribute("id") || "",
+        version: s.getAttribute("version") || "",
+        primary: s.getAttribute("primary") === "yes",
+        filename: textOf(s)
+      };
+    });
+
+    return {
+      id: el.getAttribute("id") || "",
+      name: nameEl ? textOf(nameEl) : "",
+      nameHtml: nameEl ? htmlOf(nameEl) : "",
+      abbreviation: abbrEl ? textOf(abbrEl) : "",
+      abbrHtml: abbrEl ? htmlOf(abbrEl) : "",
+      stock: stockEl ? parseUnitStr(textOf(stockEl)) : "",
+      properties: directChildren(el, "property").map(function (p) { return htmlOf(p); }),
+      solvent: solvent,
+      ingredients: ingredients,
+      workups: workups,
+      storage: storage,
+      shelflife: shelflifeEl ? htmlOf(shelflifeEl) : "",
+      notes: notes,
+      safety: safety,
+      categories: directChildren(el, "category").map(function (c) { return textOf(c); }),
+      sources: sources
+    };
+  }
+
+  /* ==== Formatting ==== */
+
+  function fmt(val) {
+    if (val === null) return "";
+    if (Math.abs(val) >= 100) return val.toFixed(0);
+    if (Math.abs(val) >= 10) return val.toFixed(1);
+    if (Math.abs(val) >= 1) return val.toFixed(2);
+    return val.toFixed(3);
+  }
+
+  /* ==== Rendering ==== */
+
+  function renderIngRow(ing, scale) {
+    var baseVal = ing.amount && ing.amount.value !== null
+      ? ing.amount.value
+      : null;
+
+    var propsHtml = ing.props.map(function (p) {
+      return ', <span class="rc-ing-props">' + p + "</span>";
+    }).join("");
+
+    var typeHtml = "";
+    if (ing.type === "optional")
+      typeHtml = ' <span class="rc-ing-optional">(optional)</span>';
+    else if (ing.type === "fresh")
+      typeHtml = ' <span class="rc-ing-optional">(add fresh)</span>';
+
+    var refHtml = ing.refId
+      ? ' <button class="rc-ref-link" data-ref="' + ing.refId + '">[' + ing.refId + "]</button>"
+      : "";
+
+  var casHtml = "";
+    if (ing.cas) {
+      var label = '[' + ing.cas + ']';
+      casHtml = ing.pubchem
+        ? ' <a class="rc-cas" href="https://pubchem.ncbi.nlm.nih.gov/' + ing.pubchem + '" target="_blank" rel="noopener noreferrer">' + label + '</a>'
+        : ' <span class="rc-cas">' + label + '</span>';
+    }
+
+    var abbrHtml = ing.abbrHtml
+      ? ' <span class="rc-ing-props">(' + ing.abbrHtml + ")</span>"
+      : "";
+
+    return "<tr>" +
+      '<td class="col-amount">' +
+        (baseVal !== null
+          ? '<span class="rc-amt" data-base="' + baseVal + '">' + fmt(baseVal) + "</span>"
+          : "") +
+      "</td>" +
+      '<td class="col-unit">' + (ing.amount ? ing.amount.unit : "") + "</td>" +
+      "<td>" + ing.nameHtml + abbrHtml + propsHtml + typeHtml + refHtml + casHtml + "</td>" +
+      '<td class="col-stock">' + ing.stock + "</td>" +
+      '<td class="col-final">' + ing.final + "</td>" +
+      "</tr>";
+  }
+
+  function renderCard(recipe, scale) {
+    var h = "";
+    // Header
+    h += '<div class="rc-header"><div class="rc-header-top"><div>';
+    h += "<h2>";
+    h += '<span class="rc-name">' + recipe.nameHtml + "</span>";
+    if (recipe.abbrHtml) h += ' <span class="rc-abbr">(' + recipe.abbrHtml + ")</span>";
+    if (recipe.stock) h += ', <span class="rc-stock">' + recipe.stock + "</span>";
+    h += "</h2>";
+
+    if (recipe.properties.length) {
+      h += '<div class="rc-props">';
+      h += recipe.properties.join(", ");
+      h += "</div>";
+    }
+
+    h += "</div>"; // close left block
+
+    // Right side (stacked)
+    h += '<div class="rc-header-actions">';
+    h += '<button class="rc-close">\u00D7</button>';
+    h += '<span class="rc-id">' + recipe.id + "</span>";
+    h += "</div>";
+
+    h += "</div></div>";
+    
+    // --- Base volume ---
+    var baseVol = recipe.solvent && recipe.solvent.amount
+      ? recipe.solvent.amount.value
+      : null;
+  
+    var baseUnit = recipe.solvent && recipe.solvent.amount
+      ? recipe.solvent.amount.unit
+      : "";
+      
+    var scale = getScale(recipe.id);
+  
+    // ------------------
+    // TABLE
+    // ------------------
+  
+    h += '<table class="rc-table"><thead><tr>';
+    h += '<th class="col-amount">Amount</th><th class="col-unit"></th>';
+    h += "<th>Ingredient</th>";
+    h += '<th class="col-stock">Stock</th><th class="col-final">Final</th>';
+    h += "</tr></thead><tbody>";
+  
+    // Regular ingredient rows
+    for (var i = 0; i < recipe.ingredients.length; i++) {
+      h += renderIngRow(recipe.ingredients[i], scale);
+    }
+  
+    // ------------------
+    // SOLVENT ROW (authoritative volume)
+    // ------------------
+  
+    if (recipe.solvent) {
+      var baseVol = recipe.solvent.amount && recipe.solvent.amount.value !== null
+        ? recipe.solvent.amount.value
+        : null;
+
+      var scaledVol = baseVol && scale
+        ? baseVol * scale
+        : null;
+
+      h += '<tr class="solvent-row">';
+
+      h += '<td class="col-amount">';
+      if (scaledVol !== null) {
+        h += 'To <input class="rc-scale-input rc-vol-input" type="text" value="' + fmt(scaledVol) + '"/>';
+      } else {
+        h += '';
+      }
+      h += '</td>';
+
+      h += '<td class="col-unit">' +
+           (recipe.solvent.amount ? recipe.solvent.amount.unit : "") +
+           '</td>';
+
+      h += '<td colspan="3">' + recipe.solvent.nameHtml;
+
+      if (recipe.solvent.property)
+        h += ', ' + recipe.solvent.property;
+      
+      if (recipe.solvent.cas) {
+        var sLabel = '[' + recipe.solvent.cas + ']';
+        h += recipe.solvent.pubchem
+          ? ' <a class="rc-cas" href="https://pubchem.ncbi.nlm.nih.gov/' + recipe.solvent.pubchem + '" target="_blank" rel="noopener">' + sLabel + '</a>'
+          : ' <span class="rc-cas">' + sLabel + '</span>';
+      }
+
+      h += '</td></tr>';
+    }
+  
+    h += "</tbody></table>";
+    
+    if (baseVol && baseVol > 0) {
+
+      var presets = [0.5, 1, 2, 5, 10];
+
+      h += '<div class="rc-scale">';
+      h += '<span class="rc-scale-label">Scale:</span>';
+      h += '<div class="rc-scale-presets">';
+
+      for (var p = 0; p < presets.length; p++) {
+
+        var active = Math.abs(scale - presets[p]) < 0.001 ? " active" : "";
+
+        h += '<button class="rc-scale-btn' + active + '" data-scale="' + presets[p] + '">';
+        h += "× " + presets[p];
+        h += "</button>";
+      }
+
+      h += "</div></div>";
+    }
+
+    // Body
+    h += '<div class="rc-body">';
+
+    // Workup
+    if (recipe.workups.length) {
+      h += '<div class="rc-workup">';
+      h += recipe.workups.join(". ") + ".";
+      h += "</div>";
+    }
+
+    // Storage / shelflife
+    if (recipe.shelflife || recipe.storage) {
+      h += '<div class="rc-storage">';
+      if (recipe.shelflife && recipe.shelflife.trim() !== "") {
+        h += "Stable for " + recipe.shelflife;
+        if (recipe.storage && recipe.shelflife.indexOf("store") === -1) {
+          h += " at " + recipe.storage.html;
+        }
+        h += ".";
+      } else if (recipe.storage  && recipe.storage.html.trim() !== "") {
+        h += "Store at " + recipe.storage.html + ".";
+      }
+      h += "</div>";
+    }
+
+    // Notes
+    for (var n = 0; n < recipe.notes.length; n++) {
+      var note = recipe.notes[n];
+      var isCritical = note.type === "critical" || note.type === "safety";
+      if (isCritical) {
+        h += '<div class="rc-note rc-note-critical"><strong>Important:</strong> ' + note.html + "!</div>";
+      } else if (note.type) {
+        h += '<div class="rc-note rc-note-typed"><em>' +
+          note.type + ':</em> ' + note.html + ".</div>";
+      } else {
+        h += '<div class="rc-note">' + note.html + ".</div>";
+      }
+    }
+
+    // Safety
+    if (recipe.safety) {
+      var sig = recipe.safety.signal;
+      var cls = sig === "danger" ? "rc-safety-danger"
+              : sig === "warning" ? "rc-safety-warning"
+              : "rc-safety-none";
+
+      h += '<div class="rc-safety ' + cls + '">';
+
+      // Header: pictograms + signal badge
+      h += '<div class="rc-safety-header">';
+
+      if (recipe.safety.pictograms.length) {
+        h += '<div class="rc-ghs-pictograms">';
+        for (var pi = 0; pi < recipe.safety.pictograms.length; pi++) {
+          var type = recipe.safety.pictograms[pi];
+          var alt = type.replace(/_/g, " ");
+          h += '<img class="rc-ghs-icon" src="/assets/ghs/ghs_' + type + '.svg" alt="' + alt + '" />';
+        }
+        h += '</div>';
+      }
+
+      if (sig) {
+        var scls = sig === "danger" ? "rc-signal-danger" : "rc-signal-warning";
+        h += '<span class="rc-signal ' + scls + '">' + sig + '</span>';
+      }
+
+      h += '</div>'; // rc-safety-header
+
+      // Hazard statements
+      var visible = recipe.safety.hazards.filter(function (hz) { return !hz.hide; });
+      if (visible.length) {
+        h += '<div class="rc-safety-hazards">';
+        h += visible.map(function (hz) { return hz.text; }).join("; ");
+        h += '</div>';
+      }
+
+      // Precautionary statements
+      for (var pc = 0; pc < recipe.safety.precautions.length; pc++) {
+        h += '<p class="rc-precaution">' + recipe.safety.precautions[pc] + '</p>';
+      }
+
+      // Disposal statements
+      for (var dp = 0; dp < recipe.safety.disposals.length; dp++) {
+        h += '<p class="rc-disposal">' + recipe.safety.disposals[dp] + '</p>';
+      }
+
+      h += '</div>'; // rc-safety
+    }
+
+    // Sources
+    if (recipe.sources.length) {
+      h += '<div class="rc-sources">';
+      h += "<p>For research use. Users are responsible for compliance with local regulations and institutional policies. Amounts scale proportionally with total solvent volume.</p>";
+      h += "<p>Source: ";
+      h += recipe.sources.map(function (s) {
+        var label = 
+        '<a target="_blank" rel="noopener noreferrer" href="/assets/protocols/pdf/' + s.filename + '.pdf">' +
+          s.doc_type + " " + s.id + " v" + s.version +
+        "</a>";
+        if (s.primary) label += " (shown)";
+        return label;
+      }).join(", ");
+      h += "</p></div>";
+    }
+
+    h += "</div>"; // rc-body
+    return h;
+  }
+
+  /* ==== State ==== */
+
+  var allRecipes = [];
+  var activeCats = {};
+  var selectedIds = [];
+  var scaleMap = {};  // recipe id -> scale factor
+
+  function getScale(id) { return scaleMap[id] || 1; }
+  function setScale(id, s) { scaleMap[id] = s; }
+
+  var searchEl     = document.getElementById("recipe-search");
+  var listEl       = document.getElementById("recipe-list");
+  var detailEl     = document.getElementById("recipe-detail");
+
+  /* ==== Filtering ==== */
+
+  function getFiltered() {
+    const query = document.getElementById("recipe-search").value || "";
+    const tokens = query.toLowerCase().trim().split(/\s+/).filter(Boolean);
+
+    if (!tokens.length) return allRecipes;
+
+    return allRecipes.filter(r => tokens.every(t => r._hay.includes(t)));
+  }
+
+  /* ==== Render list ==== */
+
+  function renderList() {
+    var filtered = getFiltered();
+    var hasDetail = selectedIds.length > 0;
+
+    listEl.className = "recipe-list" + (hasDetail ? "" : " full-width");
+
+    var h = "";
+
+    if (filtered.length === 0) {
+      h += '<button class="recipe-item disabled" disabled>';
+      h += 'No recipes found';
+      h += "</button>";
+    } else {
+      for (var i = 0; i < filtered.length; i++) {
+        var r = filtered[i];
+        var sel = selectedIds.indexOf(r.id) !== -1 ? " selected" : "";
+        h += '<button class="recipe-item' + sel + '" data-id="' + r.id + '">';
+        h += '<span class="recipe-item-name">' + r.nameHtml + "</span>";
+        h += '<span class="recipe-item-id">' + r.id + "</span>";
+        h += "</button>";
+      }
+    }
+
+    listEl.innerHTML = h;
+
+    var items = listEl.querySelectorAll(".recipe-item");
+    for (var j = 0; j < items.length; j++) {
+      items[j].addEventListener("click", function (e) {
+        if (this.disabled) {
+          activeCats = {};
+          searchEl.value = "";
+          selectedIds = [];
+          scaleMap = {};
+          renderList();
+          renderDetail();
+          return;
+        }
+        var id = this.getAttribute("data-id");
+
+        if (e.metaKey || e.ctrlKey) {
+          // Multi-select: toggle this card
+          var idx = selectedIds.indexOf(id);
+          if (idx !== -1) {
+            selectedIds.splice(idx, 1);
+            delete scaleMap[id];
+          } else {
+            selectedIds.push(id);
+          }
+        } else {
+          // Single-select: toggle or replace
+          if (selectedIds.length === 1 && selectedIds[0] === id) {
+            selectedIds = [];
+            delete scaleMap[id];
+          } else {
+            selectedIds = [id];
+            scaleMap = {};
+          }
+        }
+
+        renderList();
+        renderDetail();
+      });
+    }
+  }
+
+  /* ==== Render detail ==== */
+
+  function renderDetail() {
+    if (!selectedIds.length) { detailEl.innerHTML = ""; return; }
+
+    var h = "";
+    for (var i = 0; i < selectedIds.length; i++) {
+      var recipe = allRecipes.find(function (r) { return r.id === selectedIds[i]; });
+      if (recipe) {
+        h += '<div class="recipe-card" data-recipe-id="' + recipe.id + '">'
+          + renderCard(recipe, 1) + '</div>';
+      }
+    }
+    detailEl.innerHTML = h;
+    updateScaledValues();
+    syncScaleUI();
+  }
+  
+  function updateScaledValues() {
+    var cards = detailEl.querySelectorAll(".recipe-card");
+    cards.forEach(function (card) {
+      var id = card.getAttribute("data-recipe-id");
+      var s = getScale(id);
+      card.querySelectorAll(".rc-amt").forEach(function (node) {
+        var base = parseFloat(node.dataset.base);
+        if (!isNaN(base)) node.textContent = fmt(base * s);
+      });
+    });
+  }
+  
+  function syncScaleUI() {
+    var cards = detailEl.querySelectorAll(".recipe-card");
+    cards.forEach(function (card) {
+      var id = card.getAttribute("data-recipe-id");
+      var recipe = allRecipes.find(function (r) { return r.id === id; });
+      if (!recipe || !recipe.solvent || !recipe.solvent.amount) return;
+
+      var baseVol = recipe.solvent.amount.value;
+      var s = getScale(id);
+
+      var input = card.querySelector(".rc-vol-input");
+      if (input && baseVol) {
+        input.value = fmt(baseVol * s);
+      }
+
+      card.querySelectorAll(".rc-scale-btn").forEach(function (btn) {
+        var btnScale = parseFloat(btn.getAttribute("data-scale"));
+        if (Math.abs(btnScale - s) < 1e-6) {
+          btn.classList.add("active");
+        } else {
+          btn.classList.remove("active");
+        }
+      });
+    });
+  }
+  
+  // Delegated click events for close button, scale buttons, cross-reference links
+  detailEl.addEventListener("click", function(e) {
+    var card = e.target.closest(".recipe-card");
+    if (!card) return;
+    var id = card.getAttribute("data-recipe-id");
+
+    // Close button
+    if (e.target.classList.contains("rc-close")) {
+      var idx = selectedIds.indexOf(id);
+      if (idx !== -1) selectedIds.splice(idx, 1);
+      delete scaleMap[id];
+      renderList();
+      renderDetail();
+      return;
+    }
+
+    // Scale preset buttons
+    if (e.target.classList.contains("rc-scale-btn")) {
+      var scale = parseFloat(e.target.dataset.scale);
+      if (isNaN(scale) || scale <= 0) return;
+      setScale(id, scale);
+      syncScaleUI();
+      updateScaledValues();
+      return;
+    }
+
+    // Cross-reference links
+    if (e.target.classList.contains("rc-ref-link")) {
+      e.stopPropagation();
+      var refId = e.target.getAttribute("data-ref");
+      var target = allRecipes.find(function (r) { return r.id === refId; });
+      if (target && selectedIds.indexOf(refId) === -1) {
+        selectedIds.push(refId);
+      }
+      renderList();
+      renderDetail();
+    }
+  });
+
+  detailEl.addEventListener("input", function(e) {
+    if (!e.target.classList.contains("rc-vol-input")) return;
+    var card = e.target.closest(".recipe-card");
+    if (!card) return;
+    var id = card.getAttribute("data-recipe-id");
+
+    var v = parseFloat(e.target.value);
+    if (isNaN(v) || v <= 0) return;
+
+    var recipe = allRecipes.find(function (r) { return r.id === id; });
+    if (!recipe || !recipe.solvent || !recipe.solvent.amount) return;
+
+    var baseVol = recipe.solvent.amount.value;
+    if (!baseVol || baseVol <= 0) return;
+
+    setScale(id, v / baseVol);
+    updateScaledValues();
+  });
+
+  // Re-render only when user leaves field
+  detailEl.addEventListener("blur", function(e) {
+    if (e.target.id === "rc-vol-input") {
+      updateScaledValues();
+    }
+  }, true);
+
+  /* ==== URL parameter support ==== */
+
+  function checkUrlParams() {
+    var params = new URLSearchParams(window.location.search);
+    var q = params.get("q") || params.get("id") || "";
+    if (q) {
+      // Try exact ID match first
+      var exact = allRecipes.find(function (r) { return r.id.toLowerCase() === q.toLowerCase(); });
+      if (exact) {
+        selectedIds = [exact.id];
+      } else {
+        searchEl.value = q;
+      }
+    }
+  }
+
+  /* ==== Load XML ==== */
+
+  var xmlUrl = "/assets/protocols/recipes.xml";
+
+  fetch(xmlUrl)
+    .then(function (r) {
+      if (!r.ok) throw new Error("recipes.xml HTTP " + r.status);
+      return r.text();
+    })
+    .then(function (xmlText) {
+      var parser = new DOMParser();
+      var doc = parser.parseFromString(xmlText, "text/xml");
+      var errorNode = doc.querySelector("parsererror");
+      if (errorNode) throw new Error("XML parse error");
+
+      var els = doc.getElementsByTagName("recipe");
+      for (var i = 0; i < els.length; i++) {
+        var el = els[i];
+        if (!el.getAttribute("id")) continue;
+        if (directChildren(el, "ingredient").length === 0) continue;
+        allRecipes.push(parseRecipe(el));
+      }
+      allRecipes.sort(function (a, b) { return a.name.localeCompare(b.name); });
+      
+      allRecipes.forEach(r => {
+        if (!r._hay) {
+          r._hay = [
+            r.name,
+            r.abbreviation,
+            r.id,
+            (r.categories || []).join(" ")
+          ].join(" ").toLowerCase();
+        }
+      });
+
+      checkUrlParams();
+      renderList();
+      renderDetail();
+
+      // Search input
+      searchEl.addEventListener("input", function () {
+        renderList();
+      });
+    })
+    .catch(function (err) {
+      console.error("Recipe load error:", err);
+      detailEl.innerHTML = '<div class="recipe-card" style="padding:1rem">' +
+        "<p><strong>Error:</strong> Could not load recipe data.</p></div>";
+    });
+});
+</script>
+
+	</main>
+
+	<footer>
+	<small>© <span id="year"></span> Benjamin Buchmuller · Built with Jekyll on GitHub Pages</small>
+</footer>
+
+	<script src="/assets/js/script.js" defer></script>
+</body>
+</html>
