@@ -1100,7 +1100,7 @@ document.addEventListener("DOMContentLoaded", function () {
         for (var pi = 0; pi < recipe.safety.pictograms.length; pi++) {
           var type = recipe.safety.pictograms[pi];
           var alt = type.replace(/_/g, " ");
-          h += '<img class="rc-ghs-icon" src="/assets/ghs/ghs_' + type + '.svg" alt="' + alt + '" />';
+          h += '<img class="rc-ghs-icon" src="/assets/ghs/ghs_' + type + '.svg" alt="' + alt + '" title="' + alt + '" />';
         }
         h += '</div>';
       }
