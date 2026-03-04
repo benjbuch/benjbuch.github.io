@@ -496,19 +496,16 @@ permalink: /recipes/
 
   /* ---- Responsive ---- */
 
-  @media (max-width: 640px) {
-    .recipes-page {
-      max-width: none;
-      margin: var(--pad-l);
-    }
+  /* ---- Tablet: stacked with preview ---- */
+
+  @media (max-width: 900px) {
     .recipe-layout {
       flex-direction: column;
     }
     .recipe-list-panel {
       width: 100%;
       flex: 0 0 auto;
-      padding-right: 0; 
-/*      var(--pad-l);*/
+      padding-right: 0;
     }
     .recipe-list {
       max-height: calc(2 * var(--line-height, 2.4em));
@@ -517,18 +514,41 @@ permalink: /recipes/
     .recipe-detail {
       flex: 1 1 0;
       min-height: 0;
+      padding-right: 0;
+      scrollbar-gutter: auto;
     }
-    .recipe-detail {
-       padding-right: 0;
-       scrollbar-gutter: auto;
-     }
-     .rc-table {
-       font-size: 0.7rem;
-     }
-     .rc-table .col-stock,
-     .rc-table .col-final {
-       display: none;
-     }
+    .rc-table {
+      font-size: 0.7rem;
+    }
+    .rc-table .col-stock,
+    .rc-table .col-final {
+      display: none;
+    }
+  }
+
+  /* ---- Phone: list OR card, not both ---- */
+
+  @media (max-width: 640px) {
+    .recipes-page {
+      max-width: none;
+      margin: var(--pad-l);
+    }
+    .recipes-page.has-detail .recipe-list-panel {
+      display: none;
+    }
+    .recipes-page:not(.has-detail) .recipe-list-panel {
+        flex: 1 1 0;
+        min-height: 80vh;
+      }
+    .recipe-list {
+      max-height: none;
+      overflow-y: auto;
+      flex: 1 1 0;
+      min-height: 0;
+    }
+    .rc-scale-label {
+      display: none;
+    }
   }
   
   @media print {
@@ -1198,6 +1218,12 @@ document.addEventListener("DOMContentLoaded", function () {
   function renderList() {
     var filtered = getFiltered();
     var hasDetail = selectedIds.length > 0;
+    var page = document.querySelector(".recipes-page");
+    if (hasDetail) {
+      page.classList.add("has-detail");
+    } else {
+      page.classList.remove("has-detail");
+    }
 
     listEl.className = "recipe-list" + (hasDetail ? "" : " full-width");
 
