@@ -1261,6 +1261,11 @@ document.addEventListener("DOMContentLoaded", function () {
     detailEl.innerHTML = h;
     updateScaledValues();
     syncScaleUI();
+    
+    var lastCard = detailEl.querySelector('.recipe-card:last-child');
+    if (lastCard) {
+      lastCard.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+    }
   }
   
   function updateScaledValues() {
