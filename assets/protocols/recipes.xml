@@ -30,7 +30,7 @@
 		<!-- ORGANIZATION -->
 		<category>solution</category>
 		<category>common</category>
-		<source doc_type="COL" id="0001" version="1" definition="yes" primary="yes">co_0001-v1-stock_solutions</source>
+		<source doc_type="COL" id="0001" version="1" visibility="internal" license="CC-BY-SA-4.0"  definition="yes" primary="yes">co_0001-v1-stock_solutions</source>
 	</recipe>
 	<recipe id="R0083">
 		<name>Adenosine triphosphate</name>
@@ -60,7 +60,7 @@
 		</ingredient>
 		<workup>Adjust pH with sodium hydroxide</workup>
 		<workup>Filter sterilize</workup>
-		<storage class="freezer"><unit>-20 celsius</unit></storage>
+		<storage class="freezer"/>
 		<note type="explanation">The exact stoichiometry of the hydrate is unknown, the monohydrate is commonly used as reference</note>
 		<!-- ENVIRONMENT, HEALTH, SAFETY -->
 		<safety>
@@ -69,7 +69,7 @@
 		<!-- ORGANIZATION -->
 		<category>solution</category>
 		<category>special</category>
-		<source doc_type="COL" id="0001" version="1" definition="yes" primary="yes">co_0001-v1-stock_solutions</source>
+		<source doc_type="COL" id="0001" version="1" visibility="internal" license="CC-BY-SA-4.0"  definition="yes" primary="yes">co_0001-v1-stock_solutions</source>
 	</recipe>
 	<recipe id="R0002">
 		<name>Ammonium acetate</name>
@@ -88,13 +88,12 @@
 			<final>10 molar</final>
 		</ingredient>
 		<workup>Filter sterilize</workup>
-		<storage>room temperature</storage>
-		<shelflife>1 year</shelflife>
+		<storage shelflife="1 year"/>
 		<!-- ENVIRONMENT, HEALTH, SAFETY -->
 		<!-- ORGANIZATION -->
 		<category>solution</category>
 		<category>common</category>
-		<source doc_type="COL" id="0001" version="1" definition="yes" primary="yes">co_0001-v1-stock_solutions</source>
+		<source doc_type="COL" id="0001" version="1" visibility="internal" license="CC-BY-SA-4.0"  definition="yes" primary="yes">co_0001-v1-stock_solutions</source>
 	</recipe>
 	<recipe id="R0003">
 		<name>Ammonium persulfate</name>
@@ -114,9 +113,8 @@
 		</ingredient>
 		<workup>Filter sterilize</workup>
 		<workup>Dispense into <unit>1 milliliter</unit> aliquots</workup>
-		<storage class="fridge"><unit>4 celsius</unit></storage>
-		<shelflife>2 weeks</shelflife>
-		<note>Can be stored indefinetly at <unit>-20 celsius</unit></note>
+		<storage class="freezer"/>
+		<storage class="fridge" shelflife="2 weeks"/>
 		<!-- ENVIRONMENT, HEALTH, SAFETY -->
 		<safety signal="danger">
 			<hazard category="3" type="oxidizing">Oxidizing liquid</hazard>
@@ -128,7 +126,7 @@
 		<!-- ORGANIZATION -->
 		<category>solution</category>
 		<category>common</category>
-		<source doc_type="COL" id="0001" version="1" definition="yes" primary="yes">co_0001-v1-stock_solutions</source>
+		<source doc_type="COL" id="0001" version="1" visibility="internal" license="CC-BY-SA-4.0"  definition="yes" primary="yes">co_0001-v1-stock_solutions</source>
 	</recipe>
 	<recipe id="R0088">
 		<name>Amphotericin B</name>
@@ -149,8 +147,7 @@
 			<final>2.5 gram per liter</final>
 		</ingredient>
 		<workup>Dispense into <unit>500 microliter</unit> aliquots</workup>
-		<storage class="freezer"><unit>-20 celsius</unit></storage>
-		<shelflife>1 year</shelflife>
+		<storage class="freezer" shelflife="1 year"/>
 		<note>Amphotericin B is insoluble in water</note>
 		<note type="orientation">Add at <unit>2.5 to 10 microgram per milliliter</unit> to tissue culture medium to prevent or treat yeast and other fungus contamination</note>
 		<!-- ENVIRONMENT, HEALTH, SAFETY -->
@@ -163,7 +160,7 @@
 		<!-- category>solution</category -->
 		<category>antibiotics</category>
 		<category>mammalian</category>
-		<source doc_type="COL" id="0001" version="1" definition="yes" primary="yes">co_0001-v1-stock_solutions</source>
+		<source doc_type="COL" id="0001" version="1" visibility="internal" license="CC-BY-SA-4.0"  definition="yes" primary="yes">co_0001-v1-stock_solutions</source>
 	</recipe>
 	<recipe id="R0004">
 		<name>Ampicillin</name>
@@ -185,10 +182,11 @@
 		</ingredient>
 		<workup>Filter sterilize; ampicillin is heat-labile</workup>
 		<workup>Dispense into <unit>1 milliliter</unit> aliquots</workup>
-		<storage class="freezer"><unit>-20 celsius</unit></storage>
-		<shelflife>3 days at <unit>37 celsius</unit> and 2 weeks at <unit>4 celsius</unit>; activity is lost when stored above <pH>7.0</pH>; store</shelflife>
+		<storage class="freezer"/>
+		<storage class="incubator" shelflife="3 days"/>
+		<storage class="fridge" shelflife="2 weeks"/>
 		<note type="orientation">Working concentration is <unit>20 to 100 microgram per milliliter</unit></note>
-		<note type="orientation">Consider carbenicillin for long-term growth</note>
+		<note type="orientation">Activity is lost when used above <pH>7.0</pH>; consider carbenicillin for long-term growth</note>
 		<!-- ENVIRONMENT, HEALTH, SAFETY -->
 		<safety signal="warning">
 			<hazard category="2" type="health_hazard">Serious eye irritation</hazard>
@@ -199,7 +197,7 @@
 		<!-- category>solution</category -->
 		<category>antibiotics</category>
 		<category>bacterial</category>
-		<source doc_type="COL" id="0001" version="1" definition="yes" primary="yes">co_0001-v1-stock_solutions</source>
+		<source doc_type="COL" id="0001" version="1" visibility="internal" license="CC-BY-SA-4.0"  definition="yes" primary="yes">co_0001-v1-stock_solutions</source>
 	</recipe>
 	<recipe id="R0192">
 		<name>Betaine</name>
@@ -218,13 +216,13 @@
 		</ingredient>
 		<workup>Autoclave</workup>
 		<workup>Dispense into <unit>1 milliliter</unit> aliquots</workup>
-		<storage class="freezer"><unit>-20 celsius</unit></storage>
+		<storage class="freezer"/>
 		<note>The powder dissolves slowly and may not go fully in solution unless autoclaved</note>
 		<!-- ENVIRONMENT, HEALTH, SAFETY -->
 		<!-- ORGANIZATION -->
 		<category>solution</category>
 		<category>special</category>
-		<source doc_type="COL" id="0001" version="1" definition="yes" primary="yes">co_0001-v1-stock_solutions</source>
+		<source doc_type="COL" id="0001" version="1" visibility="internal" license="CC-BY-SA-4.0"  definition="yes" primary="yes">co_0001-v1-stock_solutions</source>
 	</recipe>
 	<recipe id="R0089">
 		<name>Blasticidin S</name>
@@ -245,8 +243,7 @@
 		</ingredient>
 		<workup>Filter sterilize</workup>
 		<workup>Dispense into <unit>200 microliter</unit> aliquots</workup>
-		<storage class="freezer"><unit>-20 celsius</unit></storage>
-		<shelflife>2 years</shelflife>
+		<storage class="freezer" shelflife="2 years"/>
 		<note type="orientation">Working concentration is <unit>50 to 100 microgram per milliliter</unit> for yeast; <unit>2 to 10 microgram per milliliter</unit> for mammalian cell selection</note>
 		<note type="critical">The pH of the aequous solution should not exceed <pH>7.0</pH> to prevent inactivation of Blasticidin</note>
 		<note type="orientation">On thawing, use what you need and discard the unusused portion after two weeks</note>
@@ -261,7 +258,7 @@
 		<category>antibiotics</category>
 		<category>mammalian</category>
 		<category>yeast</category>
-		<source doc_type="COL" id="0001" version="1" definition="yes" primary="yes">co_0001-v1-stock_solutions</source>
+		<source doc_type="COL" id="0001" version="1" visibility="internal" license="CC-BY-SA-4.0"  definition="yes" primary="yes">co_0001-v1-stock_solutions</source>
 	</recipe>
 	<recipe id="R0005">
 		<name>Bovine serum albumin</name>
@@ -280,13 +277,13 @@
 			<final>10 percent</final>
 		</ingredient>
 		<workup>Filter sterilize with very low protein-binding filter (CA, PES, RC)</workup>
-		<storage class="fridge"><unit>4 celsius</unit></storage>
+		<storage class="fridge"/>
 		<note>Choose BSA grade according to needs; some products must be heat-treated to inactivate residual nuclease activity</note>
 		<!-- ENVIRONMENT, HEALTH, SAFETY -->
 		<!-- ORGANIZATION -->
 		<category>solution</category>
 		<category>common</category>
-		<source doc_type="COL" id="0001" version="1" definition="yes" primary="yes">co_0001-v1-stock_solutions</source>
+		<source doc_type="COL" id="0001" version="1" visibility="internal" license="CC-BY-SA-4.0"  definition="yes" primary="yes">co_0001-v1-stock_solutions</source>
 	</recipe>
 	<recipe id="R0006">
 		<name>Buffer P1 (Resuspension buffer)</name>
@@ -318,13 +315,13 @@
 			<amount>250 microliter</amount>
 			<final>7 enzymeunit per liter</final>
 		</ingredient>
-		<storage class="fridge"><unit>4 celsius</unit></storage>
+		<storage class="fridge"/>
 		<!-- ENVIRONMENT, HEALTH, SAFETY -->
 		<!-- ORGANIZATION -->
 		<category>buffer</category>
 		<category>nucleics</category>
-		<source doc_type="COL" id="0001" version="1" definition="yes" primary="yes">co_0001-v1-stock_solutions</source>
-		<source doc_type="SOP" id="0020" version="1" definition="no">sop_0020-v1-plasmid_isolation</source>
+		<source doc_type="SOP" id="0020" version="1" visibility="public" license="CC-BY-SA-4.0"  definition="no">sop_0020-v1-plasmid_isolation</source>
+		<source doc_type="COL" id="0001" version="1" visibility="internal" license="CC-BY-SA-4.0"  definition="yes" primary="yes">co_0001-v1-stock_solutions</source>
 	</recipe>
 	<recipe id="R0007">
 		<name>Buffer P2 (Lysis buffer)</name>
@@ -362,8 +359,8 @@
 		<!-- ORGANIZATION -->
 		<category>buffer</category>
 		<category>nucleics</category>
-		<source doc_type="COL" id="0001" version="1" definition="yes" primary="yes">co_0001-v1-stock_solutions</source>
-		<source doc_type="SOP" id="0020" version="1" definition="no">sop_0020-v1-plasmid_isolation</source>
+		<source doc_type="SOP" id="0020" version="1" visibility="public" license="CC-BY-SA-4.0"  definition="no">sop_0020-v1-plasmid_isolation</source>
+		<source doc_type="COL" id="0001" version="1" visibility="internal" license="CC-BY-SA-4.0"  definition="yes" primary="yes">co_0001-v1-stock_solutions</source>
 	</recipe>
 	<recipe id="R0008">
 		<name>Buffer P3 (Neutralization buffer)</name>
@@ -381,7 +378,7 @@
 			<final>2.9 molar</final>
 		</ingredient>
 		<workup>Adjust pH with acetic acid</workup>
-		<storage class="fridge"><unit>4 celsius</unit></storage>
+		<storage class="fridge"/>
 		<note type="orientation">For use with anion-exchange columns as in the QIAGEN Plasmid Kit</note>
 		<!-- ENVIRONMENT, HEALTH, SAFETY -->
 		<safety signal="danger">
@@ -391,7 +388,7 @@
 		<!-- ORGANIZATION -->
 		<category>buffer</category>
 		<category>nucleics</category>
-		<source doc_type="COL" id="0001" version="1" definition="yes" primary="yes">co_0001-v1-stock_solutions</source>
+		<source doc_type="COL" id="0001" version="1" visibility="internal" license="CC-BY-SA-4.0"  definition="yes" primary="yes">co_0001-v1-stock_solutions</source>
 	</recipe>
 	<recipe id="R0009">
 		<name>Buffer N3 (Neutralization buffer)</name>
@@ -416,7 +413,7 @@
 			<final>0.9 molar</final>
 		</ingredient>
 		<workup>Adjust pH with acetic acid</workup>
-		<storage>room temperature</storage>
+		<storage/>
 		<note type="orientation">For use with silica-gel membranes as in the QIAGEN QIAprep Spin Miniprep Kit</note>
 		<!-- ENVIRONMENT, HEALTH, SAFETY -->
 		<safety signal="danger">
@@ -426,8 +423,8 @@
 		<!-- ORGANIZATION -->
 		<category>buffer</category>
 		<category>nucleics</category>
-		<source doc_type="COL" id="0001" version="1" definition="yes" primary="yes">co_0001-v1-stock_solutions</source>
-		<source doc_type="SOP" id="0020" version="1" definition="no">sop_0020-v1-plasmid_isolation</source>
+		<source doc_type="SOP" id="0020" version="1" visibility="public" license="CC-BY-SA-4.0"  definition="no">sop_0020-v1-plasmid_isolation</source>
+		<source doc_type="COL" id="0001" version="1" visibility="internal" license="CC-BY-SA-4.0"  definition="yes" primary="yes">co_0001-v1-stock_solutions</source>
 	</recipe>
 	<recipe id="R0010">
 		<name>Buffer PB (Binding buffer)</name>
@@ -452,7 +449,7 @@
 			<final>30 percent</final>
 		</ingredient>
 		<workup>Adjust pH with acetic acid before adding isopropyl alcohol</workup>
-		<storage>room temperature</storage>
+		<storage/>
 		<!-- ENVIRONMENT, HEALTH, SAFETY -->
 		<safety signal="danger">
 			<hazard category="2" type="flammable">Flammable liquid</hazard>
@@ -463,10 +460,10 @@
 		<!-- ORGANIZATION -->
 		<category>buffer</category>
 		<category>nucleics</category>
-		<source doc_type="SOP" id="0020" version="1" definition="no">sop_0020-v1-plasmid_isolation</source>
-		<source doc_type="SOP" id="0021" version="1" definition="no">sop_0021-v1-purification_nucleic_acids</source>
-		<source doc_type="COL" id="0001" version="1" definition="yes" primary="yes">co_0001-v1-stock_solutions</source>
-		<source doc_type="SOP" id="0024" version="1" definition="no">sop_0024-v1-dna_isolation_mammalian_cells</source>
+		<source doc_type="SOP" id="0024" version="1" visibility="public" license="CC-BY-SA-4.0"  definition="no">sop_0024-v1-dna_isolation_mammalian_cells</source>
+		<source doc_type="SOP" id="0020" version="1" visibility="public" license="CC-BY-SA-4.0"  definition="no">sop_0020-v1-plasmid_isolation</source>
+		<source doc_type="SOP" id="0021" version="1" visibility="public" license="CC-BY-SA-4.0"  definition="no">sop_0021-v1-purification_nucleic_acids</source>
+		<source doc_type="COL" id="0001" version="1" visibility="internal" license="CC-BY-SA-4.0"  definition="yes" primary="yes">co_0001-v1-stock_solutions</source>
 	</recipe>
 	<recipe id="R0011">
 		<name>Buffer PE (Wash buffer)</name>
@@ -491,7 +488,7 @@
 			<amount>200 milliliter</amount>
 			<final>80 percent</final>
 		</ingredient>
-		<storage>room temperature</storage>
+		<storage/>
 		<!-- ENVIRONMENT, HEALTH, SAFETY -->
 		<safety signal="danger">
 			<hazard category="2" type="flammable">Flammable liquid</hazard>
@@ -501,9 +498,9 @@
 		<!-- ORGANIZATION -->
 		<category>buffer</category>
 		<category>nucleics</category>
-		<source doc_type="SOP" id="0020" version="1" definition="no">sop_0020-v1-plasmid_isolation</source>
-		<source doc_type="SOP" id="0021" version="1" definition="no">sop_0021-v1-purification_nucleic_acids</source>
-		<source doc_type="COL" id="0001" version="1" definition="yes" primary="yes">co_0001-v1-stock_solutions</source>
+		<source doc_type="SOP" id="0020" version="1" visibility="public" license="CC-BY-SA-4.0"  definition="no">sop_0020-v1-plasmid_isolation</source>
+		<source doc_type="SOP" id="0021" version="1" visibility="public" license="CC-BY-SA-4.0"  definition="no">sop_0021-v1-purification_nucleic_acids</source>
+		<source doc_type="COL" id="0001" version="1" visibility="internal" license="CC-BY-SA-4.0"  definition="yes" primary="yes">co_0001-v1-stock_solutions</source>
 	</recipe>
 	<recipe id="R0012">
 		<name>Calcium chloride</name>
@@ -523,7 +520,7 @@
 			<final>1 molar</final>
 		</ingredient>
 		<workup>Filter sterilize</workup>
-		<storage>room temperature</storage>
+		<storage/>
 		<!-- ENVIRONMENT, HEALTH, SAFETY -->
 		<safety>
 			<hazard category="5" type="full">SCIL: Low concern chemical</hazard>
@@ -531,8 +528,8 @@
 		<!-- ORGANIZATION -->
 		<category>solution</category>
 		<category>common</category>
-		<source doc_type="COL" id="0001" version="1" definition="yes" primary="yes">co_0001-v1-stock_solutions</source>
-		<source doc_type="SOP" id="0012" version="2" definition="no">sop_0012-v2-transfection_chemical</source>
+		<source doc_type="SOP" id="0012" version="2" visibility="public" license="CC-BY-SA-4.0"  definition="no">sop_0012-v2-transfection_chemical</source>
+		<source doc_type="COL" id="0001" version="1" visibility="internal" license="CC-BY-SA-4.0"  definition="yes" primary="yes">co_0001-v1-stock_solutions</source>
 	</recipe>
 	<recipe id="R0013">
 		<name>Carbenicillin</name>
@@ -554,8 +551,9 @@
 		</ingredient>
 		<workup>Filter sterilize</workup>
 		<workup>Dispense into <unit>1 milliliter</unit> aliquots</workup>
-		<storage class="freezer"><unit>-20 celsius</unit></storage>
-		<shelflife>5 days at <unit>37 celsius</unit> and 4 weeks at <unit>4 celsius</unit>; store</shelflife>
+		<storage class="freezer"/>
+		<storage class="incubator" shelflife="5 days"/>
+		<storage class="fridge" shelflife="4 weeks"/>
 		<note type="orientation">Working concentration is <unit>20 to 100 microgram per milliliter</unit></note>
 		<!-- ENVIRONMENT, HEALTH, SAFETY -->
 		<safety signal="danger">
@@ -565,7 +563,7 @@
 		<!-- category>solution</category -->
 		<category>antibiotics</category>
 		<category>bacterial</category>
-		<source doc_type="COL" id="0001" version="1" definition="yes" primary="yes">co_0001-v1-stock_solutions</source>
+		<source doc_type="COL" id="0001" version="1" visibility="internal" license="CC-BY-SA-4.0"  definition="yes" primary="yes">co_0001-v1-stock_solutions</source>
 	</recipe>
 	<recipe id="R0014">
 		<name>Chloramphenicol</name>
@@ -587,8 +585,9 @@
 		</ingredient>
 		<workup>Filter sterilize</workup>
 		<workup>Dispense into <unit>1 milliliter</unit> aliquots</workup>
-		<storage class="freezer"><unit>-20 celsius</unit></storage>
-		<shelflife>5 days at <unit>37 celsius</unit> and for 4 weeks at <unit>4 celsius</unit>; store</shelflife>
+		<storage class="freezer"/>
+		<storage class="incubator" shelflife="5 days"/>
+		<storage class="fridge" shelflife="4 weeks"/>
 		<note type="quality">Photochemical decomposition results in yellowing</note>
 		<note type="orientation">Working concentration is <unit>10 to 30 microgram per milliliter</unit></note>
 		<!-- ENVIRONMENT, HEALTH, SAFETY -->
@@ -602,7 +601,7 @@
 		<!-- category>solution</category -->
 		<category>antibiotics</category>
 		<category>bacterial</category>
-		<source doc_type="COL" id="0001" version="1" definition="yes" primary="yes">co_0001-v1-stock_solutions</source>
+		<source doc_type="COL" id="0001" version="1" visibility="internal" license="CC-BY-SA-4.0"  definition="yes" primary="yes">co_0001-v1-stock_solutions</source>
 	</recipe>
 	<recipe id="R0087">
 		<name>Ciprofloxacin</name>
@@ -622,8 +621,7 @@
 		</ingredient>
 		<workup>Filter sterilize</workup>
 		<workup>Dispense into <unit>500 microliter</unit> aliquots</workup>
-		<storage class="freezer"><unit>-20 celsius</unit></storage>
-		<shelflife>2 years</shelflife>
+		<storage class="freezer" shelflife="2 years"/>
 		<note type="orientation">Ciprofloxacin can be added at <unit>10 to 20 microgram per milliliter</unit> to tissue culture medium to prevent or treat mycoplasma contamination</note>
 		<!-- ENVIRONMENT, HEALTH, SAFETY -->
 		<safety signal="warning">
@@ -634,7 +632,7 @@
 		<!-- category>solution</category -->
 		<category>antibiotics</category>
 		<category>mammalian</category>
-		<source doc_type="COL" id="0001" version="1" definition="yes" primary="yes">co_0001-v1-stock_solutions</source>
+		<source doc_type="COL" id="0001" version="1" visibility="internal" license="CC-BY-SA-4.0"  definition="yes" primary="yes">co_0001-v1-stock_solutions</source>
 	</recipe>
 	<recipe id="R0015">
 		<name>Dithiothreitol</name>
@@ -661,7 +659,7 @@
 		</ingredient>
 		<workup>Filter sterilize, DTT is heat-labile</workup>
 		<workup>Dispense into <unit>1 milliliter</unit> aliquots</workup>
-		<storage class="freezer"><unit>-20 celsius</unit> to prevent oxidation</storage>
+		<storage class="freezer">Freezing prevents oxidation.</storage>
 		<note type="explanation">Dithiothreitol is less volatile than 2-mercaptoethanol and forms a thermodynamically stable ring upon disulfide reduction, which is why dithiothreitol is effective at lower concentrations than 2-mercaptoethanol</note>
 		<!-- ENVIRONMENT, HEALTH, SAFETY -->
 		<safety signal="warning">
@@ -671,7 +669,7 @@
 		<!-- ORGANIZATION -->
 		<category>solution</category>
 		<category>common</category>
-		<source doc_type="COL" id="0001" version="1" definition="yes" primary="yes">co_0001-v1-stock_solutions</source>
+		<source doc_type="COL" id="0001" version="1" visibility="internal" license="CC-BY-SA-4.0"  definition="yes" primary="yes">co_0001-v1-stock_solutions</source>
 	</recipe>
 	<recipe id="R0016">
 		<name>DNA duplex buffer</name>
@@ -700,8 +698,8 @@
 		<!-- ORGANIZATION -->
 		<category>buffer</category>
 		<category>nucleics</category>
-		<source doc_type="COL" id="0001" version="1" definition="yes" primary="yes">co_0001-v1-stock_solutions</source>
-		<source doc_type="SOP" id="0033" version="1" definition="no">sop_0033-v1-restriction_ligation_cloning</source>
+		<source doc_type="SOP" id="0033" version="1" visibility="public" license="CC-BY-SA-4.0"  definition="no">sop_0033-v1-restriction_ligation_cloning</source>
+		<source doc_type="COL" id="0001" version="1" visibility="internal" license="CC-BY-SA-4.0"  definition="yes" primary="yes">co_0001-v1-stock_solutions</source>
 	</recipe>
 	<recipe id="R0018">
 		<name>Ethidium bromide</name>
@@ -720,7 +718,7 @@
 		</ingredient>
 		<workup>Stir for several hours</workup>
 		<workup>Filter to remove debris</workup>
-		<storage type="dark">room temperature</storage>
+		<storage type="dark"/>
 		<note type="safety">The powder is fatal if inhaled; work in a certified chemical fume hood</note>
 		<!-- ENVIRONMENT, HEALTH, SAFETY -->
 		<safety signal="danger">
@@ -732,8 +730,8 @@
 		<!-- ORGANIZATION -->
 		<category>solution</category>
 		<category>common</category>
-		<source doc_type="COL" id="0001" version="1" definition="yes" primary="yes">co_0001-v1-stock_solutions</source>
-		<source doc_type="SOP" id="0032" version="1" definition="no">sop_0032-v1-agarose_gel_electrophoresis</source>
+		<source doc_type="SOP" id="0032" version="1" visibility="public" license="CC-BY-SA-4.0"  definition="no">sop_0032-v1-agarose_gel_electrophoresis</source>
+		<source doc_type="COL" id="0001" version="1" visibility="internal" license="CC-BY-SA-4.0"  definition="yes" primary="yes">co_0001-v1-stock_solutions</source>
 	</recipe>
 	<recipe id="R0019">
 		<name>Ethidium bromide</name>
@@ -761,7 +759,7 @@
 		<!-- ORGANIZATION -->
 		<category>solution</category>
 		<category>common</category>
-		<source doc_type="COL" id="0001" version="1" definition="yes" primary="yes">co_0001-v1-stock_solutions</source>
+		<source doc_type="COL" id="0001" version="1" visibility="internal" license="CC-BY-SA-4.0"  definition="yes" primary="yes">co_0001-v1-stock_solutions</source>
 	</recipe>
 	<recipe id="R0017">
 		<name>Ethylenediaminetetraacetate</name>
@@ -796,7 +794,7 @@
 		<!-- ORGANIZATION -->
 		<category>solution</category>
 		<category>common</category>
-		<source doc_type="COL" id="0001" version="1" definition="yes" primary="yes">co_0001-v1-stock_solutions</source>
+		<source doc_type="COL" id="0001" version="1" visibility="internal" license="CC-BY-SA-4.0"  definition="yes" primary="yes">co_0001-v1-stock_solutions</source>
 	</recipe>
 	<recipe id="R0067">
 		<name>Ficoll® 400</name>
@@ -814,12 +812,12 @@
 		</ingredient>
 		<workup>Add slowly under constant stirring to <unit>20 milliliter</unit> water; make up to the final volume when dissolved</workup>
 		<workup>Autoclave</workup>
-		<storage class="freezer"><unit>-20 celsius</unit></storage>
+		<storage class="freezer"/>
 		<!-- ENVIRONMENT, HEALTH, SAFETY -->
 		<!-- ORGANIZATION -->
 		<category>solution</category>
 		<category>special</category>
-		<source doc_type="COL" id="0001" version="1" definition="yes" primary="yes">co_0001-v1-stock_solutions</source>
+		<source doc_type="COL" id="0001" version="1" visibility="internal" license="CC-BY-SA-4.0"  definition="yes" primary="yes">co_0001-v1-stock_solutions</source>
 	</recipe>
 	<recipe id="R0020">
 		<name>Geneticin</name>
@@ -841,8 +839,7 @@
 		</ingredient>
 		<workup>Filter sterilize</workup>
 		<workup>Dispense into <unit>1 milliliter</unit> aliquots</workup>
-		<storage class="fridge"><unit>4 celsius</unit></storage>
-		<shelflife>2 years</shelflife>
+		<storage class="fridge" shelflife="2 years"/>
 		<!-- <note type="orientation">Working concentration is <unit>5 microgram per milliliter</unit> for bacteria and algea, <unit>50 to 200 microgram per milliliter</unit> for yeast, and <unit>300 to 500 microgram per milliliter</unit> for mammalian tissue culture</note> -->
 		<note type="orientation">Working concentration is <unit>50 to 200 microgram per milliliter</unit> for yeast</note>
 		<note type="critical">Geneticin is not effective to select yeast in minimal media containing ammonium sulfate; supplement <unit>1 gram per liter</unit> monosodium glutamate</note>
@@ -855,7 +852,7 @@
 		<!-- category>solution</category -->
 		<category>antibiotics</category>
 		<category>yeast</category>
-		<source doc_type="COL" id="0001" version="1" definition="yes" primary="yes">co_0001-v1-stock_solutions</source>
+		<source doc_type="COL" id="0001" version="1" visibility="internal" license="CC-BY-SA-4.0"  definition="yes" primary="yes">co_0001-v1-stock_solutions</source>
 	</recipe>
 	<recipe id="R0021">
 		<name>Glucose</name>
@@ -881,8 +878,8 @@
 		<!-- ORGANIZATION -->
 		<category>solution</category>
 		<category>common</category>
-		<source doc_type="COL" id="0001" version="1" definition="yes" primary="yes">co_0001-v1-stock_solutions</source>
-		<source doc_type="SOP" id="0004" version="3" definition="no">sop_0004-v3-production_recombinant_histones</source>
+		<source doc_type="SOP" id="0004" version="3" visibility="internal" license="CC-BY-SA-4.0"  definition="no">sop_0004-v3-production_recombinant_histones</source>
+		<source doc_type="COL" id="0001" version="1" visibility="internal" license="CC-BY-SA-4.0"  definition="yes" primary="yes">co_0001-v1-stock_solutions</source>
 	</recipe>
 	<recipe id="R0022">
 		<name>Glycerol</name>
@@ -913,7 +910,7 @@
 		<!-- ORGANIZATION -->
 		<category>solution</category>
 		<category>common</category>
-		<source doc_type="COL" id="0001" version="1" definition="yes" primary="yes">co_0001-v1-stock_solutions</source>
+		<source doc_type="COL" id="0001" version="1" visibility="internal" license="CC-BY-SA-4.0"  definition="yes" primary="yes">co_0001-v1-stock_solutions</source>
 	</recipe>
 	<recipe id="R0023">
 		<name>Guanidine hydrochloride</name>
@@ -931,7 +928,7 @@
 			<amount>286.6 gram</amount>
 			<final>6 molar</final>
 		</ingredient>
-		<storage>room temperature</storage>
+		<storage/>
 		<workup>If precipitation is present, warm to <unit>37 celsius</unit> and mix until completely dissolved prior to use</workup>
 		<!-- ENVIRONMENT, HEALTH, SAFETY -->
 		<safety signal="warning">
@@ -943,7 +940,7 @@
 		<!-- ORGANIZATION -->
 		<category>solution</category>
 		<category>common</category>
-		<source doc_type="COL" id="0001" version="1" definition="yes" primary="yes">co_0001-v1-stock_solutions</source>
+		<source doc_type="COL" id="0001" version="1" visibility="internal" license="CC-BY-SA-4.0"  definition="yes" primary="yes">co_0001-v1-stock_solutions</source>
 	</recipe>
 	<recipe id="R0024">
 		<name>HEPES</name>
@@ -967,14 +964,13 @@
 			<amount>5.5 gram</amount>
 		</ingredient>
 		<workup>Filter sterilize through a <unit>0.45 micrometer</unit> nitrocellulose filter, PVDF membranes will clog</workup>
-		<storage class="fridge"><unit>4 celsius</unit></storage>
-		<shelflife>1 year</shelflife>
+		<storage class="fridge" shelflife="1 year"/>
 		<note type="orientation">Use between pH <unit>6.8 to 8.2 unitless</unit> as buffer</note>
 		<!-- ENVIRONMENT, HEALTH, SAFETY -->
 		<!-- ORGANIZATION -->
 		<category>buffer</category>
 		<category>common</category>
-		<source doc_type="COL" id="0001" version="1" definition="yes" primary="yes">co_0001-v1-stock_solutions</source>
+		<source doc_type="COL" id="0001" version="1" visibility="internal" license="CC-BY-SA-4.0"  definition="yes" primary="yes">co_0001-v1-stock_solutions</source>
 	</recipe>
 	<recipe id="R0025">
 		<name>Hydrochloric acid</name>
@@ -1009,7 +1005,7 @@
 		<!-- ORGANIZATION -->
 		<category>solution</category>
 		<category>common</category>
-		<source doc_type="COL" id="0001" version="1" definition="yes" primary="yes">co_0001-v1-stock_solutions</source>
+		<source doc_type="COL" id="0001" version="1" visibility="internal" license="CC-BY-SA-4.0"  definition="yes" primary="yes">co_0001-v1-stock_solutions</source>
 	</recipe>
 	<recipe id="R0026">
 		<name>Hygromycin B</name>
@@ -1030,8 +1026,7 @@
 		</ingredient>
 		<workup>Filter sterilize</workup>
 		<workup>Dispense into <unit>1 milliliter</unit> aliquots</workup>
-		<storage class="fridge"><unit>4 celsius</unit></storage>
-		<shelflife>2 years</shelflife>
+		<storage class="fridge" shelflife="2 years"/>
 		<!-- <note type="orientation">Working concentration is <unit>100 microgram per milliliter</unit> for bacteria, <unit>200 to 300 microgram per milliliter</unit> for yeast, and <unit>150 to 400 microgram per milliliter</unit> for mammalian tissue culture</note> -->
 		<note type="orientation">Working concentration is <unit>200 to 300 microgram per milliliter</unit> for yeast</note>
 		<!-- ENVIRONMENT, HEALTH, SAFETY -->
@@ -1044,7 +1039,7 @@
 		<!-- category>solution</category -->
 		<category>antibiotics</category>
 		<category>yeast</category>
-		<source doc_type="COL" id="0001" version="1" definition="yes" primary="yes">co_0001-v1-stock_solutions</source>
+		<source doc_type="COL" id="0001" version="1" visibility="internal" license="CC-BY-SA-4.0"  definition="yes" primary="yes">co_0001-v1-stock_solutions</source>
 	</recipe>
 	<recipe id="R0027">
 		<name>Imidazole</name>
@@ -1061,7 +1056,7 @@
 			<amount>20.4 gram</amount>
 			<final>6 molar</final>
 		</ingredient>
-		<storage>room temperature</storage>
+		<storage/>
 		<note>Use between pH <unit>6.2 to 7.8 unitless</unit> as buffer</note>
 		<!-- ENVIRONMENT, HEALTH, SAFETY -->
 		<safety signal="danger">
@@ -1073,7 +1068,7 @@
 		<!-- ORGANIZATION -->
 		<category>solution</category>
 		<category>common</category>
-		<source doc_type="COL" id="0001" version="1" definition="yes" primary="yes">co_0001-v1-stock_solutions</source>
+		<source doc_type="COL" id="0001" version="1" visibility="internal" license="CC-BY-SA-4.0"  definition="yes" primary="yes">co_0001-v1-stock_solutions</source>
 	</recipe>
 	<recipe id="R0028">
 		<name>Isopropyl β-​<sc>d</sc>-1-thiogalactoside</name>
@@ -1094,7 +1089,6 @@
 		<workup>Filter sterilize</workup>
 		<workup>Dispense into <unit>1 milliliter</unit> aliquots</workup>
 		<storage class="freezer"/>
-		<note>Can be stored indefinetly at <unit>-20 celsius</unit></note>
 		<!-- ENVIRONMENT, HEALTH, SAFETY -->
 		<safety signal="warning">
 			<hazard category="1" type="health_hazard">Serious eye irritation</hazard>
@@ -1103,8 +1097,8 @@
 		<!-- ORGANIZATION -->
 		<category>solution</category>
 		<category>special</category>
-		<source doc_type="COL" id="0001" version="1" definition="yes" primary="yes">co_0001-v1-stock_solutions</source>
-		<source doc_type="SOP" id="0004" version="3" definition="no">sop_0004-v3-production_recombinant_histones</source>
+		<source doc_type="SOP" id="0004" version="3" visibility="internal" license="CC-BY-SA-4.0"  definition="no">sop_0004-v3-production_recombinant_histones</source>
+		<source doc_type="COL" id="0001" version="1" visibility="internal" license="CC-BY-SA-4.0"  definition="yes" primary="yes">co_0001-v1-stock_solutions</source>
 	</recipe>
 	<recipe id="R0029">
 		<name>Kanamycin</name>
@@ -1126,10 +1120,9 @@
 		</ingredient>
 		<workup>Filter sterilize</workup>
 		<workup>Dispense into <unit>1 milliliter</unit> aliquots</workup>
-		<storage class="freezer"><unit>-20 celsius</unit></storage>
-		<shelflife>5 days at <unit>37 celsius</unit></shelflife>
+		<storage class="freezer"/>
+		<storage class="incubator" shelflife="5 days"/>
 		<note type="orientation">Working concentration is <unit>50 microgram per milliliter</unit></note>
-		<note>Can be stored indefinetly at <unit>4 celsius</unit></note>
 		<!-- ENVIRONMENT, HEALTH, SAFETY -->
 		<safety signal="danger">
 			<hazard category="1" type="serious_health_hazard">Reproductive toxicology</hazard>
@@ -1138,8 +1131,8 @@
 		<!-- category>solution</category -->
 		<category>antibiotics</category>
 		<category>bacterial</category>
-		<source doc_type="COL" id="0001" version="1" definition="yes" primary="yes">co_0001-v1-stock_solutions</source>
-		<source doc_type="SOP" id="0035" version="1" definition="yes">sop_0035-v1-protocol_writing</source>
+		<source doc_type="SOP" id="0035" version="1" visibility="internal" license="CC-BY-SA-4.0"  definition="yes">sop_0035-v1-protocol_writing</source>
+		<source doc_type="COL" id="0001" version="1" visibility="internal" license="CC-BY-SA-4.0"  definition="yes" primary="yes">co_0001-v1-stock_solutions</source>
 	</recipe>
 	<recipe id="R0030">
 		<name>LB medium (Miller)</name>
@@ -1176,8 +1169,8 @@
 		<!-- ORGANIZATION -->
 		<category>media</category>
 		<category>bacterial</category>
-		<source doc_type="COL" id="0001" version="1" definition="yes" primary="yes">co_0001-v1-stock_solutions</source>
-		<source doc_type="SOP" id="0004" version="3" definition="no">sop_0004-v3-production_recombinant_histones</source>
+		<source doc_type="SOP" id="0004" version="3" visibility="internal" license="CC-BY-SA-4.0"  definition="no">sop_0004-v3-production_recombinant_histones</source>
+		<source doc_type="COL" id="0001" version="1" visibility="internal" license="CC-BY-SA-4.0"  definition="yes" primary="yes">co_0001-v1-stock_solutions</source>
 	</recipe>
 	<recipe id="R0079">
 		<name>Lysozyme</name>
@@ -1209,12 +1202,12 @@
 			<amount>40 milliliter</amount>
 			<final>40 percent</final>
 		</ingredient>
-		<storage class="freezer"><unit>-20 celsius</unit></storage>
+		<storage class="freezer"/>
 		<!-- ENVIRONMENT, HEALTH, SAFETY -->
 		<!-- ORGANIZATION -->
 		<category>solution</category>
 		<category>special</category>
-		<source doc_type="COL" id="0001" version="1" definition="yes" primary="yes">co_0001-v1-stock_solutions</source>
+		<source doc_type="COL" id="0001" version="1" visibility="internal" license="CC-BY-SA-4.0"  definition="yes" primary="yes">co_0001-v1-stock_solutions</source>
 	</recipe>
 	<recipe id="R0063">
 		<name>M9 minimal salts</name>
@@ -1262,7 +1255,7 @@
 		<!-- ORGANIZATION -->
 		<category>media</category>
 		<category>bacterial</category>
-		<source doc_type="COL" id="0001" version="1" definition="yes" primary="yes">co_0001-v1-stock_solutions</source>
+		<source doc_type="COL" id="0001" version="1" visibility="internal" license="CC-BY-SA-4.0"  definition="yes" primary="yes">co_0001-v1-stock_solutions</source>
 	</recipe>
 	<recipe id="R0031">
 		<name>Magnesium chloride</name>
@@ -1282,7 +1275,7 @@
 			<final>1 molar</final>
 		</ingredient>
 		<workup>Autoclave</workup>
-		<storage>room temperature</storage>
+		<storage/>
 		<note>The solid is very hygroscopic; buy only small quantities</note>
 		<!-- ENVIRONMENT, HEALTH, SAFETY -->
 		<safety>
@@ -1291,7 +1284,7 @@
 		<!-- ORGANIZATION -->
 		<category>solution</category>
 		<category>common</category>
-		<source doc_type="COL" id="0001" version="1" definition="yes" primary="yes">co_0001-v1-stock_solutions</source>
+		<source doc_type="COL" id="0001" version="1" visibility="internal" license="CC-BY-SA-4.0"  definition="yes" primary="yes">co_0001-v1-stock_solutions</source>
 	</recipe>
 	<recipe id="R0032">
 		<name>Magnesium sulfate</name>
@@ -1317,7 +1310,7 @@
 		<!-- ORGANIZATION -->
 		<category>solution</category>
 		<category>common</category>
-		<source doc_type="COL" id="0001" version="1" definition="yes" primary="yes">co_0001-v1-stock_solutions</source>
+		<source doc_type="COL" id="0001" version="1" visibility="internal" license="CC-BY-SA-4.0"  definition="yes" primary="yes">co_0001-v1-stock_solutions</source>
 	</recipe>
 	<recipe id="R0064">
 		<name>Minimal growth medium</name>
@@ -1365,7 +1358,7 @@
 		<!-- ORGANIZATION -->
 		<category>media</category>
 		<category>bacterial</category>
-		<source doc_type="COL" id="0001" version="1" definition="yes" primary="yes">co_0001-v1-stock_solutions</source>
+		<source doc_type="COL" id="0001" version="1" visibility="internal" license="CC-BY-SA-4.0"  definition="yes" primary="yes">co_0001-v1-stock_solutions</source>
 	</recipe>
 	<recipe id="R0033">
 		<name>2-(<it>N</it>-Morpholino)ethanesulfonic acid</name>
@@ -1399,7 +1392,7 @@
 		<!-- ORGANIZATION -->
 		<category>buffer</category>
 		<category>common</category>
-		<source doc_type="COL" id="0001" version="1" definition="yes" primary="yes">co_0001-v1-stock_solutions</source>
+		<source doc_type="COL" id="0001" version="1" visibility="internal" license="CC-BY-SA-4.0"  definition="yes" primary="yes">co_0001-v1-stock_solutions</source>
 	</recipe>
 	<recipe id="R0034">
 		<name>Nourseothricin</name>
@@ -1421,8 +1414,7 @@
 		</ingredient>
 		<workup>Filter sterilize</workup>
 		<workup>Dispense into <unit>1 milliliter</unit> aliquots</workup>
-		<storage class="fridge"><unit>4 celsius</unit></storage>
-		<shelflife>2 years</shelflife>
+		<storage class="fridge" shelflife="2 years"/>
 		<note type="orientation">Working concentration is <unit>100 microgram per milliliter</unit> for yeast</note>
 		<note>Purchase from WERNER BioAgents GmbH, Jena (Germany)</note>
 		<!-- ENVIRONMENT, HEALTH, SAFETY -->
@@ -1434,7 +1426,7 @@
 		<!-- category>solution</category -->
 		<category>antibiotics</category>
 		<category>yeast</category>
-		<source doc_type="COL" id="0001" version="1" definition="yes" primary="yes">co_0001-v1-stock_solutions</source>
+		<source doc_type="COL" id="0001" version="1" visibility="internal" license="CC-BY-SA-4.0"  definition="yes" primary="yes">co_0001-v1-stock_solutions</source>
 	</recipe>
 	<recipe id="R0035">
 		<name>Phenylmethylsulfonyl fluoride</name>
@@ -1451,7 +1443,7 @@
 			<amount>174 milligram</amount>
 			<final>100 millimolar</final>
 		</ingredient>
-		<storage class="freezer"><unit>-20 celsius</unit></storage>
+		<storage class="freezer"/>
 		<workup>Stir viguorously if added to a solution without detergents</workup>
 		<note type="critical">Make fresh dilutions from stock for each use</note>
 		<note type="critical">Half-life in aqueous solution is less than <unit>30 minute</unit> at room temperature, or a few hours on ice</note>
@@ -1468,7 +1460,7 @@
 		<!-- ORGANIZATION -->
 		<category>solution</category>
 		<category>special</category>
-		<source doc_type="COL" id="0001" version="1" definition="yes" primary="yes">co_0001-v1-stock_solutions</source>
+		<source doc_type="COL" id="0001" version="1" visibility="internal" license="CC-BY-SA-4.0"  definition="yes" primary="yes">co_0001-v1-stock_solutions</source>
 	</recipe>
 	<recipe id="R0036">
 		<name>Phleomycin</name>
@@ -1488,8 +1480,7 @@
 		</ingredient>
 		<workup>Filter sterilize</workup>
 		<workup>Dispense into <unit>1 milliliter</unit> aliquots</workup>
-		<storage class="freezer" type="dark"><unit>-20 celsius</unit></storage>
-		<shelflife>2 years</shelflife>
+		<storage shelflife="2 years" type="dark"/>
 		<note type="orientation">Working concentration is <unit>100 microgram per milliliter</unit> for yeast</note>
 		<note>Purchase from WERNER BioAgents GmbH, Jena (Germany)</note>
 		<!-- ENVIRONMENT, HEALTH, SAFETY -->
@@ -1501,7 +1492,7 @@
 		<!-- category>solution</category -->
 		<category>antibiotics</category>
 		<category>yeast</category>
-		<source doc_type="COL" id="0001" version="1" definition="yes" primary="yes">co_0001-v1-stock_solutions</source>
+		<source doc_type="COL" id="0001" version="1" visibility="internal" license="CC-BY-SA-4.0"  definition="yes" primary="yes">co_0001-v1-stock_solutions</source>
 	</recipe>
 	<recipe id="R0037">
 		<name>Phosphate-buffered saline</name>
@@ -1553,12 +1544,12 @@
 		<!-- ORGANIZATION -->
 		<category>buffer</category>
 		<category>common</category>
-		<source doc_type="SOP" id="0001" version="1" definition="no">sop_0001-v1-isolation_nuclei</source>
-		<source doc_type="COL" id="0001" version="1" definition="yes" primary="yes">co_0001-v1-stock_solutions</source>
-		<source doc_type="SOP" id="0029" version="1" definition="no">sop_0029-v1-cell_cycle_flow_cytometry</source>
-		<source doc_type="SOP" id="0028" version="2" definition="no">sop_0028-v2-cell_cycle_synchronization</source>
-		<source doc_type="SOP" id="0027" version="1" definition="no">sop_0027-v1-immunoprecipitation</source>
-		<source doc_type="SOP" id="0002" version="1" definition="no">sop_0002-v1-whole_cell_extraction_mammalian_cells</source>
+		<source doc_type="SOP" id="0028" version="2" visibility="internal" license="CC-BY-SA-4.0"  definition="no">sop_0028-v2-cell_cycle_synchronization</source>
+		<source doc_type="SOP" id="0029" version="1" visibility="internal" license="CC-BY-SA-4.0"  definition="no">sop_0029-v1-cell_cycle_flow_cytometry</source>
+		<source doc_type="COL" id="0001" version="1" visibility="internal" license="CC-BY-SA-4.0"  definition="yes" primary="yes">co_0001-v1-stock_solutions</source>
+		<source doc_type="SOP" id="0001" version="1" visibility="public" license="CC-BY-SA-4.0"  definition="no">sop_0001-v1-isolation_nuclei</source>
+		<source doc_type="SOP" id="0027" version="1" visibility="internal" license="CC-BY-SA-4.0"  definition="no">sop_0027-v1-immunoprecipitation</source>
+		<source doc_type="SOP" id="0002" version="1" visibility="public" license="CC-BY-SA-4.0"  definition="no">sop_0002-v1-whole_cell_extraction_mammalian_cells</source>
 	</recipe>
 	<recipe id="R0074">
 		<name>Phosphatase inhibitor cocktail</name>
@@ -1628,7 +1619,7 @@
 		<workup>Add sodium orthovanadate drop-wise; if the solution turns brown, the orthovanadate polymerized, start over again</workup>
 		<workup>Filter sterilize</workup>
 		<workup>Dispense in <unit>1 milliliter</unit> aliquots</workup>
-		<storage class="freezer"><unit>-20 celsius</unit></storage>
+		<storage class="freezer"/>
 		<note type="orientation">The cocktail inhibits several ATPases, protein tyrosine, acidic, or alkaline phosphatases, and other phosphate-transferring enzymes</note>
 		<note type="critical">Dithiothreitol (DTT) rapidly inactivates sodium orthovanadate</note>
 		<!-- ENVIRONMENT, HEALTH, SAFETY -->
@@ -1640,7 +1631,7 @@
 		<!-- ORGANIZATION -->
 		<category>solution</category>
 		<category>special</category>
-		<source doc_type="COL" id="0001" version="1" definition="yes" primary="yes">co_0001-v1-stock_solutions</source>
+		<source doc_type="COL" id="0001" version="1" visibility="internal" license="CC-BY-SA-4.0"  definition="yes" primary="yes">co_0001-v1-stock_solutions</source>
 	</recipe>
 	<recipe id="R0080">
 		<name>Poly-<sc>l</sc>-Lysine</name>
@@ -1668,15 +1659,15 @@
 		</ingredient>
 		<workup>Use sterile liquids, the solution cannot be filter sterilized</workup>
 		<workup>Dispense into <unit>100 microliter</unit> aliquots</workup>
-		<storage class="freezer"><unit>-20 celsius</unit></storage>
+		<storage class="freezer"/>
 		<note>Purchase from SERVA Electrophoresis (Germany)</note>
 		<note type="orientation">Use <unit>1 milliliter</unit> of a <unit>0.1 gram per liter</unit> solution to coat a <unit>25 square centimeter</unit> culture dish, apply for <unit>5 minute</unit>, thoroughly rinse the surface, let dry for <unit>120 minute</unit></note>
 		<!-- ENVIRONMENT, HEALTH, SAFETY -->
 		<!-- ORGANIZATION -->
 		<category>solution</category>
 		<category>mammalian</category>
-		<source doc_type="COL" id="0001" version="1" definition="yes" primary="yes">co_0001-v1-stock_solutions</source>
-		<source doc_type="SOP" id="0013" version="1" definition="no">sop_0013-v1-transfection_electroporation</source>
+		<source doc_type="SOP" id="0013" version="1" visibility="internal" license="CC-BY-SA-4.0"  definition="no">sop_0013-v1-transfection_electroporation</source>
+		<source doc_type="COL" id="0001" version="1" visibility="internal" license="CC-BY-SA-4.0"  definition="yes" primary="yes">co_0001-v1-stock_solutions</source>
 	</recipe>
 	<recipe id="R0038">
 		<name>Potassium chloride</name>
@@ -1695,7 +1686,7 @@
 			<final>3 molar</final>
 		</ingredient>
 		<workup>Autoclave</workup>
-		<storage>room temperature</storage>
+		<storage/>
 		<!-- ENVIRONMENT, HEALTH, SAFETY -->
 		<safety>
 			<hazard category="5" type="full">SCIL: Low concern chemical</hazard>
@@ -1703,7 +1694,7 @@
 		<!-- ORGANIZATION -->
 		<category>solution</category>
 		<category>common</category>
-		<source doc_type="COL" id="0001" version="1" definition="yes" primary="yes">co_0001-v1-stock_solutions</source>
+		<source doc_type="COL" id="0001" version="1" visibility="internal" license="CC-BY-SA-4.0"  definition="yes" primary="yes">co_0001-v1-stock_solutions</source>
 	</recipe>
 	<recipe id="R0068">
 		<name>Potassium phosphate</name>
@@ -1735,7 +1726,7 @@
 		<!-- ORGANIZATION -->
 		<category>buffer</category>
 		<category>common</category>
-		<source doc_type="COL" id="0001" version="1" definition="yes" primary="yes">co_0001-v1-stock_solutions</source>
+		<source doc_type="COL" id="0001" version="1" visibility="internal" license="CC-BY-SA-4.0"  definition="yes" primary="yes">co_0001-v1-stock_solutions</source>
 	</recipe>
 	<recipe id="R0069">
 		<name>Potassium phosphate</name>
@@ -1767,7 +1758,7 @@
 		<!-- ORGANIZATION -->
 		<category>buffer</category>
 		<category>common</category>
-		<source doc_type="COL" id="0001" version="1" definition="yes" primary="yes">co_0001-v1-stock_solutions</source>
+		<source doc_type="COL" id="0001" version="1" visibility="internal" license="CC-BY-SA-4.0"  definition="yes" primary="yes">co_0001-v1-stock_solutions</source>
 	</recipe>
 	<recipe id="R0072">
 		<name>Protease inhibitor cocktail (HALT)</name>
@@ -1836,8 +1827,7 @@
 			<final>80 micromolar</final>
 			<final type="diluted">0.8 micromolar</final>
 		</ingredient>
-		<storage class="freezer"><unit>-20 celsius</unit></storage>
-		<shelflife>6 months</shelflife>
+		<storage class="freezer" shelflife="6 months"/>
 		<note type="orientation">The cocktail inhibits aminopeptidases, cysteine, serine, and aspartic acid proteases</note>
 		<note>Commercially available formulations are more cost-effective</note>
 		<!-- ENVIRONMENT, HEALTH, SAFETY -->
@@ -1849,7 +1839,7 @@
 		<!-- ORGANIZATION -->
 		<category>solution</category>
 		<category>special</category>
-		<source doc_type="COL" id="0001" version="1" definition="yes" primary="yes">co_0001-v1-stock_solutions</source>
+		<source doc_type="COL" id="0001" version="1" visibility="internal" license="CC-BY-SA-4.0"  definition="yes" primary="yes">co_0001-v1-stock_solutions</source>
 	</recipe>
 	<recipe id="R0073">
 		<name>Protease inhibitor cocktail</name>
@@ -1908,8 +1898,7 @@
 			<final>154 micromolar</final>
 			<final type="diluted">1.5 micromolar</final>
 		</ingredient>
-		<storage class="freezer"><unit>-20 celsius</unit></storage>
-		<shelflife>6 months</shelflife>
+		<storage class="freezer" shelflife="6 months"/>
 		<note>Commercially available</note>
 		<!-- ENVIRONMENT, HEALTH, SAFETY -->
 		<safety signal="warning">
@@ -1920,7 +1909,7 @@
 		<!-- ORGANIZATION -->
 		<category>solution</category>
 		<category>special</category>
-		<source doc_type="COL" id="0001" version="1" definition="yes" primary="yes">co_0001-v1-stock_solutions</source>
+		<source doc_type="COL" id="0001" version="1" visibility="internal" license="CC-BY-SA-4.0"  definition="yes" primary="yes">co_0001-v1-stock_solutions</source>
 	</recipe>
 	<recipe id="R0039">
 		<name>Puromycin</name>
@@ -1941,8 +1930,7 @@
 		</ingredient>
 		<workup>Filter sterilize</workup>
 		<workup>Dispense into <unit>1 milliliter</unit> aliquots</workup>
-		<storage class="freezer"><unit>-20 celsius</unit></storage>
-		<shelflife>2 years</shelflife>
+		<storage class="freezer" shelflife="2 years"/>
 		<note type="orientation">Working concentration is <unit>1 to 10 microgram per milliliter</unit> for cell culture</note>
 		<!-- ENVIRONMENT, HEALTH, SAFETY -->
 		<safety signal="warning">
@@ -1953,7 +1941,7 @@
 		<!-- category>solution</category -->
 		<category>antibiotics</category>
 		<category>mammalian</category>
-		<source doc_type="COL" id="0001" version="1" definition="yes" primary="yes">co_0001-v1-stock_solutions</source>
+		<source doc_type="COL" id="0001" version="1" visibility="internal" license="CC-BY-SA-4.0"  definition="yes" primary="yes">co_0001-v1-stock_solutions</source>
 	</recipe>
 	<recipe id="R0040">
 		<name>RNase A</name>
@@ -1993,7 +1981,7 @@
 		</ingredient>
 		<workup>Heat to <unit>100 celsius</unit> for <unit>15 min</unit> to inactivate DNase contaminants; let cool to room temperature</workup>
 		<workup>Dispense into <unit>250 microliter</unit> aliquots</workup>
-		<storage class="freezer"><unit>-20 celsius</unit></storage>
+		<storage class="freezer"/>
 		<!-- ENVIRONMENT, HEALTH, SAFETY -->
 		<safety signal="warning">
 			<hazard category="2" type="health_hazard">Eye and skin irritation</hazard>
@@ -2001,8 +1989,8 @@
 		<!-- ORGANIZATION -->
 		<category>solution</category>
 		<category>special</category>
-		<source doc_type="COL" id="0001" version="1" definition="yes" primary="yes">co_0001-v1-stock_solutions</source>
-		<source doc_type="SOP" id="0024" version="1" definition="no">sop_0024-v1-dna_isolation_mammalian_cells</source>
+		<source doc_type="SOP" id="0024" version="1" visibility="public" license="CC-BY-SA-4.0"  definition="no">sop_0024-v1-dna_isolation_mammalian_cells</source>
+		<source doc_type="COL" id="0001" version="1" visibility="internal" license="CC-BY-SA-4.0"  definition="yes" primary="yes">co_0001-v1-stock_solutions</source>
 	</recipe>
 	<recipe id="R0044">
 		<name>S. O. C. medium</name>
@@ -2060,7 +2048,7 @@
 		<!-- ORGANIZATION -->
 		<category>media</category>
 		<category>bacterial</category>
-		<source doc_type="COL" id="0001" version="1" definition="yes" primary="yes">co_0001-v1-stock_solutions</source>
+		<source doc_type="COL" id="0001" version="1" visibility="internal" license="CC-BY-SA-4.0"  definition="yes" primary="yes">co_0001-v1-stock_solutions</source>
 	</recipe>
 	<recipe id="R0045">
 		<name>Sodium acetate</name>
@@ -2087,8 +2075,7 @@
 			<amount>5 to 6 milliliter</amount>
 		</ingredient>
 		<workup>Filter sterilize</workup>
-		<storage>room temperature</storage>
-		<shelflife>1 year</shelflife>
+		<storage shelflife="1 year"/>
 		<!-- ENVIRONMENT, HEALTH, SAFETY -->
 		<safety>
 			<hazard category="5" type="full">SCIL: Low concern chemical</hazard>
@@ -2096,8 +2083,8 @@
 		<!-- ORGANIZATION -->
 		<category>solution</category>
 		<category>common</category>
-		<source doc_type="COL" id="0001" version="1" definition="yes" primary="yes">co_0001-v1-stock_solutions</source>
-		<source doc_type="SOP" id="0021" version="1" definition="no">sop_0021-v1-purification_nucleic_acids</source>
+		<source doc_type="SOP" id="0021" version="1" visibility="public" license="CC-BY-SA-4.0"  definition="no">sop_0021-v1-purification_nucleic_acids</source>
+		<source doc_type="COL" id="0001" version="1" visibility="internal" license="CC-BY-SA-4.0"  definition="yes" primary="yes">co_0001-v1-stock_solutions</source>
 	</recipe>
 	<recipe id="R0077">
 		<name>Sodium azide</name>
@@ -2116,8 +2103,7 @@
 			<final>2.0 molar</final>
 		</ingredient>
 		<workup>Filter sterilize through a <unit>0.45 micrometer</unit> filter</workup>
-		<storage class="freezer"><unit>-20 celsius</unit></storage>
-		<shelflife>2 year</shelflife>
+		<storage class="freezer" shelflife="2 year"/>
 		<note type="orientation">This stock is about <unit>10 percent</unit></note>
 		<note type="orientation">Use at <unit>0.1 percent</unit> final to inhibit the growth of bacteria and molds</note>
 		<note type="safety">Reacts with metal spatulas, metal equipment, pipes, traps, drains, and heavy metals to form SHOCK SENSITIVE salts</note>
@@ -2131,7 +2117,7 @@
 		<!-- ORGANIZATION -->
 		<category>solution</category>
 		<category>special</category>
-		<source doc_type="COL" id="0001" version="1" definition="yes" primary="yes">co_0001-v1-stock_solutions</source>
+		<source doc_type="COL" id="0001" version="1" visibility="internal" license="CC-BY-SA-4.0"  definition="yes" primary="yes">co_0001-v1-stock_solutions</source>
 	</recipe>
 	<recipe id="R0084">
 		<name>Sodium butyrate</name>
@@ -2157,8 +2143,7 @@
 		</ingredient>
 		<workup>Add solids slowly into well stirred solution</workup>
 		<workup>Dispense into <unit>1 milliliter</unit> aliquots</workup>
-		<storage class="freezer"><unit>-20 celsius</unit></storage>
-		<shelflife>2 year</shelflife>
+		<storage class="freezer" shelflife="2 year"/>
 		<note type="safety">Butyric acid is a corresive that smells like vomit or rancid butter; work inside a certified chemical fume hood</note>
 		<!-- ENVIRONMENT, HEALTH, SAFETY -->
 		<safety signal="warning">
@@ -2168,7 +2153,7 @@
 		<!-- ORGANIZATION -->
 		<category>solution</category>
 		<category>special</category>
-		<source doc_type="COL" id="0001" version="1" definition="yes" primary="yes">co_0001-v1-stock_solutions</source>
+		<source doc_type="COL" id="0001" version="1" visibility="internal" license="CC-BY-SA-4.0"  definition="yes" primary="yes">co_0001-v1-stock_solutions</source>
 	</recipe>
 	<recipe id="R0046">
 		<name>Sodium chloride</name>
@@ -2187,7 +2172,7 @@
 			<final>5 molar</final>
 		</ingredient>
 		<workup>Autoclave</workup>
-		<storage>room temperature</storage>
+		<storage/>
 		<!-- ENVIRONMENT, HEALTH, SAFETY -->
 		<safety>
 			<hazard category="5" type="full">SCIL: Low concern chemical</hazard>
@@ -2195,7 +2180,7 @@
 		<!-- ORGANIZATION -->
 		<category>solution</category>
 		<category>common</category>
-		<source doc_type="COL" id="0001" version="1" definition="yes" primary="yes">co_0001-v1-stock_solutions</source>
+		<source doc_type="COL" id="0001" version="1" visibility="internal" license="CC-BY-SA-4.0"  definition="yes" primary="yes">co_0001-v1-stock_solutions</source>
 	</recipe>
 	<recipe id="R0047">
 		<name>Sodium dodecyl sulfate</name>
@@ -2216,7 +2201,7 @@
 		<workup>Heat to <unit>68 celsius</unit> to assist dissolution</workup>
 		<workup>Adjust pH to 7.2 with a few drops of concentrated hydrochloric acid</workup>
 		<workup>Filter sterilize through a <unit>0.45 micrometer</unit> filter</workup>
-		<storage>room temperature</storage>
+		<storage/>
 		<!-- ENVIRONMENT, HEALTH, SAFETY -->
 		<safety signal="danger">
 			<hazard category="1" type="corrosive">Serious eye damage</hazard>
@@ -2226,7 +2211,7 @@
 		<!-- ORGANIZATION -->
 		<category>solution</category>
 		<category>common</category>
-		<source doc_type="COL" id="0001" version="1" definition="yes" primary="yes">co_0001-v1-stock_solutions</source>
+		<source doc_type="COL" id="0001" version="1" visibility="internal" license="CC-BY-SA-4.0"  definition="yes" primary="yes">co_0001-v1-stock_solutions</source>
 	</recipe>
 	<recipe id="R0076">
 		<name>Sodium fluoride</name>
@@ -2244,8 +2229,7 @@
 			<amount>2.1 gram</amount>
 			<final>1.0 molar</final>
 		</ingredient>
-		<storage class="fridge"><unit>4 celsius</unit></storage>
-		<shelflife>1 year</shelflife>
+		<storage class="fridge" shelflife="1 year"/>
 		<!-- ENVIRONMENT, HEALTH, SAFETY -->
 		<safety signal="warning">
 			<hazard category="3" type="health_hazard">Acute oral toxicity</hazard>
@@ -2254,7 +2238,7 @@
 		<!-- ORGANIZATION -->
 		<category>solution</category>
 		<category>special</category>
-		<source doc_type="COL" id="0001" version="1" definition="yes" primary="yes">co_0001-v1-stock_solutions</source>
+		<source doc_type="COL" id="0001" version="1" visibility="internal" license="CC-BY-SA-4.0"  definition="yes" primary="yes">co_0001-v1-stock_solutions</source>
 	</recipe>
 	<recipe id="R0048">
 		<name>Sodium hydroxide</name>
@@ -2276,7 +2260,7 @@
 		<workup>Add solids slowly into well stirred solution</workup>
 		<note type="orientation">The solution has <pH>14.0</pH></note>
 		<note type="safety">Work inside a chemical fume hood</note>
-		<storage>room temperature in plastic container</storage>
+		<storage>Keep in a plastic container.</storage>
 		<!-- ENVIRONMENT, HEALTH, SAFETY -->
 		<safety signal="danger">
 			<hazard category="1" type="corrosive">Skin corrosion</hazard>
@@ -2288,7 +2272,7 @@
 		<!-- ORGANIZATION -->
 		<category>solution</category>
 		<category>common</category>
-		<source doc_type="COL" id="0001" version="1" definition="yes" primary="yes">co_0001-v1-stock_solutions</source>
+		<source doc_type="COL" id="0001" version="1" visibility="internal" license="CC-BY-SA-4.0"  definition="yes" primary="yes">co_0001-v1-stock_solutions</source>
 	</recipe>
 	<recipe id="R0075">
 		<name>Sodium orthovanadate</name>
@@ -2313,8 +2297,7 @@
 		<workup>Cool to room temperature and readjust to <pH>10</pH></workup>
 		<workup>Repeat until the solution remains colorless at <pH>10</pH></workup>
 		<workup>Dispense in <unit>5 milliliter</unit> aliquots</workup>
-		<storage class="freezer"><unit>-20 celsius</unit></storage>
-		<shelflife>1 year</shelflife>
+		<storage class="freezer" shelflife="1 year"/>
 		<note type="explanation">Depolymerization converts vanadate in a more potent inhibitor of protein tyrosine phosphatases</note>
 		<note type="caution">Dithiothreitol (DTT) rapidly inactivates orthovanadate</note>
 		<!-- ENVIRONMENT, HEALTH, SAFETY -->
@@ -2325,7 +2308,7 @@
 		<!-- ORGANIZATION -->
 		<category>solution</category>
 		<category>special</category>
-		<source doc_type="COL" id="0001" version="1" definition="yes" primary="yes">co_0001-v1-stock_solutions</source>
+		<source doc_type="COL" id="0001" version="1" visibility="internal" license="CC-BY-SA-4.0"  definition="yes" primary="yes">co_0001-v1-stock_solutions</source>
 	</recipe>
 	<recipe id="R0085">
 		<name>Sodium phosphate</name>
@@ -2358,7 +2341,7 @@
 		<!-- ORGANIZATION -->
 		<category>buffer</category>
 		<category>common</category>
-		<source doc_type="COL" id="0001" version="1" definition="yes" primary="yes">co_0001-v1-stock_solutions</source>
+		<source doc_type="COL" id="0001" version="1" visibility="internal" license="CC-BY-SA-4.0"  definition="yes" primary="yes">co_0001-v1-stock_solutions</source>
 	</recipe>
 	<recipe id="R0086">
 		<name>Sodium phosphate</name>
@@ -2390,7 +2373,7 @@
 		<!-- ORGANIZATION -->
 		<category>buffer</category>
 		<category>common</category>
-		<source doc_type="COL" id="0001" version="1" definition="yes" primary="yes">co_0001-v1-stock_solutions</source>
+		<source doc_type="COL" id="0001" version="1" visibility="internal" license="CC-BY-SA-4.0"  definition="yes" primary="yes">co_0001-v1-stock_solutions</source>
 	</recipe>
 	<recipe id="R0049">
 		<name>Spectinomycin</name>
@@ -2412,8 +2395,8 @@
 		</ingredient>
 		<workup>Filter sterilize</workup>
 		<workup>Dispense into <unit>1 milliliter</unit> aliquots</workup>
-		<storage class="freezer"><unit>-20 celsius</unit></storage>
-		<shelflife>several weeks at <unit>4 celsius</unit>; store</shelflife>
+		<storage class="freezer"/>
+		<storage class="fridge" shelflife="several weeks"/>
 		<note type="orientation">Working concentration is <unit>20 to 60 microgram per milliliter</unit></note>
 		<!-- ENVIRONMENT, HEALTH, SAFETY -->
 		<safety signal="danger">
@@ -2423,7 +2406,7 @@
 		<!-- category>solution</category -->
 		<category>antibiotics</category>
 		<category>bacterial</category>
-		<source doc_type="COL" id="0001" version="1" definition="yes" primary="yes">co_0001-v1-stock_solutions</source>
+		<source doc_type="COL" id="0001" version="1" visibility="internal" license="CC-BY-SA-4.0"  definition="yes" primary="yes">co_0001-v1-stock_solutions</source>
 	</recipe>
 	<recipe id="R0066">
 		<name>Sucrose</name>
@@ -2442,10 +2425,9 @@
 		</ingredient>
 		<workup>Heat to <unit>37 celsius</unit> to fully dissolve</workup>
 		<workup>Filter sterilize</workup>
-		<storage>room temperature</storage>
-		<shelflife>4 weeks</shelflife>
+		<storage class="freezer"/>
+		<storage shelflife="4 weeks"/>
 		<note type="orientation">This stock is <unit>85 percent</unit> sucrose</note>
-		<note>Can be stored indefinetly at <unit>-20 celsius</unit></note>
 		<!-- ENVIRONMENT, HEALTH, SAFETY -->
 		<safety>
 			<hazard category="5" type="full">SCIL: Low concern chemical</hazard>
@@ -2453,8 +2435,8 @@
 		<!-- ORGANIZATION -->
 		<category>solution</category>
 		<category>common</category>
-		<source doc_type="COL" id="0001" version="1" definition="yes" primary="yes">co_0001-v1-stock_solutions</source>
-		<source doc_type="SOP" id="0003" version="1" definition="no">sop_0003-v1-native_page</source>
+		<source doc_type="SOP" id="0003" version="1" visibility="public" license="CC-BY-SA-4.0"  definition="no">sop_0003-v1-native_page</source>
+		<source doc_type="COL" id="0001" version="1" visibility="internal" license="CC-BY-SA-4.0"  definition="yes" primary="yes">co_0001-v1-stock_solutions</source>
 	</recipe>
 	<recipe id="R0041">
 		<name>Synthetic dextrose (SD) minimal medium</name>
@@ -2487,7 +2469,7 @@
 		<!-- ORGANIZATION -->
 		<category>media</category>
 		<category>yeast</category>
-		<source doc_type="COL" id="0001" version="1" definition="yes" primary="yes">co_0001-v1-stock_solutions</source>
+		<source doc_type="COL" id="0001" version="1" visibility="internal" license="CC-BY-SA-4.0"  definition="yes" primary="yes">co_0001-v1-stock_solutions</source>
 	</recipe>
 	<recipe id="R0042">
 		<name>Synthetic complete (SC) minimal medium</name>
@@ -2526,7 +2508,7 @@
 		<!-- ORGANIZATION -->
 		<category>media</category>
 		<category>yeast</category>
-		<source doc_type="COL" id="0001" version="1" definition="yes" primary="yes">co_0001-v1-stock_solutions</source>
+		<source doc_type="COL" id="0001" version="1" visibility="internal" license="CC-BY-SA-4.0"  definition="yes" primary="yes">co_0001-v1-stock_solutions</source>
 	</recipe>
 	<recipe id="R0043">
 		<name>Synthetic complete (SC) drop-out mix</name>
@@ -2684,7 +2666,7 @@
 		<!-- ORGANIZATION -->
 		<category>media</category>
 		<category>yeast</category>
-		<source doc_type="COL" id="0001" version="1" definition="yes" primary="yes">co_0001-v1-stock_solutions</source>
+		<source doc_type="COL" id="0001" version="1" visibility="internal" license="CC-BY-SA-4.0"  definition="yes" primary="yes">co_0001-v1-stock_solutions</source>
 	</recipe>
 	<recipe id="R0070">
 		<name>Terrific broth (TB) medium</name>
@@ -2729,14 +2711,13 @@
 			<final>17 millimolar</final>
 		</ingredient>
 		<workup>Autoclave; cool to <unit>60 celsius</unit> before adding phosphate buffers</workup>
-		<storage>room temperature</storage>
-		<shelflife>1 year</shelflife>
+		<storage shelflife="1 year"/>
 		<note type="orientation">TB is a rich growth medium to support high cell density in logarithmic phase for an extended period of time, resulting in higher yields of plasmid DNA or heterologous proteins</note>
 		<!-- ENVIRONMENT, HEALTH, SAFETY -->
 		<!-- ORGANIZATION -->
 		<category>media</category>
 		<category>bacterial</category>
-		<source doc_type="COL" id="0001" version="1" definition="yes" primary="yes">co_0001-v1-stock_solutions</source>
+		<source doc_type="COL" id="0001" version="1" visibility="internal" license="CC-BY-SA-4.0"  definition="yes" primary="yes">co_0001-v1-stock_solutions</source>
 	</recipe>
 	<recipe id="R0050">
 		<name>Tetracycline</name>
@@ -2758,8 +2739,8 @@
 		</ingredient>
 		<workup>Filter sterilize</workup>
 		<workup>Dispense into <unit>1 milliliter</unit> aliquots</workup>
-		<storage class="freezer"><unit>-20 celsius</unit></storage>
-		<shelflife>4 days at <unit>4 celsius</unit>; store</shelflife>
+		<storage class="freezer"/>
+		<storage class="fridge" shelflife="4 days"/>
 		<note type="orientation">Working concentration is <unit>10 to 15 microgram per milliliter</unit></note>
 		<!-- ENVIRONMENT, HEALTH, SAFETY -->
 		<safety signal="warning">
@@ -2770,7 +2751,7 @@
 		<!-- category>solution</category -->
 		<category>antibiotics</category>
 		<category>bacterial</category>
-		<source doc_type="COL" id="0001" version="1" definition="yes" primary="yes">co_0001-v1-stock_solutions</source>
+		<source doc_type="COL" id="0001" version="1" visibility="internal" license="CC-BY-SA-4.0"  definition="yes" primary="yes">co_0001-v1-stock_solutions</source>
 	</recipe>
 	<recipe id="R0065">
 		<name>Trichloroacetic acid</name>
@@ -2789,7 +2770,7 @@
 			<final>100 percent</final>
 		</ingredient>
 		<workup>Prepare directly in the TCA container</workup>
-		<storage>room temperature</storage>
+		<storage/>
 		<note>This stock is approximately <unit>13.5 molar</unit></note>
 		<!-- ENVIRONMENT, HEALTH, SAFETY -->
 		<safety signal="danger">
@@ -2801,7 +2782,7 @@
 		<!-- ORGANIZATION -->
 		<category>solution</category>
 		<category>common</category>
-		<source doc_type="COL" id="0001" version="1" definition="yes" primary="yes">co_0001-v1-stock_solutions</source>
+		<source doc_type="COL" id="0001" version="1" visibility="internal" license="CC-BY-SA-4.0"  definition="yes" primary="yes">co_0001-v1-stock_solutions</source>
 	</recipe>
 	<recipe id="R0051">
 		<name>Tris-acetate-EDTA</name>
@@ -2842,7 +2823,7 @@
 		<!-- ORGANIZATION -->
 		<category>buffer</category>
 		<category>common</category>
-		<source doc_type="COL" id="0001" version="1" definition="yes" primary="yes">co_0001-v1-stock_solutions</source>
+		<source doc_type="COL" id="0001" version="1" visibility="internal" license="CC-BY-SA-4.0"  definition="yes" primary="yes">co_0001-v1-stock_solutions</source>
 	</recipe>
 	<recipe id="R0052">
 		<name>Tris-borate-EDTA</name>
@@ -2887,11 +2868,9 @@
 		</ingredient> -->
 		<workup>Filter through <unit>0.45 micrometer</unit> filter</workup>
 		<workup>Autoclave</workup>
-		<storage>room temperature</storage>
-		<shelflife>6 months</shelflife>
+		<storage shelflife="6 months">Do not store below <unit>4 celsius</unit> to avoid precipitation of the stock.</storage>
 		<note type="critical">Although substitution of disodium EDTA for the free acid will reduce electrical current and heat generated during electrophoresis, this is detrimental to the resolution of small DNA bands due to breakdown of buffering capacity</note>
 		<!-- <citation type="authoryear">PMID:24637158</citation> -->
-		<note type="orientation">Do not store below <unit>4 celsius</unit> to avoid precipitation of the stock</note>
 		<!-- ENVIRONMENT, HEALTH, SAFETY -->
 		<safety signal="danger">
 			<hazard category="1" type="serious_health_hazard">Reproductive toxicology</hazard>
@@ -2899,8 +2878,8 @@
 		<!-- ORGANIZATION -->
 		<category>buffer</category>
 		<category>common</category>
-		<source doc_type="COL" id="0001" version="1" definition="yes" primary="yes">co_0001-v1-stock_solutions</source>
-		<source doc_type="SOP" id="0003" version="1" definition="no">sop_0003-v1-native_page</source>
+		<source doc_type="SOP" id="0003" version="1" visibility="public" license="CC-BY-SA-4.0"  definition="no">sop_0003-v1-native_page</source>
+		<source doc_type="COL" id="0001" version="1" visibility="internal" license="CC-BY-SA-4.0"  definition="yes" primary="yes">co_0001-v1-stock_solutions</source>
 	</recipe>
 	<recipe id="R0053">
 		<name>Tris-buffered saline</name>
@@ -2946,7 +2925,7 @@
 		<!-- ORGANIZATION -->
 		<category>buffer</category>
 		<category>common</category>
-		<source doc_type="COL" id="0001" version="1" definition="yes" primary="yes">co_0001-v1-stock_solutions</source>
+		<source doc_type="COL" id="0001" version="1" visibility="internal" license="CC-BY-SA-4.0"  definition="yes" primary="yes">co_0001-v1-stock_solutions</source>
 	</recipe>
 	<recipe id="R0054">
 		<name>Tris/EDTA</name>
@@ -2976,7 +2955,7 @@
 		<!-- ORGANIZATION -->
 		<category>buffer</category>
 		<category>common</category>
-		<source doc_type="COL" id="0001" version="1" definition="yes" primary="yes">co_0001-v1-stock_solutions</source>
+		<source doc_type="COL" id="0001" version="1" visibility="internal" license="CC-BY-SA-4.0"  definition="yes" primary="yes">co_0001-v1-stock_solutions</source>
 	</recipe>
 	<recipe id="R0055">
 		<name>Tris hydrochloride</name>
@@ -3002,8 +2981,7 @@
 			<amount>68 milliliter</amount>
 		</ingredient>
 		<workup>Autoclave</workup>
-		<storage>room temperature</storage>
-		<shelflife>2 years</shelflife>
+		<storage shelflife="2 years"/>
 		<note type="quality">If stock appears yellow, discard and obtain better quality Tris</note>
 		<note type="critical">The pH of Tris buffers significantly changes with temperature</note>
 		<note type="orientation">Use between pH <unit>7.4 to 8.8 unitless</unit> as buffer</note>
@@ -3011,7 +2989,7 @@
 		<!-- ORGANIZATION -->
 		<category>buffer</category>
 		<category>common</category>
-		<source doc_type="COL" id="0001" version="1" definition="yes" primary="yes">co_0001-v1-stock_solutions</source>
+		<source doc_type="COL" id="0001" version="1" visibility="internal" license="CC-BY-SA-4.0"  definition="yes" primary="yes">co_0001-v1-stock_solutions</source>
 	</recipe>
 	<recipe id="R0056">
 		<name>Tris hydrochloride</name>
@@ -3037,8 +3015,7 @@
 			<amount>42 milliliter</amount>
 		</ingredient>
 		<workup>Autoclave</workup>
-		<storage>room temperature</storage>
-		<shelflife>2 years</shelflife>
+		<storage shelflife="2 years"/>
 		<note type="quality">If stock appears yellow, discard and obtain better quality Tris</note>
 		<note type="critical">The pH of Tris buffers significantly changes with temperature</note>
 		<note type="orientation">Use between pH <unit>7.4 to 8.8 unitless</unit> as buffer</note>
@@ -3046,9 +3023,9 @@
 		<!-- ORGANIZATION -->
 		<category>buffer</category>
 		<category>common</category>
-		<source doc_type="SOP" id="0020" version="1" definition="no">sop_0020-v1-plasmid_isolation</source>
-		<source doc_type="SOP" id="0021" version="1" definition="no">sop_0021-v1-purification_nucleic_acids</source>
-		<source doc_type="COL" id="0001" version="1" definition="yes" primary="yes">co_0001-v1-stock_solutions</source>
+		<source doc_type="SOP" id="0020" version="1" visibility="public" license="CC-BY-SA-4.0"  definition="no">sop_0020-v1-plasmid_isolation</source>
+		<source doc_type="SOP" id="0021" version="1" visibility="public" license="CC-BY-SA-4.0"  definition="no">sop_0021-v1-purification_nucleic_acids</source>
+		<source doc_type="COL" id="0001" version="1" visibility="internal" license="CC-BY-SA-4.0"  definition="yes" primary="yes">co_0001-v1-stock_solutions</source>
 	</recipe>
 	<recipe id="R0057">
 		<name>Triton™ X-100</name>
@@ -3066,8 +3043,7 @@
 			<final>10 percent</final>
 		</ingredient>
 		<workup>Filter sterilize through a <unit>0.45 micrometer</unit> filter</workup>
-		<storage type="dark">room temperature</storage>
-		<shelflife>6 months</shelflife>
+		<storage shelflife="6 months" type="dark"/>
 		<!-- ENVIRONMENT, HEALTH, SAFETY -->
 		<safety signal="danger">
 			<hazard category="1" type="environment">Hazardous to the aquatic environment</hazard>
@@ -3078,9 +3054,9 @@
 		<!-- ORGANIZATION -->
 		<category>solution</category>
 		<category>common</category>
-		<source doc_type="SOP" id="0004" version="3" definition="no">sop_0004-v3-production_recombinant_histones</source>
-		<source doc_type="SOP" id="0001" version="1" definition="no">sop_0001-v1-isolation_nuclei</source>
-		<source doc_type="COL" id="0001" version="1" definition="yes" primary="yes">co_0001-v1-stock_solutions</source>
+		<source doc_type="SOP" id="0001" version="1" visibility="public" license="CC-BY-SA-4.0"  definition="no">sop_0001-v1-isolation_nuclei</source>
+		<source doc_type="SOP" id="0004" version="3" visibility="internal" license="CC-BY-SA-4.0"  definition="no">sop_0004-v3-production_recombinant_histones</source>
+		<source doc_type="COL" id="0001" version="1" visibility="internal" license="CC-BY-SA-4.0"  definition="yes" primary="yes">co_0001-v1-stock_solutions</source>
 	</recipe>
 	<recipe id="R0081">
 		<name>Trypsin solution</name>
@@ -3114,7 +3090,7 @@
 		</ingredient>
 		<workup>Use sterile liquids or filter sterilize</workup>
 		<workup>Dispense in <unit>50 milliliter</unit> aliquots for routine use</workup>
-		<storage class="fridge"><unit>4 celsius</unit></storage>
+		<storage class="fridge"/>
 		<!-- ENVIRONMENT, HEALTH, SAFETY -->
 		<safety signal="warning">
 			<hazard category="2" type="health_hazard">Serious eye irritation</hazard>
@@ -3123,8 +3099,8 @@
 		<!-- ORGANIZATION -->
 		<category>solution</category>
 		<category>mammalian</category>
-		<source doc_type="COL" id="0001" version="1" definition="yes" primary="yes">co_0001-v1-stock_solutions</source>
-		<source doc_type="SOP" id="0015" version="1" definition="no">sop_0015-v1-routine_cell_culture_HeLa</source>
+		<source doc_type="SOP" id="0015" version="1" visibility="public" license="CC-BY-SA-4.0"  definition="no">sop_0015-v1-routine_cell_culture_HeLa</source>
+		<source doc_type="COL" id="0001" version="1" visibility="internal" license="CC-BY-SA-4.0"  definition="yes" primary="yes">co_0001-v1-stock_solutions</source>
 	</recipe>
 	<recipe id="R0082">
 		<name>Trypsin inhibitor solution</name>
@@ -3156,8 +3132,7 @@
 		</ingredient>
 		<workup>Use sterile liquids or filter sterilize</workup>
 		<workup>Dispense in <unit>15 milliliter</unit> aliquots</workup>
-		<storage class="freezer"><unit>-20 celsius</unit></storage>
-		<note type="critical">Not stable at <unit>4 celsius</unit></note>
+		<storage class="freezer">Not stable at <unit>4 celsius</unit>.</storage>
 		<note type="orientation">Resuspend cells in <unit>1 milliliter</unit> <unit>1 fold</unit> trypsin inhibitor solution per milliliter trypisin solution used for dissociation</note>
 		<!-- ENVIRONMENT, HEALTH, SAFETY -->
 		<safety signal="warning">
@@ -3166,7 +3141,7 @@
 		<!-- ORGANIZATION -->
 		<category>solution</category>
 		<category>mammalian</category>
-		<source doc_type="COL" id="0001" version="1" definition="yes" primary="yes">co_0001-v1-stock_solutions</source>
+		<source doc_type="COL" id="0001" version="1" visibility="internal" license="CC-BY-SA-4.0"  definition="yes" primary="yes">co_0001-v1-stock_solutions</source>
 	</recipe>
 	<recipe id="R0058">
 		<name>Tween™ 20</name>
@@ -3184,8 +3159,7 @@
 			<final>20 percent</final>
 		</ingredient>
 		<workup>Filter sterilize; polysorbate 20 is heat-sensitive</workup>
-		<storage type="dark">room temperature</storage>
-		<shelflife>6 months</shelflife>
+		<storage shelflife="6 months" type="dark"/>
 		<note type="quality">Polysorbate 20 is prone to oxidation; if stock turns yellow, discard</note>
 		<!-- ENVIRONMENT, HEALTH, SAFETY -->
 		<safety>
@@ -3194,7 +3168,7 @@
 		<!-- ORGANIZATION -->
 		<category>solution</category>
 		<category>common</category>
-		<source doc_type="COL" id="0001" version="1" definition="yes" primary="yes">co_0001-v1-stock_solutions</source>
+		<source doc_type="COL" id="0001" version="1" visibility="internal" license="CC-BY-SA-4.0"  definition="yes" primary="yes">co_0001-v1-stock_solutions</source>
 	</recipe>
 	<recipe id="R0059">
 		<name>X-Gal</name>
@@ -3212,8 +3186,7 @@
 			<amount>0.40 gram</amount>
 			<final>40 gram per liter</final>
 		</ingredient>
-		<storage class="freezer" type="dark"><unit>-20 celsius</unit></storage>
-		<shelflife>2 years</shelflife>
+		<storage shelflife="2 years" type="dark"/>
 		<note type="orientation">Produces a blue precipitate upon hydrolysis</note>
 		<!-- ENVIRONMENT, HEALTH, SAFETY -->
 		<safety>
@@ -3222,7 +3195,7 @@
 		<!-- ORGANIZATION -->
 		<category>solution</category>
 		<category>special</category>
-		<source doc_type="COL" id="0001" version="1" definition="yes" primary="yes">co_0001-v1-stock_solutions</source>
+		<source doc_type="COL" id="0001" version="1" visibility="internal" license="CC-BY-SA-4.0"  definition="yes" primary="yes">co_0001-v1-stock_solutions</source>
 	</recipe>
 	<recipe id="R0060">
 		<name>YEG medium</name>
@@ -3260,7 +3233,7 @@
 		<!-- ORGANIZATION -->
 		<category>media</category>
 		<category>yeast</category>
-		<source doc_type="COL" id="0001" version="1" definition="yes" primary="yes">co_0001-v1-stock_solutions</source>
+		<source doc_type="COL" id="0001" version="1" visibility="internal" license="CC-BY-SA-4.0"  definition="yes" primary="yes">co_0001-v1-stock_solutions</source>
 	</recipe>
 	<recipe id="R0061">
 		<name>YPD medium</name>
@@ -3298,7 +3271,7 @@
 		<!-- ORGANIZATION -->
 		<category>media</category>
 		<category>yeast</category>
-		<source doc_type="COL" id="0001" version="1" definition="yes" primary="yes">co_0001-v1-stock_solutions</source>
+		<source doc_type="COL" id="0001" version="1" visibility="internal" license="CC-BY-SA-4.0"  definition="yes" primary="yes">co_0001-v1-stock_solutions</source>
 	</recipe>
 	<recipe id="R0062">
 		<name>YPG medium</name>
@@ -3337,7 +3310,7 @@
 		<!-- ORGANIZATION -->
 		<category>media</category>
 		<category>yeast</category>
-		<source doc_type="COL" id="0001" version="1" definition="yes" primary="yes">co_0001-v1-stock_solutions</source>
+		<source doc_type="COL" id="0001" version="1" visibility="internal" license="CC-BY-SA-4.0"  definition="yes" primary="yes">co_0001-v1-stock_solutions</source>
 	</recipe>
 	<recipe id="R0071">
 		<name>YT medium</name>
@@ -3366,14 +3339,14 @@
 			<final>86 millimolar</final>
 		</ingredient>
 		<workup>Adjust pH with sodium hydroxide; autoclave</workup>
-		<storage>room temperature</storage>
+		<storage/>
 		<note type="orientation">YT, or TY, is a rich growth medium optimized for growth and maintenance of filamentous phage such as M13</note>
 		<note type="critical">Do not dilute</note>
 		<!-- ENVIRONMENT, HEALTH, SAFETY -->
 		<!-- ORGANIZATION -->
 		<category>media</category>
 		<category>bacterial</category>
-		<source doc_type="COL" id="0001" version="1" definition="yes" primary="yes">co_0001-v1-stock_solutions</source>
+		<source doc_type="COL" id="0001" version="1" visibility="internal" license="CC-BY-SA-4.0"  definition="yes" primary="yes">co_0001-v1-stock_solutions</source>
 	</recipe>
 	<recipe id="R0078">
 		<name>Zinc chloride</name>
@@ -3392,7 +3365,7 @@
 			<final>0.5 molar</final>
 		</ingredient>
 		<workup>Autoclave</workup>
-		<storage class="fridge"><unit>4 celsius</unit></storage>
+		<storage class="fridge"/>
 		<!-- ENVIRONMENT, HEALTH, SAFETY -->
 		<safety signal="warning">
 			<hazard category="2" type="health_hazard">Serious eye irritation</hazard>
@@ -3403,7 +3376,7 @@
 		<!-- ORGANIZATION -->
 		<category>solution</category>
 		<category>common</category>
-		<source doc_type="COL" id="0001" version="1" definition="yes" primary="yes">co_0001-v1-stock_solutions</source>
+		<source doc_type="COL" id="0001" version="1" visibility="internal" license="CC-BY-SA-4.0"  definition="yes" primary="yes">co_0001-v1-stock_solutions</source>
 	</recipe>
 	<recipe id="R0090">
 		<!-- also used in SOP0002, SOP0025 -->
@@ -3473,8 +3446,8 @@
 		<!-- ORGANIZATION -->
 		<category>solution</category>
 		<category>special</category>
-		<source doc_type="SOP" id="0002" version="1" definition="no">sop_0002-v1-whole_cell_extraction_mammalian_cells</source>
-		<source doc_type="SOP" id="0001" version="1" definition="yes" primary="yes">sop_0001-v1-isolation_nuclei</source>
+		<source doc_type="SOP" id="0001" version="1" visibility="public" license="CC-BY-SA-4.0"  definition="yes" primary="yes">sop_0001-v1-isolation_nuclei</source>
+		<source doc_type="SOP" id="0002" version="1" visibility="public" license="CC-BY-SA-4.0"  definition="no">sop_0002-v1-whole_cell_extraction_mammalian_cells</source>
 	</recipe>
 	<recipe id="R0091">
 		<name>Swelling buffer</name>
@@ -3525,11 +3498,11 @@
 			<final>1 fold</final>
 		</ingredient>
 		<workup>Add DTT and inhibitor cocktail immediately before use</workup>
-		<storage><unit>4 celsius</unit></storage>
+		<storage class="fridge"/>
 		<!-- ORGANIZATION -->
 		<category>buffer</category>
 		<category>mammalian</category>
-		<source doc_type="SOP" id="0001" version="1" definition="yes" primary="yes">sop_0001-v1-isolation_nuclei</source>
+		<source doc_type="SOP" id="0001" version="1" visibility="public" license="CC-BY-SA-4.0"  definition="yes" primary="yes">sop_0001-v1-isolation_nuclei</source>
 	</recipe>
 	<recipe id="R0092">
 		<name>Sucrose buffer</name>
@@ -3584,13 +3557,13 @@
 			<amount>100 microliter</amount>
 			<final>1 fold</final>
 		</ingredient>
-		<storage><unit>4 celsius</unit></storage>
+		<storage class="fridge"/>
 		<workup>Add DTT and inhibitor cocktail immediately before use</workup>
 		<note type="critical">Sucrose-containing solutions must be made up fresh on the day</note>
 		<!-- ORGANIZATION -->
 		<category>buffer</category>
 		<category>mammalian</category>
-		<source doc_type="SOP" id="0001" version="1" definition="yes" primary="yes">sop_0001-v1-isolation_nuclei</source>
+		<source doc_type="SOP" id="0001" version="1" visibility="public" license="CC-BY-SA-4.0"  definition="yes" primary="yes">sop_0001-v1-isolation_nuclei</source>
 	</recipe>
 	<recipe id="R0133">
 		<name>Trypan blue solution</name>
@@ -3616,8 +3589,8 @@
 			<amount>10 milliliter</amount>
 		</ingredient>
 		<workup>Dissolve the dye in <unit>80 percent</unit> of the final volume; bring to a slow boil, cool down and make up with water</workup>
-		<source doc_type="SOP" id="0014" version="1" definition="yes" primary="yes">sop_0014-v1-counting_cells</source>
-		<source doc_type="SOP" id="0001" version="1" definition="no">sop_0001-v1-isolation_nuclei</source>
+		<source doc_type="SOP" id="0001" version="1" visibility="public" license="CC-BY-SA-4.0"  definition="no">sop_0001-v1-isolation_nuclei</source>
+		<source doc_type="SOP" id="0014" version="1" visibility="public" license="CC-BY-SA-4.0"  definition="yes" primary="yes">sop_0014-v1-counting_cells</source>
 	</recipe>
 	<recipe id="R0148">
 		<name>Radioimmunoprecipitation lysis buffer</name>
@@ -3676,10 +3649,10 @@
 			<amount>100 microliter</amount>
 			<final>2 millimolar</final>
 		</ingredient>
-		<storage class="fridge"><unit>4 celsius</unit></storage>
 		<workup>Filter sterilize</workup>
 		<workup>Add reducing agent right before use</workup>
-		<workup>Can be aliquoted and stored at <unit>-20 celsius</unit></workup>
+		<storage class="fridge"/>
+		<storage class="freezer"/>
 		<note>This is Proteintech’s optimized RIPA buffer recipe</note>
 		<note type="explanation">IGEPAL® CA-630 is a mild detergent alternative to Nonidet P-40 which is no longer manufactured; it can be replaced with Triton™ X-100</note>
 		<note type="critical">Due to limited solubility, this buffer cannot be prepared as concentrated stock</note>
@@ -3690,7 +3663,7 @@
 		<!-- ORGANIZATION -->
 		<category>buffer</category>
 		<category>mammalian</category>
-		<source doc_type="SOP" id="0002" version="1" definition="yes" primary="yes">sop_0002-v1-whole_cell_extraction_mammalian_cells</source>
+		<source doc_type="SOP" id="0002" version="1" visibility="public" license="CC-BY-SA-4.0"  definition="yes" primary="yes">sop_0002-v1-whole_cell_extraction_mammalian_cells</source>
 	</recipe>
 	<recipe id="R0149">
 		<name>NP-40 lysis buffer</name>
@@ -3741,10 +3714,10 @@
 			<amount>100 microliter</amount>
 			<final>1 millimolar</final>
 		</ingredient>
-		<storage class="fridge"><unit>4 celsius</unit></storage>
 		<workup>Filter sterilize</workup>
 		<workup>Add reducing agent right before use</workup>
-		<workup>Can be aliquoted and stored at <unit>-20 celsius</unit></workup>
+		<storage class="fridge"/>
+		<storage class="freezer"/>
 		<note>Add up to <unit>1 percent</unit> sodium deoxycholate to increase stringency</note>
 		<note type="explanation">IGEPAL® CA-630 is a mild detergent alternative to Nonidet P-40 which is no longer manufactured; it can be replaced with Triton™ X-100</note>
 		<!-- ENVIRONMENT, HEALTH, SAFETY -->
@@ -3754,7 +3727,7 @@
 		<!-- ORGANIZATION -->
 		<category>buffer</category>
 		<category>mammalian</category>
-		<source doc_type="SOP" id="0002" version="1" definition="yes" primary="yes">sop_0002-v1-whole_cell_extraction_mammalian_cells</source>
+		<source doc_type="SOP" id="0002" version="1" visibility="public" license="CC-BY-SA-4.0"  definition="yes" primary="yes">sop_0002-v1-whole_cell_extraction_mammalian_cells</source>
 	</recipe>
 	<recipe hide="yes" id="R0150">
 		<name>Tris-Triton buffer</name>
@@ -3811,10 +3784,10 @@
 			<amount>100 microliter</amount>
 			<final>2 millimolar</final>
 		</ingredient>
-		<storage class="fridge"><unit>4 celsius</unit></storage>
 		<workup>Filter sterilize</workup>
 		<workup>Add reducing agent right before use</workup>
-		<workup>Can be aliquoted and stored at <unit>-20 celsius</unit></workup>
+		<storage class="fridge"/>
+		<storage class="freezer"/>
 		<!-- ENVIRONMENT, HEALTH, SAFETY -->
 		<safety signal="warning">
 			<hazard category="2" type="health_hazard">Eye irritation</hazard>
@@ -3822,7 +3795,7 @@
 		<!-- ORGANIZATION -->
 		<category>buffer</category>
 		<category>mammalian</category>
-		<source doc_type="SOP" id="0002" version="1" definition="yes" primary="yes">sop_0002-v1-whole_cell_extraction_mammalian_cells</source>
+		<source doc_type="SOP" id="0002" version="1" visibility="public" license="CC-BY-SA-4.0"  definition="yes" primary="yes">sop_0002-v1-whole_cell_extraction_mammalian_cells</source>
 	</recipe>
 	<recipe id="R0151">
 		<name>Urea lysis buffer</name>
@@ -3848,9 +3821,9 @@
 			<final>9 molar</final>
 		</ingredient>
 		<workup>Reconstitute urea in a water bath of <unit>25 to 30 celsius</unit> for <unit>30 minute</unit> to aid dissolution</workup>
+		<storage>To avoid precipitation.</storage>
 		<note type="critical">Do not warm above <unit>30 celsius</unit> since isocyanates will form and irreversibly modify proteins</note>
 		<note type="critical">Prepare fresh, use within one day</note>
-		<note>Keep at room temperature to avoid precipitation</note>
 		<!-- ENVIRONMENT, HEALTH, SAFETY -->
 		<safety signal="warning">
 			<hazard category="2" type="health_hazard">Eye irritation</hazard>
@@ -3859,7 +3832,7 @@
 		<!-- ORGANIZATION -->
 		<category>buffer</category>
 		<category>special</category>
-		<source doc_type="SOP" id="0002" version="1" definition="yes" primary="yes">sop_0002-v1-whole_cell_extraction_mammalian_cells</source>
+		<source doc_type="SOP" id="0002" version="1" visibility="public" license="CC-BY-SA-4.0"  definition="yes" primary="yes">sop_0002-v1-whole_cell_extraction_mammalian_cells</source>
 	</recipe>
 	<recipe id="R0093">
 		<name>Resuspension buffer</name>
@@ -3914,7 +3887,7 @@
 		<!-- ORGANIZATION -->
 		<category>buffer</category>
 		<category>special</category>
-		<source doc_type="SOP" id="0004" version="3" definition="yes" primary="yes">sop_0004-v3-production_recombinant_histones</source>
+		<source doc_type="SOP" id="0004" version="3" visibility="internal" license="CC-BY-SA-4.0"  definition="yes" primary="yes">sop_0004-v3-production_recombinant_histones</source>
 	</recipe>
 	<recipe id="R0094">
 		<name>Urea extraction buffer</name>
@@ -3953,9 +3926,9 @@
 		</ingredient>
 		<workup>Reconstitute urea in <unit>10 milliliter</unit> water before adding thiourea</workup>
 		<workup>Stir in a water bath of <unit>25 to 30 celsius</unit> for <unit>30 minute</unit> to aid dissolution</workup>
+		<storage>To avoid precipitation.</storage>
 		<note type="critical">Do not warm above <unit>30 celsius</unit> since isocyanates and isothiocyanates will form and irreversibly modify proteins</note>
 		<note type="critical">Prepare fresh, use within one day</note>
-		<note type="critical">Keep at room temperature to avoid precipitation</note>
 		<!-- ENVIRONMENT, HEALTH, SAFETY -->
 		<safety signal="danger">
 			<hazard category="4" type="health_hazard">Acute oral toxicity</hazard>
@@ -3969,7 +3942,7 @@
 		<!-- ORGANIZATION -->
 		<category>buffer</category>
 		<category>special</category>
-		<source doc_type="SOP" id="0004" version="3" definition="yes" primary="yes">sop_0004-v3-production_recombinant_histones</source>
+		<source doc_type="SOP" id="0004" version="3" visibility="internal" license="CC-BY-SA-4.0"  definition="yes" primary="yes">sop_0004-v3-production_recombinant_histones</source>
 	</recipe>
 	<recipe id="R0095">
 		<name>Urea wash buffer</name>
@@ -4019,7 +3992,7 @@
 		<!-- ORGANIZATION -->
 		<category>buffer</category>
 		<category>special</category>
-		<source doc_type="SOP" id="0004" version="3" definition="yes" primary="yes">sop_0004-v3-production_recombinant_histones</source>
+		<source doc_type="SOP" id="0004" version="3" visibility="internal" license="CC-BY-SA-4.0"  definition="yes" primary="yes">sop_0004-v3-production_recombinant_histones</source>
 	</recipe>
 	<recipe id="R0096">
 		<name>Guanidine elution buffer</name>
@@ -4060,7 +4033,7 @@
 		<!-- ORGANIZATION -->
 		<category>buffer</category>
 		<category>special</category>
-		<source doc_type="SOP" id="0004" version="3" definition="no" primary="yes">sop_0004-v3-production_recombinant_histones</source>
+		<source doc_type="SOP" id="0004" version="3" visibility="internal" license="CC-BY-SA-4.0"  definition="no" primary="yes">sop_0004-v3-production_recombinant_histones</source>
 	</recipe>
 	<recipe id="R0097">
 		<name>HPLC solvent A</name>
@@ -4080,7 +4053,7 @@
 			<amount>4 milliliter</amount>
 			<final>0.1 percent</final>
 		</ingredient>
-		<source doc_type="SOP" id="0004" version="3" definition="yes" primary="yes">sop_0004-v3-production_recombinant_histones</source>
+		<source doc_type="SOP" id="0004" version="3" visibility="internal" license="CC-BY-SA-4.0"  definition="yes" primary="yes">sop_0004-v3-production_recombinant_histones</source>
 	</recipe>
 	<recipe id="R0098">
 		<name>HPLC solvent B</name>
@@ -4113,7 +4086,7 @@
 			<hazard category="4" hide="yes" type="health_hazard">Acute dermal toxicity</hazard>
 			<precaution>nitrile gloves are NOT recommended for work with acetonitrile</precaution>
 		</safety>
-		<source doc_type="SOP" id="0004" version="3" definition="yes" primary="yes">sop_0004-v3-production_recombinant_histones</source>
+		<source doc_type="SOP" id="0004" version="3" visibility="internal" license="CC-BY-SA-4.0"  definition="yes" primary="yes">sop_0004-v3-production_recombinant_histones</source>
 	</recipe>
 	<recipe id="R0099">
 		<name>Unfolding buffer</name>
@@ -4165,7 +4138,7 @@
 		<!-- ORGANIZATION -->
 		<category>buffer</category>
 		<category>special</category>
-		<source doc_type="SOP" id="0005" version="2" definition="yes" primary="yes">sop_0005-v2-production_histone_octamers</source>
+		<source doc_type="SOP" id="0005" version="2" visibility="public" license="CC-BY-SA-4.0"  definition="yes" primary="yes">sop_0005-v2-production_histone_octamers</source>
 	</recipe>
 	<recipe id="R0100">
 		<name>Refolding buffer</name>
@@ -4210,7 +4183,7 @@
 			<final>1 millimolar</final>
 			<final type="diluted">0.5 millimolar</final>
 		</ingredient>
-		<storage class="fridge"><unit>4 celsius</unit></storage>
+		<storage class="fridge"/>
 		<workup>Filter sterilize</workup>
 		<workup>Add reducing agent right before use</workup>
 		<!-- ENVIRONMENT, HEALTH, SAFETY -->
@@ -4221,8 +4194,8 @@
 		<!-- ORGANIZATION -->
 		<category>buffer</category>
 		<category>special</category>
-		<source doc_type="SOP" id="0005" version="2" definition="yes" primary="yes">sop_0005-v2-production_histone_octamers</source>
-		<source doc_type="SOP" id="0006" version="2" definition="yes">sop_0006-v2-production_nucleosome</source>
+		<source doc_type="SOP" id="0005" version="2" visibility="public" license="CC-BY-SA-4.0"  definition="yes" primary="yes">sop_0005-v2-production_histone_octamers</source>
+		<source doc_type="SOP" id="0006" version="2" visibility="internal" license="CC-BY-SA-4.0"  definition="yes">sop_0006-v2-production_nucleosome</source>
 	</recipe>
 	<recipe id="R0101">
 		<name>Tris-EDTA-KCl</name>
@@ -4260,14 +4233,14 @@
 		</ingredient>
 		<workup>Adjust pH at room temperature</workup>
 		<workup>Autoclave</workup>
-		<storage class="fridge"><unit>4 celsius</unit></storage>
+		<storage class="fridge"/>
 		<note type="orientation">At <unit>4 celsius</unit>, diluted TEK buffers will be at <pH>7.8</pH></note>
 		<note type="orientation">Potassium chloride can be replaced with sodium chloride for mononucleosome reconstitution</note>
 		<note type="orientation">For arrays, high potassium concentrations prevent nucleosome stacking and precipitation <citation type="authoryear">PMID:2719953,PMID:25688036</citation></note>
 		<!-- ORGANIZATION -->
 		<category>buffer</category>
 		<category>special</category>
-		<source doc_type="SOP" id="0006" version="2" definition="yes" primary="yes">sop_0006-v2-production_nucleosome</source>
+		<source doc_type="SOP" id="0006" version="2" visibility="internal" license="CC-BY-SA-4.0"  definition="yes" primary="yes">sop_0006-v2-production_nucleosome</source>
 	</recipe>
 	<recipe id="R0102">
 		<name>Tris-Cl</name>
@@ -4291,11 +4264,11 @@
 			<stock>11.65 molar</stock>
 			<amount>5 milliliter</amount>
 		</ingredient>
-		<storage class="fridge"><unit>4 celsius</unit></storage>
+		<storage class="fridge"/>
 		<!-- ORGANIZATION -->
 		<category>buffer</category>
 		<category>common</category>
-		<source doc_type="SOP" id="0007" version="1" definition="yes" primary="yes">sop_0007-v1-sds_page</source>
+		<source doc_type="SOP" id="0007" version="1" visibility="public" license="CC-BY-SA-4.0"  definition="yes" primary="yes">sop_0007-v1-sds_page</source>
 	</recipe>
 	<recipe id="R0103">
 		<name>Tris-Cl</name>
@@ -4319,11 +4292,11 @@
 			<stock>11.65 molar</stock>
 			<amount>5 milliliter</amount>
 		</ingredient>
-		<storage class="fridge"><unit>4 celsius</unit></storage>
+		<storage class="fridge"/>
 		<!-- ORGANIZATION -->
 		<category>buffer</category>
 		<category>common</category>
-		<source doc_type="SOP" id="0007" version="1" definition="yes" primary="yes">sop_0007-v1-sds_page</source>
+		<source doc_type="SOP" id="0007" version="1" visibility="public" license="CC-BY-SA-4.0"  definition="yes" primary="yes">sop_0007-v1-sds_page</source>
 	</recipe>
 	<recipe id="R0104">
 		<name>Laemmli sample buffer</name>
@@ -4377,13 +4350,13 @@
 			<final type="diluted">285 millimolar</final>
 		</ingredient>
 		<workup>Add reducing agent freshly; dispense into <unit>920 microliter</unit> aliquots and make up to <unit>1 milliliter</unit> with <unit>80 microliter</unit> 2-mercaptoethanol just before use. Alternatively, make up with water and add dithiothreitol to <unit>100 millimolar</unit> when diluting samples</workup>
-		<storage class="freezer"><unit>-20 celsius</unit></storage>
+		<storage class="freezer"/>
 		<note>Bromophenol blue is saturated at <unit>1.0 gram per liter</unit></note>
 		<note>The high chloride concentration in this sample buffer aids stacking</note>
 		<!-- ORGANIZATION -->
 		<category>buffer</category>
 		<category>special</category>
-		<source doc_type="SOP" id="0007" version="1" definition="yes" primary="yes">sop_0007-v1-sds_page</source>
+		<source doc_type="SOP" id="0007" version="1" visibility="public" license="CC-BY-SA-4.0"  definition="yes" primary="yes">sop_0007-v1-sds_page</source>
 	</recipe>
 	<recipe id="R0105">
 		<name>Tris-Gly running buffer</name>
@@ -4419,12 +4392,12 @@
 			<final type="diluted">1 percent</final>
 		</ingredient>
 		<workup>Expect <pH>8.3</pH></workup>
-		<storage>room temperature</storage>
+		<storage/>
 		<note type="critical">Do not adjust even if above <pH>9.0</pH> since glycine (rather than chloride) must remain the trailing ion in the buffer</note>
 		<!-- ORGANIZATION -->
 		<category>buffer</category>
 		<category>common</category>
-		<source doc_type="SOP" id="0007" version="1" definition="yes" primary="yes">sop_0007-v1-sds_page</source>
+		<source doc_type="SOP" id="0007" version="1" visibility="public" license="CC-BY-SA-4.0"  definition="yes" primary="yes">sop_0007-v1-sds_page</source>
 	</recipe>
 	<recipe id="R0106">
 		<name>Bis-Tris</name>
@@ -4449,13 +4422,13 @@
 			<amount>40 milliliter</amount>
 		</ingredient>
 		<workup>Filter sterilize</workup>
-		<storage class="fridge"><unit>4 celsius</unit></storage>
+		<storage class="fridge"/>
 		<note>This buffer can be prepared at <pH>6.5</pH> to aid resolution</note>
 		<note>Bis-Tris strongly interacts with copper, lead, and other heavy metal cations</note>
 		<!-- ORGANIZATION -->
 		<category>buffer</category>
 		<category>common</category>
-		<source doc_type="SOP" id="0007" version="1" definition="yes" primary="yes">sop_0007-v1-sds_page</source>
+		<source doc_type="SOP" id="0007" version="1" visibility="public" license="CC-BY-SA-4.0"  definition="yes" primary="yes">sop_0007-v1-sds_page</source>
 	</recipe>
 	<recipe id="R0107">
 		<name>LDS sample buffer</name>
@@ -4514,8 +4487,7 @@
 			<final>40 percent</final>
 			<final type="diluted">10 percent</final>
 		</ingredient>
-		<storage>room temperature</storage>
-		<shelflife>6 months</shelflife>
+		<storage shelflife="6 months"/>
 		<note><unit>8 percent</unit> LDS can be substituted with up to <unit>4 percent</unit> SDS.</note>
 		<note>Brilliant Blue G gives a sharper dye front in MES and MOPS running buffers and migrates more closely to the moving ion front than bromophenol blue</note>
 		<note>Phenol red will turn yellow when the running buffer was poorly made or recycled too many times</note>
@@ -4523,7 +4495,7 @@
 		<!-- ORGANIZATION -->
 		<category>buffer</category>
 		<category>special</category>
-		<source doc_type="SOP" id="0007" version="1" definition="yes" primary="yes">sop_0007-v1-sds_page</source>
+		<source doc_type="SOP" id="0007" version="1" visibility="public" license="CC-BY-SA-4.0"  definition="yes" primary="yes">sop_0007-v1-sds_page</source>
 	</recipe>
 	<recipe id="R0108">
 		<name>MES running buffer</name>
@@ -4566,12 +4538,11 @@
 			<final type="diluted">1 millimolar</final>
 		</ingredient>
 		<workup>expect <pH>7.3</pH>, do not adjust</workup>
-		<storage class="fridge"><unit>4 celsius</unit></storage>
-		<shelflife>6 months</shelflife>
+		<storage class="fridge" shelflife="6 months"/>
 		<!-- ORGANIZATION -->
 		<category>buffer</category>
 		<category>common</category>
-		<source doc_type="SOP" id="0007" version="1" definition="yes" primary="yes">sop_0007-v1-sds_page</source>
+		<source doc_type="SOP" id="0007" version="1" visibility="public" license="CC-BY-SA-4.0"  definition="yes" primary="yes">sop_0007-v1-sds_page</source>
 	</recipe>
 	<recipe id="R0109">
 		<name>MOPS running buffer</name>
@@ -4614,13 +4585,13 @@
 			<final type="diluted">1 millimolar</final>
 		</ingredient>
 		<workup>Expect <pH>7.7</pH>, do not adjust</workup>
-		<storage class="fridge"><unit>4 celsius</unit></storage>
-		<shelflife>6 months</shelflife>
-		<note>Aliquots of <unit>50 milliliter</unit> can be stored at <unit>-20 celsius</unit></note>
+		<workup>Dispense into <unit>50 milliliter</unit> aliquots</workup>
+		<storage class="freezer"/>
+		<storage class="fridge" shelflife="6 months"/>
 		<!-- ORGANIZATION -->
 		<category>buffer</category>
 		<category>common</category>
-		<source doc_type="SOP" id="0007" version="1" definition="yes" primary="yes">sop_0007-v1-sds_page</source>
+		<source doc_type="SOP" id="0007" version="1" visibility="public" license="CC-BY-SA-4.0"  definition="yes" primary="yes">sop_0007-v1-sds_page</source>
 	</recipe>
 	<recipe id="R0110">
 		<name>Low molecular weight marker</name>
@@ -4680,13 +4651,13 @@
 		</ingredient>
 		<workup>Dilute each components in <unit>500 microliter</unit> <unit>1 fold</unit> sample buffer</workup>
 		<workup>Dispense into <unit>20 microliter</unit> aliquots</workup>
-		<storage class="freezer"><unit>-20 celsius</unit></storage>
+		<storage class="freezer"/>
 		<note>Check the integrity of each component on a gel before combining</note>
 		<note>Apply <unit>20 microliter</unit> low molecular weight marker (LMW) per lane</note>
 		<!-- ORGANIZATION -->
 		<category>standard</category>
 		<category>special</category>
-		<source doc_type="SOP" id="0007" version="1" definition="yes" primary="yes">sop_0007-v1-sds_page</source>
+		<source doc_type="SOP" id="0007" version="1" visibility="public" license="CC-BY-SA-4.0"  definition="yes" primary="yes">sop_0007-v1-sds_page</source>
 	</recipe>
 	<recipe id="R0111">
 		<name>High molecular weight marker</name>
@@ -4741,12 +4712,12 @@
 		<workup>Dilute each component in <unit>500 microliter</unit> <unit>1 fold</unit> sample buffer</workup>
 		<workup>Dispense into <unit>20 microliter</unit> aliquots</workup>
 		<note>Check the integrity of each component on a gel before combining</note>
-		<storage class="freezer"><unit>-20 celsius</unit></storage>
+		<storage class="freezer"/>
 		<note>Apply <unit>20 microliter</unit> high molecular weight marker (HMW) per lane</note>
 		<!-- ORGANIZATION -->
 		<category>standard</category>
 		<category>special</category>
-		<source doc_type="SOP" id="0007" version="1" definition="yes" primary="yes">sop_0007-v1-sds_page</source>
+		<source doc_type="SOP" id="0007" version="1" visibility="public" license="CC-BY-SA-4.0"  definition="yes" primary="yes">sop_0007-v1-sds_page</source>
 	</recipe>
 	<recipe hide="yes" id="R0112">
 		<name>Tris-Gly transfer buffer (Towbin)</name>
@@ -4773,7 +4744,7 @@
 			<final type="diluted">192 millimolar</final>
 		</ingredient>
 		<workup>Do not adjust pH</workup>
-		<source doc_type="SOP" id="0008" version="1" definition="yes" primary="yes">sop_0008-v1-blotting_western</source>
+		<source doc_type="SOP" id="0008" version="1" visibility="public" license="CC-BY-SA-4.0"  definition="yes" primary="yes">sop_0008-v1-blotting_western</source>
 	</recipe>
 	<recipe hide="yes" id="R0113">
 		<name>Tris-Gly transfer buffer (Bjerrum)</name>
@@ -4801,7 +4772,7 @@
 		</ingredient>
 		<workup>Do not adjust pH</workup>
 		<note>Use for native proteins</note>
-		<source doc_type="SOP" id="0008" version="1" definition="yes" primary="yes">sop_0008-v1-blotting_western</source>
+		<source doc_type="SOP" id="0008" version="1" visibility="public" license="CC-BY-SA-4.0"  definition="yes" primary="yes">sop_0008-v1-blotting_western</source>
 	</recipe>
 	<recipe hide="yes" id="R0114">
 		<name>CAPS buffer</name>
@@ -4824,7 +4795,7 @@
 		<workup>Adjust pH with sodium hydroxide</workup>
 		<note>Use for basic proteins</note>
 		<note type="explanation">Some protocols use <unit>100 millimolar</unit> CAPS for protein crystallography or general biochemistry, but this is not typical for Westerns</note>
-		<source doc_type="SOP" id="0008" version="1" definition="yes" primary="yes">sop_0008-v1-blotting_western</source>
+		<source doc_type="SOP" id="0008" version="1" visibility="public" license="CC-BY-SA-4.0"  definition="yes" primary="yes">sop_0008-v1-blotting_western</source>
 	</recipe>
 	<recipe id="R0115">
 		<name>Anode buffer</name>
@@ -4844,7 +4815,7 @@
 			<final type="diluted">25 millimolar</final>
 		</ingredient>
 		<workup>Adjust pH with sodium hydroxide</workup>
-		<source doc_type="SOP" id="0008" version="1" definition="yes" primary="yes">sop_0008-v1-blotting_western</source>
+		<source doc_type="SOP" id="0008" version="1" visibility="public" license="CC-BY-SA-4.0"  definition="yes" primary="yes">sop_0008-v1-blotting_western</source>
 	</recipe>
 	<recipe id="R0116">
 		<name>Cathode buffer</name>
@@ -4869,7 +4840,7 @@
 			<amount>26.2 gram</amount>
 		</ingredient>
 		<workup>Adjust pH with sodium hydroxide</workup>
-		<source doc_type="SOP" id="0008" version="1" definition="yes" primary="yes">sop_0008-v1-blotting_western</source>
+		<source doc_type="SOP" id="0008" version="1" visibility="public" license="CC-BY-SA-4.0"  definition="yes" primary="yes">sop_0008-v1-blotting_western</source>
 	</recipe>
 	<recipe id="R0117">
 		<name>Ponceau S solution</name>
@@ -4894,7 +4865,7 @@
 			<final>1.0 percent</final>
 		</ingredient>
 		<note>The <unit>0.01 percent</unit> solution is as sensitive as a <unit>0.1 percent</unit> solution</note>
-		<source doc_type="SOP" id="0008" version="1" definition="yes" primary="yes">sop_0008-v1-blotting_western</source>
+		<source doc_type="SOP" id="0008" version="1" visibility="public" license="CC-BY-SA-4.0"  definition="yes" primary="yes">sop_0008-v1-blotting_western</source>
 	</recipe>
 	<recipe id="R0169">
 		<name>TBS with Tween™ 20</name>
@@ -4919,12 +4890,11 @@
 			<amount>5 milliliter</amount>
 			<final>0.1 percent</final>
 		</ingredient>
-		<storage class="fridge"><unit>4 celsius</unit></storage>
-		<shelflife>1 month</shelflife>
+		<storage class="fridge" shelflife="1 month"/>
 		<workup>Add sodium azide to <unit>0.05 percent</unit> to increase shelflife</workup>
 		<note type="orientation">Compatible with PVDF or nitrocellulose (NC) membranes; do not use Tween™ 20 with nylon membranes</note>
-		<source doc_type="SOP" id="0029" version="1" definition="yes">sop_0029-v1-cell_cycle_flow_cytometry</source>
-		<source doc_type="SOP" id="0009" version="1" definition="yes" primary="yes">sop_0009-v1-immunoblotting</source>
+		<source doc_type="SOP" id="0029" version="1" visibility="internal" license="CC-BY-SA-4.0"  definition="yes">sop_0029-v1-cell_cycle_flow_cytometry</source>
+		<source doc_type="SOP" id="0009" version="1" visibility="public" license="CC-BY-SA-4.0"  definition="yes" primary="yes">sop_0009-v1-immunoblotting</source>
 	</recipe>
 	<recipe id="R0118">
 		<name>Tris hydrochloride</name>
@@ -4950,9 +4920,8 @@
 			<amount>20 milliliter</amount>
 		</ingredient>
 		<workup>Adjust pH to <unit>8.5 to 8.8 unitless</unit></workup>
-		<storage>room temperature</storage>
-		<shelflife>2 years</shelflife>
-		<source doc_type="SOP" id="0009" version="1" definition="yes" primary="yes">sop_0009-v1-immunoblotting</source>
+		<storage shelflife="2 years"/>
+		<source doc_type="SOP" id="0009" version="1" visibility="public" license="CC-BY-SA-4.0"  definition="yes" primary="yes">sop_0009-v1-immunoblotting</source>
 	</recipe>
 	<recipe id="R0119">
 		<name>Luminol</name>
@@ -4971,8 +4940,8 @@
 			<final>250 millimolar</final>
 		</ingredient>
 		<workup>Dispense into <unit>50 microliter</unit> aliquots</workup>
-		<storage class="freezer"><unit>-20 celsius</unit></storage>
-		<source doc_type="SOP" id="0009" version="1" definition="yes" primary="yes">sop_0009-v1-immunoblotting</source>
+		<storage class="freezer"/>
+		<source doc_type="SOP" id="0009" version="1" visibility="public" license="CC-BY-SA-4.0"  definition="yes" primary="yes">sop_0009-v1-immunoblotting</source>
 	</recipe>
 	<recipe id="R0120">
 		<name><emph>p-</emph>Coumaric acid</name>
@@ -4991,8 +4960,8 @@
 			<final>90 millimolar</final>
 		</ingredient>
 		<workup>Dispense into <unit>25 microliter</unit> aliquots</workup>
-		<storage class="freezer"><unit>-20 celsius</unit></storage>
-		<source doc_type="SOP" id="0009" version="1" definition="yes" primary="yes">sop_0009-v1-immunoblotting</source>
+		<storage class="freezer"/>
+		<source doc_type="SOP" id="0009" version="1" visibility="public" license="CC-BY-SA-4.0"  definition="yes" primary="yes">sop_0009-v1-immunoblotting</source>
 	</recipe>
 	<recipe id="R0121">
 		<name>ECL reagent</name>
@@ -5033,7 +5002,7 @@
 		<!-- ORGANIZATION -->
 		<category>solution</category>
 		<category>special</category>
-		<source doc_type="SOP" id="0009" version="1" definition="yes" primary="yes">sop_0009-v1-immunoblotting</source>
+		<source doc_type="SOP" id="0009" version="1" visibility="public" license="CC-BY-SA-4.0"  definition="yes" primary="yes">sop_0009-v1-immunoblotting</source>
 	</recipe>
 	<recipe id="R0122">
 		<name>Stripping buffer</name>
@@ -5067,7 +5036,7 @@
 		<!-- ORGANIZATION -->
 		<category>buffer</category>
 		<category>special</category>
-		<source doc_type="SOP" id="0009" version="1" definition="yes" primary="yes">sop_0009-v1-immunoblotting</source>
+		<source doc_type="SOP" id="0009" version="1" visibility="public" license="CC-BY-SA-4.0"  definition="yes" primary="yes">sop_0009-v1-immunoblotting</source>
 	</recipe>
 	<recipe id="R0123">
 		<name>Coomassie destaining solution</name>
@@ -5114,7 +5083,7 @@
 		<!-- ORGANIZATION -->
 		<category>solution</category>
 		<category>common</category>
-		<source doc_type="SOP" id="0010" version="1" definition="yes" primary="yes">sop_0010-v1-protein_gel_coomassie_staining</source>
+		<source doc_type="SOP" id="0010" version="1" visibility="public" license="CC-BY-SA-4.0"  definition="yes" primary="yes">sop_0010-v1-protein_gel_coomassie_staining</source>
 	</recipe>
 	<recipe id="R0124">
 		<name>Coomassie staining solution</name>
@@ -5143,7 +5112,7 @@
 		<!-- ORGANIZATION -->
 		<category>solution</category>
 		<category>common</category>
-		<source doc_type="SOP" id="0010" version="1" definition="yes" primary="yes">sop_0010-v1-protein_gel_coomassie_staining</source>
+		<source doc_type="SOP" id="0010" version="1" visibility="public" license="CC-BY-SA-4.0"  definition="yes" primary="yes">sop_0010-v1-protein_gel_coomassie_staining</source>
 	</recipe>
 	<recipe id="R0170">
 		<name>Fixation solution</name>
@@ -5177,7 +5146,7 @@
 		<!-- ORGANIZATION -->
 		<category>solution</category>
 		<category>special</category>
-		<source doc_type="SOP" id="0011" version="1" definition="yes" primary="yes">sop_0011-v1-protein_gel_silver_staining</source>
+		<source doc_type="SOP" id="0011" version="1" visibility="public" license="CC-BY-SA-4.0"  definition="yes" primary="yes">sop_0011-v1-protein_gel_silver_staining</source>
 	</recipe>
 	<recipe hide="yes" id="R0125">
 		<name>Sodium thiosulfate</name>
@@ -5194,8 +5163,7 @@
 			<amount>1 gram</amount>
 			<final>10 percent</final>
 		</ingredient>
-		<storage class="fridge"><unit>4 celsius</unit></storage>
-		<shelflife>2 weeks</shelflife>
+		<storage class="fridge" shelflife="2 weeks"/>
 		<note>This is a <unit>630 millimolar</unit> stock</note>
 		<!-- ENVIRONMENT, HEALTH, SAFETY -->
 		<safety type="warning">
@@ -5204,7 +5172,7 @@
 		<!-- ORGANIZATION -->
 		<category>solution</category>
 		<category>special</category>
-		<source doc_type="SOP" id="0011" version="1" definition="yes" primary="yes">sop_0011-v1-protein_gel_silver_staining</source>
+		<source doc_type="SOP" id="0011" version="1" visibility="public" license="CC-BY-SA-4.0"  definition="yes" primary="yes">sop_0011-v1-protein_gel_silver_staining</source>
 	</recipe>
 	<recipe id="R0126">
 		<name>Sodium thiosulfate sensitizing solution</name>
@@ -5223,7 +5191,7 @@
 		<!-- ORGANIZATION -->
 		<category>solution</category>
 		<category>special</category>
-		<source doc_type="SOP" id="0011" version="1" definition="yes" primary="yes">sop_0011-v1-protein_gel_silver_staining</source>
+		<source doc_type="SOP" id="0011" version="1" visibility="public" license="CC-BY-SA-4.0"  definition="yes" primary="yes">sop_0011-v1-protein_gel_silver_staining</source>
 	</recipe>
 	<recipe id="R0127">
 		<name>Tetrathionate sensitizing solution</name>
@@ -5252,7 +5220,7 @@
 			<amount>60 milliliter</amount>
 			<final>30 percent</final>
 		</ingredient>
-		<shelflife>1 day</shelflife>
+		<storage shelflife="1 day"/>
 		<workup>Prepare the day of use</workup>
 		<!-- ENVIRONMENT, HEALTH, SAFETY -->
 		<safety signal="danger">
@@ -5265,7 +5233,7 @@
 		<!-- ORGANIZATION -->
 		<category>solution</category>
 		<category>special</category>
-		<source doc_type="SOP" id="0011" version="1" definition="yes" primary="yes">sop_0011-v1-protein_gel_silver_staining</source>
+		<source doc_type="SOP" id="0011" version="1" visibility="public" license="CC-BY-SA-4.0"  definition="yes" primary="yes">sop_0011-v1-protein_gel_silver_staining</source>
 	</recipe>
 	<recipe id="R0128">
 		<name>Silver nitrate</name>
@@ -5282,7 +5250,7 @@
 			<amount>50 milligram</amount>
 			<final>0.2 percent</final>
 		</ingredient>
-		<storage class="fridge" type="dark"><unit>4 celsius</unit></storage>
+		<storage type="dark"/>
 		<!-- ENVIRONMENT, HEALTH, SAFETY -->
 		<safety signal="warning">
 			<hazard category="2" type="environment">Hazardous to the aquatic environment</hazard>
@@ -5292,7 +5260,7 @@
 		<!-- ORGANIZATION -->
 		<category>solution</category>
 		<category>special</category>
-		<source doc_type="SOP" id="0011" version="1" definition="yes" primary="yes">sop_0011-v1-protein_gel_silver_staining</source>
+		<source doc_type="SOP" id="0011" version="1" visibility="public" license="CC-BY-SA-4.0"  definition="yes" primary="yes">sop_0011-v1-protein_gel_silver_staining</source>
 	</recipe>
 	<recipe id="R0129">
 		<name>Silver nitrate developer</name>
@@ -5322,8 +5290,7 @@
 		</ingredient>
 		<workup>Prepare the day of use</workup>
 		<note type="critical">Add formaldehyde no more than one hour before use to ensure consistent developer performance</note>
-		<storage class="fridge"><unit>4 celsius</unit></storage>
-		<shelflife>1 day</shelflife>
+		<storage class="fridge" shelflife="1 day"/>
 		<!-- ENVIRONMENT, HEALTH, SAFETY -->
 		<safety signal="warning">
 			<hazard category="1" type="serious_health_hazard">Carcinogenicity</hazard>
@@ -5334,7 +5301,7 @@
 		<!-- ORGANIZATION -->
 		<category>solution</category>
 		<category>special</category>
-		<source doc_type="SOP" id="0011" version="1" definition="yes" primary="yes">sop_0011-v1-protein_gel_silver_staining</source>
+		<source doc_type="SOP" id="0011" version="1" visibility="public" license="CC-BY-SA-4.0"  definition="yes" primary="yes">sop_0011-v1-protein_gel_silver_staining</source>
 	</recipe>
 	<recipe id="R0130">
 		<name>Potassium ferricyanide</name>
@@ -5360,7 +5327,7 @@
 		<!-- ORGANIZATION -->
 		<category>solution</category>
 		<category>special</category>
-		<source doc_type="SOP" id="0011" version="1" definition="yes" primary="yes">sop_0011-v1-protein_gel_silver_staining</source>
+		<source doc_type="SOP" id="0011" version="1" visibility="public" license="CC-BY-SA-4.0"  definition="yes" primary="yes">sop_0011-v1-protein_gel_silver_staining</source>
 	</recipe>
 	<recipe id="R0171">
 		<name>Silver nitrate destaining solution</name>
@@ -5386,7 +5353,7 @@
 		<!-- ORGANIZATION -->
 		<category>solution</category>
 		<category>special</category>
-		<source doc_type="SOP" id="0011" version="1" definition="yes" primary="yes">sop_0011-v1-protein_gel_silver_staining</source>
+		<source doc_type="SOP" id="0011" version="1" visibility="public" license="CC-BY-SA-4.0"  definition="yes" primary="yes">sop_0011-v1-protein_gel_silver_staining</source>
 	</recipe>
 	<recipe id="R0131">
 		<name>Polyethyleneimine</name>
@@ -5412,8 +5379,8 @@
 		<workup>Be patient, this may take hours! Recheck pH after <unit>15 minute</unit> to ensure it has not drifted</workup>
 		<workup>Filter-sterilize through a <unit>0.22 micrometer</unit> polyethersulfone (PES) membrane to remove undissolved particles</workup>
 		<workup>Dispense into <unit>500 microliter</unit> aliquots</workup>
-		<storage class="superfrost"><unit>-80 celsius</unit></storage>
-		<note>Stable for two months at <unit>4 celsius</unit></note>
+		<storage class="superfrost"/>
+		<storage class="fridge" shelflife="two months"/>
 		<note>Purchase PEI from Polysciences (Cat. no. 23966)</note>
 		<!-- ENVIRONMENT, HEALTH, SAFETY -->
 		<safety signal="warning">
@@ -5424,7 +5391,7 @@
 		<!-- ORGANIZATION -->
 		<category>solution</category>
 		<category>special</category>
-		<source doc_type="SOP" id="0012" version="2" definition="yes" primary="yes">sop_0012-v2-transfection_chemical</source>
+		<source doc_type="SOP" id="0012" version="2" visibility="public" license="CC-BY-SA-4.0"  definition="yes" primary="yes">sop_0012-v2-transfection_chemical</source>
 	</recipe>
 	<recipe id="R0132">
 		<name>HEPES-buffered saline</name>
@@ -5466,13 +5433,13 @@
 			<final>12 millimolar</final>
 		</ingredient>
 		<workup>Filter sterilize</workup>
-		<storage>room temperature or as frozen aliquots</storage>
-		<shelflife>1 year</shelflife>
+		<storage shelflife="1 year"/>
+		<storage class="freezer"/>
 		<note type="critical">The pH is extremely critical for a successful transfection; even 0.1 pH units deviation reduces efficiency</note>
 		<!-- ORGANIZATION -->
 		<category>buffer</category>
 		<category>mammalian</category>
-		<source doc_type="SOP" id="0012" version="2" definition="yes" primary="yes">sop_0012-v2-transfection_chemical</source>
+		<source doc_type="SOP" id="0012" version="2" visibility="public" license="CC-BY-SA-4.0"  definition="yes" primary="yes">sop_0012-v2-transfection_chemical</source>
 	</recipe>
 	<recipe hide="yes" id="R0152">
 		<name>Insulin</name>
@@ -5499,9 +5466,9 @@
 		</ingredient>
 		<workup>Use sterile liquids; allow <unit>15 minute</unit> for reconstitution</workup>
 		<workup>Dispense into <unit>500 microliter</unit> aliquots</workup>
-		<storage class="freezer"><unit>-20 celsius</unit></storage>
+		<storage class="freezer"/>
 		<note>Obtain insulin from Sigma-Aldrich® (Cat. no. I1882)</note>
-		<source doc_type="SOP" id="0016" version="1" definition="yes" primary="yes">sop_0016-v1-routine_cell_culture_MCF10A</source>
+		<source doc_type="SOP" id="0016" version="1" visibility="public" license="CC-BY-SA-4.0"  definition="yes" primary="yes">sop_0016-v1-routine_cell_culture_MCF10A</source>
 	</recipe>
 	<recipe hide="yes" id="R0153">
 		<name>Hydrocortisone</name>
@@ -5520,12 +5487,12 @@
 		</ingredient>
 		<workup>Use sterile liquids</workup>
 		<workup>Dispense into <unit>500 microliter</unit> aliquots</workup>
-		<storage class="freezer"><unit>-20 celsius</unit></storage>
+		<storage class="freezer"/>
 		<note>Obtain hydrocortisone from Sigma-Aldrich® (Cat. no. H0888)</note>
 		<safety signal="danger">
 			<hazard category="2" type="serious_health_hazard">Reproductive toxicology</hazard>
 		</safety>
-		<source doc_type="SOP" id="0016" version="1" definition="yes" primary="yes">sop_0016-v1-routine_cell_culture_MCF10A</source>
+		<source doc_type="SOP" id="0016" version="1" visibility="public" license="CC-BY-SA-4.0"  definition="yes" primary="yes">sop_0016-v1-routine_cell_culture_MCF10A</source>
 	</recipe>
 	<recipe hide="yes" id="R0154">
 		<name>Cholera toxin</name>
@@ -5544,12 +5511,12 @@
 		</ingredient>
 		<workup>Use sterile liquids</workup>
 		<workup>Dispense into <unit>50 microliter</unit> aliquots</workup>
-		<storage class="freezer"><unit>-20 celsius</unit></storage>
+		<storage class="freezer"/>
 		<note>Obtain cholera toxin from Sigma-Aldrich® (Cat. no. C8052)</note>
 		<safety signal="danger">
 			<hazard category="2" type="toxic">Acute dermal toxicity</hazard>
 		</safety>
-		<source doc_type="SOP" id="0016" version="1" definition="yes" primary="yes">sop_0016-v1-routine_cell_culture_MCF10A</source>
+		<source doc_type="SOP" id="0016" version="1" visibility="public" license="CC-BY-SA-4.0"  definition="yes" primary="yes">sop_0016-v1-routine_cell_culture_MCF10A</source>
 	</recipe>
 	<recipe id="R0155">
 		<name>Epidermal growth factor</name>
@@ -5572,9 +5539,9 @@
 		</ingredient>
 		<workup>Use sterile liquids; allow <unit>15 minute</unit> for reconstitution</workup>
 		<workup>Dispense into <unit>200 microliter</unit> aliquots</workup>
-		<storage class="freezer"><unit>-20 celsius</unit></storage>
+		<storage class="freezer"/>
 		<note>Obtain EGF from PeproTech® (Cat. no. AF-100-15)</note>
-		<source doc_type="SOP" id="0016" version="1" definition="yes" primary="yes">sop_0016-v1-routine_cell_culture_MCF10A</source>
+		<source doc_type="SOP" id="0016" version="1" visibility="public" license="CC-BY-SA-4.0"  definition="yes" primary="yes">sop_0016-v1-routine_cell_culture_MCF10A</source>
 	</recipe>
 	<recipe id="R0195">
 		<name>PEG virus precipitation solution</name>
@@ -5611,8 +5578,8 @@
 		<workup>Adjust pH to 7.2 with sodium hydroxide if necessary</workup>
 		<workup>Filter sterilize through a <unit>0.22 micrometer</unit> filter</workup>
 		<workup>Dispense into <unit>10 milliliter</unit> aliquots</workup>
-		<storage class="fridge"><unit>4 celsius</unit></storage>
-		<source doc_type="SOP" id="0017" version="3" definition="yes" primary="yes">sop_0017-v3-stable_cell_lines_lentiviral</source>
+		<storage class="fridge"/>
+		<source doc_type="SOP" id="0017" version="3" visibility="public" license="CC-BY-SA-4.0"  definition="yes" primary="yes">sop_0017-v3-stable_cell_lines_lentiviral</source>
 	</recipe>
 	<recipe id="R0134">
 		<name>Hexadimethrine bromide</name>
@@ -5631,14 +5598,13 @@
 		</ingredient>
 		<workup>Filter sterilize through a <unit>0.22 micrometer</unit> PES membrane</workup>
 		<workup>Dispense into <unit>500 microliter</unit> aliquots</workup>
-		<storage class="freezer"><unit>-20 celsius</unit></storage>
-		<shelflife>2 years</shelflife>
+		<storage class="freezer" shelflife="2 years"/>
 		<note>Discard after thawing</note>
 		<!-- SAFETY -->
 		<safety signal="warning">
 			<hazard category="4" type="health_hazard">Acute oral toxicity</hazard>
 		</safety>
-		<source doc_type="SOP" id="0017" version="3" definition="yes" primary="yes">sop_0017-v3-stable_cell_lines_lentiviral</source>
+		<source doc_type="SOP" id="0017" version="3" visibility="public" license="CC-BY-SA-4.0"  definition="yes" primary="yes">sop_0017-v3-stable_cell_lines_lentiviral</source>
 	</recipe>
 	<recipe id="R0135">
 		<name>Buffer QG (Extraction buffer)</name>
@@ -5676,7 +5642,7 @@
 		<workup>Add <unit>117 milliliter</unit> water per <unit>100 gram</unit> guanidinium thiocyanate, bring to <unit>65 celsius</unit> to dissolve</workup>
 		<workup>Adjust pH and final volume</workup>
 		<workup>Dispense into <unit>15 milliliter</unit> aliquots</workup>
-		<source doc_type="SOP" id="0022" version="1" definition="yes" primary="yes">sop_0022-v1-gel_extraction</source>
+		<source doc_type="SOP" id="0022" version="1" visibility="public" license="CC-BY-SA-4.0"  definition="yes" primary="yes">sop_0022-v1-gel_extraction</source>
 	</recipe>
 	<recipe id="R0136">
 		<name>Solution D</name>
@@ -5716,8 +5682,7 @@
 		<workup>Prepare solution D in the manufacturer’s bottle without weighing to avoid unnecessary handling of the hazardous material</workup>
 		<workup>Add <unit>117 milliliter</unit> water per <unit>100 gram</unit> guanidinium thiocyanate (volume increase), bring to <unit>65 celsius</unit> to dissolve; dispense into <unit>14 milliliter</unit> aliquots</workup>
 		<workup>Add <unit>100 microliter</unit> 2-mercaptoethanol per aliquot freshly before use</workup>
-		<shelflife>3 months</shelflife>
-		<storage>room temperature</storage>
+		<storage shelflife="3 months"/>
 		<!-- ENVIRONMENT, HEALTH, SAFETY -->
 		<safety signal="danger">
 			<hazard category="1" type="corrosive">Skin corrosion</hazard>
@@ -5726,7 +5691,7 @@
 			<hazard category="2" type="serious_health_hazard">Germ cell mutagenicity</hazard>
 			<hazard category="2" type="environment">Hazardous to the aquatic environment</hazard>
 		</safety>
-		<source doc_type="SOP" id="0023" version="1" definition="yes" primary="yes">sop_0023-v1-rna_isolation_trizol</source>
+		<source doc_type="SOP" id="0023" version="1" visibility="public" license="CC-BY-SA-4.0"  definition="yes" primary="yes">sop_0023-v1-rna_isolation_trizol</source>
 	</recipe>
 	<recipe hide="yes" id="R0137">
 		<name>Sodium <emph>N</emph>-lauroyl sarcosinate</name>
@@ -5749,7 +5714,7 @@
 		<safety signal="warning">
 			<hazard category="2" type="health_hazard">Eye irritation</hazard>
 		</safety>
-		<source doc_type="SOP" id="0023" version="1" definition="yes" primary="yes">sop_0023-v1-rna_isolation_trizol</source>
+		<source doc_type="SOP" id="0023" version="1" visibility="public" license="CC-BY-SA-4.0"  definition="yes" primary="yes">sop_0023-v1-rna_isolation_trizol</source>
 	</recipe>
 	<recipe hide="yes" id="R0138">
 		<name>Sodium citrate</name>
@@ -5774,8 +5739,7 @@
 			<stock>1 molar</stock>
 			<amount>50 microliter</amount>
 		</ingredient>
-		<storage>room temperature</storage>
-		<shelflife>1 year</shelflife>
+		<storage shelflife="1 year"/>
 		<!-- ENVIRONMENT, HEALTH, SAFETY -->
 		<safety>
 			<hazard category="5" type="full">SCIL: Low concern chemical</hazard>
@@ -5783,7 +5747,7 @@
 		<!-- ORGANIZATION -->
 		<category>solution</category>
 		<category>common</category>
-		<source doc_type="SOP" id="0023" version="1" definition="yes" primary="yes">sop_0023-v1-rna_isolation_trizol</source>
+		<source doc_type="SOP" id="0023" version="1" visibility="public" license="CC-BY-SA-4.0"  definition="yes" primary="yes">sop_0023-v1-rna_isolation_trizol</source>
 	</recipe>
 	<recipe hide="yes" id="R0139">
 		<name>Sodium acetate</name>
@@ -5810,8 +5774,7 @@
 			<stock>17.4 molar</stock>
 			<amount>3 to 4 milliliter</amount>
 		</ingredient>
-		<storage>room temperature</storage>
-		<shelflife>1 year</shelflife>
+		<storage shelflife="1 year"/>
 		<!-- ENVIRONMENT, HEALTH, SAFETY -->
 		<safety>
 			<hazard category="5" type="full">SCIL: Low concern chemical</hazard>
@@ -5819,7 +5782,7 @@
 		<!-- ORGANIZATION -->
 		<category>solution</category>
 		<category>common</category>
-		<source doc_type="SOP" id="0023" version="1" definition="yes" primary="yes">sop_0023-v1-rna_isolation_trizol</source>
+		<source doc_type="SOP" id="0023" version="1" visibility="public" license="CC-BY-SA-4.0"  definition="yes" primary="yes">sop_0023-v1-rna_isolation_trizol</source>
 	</recipe>
 	<recipe id="R0140">
 		<name>Phenol</name>
@@ -5834,9 +5797,11 @@
 		</ingredient>
 		<workup>Add <unit>20 milliliter</unit> nuclease-free reagent-grade water, bring to <unit>65 celsius</unit>, let cool</workup>
 		<workup>Repeat until a second aqueous phase appears, then aspirate off the aqueous phase</workup>
-		<workup>Dispense into <unit>10 milliliter</unit> aliquots, store at <unit>-20 celsius</unit></workup>
-		<shelflife>1 month</shelflife>
-		<storage class="fridge"><unit>4 celsius</unit></storage>
+		<workup>Dispense into <unit>10 milliliter</unit> aliquots</workup>
+		<storage class="fridge"/>
+		<storage class="freezer"/>
+		<storage shelflife="1 month"/>
+		<note type="critical">blub</note>
 		<!-- ENVIRONMENT, HEALTH, SAFETY -->
 		<safety signal="danger">
 			<hazard category="1" type="corrosive">Skin corrosion</hazard>
@@ -5847,7 +5812,7 @@
 		<!-- ORGANIZATION -->
 		<category>solution</category>
 		<category>nucleics</category>
-		<source doc_type="SOP" id="0023" version="1" definition="yes" primary="yes">sop_0023-v1-rna_isolation_trizol</source>
+		<source doc_type="SOP" id="0023" version="1" visibility="public" license="CC-BY-SA-4.0"  definition="yes" primary="yes">sop_0023-v1-rna_isolation_trizol</source>
 	</recipe>
 	<recipe id="R0141">
 		<name>Chloroform/Isoamyl alcohol</name>
@@ -5866,7 +5831,7 @@
 			<final>2 percent</final>
 		</ingredient>
 		<workup>Prepare just before use</workup>
-		<storage class="fridge"><unit>4 celsius</unit></storage>
+		<storage class="fridge"/>
 		<!-- ENVIRONMENT, HEALTH, SAFETY -->
 		<safety signal="danger">
 			<hazard category="2" type="corrosive">Skin irritation</hazard>
@@ -5878,7 +5843,7 @@
 		<!-- ORGANIZATION -->
 		<category>solution</category>
 		<category>nucleics</category>
-		<source doc_type="SOP" id="0023" version="1" definition="yes" primary="yes">sop_0023-v1-rna_isolation_trizol</source>
+		<source doc_type="SOP" id="0023" version="1" visibility="public" license="CC-BY-SA-4.0"  definition="yes" primary="yes">sop_0023-v1-rna_isolation_trizol</source>
 	</recipe>
 	<recipe id="R0172">
 		<name>Water</name>
@@ -5901,8 +5866,8 @@
 		<category>solution</category>
 		<category>special</category>
 		<category>nucleics</category>
-		<source doc_type="SOP" id="0032" version="1" definition="yes">sop_0032-v1-agarose_gel_electrophoresis</source>
-		<source doc_type="SOP" id="0023" version="1" definition="yes" primary="yes">sop_0023-v1-rna_isolation_trizol</source>
+		<source doc_type="SOP" id="0032" version="1" visibility="public" license="CC-BY-SA-4.0"  definition="yes">sop_0032-v1-agarose_gel_electrophoresis</source>
+		<source doc_type="SOP" id="0023" version="1" visibility="public" license="CC-BY-SA-4.0"  definition="yes" primary="yes">sop_0023-v1-rna_isolation_trizol</source>
 	</recipe>
 	<recipe id="R0142">
 		<name>Cell lysis buffer</name>
@@ -5933,11 +5898,11 @@
 			<amount>250 microliter</amount>
 			<final>0.05 percent</final>
 		</ingredient>
-		<storage>room temperature</storage>
+		<storage/>
 		<!-- ORGANIZATION -->
 		<category>buffer</category>
 		<category>mammalian</category>
-		<source doc_type="SOP" id="0024" version="1" definition="yes" primary="yes">sop_0024-v1-dna_isolation_mammalian_cells</source>
+		<source doc_type="SOP" id="0024" version="1" visibility="public" license="CC-BY-SA-4.0"  definition="yes" primary="yes">sop_0024-v1-dna_isolation_mammalian_cells</source>
 	</recipe>
 	<recipe id="R0143">
 		<name>Tris-NaCl-KCl</name>
@@ -5974,7 +5939,7 @@
 		<!-- ORGANIZATION -->
 		<category>buffer</category>
 		<category>special</category>
-		<source doc_type="SOP" id="0025" version="1" definition="yes" primary="yes">sop_0025-v1-nuclear_extraction</source>
+		<source doc_type="SOP" id="0025" version="1" visibility="public" license="CC-BY-SA-4.0"  definition="yes" primary="yes">sop_0025-v1-nuclear_extraction</source>
 	</recipe>
 	<recipe id="R0144">
 		<name>Micrococcal nuclease</name>
@@ -6001,12 +5966,11 @@
 			<final>5 millimolar</final>
 			<amount>20 microliter</amount>
 		</ingredient>
-		<shelflife>1 year</shelflife>
-		<storage class="freezer"><unit>-20 celsius</unit></storage>
+		<storage class="freezer" shelflife="1 year"/>
 		<workup>Dispense into <unit>100 microliter</unit> aliquots</workup>
 		<note type="critical">Nuclease activity requires <unit>1 to 5 millimolar</unit> <chemical>Ca^2^+</chemical> and less than <unit>100 millimolar</unit> monovalent salt</note>
 		<note>Multiple freeze-thaw cycles are tolerated</note>
-		<source doc_type="SOP" id="0025" version="1" definition="yes" primary="yes">sop_0025-v1-nuclear_extraction</source>
+		<source doc_type="SOP" id="0025" version="1" visibility="public" license="CC-BY-SA-4.0"  definition="yes" primary="yes">sop_0025-v1-nuclear_extraction</source>
 	</recipe>
 	<recipe id="R0145">
 		<name>Ethylene glycol tetraacetic acid</name>
@@ -6034,7 +5998,7 @@
 		<!-- ORGANIZATION -->
 		<category>solution</category>
 		<category>common</category>
-		<source doc_type="SOP" id="0025" version="1" definition="yes" primary="yes">sop_0025-v1-nuclear_extraction</source>
+		<source doc_type="SOP" id="0025" version="1" visibility="public" license="CC-BY-SA-4.0"  definition="yes" primary="yes">sop_0025-v1-nuclear_extraction</source>
 	</recipe>
 	<recipe id="R0146">
 		<name>Nuclear extraction buffer, low-salt (LS)</name>
@@ -6077,14 +6041,14 @@
 			<final>1 fold</final>
 		</ingredient>
 		<workup>Filter sterilize</workup>
-		<storage>room temperature</storage>
+		<storage/>
 		<note type="orientation">The addition of detergent is optional, but facilitates resuspension of the chromatin fraction</note>
 		<note type="orientation">To enhance protein complex stability for downstream IP, supplement the buffer with <unit>10 to 20 percent</unit> glycerol</note>
 		<note type="critical">Replace Tris-Cl with HEPES if planning for downstream mass spectrometry</note>
 		<!-- ORGANIZATION -->
 		<category>buffer</category>
 		<category>special</category>
-		<source doc_type="SOP" id="0025" version="1" definition="yes" primary="yes">sop_0025-v1-nuclear_extraction</source>
+		<source doc_type="SOP" id="0025" version="1" visibility="public" license="CC-BY-SA-4.0"  definition="yes" primary="yes">sop_0025-v1-nuclear_extraction</source>
 	</recipe>
 	<recipe id="R0147">
 		<name>Nuclear extraction buffer, high-salt (HS)</name>
@@ -6134,14 +6098,14 @@
 			<final>1 fold</final>
 		</ingredient>
 		<workup>Filter sterilize</workup>
-		<storage>room temperature</storage>
+		<storage/>
 		<note type="orientation">The addition of detergent is optional, but facilitates resuspension of the chromatin fraction</note>
 		<note type="orientation">To enhance protein complex stability for downstream IP, supplement the buffer with <unit>10 to 20 percent</unit> glycerol</note>
 		<note type="critical">Replace Tris-Cl with HEPES if planning for downstream mass spectrometry</note>
 		<!-- ORGANIZATION -->
 		<category>buffer</category>
 		<category>special</category>
-		<source doc_type="SOP" id="0025" version="1" definition="yes" primary="yes">sop_0025-v1-nuclear_extraction</source>
+		<source doc_type="SOP" id="0025" version="1" visibility="public" license="CC-BY-SA-4.0"  definition="yes" primary="yes">sop_0025-v1-nuclear_extraction</source>
 	</recipe>
 	<recipe id="R0189">
 		<name>Formaldehyde</name>
@@ -6171,8 +6135,7 @@
 		</ingredient>
 		<workup>Prepare fresh before use</workup>
 		<note type="orientation">When starting from paraformaldehyde, bring to <unit>80 celsius</unit> for <unit>1 to 2 hour</unit> and filter through a <unit>0.22 micrometer</unit> pore</note>
-		<storage>room temperature</storage>
-		<!-- <shelflife>4 weeks</shelflife> -->
+		<storage shelflife="4 weeks"/>
 		<!-- ENVIRONMENT, HEALTH, SAFETY -->
 		<safety signal="danger">
 			<hazard category="1" type="toxic">Acute dermal and oral toxicity</hazard>
@@ -6185,7 +6148,7 @@
 		<!-- ORGANIZATION -->
 		<category>solution</category>
 		<category>special</category>
-		<source doc_type="SOP" id="0027" version="1" definition="yes" primary="yes">sop_0027-v1-immunoprecipitation</source>
+		<source doc_type="SOP" id="0027" version="1" visibility="internal" license="CC-BY-SA-4.0"  definition="yes" primary="yes">sop_0027-v1-immunoprecipitation</source>
 	</recipe>
 	<recipe id="R0190">
 		<name>Glycine</name>
@@ -6204,9 +6167,8 @@
 			<final>1.25 molar</final>
 		</ingredient>
 		<workup>Adjust pH with hydrochloric acid</workup>
-		<storage class="fridge"><unit>4 celsius</unit></storage>
-		<shelflife>2 weeks</shelflife>
-		<source doc_type="SOP" id="0027" version="1" definition="yes" primary="yes">sop_0027-v1-immunoprecipitation</source>
+		<storage class="fridge" shelflife="2 weeks"/>
+		<source doc_type="SOP" id="0027" version="1" visibility="internal" license="CC-BY-SA-4.0"  definition="yes" primary="yes">sop_0027-v1-immunoprecipitation</source>
 	</recipe>
 	<recipe id="R0191">
 		<name>Ammonium bicarbonate</name>
@@ -6225,13 +6187,12 @@
 			<final>0.5 molar</final>
 		</ingredient>
 		<workup>Prepare fresh before use</workup>
-		<storage class="fridge"><unit>4 celsius</unit></storage>
-		<!-- <shelflife>1 week</shelflife> -->
+		<storage class="fridge" shelflife="1 week"/>
 		<!-- ENVIRONMENT, HEALTH, SAFETY -->
 		<safety signal="warning">
 			<hazard category="3" type="health_hazard">Acute oral toxicity</hazard>
 		</safety>
-		<source doc_type="SOP" id="0027" version="1" definition="yes" primary="yes">sop_0027-v1-immunoprecipitation</source>
+		<source doc_type="SOP" id="0027" version="1" visibility="internal" license="CC-BY-SA-4.0"  definition="yes" primary="yes">sop_0027-v1-immunoprecipitation</source>
 	</recipe>
 	<recipe id="R0156">
 		<name>General IP buffer</name>
@@ -6294,11 +6255,11 @@
 			<final>1 fold</final>
 		</ingredient>
 		<workup>Filter sterilize</workup>
-		<storage>room temperature</storage>
+		<storage/>
 		<note type="orientation">This IP buffer is recommended for cytosolic proteins and soluble nuclear factors</note>
 		<note type="critical">Replace Tris-Cl with HEPES when planning for mass spectrometry</note>
 		<note type="orientation">Triton™ X-100 can be replaced with other non-ionic detergents such as IGEPAL® CA-630 as an alternative to Shell’s discontinued NP-40 to preserve native protein interactions</note>
-		<source doc_type="SOP" id="0027" version="1" definition="yes" primary="yes">sop_0027-v1-immunoprecipitation</source>
+		<source doc_type="SOP" id="0027" version="1" visibility="internal" license="CC-BY-SA-4.0"  definition="yes" primary="yes">sop_0027-v1-immunoprecipitation</source>
 	</recipe>
 	<recipe id="R0157">
 		<name>Nuclear IP buffer</name>
@@ -6355,10 +6316,10 @@
 			<final>1 fold</final>
 		</ingredient>
 		<workup>Filter sterilize</workup>
-		<storage>room temperature</storage>
+		<storage/>
 		<note type="orientation">Optimized for chromatin-associated or nucleosomal targets</note>
 		<note type="critical">Replace Tris-Cl with HEPES when planning for mass spectrometry</note>
-		<source doc_type="SOP" id="0027" version="1" definition="yes" primary="yes">sop_0027-v1-immunoprecipitation</source>
+		<source doc_type="SOP" id="0027" version="1" visibility="internal" license="CC-BY-SA-4.0"  definition="yes" primary="yes">sop_0027-v1-immunoprecipitation</source>
 	</recipe>
 	<recipe hide="yes" id="R0158">
 		<name>Triethanolamine buffer</name>
@@ -6380,13 +6341,12 @@
 			<final>200 millimolar</final>
 		</ingredient>
 		<workup>Adjust to <pH>8.9</pH> with hydrochloric acid or sodium hydroxide as needed</workup>
-		<storage class="fridge"><unit>4 celsius</unit></storage>
-		<shelflife>2 weeks</shelflife>
+		<storage class="fridge" shelflife="2 weeks"/>
 		<safety signal="warning">
 			<hazard category="2" type="health_hazard">Eye irritation</hazard>
 			<hazard category="3" type="corrosive">Skin irritation</hazard>
 		</safety>
-		<source doc_type="SOP" id="0027" version="1" definition="yes" primary="yes">sop_0027-v1-immunoprecipitation</source>
+		<source doc_type="SOP" id="0027" version="1" visibility="internal" license="CC-BY-SA-4.0"  definition="yes" primary="yes">sop_0027-v1-immunoprecipitation</source>
 	</recipe>
 	<recipe hide="yes" id="R0159">
 		<name>Dimethyl pimelimidate</name>
@@ -6411,7 +6371,7 @@
 		<safety signal="warning">
 			<hazard category="2" type="health_hazard">Skin irritation</hazard>
 		</safety>
-		<source doc_type="SOP" id="0027" version="1" definition="yes" primary="yes">sop_0027-v1-immunoprecipitation</source>
+		<source doc_type="SOP" id="0027" version="1" visibility="internal" license="CC-BY-SA-4.0"  definition="yes" primary="yes">sop_0027-v1-immunoprecipitation</source>
 	</recipe>
 	<recipe id="R0160">
 		<name>Acidic elution buffer</name>
@@ -6428,7 +6388,7 @@
 			<final>200 millimolar</final>
 		</ingredient>
 		<workup>Adjust the pH to 2.5 at <unit>4 celsius</unit></workup>
-		<source doc_type="SOP" id="0027" version="1" definition="yes" primary="yes">sop_0027-v1-immunoprecipitation</source>
+		<source doc_type="SOP" id="0027" version="1" visibility="internal" license="CC-BY-SA-4.0"  definition="yes" primary="yes">sop_0027-v1-immunoprecipitation</source>
 	</recipe>
 	<recipe id="R0161">
 		<name>Neutralization buffer</name>
@@ -6445,7 +6405,7 @@
 			<final>1 molar</final>
 		</ingredient>
 		<workup>Adjust the pH to 10.4 at <unit>4 celsius</unit></workup>
-		<source doc_type="SOP" id="0027" version="1" definition="yes" primary="yes">sop_0027-v1-immunoprecipitation</source>
+		<source doc_type="SOP" id="0027" version="1" visibility="internal" license="CC-BY-SA-4.0"  definition="yes" primary="yes">sop_0027-v1-immunoprecipitation</source>
 	</recipe>
 	<recipe id="R0162">
 		<name>Thymidine</name>
@@ -6473,12 +6433,12 @@
 		</ingredient>
 		<workup>Filter sterilize</workup>
 		<workup>Dispense into <unit>1 milliliter</unit> aliquots</workup>
-		<storage class="freezer"><unit>-20 celsius</unit></storage>
+		<storage class="freezer"/>
 		<note>Thymidine can be reused after freeze–thawing, but avoid multiple cycles</note>
 		<!-- ORGANIZATION -->
 		<category>solution</category>
 		<category>mammalian</category>
-		<source doc_type="SOP" id="0028" version="2" definition="no" primary="yes">sop_0028-v2-cell_cycle_synchronization</source>
+		<source doc_type="SOP" id="0028" version="2" visibility="internal" license="CC-BY-SA-4.0"  definition="no" primary="yes">sop_0028-v2-cell_cycle_synchronization</source>
 	</recipe>
 	<recipe id="R0163">
 		<name>Nocodazole</name>
@@ -6497,7 +6457,7 @@
 			<final>4 millimolar</final>
 		</ingredient>
 		<workup>Dispense into <unit>100 microliter</unit> aliquots</workup>
-		<storage class="freezer" type="dark"><unit>-20 celsius</unit></storage>
+		<storage type="dark"/>
 		<note type="orientation">This stock is <unit>4 millimolar</unit></note>
 		<note>Working concentration ranges <unit>0.2 to 2.0 micromolar</unit> (<unit>50 to 500 nanogram per milliliter</unit>), depending on the cell type</note>
 		<!-- ENVIRONMENT, HEALTH, SAFETY -->
@@ -6508,7 +6468,7 @@
 		<!-- ORGANIZATION -->
 		<category>solution</category>
 		<category>mammalian</category>
-		<source doc_type="SOP" id="0028" version="2" definition="yes" primary="yes">sop_0028-v2-cell_cycle_synchronization</source>
+		<source doc_type="SOP" id="0028" version="2" visibility="internal" license="CC-BY-SA-4.0"  definition="yes" primary="yes">sop_0028-v2-cell_cycle_synchronization</source>
 	</recipe>
 	<recipe id="R0173">
 		<name>Ro-3306</name>
@@ -6523,11 +6483,11 @@
 			<amount>10 milligram</amount>
 			<final>10 millimolar</final>
 		</ingredient>
-		<storage class="freezer" type="dark"><unit>-20 celsius</unit></storage>
+		<storage type="dark"/>
 		<!-- ORGANIZATION -->
 		<category>solution</category>
 		<category>mammalian</category>
-		<source doc_type="SOP" id="0028" version="2" definition="yes" primary="yes">sop_0028-v2-cell_cycle_synchronization</source>
+		<source doc_type="SOP" id="0028" version="2" visibility="internal" license="CC-BY-SA-4.0"  definition="yes" primary="yes">sop_0028-v2-cell_cycle_synchronization</source>
 	</recipe>
 	<recipe hide="yes" id="R0167">
 		<name>Propidium iodide</name>
@@ -6544,7 +6504,7 @@
 			<amount>50 milligram</amount>
 			<final>1 gram per liter</final>
 		</ingredient>
-		<storage class="fridge" type="dark"><unit>4 celsius</unit></storage>
+		<storage type="dark"/>
 		<!-- ENVIRONMENT, HEALTH, SAFETY -->
 		<safety signal="warning">
 			<hazard category="2" type="health_hazard">Skin irritation</hazard>
@@ -6553,7 +6513,7 @@
 		<!-- ORGANIZATION -->
 		<category>solution</category>
 		<category>mammalian</category>
-		<source doc_type="SOP" id="0029" version="1" definition="yes" primary="yes">sop_0029-v1-cell_cycle_flow_cytometry</source>
+		<source doc_type="SOP" id="0029" version="1" visibility="internal" license="CC-BY-SA-4.0"  definition="yes" primary="yes">sop_0029-v1-cell_cycle_flow_cytometry</source>
 	</recipe>
 	<recipe id="R0168">
 		<name>Propidium iodide staining solution</name>
@@ -6585,12 +6545,12 @@
 			<final>7 enzymeunit per liter</final>
 		</ingredient>
 		<workup>Filter sterilize</workup>
-		<storage class="fridge"><unit>4 celsius</unit></storage>
+		<storage class="fridge"/>
 		<note type="explanation">RNA must be removed by RNase to avoid overestimation of DNA content</note>
 		<!-- ORGANIZATION -->
 		<category>solution</category>
 		<category>mammalian</category>
-		<source doc_type="SOP" id="0029" version="1" definition="yes" primary="yes">sop_0029-v1-cell_cycle_flow_cytometry</source>
+		<source doc_type="SOP" id="0029" version="1" visibility="internal" license="CC-BY-SA-4.0"  definition="yes" primary="yes">sop_0029-v1-cell_cycle_flow_cytometry</source>
 	</recipe>
 	<recipe hide="yes" id="R0174">
 		<name>Borax</name>
@@ -6611,9 +6571,7 @@
 			<final type="diluted">5 millimolar</final>
 		</ingredient>
 		<workup>Filter through <unit>0.45 micrometer</unit> filter or autoclave</workup>
-		<storage>room temperature</storage>
-		<shelflife>6 months</shelflife>
-		<note type="critical">Do not store below <unit>4 celsius</unit> to avoid precipitation of the stock</note>
+		<storage shelflife="6 months">Do not store below <unit>4 celsius</unit> to avoid precipitation of the stock.</storage>
 		<!-- ENVIRONMENT, HEALTH, SAFETY -->
 		<safety signal="danger">
 			<hazard category="1" type="serious_health_hazard">Reproductive toxicology</hazard>
@@ -6621,7 +6579,7 @@
 		<!-- ORGANIZATION -->
 		<category>solution</category>
 		<category>nucleics</category>
-		<source doc_type="SOP" id="0032" version="1" definition="yes" primary="yes">sop_0032-v1-agarose_gel_electrophoresis</source>
+		<source doc_type="SOP" id="0032" version="1" visibility="public" license="CC-BY-SA-4.0"  definition="yes" primary="yes">sop_0032-v1-agarose_gel_electrophoresis</source>
 	</recipe>
 	<recipe hide="yes" id="R0175">
 		<name>Lithium-acetate</name>
@@ -6642,12 +6600,11 @@
 			<final type="diluted">10 millimolar</final>
 		</ingredient>
 		<workup>Filter through <unit>0.45 micrometer</unit> pore or autoclave</workup>
-		<storage>room temperature</storage>
-		<shelflife>6 months</shelflife>
+		<storage shelflife="6 months"/>
 		<!-- ORGANIZATION -->
 		<category>solution</category>
 		<category>nucleics</category>
-		<source doc_type="SOP" id="0032" version="1" definition="yes" primary="yes">sop_0032-v1-agarose_gel_electrophoresis</source>
+		<source doc_type="SOP" id="0032" version="1" visibility="public" license="CC-BY-SA-4.0"  definition="yes" primary="yes">sop_0032-v1-agarose_gel_electrophoresis</source>
 	</recipe>
 	<recipe hide="yes" id="R0176">
 		<name>Tris-borate</name>
@@ -6675,9 +6632,7 @@
 			<final type="diluted">100 millimolar</final>
 		</ingredient>
 		<workup>Filter through <unit>0.45 micrometer</unit> pore or autoclave</workup>
-		<storage>room temperature</storage>
-		<shelflife>6 months</shelflife>
-		<note type="critical">Do not store below <unit>4 celsius</unit> to avoid precipitation of the stock</note>
+		<storage shelflife="6 months">Do not store below <unit>4 celsius</unit> to avoid precipitation of the stock.</storage>
 		<!-- ENVIRONMENT, HEALTH, SAFETY -->
 		<safety signal="danger">
 			<hazard category="1" type="serious_health_hazard">Reproductive toxicology</hazard>
@@ -6685,7 +6640,7 @@
 		<!-- ORGANIZATION -->
 		<category>buffer</category>
 		<category>nucleics</category>
-		<source doc_type="SOP" id="0032" version="1" definition="yes" primary="yes">sop_0032-v1-agarose_gel_electrophoresis</source>
+		<source doc_type="SOP" id="0032" version="1" visibility="public" license="CC-BY-SA-4.0"  definition="yes" primary="yes">sop_0032-v1-agarose_gel_electrophoresis</source>
 	</recipe>
 	<recipe id="R0177">
 		<name>Gel loading buffer</name>
@@ -6735,7 +6690,7 @@
 		<!-- ORGANIZATION -->
 		<category>buffer</category>
 		<category>nucleics</category>
-		<source doc_type="SOP" id="0032" version="1" definition="yes" primary="yes">sop_0032-v1-agarose_gel_electrophoresis</source>
+		<source doc_type="SOP" id="0032" version="1" visibility="public" license="CC-BY-SA-4.0"  definition="yes" primary="yes">sop_0032-v1-agarose_gel_electrophoresis</source>
 	</recipe>
 	<recipe hide="yes" id="R0178">
 		<name>Orange G</name>
@@ -6758,7 +6713,7 @@
 		<category>solution</category>
 		<category>special</category>
 		<category>nucleics</category>
-		<source doc_type="SOP" id="0032" version="1" definition="yes" primary="yes">sop_0032-v1-agarose_gel_electrophoresis</source>
+		<source doc_type="SOP" id="0032" version="1" visibility="public" license="CC-BY-SA-4.0"  definition="yes" primary="yes">sop_0032-v1-agarose_gel_electrophoresis</source>
 	</recipe>
 	<recipe hide="yes" id="R0179">
 		<name>Xylene cyanol FF</name>
@@ -6784,7 +6739,7 @@
 		<category>solution</category>
 		<category>special</category>
 		<category>nucleics</category>
-		<source doc_type="SOP" id="0032" version="1" definition="yes" primary="yes">sop_0032-v1-agarose_gel_electrophoresis</source>
+		<source doc_type="SOP" id="0032" version="1" visibility="public" license="CC-BY-SA-4.0"  definition="yes" primary="yes">sop_0032-v1-agarose_gel_electrophoresis</source>
 	</recipe>
 	<recipe hide="yes" id="R0180">
 		<name>Bromophenol blue</name>
@@ -6816,7 +6771,7 @@
 		<category>solution</category>
 		<category>special</category>
 		<category>nucleics</category>
-		<source doc_type="SOP" id="0032" version="1" definition="yes" primary="yes">sop_0032-v1-agarose_gel_electrophoresis</source>
+		<source doc_type="SOP" id="0032" version="1" visibility="public" license="CC-BY-SA-4.0"  definition="yes" primary="yes">sop_0032-v1-agarose_gel_electrophoresis</source>
 	</recipe>
 	<recipe hide="yes" id="R0181">
 		<name>Cresol red</name>
@@ -6841,7 +6796,7 @@
 		<category>solution</category>
 		<category>special</category>
 		<category>nucleics</category>
-		<source doc_type="SOP" id="0032" version="1" definition="yes" primary="yes">sop_0032-v1-agarose_gel_electrophoresis</source>
+		<source doc_type="SOP" id="0032" version="1" visibility="public" license="CC-BY-SA-4.0"  definition="yes" primary="yes">sop_0032-v1-agarose_gel_electrophoresis</source>
 	</recipe>
 	<recipe id="R0182">
 		<name>DNA ladder</name>
@@ -6871,12 +6826,12 @@
 			<final>1 fold</final>
 			<amount>300 microliter</amount>
 		</ingredient>
-		<storage>room temperature</storage>
+		<storage/>
 		<note type="orientation">Load <unit>1 to 2 microgram</unit> (<unit>4 to 8 microliter</unit>) for a <unit>5 millimeter</unit> wide gel lane; scale accordingly</note>
 		<!-- ORGANIZATION -->
 		<category>standard</category>
 		<category>nucleics</category>
-		<source doc_type="SOP" id="0032" version="1" definition="yes" primary="yes">sop_0032-v1-agarose_gel_electrophoresis</source>
+		<source doc_type="SOP" id="0032" version="1" visibility="public" license="CC-BY-SA-4.0"  definition="yes" primary="yes">sop_0032-v1-agarose_gel_electrophoresis</source>
 	</recipe>
 	<recipe id="R0183">
 		<name>Thiazole orange</name>
@@ -6896,14 +6851,13 @@
 			<amount>150 milligram</amount>
 			<final>30 millimolar</final>
 		</ingredient>
-		<storage class="fridge" type="dark"><unit>4 celsius</unit></storage>
-		<shelflife>2 years</shelflife>
+		<storage shelflife="2 years" type="dark"/>
 		<!-- ENVIRONMENT, HEALTH, SAFETY -->
 		<safety signal="warning">
 			<hazard category="2" type="health_hazard">Serious eye irritation</hazard>
 			<hazard category="3" hide="yes" type="health_hazard">Skin irritation</hazard>
 		</safety>
-		<source doc_type="SOP" id="0032" version="1" definition="yes" primary="yes">sop_0032-v1-agarose_gel_electrophoresis</source>
+		<source doc_type="SOP" id="0032" version="1" visibility="public" license="CC-BY-SA-4.0"  definition="yes" primary="yes">sop_0032-v1-agarose_gel_electrophoresis</source>
 	</recipe>
 	<recipe id="R0184">
 		<name>MOPS-acetate running buffer</name>
@@ -6941,13 +6895,12 @@
 			<final type="diluted">1 millimolar</final>
 		</ingredient>
 		<workup>Adjust the pH with <unit>2 molar</unit> sodium hydroxide before adding EDTA</workup>
-		<storage light="yes">room temperature</storage>
-		<shelflife>6 months</shelflife>
+		<storage shelflife="6 months" type="dark"/>
 		<!-- ORGANIZATION -->
 		<category>buffer</category>
 		<category>special</category>
 		<category>nucleics</category>
-		<source doc_type="SOP" id="0032" version="1" definition="yes" primary="yes">sop_0032-v1-agarose_gel_electrophoresis</source>
+		<source doc_type="SOP" id="0032" version="1" visibility="public" license="CC-BY-SA-4.0"  definition="yes" primary="yes">sop_0032-v1-agarose_gel_electrophoresis</source>
 	</recipe>
 	<recipe id="R0185">
 		<name>RF1</name>
@@ -6993,7 +6946,7 @@
 		</ingredient>
 		<workup>Adjust pH with <unit>0.2 molar</unit> acetic acid</workup>
 		<workup>Filter sterilize</workup>
-		<storage class="fridge"><unit>4 celsius</unit></storage>
+		<storage class="fridge"/>
 		<!-- ENVIRONMENT, HEALTH, SAFETY -->
 		<safety signal="warning">
 			<hazard category="3" type="toxic">Acute oral toxicity</hazard>
@@ -7004,7 +6957,7 @@
 		<!-- ORGANIZATION -->
 		<category>buffer</category>
 		<category>bacterial</category>
-		<source doc_type="SOP" id="0034" version="1" definition="yes" primary="yes">sop_0034-v1-transformation</source>
+		<source doc_type="SOP" id="0034" version="1" visibility="public" license="CC-BY-SA-4.0"  definition="yes" primary="yes">sop_0034-v1-transformation</source>
 	</recipe>
 	<recipe id="R0186">
 		<name>RF2</name>
@@ -7042,11 +6995,11 @@
 		</ingredient>
 		<workup>Adjust pH with <unit>1 molar</unit> sodium hydroxide</workup>
 		<workup>Filter sterilize</workup>
-		<storage class="fridge"><unit>4 celsius</unit></storage>
+		<storage class="fridge"/>
 		<!-- ORGANIZATION -->
 		<category>buffer</category>
 		<category>bacterial</category>
-		<source doc_type="SOP" id="0034" version="1" definition="yes" primary="yes">sop_0034-v1-transformation</source>
+		<source doc_type="SOP" id="0034" version="1" visibility="public" license="CC-BY-SA-4.0"  definition="yes" primary="yes">sop_0034-v1-transformation</source>
 	</recipe>
 	<recipe id="R0187">
 		<name>Simple &amp; efficient buffer</name>
@@ -7085,7 +7038,7 @@
 			<final>15 millimolar</final>
 		</ingredient>
 		<workup>Adjust pH with <unit>5 molar</unit> potassium hydroxide before adding manganese chloride; filter sterilize</workup>
-		<storage class="fridge"><unit>4 celsius</unit></storage>
+		<storage class="fridge"/>
 		<!-- ENVIRONMENT, HEALTH, SAFETY -->
 		<safety signal="warning">
 			<hazard category="3" type="toxic">Acute oral toxicity</hazard>
@@ -7095,7 +7048,7 @@
 		<!-- ORGANIZATION -->
 		<category>buffer</category>
 		<category>bacterial</category>
-		<source doc_type="SOP" id="0034" version="1" definition="yes" primary="yes">sop_0034-v1-transformation</source>
+		<source doc_type="SOP" id="0034" version="1" visibility="public" license="CC-BY-SA-4.0"  definition="yes" primary="yes">sop_0034-v1-transformation</source>
 	</recipe>
 	<recipe id="R0188">
 		<name>Transformation &amp; storage medium</name>
@@ -7127,11 +7080,11 @@
 			<final>10 percent</final>
 		</ingredient>
 		<workup>Filter sterilize</workup>
-		<storage class="fridge"><unit>4 celsius</unit></storage>
+		<storage class="fridge"/>
 		<!-- ORGANIZATION -->
 		<category>buffer</category>
 		<category>bacterial</category>
-		<source doc_type="SOP" id="0034" version="1" definition="yes" primary="yes">sop_0034-v1-transformation</source>
+		<source doc_type="SOP" id="0034" version="1" visibility="public" license="CC-BY-SA-4.0"  definition="yes" primary="yes">sop_0034-v1-transformation</source>
 	</recipe>
 	<recipe id="R0193">
 		<name>Long incubation buffer</name>
@@ -7170,12 +7123,12 @@
 		<workup>Adjust pH with potassium hydroxide</workup>
 		<workup>Filter sterilize</workup>
 		<workup>Dispense into <unit>1 milliliter</unit> aliquots</workup>
-		<storage class="freezer"><unit>-20 celsius</unit></storage>
+		<storage class="freezer"/>
 		<!-- ORGANIZATION -->
 		<category>buffer</category>
 		<category>nucleics</category>
 		<category>special</category>
-		<source doc_type="SOP" id="0039" version="1" definition="yes" primary="yes">sop_0039-v1-pcr_qualitative</source>
+		<source doc_type="SOP" id="0039" version="1" visibility="public" license="CC-BY-SA-4.0"  definition="yes" primary="yes">sop_0039-v1-pcr_qualitative</source>
 	</recipe>
 	<recipe id="R0194">
 		<name>High-fidelity PCR buffer</name>
@@ -7211,11 +7164,11 @@
 			<final type="diluted">0.01 percent</final>
 		</ingredient>
 		<workup>Filter sterilize and aliquot</workup>
-		<storage class="freezer"><unit>-20 celsius</unit></storage>
+		<storage class="freezer"/>
 		<!-- ORGANIZATION -->
 		<category>buffer</category>
 		<category>nucleics</category>
 		<category>special</category>
-		<source doc_type="SOP" id="0039" version="1" definition="yes" primary="yes">sop_0039-v1-pcr_qualitative</source>
+		<source doc_type="SOP" id="0039" version="1" visibility="public" license="CC-BY-SA-4.0"  definition="yes" primary="yes">sop_0039-v1-pcr_qualitative</source>
 	</recipe>
 </recipes>

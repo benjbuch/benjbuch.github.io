@@ -401,6 +401,10 @@
   .rc-body {
     font-size: 0.8rem;
     padding: var(--pad-l) var(--pad-s) var(--pad-s);
+    -moz-hyphens: auto;
+    -ms-hyphens: auto;
+    -webkit-hyphens: auto;
+    hyphens: auto;
   }
 
   .rc-workup {
@@ -416,11 +420,13 @@
     margin-bottom: var(--pad-m);
     padding-left: var(--pad-m);
     border-left: 3px solid var(--border-strong);
+    text-align: justify;
   }
   
   .rc-note em {
-    text-transform: capitalize;
+    text-transform: uppercase;
     font-weight: 600;
+    padding-right: var(--pad-m);
   }
   
   .rc-note-critical {
@@ -532,18 +538,16 @@
 
   /* ---- Responsive ---- */
 
-  @media (max-width: 640px) {
-    .recipes-page {
-      max-width: none;
-      margin: var(--pad-l);
-    }
+  /* ---- Tablet: stacked with preview ---- */
+
+  @media (max-width: 900px) {
     .recipe-layout {
       flex-direction: column;
     }
     .recipe-list-panel {
       width: 100%;
       flex: 0 0 auto;
-      padding-right: var(--pad-l);
+      padding-right: 0;
     }
     .recipe-list {
       max-height: calc(2 * var(--line-height, 2.4em));
@@ -552,6 +556,40 @@
     .recipe-detail {
       flex: 1 1 0;
       min-height: 0;
+      padding-right: 0;
+      scrollbar-gutter: auto;
+    }
+    .rc-table {
+      font-size: 0.7rem;
+    }
+    .rc-table .col-stock,
+    .rc-table .col-final {
+      display: none;
+    }
+  }
+
+  /* ---- Phone: list OR card, not both ---- */
+
+  @media (max-width: 640px) {
+    .recipes-page {
+      max-width: none;
+      margin: var(--pad-l);
+    }
+    .recipes-page.has-detail .recipe-list-panel {
+      display: none;
+    }
+    .recipes-page:not(.has-detail) .recipe-list-panel {
+        flex: 1 1 0;
+        min-height: 80vh;
+      }
+    .recipe-list {
+      max-height: none;
+      overflow-y: auto;
+      flex: 1 1 0;
+      min-height: 0;
+    }
+    .rc-scale-label {
+      display: none;
     }
   }
   
@@ -730,6 +768,20 @@ document.addEventListener("DOMContentLoaded", function () {
       else if (tag === "unit") h += parseUnitStr((n.textContent||"").trim());
       else if (tag === "high") h += "<sup>" + n.textContent + "</sup>";
       else if (tag === "it") h += "<em>" + n.textContent + "</em>";
+      else if (tag === "citation") {
+        var refs = (n.textContent || "").split(",");
+        var links = [];
+        for (var ci = 0; ci < refs.length; ci++) {
+          var ref = refs[ci].trim();
+          var pm = ref.match(/^PMID:(\d+)$/);
+          if (pm) {
+            links.push('<a class="rc-cite" href="https://europepmc.org/article/med/' + pm[1] + '" target="_blank" rel="noopener noreferrer">↗︎&nbsp;' + pm[1] + '</a>');
+          } else {
+            links.push(ref);
+          }
+        }
+        h += '<span class="rc-citations">[' + links.join(", ") + ']</span>';
+      }
       else h += htmlOf(n);
     }
     return h;
@@ -745,13 +797,11 @@ document.addEventListener("DOMContentLoaded", function () {
   /* ==== Parse recipe element ==== */
 
   function parseRecipe(el) {
-    var nameEl = firstChild(el, "name");
-    var abbrEl = firstChild(el, "abbreviation");
-    var stockEl = firstChild(el, "stock");
-    var solventEl = firstChild(el, "solvent");
-    var storageEl = firstChild(el, "storage");
-    var shelflifeEl = firstChild(el, "shelflife");
-    var safetyEl = firstChild(el, "safety");
+    var nameEl      = firstChild(el, "name");
+    var abbrEl      = firstChild(el, "abbreviation");
+    var stockEl     = firstChild(el, "stock");
+    var solventEl   = firstChild(el, "solvent");
+    var safetyEl    = firstChild(el, "safety");
 
     var solvent = null;
     if (solventEl) {
@@ -788,9 +838,23 @@ document.addEventListener("DOMContentLoaded", function () {
       };
     });
 
-    var workups = directChildren(el, "workup").map(function (w) { return htmlOf(w); });
+    var workup = directChildren(el, "workup").map(function (w) { 
+      return htmlOf(w); 
+    });
+    
+    var storage = directChildren(el, "storage").map(function(s) {
+      return {
+        cls: s.getAttribute("class") || "",
+        type: s.getAttribute("type") || "",
+        shelflife: s.getAttribute("shelflife") || "",
+        text: textOf(s).trim()
+      };
+    });
+    
     var notes = directChildren(el, "note").map(function (n) {
-      return { type: n.getAttribute("type") || "", html: htmlOf(n) };
+      return { 
+        type: n.getAttribute("type") || "",
+        html: htmlOf(n) };
     });
     
     var safety = null;
@@ -824,13 +888,14 @@ document.addEventListener("DOMContentLoaded", function () {
       };
     }
 
-    var storage = storageEl ? { html: htmlOf(storageEl) } : null;
     var sources = directChildren(el, "source").map(function (s) {
       return {
         doc_type: s.getAttribute("doc_type") || "",
         id: s.getAttribute("id") || "",
         version: s.getAttribute("version") || "",
         primary: s.getAttribute("primary") === "yes",
+        visibility: s.getAttribute("visibility") || "",
+        license: s.getAttribute("license") || "",
         filename: textOf(s)
       };
     });
@@ -845,9 +910,8 @@ document.addEventListener("DOMContentLoaded", function () {
       properties: directChildren(el, "property").map(function (p) { return htmlOf(p); }),
       solvent: solvent,
       ingredients: ingredients,
-      workups: workups,
+      workup: workup,
       storage: storage,
-      shelflife: shelflifeEl ? htmlOf(shelflifeEl) : "",
       notes: notes,
       safety: safety,
       categories: directChildren(el, "category").map(function (c) { return textOf(c); }),
@@ -1031,39 +1095,68 @@ document.addEventListener("DOMContentLoaded", function () {
     h += '<div class="rc-body">';
 
     // Workup
-    if (recipe.workups.length) {
+    if (recipe.workup.length) {
       h += '<div class="rc-workup">';
-      h += recipe.workups.join(". ") + ".";
+      h += recipe.workup.join(". ") + ".";
       h += "</div>";
     }
 
     // Storage / shelflife
-    if (recipe.shelflife || recipe.storage) {
+    if (recipe.storage.length > 0) {
+      var classMap = {
+        fridge: "4\u2009°C",
+        freezer: "–20\u2009°C",
+        superfrost: "–80\u2009°C",
+        incubator: "37\u2009°C"
+      };
+      var typeMap = { dark: "protected from light" };
+
       h += '<div class="rc-storage">';
-      if (recipe.shelflife && recipe.shelflife.trim() !== "") {
-        h += "Stable for " + recipe.shelflife;
-        if (recipe.storage && recipe.shelflife.indexOf("store") === -1) {
-          h += " at " + recipe.storage.html;
+      for (var i = 0; i < recipe.storage.length; i++) {
+        var s = recipe.storage[i];
+        var temp = classMap[s.cls] || "room temperature";
+
+        if (s.shelflife) {
+          h += "Stable for " + s.shelflife + " at " + temp;
+        } else {
+          h += (i > 0 ? "Alternatively, store" : "Store") + " at " + temp;
+        }
+        if (s.type && typeMap[s.type]) {
+          h += ", " + typeMap[s.type];
         }
         h += ".";
-      } else if (recipe.storage  && recipe.storage.html.trim() !== "") {
-        h += "Store at " + recipe.storage.html + ".";
+        if (s.text) {
+          h += " " + s.text;
+        }
+        if (i < recipe.storage.length - 1) h += " ";
       }
       h += "</div>";
     }
 
     // Notes
-    for (var n = 0; n < recipe.notes.length; n++) {
-      var note = recipe.notes[n];
-      var isCritical = note.type === "critical" || note.type === "safety";
-      if (isCritical) {
-        h += '<div class="rc-note rc-note-critical"><strong>Important:</strong> ' + note.html + "!</div>";
-      } else if (note.type) {
-        h += '<div class="rc-note rc-note-typed"><em>' +
-          note.type + ':</em> ' + note.html + ".</div>";
-      } else {
-        h += '<div class="rc-note">' + note.html + ".</div>";
-      }
+    var noteOrder = ["critical", "", "orientation", "quality", "explanation"];
+    var noteLabels = {
+      critical: "Critical",
+      "": "Note",
+      orientation: "Good to know",
+      quality: "Quality assurance",
+      explanation: "This is why"
+    };
+    var notePunct = { critical: "!" };
+
+    for (var ni = 0; ni < noteOrder.length; ni++) {
+      var ntype = noteOrder[ni];
+      var group = recipe.notes.filter(function (n) { return n.type === ntype; });
+      if (!group.length) continue;
+
+      var punct = notePunct[ntype] || ".";
+      var cls = ntype === "critical" ? "rc-note rc-note-critical" : "rc-note";
+      var label = noteLabels[ntype];
+
+      h += '<div class="' + cls + '">';
+      h += "<em>" + label + "</em> ";
+      h += group.map(function (n) { return n.html + punct; }).join(" ");
+      h += "</div>";
     }
 
     // Safety
@@ -1083,7 +1176,7 @@ document.addEventListener("DOMContentLoaded", function () {
         for (var pi = 0; pi < recipe.safety.pictograms.length; pi++) {
           var type = recipe.safety.pictograms[pi];
           var alt = type.replace(/_/g, " ");
-          h += '<img class="rc-ghs-icon" src="/assets/ghs/ghs_' + type + '.svg" alt="' + alt + '" />';
+          h += '<img class="rc-ghs-icon" src="/assets/ghs/ghs_' + type + '.svg" alt="' + alt + '" title="' + alt + '" />';
         }
         h += '</div>';
       }
@@ -1120,16 +1213,17 @@ document.addEventListener("DOMContentLoaded", function () {
     if (recipe.sources.length) {
       h += '<div class="rc-sources">';
       h += "<p>For research use. Users are responsible for compliance with local regulations and institutional policies. Amounts scale proportionally with total solvent volume.</p>";
-      h += "<p>Source: ";
+      h += "<p>Recipe used in ";
       h += recipe.sources.map(function (s) {
-        var label = 
-        '<a target="_blank" rel="noopener noreferrer" href="/assets/protocols/pdf/' + s.filename + '.pdf">' +
-          s.doc_type + " " + s.id + " v" + s.version +
-        "</a>";
-        if (s.primary) label += " (shown)";
-        return label;
+        var text = s.doc_type + s.id + "-v" + s.version;
+        if (s.primary) text += " (shown here)";
+        if (s.visibility === "public") {
+          return '<a target="_blank" rel="noopener noreferrer" href="/assets/protocols/pdf/' +
+            s.filename + '.pdf">' + text + '</a>';
+        }
+        return '<span class="rc-source-missing">' + text + '</span>';
       }).join(", ");
-      h += "</p></div>";
+      h += ".</p></div>";
     }
 
     h += "</div>"; // rc-body
@@ -1166,6 +1260,12 @@ document.addEventListener("DOMContentLoaded", function () {
   function renderList() {
     var filtered = getFiltered();
     var hasDetail = selectedIds.length > 0;
+    var page = document.querySelector(".recipes-page");
+    if (hasDetail) {
+      page.classList.add("has-detail");
+    } else {
+      page.classList.remove("has-detail");
+    }
 
     listEl.className = "recipe-list" + (hasDetail ? "" : " full-width");
 
@@ -1244,6 +1344,11 @@ document.addEventListener("DOMContentLoaded", function () {
     detailEl.innerHTML = h;
     updateScaledValues();
     syncScaleUI();
+    
+    var lastCard = detailEl.querySelector('.recipe-card:last-child');
+    if (lastCard) {
+      lastCard.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+    }
   }
   
   function updateScaledValues() {
@@ -1399,11 +1504,11 @@ document.addEventListener("DOMContentLoaded", function () {
           ].join(" ").toLowerCase();
         }
       });
-
+      
       checkUrlParams();
-      renderList();
-      renderDetail();
-
+        renderList();
+        renderDetail();
+      
       // Search input
       searchEl.addEventListener("input", function () {
         renderList();
