@@ -832,6 +832,8 @@ document.addEventListener("DOMContentLoaded", function () {
         id: s.getAttribute("id") || "",
         version: s.getAttribute("version") || "",
         primary: s.getAttribute("primary") === "yes",
+        visibility: s.getAttribute("visibility") || "",
+        license: s.getAttribute("license") || "",
         filename: textOf(s)
       };
     });
@@ -1149,16 +1151,17 @@ document.addEventListener("DOMContentLoaded", function () {
     if (recipe.sources.length) {
       h += '<div class="rc-sources">';
       h += "<p>For research use. Users are responsible for compliance with local regulations and institutional policies. Amounts scale proportionally with total solvent volume.</p>";
-      h += "<p>Referenced in: ";
+      h += "<p>Recipe used in ";
       h += recipe.sources.map(function (s) {
-        var label = 
-        '<a target="_blank" rel="noopener noreferrer" href="/assets/protocols/pdf/' + s.filename + '.pdf">' +
-          s.doc_type + s.id + "-v" + s.version +
-        "</a>";
-        if (s.primary) label += " (shown)";
-        return label;
+        var text = s.doc_type + s.id + "-v" + s.version;
+        if (s.primary) text += " (shown here)";
+        if (s.visibility === "public") {
+          return '<a target="_blank" rel="noopener noreferrer" href="/assets/protocols/pdf/' +
+            s.filename + '.pdf">' + text + '</a>';
+        }
+        return '<span class="rc-source-missing">' + text + '</span>';
       }).join(", ");
-      h += "</p></div>";
+      h += ".</p></div>";
     }
 
     h += "</div>"; // rc-body
@@ -1433,11 +1436,11 @@ document.addEventListener("DOMContentLoaded", function () {
           ].join(" ").toLowerCase();
         }
       });
-
+      
       checkUrlParams();
-      renderList();
-      renderDetail();
-
+        renderList();
+        renderDetail();
+      
       // Search input
       searchEl.addEventListener("input", function () {
         renderList();
