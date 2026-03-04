@@ -6,21 +6,12 @@
   visibility: "internal"
   keywords:
     level: advanced
-<<<<<<< HEAD
-    workflow: sample preparation
-    technique: [bacterial expression, histone expression, cation exchange chromatography, ultracentrifugation]
-    domain: biochemistry
-    topic: [chromatin biology, recombinant protein production]
-  current_commit_hash: "93805fe"
-  current_commit_time: "2026-03-03T17:49:26-05:00"
-=======
     topic: [chromatin biology, recombinant protein production]
     domain: biochemistry
     workflow: sample preparation
     technique: [bacterial expression, histone expression, cation exchange chromatography, ultracentrifugation]
   current_commit_hash: "3646e9b"
   current_commit_time: "2026-03-03T23:21:19-05:00"
->>>>>>> recipe-collection
   abstract: ""
   filename: "sop_0004-v3-production_recombinant_histones"
 
@@ -31,15 +22,6 @@
   title: "Qualitative polymerase chain reactions"
   visibility: "public"
   keywords:
-<<<<<<< HEAD
-    domain: molecular biology
-    workflow: analysis
-    technique: [qualitative PCR, gel analysis, PCR]
-    level: basic
-    topic: [nucleic acid analysis, DNA amplification]
-  current_commit_hash: "7c51999"
-  current_commit_time: "2026-03-03T18:17:28-05:00"
-=======
     topic: [nucleic acid analysis, DNA amplification]
     domain: molecular biology
     level: basic
@@ -47,7 +29,6 @@
     technique: [qualitative PCR, gel analysis, PCR]
   current_commit_hash: "7026ca8"
   current_commit_time: "2026-03-03T21:55:50-05:00"
->>>>>>> recipe-collection
   abstract: "Polymerase chain reaction (PCR) can reveal the presence of specific DNA sequences or structural variations such as insertions and deletions when combined with gel-based detection o…"
   filename: "sop_0039-v1-pcr_qualitative"
 
@@ -109,15 +90,6 @@
   title: "Whole cell lysates from tissue culture cells"
   visibility: "public"
   keywords:
-<<<<<<< HEAD
-    domain: cell biology
-    level: basic
-    workflow: sample preparation
-    topic: [protein analysis, sub-cellular fractionation]
-    technique: [cell lysis, whole-cell extraction]
-  current_commit_hash: "2782a42"
-  current_commit_time: "2026-03-03T18:03:11-05:00"
-=======
     workflow: sample preparation
     topic: [protein analysis, sub-cellular fractionation]
     technique: [cell lysis, whole-cell extraction]
@@ -125,7 +97,6 @@
     domain: cell biology
   current_commit_hash: "a298d81"
   current_commit_time: "2026-03-03T23:21:19-05:00"
->>>>>>> recipe-collection
   abstract: "Whole cell lysates are relatively simple and rapid to generate from adherent and suspension tissue culture cells—or even tissue slices—when a biochemical activity or cellular c…"
   filename: "sop_0002-v1-whole_cell_extraction_mammalian_cells"
 
@@ -136,15 +107,6 @@
   title: "Histone octamer, tetramer, or dimer formation"
   visibility: "public"
   keywords:
-<<<<<<< HEAD
-    level: advanced
-    technique: [salt dialysis, FPLC, size exclusion chromatography, protein refolding, nuecleosome assembly]
-    topic: [chromatin biology, recombinant protein production]
-    workflow: sample preparation
-    domain: biochemistry
-  current_commit_hash: "dcdb5ab"
-  current_commit_time: "2026-03-03T17:49:56-05:00"
-=======
     technique: [salt dialysis, FPLC, size exclusion chromatography, protein refolding, nuecleosome assembly]
     workflow: sample preparation
     level: advanced
@@ -152,7 +114,6 @@
     topic: [chromatin biology, recombinant protein production]
   current_commit_hash: "dd33c6d"
   current_commit_time: "2026-03-03T21:50:26-05:00"
->>>>>>> recipe-collection
   abstract: "Histones are inherently predisposed to assemble into their native complexes — H2A·H2B dimers, H3·H4 tetramers, and ultimately the histone octamer — even in complex mixtures. …"
   filename: "sop_0005-v2-production_histone_octamers"
 
@@ -163,21 +124,13 @@
   title: "Reconstitution of mononucleosomes and nucleosome arrays"
   visibility: "internal"
   keywords:
-    topic: [chromatin biology, recombinant protein production]
-    domain: biochemistry
     workflow: sample preparation
     level: advanced
-<<<<<<< HEAD
-    technique: [salt dialysis, chromatography, nucleosome assembly]
-  current_commit_hash: "e36e4aa"
-  current_commit_time: "2026-03-03T17:50:49-05:00"
-=======
     domain: biochemistry
     technique: [salt dialysis, chromatography, nucleosome assembly]
     topic: [chromatin biology, recombinant protein production]
   current_commit_hash: "825e2db"
   current_commit_time: "2026-03-03T21:50:47-05:00"
->>>>>>> recipe-collection
   abstract: ""
   filename: "sop_0006-v2-production_nucleosome"
 
@@ -222,22 +175,13 @@
   title: "Denaturing SDS polyacrylamide gel electrophoresis"
   visibility: "public"
   keywords:
-    domain: biochemistry
-    technique: [SDS-PAGE, gel casting, gel electrophoresis, denaturing electrophoresis]
     topic: [protein analysis, protein separation]
-<<<<<<< HEAD
-    level: basic
-    workflow: analysis
-  current_commit_hash: "e72b1f4"
-  current_commit_time: "2026-03-03T18:20:20-05:00"
-=======
     workflow: analysis
     level: basic
     domain: biochemistry
     technique: [SDS-PAGE, gel casting, gel electrophoresis, denaturing electrophoresis]
   current_commit_hash: "a102351"
   current_commit_time: "2026-03-03T23:21:20-05:00"
->>>>>>> recipe-collection
   abstract: "In the presence of anionic detergents like sodium dodecyl sulfate (SDS), proteins lose their tertiary structure and acquire a uniform negative charge. Since most secondary structur…"
   filename: "sop_0007-v1-sds_page"
 
@@ -248,15 +192,6 @@
   title: "Cell cycle analysis by fluorescence staining"
   visibility: "internal"
   keywords:
-<<<<<<< HEAD
-    technique: [flow cytometry, PI staining]
-    topic: [cell synchronization, cell cycle analysis]
-    workflow: analysis
-    level: advanced
-    domain: tissue culture
-  current_commit_hash: "4ecc34c"
-  current_commit_time: "2026-03-03T18:04:39-05:00"
-=======
     domain: tissue culture
     technique: [flow cytometry, PI staining]
     level: advanced
@@ -264,7 +199,6 @@
     workflow: analysis
   current_commit_hash: "cdd6a3d"
   current_commit_time: "2026-03-03T21:55:50-05:00"
->>>>>>> recipe-collection
   abstract: ""
   filename: "sop_0029-v1-cell_cycle_flow_cytometry"
 
@@ -277,13 +211,8 @@
   keywords:
     topic: [protein analysis, protein visualization]
     technique: Coomassie staining
-<<<<<<< HEAD
-    level: basic
-    workflow: analysis
-=======
     workflow: analysis
     level: basic
->>>>>>> recipe-collection
     domain: biochemistry
   current_commit_hash: "7de12ac"
   current_commit_time: "2026-03-03T17:55:21-05:00"
@@ -297,15 +226,6 @@
   title: "Making and running agarose gels"
   visibility: "public"
   keywords:
-<<<<<<< HEAD
-    workflow: analysis
-    level: basic
-    technique: [agarose gel electrophoresis, ethidium bromide staining]
-    domain: molecular biology
-    topic: [nucleic acid analysis, DNA visualization]
-  current_commit_hash: "b1a3f88"
-  current_commit_time: "2026-03-03T18:21:22-05:00"
-=======
     topic: [nucleic acid analysis, DNA visualization]
     technique: [agarose gel electrophoresis, ethidium bromide staining]
     workflow: analysis
@@ -313,7 +233,6 @@
     level: basic
   current_commit_hash: "e0ffb42"
   current_commit_time: "2026-03-03T23:21:20-05:00"
->>>>>>> recipe-collection
   abstract: "Agarose gel electrophoresis is a simple, versatile technique for resolving DNA (main protocol), RNA (A), and large protein complexes (B) for analytical or preparative purposes."
   filename: "sop_0032-v1-agarose_gel_electrophoresis"
 
@@ -341,15 +260,6 @@
   title: "Non-viral transfection of animal tissue culture cells"
   visibility: "public"
   keywords:
-<<<<<<< HEAD
-    level: basic
-    technique: [lipofection, PEI transfection]
-    topic: [cell engineering, transient expression]
-    domain: tissue culture
-    workflow: sample preparation
-  current_commit_hash: "e0acf52"
-  current_commit_time: "2026-03-03T17:59:11-05:00"
-=======
     workflow: sample preparation
     topic: [cell engineering, transient expression]
     domain: tissue culture
@@ -357,7 +267,6 @@
     level: basic
   current_commit_hash: "8e345b3"
   current_commit_time: "2026-03-03T23:21:20-05:00"
->>>>>>> recipe-collection
   abstract: "Non-viral transfection introduces DNA or RNA into animal tissue culture cells using chemical delivery methods. The approach avoids viral vectors and enables rapid, scalable manipul…"
   filename: "sop_0012-v2-transfection_chemical"
 
@@ -385,15 +294,6 @@
   title: "Nuclear extraction and fractionation of chromatin-associated proteins"
   visibility: "public"
   keywords:
-<<<<<<< HEAD
-    level: advanced
-    technique: [hypotonic lysis, salt extraction, fractionation]
-    domain: cell biology
-    workflow: sample preparation
-    topic: [chromatin biology, sub-cellular fractionation]
-  current_commit_hash: "2dc51a2"
-  current_commit_time: "2026-03-03T18:01:54-05:00"
-=======
     technique: [hypotonic lysis, salt extraction, fractionation]
     workflow: sample preparation
     level: advanced
@@ -401,7 +301,6 @@
     domain: cell biology
   current_commit_hash: "6544f73"
   current_commit_time: "2026-03-03T21:55:49-05:00"
->>>>>>> recipe-collection
   abstract: "The eukaryotic nucleus contains distinct biochemical environments that regulate access to the genetic information and modulate protein interactions. These include the nucleosol, eu…"
   filename: "sop_0025-v1-nuclear_extraction"
 
@@ -412,15 +311,6 @@
   title: "Transformation of plasmids into a bacterial host"
   visibility: "public"
   keywords:
-<<<<<<< HEAD
-    workflow: sample preparation
-    domain: molecular biology
-    topic: [cloning, cloning strategies]
-    level: basic
-    technique: [heat shock, antibiotic selection, bacterial cloning]
-  current_commit_hash: "3358f7c"
-  current_commit_time: "2026-03-03T18:15:37-05:00"
-=======
     topic: [cloning, cloning strategies]
     technique: [heat shock, antibiotic selection, bacterial cloning]
     domain: molecular biology
@@ -428,7 +318,6 @@
     workflow: sample preparation
   current_commit_hash: "434cfbe"
   current_commit_time: "2026-03-03T21:55:50-05:00"
->>>>>>> recipe-collection
   abstract: "Recombinant DNA can be stably maintained in bacterial hosts as extrachromosomal plasmids, enabling clonal amplification (“molecular cloning”) and, in some cases, expression of …"
   filename: "sop_0034-v1-transformation"
 
@@ -456,15 +345,6 @@
   title: "In-gel protein staining with silver nitrate"
   visibility: "public"
   keywords:
-<<<<<<< HEAD
-    workflow: analysis
-    level: advanced
-    technique: silver staining
-    topic: [protein analysis, protein visualization]
-    domain: biochemistry
-  current_commit_hash: "d4172a9"
-  current_commit_time: "2026-03-03T18:05:39-05:00"
-=======
     technique: silver staining
     level: advanced
     workflow: analysis
@@ -472,7 +352,6 @@
     domain: biochemistry
   current_commit_hash: "c29d2eb"
   current_commit_time: "2026-03-03T21:55:49-05:00"
->>>>>>> recipe-collection
   abstract: "Silver staining detects proteins after electrophoretic separation with high sensitivity down to 200 picogram per band or spot. Unlike dyes, which require a minimum mass of protein …"
   filename: "sop_0011-v1-protein_gel_silver_staining"
 
@@ -484,20 +363,12 @@
   visibility: "public"
   keywords:
     topic: [nucleic acid purification, DNA extraction]
-    technique: [cell lysis, proteinase K digestion, silica purification]
-    level: intermediate
     domain: molecular biology
-<<<<<<< HEAD
-    workflow: sample preparation
-  current_commit_hash: "4fb34e8"
-  current_commit_time: "2026-03-03T18:00:11-05:00"
-=======
     level: intermediate
     workflow: sample preparation
     technique: [cell lysis, proteinase K digestion, silica purification]
   current_commit_hash: "a555329"
   current_commit_time: "2026-03-03T21:55:49-05:00"
->>>>>>> recipe-collection
   abstract: "Isolating high-molecular weight genomic DNA is essential for PCR, hybridization, and other molecular analyses where degraded DNA may introduce allelic dropout or signal bias."
   filename: "sop_0024-v1-dna_isolation_mammalian_cells"
 
@@ -509,21 +380,12 @@
   visibility: "internal"
   keywords:
     domain: biochemistry
-<<<<<<< HEAD
-    technique: [antibody coupling, bead capture, immunodetection, immunoprecipitation]
-    topic: [protein analysis, protein complex analysis]
-    level: advanced
-    workflow: sample preparation
-  current_commit_hash: "4056749"
-  current_commit_time: "2026-03-03T18:16:09-05:00"
-=======
     level: advanced
     workflow: sample preparation
     topic: [protein analysis, protein complex analysis]
     technique: [antibody coupling, bead capture, immunodetection, immunoprecipitation]
   current_commit_hash: "06390fc"
   current_commit_time: "2026-03-03T21:55:49-05:00"
->>>>>>> recipe-collection
   abstract: ""
   filename: "sop_0027-v1-immunoprecipitation"
 
@@ -534,24 +396,13 @@
   title: "Separation of RNA from DNA with guanidinium thiocyanate"
   visibility: "public"
   keywords:
-<<<<<<< HEAD
-    level: intermediate
-=======
     workflow: sample preparation
->>>>>>> recipe-collection
     technique: [guanidinium thiocyanate, phenol-chloroform, phase separation]
-    domain: molecular biology
     topic: [nucleic acid purification, RNA extraction]
-<<<<<<< HEAD
-    workflow: sample preparation
-  current_commit_hash: "5e4965b"
-  current_commit_time: "2026-03-03T18:07:11-05:00"
-=======
     level: intermediate
     domain: molecular biology
   current_commit_hash: "a1fff60"
   current_commit_time: "2026-03-03T23:21:20-05:00"
->>>>>>> recipe-collection
   abstract: "Guanidinium thiocyanate extraction is a classical method for isolating high-quality RNA from cultured cells or tissue samples. It is particularly effective for recovering small RNA…"
   filename: "sop_0023-v1-rna_isolation_trizol"
 
@@ -597,17 +448,12 @@
   visibility: "internal"
   keywords:
     domain: tissue culture
-<<<<<<< HEAD
-  current_commit_hash: "1bf5d4a"
-  current_commit_time: "2026-03-03T18:07:53-05:00"
-=======
     level: advanced
     topic: [cell synchronization, cell cycle control]
     workflow: sample preparation
     technique: [thymidine block, nocodazole treatment]
   current_commit_hash: "29b7004"
   current_commit_time: "2026-03-03T21:55:49-05:00"
->>>>>>> recipe-collection
   abstract: ""
   filename: "sop_0028-v2-cell_cycle_synchronization"
 
@@ -619,21 +465,12 @@
   visibility: "public"
   keywords:
     domain: cell biology
-<<<<<<< HEAD
-    level: basic
-    topic: [chromatin biology, sub-cellular fractionation]
-    workflow: sample preparation
-    technique: [cell lysis, nuclear isolation]
-  current_commit_hash: "27f0b83"
-  current_commit_time: "2026-03-03T18:24:28-05:00"
-=======
     topic: [chromatin biology, sub-cellular fractionation]
     technique: [cell lysis, nuclear isolation]
     workflow: sample preparation
     level: basic
   current_commit_hash: "88dcc8c"
   current_commit_time: "2026-03-03T21:50:08-05:00"
->>>>>>> recipe-collection
   abstract: "The nucleus is the largest and densest organelle of a mammalian cell. It can be easily purified by sedimentation in aqueous and non-aqueous solutions. The purified nuclei can be di…"
   filename: "sop_0001-v1-isolation_nuclei"
 
@@ -644,15 +481,6 @@
   title: "Immunoblotting"
   visibility: "public"
   keywords:
-<<<<<<< HEAD
-    topic: [protein analysis, protein detection]
-    domain: biochemistry
-    level: basic
-    workflow: analysis
-    technique: [Western blot, antibody labeling, chemiluminescence, immunodetection, immunoassay]
-  current_commit_hash: "63ec186"
-  current_commit_time: "2026-03-03T17:54:35-05:00"
-=======
     technique: [Western blot, antibody labeling, chemiluminescence, immunodetection, immunoassay]
     topic: [protein analysis, protein detection]
     workflow: analysis
@@ -660,7 +488,6 @@
     domain: biochemistry
   current_commit_hash: "e1dd568"
   current_commit_time: "2026-03-03T21:55:49-05:00"
->>>>>>> recipe-collection
   abstract: "Immunoblotting identifies proteins using antibodies that recognize unique epitopes in a linear amino acid sequence or folded structure. Typically, proteins are first separated by e…"
   filename: "sop_0009-v1-immunoblotting"
 
@@ -739,19 +566,11 @@
   title: "Western blotting"
   visibility: "public"
   keywords:
-<<<<<<< HEAD
-    level: basic
-    technique: [Western blot, transfer]
-    domain: biochemistry
-    topic: [protein analysis, protein detection]
-    workflow: analysis
-=======
     technique: [Western blot, transfer]
     workflow: analysis
     level: basic
     domain: biochemistry
     topic: [protein analysis, protein detection]
->>>>>>> recipe-collection
   current_commit_hash: "4241117"
   current_commit_time: "2026-03-03T16:59:39-05:00"
   abstract: "Western blotting transfers proteins from a gel onto a solid support such as a nitrocellulose or polyvinylidene fluoride (PVDF) membrane. Once transferred, individual proteins, prot…"

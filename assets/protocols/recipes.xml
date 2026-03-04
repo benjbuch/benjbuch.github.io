@@ -30,11 +30,7 @@
 		<!-- ORGANIZATION -->
 		<category>solution</category>
 		<category>common</category>
-<<<<<<< HEAD
-		<source doc_type="COL" id="0001" version="1" definition="yes" primary="yes">co_0001-v1-stock_solutions</source>
-=======
 		<source doc_type="COL" id="0001" version="1" visibility="internal" license="CC-BY-SA-4.0"  definition="yes" primary="yes">co_0001-v1-stock_solutions</source>
->>>>>>> recipe-collection
 	</recipe>
 	<recipe id="R0083">
 		<name>Adenosine triphosphate</name>
@@ -73,11 +69,7 @@
 		<!-- ORGANIZATION -->
 		<category>solution</category>
 		<category>special</category>
-<<<<<<< HEAD
-		<source doc_type="COL" id="0001" version="1" definition="yes" primary="yes">co_0001-v1-stock_solutions</source>
-=======
 		<source doc_type="COL" id="0001" version="1" visibility="internal" license="CC-BY-SA-4.0"  definition="yes" primary="yes">co_0001-v1-stock_solutions</source>
->>>>>>> recipe-collection
 	</recipe>
 	<recipe id="R0002">
 		<name>Ammonium acetate</name>
@@ -101,11 +93,7 @@
 		<!-- ORGANIZATION -->
 		<category>solution</category>
 		<category>common</category>
-<<<<<<< HEAD
-		<source doc_type="COL" id="0001" version="1" definition="yes" primary="yes">co_0001-v1-stock_solutions</source>
-=======
 		<source doc_type="COL" id="0001" version="1" visibility="internal" license="CC-BY-SA-4.0"  definition="yes" primary="yes">co_0001-v1-stock_solutions</source>
->>>>>>> recipe-collection
 	</recipe>
 	<recipe id="R0003">
 		<name>Ammonium persulfate</name>
@@ -138,11 +126,7 @@
 		<!-- ORGANIZATION -->
 		<category>solution</category>
 		<category>common</category>
-<<<<<<< HEAD
-		<source doc_type="COL" id="0001" version="1" definition="yes" primary="yes">co_0001-v1-stock_solutions</source>
-=======
 		<source doc_type="COL" id="0001" version="1" visibility="internal" license="CC-BY-SA-4.0"  definition="yes" primary="yes">co_0001-v1-stock_solutions</source>
->>>>>>> recipe-collection
 	</recipe>
 	<recipe id="R0088">
 		<name>Amphotericin B</name>
@@ -176,11 +160,7 @@
 		<!-- category>solution</category -->
 		<category>antibiotics</category>
 		<category>mammalian</category>
-<<<<<<< HEAD
-		<source doc_type="COL" id="0001" version="1" definition="yes" primary="yes">co_0001-v1-stock_solutions</source>
-=======
 		<source doc_type="COL" id="0001" version="1" visibility="internal" license="CC-BY-SA-4.0"  definition="yes" primary="yes">co_0001-v1-stock_solutions</source>
->>>>>>> recipe-collection
 	</recipe>
 	<recipe id="R0004">
 		<name>Ampicillin</name>
@@ -217,11 +197,7 @@
 		<!-- category>solution</category -->
 		<category>antibiotics</category>
 		<category>bacterial</category>
-<<<<<<< HEAD
-		<source doc_type="COL" id="0001" version="1" definition="yes" primary="yes">co_0001-v1-stock_solutions</source>
-=======
 		<source doc_type="COL" id="0001" version="1" visibility="internal" license="CC-BY-SA-4.0"  definition="yes" primary="yes">co_0001-v1-stock_solutions</source>
->>>>>>> recipe-collection
 	</recipe>
 	<recipe id="R0192">
 		<name>Betaine</name>
@@ -246,11 +222,7 @@
 		<!-- ORGANIZATION -->
 		<category>solution</category>
 		<category>special</category>
-<<<<<<< HEAD
-		<source doc_type="COL" id="0001" version="1" definition="yes" primary="yes">co_0001-v1-stock_solutions</source>
-=======
 		<source doc_type="COL" id="0001" version="1" visibility="internal" license="CC-BY-SA-4.0"  definition="yes" primary="yes">co_0001-v1-stock_solutions</source>
->>>>>>> recipe-collection
 	</recipe>
 	<recipe id="R0089">
 		<name>Blasticidin S</name>
@@ -286,11 +258,7 @@
 		<category>antibiotics</category>
 		<category>mammalian</category>
 		<category>yeast</category>
-<<<<<<< HEAD
-		<source doc_type="COL" id="0001" version="1" definition="yes" primary="yes">co_0001-v1-stock_solutions</source>
-=======
 		<source doc_type="COL" id="0001" version="1" visibility="internal" license="CC-BY-SA-4.0"  definition="yes" primary="yes">co_0001-v1-stock_solutions</source>
->>>>>>> recipe-collection
 	</recipe>
 	<recipe id="R0005">
 		<name>Bovine serum albumin</name>
@@ -315,11 +283,7 @@
 		<!-- ORGANIZATION -->
 		<category>solution</category>
 		<category>common</category>
-<<<<<<< HEAD
-		<source doc_type="COL" id="0001" version="1" definition="yes" primary="yes">co_0001-v1-stock_solutions</source>
-=======
 		<source doc_type="COL" id="0001" version="1" visibility="internal" license="CC-BY-SA-4.0"  definition="yes" primary="yes">co_0001-v1-stock_solutions</source>
->>>>>>> recipe-collection
 	</recipe>
 	<recipe id="R0006">
 		<name>Buffer P1 (Resuspension buffer)</name>
@@ -356,13 +320,8 @@
 		<!-- ORGANIZATION -->
 		<category>buffer</category>
 		<category>nucleics</category>
-<<<<<<< HEAD
-		<source doc_type="COL" id="0001" version="1" definition="yes" primary="yes">co_0001-v1-stock_solutions</source>
-		<source doc_type="SOP" id="0020" version="1" definition="no">sop_0020-v1-plasmid_isolation</source>
-=======
 		<source doc_type="SOP" id="0020" version="1" visibility="public" license="CC-BY-SA-4.0"  definition="no">sop_0020-v1-plasmid_isolation</source>
 		<source doc_type="COL" id="0001" version="1" visibility="internal" license="CC-BY-SA-4.0"  definition="yes" primary="yes">co_0001-v1-stock_solutions</source>
->>>>>>> recipe-collection
 	</recipe>
 	<recipe id="R0007">
 		<name>Buffer P2 (Lysis buffer)</name>
@@ -400,13 +359,8 @@
 		<!-- ORGANIZATION -->
 		<category>buffer</category>
 		<category>nucleics</category>
-<<<<<<< HEAD
-		<source doc_type="COL" id="0001" version="1" definition="yes" primary="yes">co_0001-v1-stock_solutions</source>
-		<source doc_type="SOP" id="0020" version="1" definition="no">sop_0020-v1-plasmid_isolation</source>
-=======
 		<source doc_type="SOP" id="0020" version="1" visibility="public" license="CC-BY-SA-4.0"  definition="no">sop_0020-v1-plasmid_isolation</source>
 		<source doc_type="COL" id="0001" version="1" visibility="internal" license="CC-BY-SA-4.0"  definition="yes" primary="yes">co_0001-v1-stock_solutions</source>
->>>>>>> recipe-collection
 	</recipe>
 	<recipe id="R0008">
 		<name>Buffer P3 (Neutralization buffer)</name>
@@ -434,11 +388,7 @@
 		<!-- ORGANIZATION -->
 		<category>buffer</category>
 		<category>nucleics</category>
-<<<<<<< HEAD
-		<source doc_type="COL" id="0001" version="1" definition="yes" primary="yes">co_0001-v1-stock_solutions</source>
-=======
 		<source doc_type="COL" id="0001" version="1" visibility="internal" license="CC-BY-SA-4.0"  definition="yes" primary="yes">co_0001-v1-stock_solutions</source>
->>>>>>> recipe-collection
 	</recipe>
 	<recipe id="R0009">
 		<name>Buffer N3 (Neutralization buffer)</name>
@@ -473,13 +423,8 @@
 		<!-- ORGANIZATION -->
 		<category>buffer</category>
 		<category>nucleics</category>
-<<<<<<< HEAD
-		<source doc_type="COL" id="0001" version="1" definition="yes" primary="yes">co_0001-v1-stock_solutions</source>
-		<source doc_type="SOP" id="0020" version="1" definition="no">sop_0020-v1-plasmid_isolation</source>
-=======
 		<source doc_type="SOP" id="0020" version="1" visibility="public" license="CC-BY-SA-4.0"  definition="no">sop_0020-v1-plasmid_isolation</source>
 		<source doc_type="COL" id="0001" version="1" visibility="internal" license="CC-BY-SA-4.0"  definition="yes" primary="yes">co_0001-v1-stock_solutions</source>
->>>>>>> recipe-collection
 	</recipe>
 	<recipe id="R0010">
 		<name>Buffer PB (Binding buffer)</name>
@@ -515,17 +460,10 @@
 		<!-- ORGANIZATION -->
 		<category>buffer</category>
 		<category>nucleics</category>
-<<<<<<< HEAD
-		<source doc_type="SOP" id="0020" version="1" definition="no">sop_0020-v1-plasmid_isolation</source>
-		<source doc_type="SOP" id="0021" version="1" definition="no">sop_0021-v1-purification_nucleic_acids</source>
-		<source doc_type="COL" id="0001" version="1" definition="yes" primary="yes">co_0001-v1-stock_solutions</source>
-		<source doc_type="SOP" id="0024" version="1" definition="no">sop_0024-v1-dna_isolation_mammalian_cells</source>
-=======
 		<source doc_type="SOP" id="0024" version="1" visibility="public" license="CC-BY-SA-4.0"  definition="no">sop_0024-v1-dna_isolation_mammalian_cells</source>
 		<source doc_type="SOP" id="0020" version="1" visibility="public" license="CC-BY-SA-4.0"  definition="no">sop_0020-v1-plasmid_isolation</source>
 		<source doc_type="SOP" id="0021" version="1" visibility="public" license="CC-BY-SA-4.0"  definition="no">sop_0021-v1-purification_nucleic_acids</source>
 		<source doc_type="COL" id="0001" version="1" visibility="internal" license="CC-BY-SA-4.0"  definition="yes" primary="yes">co_0001-v1-stock_solutions</source>
->>>>>>> recipe-collection
 	</recipe>
 	<recipe id="R0011">
 		<name>Buffer PE (Wash buffer)</name>
@@ -560,15 +498,9 @@
 		<!-- ORGANIZATION -->
 		<category>buffer</category>
 		<category>nucleics</category>
-<<<<<<< HEAD
-		<source doc_type="SOP" id="0020" version="1" definition="no">sop_0020-v1-plasmid_isolation</source>
-		<source doc_type="SOP" id="0021" version="1" definition="no">sop_0021-v1-purification_nucleic_acids</source>
-		<source doc_type="COL" id="0001" version="1" definition="yes" primary="yes">co_0001-v1-stock_solutions</source>
-=======
 		<source doc_type="SOP" id="0020" version="1" visibility="public" license="CC-BY-SA-4.0"  definition="no">sop_0020-v1-plasmid_isolation</source>
 		<source doc_type="SOP" id="0021" version="1" visibility="public" license="CC-BY-SA-4.0"  definition="no">sop_0021-v1-purification_nucleic_acids</source>
 		<source doc_type="COL" id="0001" version="1" visibility="internal" license="CC-BY-SA-4.0"  definition="yes" primary="yes">co_0001-v1-stock_solutions</source>
->>>>>>> recipe-collection
 	</recipe>
 	<recipe id="R0012">
 		<name>Calcium chloride</name>
@@ -596,13 +528,8 @@
 		<!-- ORGANIZATION -->
 		<category>solution</category>
 		<category>common</category>
-<<<<<<< HEAD
-		<source doc_type="COL" id="0001" version="1" definition="yes" primary="yes">co_0001-v1-stock_solutions</source>
-		<source doc_type="SOP" id="0012" version="2" definition="no">sop_0012-v2-transfection_chemical</source>
-=======
 		<source doc_type="SOP" id="0012" version="2" visibility="public" license="CC-BY-SA-4.0"  definition="no">sop_0012-v2-transfection_chemical</source>
 		<source doc_type="COL" id="0001" version="1" visibility="internal" license="CC-BY-SA-4.0"  definition="yes" primary="yes">co_0001-v1-stock_solutions</source>
->>>>>>> recipe-collection
 	</recipe>
 	<recipe id="R0013">
 		<name>Carbenicillin</name>
@@ -636,11 +563,7 @@
 		<!-- category>solution</category -->
 		<category>antibiotics</category>
 		<category>bacterial</category>
-<<<<<<< HEAD
-		<source doc_type="COL" id="0001" version="1" definition="yes" primary="yes">co_0001-v1-stock_solutions</source>
-=======
 		<source doc_type="COL" id="0001" version="1" visibility="internal" license="CC-BY-SA-4.0"  definition="yes" primary="yes">co_0001-v1-stock_solutions</source>
->>>>>>> recipe-collection
 	</recipe>
 	<recipe id="R0014">
 		<name>Chloramphenicol</name>
@@ -678,11 +601,7 @@
 		<!-- category>solution</category -->
 		<category>antibiotics</category>
 		<category>bacterial</category>
-<<<<<<< HEAD
-		<source doc_type="COL" id="0001" version="1" definition="yes" primary="yes">co_0001-v1-stock_solutions</source>
-=======
 		<source doc_type="COL" id="0001" version="1" visibility="internal" license="CC-BY-SA-4.0"  definition="yes" primary="yes">co_0001-v1-stock_solutions</source>
->>>>>>> recipe-collection
 	</recipe>
 	<recipe id="R0087">
 		<name>Ciprofloxacin</name>
@@ -713,11 +632,7 @@
 		<!-- category>solution</category -->
 		<category>antibiotics</category>
 		<category>mammalian</category>
-<<<<<<< HEAD
-		<source doc_type="COL" id="0001" version="1" definition="yes" primary="yes">co_0001-v1-stock_solutions</source>
-=======
 		<source doc_type="COL" id="0001" version="1" visibility="internal" license="CC-BY-SA-4.0"  definition="yes" primary="yes">co_0001-v1-stock_solutions</source>
->>>>>>> recipe-collection
 	</recipe>
 	<recipe id="R0015">
 		<name>Dithiothreitol</name>
@@ -754,11 +669,7 @@
 		<!-- ORGANIZATION -->
 		<category>solution</category>
 		<category>common</category>
-<<<<<<< HEAD
-		<source doc_type="COL" id="0001" version="1" definition="yes" primary="yes">co_0001-v1-stock_solutions</source>
-=======
 		<source doc_type="COL" id="0001" version="1" visibility="internal" license="CC-BY-SA-4.0"  definition="yes" primary="yes">co_0001-v1-stock_solutions</source>
->>>>>>> recipe-collection
 	</recipe>
 	<recipe id="R0016">
 		<name>DNA duplex buffer</name>
@@ -787,13 +698,8 @@
 		<!-- ORGANIZATION -->
 		<category>buffer</category>
 		<category>nucleics</category>
-<<<<<<< HEAD
-		<source doc_type="COL" id="0001" version="1" definition="yes" primary="yes">co_0001-v1-stock_solutions</source>
-		<source doc_type="SOP" id="0033" version="1" definition="no">sop_0033-v1-restriction_ligation_cloning</source>
-=======
 		<source doc_type="SOP" id="0033" version="1" visibility="public" license="CC-BY-SA-4.0"  definition="no">sop_0033-v1-restriction_ligation_cloning</source>
 		<source doc_type="COL" id="0001" version="1" visibility="internal" license="CC-BY-SA-4.0"  definition="yes" primary="yes">co_0001-v1-stock_solutions</source>
->>>>>>> recipe-collection
 	</recipe>
 	<recipe id="R0018">
 		<name>Ethidium bromide</name>
@@ -824,13 +730,8 @@
 		<!-- ORGANIZATION -->
 		<category>solution</category>
 		<category>common</category>
-<<<<<<< HEAD
-		<source doc_type="COL" id="0001" version="1" definition="yes" primary="yes">co_0001-v1-stock_solutions</source>
-		<source doc_type="SOP" id="0032" version="1" definition="no">sop_0032-v1-agarose_gel_electrophoresis</source>
-=======
 		<source doc_type="SOP" id="0032" version="1" visibility="public" license="CC-BY-SA-4.0"  definition="no">sop_0032-v1-agarose_gel_electrophoresis</source>
 		<source doc_type="COL" id="0001" version="1" visibility="internal" license="CC-BY-SA-4.0"  definition="yes" primary="yes">co_0001-v1-stock_solutions</source>
->>>>>>> recipe-collection
 	</recipe>
 	<recipe id="R0019">
 		<name>Ethidium bromide</name>
@@ -858,11 +759,7 @@
 		<!-- ORGANIZATION -->
 		<category>solution</category>
 		<category>common</category>
-<<<<<<< HEAD
-		<source doc_type="COL" id="0001" version="1" definition="yes" primary="yes">co_0001-v1-stock_solutions</source>
-=======
 		<source doc_type="COL" id="0001" version="1" visibility="internal" license="CC-BY-SA-4.0"  definition="yes" primary="yes">co_0001-v1-stock_solutions</source>
->>>>>>> recipe-collection
 	</recipe>
 	<recipe id="R0017">
 		<name>Ethylenediaminetetraacetate</name>
@@ -897,11 +794,7 @@
 		<!-- ORGANIZATION -->
 		<category>solution</category>
 		<category>common</category>
-<<<<<<< HEAD
-		<source doc_type="COL" id="0001" version="1" definition="yes" primary="yes">co_0001-v1-stock_solutions</source>
-=======
 		<source doc_type="COL" id="0001" version="1" visibility="internal" license="CC-BY-SA-4.0"  definition="yes" primary="yes">co_0001-v1-stock_solutions</source>
->>>>>>> recipe-collection
 	</recipe>
 	<recipe id="R0067">
 		<name>Ficoll® 400</name>
@@ -924,11 +817,7 @@
 		<!-- ORGANIZATION -->
 		<category>solution</category>
 		<category>special</category>
-<<<<<<< HEAD
-		<source doc_type="COL" id="0001" version="1" definition="yes" primary="yes">co_0001-v1-stock_solutions</source>
-=======
 		<source doc_type="COL" id="0001" version="1" visibility="internal" license="CC-BY-SA-4.0"  definition="yes" primary="yes">co_0001-v1-stock_solutions</source>
->>>>>>> recipe-collection
 	</recipe>
 	<recipe id="R0020">
 		<name>Geneticin</name>
@@ -963,11 +852,7 @@
 		<!-- category>solution</category -->
 		<category>antibiotics</category>
 		<category>yeast</category>
-<<<<<<< HEAD
-		<source doc_type="COL" id="0001" version="1" definition="yes" primary="yes">co_0001-v1-stock_solutions</source>
-=======
 		<source doc_type="COL" id="0001" version="1" visibility="internal" license="CC-BY-SA-4.0"  definition="yes" primary="yes">co_0001-v1-stock_solutions</source>
->>>>>>> recipe-collection
 	</recipe>
 	<recipe id="R0021">
 		<name>Glucose</name>
@@ -993,13 +878,8 @@
 		<!-- ORGANIZATION -->
 		<category>solution</category>
 		<category>common</category>
-<<<<<<< HEAD
-		<source doc_type="COL" id="0001" version="1" definition="yes" primary="yes">co_0001-v1-stock_solutions</source>
-		<source doc_type="SOP" id="0004" version="3" definition="no">sop_0004-v3-production_recombinant_histones</source>
-=======
 		<source doc_type="SOP" id="0004" version="3" visibility="internal" license="CC-BY-SA-4.0"  definition="no">sop_0004-v3-production_recombinant_histones</source>
 		<source doc_type="COL" id="0001" version="1" visibility="internal" license="CC-BY-SA-4.0"  definition="yes" primary="yes">co_0001-v1-stock_solutions</source>
->>>>>>> recipe-collection
 	</recipe>
 	<recipe id="R0022">
 		<name>Glycerol</name>
@@ -1030,11 +910,7 @@
 		<!-- ORGANIZATION -->
 		<category>solution</category>
 		<category>common</category>
-<<<<<<< HEAD
-		<source doc_type="COL" id="0001" version="1" definition="yes" primary="yes">co_0001-v1-stock_solutions</source>
-=======
 		<source doc_type="COL" id="0001" version="1" visibility="internal" license="CC-BY-SA-4.0"  definition="yes" primary="yes">co_0001-v1-stock_solutions</source>
->>>>>>> recipe-collection
 	</recipe>
 	<recipe id="R0023">
 		<name>Guanidine hydrochloride</name>
@@ -1064,11 +940,7 @@
 		<!-- ORGANIZATION -->
 		<category>solution</category>
 		<category>common</category>
-<<<<<<< HEAD
-		<source doc_type="COL" id="0001" version="1" definition="yes" primary="yes">co_0001-v1-stock_solutions</source>
-=======
 		<source doc_type="COL" id="0001" version="1" visibility="internal" license="CC-BY-SA-4.0"  definition="yes" primary="yes">co_0001-v1-stock_solutions</source>
->>>>>>> recipe-collection
 	</recipe>
 	<recipe id="R0024">
 		<name>HEPES</name>
@@ -1098,11 +970,7 @@
 		<!-- ORGANIZATION -->
 		<category>buffer</category>
 		<category>common</category>
-<<<<<<< HEAD
-		<source doc_type="COL" id="0001" version="1" definition="yes" primary="yes">co_0001-v1-stock_solutions</source>
-=======
 		<source doc_type="COL" id="0001" version="1" visibility="internal" license="CC-BY-SA-4.0"  definition="yes" primary="yes">co_0001-v1-stock_solutions</source>
->>>>>>> recipe-collection
 	</recipe>
 	<recipe id="R0025">
 		<name>Hydrochloric acid</name>
@@ -1137,11 +1005,7 @@
 		<!-- ORGANIZATION -->
 		<category>solution</category>
 		<category>common</category>
-<<<<<<< HEAD
-		<source doc_type="COL" id="0001" version="1" definition="yes" primary="yes">co_0001-v1-stock_solutions</source>
-=======
 		<source doc_type="COL" id="0001" version="1" visibility="internal" license="CC-BY-SA-4.0"  definition="yes" primary="yes">co_0001-v1-stock_solutions</source>
->>>>>>> recipe-collection
 	</recipe>
 	<recipe id="R0026">
 		<name>Hygromycin B</name>
@@ -1175,11 +1039,7 @@
 		<!-- category>solution</category -->
 		<category>antibiotics</category>
 		<category>yeast</category>
-<<<<<<< HEAD
-		<source doc_type="COL" id="0001" version="1" definition="yes" primary="yes">co_0001-v1-stock_solutions</source>
-=======
 		<source doc_type="COL" id="0001" version="1" visibility="internal" license="CC-BY-SA-4.0"  definition="yes" primary="yes">co_0001-v1-stock_solutions</source>
->>>>>>> recipe-collection
 	</recipe>
 	<recipe id="R0027">
 		<name>Imidazole</name>
@@ -1208,11 +1068,7 @@
 		<!-- ORGANIZATION -->
 		<category>solution</category>
 		<category>common</category>
-<<<<<<< HEAD
-		<source doc_type="COL" id="0001" version="1" definition="yes" primary="yes">co_0001-v1-stock_solutions</source>
-=======
 		<source doc_type="COL" id="0001" version="1" visibility="internal" license="CC-BY-SA-4.0"  definition="yes" primary="yes">co_0001-v1-stock_solutions</source>
->>>>>>> recipe-collection
 	</recipe>
 	<recipe id="R0028">
 		<name>Isopropyl β-​<sc>d</sc>-1-thiogalactoside</name>
@@ -1241,13 +1097,8 @@
 		<!-- ORGANIZATION -->
 		<category>solution</category>
 		<category>special</category>
-<<<<<<< HEAD
-		<source doc_type="COL" id="0001" version="1" definition="yes" primary="yes">co_0001-v1-stock_solutions</source>
-		<source doc_type="SOP" id="0004" version="3" definition="no">sop_0004-v3-production_recombinant_histones</source>
-=======
 		<source doc_type="SOP" id="0004" version="3" visibility="internal" license="CC-BY-SA-4.0"  definition="no">sop_0004-v3-production_recombinant_histones</source>
 		<source doc_type="COL" id="0001" version="1" visibility="internal" license="CC-BY-SA-4.0"  definition="yes" primary="yes">co_0001-v1-stock_solutions</source>
->>>>>>> recipe-collection
 	</recipe>
 	<recipe id="R0029">
 		<name>Kanamycin</name>
@@ -1280,13 +1131,8 @@
 		<!-- category>solution</category -->
 		<category>antibiotics</category>
 		<category>bacterial</category>
-<<<<<<< HEAD
-		<source doc_type="COL" id="0001" version="1" definition="yes" primary="yes">co_0001-v1-stock_solutions</source>
-		<source doc_type="SOP" id="0035" version="1" definition="yes">sop_0035-v1-protocol_writing</source>
-=======
 		<source doc_type="SOP" id="0035" version="1" visibility="internal" license="CC-BY-SA-4.0"  definition="yes">sop_0035-v1-protocol_writing</source>
 		<source doc_type="COL" id="0001" version="1" visibility="internal" license="CC-BY-SA-4.0"  definition="yes" primary="yes">co_0001-v1-stock_solutions</source>
->>>>>>> recipe-collection
 	</recipe>
 	<recipe id="R0030">
 		<name>LB medium (Miller)</name>
@@ -1323,13 +1169,8 @@
 		<!-- ORGANIZATION -->
 		<category>media</category>
 		<category>bacterial</category>
-<<<<<<< HEAD
-		<source doc_type="COL" id="0001" version="1" definition="yes" primary="yes">co_0001-v1-stock_solutions</source>
-		<source doc_type="SOP" id="0004" version="3" definition="no">sop_0004-v3-production_recombinant_histones</source>
-=======
 		<source doc_type="SOP" id="0004" version="3" visibility="internal" license="CC-BY-SA-4.0"  definition="no">sop_0004-v3-production_recombinant_histones</source>
 		<source doc_type="COL" id="0001" version="1" visibility="internal" license="CC-BY-SA-4.0"  definition="yes" primary="yes">co_0001-v1-stock_solutions</source>
->>>>>>> recipe-collection
 	</recipe>
 	<recipe id="R0079">
 		<name>Lysozyme</name>
@@ -1366,11 +1207,7 @@
 		<!-- ORGANIZATION -->
 		<category>solution</category>
 		<category>special</category>
-<<<<<<< HEAD
-		<source doc_type="COL" id="0001" version="1" definition="yes" primary="yes">co_0001-v1-stock_solutions</source>
-=======
 		<source doc_type="COL" id="0001" version="1" visibility="internal" license="CC-BY-SA-4.0"  definition="yes" primary="yes">co_0001-v1-stock_solutions</source>
->>>>>>> recipe-collection
 	</recipe>
 	<recipe id="R0063">
 		<name>M9 minimal salts</name>
@@ -1418,11 +1255,7 @@
 		<!-- ORGANIZATION -->
 		<category>media</category>
 		<category>bacterial</category>
-<<<<<<< HEAD
-		<source doc_type="COL" id="0001" version="1" definition="yes" primary="yes">co_0001-v1-stock_solutions</source>
-=======
 		<source doc_type="COL" id="0001" version="1" visibility="internal" license="CC-BY-SA-4.0"  definition="yes" primary="yes">co_0001-v1-stock_solutions</source>
->>>>>>> recipe-collection
 	</recipe>
 	<recipe id="R0031">
 		<name>Magnesium chloride</name>
@@ -1451,11 +1284,7 @@
 		<!-- ORGANIZATION -->
 		<category>solution</category>
 		<category>common</category>
-<<<<<<< HEAD
-		<source doc_type="COL" id="0001" version="1" definition="yes" primary="yes">co_0001-v1-stock_solutions</source>
-=======
 		<source doc_type="COL" id="0001" version="1" visibility="internal" license="CC-BY-SA-4.0"  definition="yes" primary="yes">co_0001-v1-stock_solutions</source>
->>>>>>> recipe-collection
 	</recipe>
 	<recipe id="R0032">
 		<name>Magnesium sulfate</name>
@@ -1481,11 +1310,7 @@
 		<!-- ORGANIZATION -->
 		<category>solution</category>
 		<category>common</category>
-<<<<<<< HEAD
-		<source doc_type="COL" id="0001" version="1" definition="yes" primary="yes">co_0001-v1-stock_solutions</source>
-=======
 		<source doc_type="COL" id="0001" version="1" visibility="internal" license="CC-BY-SA-4.0"  definition="yes" primary="yes">co_0001-v1-stock_solutions</source>
->>>>>>> recipe-collection
 	</recipe>
 	<recipe id="R0064">
 		<name>Minimal growth medium</name>
@@ -1533,11 +1358,7 @@
 		<!-- ORGANIZATION -->
 		<category>media</category>
 		<category>bacterial</category>
-<<<<<<< HEAD
-		<source doc_type="COL" id="0001" version="1" definition="yes" primary="yes">co_0001-v1-stock_solutions</source>
-=======
 		<source doc_type="COL" id="0001" version="1" visibility="internal" license="CC-BY-SA-4.0"  definition="yes" primary="yes">co_0001-v1-stock_solutions</source>
->>>>>>> recipe-collection
 	</recipe>
 	<recipe id="R0033">
 		<name>2-(<it>N</it>-Morpholino)ethanesulfonic acid</name>
@@ -1571,11 +1392,7 @@
 		<!-- ORGANIZATION -->
 		<category>buffer</category>
 		<category>common</category>
-<<<<<<< HEAD
-		<source doc_type="COL" id="0001" version="1" definition="yes" primary="yes">co_0001-v1-stock_solutions</source>
-=======
 		<source doc_type="COL" id="0001" version="1" visibility="internal" license="CC-BY-SA-4.0"  definition="yes" primary="yes">co_0001-v1-stock_solutions</source>
->>>>>>> recipe-collection
 	</recipe>
 	<recipe id="R0034">
 		<name>Nourseothricin</name>
@@ -1609,11 +1426,7 @@
 		<!-- category>solution</category -->
 		<category>antibiotics</category>
 		<category>yeast</category>
-<<<<<<< HEAD
-		<source doc_type="COL" id="0001" version="1" definition="yes" primary="yes">co_0001-v1-stock_solutions</source>
-=======
 		<source doc_type="COL" id="0001" version="1" visibility="internal" license="CC-BY-SA-4.0"  definition="yes" primary="yes">co_0001-v1-stock_solutions</source>
->>>>>>> recipe-collection
 	</recipe>
 	<recipe id="R0035">
 		<name>Phenylmethylsulfonyl fluoride</name>
@@ -1647,11 +1460,7 @@
 		<!-- ORGANIZATION -->
 		<category>solution</category>
 		<category>special</category>
-<<<<<<< HEAD
-		<source doc_type="COL" id="0001" version="1" definition="yes" primary="yes">co_0001-v1-stock_solutions</source>
-=======
 		<source doc_type="COL" id="0001" version="1" visibility="internal" license="CC-BY-SA-4.0"  definition="yes" primary="yes">co_0001-v1-stock_solutions</source>
->>>>>>> recipe-collection
 	</recipe>
 	<recipe id="R0036">
 		<name>Phleomycin</name>
@@ -1683,11 +1492,7 @@
 		<!-- category>solution</category -->
 		<category>antibiotics</category>
 		<category>yeast</category>
-<<<<<<< HEAD
-		<source doc_type="COL" id="0001" version="1" definition="yes" primary="yes">co_0001-v1-stock_solutions</source>
-=======
 		<source doc_type="COL" id="0001" version="1" visibility="internal" license="CC-BY-SA-4.0"  definition="yes" primary="yes">co_0001-v1-stock_solutions</source>
->>>>>>> recipe-collection
 	</recipe>
 	<recipe id="R0037">
 		<name>Phosphate-buffered saline</name>
@@ -1739,21 +1544,12 @@
 		<!-- ORGANIZATION -->
 		<category>buffer</category>
 		<category>common</category>
-<<<<<<< HEAD
-		<source doc_type="SOP" id="0001" version="1" definition="no">sop_0001-v1-isolation_nuclei</source>
-		<source doc_type="COL" id="0001" version="1" definition="yes" primary="yes">co_0001-v1-stock_solutions</source>
-		<source doc_type="SOP" id="0029" version="1" definition="no">sop_0029-v1-cell_cycle_flow_cytometry</source>
-		<source doc_type="SOP" id="0028" version="2" definition="no">sop_0028-v2-cell_cycle_synchronization</source>
-		<source doc_type="SOP" id="0027" version="1" definition="no">sop_0027-v1-immunoprecipitation</source>
-		<source doc_type="SOP" id="0002" version="1" definition="no">sop_0002-v1-whole_cell_extraction_mammalian_cells</source>
-=======
 		<source doc_type="SOP" id="0028" version="2" visibility="internal" license="CC-BY-SA-4.0"  definition="no">sop_0028-v2-cell_cycle_synchronization</source>
 		<source doc_type="SOP" id="0029" version="1" visibility="internal" license="CC-BY-SA-4.0"  definition="no">sop_0029-v1-cell_cycle_flow_cytometry</source>
 		<source doc_type="COL" id="0001" version="1" visibility="internal" license="CC-BY-SA-4.0"  definition="yes" primary="yes">co_0001-v1-stock_solutions</source>
 		<source doc_type="SOP" id="0001" version="1" visibility="public" license="CC-BY-SA-4.0"  definition="no">sop_0001-v1-isolation_nuclei</source>
 		<source doc_type="SOP" id="0027" version="1" visibility="internal" license="CC-BY-SA-4.0"  definition="no">sop_0027-v1-immunoprecipitation</source>
 		<source doc_type="SOP" id="0002" version="1" visibility="public" license="CC-BY-SA-4.0"  definition="no">sop_0002-v1-whole_cell_extraction_mammalian_cells</source>
->>>>>>> recipe-collection
 	</recipe>
 	<recipe id="R0074">
 		<name>Phosphatase inhibitor cocktail</name>
@@ -1835,11 +1631,7 @@
 		<!-- ORGANIZATION -->
 		<category>solution</category>
 		<category>special</category>
-<<<<<<< HEAD
-		<source doc_type="COL" id="0001" version="1" definition="yes" primary="yes">co_0001-v1-stock_solutions</source>
-=======
 		<source doc_type="COL" id="0001" version="1" visibility="internal" license="CC-BY-SA-4.0"  definition="yes" primary="yes">co_0001-v1-stock_solutions</source>
->>>>>>> recipe-collection
 	</recipe>
 	<recipe id="R0080">
 		<name>Poly-<sc>l</sc>-Lysine</name>
@@ -1874,13 +1666,8 @@
 		<!-- ORGANIZATION -->
 		<category>solution</category>
 		<category>mammalian</category>
-<<<<<<< HEAD
-		<source doc_type="COL" id="0001" version="1" definition="yes" primary="yes">co_0001-v1-stock_solutions</source>
-		<source doc_type="SOP" id="0013" version="1" definition="no">sop_0013-v1-transfection_electroporation</source>
-=======
 		<source doc_type="SOP" id="0013" version="1" visibility="internal" license="CC-BY-SA-4.0"  definition="no">sop_0013-v1-transfection_electroporation</source>
 		<source doc_type="COL" id="0001" version="1" visibility="internal" license="CC-BY-SA-4.0"  definition="yes" primary="yes">co_0001-v1-stock_solutions</source>
->>>>>>> recipe-collection
 	</recipe>
 	<recipe id="R0038">
 		<name>Potassium chloride</name>
@@ -1907,11 +1694,7 @@
 		<!-- ORGANIZATION -->
 		<category>solution</category>
 		<category>common</category>
-<<<<<<< HEAD
-		<source doc_type="COL" id="0001" version="1" definition="yes" primary="yes">co_0001-v1-stock_solutions</source>
-=======
 		<source doc_type="COL" id="0001" version="1" visibility="internal" license="CC-BY-SA-4.0"  definition="yes" primary="yes">co_0001-v1-stock_solutions</source>
->>>>>>> recipe-collection
 	</recipe>
 	<recipe id="R0068">
 		<name>Potassium phosphate</name>
@@ -1943,11 +1726,7 @@
 		<!-- ORGANIZATION -->
 		<category>buffer</category>
 		<category>common</category>
-<<<<<<< HEAD
-		<source doc_type="COL" id="0001" version="1" definition="yes" primary="yes">co_0001-v1-stock_solutions</source>
-=======
 		<source doc_type="COL" id="0001" version="1" visibility="internal" license="CC-BY-SA-4.0"  definition="yes" primary="yes">co_0001-v1-stock_solutions</source>
->>>>>>> recipe-collection
 	</recipe>
 	<recipe id="R0069">
 		<name>Potassium phosphate</name>
@@ -1979,11 +1758,7 @@
 		<!-- ORGANIZATION -->
 		<category>buffer</category>
 		<category>common</category>
-<<<<<<< HEAD
-		<source doc_type="COL" id="0001" version="1" definition="yes" primary="yes">co_0001-v1-stock_solutions</source>
-=======
 		<source doc_type="COL" id="0001" version="1" visibility="internal" license="CC-BY-SA-4.0"  definition="yes" primary="yes">co_0001-v1-stock_solutions</source>
->>>>>>> recipe-collection
 	</recipe>
 	<recipe id="R0072">
 		<name>Protease inhibitor cocktail (HALT)</name>
@@ -2064,11 +1839,7 @@
 		<!-- ORGANIZATION -->
 		<category>solution</category>
 		<category>special</category>
-<<<<<<< HEAD
-		<source doc_type="COL" id="0001" version="1" definition="yes" primary="yes">co_0001-v1-stock_solutions</source>
-=======
 		<source doc_type="COL" id="0001" version="1" visibility="internal" license="CC-BY-SA-4.0"  definition="yes" primary="yes">co_0001-v1-stock_solutions</source>
->>>>>>> recipe-collection
 	</recipe>
 	<recipe id="R0073">
 		<name>Protease inhibitor cocktail</name>
@@ -2138,11 +1909,7 @@
 		<!-- ORGANIZATION -->
 		<category>solution</category>
 		<category>special</category>
-<<<<<<< HEAD
-		<source doc_type="COL" id="0001" version="1" definition="yes" primary="yes">co_0001-v1-stock_solutions</source>
-=======
 		<source doc_type="COL" id="0001" version="1" visibility="internal" license="CC-BY-SA-4.0"  definition="yes" primary="yes">co_0001-v1-stock_solutions</source>
->>>>>>> recipe-collection
 	</recipe>
 	<recipe id="R0039">
 		<name>Puromycin</name>
@@ -2174,11 +1941,7 @@
 		<!-- category>solution</category -->
 		<category>antibiotics</category>
 		<category>mammalian</category>
-<<<<<<< HEAD
-		<source doc_type="COL" id="0001" version="1" definition="yes" primary="yes">co_0001-v1-stock_solutions</source>
-=======
 		<source doc_type="COL" id="0001" version="1" visibility="internal" license="CC-BY-SA-4.0"  definition="yes" primary="yes">co_0001-v1-stock_solutions</source>
->>>>>>> recipe-collection
 	</recipe>
 	<recipe id="R0040">
 		<name>RNase A</name>
@@ -2226,13 +1989,8 @@
 		<!-- ORGANIZATION -->
 		<category>solution</category>
 		<category>special</category>
-<<<<<<< HEAD
-		<source doc_type="COL" id="0001" version="1" definition="yes" primary="yes">co_0001-v1-stock_solutions</source>
-		<source doc_type="SOP" id="0024" version="1" definition="no">sop_0024-v1-dna_isolation_mammalian_cells</source>
-=======
 		<source doc_type="SOP" id="0024" version="1" visibility="public" license="CC-BY-SA-4.0"  definition="no">sop_0024-v1-dna_isolation_mammalian_cells</source>
 		<source doc_type="COL" id="0001" version="1" visibility="internal" license="CC-BY-SA-4.0"  definition="yes" primary="yes">co_0001-v1-stock_solutions</source>
->>>>>>> recipe-collection
 	</recipe>
 	<recipe id="R0044">
 		<name>S. O. C. medium</name>
@@ -2290,11 +2048,7 @@
 		<!-- ORGANIZATION -->
 		<category>media</category>
 		<category>bacterial</category>
-<<<<<<< HEAD
-		<source doc_type="COL" id="0001" version="1" definition="yes" primary="yes">co_0001-v1-stock_solutions</source>
-=======
 		<source doc_type="COL" id="0001" version="1" visibility="internal" license="CC-BY-SA-4.0"  definition="yes" primary="yes">co_0001-v1-stock_solutions</source>
->>>>>>> recipe-collection
 	</recipe>
 	<recipe id="R0045">
 		<name>Sodium acetate</name>
@@ -2329,13 +2083,8 @@
 		<!-- ORGANIZATION -->
 		<category>solution</category>
 		<category>common</category>
-<<<<<<< HEAD
-		<source doc_type="COL" id="0001" version="1" definition="yes" primary="yes">co_0001-v1-stock_solutions</source>
-		<source doc_type="SOP" id="0021" version="1" definition="no">sop_0021-v1-purification_nucleic_acids</source>
-=======
 		<source doc_type="SOP" id="0021" version="1" visibility="public" license="CC-BY-SA-4.0"  definition="no">sop_0021-v1-purification_nucleic_acids</source>
 		<source doc_type="COL" id="0001" version="1" visibility="internal" license="CC-BY-SA-4.0"  definition="yes" primary="yes">co_0001-v1-stock_solutions</source>
->>>>>>> recipe-collection
 	</recipe>
 	<recipe id="R0077">
 		<name>Sodium azide</name>
@@ -2368,11 +2117,7 @@
 		<!-- ORGANIZATION -->
 		<category>solution</category>
 		<category>special</category>
-<<<<<<< HEAD
-		<source doc_type="COL" id="0001" version="1" definition="yes" primary="yes">co_0001-v1-stock_solutions</source>
-=======
 		<source doc_type="COL" id="0001" version="1" visibility="internal" license="CC-BY-SA-4.0"  definition="yes" primary="yes">co_0001-v1-stock_solutions</source>
->>>>>>> recipe-collection
 	</recipe>
 	<recipe id="R0084">
 		<name>Sodium butyrate</name>
@@ -2398,12 +2143,7 @@
 		</ingredient>
 		<workup>Add solids slowly into well stirred solution</workup>
 		<workup>Dispense into <unit>1 milliliter</unit> aliquots</workup>
-<<<<<<< HEAD
-		<storage class="freezer"><unit>-20 celsius</unit></storage>
-		<shelflife>2 year</shelflife>
-=======
 		<storage class="freezer" shelflife="2 year"/>
->>>>>>> recipe-collection
 		<note type="safety">Butyric acid is a corresive that smells like vomit or rancid butter; work inside a certified chemical fume hood</note>
 		<!-- ENVIRONMENT, HEALTH, SAFETY -->
 		<safety signal="warning">
@@ -2413,11 +2153,7 @@
 		<!-- ORGANIZATION -->
 		<category>solution</category>
 		<category>special</category>
-<<<<<<< HEAD
-		<source doc_type="COL" id="0001" version="1" definition="yes" primary="yes">co_0001-v1-stock_solutions</source>
-=======
 		<source doc_type="COL" id="0001" version="1" visibility="internal" license="CC-BY-SA-4.0"  definition="yes" primary="yes">co_0001-v1-stock_solutions</source>
->>>>>>> recipe-collection
 	</recipe>
 	<recipe id="R0046">
 		<name>Sodium chloride</name>
@@ -2444,11 +2180,7 @@
 		<!-- ORGANIZATION -->
 		<category>solution</category>
 		<category>common</category>
-<<<<<<< HEAD
-		<source doc_type="COL" id="0001" version="1" definition="yes" primary="yes">co_0001-v1-stock_solutions</source>
-=======
 		<source doc_type="COL" id="0001" version="1" visibility="internal" license="CC-BY-SA-4.0"  definition="yes" primary="yes">co_0001-v1-stock_solutions</source>
->>>>>>> recipe-collection
 	</recipe>
 	<recipe id="R0047">
 		<name>Sodium dodecyl sulfate</name>
@@ -2479,11 +2211,7 @@
 		<!-- ORGANIZATION -->
 		<category>solution</category>
 		<category>common</category>
-<<<<<<< HEAD
-		<source doc_type="COL" id="0001" version="1" definition="yes" primary="yes">co_0001-v1-stock_solutions</source>
-=======
 		<source doc_type="COL" id="0001" version="1" visibility="internal" license="CC-BY-SA-4.0"  definition="yes" primary="yes">co_0001-v1-stock_solutions</source>
->>>>>>> recipe-collection
 	</recipe>
 	<recipe id="R0076">
 		<name>Sodium fluoride</name>
@@ -2510,11 +2238,7 @@
 		<!-- ORGANIZATION -->
 		<category>solution</category>
 		<category>special</category>
-<<<<<<< HEAD
-		<source doc_type="COL" id="0001" version="1" definition="yes" primary="yes">co_0001-v1-stock_solutions</source>
-=======
 		<source doc_type="COL" id="0001" version="1" visibility="internal" license="CC-BY-SA-4.0"  definition="yes" primary="yes">co_0001-v1-stock_solutions</source>
->>>>>>> recipe-collection
 	</recipe>
 	<recipe id="R0048">
 		<name>Sodium hydroxide</name>
@@ -2536,11 +2260,7 @@
 		<workup>Add solids slowly into well stirred solution</workup>
 		<note type="orientation">The solution has <pH>14.0</pH></note>
 		<note type="safety">Work inside a chemical fume hood</note>
-<<<<<<< HEAD
-		<storage>room temperature in plastic container</storage>
-=======
 		<storage>Keep in a plastic container.</storage>
->>>>>>> recipe-collection
 		<!-- ENVIRONMENT, HEALTH, SAFETY -->
 		<safety signal="danger">
 			<hazard category="1" type="corrosive">Skin corrosion</hazard>
@@ -2552,11 +2272,7 @@
 		<!-- ORGANIZATION -->
 		<category>solution</category>
 		<category>common</category>
-<<<<<<< HEAD
-		<source doc_type="COL" id="0001" version="1" definition="yes" primary="yes">co_0001-v1-stock_solutions</source>
-=======
 		<source doc_type="COL" id="0001" version="1" visibility="internal" license="CC-BY-SA-4.0"  definition="yes" primary="yes">co_0001-v1-stock_solutions</source>
->>>>>>> recipe-collection
 	</recipe>
 	<recipe id="R0075">
 		<name>Sodium orthovanadate</name>
@@ -2592,11 +2308,7 @@
 		<!-- ORGANIZATION -->
 		<category>solution</category>
 		<category>special</category>
-<<<<<<< HEAD
-		<source doc_type="COL" id="0001" version="1" definition="yes" primary="yes">co_0001-v1-stock_solutions</source>
-=======
 		<source doc_type="COL" id="0001" version="1" visibility="internal" license="CC-BY-SA-4.0"  definition="yes" primary="yes">co_0001-v1-stock_solutions</source>
->>>>>>> recipe-collection
 	</recipe>
 	<recipe id="R0085">
 		<name>Sodium phosphate</name>
@@ -2629,11 +2341,7 @@
 		<!-- ORGANIZATION -->
 		<category>buffer</category>
 		<category>common</category>
-<<<<<<< HEAD
-		<source doc_type="COL" id="0001" version="1" definition="yes" primary="yes">co_0001-v1-stock_solutions</source>
-=======
 		<source doc_type="COL" id="0001" version="1" visibility="internal" license="CC-BY-SA-4.0"  definition="yes" primary="yes">co_0001-v1-stock_solutions</source>
->>>>>>> recipe-collection
 	</recipe>
 	<recipe id="R0086">
 		<name>Sodium phosphate</name>
@@ -2665,11 +2373,7 @@
 		<!-- ORGANIZATION -->
 		<category>buffer</category>
 		<category>common</category>
-<<<<<<< HEAD
-		<source doc_type="COL" id="0001" version="1" definition="yes" primary="yes">co_0001-v1-stock_solutions</source>
-=======
 		<source doc_type="COL" id="0001" version="1" visibility="internal" license="CC-BY-SA-4.0"  definition="yes" primary="yes">co_0001-v1-stock_solutions</source>
->>>>>>> recipe-collection
 	</recipe>
 	<recipe id="R0049">
 		<name>Spectinomycin</name>
@@ -2702,11 +2406,7 @@
 		<!-- category>solution</category -->
 		<category>antibiotics</category>
 		<category>bacterial</category>
-<<<<<<< HEAD
-		<source doc_type="COL" id="0001" version="1" definition="yes" primary="yes">co_0001-v1-stock_solutions</source>
-=======
 		<source doc_type="COL" id="0001" version="1" visibility="internal" license="CC-BY-SA-4.0"  definition="yes" primary="yes">co_0001-v1-stock_solutions</source>
->>>>>>> recipe-collection
 	</recipe>
 	<recipe id="R0066">
 		<name>Sucrose</name>
@@ -2735,13 +2435,8 @@
 		<!-- ORGANIZATION -->
 		<category>solution</category>
 		<category>common</category>
-<<<<<<< HEAD
-		<source doc_type="COL" id="0001" version="1" definition="yes" primary="yes">co_0001-v1-stock_solutions</source>
-		<source doc_type="SOP" id="0003" version="1" definition="no">sop_0003-v1-native_page</source>
-=======
 		<source doc_type="SOP" id="0003" version="1" visibility="public" license="CC-BY-SA-4.0"  definition="no">sop_0003-v1-native_page</source>
 		<source doc_type="COL" id="0001" version="1" visibility="internal" license="CC-BY-SA-4.0"  definition="yes" primary="yes">co_0001-v1-stock_solutions</source>
->>>>>>> recipe-collection
 	</recipe>
 	<recipe id="R0041">
 		<name>Synthetic dextrose (SD) minimal medium</name>
@@ -2774,11 +2469,7 @@
 		<!-- ORGANIZATION -->
 		<category>media</category>
 		<category>yeast</category>
-<<<<<<< HEAD
-		<source doc_type="COL" id="0001" version="1" definition="yes" primary="yes">co_0001-v1-stock_solutions</source>
-=======
 		<source doc_type="COL" id="0001" version="1" visibility="internal" license="CC-BY-SA-4.0"  definition="yes" primary="yes">co_0001-v1-stock_solutions</source>
->>>>>>> recipe-collection
 	</recipe>
 	<recipe id="R0042">
 		<name>Synthetic complete (SC) minimal medium</name>
@@ -2817,11 +2508,7 @@
 		<!-- ORGANIZATION -->
 		<category>media</category>
 		<category>yeast</category>
-<<<<<<< HEAD
-		<source doc_type="COL" id="0001" version="1" definition="yes" primary="yes">co_0001-v1-stock_solutions</source>
-=======
 		<source doc_type="COL" id="0001" version="1" visibility="internal" license="CC-BY-SA-4.0"  definition="yes" primary="yes">co_0001-v1-stock_solutions</source>
->>>>>>> recipe-collection
 	</recipe>
 	<recipe id="R0043">
 		<name>Synthetic complete (SC) drop-out mix</name>
@@ -2979,11 +2666,7 @@
 		<!-- ORGANIZATION -->
 		<category>media</category>
 		<category>yeast</category>
-<<<<<<< HEAD
-		<source doc_type="COL" id="0001" version="1" definition="yes" primary="yes">co_0001-v1-stock_solutions</source>
-=======
 		<source doc_type="COL" id="0001" version="1" visibility="internal" license="CC-BY-SA-4.0"  definition="yes" primary="yes">co_0001-v1-stock_solutions</source>
->>>>>>> recipe-collection
 	</recipe>
 	<recipe id="R0070">
 		<name>Terrific broth (TB) medium</name>
@@ -3034,11 +2717,7 @@
 		<!-- ORGANIZATION -->
 		<category>media</category>
 		<category>bacterial</category>
-<<<<<<< HEAD
-		<source doc_type="COL" id="0001" version="1" definition="yes" primary="yes">co_0001-v1-stock_solutions</source>
-=======
 		<source doc_type="COL" id="0001" version="1" visibility="internal" license="CC-BY-SA-4.0"  definition="yes" primary="yes">co_0001-v1-stock_solutions</source>
->>>>>>> recipe-collection
 	</recipe>
 	<recipe id="R0050">
 		<name>Tetracycline</name>
@@ -3072,11 +2751,7 @@
 		<!-- category>solution</category -->
 		<category>antibiotics</category>
 		<category>bacterial</category>
-<<<<<<< HEAD
-		<source doc_type="COL" id="0001" version="1" definition="yes" primary="yes">co_0001-v1-stock_solutions</source>
-=======
 		<source doc_type="COL" id="0001" version="1" visibility="internal" license="CC-BY-SA-4.0"  definition="yes" primary="yes">co_0001-v1-stock_solutions</source>
->>>>>>> recipe-collection
 	</recipe>
 	<recipe id="R0065">
 		<name>Trichloroacetic acid</name>
@@ -3107,11 +2782,7 @@
 		<!-- ORGANIZATION -->
 		<category>solution</category>
 		<category>common</category>
-<<<<<<< HEAD
-		<source doc_type="COL" id="0001" version="1" definition="yes" primary="yes">co_0001-v1-stock_solutions</source>
-=======
 		<source doc_type="COL" id="0001" version="1" visibility="internal" license="CC-BY-SA-4.0"  definition="yes" primary="yes">co_0001-v1-stock_solutions</source>
->>>>>>> recipe-collection
 	</recipe>
 	<recipe id="R0051">
 		<name>Tris-acetate-EDTA</name>
@@ -3152,11 +2823,7 @@
 		<!-- ORGANIZATION -->
 		<category>buffer</category>
 		<category>common</category>
-<<<<<<< HEAD
-		<source doc_type="COL" id="0001" version="1" definition="yes" primary="yes">co_0001-v1-stock_solutions</source>
-=======
 		<source doc_type="COL" id="0001" version="1" visibility="internal" license="CC-BY-SA-4.0"  definition="yes" primary="yes">co_0001-v1-stock_solutions</source>
->>>>>>> recipe-collection
 	</recipe>
 	<recipe id="R0052">
 		<name>Tris-borate-EDTA</name>
@@ -3211,13 +2878,8 @@
 		<!-- ORGANIZATION -->
 		<category>buffer</category>
 		<category>common</category>
-<<<<<<< HEAD
-		<source doc_type="COL" id="0001" version="1" definition="yes" primary="yes">co_0001-v1-stock_solutions</source>
-		<source doc_type="SOP" id="0003" version="1" definition="no">sop_0003-v1-native_page</source>
-=======
 		<source doc_type="SOP" id="0003" version="1" visibility="public" license="CC-BY-SA-4.0"  definition="no">sop_0003-v1-native_page</source>
 		<source doc_type="COL" id="0001" version="1" visibility="internal" license="CC-BY-SA-4.0"  definition="yes" primary="yes">co_0001-v1-stock_solutions</source>
->>>>>>> recipe-collection
 	</recipe>
 	<recipe id="R0053">
 		<name>Tris-buffered saline</name>
@@ -3263,11 +2925,7 @@
 		<!-- ORGANIZATION -->
 		<category>buffer</category>
 		<category>common</category>
-<<<<<<< HEAD
-		<source doc_type="COL" id="0001" version="1" definition="yes" primary="yes">co_0001-v1-stock_solutions</source>
-=======
 		<source doc_type="COL" id="0001" version="1" visibility="internal" license="CC-BY-SA-4.0"  definition="yes" primary="yes">co_0001-v1-stock_solutions</source>
->>>>>>> recipe-collection
 	</recipe>
 	<recipe id="R0054">
 		<name>Tris/EDTA</name>
@@ -3297,11 +2955,7 @@
 		<!-- ORGANIZATION -->
 		<category>buffer</category>
 		<category>common</category>
-<<<<<<< HEAD
-		<source doc_type="COL" id="0001" version="1" definition="yes" primary="yes">co_0001-v1-stock_solutions</source>
-=======
 		<source doc_type="COL" id="0001" version="1" visibility="internal" license="CC-BY-SA-4.0"  definition="yes" primary="yes">co_0001-v1-stock_solutions</source>
->>>>>>> recipe-collection
 	</recipe>
 	<recipe id="R0055">
 		<name>Tris hydrochloride</name>
@@ -3335,11 +2989,7 @@
 		<!-- ORGANIZATION -->
 		<category>buffer</category>
 		<category>common</category>
-<<<<<<< HEAD
-		<source doc_type="COL" id="0001" version="1" definition="yes" primary="yes">co_0001-v1-stock_solutions</source>
-=======
 		<source doc_type="COL" id="0001" version="1" visibility="internal" license="CC-BY-SA-4.0"  definition="yes" primary="yes">co_0001-v1-stock_solutions</source>
->>>>>>> recipe-collection
 	</recipe>
 	<recipe id="R0056">
 		<name>Tris hydrochloride</name>
@@ -3373,15 +3023,9 @@
 		<!-- ORGANIZATION -->
 		<category>buffer</category>
 		<category>common</category>
-<<<<<<< HEAD
-		<source doc_type="SOP" id="0020" version="1" definition="no">sop_0020-v1-plasmid_isolation</source>
-		<source doc_type="SOP" id="0021" version="1" definition="no">sop_0021-v1-purification_nucleic_acids</source>
-		<source doc_type="COL" id="0001" version="1" definition="yes" primary="yes">co_0001-v1-stock_solutions</source>
-=======
 		<source doc_type="SOP" id="0020" version="1" visibility="public" license="CC-BY-SA-4.0"  definition="no">sop_0020-v1-plasmid_isolation</source>
 		<source doc_type="SOP" id="0021" version="1" visibility="public" license="CC-BY-SA-4.0"  definition="no">sop_0021-v1-purification_nucleic_acids</source>
 		<source doc_type="COL" id="0001" version="1" visibility="internal" license="CC-BY-SA-4.0"  definition="yes" primary="yes">co_0001-v1-stock_solutions</source>
->>>>>>> recipe-collection
 	</recipe>
 	<recipe id="R0057">
 		<name>Triton™ X-100</name>
@@ -3410,15 +3054,9 @@
 		<!-- ORGANIZATION -->
 		<category>solution</category>
 		<category>common</category>
-<<<<<<< HEAD
-		<source doc_type="SOP" id="0004" version="3" definition="no">sop_0004-v3-production_recombinant_histones</source>
-		<source doc_type="SOP" id="0001" version="1" definition="no">sop_0001-v1-isolation_nuclei</source>
-		<source doc_type="COL" id="0001" version="1" definition="yes" primary="yes">co_0001-v1-stock_solutions</source>
-=======
 		<source doc_type="SOP" id="0001" version="1" visibility="public" license="CC-BY-SA-4.0"  definition="no">sop_0001-v1-isolation_nuclei</source>
 		<source doc_type="SOP" id="0004" version="3" visibility="internal" license="CC-BY-SA-4.0"  definition="no">sop_0004-v3-production_recombinant_histones</source>
 		<source doc_type="COL" id="0001" version="1" visibility="internal" license="CC-BY-SA-4.0"  definition="yes" primary="yes">co_0001-v1-stock_solutions</source>
->>>>>>> recipe-collection
 	</recipe>
 	<recipe id="R0081">
 		<name>Trypsin solution</name>
@@ -3461,13 +3099,8 @@
 		<!-- ORGANIZATION -->
 		<category>solution</category>
 		<category>mammalian</category>
-<<<<<<< HEAD
-		<source doc_type="COL" id="0001" version="1" definition="yes" primary="yes">co_0001-v1-stock_solutions</source>
-		<source doc_type="SOP" id="0015" version="1" definition="no">sop_0015-v1-routine_cell_culture_HeLa</source>
-=======
 		<source doc_type="SOP" id="0015" version="1" visibility="public" license="CC-BY-SA-4.0"  definition="no">sop_0015-v1-routine_cell_culture_HeLa</source>
 		<source doc_type="COL" id="0001" version="1" visibility="internal" license="CC-BY-SA-4.0"  definition="yes" primary="yes">co_0001-v1-stock_solutions</source>
->>>>>>> recipe-collection
 	</recipe>
 	<recipe id="R0082">
 		<name>Trypsin inhibitor solution</name>
@@ -3508,11 +3141,7 @@
 		<!-- ORGANIZATION -->
 		<category>solution</category>
 		<category>mammalian</category>
-<<<<<<< HEAD
-		<source doc_type="COL" id="0001" version="1" definition="yes" primary="yes">co_0001-v1-stock_solutions</source>
-=======
 		<source doc_type="COL" id="0001" version="1" visibility="internal" license="CC-BY-SA-4.0"  definition="yes" primary="yes">co_0001-v1-stock_solutions</source>
->>>>>>> recipe-collection
 	</recipe>
 	<recipe id="R0058">
 		<name>Tween™ 20</name>
@@ -3539,11 +3168,7 @@
 		<!-- ORGANIZATION -->
 		<category>solution</category>
 		<category>common</category>
-<<<<<<< HEAD
-		<source doc_type="COL" id="0001" version="1" definition="yes" primary="yes">co_0001-v1-stock_solutions</source>
-=======
 		<source doc_type="COL" id="0001" version="1" visibility="internal" license="CC-BY-SA-4.0"  definition="yes" primary="yes">co_0001-v1-stock_solutions</source>
->>>>>>> recipe-collection
 	</recipe>
 	<recipe id="R0059">
 		<name>X-Gal</name>
@@ -3570,11 +3195,7 @@
 		<!-- ORGANIZATION -->
 		<category>solution</category>
 		<category>special</category>
-<<<<<<< HEAD
-		<source doc_type="COL" id="0001" version="1" definition="yes" primary="yes">co_0001-v1-stock_solutions</source>
-=======
 		<source doc_type="COL" id="0001" version="1" visibility="internal" license="CC-BY-SA-4.0"  definition="yes" primary="yes">co_0001-v1-stock_solutions</source>
->>>>>>> recipe-collection
 	</recipe>
 	<recipe id="R0060">
 		<name>YEG medium</name>
@@ -3612,11 +3233,7 @@
 		<!-- ORGANIZATION -->
 		<category>media</category>
 		<category>yeast</category>
-<<<<<<< HEAD
-		<source doc_type="COL" id="0001" version="1" definition="yes" primary="yes">co_0001-v1-stock_solutions</source>
-=======
 		<source doc_type="COL" id="0001" version="1" visibility="internal" license="CC-BY-SA-4.0"  definition="yes" primary="yes">co_0001-v1-stock_solutions</source>
->>>>>>> recipe-collection
 	</recipe>
 	<recipe id="R0061">
 		<name>YPD medium</name>
@@ -3654,11 +3271,7 @@
 		<!-- ORGANIZATION -->
 		<category>media</category>
 		<category>yeast</category>
-<<<<<<< HEAD
-		<source doc_type="COL" id="0001" version="1" definition="yes" primary="yes">co_0001-v1-stock_solutions</source>
-=======
 		<source doc_type="COL" id="0001" version="1" visibility="internal" license="CC-BY-SA-4.0"  definition="yes" primary="yes">co_0001-v1-stock_solutions</source>
->>>>>>> recipe-collection
 	</recipe>
 	<recipe id="R0062">
 		<name>YPG medium</name>
@@ -3697,11 +3310,7 @@
 		<!-- ORGANIZATION -->
 		<category>media</category>
 		<category>yeast</category>
-<<<<<<< HEAD
-		<source doc_type="COL" id="0001" version="1" definition="yes" primary="yes">co_0001-v1-stock_solutions</source>
-=======
 		<source doc_type="COL" id="0001" version="1" visibility="internal" license="CC-BY-SA-4.0"  definition="yes" primary="yes">co_0001-v1-stock_solutions</source>
->>>>>>> recipe-collection
 	</recipe>
 	<recipe id="R0071">
 		<name>YT medium</name>
@@ -3737,11 +3346,7 @@
 		<!-- ORGANIZATION -->
 		<category>media</category>
 		<category>bacterial</category>
-<<<<<<< HEAD
-		<source doc_type="COL" id="0001" version="1" definition="yes" primary="yes">co_0001-v1-stock_solutions</source>
-=======
 		<source doc_type="COL" id="0001" version="1" visibility="internal" license="CC-BY-SA-4.0"  definition="yes" primary="yes">co_0001-v1-stock_solutions</source>
->>>>>>> recipe-collection
 	</recipe>
 	<recipe id="R0078">
 		<name>Zinc chloride</name>
@@ -3771,11 +3376,7 @@
 		<!-- ORGANIZATION -->
 		<category>solution</category>
 		<category>common</category>
-<<<<<<< HEAD
-		<source doc_type="COL" id="0001" version="1" definition="yes" primary="yes">co_0001-v1-stock_solutions</source>
-=======
 		<source doc_type="COL" id="0001" version="1" visibility="internal" license="CC-BY-SA-4.0"  definition="yes" primary="yes">co_0001-v1-stock_solutions</source>
->>>>>>> recipe-collection
 	</recipe>
 	<recipe id="R0090">
 		<!-- also used in SOP0002, SOP0025 -->
@@ -3845,13 +3446,8 @@
 		<!-- ORGANIZATION -->
 		<category>solution</category>
 		<category>special</category>
-<<<<<<< HEAD
-		<source doc_type="SOP" id="0002" version="1" definition="no">sop_0002-v1-whole_cell_extraction_mammalian_cells</source>
-		<source doc_type="SOP" id="0001" version="1" definition="yes" primary="yes">sop_0001-v1-isolation_nuclei</source>
-=======
 		<source doc_type="SOP" id="0001" version="1" visibility="public" license="CC-BY-SA-4.0"  definition="yes" primary="yes">sop_0001-v1-isolation_nuclei</source>
 		<source doc_type="SOP" id="0002" version="1" visibility="public" license="CC-BY-SA-4.0"  definition="no">sop_0002-v1-whole_cell_extraction_mammalian_cells</source>
->>>>>>> recipe-collection
 	</recipe>
 	<recipe id="R0091">
 		<name>Swelling buffer</name>
@@ -3902,19 +3498,11 @@
 			<final>1 fold</final>
 		</ingredient>
 		<workup>Add DTT and inhibitor cocktail immediately before use</workup>
-<<<<<<< HEAD
-		<storage><unit>4 celsius</unit></storage>
-		<!-- ORGANIZATION -->
-		<category>buffer</category>
-		<category>mammalian</category>
-		<source doc_type="SOP" id="0001" version="1" definition="yes" primary="yes">sop_0001-v1-isolation_nuclei</source>
-=======
 		<storage class="fridge"/>
 		<!-- ORGANIZATION -->
 		<category>buffer</category>
 		<category>mammalian</category>
 		<source doc_type="SOP" id="0001" version="1" visibility="public" license="CC-BY-SA-4.0"  definition="yes" primary="yes">sop_0001-v1-isolation_nuclei</source>
->>>>>>> recipe-collection
 	</recipe>
 	<recipe id="R0092">
 		<name>Sucrose buffer</name>
@@ -3975,11 +3563,7 @@
 		<!-- ORGANIZATION -->
 		<category>buffer</category>
 		<category>mammalian</category>
-<<<<<<< HEAD
-		<source doc_type="SOP" id="0001" version="1" definition="yes" primary="yes">sop_0001-v1-isolation_nuclei</source>
-=======
 		<source doc_type="SOP" id="0001" version="1" visibility="public" license="CC-BY-SA-4.0"  definition="yes" primary="yes">sop_0001-v1-isolation_nuclei</source>
->>>>>>> recipe-collection
 	</recipe>
 	<recipe id="R0133">
 		<name>Trypan blue solution</name>
@@ -4005,13 +3589,8 @@
 			<amount>10 milliliter</amount>
 		</ingredient>
 		<workup>Dissolve the dye in <unit>80 percent</unit> of the final volume; bring to a slow boil, cool down and make up with water</workup>
-<<<<<<< HEAD
-		<source doc_type="SOP" id="0014" version="1" definition="yes" primary="yes">sop_0014-v1-counting_cells</source>
-		<source doc_type="SOP" id="0001" version="1" definition="no">sop_0001-v1-isolation_nuclei</source>
-=======
 		<source doc_type="SOP" id="0001" version="1" visibility="public" license="CC-BY-SA-4.0"  definition="no">sop_0001-v1-isolation_nuclei</source>
 		<source doc_type="SOP" id="0014" version="1" visibility="public" license="CC-BY-SA-4.0"  definition="yes" primary="yes">sop_0014-v1-counting_cells</source>
->>>>>>> recipe-collection
 	</recipe>
 	<recipe id="R0148">
 		<name>Radioimmunoprecipitation lysis buffer</name>
@@ -4084,11 +3663,7 @@
 		<!-- ORGANIZATION -->
 		<category>buffer</category>
 		<category>mammalian</category>
-<<<<<<< HEAD
-		<source doc_type="SOP" id="0002" version="1" definition="yes" primary="yes">sop_0002-v1-whole_cell_extraction_mammalian_cells</source>
-=======
 		<source doc_type="SOP" id="0002" version="1" visibility="public" license="CC-BY-SA-4.0"  definition="yes" primary="yes">sop_0002-v1-whole_cell_extraction_mammalian_cells</source>
->>>>>>> recipe-collection
 	</recipe>
 	<recipe id="R0149">
 		<name>NP-40 lysis buffer</name>
@@ -4152,11 +3727,7 @@
 		<!-- ORGANIZATION -->
 		<category>buffer</category>
 		<category>mammalian</category>
-<<<<<<< HEAD
-		<source doc_type="SOP" id="0002" version="1" definition="yes" primary="yes">sop_0002-v1-whole_cell_extraction_mammalian_cells</source>
-=======
 		<source doc_type="SOP" id="0002" version="1" visibility="public" license="CC-BY-SA-4.0"  definition="yes" primary="yes">sop_0002-v1-whole_cell_extraction_mammalian_cells</source>
->>>>>>> recipe-collection
 	</recipe>
 	<recipe hide="yes" id="R0150">
 		<name>Tris-Triton buffer</name>
@@ -4224,11 +3795,7 @@
 		<!-- ORGANIZATION -->
 		<category>buffer</category>
 		<category>mammalian</category>
-<<<<<<< HEAD
-		<source doc_type="SOP" id="0002" version="1" definition="yes" primary="yes">sop_0002-v1-whole_cell_extraction_mammalian_cells</source>
-=======
 		<source doc_type="SOP" id="0002" version="1" visibility="public" license="CC-BY-SA-4.0"  definition="yes" primary="yes">sop_0002-v1-whole_cell_extraction_mammalian_cells</source>
->>>>>>> recipe-collection
 	</recipe>
 	<recipe id="R0151">
 		<name>Urea lysis buffer</name>
@@ -4265,11 +3832,7 @@
 		<!-- ORGANIZATION -->
 		<category>buffer</category>
 		<category>special</category>
-<<<<<<< HEAD
-		<source doc_type="SOP" id="0002" version="1" definition="yes" primary="yes">sop_0002-v1-whole_cell_extraction_mammalian_cells</source>
-=======
 		<source doc_type="SOP" id="0002" version="1" visibility="public" license="CC-BY-SA-4.0"  definition="yes" primary="yes">sop_0002-v1-whole_cell_extraction_mammalian_cells</source>
->>>>>>> recipe-collection
 	</recipe>
 	<recipe id="R0093">
 		<name>Resuspension buffer</name>
@@ -4324,11 +3887,7 @@
 		<!-- ORGANIZATION -->
 		<category>buffer</category>
 		<category>special</category>
-<<<<<<< HEAD
-		<source doc_type="SOP" id="0004" version="3" definition="yes" primary="yes">sop_0004-v3-production_recombinant_histones</source>
-=======
 		<source doc_type="SOP" id="0004" version="3" visibility="internal" license="CC-BY-SA-4.0"  definition="yes" primary="yes">sop_0004-v3-production_recombinant_histones</source>
->>>>>>> recipe-collection
 	</recipe>
 	<recipe id="R0094">
 		<name>Urea extraction buffer</name>
@@ -4383,11 +3942,7 @@
 		<!-- ORGANIZATION -->
 		<category>buffer</category>
 		<category>special</category>
-<<<<<<< HEAD
-		<source doc_type="SOP" id="0004" version="3" definition="yes" primary="yes">sop_0004-v3-production_recombinant_histones</source>
-=======
 		<source doc_type="SOP" id="0004" version="3" visibility="internal" license="CC-BY-SA-4.0"  definition="yes" primary="yes">sop_0004-v3-production_recombinant_histones</source>
->>>>>>> recipe-collection
 	</recipe>
 	<recipe id="R0095">
 		<name>Urea wash buffer</name>
@@ -4437,11 +3992,7 @@
 		<!-- ORGANIZATION -->
 		<category>buffer</category>
 		<category>special</category>
-<<<<<<< HEAD
-		<source doc_type="SOP" id="0004" version="3" definition="yes" primary="yes">sop_0004-v3-production_recombinant_histones</source>
-=======
 		<source doc_type="SOP" id="0004" version="3" visibility="internal" license="CC-BY-SA-4.0"  definition="yes" primary="yes">sop_0004-v3-production_recombinant_histones</source>
->>>>>>> recipe-collection
 	</recipe>
 	<recipe id="R0096">
 		<name>Guanidine elution buffer</name>
@@ -4482,11 +4033,7 @@
 		<!-- ORGANIZATION -->
 		<category>buffer</category>
 		<category>special</category>
-<<<<<<< HEAD
-		<source doc_type="SOP" id="0004" version="3" definition="no" primary="yes">sop_0004-v3-production_recombinant_histones</source>
-=======
 		<source doc_type="SOP" id="0004" version="3" visibility="internal" license="CC-BY-SA-4.0"  definition="no" primary="yes">sop_0004-v3-production_recombinant_histones</source>
->>>>>>> recipe-collection
 	</recipe>
 	<recipe id="R0097">
 		<name>HPLC solvent A</name>
@@ -4506,11 +4053,7 @@
 			<amount>4 milliliter</amount>
 			<final>0.1 percent</final>
 		</ingredient>
-<<<<<<< HEAD
-		<source doc_type="SOP" id="0004" version="3" definition="yes" primary="yes">sop_0004-v3-production_recombinant_histones</source>
-=======
 		<source doc_type="SOP" id="0004" version="3" visibility="internal" license="CC-BY-SA-4.0"  definition="yes" primary="yes">sop_0004-v3-production_recombinant_histones</source>
->>>>>>> recipe-collection
 	</recipe>
 	<recipe id="R0098">
 		<name>HPLC solvent B</name>
@@ -4543,11 +4086,7 @@
 			<hazard category="4" hide="yes" type="health_hazard">Acute dermal toxicity</hazard>
 			<precaution>nitrile gloves are NOT recommended for work with acetonitrile</precaution>
 		</safety>
-<<<<<<< HEAD
-		<source doc_type="SOP" id="0004" version="3" definition="yes" primary="yes">sop_0004-v3-production_recombinant_histones</source>
-=======
 		<source doc_type="SOP" id="0004" version="3" visibility="internal" license="CC-BY-SA-4.0"  definition="yes" primary="yes">sop_0004-v3-production_recombinant_histones</source>
->>>>>>> recipe-collection
 	</recipe>
 	<recipe id="R0099">
 		<name>Unfolding buffer</name>
@@ -4599,11 +4138,7 @@
 		<!-- ORGANIZATION -->
 		<category>buffer</category>
 		<category>special</category>
-<<<<<<< HEAD
-		<source doc_type="SOP" id="0005" version="2" definition="yes" primary="yes">sop_0005-v2-production_histone_octamers</source>
-=======
 		<source doc_type="SOP" id="0005" version="2" visibility="public" license="CC-BY-SA-4.0"  definition="yes" primary="yes">sop_0005-v2-production_histone_octamers</source>
->>>>>>> recipe-collection
 	</recipe>
 	<recipe id="R0100">
 		<name>Refolding buffer</name>
@@ -4659,13 +4194,8 @@
 		<!-- ORGANIZATION -->
 		<category>buffer</category>
 		<category>special</category>
-<<<<<<< HEAD
-		<source doc_type="SOP" id="0005" version="2" definition="yes" primary="yes">sop_0005-v2-production_histone_octamers</source>
-		<source doc_type="SOP" id="0006" version="2" definition="yes">sop_0006-v2-production_nucleosome</source>
-=======
 		<source doc_type="SOP" id="0005" version="2" visibility="public" license="CC-BY-SA-4.0"  definition="yes" primary="yes">sop_0005-v2-production_histone_octamers</source>
 		<source doc_type="SOP" id="0006" version="2" visibility="internal" license="CC-BY-SA-4.0"  definition="yes">sop_0006-v2-production_nucleosome</source>
->>>>>>> recipe-collection
 	</recipe>
 	<recipe id="R0101">
 		<name>Tris-EDTA-KCl</name>
@@ -4710,11 +4240,7 @@
 		<!-- ORGANIZATION -->
 		<category>buffer</category>
 		<category>special</category>
-<<<<<<< HEAD
-		<source doc_type="SOP" id="0006" version="2" definition="yes" primary="yes">sop_0006-v2-production_nucleosome</source>
-=======
 		<source doc_type="SOP" id="0006" version="2" visibility="internal" license="CC-BY-SA-4.0"  definition="yes" primary="yes">sop_0006-v2-production_nucleosome</source>
->>>>>>> recipe-collection
 	</recipe>
 	<recipe id="R0102">
 		<name>Tris-Cl</name>
@@ -4738,19 +4264,11 @@
 			<stock>11.65 molar</stock>
 			<amount>5 milliliter</amount>
 		</ingredient>
-<<<<<<< HEAD
-		<storage class="fridge"><unit>4 celsius</unit></storage>
-		<!-- ORGANIZATION -->
-		<category>buffer</category>
-		<category>common</category>
-		<source doc_type="SOP" id="0007" version="1" definition="yes" primary="yes">sop_0007-v1-sds_page</source>
-=======
 		<storage class="fridge"/>
 		<!-- ORGANIZATION -->
 		<category>buffer</category>
 		<category>common</category>
 		<source doc_type="SOP" id="0007" version="1" visibility="public" license="CC-BY-SA-4.0"  definition="yes" primary="yes">sop_0007-v1-sds_page</source>
->>>>>>> recipe-collection
 	</recipe>
 	<recipe id="R0103">
 		<name>Tris-Cl</name>
@@ -4774,19 +4292,11 @@
 			<stock>11.65 molar</stock>
 			<amount>5 milliliter</amount>
 		</ingredient>
-<<<<<<< HEAD
-		<storage class="fridge"><unit>4 celsius</unit></storage>
-		<!-- ORGANIZATION -->
-		<category>buffer</category>
-		<category>common</category>
-		<source doc_type="SOP" id="0007" version="1" definition="yes" primary="yes">sop_0007-v1-sds_page</source>
-=======
 		<storage class="fridge"/>
 		<!-- ORGANIZATION -->
 		<category>buffer</category>
 		<category>common</category>
 		<source doc_type="SOP" id="0007" version="1" visibility="public" license="CC-BY-SA-4.0"  definition="yes" primary="yes">sop_0007-v1-sds_page</source>
->>>>>>> recipe-collection
 	</recipe>
 	<recipe id="R0104">
 		<name>Laemmli sample buffer</name>
@@ -4846,11 +4356,7 @@
 		<!-- ORGANIZATION -->
 		<category>buffer</category>
 		<category>special</category>
-<<<<<<< HEAD
-		<source doc_type="SOP" id="0007" version="1" definition="yes" primary="yes">sop_0007-v1-sds_page</source>
-=======
 		<source doc_type="SOP" id="0007" version="1" visibility="public" license="CC-BY-SA-4.0"  definition="yes" primary="yes">sop_0007-v1-sds_page</source>
->>>>>>> recipe-collection
 	</recipe>
 	<recipe id="R0105">
 		<name>Tris-Gly running buffer</name>
@@ -4891,11 +4397,7 @@
 		<!-- ORGANIZATION -->
 		<category>buffer</category>
 		<category>common</category>
-<<<<<<< HEAD
-		<source doc_type="SOP" id="0007" version="1" definition="yes" primary="yes">sop_0007-v1-sds_page</source>
-=======
 		<source doc_type="SOP" id="0007" version="1" visibility="public" license="CC-BY-SA-4.0"  definition="yes" primary="yes">sop_0007-v1-sds_page</source>
->>>>>>> recipe-collection
 	</recipe>
 	<recipe id="R0106">
 		<name>Bis-Tris</name>
@@ -4926,11 +4428,7 @@
 		<!-- ORGANIZATION -->
 		<category>buffer</category>
 		<category>common</category>
-<<<<<<< HEAD
-		<source doc_type="SOP" id="0007" version="1" definition="yes" primary="yes">sop_0007-v1-sds_page</source>
-=======
 		<source doc_type="SOP" id="0007" version="1" visibility="public" license="CC-BY-SA-4.0"  definition="yes" primary="yes">sop_0007-v1-sds_page</source>
->>>>>>> recipe-collection
 	</recipe>
 	<recipe id="R0107">
 		<name>LDS sample buffer</name>
@@ -4997,11 +4495,7 @@
 		<!-- ORGANIZATION -->
 		<category>buffer</category>
 		<category>special</category>
-<<<<<<< HEAD
-		<source doc_type="SOP" id="0007" version="1" definition="yes" primary="yes">sop_0007-v1-sds_page</source>
-=======
 		<source doc_type="SOP" id="0007" version="1" visibility="public" license="CC-BY-SA-4.0"  definition="yes" primary="yes">sop_0007-v1-sds_page</source>
->>>>>>> recipe-collection
 	</recipe>
 	<recipe id="R0108">
 		<name>MES running buffer</name>
@@ -5044,20 +4538,11 @@
 			<final type="diluted">1 millimolar</final>
 		</ingredient>
 		<workup>expect <pH>7.3</pH>, do not adjust</workup>
-<<<<<<< HEAD
-		<storage class="fridge"><unit>4 celsius</unit></storage>
-		<shelflife>6 months</shelflife>
-		<!-- ORGANIZATION -->
-		<category>buffer</category>
-		<category>common</category>
-		<source doc_type="SOP" id="0007" version="1" definition="yes" primary="yes">sop_0007-v1-sds_page</source>
-=======
 		<storage class="fridge" shelflife="6 months"/>
 		<!-- ORGANIZATION -->
 		<category>buffer</category>
 		<category>common</category>
 		<source doc_type="SOP" id="0007" version="1" visibility="public" license="CC-BY-SA-4.0"  definition="yes" primary="yes">sop_0007-v1-sds_page</source>
->>>>>>> recipe-collection
 	</recipe>
 	<recipe id="R0109">
 		<name>MOPS running buffer</name>
@@ -5100,15 +4585,6 @@
 			<final type="diluted">1 millimolar</final>
 		</ingredient>
 		<workup>Expect <pH>7.7</pH>, do not adjust</workup>
-<<<<<<< HEAD
-		<storage class="fridge"><unit>4 celsius</unit></storage>
-		<shelflife>6 months</shelflife>
-		<note>Aliquots of <unit>50 milliliter</unit> can be stored at <unit>-20 celsius</unit></note>
-		<!-- ORGANIZATION -->
-		<category>buffer</category>
-		<category>common</category>
-		<source doc_type="SOP" id="0007" version="1" definition="yes" primary="yes">sop_0007-v1-sds_page</source>
-=======
 		<workup>Dispense into <unit>50 milliliter</unit> aliquots</workup>
 		<storage class="freezer"/>
 		<storage class="fridge" shelflife="6 months"/>
@@ -5116,7 +4592,6 @@
 		<category>buffer</category>
 		<category>common</category>
 		<source doc_type="SOP" id="0007" version="1" visibility="public" license="CC-BY-SA-4.0"  definition="yes" primary="yes">sop_0007-v1-sds_page</source>
->>>>>>> recipe-collection
 	</recipe>
 	<recipe id="R0110">
 		<name>Low molecular weight marker</name>
@@ -5182,11 +4657,7 @@
 		<!-- ORGANIZATION -->
 		<category>standard</category>
 		<category>special</category>
-<<<<<<< HEAD
-		<source doc_type="SOP" id="0007" version="1" definition="yes" primary="yes">sop_0007-v1-sds_page</source>
-=======
 		<source doc_type="SOP" id="0007" version="1" visibility="public" license="CC-BY-SA-4.0"  definition="yes" primary="yes">sop_0007-v1-sds_page</source>
->>>>>>> recipe-collection
 	</recipe>
 	<recipe id="R0111">
 		<name>High molecular weight marker</name>
@@ -5246,11 +4717,7 @@
 		<!-- ORGANIZATION -->
 		<category>standard</category>
 		<category>special</category>
-<<<<<<< HEAD
-		<source doc_type="SOP" id="0007" version="1" definition="yes" primary="yes">sop_0007-v1-sds_page</source>
-=======
 		<source doc_type="SOP" id="0007" version="1" visibility="public" license="CC-BY-SA-4.0"  definition="yes" primary="yes">sop_0007-v1-sds_page</source>
->>>>>>> recipe-collection
 	</recipe>
 	<recipe hide="yes" id="R0112">
 		<name>Tris-Gly transfer buffer (Towbin)</name>
@@ -5277,11 +4744,7 @@
 			<final type="diluted">192 millimolar</final>
 		</ingredient>
 		<workup>Do not adjust pH</workup>
-<<<<<<< HEAD
-		<source doc_type="SOP" id="0008" version="1" definition="yes" primary="yes">sop_0008-v1-blotting_western</source>
-=======
 		<source doc_type="SOP" id="0008" version="1" visibility="public" license="CC-BY-SA-4.0"  definition="yes" primary="yes">sop_0008-v1-blotting_western</source>
->>>>>>> recipe-collection
 	</recipe>
 	<recipe hide="yes" id="R0113">
 		<name>Tris-Gly transfer buffer (Bjerrum)</name>
@@ -5309,11 +4772,7 @@
 		</ingredient>
 		<workup>Do not adjust pH</workup>
 		<note>Use for native proteins</note>
-<<<<<<< HEAD
-		<source doc_type="SOP" id="0008" version="1" definition="yes" primary="yes">sop_0008-v1-blotting_western</source>
-=======
 		<source doc_type="SOP" id="0008" version="1" visibility="public" license="CC-BY-SA-4.0"  definition="yes" primary="yes">sop_0008-v1-blotting_western</source>
->>>>>>> recipe-collection
 	</recipe>
 	<recipe hide="yes" id="R0114">
 		<name>CAPS buffer</name>
@@ -5336,11 +4795,7 @@
 		<workup>Adjust pH with sodium hydroxide</workup>
 		<note>Use for basic proteins</note>
 		<note type="explanation">Some protocols use <unit>100 millimolar</unit> CAPS for protein crystallography or general biochemistry, but this is not typical for Westerns</note>
-<<<<<<< HEAD
-		<source doc_type="SOP" id="0008" version="1" definition="yes" primary="yes">sop_0008-v1-blotting_western</source>
-=======
 		<source doc_type="SOP" id="0008" version="1" visibility="public" license="CC-BY-SA-4.0"  definition="yes" primary="yes">sop_0008-v1-blotting_western</source>
->>>>>>> recipe-collection
 	</recipe>
 	<recipe id="R0115">
 		<name>Anode buffer</name>
@@ -5360,11 +4815,7 @@
 			<final type="diluted">25 millimolar</final>
 		</ingredient>
 		<workup>Adjust pH with sodium hydroxide</workup>
-<<<<<<< HEAD
-		<source doc_type="SOP" id="0008" version="1" definition="yes" primary="yes">sop_0008-v1-blotting_western</source>
-=======
 		<source doc_type="SOP" id="0008" version="1" visibility="public" license="CC-BY-SA-4.0"  definition="yes" primary="yes">sop_0008-v1-blotting_western</source>
->>>>>>> recipe-collection
 	</recipe>
 	<recipe id="R0116">
 		<name>Cathode buffer</name>
@@ -5389,11 +4840,7 @@
 			<amount>26.2 gram</amount>
 		</ingredient>
 		<workup>Adjust pH with sodium hydroxide</workup>
-<<<<<<< HEAD
-		<source doc_type="SOP" id="0008" version="1" definition="yes" primary="yes">sop_0008-v1-blotting_western</source>
-=======
 		<source doc_type="SOP" id="0008" version="1" visibility="public" license="CC-BY-SA-4.0"  definition="yes" primary="yes">sop_0008-v1-blotting_western</source>
->>>>>>> recipe-collection
 	</recipe>
 	<recipe id="R0117">
 		<name>Ponceau S solution</name>
@@ -5418,11 +4865,7 @@
 			<final>1.0 percent</final>
 		</ingredient>
 		<note>The <unit>0.01 percent</unit> solution is as sensitive as a <unit>0.1 percent</unit> solution</note>
-<<<<<<< HEAD
-		<source doc_type="SOP" id="0008" version="1" definition="yes" primary="yes">sop_0008-v1-blotting_western</source>
-=======
 		<source doc_type="SOP" id="0008" version="1" visibility="public" license="CC-BY-SA-4.0"  definition="yes" primary="yes">sop_0008-v1-blotting_western</source>
->>>>>>> recipe-collection
 	</recipe>
 	<recipe id="R0169">
 		<name>TBS with Tween™ 20</name>
@@ -5450,13 +4893,8 @@
 		<storage class="fridge" shelflife="1 month"/>
 		<workup>Add sodium azide to <unit>0.05 percent</unit> to increase shelflife</workup>
 		<note type="orientation">Compatible with PVDF or nitrocellulose (NC) membranes; do not use Tween™ 20 with nylon membranes</note>
-<<<<<<< HEAD
-		<source doc_type="SOP" id="0029" version="1" definition="yes">sop_0029-v1-cell_cycle_flow_cytometry</source>
-		<source doc_type="SOP" id="0009" version="1" definition="yes" primary="yes">sop_0009-v1-immunoblotting</source>
-=======
 		<source doc_type="SOP" id="0029" version="1" visibility="internal" license="CC-BY-SA-4.0"  definition="yes">sop_0029-v1-cell_cycle_flow_cytometry</source>
 		<source doc_type="SOP" id="0009" version="1" visibility="public" license="CC-BY-SA-4.0"  definition="yes" primary="yes">sop_0009-v1-immunoblotting</source>
->>>>>>> recipe-collection
 	</recipe>
 	<recipe id="R0118">
 		<name>Tris hydrochloride</name>
@@ -5482,14 +4920,8 @@
 			<amount>20 milliliter</amount>
 		</ingredient>
 		<workup>Adjust pH to <unit>8.5 to 8.8 unitless</unit></workup>
-<<<<<<< HEAD
-		<storage>room temperature</storage>
-		<shelflife>2 years</shelflife>
-		<source doc_type="SOP" id="0009" version="1" definition="yes" primary="yes">sop_0009-v1-immunoblotting</source>
-=======
 		<storage shelflife="2 years"/>
 		<source doc_type="SOP" id="0009" version="1" visibility="public" license="CC-BY-SA-4.0"  definition="yes" primary="yes">sop_0009-v1-immunoblotting</source>
->>>>>>> recipe-collection
 	</recipe>
 	<recipe id="R0119">
 		<name>Luminol</name>
@@ -5508,13 +4940,8 @@
 			<final>250 millimolar</final>
 		</ingredient>
 		<workup>Dispense into <unit>50 microliter</unit> aliquots</workup>
-<<<<<<< HEAD
-		<storage class="freezer"><unit>-20 celsius</unit></storage>
-		<source doc_type="SOP" id="0009" version="1" definition="yes" primary="yes">sop_0009-v1-immunoblotting</source>
-=======
 		<storage class="freezer"/>
 		<source doc_type="SOP" id="0009" version="1" visibility="public" license="CC-BY-SA-4.0"  definition="yes" primary="yes">sop_0009-v1-immunoblotting</source>
->>>>>>> recipe-collection
 	</recipe>
 	<recipe id="R0120">
 		<name><emph>p-</emph>Coumaric acid</name>
@@ -5533,13 +4960,8 @@
 			<final>90 millimolar</final>
 		</ingredient>
 		<workup>Dispense into <unit>25 microliter</unit> aliquots</workup>
-<<<<<<< HEAD
-		<storage class="freezer"><unit>-20 celsius</unit></storage>
-		<source doc_type="SOP" id="0009" version="1" definition="yes" primary="yes">sop_0009-v1-immunoblotting</source>
-=======
 		<storage class="freezer"/>
 		<source doc_type="SOP" id="0009" version="1" visibility="public" license="CC-BY-SA-4.0"  definition="yes" primary="yes">sop_0009-v1-immunoblotting</source>
->>>>>>> recipe-collection
 	</recipe>
 	<recipe id="R0121">
 		<name>ECL reagent</name>
@@ -5580,11 +5002,7 @@
 		<!-- ORGANIZATION -->
 		<category>solution</category>
 		<category>special</category>
-<<<<<<< HEAD
-		<source doc_type="SOP" id="0009" version="1" definition="yes" primary="yes">sop_0009-v1-immunoblotting</source>
-=======
 		<source doc_type="SOP" id="0009" version="1" visibility="public" license="CC-BY-SA-4.0"  definition="yes" primary="yes">sop_0009-v1-immunoblotting</source>
->>>>>>> recipe-collection
 	</recipe>
 	<recipe id="R0122">
 		<name>Stripping buffer</name>
@@ -5618,11 +5036,7 @@
 		<!-- ORGANIZATION -->
 		<category>buffer</category>
 		<category>special</category>
-<<<<<<< HEAD
-		<source doc_type="SOP" id="0009" version="1" definition="yes" primary="yes">sop_0009-v1-immunoblotting</source>
-=======
 		<source doc_type="SOP" id="0009" version="1" visibility="public" license="CC-BY-SA-4.0"  definition="yes" primary="yes">sop_0009-v1-immunoblotting</source>
->>>>>>> recipe-collection
 	</recipe>
 	<recipe id="R0123">
 		<name>Coomassie destaining solution</name>
@@ -5669,11 +5083,7 @@
 		<!-- ORGANIZATION -->
 		<category>solution</category>
 		<category>common</category>
-<<<<<<< HEAD
-		<source doc_type="SOP" id="0010" version="1" definition="yes" primary="yes">sop_0010-v1-protein_gel_coomassie_staining</source>
-=======
 		<source doc_type="SOP" id="0010" version="1" visibility="public" license="CC-BY-SA-4.0"  definition="yes" primary="yes">sop_0010-v1-protein_gel_coomassie_staining</source>
->>>>>>> recipe-collection
 	</recipe>
 	<recipe id="R0124">
 		<name>Coomassie staining solution</name>
@@ -5702,11 +5112,7 @@
 		<!-- ORGANIZATION -->
 		<category>solution</category>
 		<category>common</category>
-<<<<<<< HEAD
-		<source doc_type="SOP" id="0010" version="1" definition="yes" primary="yes">sop_0010-v1-protein_gel_coomassie_staining</source>
-=======
 		<source doc_type="SOP" id="0010" version="1" visibility="public" license="CC-BY-SA-4.0"  definition="yes" primary="yes">sop_0010-v1-protein_gel_coomassie_staining</source>
->>>>>>> recipe-collection
 	</recipe>
 	<recipe id="R0170">
 		<name>Fixation solution</name>
@@ -5740,11 +5146,7 @@
 		<!-- ORGANIZATION -->
 		<category>solution</category>
 		<category>special</category>
-<<<<<<< HEAD
-		<source doc_type="SOP" id="0011" version="1" definition="yes" primary="yes">sop_0011-v1-protein_gel_silver_staining</source>
-=======
 		<source doc_type="SOP" id="0011" version="1" visibility="public" license="CC-BY-SA-4.0"  definition="yes" primary="yes">sop_0011-v1-protein_gel_silver_staining</source>
->>>>>>> recipe-collection
 	</recipe>
 	<recipe hide="yes" id="R0125">
 		<name>Sodium thiosulfate</name>
@@ -5770,11 +5172,7 @@
 		<!-- ORGANIZATION -->
 		<category>solution</category>
 		<category>special</category>
-<<<<<<< HEAD
-		<source doc_type="SOP" id="0011" version="1" definition="yes" primary="yes">sop_0011-v1-protein_gel_silver_staining</source>
-=======
 		<source doc_type="SOP" id="0011" version="1" visibility="public" license="CC-BY-SA-4.0"  definition="yes" primary="yes">sop_0011-v1-protein_gel_silver_staining</source>
->>>>>>> recipe-collection
 	</recipe>
 	<recipe id="R0126">
 		<name>Sodium thiosulfate sensitizing solution</name>
@@ -5793,11 +5191,7 @@
 		<!-- ORGANIZATION -->
 		<category>solution</category>
 		<category>special</category>
-<<<<<<< HEAD
-		<source doc_type="SOP" id="0011" version="1" definition="yes" primary="yes">sop_0011-v1-protein_gel_silver_staining</source>
-=======
 		<source doc_type="SOP" id="0011" version="1" visibility="public" license="CC-BY-SA-4.0"  definition="yes" primary="yes">sop_0011-v1-protein_gel_silver_staining</source>
->>>>>>> recipe-collection
 	</recipe>
 	<recipe id="R0127">
 		<name>Tetrathionate sensitizing solution</name>
@@ -5839,11 +5233,7 @@
 		<!-- ORGANIZATION -->
 		<category>solution</category>
 		<category>special</category>
-<<<<<<< HEAD
-		<source doc_type="SOP" id="0011" version="1" definition="yes" primary="yes">sop_0011-v1-protein_gel_silver_staining</source>
-=======
 		<source doc_type="SOP" id="0011" version="1" visibility="public" license="CC-BY-SA-4.0"  definition="yes" primary="yes">sop_0011-v1-protein_gel_silver_staining</source>
->>>>>>> recipe-collection
 	</recipe>
 	<recipe id="R0128">
 		<name>Silver nitrate</name>
@@ -5870,11 +5260,7 @@
 		<!-- ORGANIZATION -->
 		<category>solution</category>
 		<category>special</category>
-<<<<<<< HEAD
-		<source doc_type="SOP" id="0011" version="1" definition="yes" primary="yes">sop_0011-v1-protein_gel_silver_staining</source>
-=======
 		<source doc_type="SOP" id="0011" version="1" visibility="public" license="CC-BY-SA-4.0"  definition="yes" primary="yes">sop_0011-v1-protein_gel_silver_staining</source>
->>>>>>> recipe-collection
 	</recipe>
 	<recipe id="R0129">
 		<name>Silver nitrate developer</name>
@@ -5915,11 +5301,7 @@
 		<!-- ORGANIZATION -->
 		<category>solution</category>
 		<category>special</category>
-<<<<<<< HEAD
-		<source doc_type="SOP" id="0011" version="1" definition="yes" primary="yes">sop_0011-v1-protein_gel_silver_staining</source>
-=======
 		<source doc_type="SOP" id="0011" version="1" visibility="public" license="CC-BY-SA-4.0"  definition="yes" primary="yes">sop_0011-v1-protein_gel_silver_staining</source>
->>>>>>> recipe-collection
 	</recipe>
 	<recipe id="R0130">
 		<name>Potassium ferricyanide</name>
@@ -5945,11 +5327,7 @@
 		<!-- ORGANIZATION -->
 		<category>solution</category>
 		<category>special</category>
-<<<<<<< HEAD
-		<source doc_type="SOP" id="0011" version="1" definition="yes" primary="yes">sop_0011-v1-protein_gel_silver_staining</source>
-=======
 		<source doc_type="SOP" id="0011" version="1" visibility="public" license="CC-BY-SA-4.0"  definition="yes" primary="yes">sop_0011-v1-protein_gel_silver_staining</source>
->>>>>>> recipe-collection
 	</recipe>
 	<recipe id="R0171">
 		<name>Silver nitrate destaining solution</name>
@@ -5975,11 +5353,7 @@
 		<!-- ORGANIZATION -->
 		<category>solution</category>
 		<category>special</category>
-<<<<<<< HEAD
-		<source doc_type="SOP" id="0011" version="1" definition="yes" primary="yes">sop_0011-v1-protein_gel_silver_staining</source>
-=======
 		<source doc_type="SOP" id="0011" version="1" visibility="public" license="CC-BY-SA-4.0"  definition="yes" primary="yes">sop_0011-v1-protein_gel_silver_staining</source>
->>>>>>> recipe-collection
 	</recipe>
 	<recipe id="R0131">
 		<name>Polyethyleneimine</name>
@@ -6017,11 +5391,7 @@
 		<!-- ORGANIZATION -->
 		<category>solution</category>
 		<category>special</category>
-<<<<<<< HEAD
-		<source doc_type="SOP" id="0012" version="2" definition="yes" primary="yes">sop_0012-v2-transfection_chemical</source>
-=======
 		<source doc_type="SOP" id="0012" version="2" visibility="public" license="CC-BY-SA-4.0"  definition="yes" primary="yes">sop_0012-v2-transfection_chemical</source>
->>>>>>> recipe-collection
 	</recipe>
 	<recipe id="R0132">
 		<name>HEPES-buffered saline</name>
@@ -6069,11 +5439,7 @@
 		<!-- ORGANIZATION -->
 		<category>buffer</category>
 		<category>mammalian</category>
-<<<<<<< HEAD
-		<source doc_type="SOP" id="0012" version="2" definition="yes" primary="yes">sop_0012-v2-transfection_chemical</source>
-=======
 		<source doc_type="SOP" id="0012" version="2" visibility="public" license="CC-BY-SA-4.0"  definition="yes" primary="yes">sop_0012-v2-transfection_chemical</source>
->>>>>>> recipe-collection
 	</recipe>
 	<recipe hide="yes" id="R0152">
 		<name>Insulin</name>
@@ -6102,11 +5468,7 @@
 		<workup>Dispense into <unit>500 microliter</unit> aliquots</workup>
 		<storage class="freezer"/>
 		<note>Obtain insulin from Sigma-Aldrich® (Cat. no. I1882)</note>
-<<<<<<< HEAD
-		<source doc_type="SOP" id="0016" version="1" definition="yes" primary="yes">sop_0016-v1-routine_cell_culture_MCF10A</source>
-=======
 		<source doc_type="SOP" id="0016" version="1" visibility="public" license="CC-BY-SA-4.0"  definition="yes" primary="yes">sop_0016-v1-routine_cell_culture_MCF10A</source>
->>>>>>> recipe-collection
 	</recipe>
 	<recipe hide="yes" id="R0153">
 		<name>Hydrocortisone</name>
@@ -6130,11 +5492,7 @@
 		<safety signal="danger">
 			<hazard category="2" type="serious_health_hazard">Reproductive toxicology</hazard>
 		</safety>
-<<<<<<< HEAD
-		<source doc_type="SOP" id="0016" version="1" definition="yes" primary="yes">sop_0016-v1-routine_cell_culture_MCF10A</source>
-=======
 		<source doc_type="SOP" id="0016" version="1" visibility="public" license="CC-BY-SA-4.0"  definition="yes" primary="yes">sop_0016-v1-routine_cell_culture_MCF10A</source>
->>>>>>> recipe-collection
 	</recipe>
 	<recipe hide="yes" id="R0154">
 		<name>Cholera toxin</name>
@@ -6158,11 +5516,7 @@
 		<safety signal="danger">
 			<hazard category="2" type="toxic">Acute dermal toxicity</hazard>
 		</safety>
-<<<<<<< HEAD
-		<source doc_type="SOP" id="0016" version="1" definition="yes" primary="yes">sop_0016-v1-routine_cell_culture_MCF10A</source>
-=======
 		<source doc_type="SOP" id="0016" version="1" visibility="public" license="CC-BY-SA-4.0"  definition="yes" primary="yes">sop_0016-v1-routine_cell_culture_MCF10A</source>
->>>>>>> recipe-collection
 	</recipe>
 	<recipe id="R0155">
 		<name>Epidermal growth factor</name>
@@ -6187,11 +5541,7 @@
 		<workup>Dispense into <unit>200 microliter</unit> aliquots</workup>
 		<storage class="freezer"/>
 		<note>Obtain EGF from PeproTech® (Cat. no. AF-100-15)</note>
-<<<<<<< HEAD
-		<source doc_type="SOP" id="0016" version="1" definition="yes" primary="yes">sop_0016-v1-routine_cell_culture_MCF10A</source>
-=======
 		<source doc_type="SOP" id="0016" version="1" visibility="public" license="CC-BY-SA-4.0"  definition="yes" primary="yes">sop_0016-v1-routine_cell_culture_MCF10A</source>
->>>>>>> recipe-collection
 	</recipe>
 	<recipe id="R0195">
 		<name>PEG virus precipitation solution</name>
@@ -6228,13 +5578,8 @@
 		<workup>Adjust pH to 7.2 with sodium hydroxide if necessary</workup>
 		<workup>Filter sterilize through a <unit>0.22 micrometer</unit> filter</workup>
 		<workup>Dispense into <unit>10 milliliter</unit> aliquots</workup>
-<<<<<<< HEAD
-		<storage class="fridge"><unit>4 celsius</unit></storage>
-		<source doc_type="SOP" id="0017" version="3" definition="yes" primary="yes">sop_0017-v3-stable_cell_lines_lentiviral</source>
-=======
 		<storage class="fridge"/>
 		<source doc_type="SOP" id="0017" version="3" visibility="public" license="CC-BY-SA-4.0"  definition="yes" primary="yes">sop_0017-v3-stable_cell_lines_lentiviral</source>
->>>>>>> recipe-collection
 	</recipe>
 	<recipe id="R0134">
 		<name>Hexadimethrine bromide</name>
@@ -6259,11 +5604,7 @@
 		<safety signal="warning">
 			<hazard category="4" type="health_hazard">Acute oral toxicity</hazard>
 		</safety>
-<<<<<<< HEAD
-		<source doc_type="SOP" id="0017" version="3" definition="yes" primary="yes">sop_0017-v3-stable_cell_lines_lentiviral</source>
-=======
 		<source doc_type="SOP" id="0017" version="3" visibility="public" license="CC-BY-SA-4.0"  definition="yes" primary="yes">sop_0017-v3-stable_cell_lines_lentiviral</source>
->>>>>>> recipe-collection
 	</recipe>
 	<recipe id="R0135">
 		<name>Buffer QG (Extraction buffer)</name>
@@ -6301,11 +5642,7 @@
 		<workup>Add <unit>117 milliliter</unit> water per <unit>100 gram</unit> guanidinium thiocyanate, bring to <unit>65 celsius</unit> to dissolve</workup>
 		<workup>Adjust pH and final volume</workup>
 		<workup>Dispense into <unit>15 milliliter</unit> aliquots</workup>
-<<<<<<< HEAD
-		<source doc_type="SOP" id="0022" version="1" definition="yes" primary="yes">sop_0022-v1-gel_extraction</source>
-=======
 		<source doc_type="SOP" id="0022" version="1" visibility="public" license="CC-BY-SA-4.0"  definition="yes" primary="yes">sop_0022-v1-gel_extraction</source>
->>>>>>> recipe-collection
 	</recipe>
 	<recipe id="R0136">
 		<name>Solution D</name>
@@ -6354,11 +5691,7 @@
 			<hazard category="2" type="serious_health_hazard">Germ cell mutagenicity</hazard>
 			<hazard category="2" type="environment">Hazardous to the aquatic environment</hazard>
 		</safety>
-<<<<<<< HEAD
-		<source doc_type="SOP" id="0023" version="1" definition="yes" primary="yes">sop_0023-v1-rna_isolation_trizol</source>
-=======
 		<source doc_type="SOP" id="0023" version="1" visibility="public" license="CC-BY-SA-4.0"  definition="yes" primary="yes">sop_0023-v1-rna_isolation_trizol</source>
->>>>>>> recipe-collection
 	</recipe>
 	<recipe hide="yes" id="R0137">
 		<name>Sodium <emph>N</emph>-lauroyl sarcosinate</name>
@@ -6381,11 +5714,7 @@
 		<safety signal="warning">
 			<hazard category="2" type="health_hazard">Eye irritation</hazard>
 		</safety>
-<<<<<<< HEAD
-		<source doc_type="SOP" id="0023" version="1" definition="yes" primary="yes">sop_0023-v1-rna_isolation_trizol</source>
-=======
 		<source doc_type="SOP" id="0023" version="1" visibility="public" license="CC-BY-SA-4.0"  definition="yes" primary="yes">sop_0023-v1-rna_isolation_trizol</source>
->>>>>>> recipe-collection
 	</recipe>
 	<recipe hide="yes" id="R0138">
 		<name>Sodium citrate</name>
@@ -6418,11 +5747,7 @@
 		<!-- ORGANIZATION -->
 		<category>solution</category>
 		<category>common</category>
-<<<<<<< HEAD
-		<source doc_type="SOP" id="0023" version="1" definition="yes" primary="yes">sop_0023-v1-rna_isolation_trizol</source>
-=======
 		<source doc_type="SOP" id="0023" version="1" visibility="public" license="CC-BY-SA-4.0"  definition="yes" primary="yes">sop_0023-v1-rna_isolation_trizol</source>
->>>>>>> recipe-collection
 	</recipe>
 	<recipe hide="yes" id="R0139">
 		<name>Sodium acetate</name>
@@ -6457,11 +5782,7 @@
 		<!-- ORGANIZATION -->
 		<category>solution</category>
 		<category>common</category>
-<<<<<<< HEAD
-		<source doc_type="SOP" id="0023" version="1" definition="yes" primary="yes">sop_0023-v1-rna_isolation_trizol</source>
-=======
 		<source doc_type="SOP" id="0023" version="1" visibility="public" license="CC-BY-SA-4.0"  definition="yes" primary="yes">sop_0023-v1-rna_isolation_trizol</source>
->>>>>>> recipe-collection
 	</recipe>
 	<recipe id="R0140">
 		<name>Phenol</name>
@@ -6491,11 +5812,7 @@
 		<!-- ORGANIZATION -->
 		<category>solution</category>
 		<category>nucleics</category>
-<<<<<<< HEAD
-		<source doc_type="SOP" id="0023" version="1" definition="yes" primary="yes">sop_0023-v1-rna_isolation_trizol</source>
-=======
 		<source doc_type="SOP" id="0023" version="1" visibility="public" license="CC-BY-SA-4.0"  definition="yes" primary="yes">sop_0023-v1-rna_isolation_trizol</source>
->>>>>>> recipe-collection
 	</recipe>
 	<recipe id="R0141">
 		<name>Chloroform/Isoamyl alcohol</name>
@@ -6526,11 +5843,7 @@
 		<!-- ORGANIZATION -->
 		<category>solution</category>
 		<category>nucleics</category>
-<<<<<<< HEAD
-		<source doc_type="SOP" id="0023" version="1" definition="yes" primary="yes">sop_0023-v1-rna_isolation_trizol</source>
-=======
 		<source doc_type="SOP" id="0023" version="1" visibility="public" license="CC-BY-SA-4.0"  definition="yes" primary="yes">sop_0023-v1-rna_isolation_trizol</source>
->>>>>>> recipe-collection
 	</recipe>
 	<recipe id="R0172">
 		<name>Water</name>
@@ -6553,13 +5866,8 @@
 		<category>solution</category>
 		<category>special</category>
 		<category>nucleics</category>
-<<<<<<< HEAD
-		<source doc_type="SOP" id="0032" version="1" definition="yes">sop_0032-v1-agarose_gel_electrophoresis</source>
-		<source doc_type="SOP" id="0023" version="1" definition="yes" primary="yes">sop_0023-v1-rna_isolation_trizol</source>
-=======
 		<source doc_type="SOP" id="0032" version="1" visibility="public" license="CC-BY-SA-4.0"  definition="yes">sop_0032-v1-agarose_gel_electrophoresis</source>
 		<source doc_type="SOP" id="0023" version="1" visibility="public" license="CC-BY-SA-4.0"  definition="yes" primary="yes">sop_0023-v1-rna_isolation_trizol</source>
->>>>>>> recipe-collection
 	</recipe>
 	<recipe id="R0142">
 		<name>Cell lysis buffer</name>
@@ -6590,19 +5898,11 @@
 			<amount>250 microliter</amount>
 			<final>0.05 percent</final>
 		</ingredient>
-<<<<<<< HEAD
-		<storage>room temperature</storage>
-		<!-- ORGANIZATION -->
-		<category>buffer</category>
-		<category>mammalian</category>
-		<source doc_type="SOP" id="0024" version="1" definition="yes" primary="yes">sop_0024-v1-dna_isolation_mammalian_cells</source>
-=======
 		<storage/>
 		<!-- ORGANIZATION -->
 		<category>buffer</category>
 		<category>mammalian</category>
 		<source doc_type="SOP" id="0024" version="1" visibility="public" license="CC-BY-SA-4.0"  definition="yes" primary="yes">sop_0024-v1-dna_isolation_mammalian_cells</source>
->>>>>>> recipe-collection
 	</recipe>
 	<recipe id="R0143">
 		<name>Tris-NaCl-KCl</name>
@@ -6639,11 +5939,7 @@
 		<!-- ORGANIZATION -->
 		<category>buffer</category>
 		<category>special</category>
-<<<<<<< HEAD
-		<source doc_type="SOP" id="0025" version="1" definition="yes" primary="yes">sop_0025-v1-nuclear_extraction</source>
-=======
 		<source doc_type="SOP" id="0025" version="1" visibility="public" license="CC-BY-SA-4.0"  definition="yes" primary="yes">sop_0025-v1-nuclear_extraction</source>
->>>>>>> recipe-collection
 	</recipe>
 	<recipe id="R0144">
 		<name>Micrococcal nuclease</name>
@@ -6674,11 +5970,7 @@
 		<workup>Dispense into <unit>100 microliter</unit> aliquots</workup>
 		<note type="critical">Nuclease activity requires <unit>1 to 5 millimolar</unit> <chemical>Ca^2^+</chemical> and less than <unit>100 millimolar</unit> monovalent salt</note>
 		<note>Multiple freeze-thaw cycles are tolerated</note>
-<<<<<<< HEAD
-		<source doc_type="SOP" id="0025" version="1" definition="yes" primary="yes">sop_0025-v1-nuclear_extraction</source>
-=======
 		<source doc_type="SOP" id="0025" version="1" visibility="public" license="CC-BY-SA-4.0"  definition="yes" primary="yes">sop_0025-v1-nuclear_extraction</source>
->>>>>>> recipe-collection
 	</recipe>
 	<recipe id="R0145">
 		<name>Ethylene glycol tetraacetic acid</name>
@@ -6706,11 +5998,7 @@
 		<!-- ORGANIZATION -->
 		<category>solution</category>
 		<category>common</category>
-<<<<<<< HEAD
-		<source doc_type="SOP" id="0025" version="1" definition="yes" primary="yes">sop_0025-v1-nuclear_extraction</source>
-=======
 		<source doc_type="SOP" id="0025" version="1" visibility="public" license="CC-BY-SA-4.0"  definition="yes" primary="yes">sop_0025-v1-nuclear_extraction</source>
->>>>>>> recipe-collection
 	</recipe>
 	<recipe id="R0146">
 		<name>Nuclear extraction buffer, low-salt (LS)</name>
@@ -6760,11 +6048,7 @@
 		<!-- ORGANIZATION -->
 		<category>buffer</category>
 		<category>special</category>
-<<<<<<< HEAD
-		<source doc_type="SOP" id="0025" version="1" definition="yes" primary="yes">sop_0025-v1-nuclear_extraction</source>
-=======
 		<source doc_type="SOP" id="0025" version="1" visibility="public" license="CC-BY-SA-4.0"  definition="yes" primary="yes">sop_0025-v1-nuclear_extraction</source>
->>>>>>> recipe-collection
 	</recipe>
 	<recipe id="R0147">
 		<name>Nuclear extraction buffer, high-salt (HS)</name>
@@ -6821,11 +6105,7 @@
 		<!-- ORGANIZATION -->
 		<category>buffer</category>
 		<category>special</category>
-<<<<<<< HEAD
-		<source doc_type="SOP" id="0025" version="1" definition="yes" primary="yes">sop_0025-v1-nuclear_extraction</source>
-=======
 		<source doc_type="SOP" id="0025" version="1" visibility="public" license="CC-BY-SA-4.0"  definition="yes" primary="yes">sop_0025-v1-nuclear_extraction</source>
->>>>>>> recipe-collection
 	</recipe>
 	<recipe id="R0189">
 		<name>Formaldehyde</name>
@@ -6868,11 +6148,7 @@
 		<!-- ORGANIZATION -->
 		<category>solution</category>
 		<category>special</category>
-<<<<<<< HEAD
-		<source doc_type="SOP" id="0027" version="1" definition="yes" primary="yes">sop_0027-v1-immunoprecipitation</source>
-=======
 		<source doc_type="SOP" id="0027" version="1" visibility="internal" license="CC-BY-SA-4.0"  definition="yes" primary="yes">sop_0027-v1-immunoprecipitation</source>
->>>>>>> recipe-collection
 	</recipe>
 	<recipe id="R0190">
 		<name>Glycine</name>
@@ -6891,14 +6167,8 @@
 			<final>1.25 molar</final>
 		</ingredient>
 		<workup>Adjust pH with hydrochloric acid</workup>
-<<<<<<< HEAD
-		<storage class="fridge"><unit>4 celsius</unit></storage>
-		<shelflife>2 weeks</shelflife>
-		<source doc_type="SOP" id="0027" version="1" definition="yes" primary="yes">sop_0027-v1-immunoprecipitation</source>
-=======
 		<storage class="fridge" shelflife="2 weeks"/>
 		<source doc_type="SOP" id="0027" version="1" visibility="internal" license="CC-BY-SA-4.0"  definition="yes" primary="yes">sop_0027-v1-immunoprecipitation</source>
->>>>>>> recipe-collection
 	</recipe>
 	<recipe id="R0191">
 		<name>Ammonium bicarbonate</name>
@@ -6922,11 +6192,7 @@
 		<safety signal="warning">
 			<hazard category="3" type="health_hazard">Acute oral toxicity</hazard>
 		</safety>
-<<<<<<< HEAD
-		<source doc_type="SOP" id="0027" version="1" definition="yes" primary="yes">sop_0027-v1-immunoprecipitation</source>
-=======
 		<source doc_type="SOP" id="0027" version="1" visibility="internal" license="CC-BY-SA-4.0"  definition="yes" primary="yes">sop_0027-v1-immunoprecipitation</source>
->>>>>>> recipe-collection
 	</recipe>
 	<recipe id="R0156">
 		<name>General IP buffer</name>
@@ -6993,11 +6259,7 @@
 		<note type="orientation">This IP buffer is recommended for cytosolic proteins and soluble nuclear factors</note>
 		<note type="critical">Replace Tris-Cl with HEPES when planning for mass spectrometry</note>
 		<note type="orientation">Triton™ X-100 can be replaced with other non-ionic detergents such as IGEPAL® CA-630 as an alternative to Shell’s discontinued NP-40 to preserve native protein interactions</note>
-<<<<<<< HEAD
-		<source doc_type="SOP" id="0027" version="1" definition="yes" primary="yes">sop_0027-v1-immunoprecipitation</source>
-=======
 		<source doc_type="SOP" id="0027" version="1" visibility="internal" license="CC-BY-SA-4.0"  definition="yes" primary="yes">sop_0027-v1-immunoprecipitation</source>
->>>>>>> recipe-collection
 	</recipe>
 	<recipe id="R0157">
 		<name>Nuclear IP buffer</name>
@@ -7057,11 +6319,7 @@
 		<storage/>
 		<note type="orientation">Optimized for chromatin-associated or nucleosomal targets</note>
 		<note type="critical">Replace Tris-Cl with HEPES when planning for mass spectrometry</note>
-<<<<<<< HEAD
-		<source doc_type="SOP" id="0027" version="1" definition="yes" primary="yes">sop_0027-v1-immunoprecipitation</source>
-=======
 		<source doc_type="SOP" id="0027" version="1" visibility="internal" license="CC-BY-SA-4.0"  definition="yes" primary="yes">sop_0027-v1-immunoprecipitation</source>
->>>>>>> recipe-collection
 	</recipe>
 	<recipe hide="yes" id="R0158">
 		<name>Triethanolamine buffer</name>
@@ -7088,11 +6346,7 @@
 			<hazard category="2" type="health_hazard">Eye irritation</hazard>
 			<hazard category="3" type="corrosive">Skin irritation</hazard>
 		</safety>
-<<<<<<< HEAD
-		<source doc_type="SOP" id="0027" version="1" definition="yes" primary="yes">sop_0027-v1-immunoprecipitation</source>
-=======
 		<source doc_type="SOP" id="0027" version="1" visibility="internal" license="CC-BY-SA-4.0"  definition="yes" primary="yes">sop_0027-v1-immunoprecipitation</source>
->>>>>>> recipe-collection
 	</recipe>
 	<recipe hide="yes" id="R0159">
 		<name>Dimethyl pimelimidate</name>
@@ -7117,11 +6371,7 @@
 		<safety signal="warning">
 			<hazard category="2" type="health_hazard">Skin irritation</hazard>
 		</safety>
-<<<<<<< HEAD
-		<source doc_type="SOP" id="0027" version="1" definition="yes" primary="yes">sop_0027-v1-immunoprecipitation</source>
-=======
 		<source doc_type="SOP" id="0027" version="1" visibility="internal" license="CC-BY-SA-4.0"  definition="yes" primary="yes">sop_0027-v1-immunoprecipitation</source>
->>>>>>> recipe-collection
 	</recipe>
 	<recipe id="R0160">
 		<name>Acidic elution buffer</name>
@@ -7138,11 +6388,7 @@
 			<final>200 millimolar</final>
 		</ingredient>
 		<workup>Adjust the pH to 2.5 at <unit>4 celsius</unit></workup>
-<<<<<<< HEAD
-		<source doc_type="SOP" id="0027" version="1" definition="yes" primary="yes">sop_0027-v1-immunoprecipitation</source>
-=======
 		<source doc_type="SOP" id="0027" version="1" visibility="internal" license="CC-BY-SA-4.0"  definition="yes" primary="yes">sop_0027-v1-immunoprecipitation</source>
->>>>>>> recipe-collection
 	</recipe>
 	<recipe id="R0161">
 		<name>Neutralization buffer</name>
@@ -7159,11 +6405,7 @@
 			<final>1 molar</final>
 		</ingredient>
 		<workup>Adjust the pH to 10.4 at <unit>4 celsius</unit></workup>
-<<<<<<< HEAD
-		<source doc_type="SOP" id="0027" version="1" definition="yes" primary="yes">sop_0027-v1-immunoprecipitation</source>
-=======
 		<source doc_type="SOP" id="0027" version="1" visibility="internal" license="CC-BY-SA-4.0"  definition="yes" primary="yes">sop_0027-v1-immunoprecipitation</source>
->>>>>>> recipe-collection
 	</recipe>
 	<recipe id="R0162">
 		<name>Thymidine</name>
@@ -7196,11 +6438,7 @@
 		<!-- ORGANIZATION -->
 		<category>solution</category>
 		<category>mammalian</category>
-<<<<<<< HEAD
-		<source doc_type="SOP" id="0028" version="2" definition="no" primary="yes">sop_0028-v2-cell_cycle_synchronization</source>
-=======
 		<source doc_type="SOP" id="0028" version="2" visibility="internal" license="CC-BY-SA-4.0"  definition="no" primary="yes">sop_0028-v2-cell_cycle_synchronization</source>
->>>>>>> recipe-collection
 	</recipe>
 	<recipe id="R0163">
 		<name>Nocodazole</name>
@@ -7230,11 +6468,7 @@
 		<!-- ORGANIZATION -->
 		<category>solution</category>
 		<category>mammalian</category>
-<<<<<<< HEAD
-		<source doc_type="SOP" id="0028" version="2" definition="yes" primary="yes">sop_0028-v2-cell_cycle_synchronization</source>
-=======
 		<source doc_type="SOP" id="0028" version="2" visibility="internal" license="CC-BY-SA-4.0"  definition="yes" primary="yes">sop_0028-v2-cell_cycle_synchronization</source>
->>>>>>> recipe-collection
 	</recipe>
 	<recipe id="R0173">
 		<name>Ro-3306</name>
@@ -7249,19 +6483,11 @@
 			<amount>10 milligram</amount>
 			<final>10 millimolar</final>
 		</ingredient>
-<<<<<<< HEAD
-		<storage class="freezer" type="dark"><unit>-20 celsius</unit></storage>
-		<!-- ORGANIZATION -->
-		<category>solution</category>
-		<category>mammalian</category>
-		<source doc_type="SOP" id="0028" version="2" definition="yes" primary="yes">sop_0028-v2-cell_cycle_synchronization</source>
-=======
 		<storage type="dark"/>
 		<!-- ORGANIZATION -->
 		<category>solution</category>
 		<category>mammalian</category>
 		<source doc_type="SOP" id="0028" version="2" visibility="internal" license="CC-BY-SA-4.0"  definition="yes" primary="yes">sop_0028-v2-cell_cycle_synchronization</source>
->>>>>>> recipe-collection
 	</recipe>
 	<recipe hide="yes" id="R0167">
 		<name>Propidium iodide</name>
@@ -7287,11 +6513,7 @@
 		<!-- ORGANIZATION -->
 		<category>solution</category>
 		<category>mammalian</category>
-<<<<<<< HEAD
-		<source doc_type="SOP" id="0029" version="1" definition="yes" primary="yes">sop_0029-v1-cell_cycle_flow_cytometry</source>
-=======
 		<source doc_type="SOP" id="0029" version="1" visibility="internal" license="CC-BY-SA-4.0"  definition="yes" primary="yes">sop_0029-v1-cell_cycle_flow_cytometry</source>
->>>>>>> recipe-collection
 	</recipe>
 	<recipe id="R0168">
 		<name>Propidium iodide staining solution</name>
@@ -7328,11 +6550,7 @@
 		<!-- ORGANIZATION -->
 		<category>solution</category>
 		<category>mammalian</category>
-<<<<<<< HEAD
-		<source doc_type="SOP" id="0029" version="1" definition="yes" primary="yes">sop_0029-v1-cell_cycle_flow_cytometry</source>
-=======
 		<source doc_type="SOP" id="0029" version="1" visibility="internal" license="CC-BY-SA-4.0"  definition="yes" primary="yes">sop_0029-v1-cell_cycle_flow_cytometry</source>
->>>>>>> recipe-collection
 	</recipe>
 	<recipe hide="yes" id="R0174">
 		<name>Borax</name>
@@ -7361,11 +6579,7 @@
 		<!-- ORGANIZATION -->
 		<category>solution</category>
 		<category>nucleics</category>
-<<<<<<< HEAD
-		<source doc_type="SOP" id="0032" version="1" definition="yes" primary="yes">sop_0032-v1-agarose_gel_electrophoresis</source>
-=======
 		<source doc_type="SOP" id="0032" version="1" visibility="public" license="CC-BY-SA-4.0"  definition="yes" primary="yes">sop_0032-v1-agarose_gel_electrophoresis</source>
->>>>>>> recipe-collection
 	</recipe>
 	<recipe hide="yes" id="R0175">
 		<name>Lithium-acetate</name>
@@ -7386,20 +6600,11 @@
 			<final type="diluted">10 millimolar</final>
 		</ingredient>
 		<workup>Filter through <unit>0.45 micrometer</unit> pore or autoclave</workup>
-<<<<<<< HEAD
-		<storage>room temperature</storage>
-		<shelflife>6 months</shelflife>
-		<!-- ORGANIZATION -->
-		<category>solution</category>
-		<category>nucleics</category>
-		<source doc_type="SOP" id="0032" version="1" definition="yes" primary="yes">sop_0032-v1-agarose_gel_electrophoresis</source>
-=======
 		<storage shelflife="6 months"/>
 		<!-- ORGANIZATION -->
 		<category>solution</category>
 		<category>nucleics</category>
 		<source doc_type="SOP" id="0032" version="1" visibility="public" license="CC-BY-SA-4.0"  definition="yes" primary="yes">sop_0032-v1-agarose_gel_electrophoresis</source>
->>>>>>> recipe-collection
 	</recipe>
 	<recipe hide="yes" id="R0176">
 		<name>Tris-borate</name>
@@ -7435,11 +6640,7 @@
 		<!-- ORGANIZATION -->
 		<category>buffer</category>
 		<category>nucleics</category>
-<<<<<<< HEAD
-		<source doc_type="SOP" id="0032" version="1" definition="yes" primary="yes">sop_0032-v1-agarose_gel_electrophoresis</source>
-=======
 		<source doc_type="SOP" id="0032" version="1" visibility="public" license="CC-BY-SA-4.0"  definition="yes" primary="yes">sop_0032-v1-agarose_gel_electrophoresis</source>
->>>>>>> recipe-collection
 	</recipe>
 	<recipe id="R0177">
 		<name>Gel loading buffer</name>
@@ -7489,11 +6690,7 @@
 		<!-- ORGANIZATION -->
 		<category>buffer</category>
 		<category>nucleics</category>
-<<<<<<< HEAD
-		<source doc_type="SOP" id="0032" version="1" definition="yes" primary="yes">sop_0032-v1-agarose_gel_electrophoresis</source>
-=======
 		<source doc_type="SOP" id="0032" version="1" visibility="public" license="CC-BY-SA-4.0"  definition="yes" primary="yes">sop_0032-v1-agarose_gel_electrophoresis</source>
->>>>>>> recipe-collection
 	</recipe>
 	<recipe hide="yes" id="R0178">
 		<name>Orange G</name>
@@ -7516,11 +6713,7 @@
 		<category>solution</category>
 		<category>special</category>
 		<category>nucleics</category>
-<<<<<<< HEAD
-		<source doc_type="SOP" id="0032" version="1" definition="yes" primary="yes">sop_0032-v1-agarose_gel_electrophoresis</source>
-=======
 		<source doc_type="SOP" id="0032" version="1" visibility="public" license="CC-BY-SA-4.0"  definition="yes" primary="yes">sop_0032-v1-agarose_gel_electrophoresis</source>
->>>>>>> recipe-collection
 	</recipe>
 	<recipe hide="yes" id="R0179">
 		<name>Xylene cyanol FF</name>
@@ -7546,11 +6739,7 @@
 		<category>solution</category>
 		<category>special</category>
 		<category>nucleics</category>
-<<<<<<< HEAD
-		<source doc_type="SOP" id="0032" version="1" definition="yes" primary="yes">sop_0032-v1-agarose_gel_electrophoresis</source>
-=======
 		<source doc_type="SOP" id="0032" version="1" visibility="public" license="CC-BY-SA-4.0"  definition="yes" primary="yes">sop_0032-v1-agarose_gel_electrophoresis</source>
->>>>>>> recipe-collection
 	</recipe>
 	<recipe hide="yes" id="R0180">
 		<name>Bromophenol blue</name>
@@ -7582,11 +6771,7 @@
 		<category>solution</category>
 		<category>special</category>
 		<category>nucleics</category>
-<<<<<<< HEAD
-		<source doc_type="SOP" id="0032" version="1" definition="yes" primary="yes">sop_0032-v1-agarose_gel_electrophoresis</source>
-=======
 		<source doc_type="SOP" id="0032" version="1" visibility="public" license="CC-BY-SA-4.0"  definition="yes" primary="yes">sop_0032-v1-agarose_gel_electrophoresis</source>
->>>>>>> recipe-collection
 	</recipe>
 	<recipe hide="yes" id="R0181">
 		<name>Cresol red</name>
@@ -7611,11 +6796,7 @@
 		<category>solution</category>
 		<category>special</category>
 		<category>nucleics</category>
-<<<<<<< HEAD
-		<source doc_type="SOP" id="0032" version="1" definition="yes" primary="yes">sop_0032-v1-agarose_gel_electrophoresis</source>
-=======
 		<source doc_type="SOP" id="0032" version="1" visibility="public" license="CC-BY-SA-4.0"  definition="yes" primary="yes">sop_0032-v1-agarose_gel_electrophoresis</source>
->>>>>>> recipe-collection
 	</recipe>
 	<recipe id="R0182">
 		<name>DNA ladder</name>
@@ -7650,11 +6831,7 @@
 		<!-- ORGANIZATION -->
 		<category>standard</category>
 		<category>nucleics</category>
-<<<<<<< HEAD
-		<source doc_type="SOP" id="0032" version="1" definition="yes" primary="yes">sop_0032-v1-agarose_gel_electrophoresis</source>
-=======
 		<source doc_type="SOP" id="0032" version="1" visibility="public" license="CC-BY-SA-4.0"  definition="yes" primary="yes">sop_0032-v1-agarose_gel_electrophoresis</source>
->>>>>>> recipe-collection
 	</recipe>
 	<recipe id="R0183">
 		<name>Thiazole orange</name>
@@ -7680,11 +6857,7 @@
 			<hazard category="2" type="health_hazard">Serious eye irritation</hazard>
 			<hazard category="3" hide="yes" type="health_hazard">Skin irritation</hazard>
 		</safety>
-<<<<<<< HEAD
-		<source doc_type="SOP" id="0032" version="1" definition="yes" primary="yes">sop_0032-v1-agarose_gel_electrophoresis</source>
-=======
 		<source doc_type="SOP" id="0032" version="1" visibility="public" license="CC-BY-SA-4.0"  definition="yes" primary="yes">sop_0032-v1-agarose_gel_electrophoresis</source>
->>>>>>> recipe-collection
 	</recipe>
 	<recipe id="R0184">
 		<name>MOPS-acetate running buffer</name>
@@ -7722,21 +6895,12 @@
 			<final type="diluted">1 millimolar</final>
 		</ingredient>
 		<workup>Adjust the pH with <unit>2 molar</unit> sodium hydroxide before adding EDTA</workup>
-<<<<<<< HEAD
-		<storage light="yes">room temperature</storage>
-		<shelflife>6 months</shelflife>
-=======
 		<storage shelflife="6 months" type="dark"/>
->>>>>>> recipe-collection
 		<!-- ORGANIZATION -->
 		<category>buffer</category>
 		<category>special</category>
 		<category>nucleics</category>
-<<<<<<< HEAD
-		<source doc_type="SOP" id="0032" version="1" definition="yes" primary="yes">sop_0032-v1-agarose_gel_electrophoresis</source>
-=======
 		<source doc_type="SOP" id="0032" version="1" visibility="public" license="CC-BY-SA-4.0"  definition="yes" primary="yes">sop_0032-v1-agarose_gel_electrophoresis</source>
->>>>>>> recipe-collection
 	</recipe>
 	<recipe id="R0185">
 		<name>RF1</name>
@@ -7793,11 +6957,7 @@
 		<!-- ORGANIZATION -->
 		<category>buffer</category>
 		<category>bacterial</category>
-<<<<<<< HEAD
-		<source doc_type="SOP" id="0034" version="1" definition="yes" primary="yes">sop_0034-v1-transformation</source>
-=======
 		<source doc_type="SOP" id="0034" version="1" visibility="public" license="CC-BY-SA-4.0"  definition="yes" primary="yes">sop_0034-v1-transformation</source>
->>>>>>> recipe-collection
 	</recipe>
 	<recipe id="R0186">
 		<name>RF2</name>
@@ -7835,19 +6995,11 @@
 		</ingredient>
 		<workup>Adjust pH with <unit>1 molar</unit> sodium hydroxide</workup>
 		<workup>Filter sterilize</workup>
-<<<<<<< HEAD
-		<storage class="fridge"><unit>4 celsius</unit></storage>
-		<!-- ORGANIZATION -->
-		<category>buffer</category>
-		<category>bacterial</category>
-		<source doc_type="SOP" id="0034" version="1" definition="yes" primary="yes">sop_0034-v1-transformation</source>
-=======
 		<storage class="fridge"/>
 		<!-- ORGANIZATION -->
 		<category>buffer</category>
 		<category>bacterial</category>
 		<source doc_type="SOP" id="0034" version="1" visibility="public" license="CC-BY-SA-4.0"  definition="yes" primary="yes">sop_0034-v1-transformation</source>
->>>>>>> recipe-collection
 	</recipe>
 	<recipe id="R0187">
 		<name>Simple &amp; efficient buffer</name>
@@ -7896,11 +7048,7 @@
 		<!-- ORGANIZATION -->
 		<category>buffer</category>
 		<category>bacterial</category>
-<<<<<<< HEAD
-		<source doc_type="SOP" id="0034" version="1" definition="yes" primary="yes">sop_0034-v1-transformation</source>
-=======
 		<source doc_type="SOP" id="0034" version="1" visibility="public" license="CC-BY-SA-4.0"  definition="yes" primary="yes">sop_0034-v1-transformation</source>
->>>>>>> recipe-collection
 	</recipe>
 	<recipe id="R0188">
 		<name>Transformation &amp; storage medium</name>
@@ -7932,19 +7080,11 @@
 			<final>10 percent</final>
 		</ingredient>
 		<workup>Filter sterilize</workup>
-<<<<<<< HEAD
-		<storage class="fridge"><unit>4 celsius</unit></storage>
-		<!-- ORGANIZATION -->
-		<category>buffer</category>
-		<category>bacterial</category>
-		<source doc_type="SOP" id="0034" version="1" definition="yes" primary="yes">sop_0034-v1-transformation</source>
-=======
 		<storage class="fridge"/>
 		<!-- ORGANIZATION -->
 		<category>buffer</category>
 		<category>bacterial</category>
 		<source doc_type="SOP" id="0034" version="1" visibility="public" license="CC-BY-SA-4.0"  definition="yes" primary="yes">sop_0034-v1-transformation</source>
->>>>>>> recipe-collection
 	</recipe>
 	<recipe id="R0193">
 		<name>Long incubation buffer</name>
@@ -7983,20 +7123,12 @@
 		<workup>Adjust pH with potassium hydroxide</workup>
 		<workup>Filter sterilize</workup>
 		<workup>Dispense into <unit>1 milliliter</unit> aliquots</workup>
-<<<<<<< HEAD
-		<storage class="freezer"><unit>-20 celsius</unit></storage>
-=======
 		<storage class="freezer"/>
->>>>>>> recipe-collection
 		<!-- ORGANIZATION -->
 		<category>buffer</category>
 		<category>nucleics</category>
 		<category>special</category>
-<<<<<<< HEAD
-		<source doc_type="SOP" id="0039" version="1" definition="yes" primary="yes">sop_0039-v1-pcr_qualitative</source>
-=======
 		<source doc_type="SOP" id="0039" version="1" visibility="public" license="CC-BY-SA-4.0"  definition="yes" primary="yes">sop_0039-v1-pcr_qualitative</source>
->>>>>>> recipe-collection
 	</recipe>
 	<recipe id="R0194">
 		<name>High-fidelity PCR buffer</name>
@@ -8032,19 +7164,11 @@
 			<final type="diluted">0.01 percent</final>
 		</ingredient>
 		<workup>Filter sterilize and aliquot</workup>
-<<<<<<< HEAD
-		<storage class="freezer"><unit>-20 celsius</unit></storage>
-=======
 		<storage class="freezer"/>
->>>>>>> recipe-collection
 		<!-- ORGANIZATION -->
 		<category>buffer</category>
 		<category>nucleics</category>
 		<category>special</category>
-<<<<<<< HEAD
-		<source doc_type="SOP" id="0039" version="1" definition="yes" primary="yes">sop_0039-v1-pcr_qualitative</source>
-=======
 		<source doc_type="SOP" id="0039" version="1" visibility="public" license="CC-BY-SA-4.0"  definition="yes" primary="yes">sop_0039-v1-pcr_qualitative</source>
->>>>>>> recipe-collection
 	</recipe>
 </recipes>
