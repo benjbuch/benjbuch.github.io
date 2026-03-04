@@ -7,7 +7,8 @@
    width="967.17108"
    height="967.1377"
    viewBox="0 0 967.17108 967.1377"
-   sodipodi:docname="ghs_compressed_gas.pdf"
+   sodipodi:docname="ghs_compressed_gas.svg"
+   inkscape:version="1.3.2 (091e20e, 2023-11-25)"
    xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
    xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
    xmlns="http://www.w3.org/2000/svg"
@@ -52,8 +53,17 @@
      borderopacity="1.0"
      inkscape:showpageshadow="2"
      inkscape:pageopacity="0.0"
-     inkscape:pagecheckerboard="0"
-     inkscape:deskcolor="#d1d1d1">
+     inkscape:pagecheckerboard="false"
+     inkscape:deskcolor="#d1d1d1"
+     inkscape:zoom="0.24401903"
+     inkscape:cx="483.56885"
+     inkscape:cy="485.61787"
+     inkscape:window-width="880"
+     inkscape:window-height="480"
+     inkscape:window-x="160"
+     inkscape:window-y="362"
+     inkscape:window-maximized="0"
+     inkscape:current-layer="g1">
     <inkscape:page
        x="0"
        y="0"
@@ -70,9 +80,8 @@
      inkscape:label="1">
     <path
        id="path1"
-       d="M 117.695,449.797 477.543,809.66 837.402,449.797 477.543,89.938 117.695,449.797"
-       style="fill:#ffffff;fill-opacity:1;fill-rule:nonzero;stroke:none"
-       transform="scale(1.3333333)" />
+       d="M 3.8066666,483.54934 483.60399,963.36662 963.41598,483.54934 483.60399,3.7373529 3.8066666,483.54934"
+       style="fill:#ffffff;fill-opacity:1;fill-rule:nonzero;stroke:none;stroke-width:1.33333" />
     <g
        id="g7"
        clip-path="url(#clipPath7)">
