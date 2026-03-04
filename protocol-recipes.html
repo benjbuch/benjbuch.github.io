@@ -507,7 +507,8 @@ permalink: /recipes/
     .recipe-list-panel {
       width: 100%;
       flex: 0 0 auto;
-      padding-right: var(--pad-l);
+      padding-right: 0; 
+/*      var(--pad-l);*/
     }
     .recipe-list {
       max-height: calc(2 * var(--line-height, 2.4em));
@@ -517,6 +518,17 @@ permalink: /recipes/
       flex: 1 1 0;
       min-height: 0;
     }
+    .recipe-detail {
+       padding-right: 0;
+       scrollbar-gutter: auto;
+     }
+     .rc-table {
+       font-size: 0.7rem;
+     }
+     .rc-table .col-stock,
+     .rc-table .col-final {
+       display: none;
+     }
   }
   
   @media print {
