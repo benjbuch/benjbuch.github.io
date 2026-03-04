@@ -689,6 +689,20 @@ document.addEventListener("DOMContentLoaded", function () {
       else if (tag === "unit") h += parseUnitStr((n.textContent||"").trim());
       else if (tag === "high") h += "<sup>" + n.textContent + "</sup>";
       else if (tag === "it") h += "<em>" + n.textContent + "</em>";
+      else if (tag === "citation") {
+        var refs = (n.textContent || "").split(",");
+        var links = [];
+        for (var ci = 0; ci < refs.length; ci++) {
+          var ref = refs[ci].trim();
+          var pm = ref.match(/^PMID:(\d+)$/);
+          if (pm) {
+            links.push('<a class="rc-cite" href="https://europepmc.org/article/med/' + pm[1] + '" target="_blank" rel="noopener noreferrer">↗︎&nbsp;' + pm[1] + '</a>');
+          } else {
+            links.push(ref);
+          }
+        }
+        h += '<span class="rc-citations">[' + links.join(", ") + ']</span>';
+      }
       else h += htmlOf(n);
     }
     return h;
@@ -1118,11 +1132,11 @@ document.addEventListener("DOMContentLoaded", function () {
     if (recipe.sources.length) {
       h += '<div class="rc-sources">';
       h += "<p>For research use. Users are responsible for compliance with local regulations and institutional policies. Amounts scale proportionally with total solvent volume.</p>";
-      h += "<p>Source: ";
+      h += "<p>Referenced in: ";
       h += recipe.sources.map(function (s) {
         var label = 
         '<a target="_blank" rel="noopener noreferrer" href="/assets/protocols/pdf/' + s.filename + '.pdf">' +
-          s.doc_type + " " + s.id + " v" + s.version +
+          s.doc_type + s.id + "-v" + s.version +
         "</a>";
         if (s.primary) label += " (shown)";
         return label;
