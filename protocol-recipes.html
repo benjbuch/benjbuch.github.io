@@ -377,8 +377,9 @@ permalink: /recipes/
   }
   
   .rc-note em {
-    text-transform: capitalize;
+    text-transform: uppercase;
     font-weight: 600;
+    padding-right: var(--pad-m);
   }
   
   .rc-note-critical {
@@ -1038,17 +1039,29 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 
     // Notes
-    for (var n = 0; n < recipe.notes.length; n++) {
-      var note = recipe.notes[n];
-      var isCritical = note.type === "critical" || note.type === "safety";
-      if (isCritical) {
-        h += '<div class="rc-note rc-note-critical"><strong>Important:</strong> ' + note.html + "!</div>";
-      } else if (note.type) {
-        h += '<div class="rc-note rc-note-typed"><em>' +
-          note.type + ':</em> ' + note.html + ".</div>";
-      } else {
-        h += '<div class="rc-note">' + note.html + ".</div>";
-      }
+    var noteOrder = ["critical", "", "orientation", "quality", "explanation"];
+    var noteLabels = {
+      critical: "Critical",
+      "": "Note",
+      orientation: "Good to know",
+      quality: "Quality assurance",
+      explanation: "This is why"
+    };
+    var notePunct = { critical: "!" };
+
+    for (var ni = 0; ni < noteOrder.length; ni++) {
+      var ntype = noteOrder[ni];
+      var group = recipe.notes.filter(function (n) { return n.type === ntype; });
+      if (!group.length) continue;
+
+      var punct = notePunct[ntype] || ".";
+      var cls = ntype === "critical" ? "rc-note rc-note-critical" : "rc-note";
+      var label = noteLabels[ntype];
+
+      h += '<div class="' + cls + '">';
+      h += "<em>" + label + "</em> ";
+      h += group.map(function (n) { return n.html + punct; }).join(" ");
+      h += "</div>";
     }
 
     // Safety
