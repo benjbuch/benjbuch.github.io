@@ -703,13 +703,11 @@ document.addEventListener("DOMContentLoaded", function () {
   /* ==== Parse recipe element ==== */
 
   function parseRecipe(el) {
-    var nameEl = firstChild(el, "name");
-    var abbrEl = firstChild(el, "abbreviation");
-    var stockEl = firstChild(el, "stock");
-    var solventEl = firstChild(el, "solvent");
-    var storageEl = firstChild(el, "storage");
-    var shelflifeEl = firstChild(el, "shelflife");
-    var safetyEl = firstChild(el, "safety");
+    var nameEl      = firstChild(el, "name");
+    var abbrEl      = firstChild(el, "abbreviation");
+    var stockEl     = firstChild(el, "stock");
+    var solventEl   = firstChild(el, "solvent");
+    var safetyEl    = firstChild(el, "safety");
 
     var solvent = null;
     if (solventEl) {
@@ -746,9 +744,23 @@ document.addEventListener("DOMContentLoaded", function () {
       };
     });
 
-    var workups = directChildren(el, "workup").map(function (w) { return htmlOf(w); });
+    var workup = directChildren(el, "workup").map(function (w) { 
+      return htmlOf(w); 
+    });
+    
+    var storage = directChildren(el, "storage").map(function(s) {
+      return {
+        cls: s.getAttribute("class") || "",
+        type: s.getAttribute("type") || "",
+        shelflife: s.getAttribute("shelflife") || "",
+        text: textOf(s).trim()
+      };
+    });
+    
     var notes = directChildren(el, "note").map(function (n) {
-      return { type: n.getAttribute("type") || "", html: htmlOf(n) };
+      return { 
+        type: n.getAttribute("type") || "",
+        html: htmlOf(n) };
     });
     
     var safety = null;
@@ -782,7 +794,6 @@ document.addEventListener("DOMContentLoaded", function () {
       };
     }
 
-    var storage = storageEl ? { html: htmlOf(storageEl) } : null;
     var sources = directChildren(el, "source").map(function (s) {
       return {
         doc_type: s.getAttribute("doc_type") || "",
@@ -803,9 +814,8 @@ document.addEventListener("DOMContentLoaded", function () {
       properties: directChildren(el, "property").map(function (p) { return htmlOf(p); }),
       solvent: solvent,
       ingredients: ingredients,
-      workups: workups,
+      workup: workup,
       storage: storage,
-      shelflife: shelflifeEl ? htmlOf(shelflifeEl) : "",
       notes: notes,
       safety: safety,
       categories: directChildren(el, "category").map(function (c) { return textOf(c); }),
@@ -989,23 +999,40 @@ document.addEventListener("DOMContentLoaded", function () {
     h += '<div class="rc-body">';
 
     // Workup
-    if (recipe.workups.length) {
+    if (recipe.workup.length) {
       h += '<div class="rc-workup">';
-      h += recipe.workups.join(". ") + ".";
+      h += recipe.workup.join(". ") + ".";
       h += "</div>";
     }
 
     // Storage / shelflife
-    if (recipe.shelflife || recipe.storage) {
+    if (recipe.storage.length > 0) {
+      var classMap = {
+        fridge: "4\u2009°C",
+        freezer: "–20\u2009°C",
+        superfrost: "–80\u2009°C",
+        incubator: "37\u2009°C"
+      };
+      var typeMap = { dark: "protected from light" };
+
       h += '<div class="rc-storage">';
-      if (recipe.shelflife && recipe.shelflife.trim() !== "") {
-        h += "Stable for " + recipe.shelflife;
-        if (recipe.storage && recipe.shelflife.indexOf("store") === -1) {
-          h += " at " + recipe.storage.html;
+      for (var i = 0; i < recipe.storage.length; i++) {
+        var s = recipe.storage[i];
+        var temp = classMap[s.cls] || "room temperature";
+
+        if (s.shelflife) {
+          h += "Stable for " + s.shelflife + " at " + temp;
+        } else {
+          h += (i > 0 ? "Alternatively, store" : "Store") + " at " + temp;
+        }
+        if (s.type && typeMap[s.type]) {
+          h += ", " + typeMap[s.type];
         }
         h += ".";
-      } else if (recipe.storage  && recipe.storage.html.trim() !== "") {
-        h += "Store at " + recipe.storage.html + ".";
+        if (s.text) {
+          h += " " + s.text;
+        }
+        if (i < recipe.storage.length - 1) h += " ";
       }
       h += "</div>";
     }
