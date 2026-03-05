@@ -73,6 +73,7 @@ p {
   margin-bottom: var(--pad-l);
   margin-right: var(--pad-m);
   margin-top: var(--pad-m);
+  text-align: justify;
 }
 
 :is(p, div) + :is(h1, h2, h3, h4) {
