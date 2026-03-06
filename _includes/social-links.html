@@ -1,0 +1,29 @@
+<div class="social-links">
+  <a href="{{ site.owner.orcid }}">ORCID</a>
+  &middot;
+  <a href="{{ site.owner.scholar }}">Google Scholar</a>
+  &middot;
+  <a href="{{ site.owner.github }}">GitHub</a>
+  &middot;
+  <a href="{{ site.owner.linkedin }}">LinkedIn</a>
+</div>
+<div class="social-links">
+  <span id="contact-email">
+    <noscript>{{ site.owner.email_user }} &#9675; {{ site.owner.email_host }}</noscript> 
+  </span>
+</div>
+
+<script>
+(function() {
+  var u = '{{ site.owner.email_user }}';
+  var h = '{{ site.owner.email_host }}';
+  var el = document.getElementById('contact-email');
+  if (el) {
+    var a = document.createElement('a');
+    a.href = 'mailto:' + u + '@' + h;
+    a.textContent = u + '@' + h;
+    el.innerHTML = '';
+    el.appendChild(a);
+  }
+})();
+</script>

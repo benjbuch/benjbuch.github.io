@@ -306,19 +306,18 @@ section {
   border: none;
   box-shadow: none;
   padding: var(--pad-m) 0;
+  margin-left: auto;
+  margin-right: auto;
   text-align: center;
+}
+
+.hero-text {
+  max-width: 42ch;
+  margin: 0 auto;
 }
 
 .hero p {
-  max-width: 50ch;
   text-align: center;
-}
-
-.hero-content {
-  align-items: center;
-  display: flex;
-  flex-direction: column;
-  gap: var(--pad-l);
 }
 
 .hero-portrait {
@@ -330,6 +329,14 @@ section {
   overflow: hidden;
   margin-bottom: var(--section-gap);
   width: #{$portrait-w};
+}
+
+.social-links {
+  margin-top: var(--section-gap);
+}
+
+.social-links + .social-links {
+  margin-top: var(--pad-m);
 }
 
 // ============================================================================
@@ -576,16 +583,6 @@ input {
 @media (max-width: #{$bp-m}) {
   .grid.cols-2 {
     grid-template-columns: 1fr 1fr;
-  }
-}
-
-// Large screens - hero layout
-
-@media (min-width: #{$card-w}) {
-  .hero-content {
-    align-items: flex-start;
-    flex-direction: row;
-    justify-content: center;
   }
 }
 
