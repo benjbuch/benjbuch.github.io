@@ -541,7 +541,11 @@ input {
   .tag {
     opacity: 0.85;
   }
-  
+
+  img.invertible {
+    filter: invert(1);
+  }
+
 }
 
 // Tablet and mobile

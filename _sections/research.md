@@ -17,9 +17,10 @@ I study these questions using **chemical biology** approaches, pooled **genetic 
 
 I study how **cancer-associated mutations in histone proteins** disrupt nucleosome function. In healthy tissue, histone proteins form protein–DNA complexes, the nucleosomes, that govern access to the underlying genetic information. Although there are roughly 16&nbsp;million nucleosomes for every copy of the human genome, there are only a few dozen per gene which can be enzymatically modified to signal different gene activity states. Defective nucleosomes can cause aberrant gene expression or silencing, promoting hallmark cancer phenotypes such as unrestrained proliferation, migration, and invasion.
 
-<img 
-  src="/assets/img/oncohistones/gallery-single_mutations.svg" 
-  alt="Nucleosomes bearing different single-site mutations" 
+<img
+  src="/assets/img/oncohistones/gallery-single_mutations.svg"
+  alt="Nucleosomes bearing different single-site mutations"
+  class="invertible"
   width="90%"
   style="display:block;margin:auto;">
 
