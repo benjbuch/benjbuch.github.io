@@ -76,11 +76,12 @@ include:
   - robots.txt
 
 exclude:
-  - .github/
   - artifacts.*
   - Makefile
-  - node_modules/
   - README.md
+  - CLAUDE.md
+  - .github/
+  - node_modules/
   - scripts/
   - vendor/
 
