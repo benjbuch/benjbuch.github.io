@@ -38,6 +38,12 @@ Between 2010 and 2015, a series of observations indicated that the modification 
 The ten-eleven translocation (TET) enzymes oxidize 5mC to 5-hydroxymethylcytosine (5hmC), 5-formylcytosine (5fC), and 5-carboxylcytosine (5caC), acting on one strand at a time.
 Not only did this suggest a biochemical pathway to revert DNA methylation, but it also implied that **a CpG dyad could carry 5mC on one strand and 5hmC on the other,** or any other symmetric or asymmetric combination of the five possible modification states.
 
+<img 
+  src="/assets/img/dna-oxi_config/oxi_c.svg" 
+  alt="Cytosine C5 modifications in DNA" 
+  width="80%"
+  style="display:block;margin:auto;">
+
 While these asymmetric combinations may not be passed on to cellular progeny in the same way that fully methylated CpG dyads are, some of them might exert regulatory roles in somatic, post-mitotic tissues.
 My contributions to this question were to ascertain whether the cell's molecular machinery could tell different combinations apart, and to build probes to investigate these marks in cells.
 
