@@ -33,16 +33,65 @@
 }
 
 .essay-history {
-  margin-top: var(--section-gap);
-  border-top: #{$line-m} solid var(--border-subtle);
   color: var(--text-secondary);
+  font-size: 0.9rem;
+  margin-top: var(--section-gap);
+  
+  &::before {
+    border-top: #{$line-m} solid var(--border-subtle);
+    content: "";
+    display: block;
+    margin-bottom: var(--pad-m);
+    width: 25%;
+  }
+  
+  p::before {
+    content: "Update: ";
+    font-weight: 700;
+//  font-variant: small-caps;
+    letter-spacing: 0.05em;
+  }
+
 }
 
-.essay-history p::before {
-  content: "Update: ";
-  font-weight: 700;
-//  font-variant: small-caps;
-  letter-spacing: 0.05em;
+// ============================================================================
+// Footnotes (Kramdown)
+// ============================================================================
+
+.footnotes {
+  color: var(--text-secondary);
+  font-size: 0.9rem;
+  margin-top: var(--section-gap);
+
+  > hr {
+    display: none;
+  }
+
+  &::before {
+    border-top: #{$line-m} solid var(--border-subtle);
+    content: "";
+    display: block;
+    margin-bottom: var(--pad-m);
+    width: 25%;
+  }
+
+  ol {
+    margin: 0;
+    padding-left: 1.5em;
+  }
+
+  li {
+    margin-bottom: var(--pad-m);
+  }
+
+  a.reversefootnote {
+    color: var(--text-tertiary);
+    margin-left: var(--pad-s);
+
+    &:hover {
+      color: var(--link);
+    }
+  }
 }
 
 // ============================================================================

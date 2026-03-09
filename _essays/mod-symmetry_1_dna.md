@@ -113,7 +113,3 @@ The probes developed in our work target 5hmC/5mC, making them better suited to p
 Whether the patterns that emerge prove to be a regulatory code or a record of enzymatic kinetics is, I think, one of the more interesting open questions in this corner of chromatin biology.
 
 [^4]: [Halliwell et al. (Commun. Biol. 2025)](https://pubmed.ncbi.nlm.nih.gov/39955446).
-
-<div class="essay-history">
-  <p>This is Part 1 of a series on symmetry breaking in biopolymers. In Part 2, we will look at the nucleosome, where the same logic plays out at a different scale.</p>
-</div>
