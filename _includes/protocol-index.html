@@ -17,7 +17,7 @@
         <th data-sort="title">Title</th>
         <th data-sort="domain">Domain</th>
         <th data-sort="status">Status</th>
-        <th data-sort="date">Last commit</th>
+        <th data-sort="date">Last revision</th>
         {%- comment -%}
         <th data-sort="pdf">Download</th>
         {%- endcomment -%}
@@ -38,6 +38,11 @@
       {% assign attr_topic  = kw.topic  | join: ';' | downcase %}
       {% assign attr_technique  = kw.technique  | join: ';' | downcase %}
       {% assign attr_workflow   = kw.workflow   | join: ';' | downcase %}
+      {%- if item.revision_date -%}
+        {%- assign revision_date = item.revision_date -%}
+      {%- else -%}
+        {%- assign revision_date = item.current_commit_time | date: "%Y-%m-%d" -%}
+      {%- endif -%}
       <tr 
         data-domain="{{ attr_domain }}"
         data-level="{{ attr_level }}"
@@ -55,7 +60,7 @@
         </td>
         <td data-value="{{ attr_domain | escape }}">{{ attr_domain | capitalize }}</td>
         <td data-value="{{ item.visibility | escape }}">{{ item.visibility | capitalize }}</td>
-        <td data-value="{{ item.current_commit_time | escape }}">{{ item.current_commit_time | date: "%Y-%m-%d" }}</td>
+        <td data-value="{{ revision_date }}">{{ revision_date }}</td>
         {%- comment -%}
         <td data-value="{%- if is_share and has_file > 0 -%}1{%- else -%}0{%- endif -%}">
           {%- if is_share and has_file > 0 -%}
