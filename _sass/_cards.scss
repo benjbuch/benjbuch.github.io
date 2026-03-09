@@ -9,6 +9,7 @@
   border-radius: #{$round-m};
   box-shadow: none;
   padding: var(--pad-l);
+  position: relative;
 }
 
 .card-subtle {

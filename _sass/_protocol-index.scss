@@ -1,22 +1,50 @@
 .proto-tools {
+  --proto-icon-size: 3rem;
   display: flex;
-  gap: var(--pad-m);
-  margin-top: var(--pad-l);
+  gap: var(--pad-l);
+  position: absolute;
+  right: var(--pad-l);
+  top: 0;
+  transform: translateY(calc(var(--proto-icon-size) / -2));
 }
 
 .proto-tool {
-  border: 1px solid var(--border-strong);
-  border-radius: 999px;
-  color: var(--text-secondary);
-  font-size: 0.8rem;
-  padding: 0.2rem 0.8rem;
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
   text-decoration: none;
+}
 
-  &:hover {
-    background: var(--hover);
-    color: var(--link);
-    text-decoration: none;
-  }
+.proto-tool-icon {
+  align-items: center;
+  background: var(--surface-raised);
+  border: #{$line-s} solid var(--border-subtle);
+  border-radius: 50%;
+  color: var(--text-secondary);
+  display: flex;
+  font-size: 1.2rem;
+  height: var(--proto-icon-size);
+  justify-content: center;
+  transition: background 0.15s, border-color 0.15s, color 0.15s;
+  width: var(--proto-icon-size);
+}
+
+.proto-tool-label {
+  color: var(--text-tertiary);
+  font-size: 0.8rem;
+  line-height: 1.2;
+  text-align: center;
+}
+
+.proto-tool:hover .proto-tool-icon {
+  background: var(--hover);
+  border-color: var(--border-strong);
+  color: var(--link);
+}
+
+.proto-tool:hover .proto-tool-label {
+  color: var(--text-secondary);
 }
 
 #protocols .scrollable-table {
