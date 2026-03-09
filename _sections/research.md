@@ -25,3 +25,7 @@ I study how **cancer-associated mutations in histone proteins** disrupt nucleoso
   style="display:block;margin:auto;">
 
 A key challenge is **distinguishing innocuous from detrimental histone mutations.** To address this, I create and screen libraries of cancer-associated histones in cells, use chemical synthesis to reconstitute defined nucleosome substrates, and integrate screening data with structural and clinical information to identify functionally meaningful patterns.
+
+## Past projects
+
+Engineered proteins to [detect rare combinatorial DNA modifications](essays/mod-symmetry-1-dna) in mammalian genomes
