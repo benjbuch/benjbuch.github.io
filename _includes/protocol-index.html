@@ -7,9 +7,13 @@
     spellcheck="false"
     style="flex:1 1 auto;"
 >
+  <div class="view-toggle" role="group" aria-label="View mode">
+    <button class="view-btn active" data-view="chapters" title="Chapter view">≡</button>
+    <button class="view-btn" data-view="table" title="Table view">⊞</button>
+  </div>
 </div>
 
-<div class="scrollable-table">
+<div class="scrollable-table" hidden>
   <table class="protocol-table sortable-protocol-table">
     <thead>
       <tr>
@@ -43,7 +47,7 @@
       {%- else -%}
         {%- assign revision_date = item.current_commit_time | date: "%Y-%m-%d" -%}
       {%- endif -%}
-      <tr 
+      <tr
         data-domain="{{ attr_domain }}"
         data-level="{{ attr_level }}"
         data-topic="{{ attr_topic }}"
@@ -76,7 +80,10 @@
   </table>
 </div>
 
-<script src="/assets/js/protocol-index.js" defer></script>
+<div id="chapter-view" class="chapter-view"></div>
+
+<script>const PROTOCOL_CHAPTERS = {{ site.data.protocols.chapters | jsonify }};</script>
+<script src="/assets/js/protocol-index.js?v={{ site.time | date: '%s' }}" defer></script>
 
 <div class="line-split">
   <span class="footnote"></span>
