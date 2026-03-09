@@ -20,3 +20,6 @@ _site/
 /assets/protocols/json/
 /assets/protocols/pdf/
 /assets/protocols/yaml/
+
+# Prompt management
+CLAUDE.md
