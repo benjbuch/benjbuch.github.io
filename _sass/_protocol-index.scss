@@ -23,7 +23,7 @@
   border-radius: 50%;
   color: var(--text-secondary);
   display: flex;
-  font-size: 1.2rem;
+  font-size: 1.4rem;
   height: var(--proto-icon-size);
   justify-content: center;
   transition: background 0.15s, border-color 0.15s, color 0.15s;
@@ -35,6 +35,10 @@
   font-size: 0.8rem;
   line-height: 1.2;
   text-align: center;
+}
+
+.proto-tool:hover {
+  text-decoration: none;
 }
 
 .proto-tool:hover .proto-tool-icon {
