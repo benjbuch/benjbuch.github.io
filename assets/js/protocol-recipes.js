@@ -15,7 +15,7 @@ document.addEventListener("DOMContentLoaded", function () {
     "microgram per milliliter": "\u00B5g/mL", "microgram per liter": "\u00B5g/L",
     "milliliter per liter": "mL/L", "square centimeter": "cm\u00B2",
     bar: "bar", millibar: "mbar", psi: "psi",
-    basepair: "bp", colonyformingunit: "cfu", enzymeunit: "U",
+    basepair: "bp", colonyformingunit: "cfu", dalton: "Da", kilodalton: "kDa", enzymeunit: "U",
     "enzymeunit per microliter": "U/\u00B5L", "enzymeunit per liter": "U/L",
     fold: "x", gauge: "G", gforce: "\u00D7\u2009g", kb: "kb", nucleotides: "nt",
     rpm: "rpm", ppm: "ppm", ppt: "ppt", torr: "Torr",
@@ -299,6 +299,10 @@ document.addEventListener("DOMContentLoaded", function () {
       ? ' <span class="rc-ing-props">(' + ing.abbrHtml + ")</span>"
       : "";
 
+    var refsHtml = (refHtml || casHtml)
+      ? '<div class="rc-ing-refs">' + refHtml.trim() + casHtml.trim() + '</div>'
+      : "";
+
     return "<tr>" +
       '<td class="col-amount">' +
         (baseVal !== null
@@ -306,7 +310,7 @@ document.addEventListener("DOMContentLoaded", function () {
           : "") +
       "</td>" +
       '<td class="col-unit">' + (ing.amount ? ing.amount.unit : "") + "</td>" +
-      "<td>" + ing.nameHtml + abbrHtml + propsHtml + typeHtml + refHtml + casHtml + "</td>" +
+      "<td>" + ing.nameHtml + abbrHtml + propsHtml + typeHtml + refsHtml + "</td>" +
       '<td class="col-stock">' + ing.stock + "</td>" +
       '<td class="col-final">' + ing.final + "</td>" +
       "</tr>";
@@ -392,9 +396,10 @@ document.addEventListener("DOMContentLoaded", function () {
 
       if (recipe.solvent.cas) {
         var sLabel = '[' + recipe.solvent.cas + ']';
-        h += recipe.solvent.pubchem
-          ? ' <a class="rc-cas" href="https://pubchem.ncbi.nlm.nih.gov/' + recipe.solvent.pubchem + '" target="_blank" rel="noopener">' + sLabel + '</a>'
-          : ' <span class="rc-cas">' + sLabel + '</span>';
+        var sCasHtml = recipe.solvent.pubchem
+          ? '<a class="rc-cas" href="https://pubchem.ncbi.nlm.nih.gov/' + recipe.solvent.pubchem + '" target="_blank" rel="noopener">' + sLabel + '</a>'
+          : '<span class="rc-cas">' + sLabel + '</span>';
+        h += '<div class="rc-ing-refs">' + sCasHtml + '</div>';
       }
 
       h += '</td></tr>';
@@ -485,7 +490,7 @@ document.addEventListener("DOMContentLoaded", function () {
       var label = noteLabels[ntype];
 
       h += '<div class="' + cls + '">';
-      h += "<em>" + label + "</em> ";
+      h += "<em>" + label + ":</em>";
       h += group.map(function (n) { return n.html + punct; }).join(" ");
       h += "</div>";
     }
@@ -612,7 +617,7 @@ document.addEventListener("DOMContentLoaded", function () {
         var sel = selectedIds.indexOf(r.id) !== -1 ? " selected" : "";
         h += '<button class="recipe-item' + sel + '" data-id="' + r.id + '">';
         h += '<span class="recipe-item-name">' + r.nameHtml + "</span>";
-        h += '<span class="recipe-item-id">' + r.id + "</span>";
+        // h += '<span class="recipe-item-id">' + r.id + "</span>";
         h += "</button>";
       }
     }
