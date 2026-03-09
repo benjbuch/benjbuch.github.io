@@ -39,9 +39,9 @@
   min-height: 0;
   overflow-y: auto;
   scrollbar-gutter: stable;
-  border: 1px solid var(--border-subtle);
-  border-radius: 0.25rem;
-  padding: 4px;
+  border: #{$line-s} solid var(--border-subtle);
+  border-radius: #{$round-s};
+  padding: #{$space-s};
 }
 
 /* ---- Right panel ---- */
@@ -59,7 +59,7 @@
 
 .recipe-item {
   background: none;
-  border: 1px solid transparent;
+  border: #{$line-s} solid transparent;
   color: inherit;
   cursor: pointer;
   display: flex;
@@ -80,7 +80,7 @@
 .recipe-item:focus-visible {
   outline: 2px solid var(--focus-ring);
   outline-offset: 2px;
-  border-radius: 4px;
+  border-radius: #{$round-s};
 }
 
 .recipe-item:hover {
@@ -117,8 +117,8 @@
 
 .recipe-card {
   background: var(--surface-raised);
-  border: 1px solid var(--border-subtle);
-  border-radius: 0.5rem;
+  border: #{$line-s} solid var(--border-subtle);
+  border-radius: #{$round-m};
   padding: var(--pad-l) var(--pad-l) var(--pad-s) var(--pad-l);
   overflow: hidden;
 }
@@ -130,7 +130,7 @@
 /* Header */
 
 .rc-header {
-  border-bottom: 2px solid var(--border-strong);
+  border-bottom: #{$line-l} solid var(--border-strong);
   padding-bottom: var(--pad-l);
 }
 
@@ -195,7 +195,7 @@
 }
 
 .rc-table thead tr {
-  border-bottom: 2px solid var(--border-strong);
+  border-bottom: #{$line-l} solid var(--border-strong);
   text-align: left;
 }
 
@@ -209,7 +209,7 @@
 
 .rc-table td {
   padding: var(--pad-s) var(--pad-m);
-  border-bottom: 1px solid var(--border-subtle);
+  border-bottom: #{$line-s} solid var(--border-subtle);
   vertical-align: baseline;
 }
 
@@ -230,7 +230,7 @@
 }
 
 .rc-table .solvent-row td {
-  border-top: 2px solid var(--border-strong);
+  border-top: #{$line-l} solid var(--border-strong);
   border-bottom: none;
   padding-bottom: var(--pad-m);
 }
@@ -284,7 +284,7 @@
 
 .rc-scale-input {
   border: none;
-  border-bottom: 2px solid var(--border-subtle);
+  border-bottom: #{$line-l} solid var(--border-subtle);
   border-radius: 0;
   background: transparent;
   color: var(--text-primary);
@@ -311,7 +311,7 @@
 
 .rc-scale-btn {
   background: transparent;
-  border: 2px solid transparent;
+  border: #{$line-l} solid transparent;
   color: var(--text-tertiary);
   cursor: pointer;
   font-family: inherit;
@@ -321,7 +321,7 @@
 }
 
 .rc-scale-btn.active {
-  border: 2px solid var(--surface-raised);
+  border: #{$line-l} solid var(--surface-raised);
   color: var(--text-primary);
 }
 
@@ -349,7 +349,7 @@
 .rc-note {
   margin-bottom: var(--pad-m);
   padding-left: var(--pad-m);
-  border-left: 3px solid var(--border-strong);
+  border-left: #{$spine} solid var(--border-strong);
   text-align: justify;
 }
 
@@ -374,17 +374,17 @@
 
 .rc-safety-danger {
   background: color-mix(in srgb, var(--accent-red) 8%, transparent);
-  border: 1px solid color-mix(in srgb, var(--accent-red) 30%, transparent);
+  border: #{$line-s} solid color-mix(in srgb, var(--accent-red) 30%, transparent);
 }
 
 .rc-safety-warning {
   background: color-mix(in srgb, var(--accent-gold) 8%, transparent);
-  border: 1px solid color-mix(in srgb, var(--accent-gold) 30%, transparent);
+  border: #{$line-s} solid color-mix(in srgb, var(--accent-gold) 30%, transparent);
 }
 
 .rc-safety-none {
   background: color-mix(in srgb, var(--accent-green, #16a34a) 8%, transparent);
-  border: 1px solid color-mix(in srgb, var(--accent-green, #16a34a) 30%, transparent);
+  border: #{$line-s} solid color-mix(in srgb, var(--accent-green, #16a34a) 30%, transparent);
 }
 
 /* Signal word badge */
@@ -445,7 +445,7 @@
 /* Source */
 
 .rc-sources {
-  border-top: 2px solid var(--text-tertiary);
+  border-top: #{$line-l} solid var(--text-tertiary);
   border-radius: 0;
   color: var(--text-tertiary);
   margin-top: calc(2 * var(--pad-l));

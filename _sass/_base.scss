@@ -2,31 +2,7 @@
 // Variables
 // ============================================================================
 
-// Breakpoints
-$bp-l: 980px;
-$bp-m: 880px;
-$bp-s: 760px;
-
-// Dimensions
-$card-w: 720px;
-$menu-w: 160px;
-$portrait-w: 180px;
-
-// Border radius
-$round-l: 1.00rem;
-$round-m: 0.50rem;
-$round-s: 0.25rem;
-
-// Spacing
-$space-l: 1.00rem;
-$space-m: 0.50rem;
-$space-s: 0.25rem;
-
-// Line widths
-$line-l: 2.0px;
-$line-m: 1.3px;
-$line-s: 1.0px;
-$spine: 3.0px;
+@import "variables";
 
 // ============================================================================
 // CSS Custom Properties
@@ -363,7 +339,7 @@ section {
 .callout-gold {
   @extend .callout;
   background: var(--accent-gold-a);
-  border-left: 3px solid var(--accent-gold);
+  border-left: #{$spine} solid var(--accent-gold);
   color: var(--accent-gold);
   .label { color: var(--accent-gold); }
 }
@@ -371,7 +347,7 @@ section {
 .callout-blue {
   @extend .callout;
   background: var(--accent-blue-a);
-  border-left: 3px solid var(--accent-blue);
+  border-left: #{$spine} solid var(--accent-blue);
   color: var(--accent-blue);
   .label { color: var(--accent-blue); }
 }
@@ -379,7 +355,7 @@ section {
 .callout-green {
   @extend .callout;
   background: var(--accent-green-a);
-  border-left: 3px solid var(--accent-green);
+  border-left: #{$spine} solid var(--accent-green);
   color: var(--accent-green);
   .label { color: var(--accent-green); }
 }

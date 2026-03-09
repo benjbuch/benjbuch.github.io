@@ -20,8 +20,8 @@
 
 .check-result {
   background: var(--surface-raised);
-  border-radius: 0.5rem;
-  border: 1px solid var(--border-strong);
+  border-radius: #{$round-m};
+  border: #{$line-s} solid var(--border-strong);
   display: flex !important;
   flex-direction: column !important;
   padding: var(--pad-l);
@@ -38,7 +38,7 @@
 /* Status badges */
 
 .status-badge {
-  border-radius: 0.5rem;
+  border-radius: #{$round-m};
   display: inline-block;
   font-family: var(--font-mono);
   font-size: 0.9rem;
@@ -50,13 +50,13 @@
 
 .status-current {
   background: color-mix(in srgb, var(--accent-green) 10%, transparent);
-  border: 1px solid var(--accent-green);
+  border: #{$line-s} solid var(--accent-green);
   color: var(--accent-green);
 }
 
 .status-outdated {
   background: color-mix(in srgb, var(--accent-gold) 10%, transparent);
-  border: 1px solid var(--accent-gold);
+  border: #{$line-s} solid var(--accent-gold);
   color: var(--accent-gold);
 }
 

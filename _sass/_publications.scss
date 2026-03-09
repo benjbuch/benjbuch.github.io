@@ -19,7 +19,7 @@
   display: grid;
   grid-template-columns: 4ch 1fr;
   margin-bottom: 0.75rem;
-  row-gap: 0.25rem;
+  row-gap: var(--pad-s);
 }
 
 // Numbering
@@ -153,7 +153,7 @@
   padding: 0.1em 0.45em;
 
   &:focus-visible {
-    outline: 2px solid #888;
+    outline: 2px solid var(--focus-ring);
     outline-offset: 2px;
   }
 }
@@ -175,7 +175,7 @@
   align-items: center;
   cursor: pointer;
   display: inline-flex;
-  gap: 0.5rem;
+  gap: var(--pad-m);
   user-select: none;
 }
 
