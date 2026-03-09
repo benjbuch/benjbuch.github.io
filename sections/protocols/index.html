@@ -3,7 +3,18 @@
 		
 			<h1 class="section-header">Protocols</h1>
 		
-		<p>Good protocols evolve over time, but printed copies often don’t. Here, I share <a href="/essays/lab-protocols">version-controlled write-ups</a> to help track changes. You can <a href="/recipes">look up recipes</a>, <a href="/check">check whether your printed copy is current</a>, or just browse for the latest method:</p>
+		<p>Good protocols evolve over time, but printed copies often don’t. Here, I share <a href="/essays/lab-protocols">version-controlled write-ups</a> to help track changes.</p>
+
+<div class="proto-tools">
+  <a href="/recipes" class="proto-tool">
+    <span class="proto-tool-icon">⚗</span>
+    <span class="proto-tool-label">Recipes</span>
+  </a>
+  <a href="/check" class="proto-tool">
+    <span class="proto-tool-icon">✓</span>
+    <span class="proto-tool-label">Version<br>check</span>
+  </a>
+</div>
 
 <div class="line-split">
   <input
@@ -14,9 +25,13 @@
     spellcheck="false"
     style="flex:1 1 auto;"
 >
+  <div class="view-toggle" role="group" aria-label="View mode">
+    <button class="view-btn active" data-view="chapters" title="Chapter view">≡</button>
+    <button class="view-btn" data-view="table" title="Table view">⊞</button>
+  </div>
 </div>
 
-<div class="scrollable-table">
+<div class="scrollable-table" hidden>
   <table class="protocol-table sortable-protocol-table">
     <thead>
       <tr>
@@ -24,7 +39,7 @@
         <th data-sort="title">Title</th>
         <th data-sort="domain">Domain</th>
         <th data-sort="status">Status</th>
-        <th data-sort="date">Last commit</th></tr>
+        <th data-sort="date">Last revision</th></tr>
     </thead>
     <tbody>
     
@@ -33,8 +48,7 @@
       
       
       
-      
-      <tr 
+      <tr
         data-domain="cell biology"
         data-level="basic"
         data-topic="chromatin biology;sub-cellular fractionation"
@@ -45,14 +59,13 @@
         <td data-value="Isolation of nuclei from tissue culture cells"><a href="/assets/protocols/pdf/sop_0001-v1-isolation_nuclei.pdf">Isolation of nuclei from tissue culture cells</a></td>
         <td data-value="cell biology">Cell biology</td>
         <td data-value="public">Public</td>
-        <td data-value="2026-03-03T21:50:08-05:00">2026-03-03</td></tr>
+        <td data-value="2025-02-22">2025-02-22</td></tr>
     
       
       
       
       
-      
-      <tr 
+      <tr
         data-domain="cell biology"
         data-level="basic"
         data-topic="protein analysis;sub-cellular fractionation"
@@ -63,14 +76,13 @@
         <td data-value="Whole cell lysates from tissue culture cells"><a href="/assets/protocols/pdf/sop_0002-v1-whole_cell_extraction_mammalian_cells.pdf">Whole cell lysates from tissue culture cells</a></td>
         <td data-value="cell biology">Cell biology</td>
         <td data-value="public">Public</td>
-        <td data-value="2026-03-03T23:21:19-05:00">2026-03-03</td></tr>
+        <td data-value="2026-03-03">2026-03-03</td></tr>
     
       
       
       
       
-      
-      <tr 
+      <tr
         data-domain="biochemistry"
         data-level="advanced"
         data-topic="protein analysis;protein complex analysis"
@@ -81,14 +93,13 @@
         <td data-value="Native polyacrylamide gel electrophoresis"><a href="/assets/protocols/pdf/sop_0003-v1-native_page.pdf">Native polyacrylamide gel electrophoresis</a></td>
         <td data-value="biochemistry">Biochemistry</td>
         <td data-value="public">Public</td>
-        <td data-value="2026-02-28T09:34:15-05:00">2026-02-28</td></tr>
+        <td data-value="2025-03-30">2025-03-30</td></tr>
     
       
       
       
       
-      
-      <tr 
+      <tr
         data-domain="biochemistry"
         data-level="advanced"
         data-topic="chromatin biology;recombinant protein production"
@@ -99,14 +110,13 @@
         <td data-value="Core histone expression and purification">Core histone expression and purification</td>
         <td data-value="biochemistry">Biochemistry</td>
         <td data-value="internal">Internal</td>
-        <td data-value="2026-03-03T23:21:19-05:00">2026-03-03</td></tr>
+        <td data-value="2025-03-23">2025-03-23</td></tr>
     
       
       
       
       
-      
-      <tr 
+      <tr
         data-domain="biochemistry"
         data-level="advanced"
         data-topic="chromatin biology;recombinant protein production"
@@ -117,14 +127,13 @@
         <td data-value="Histone octamer, tetramer, or dimer formation"><a href="/assets/protocols/pdf/sop_0005-v2-production_histone_octamers.pdf">Histone octamer, tetramer, or dimer formation</a></td>
         <td data-value="biochemistry">Biochemistry</td>
         <td data-value="public">Public</td>
-        <td data-value="2026-03-03T21:50:26-05:00">2026-03-03</td></tr>
+        <td data-value="2025-03-27">2025-03-27</td></tr>
     
       
       
       
       
-      
-      <tr 
+      <tr
         data-domain="biochemistry"
         data-level="advanced"
         data-topic="chromatin biology;recombinant protein production"
@@ -135,14 +144,13 @@
         <td data-value="Reconstitution of mononucleosomes and nucleosome arrays">Reconstitution of mononucleosomes and nucleosome arrays</td>
         <td data-value="biochemistry">Biochemistry</td>
         <td data-value="internal">Internal</td>
-        <td data-value="2026-03-03T21:50:47-05:00">2026-03-03</td></tr>
+        <td data-value="2023-03-23">2023-03-23</td></tr>
     
       
       
       
       
-      
-      <tr 
+      <tr
         data-domain="biochemistry"
         data-level="basic"
         data-topic="protein analysis;protein separation"
@@ -153,14 +161,13 @@
         <td data-value="Denaturing SDS polyacrylamide gel electrophoresis"><a href="/assets/protocols/pdf/sop_0007-v1-sds_page.pdf">Denaturing SDS polyacrylamide gel electrophoresis</a></td>
         <td data-value="biochemistry">Biochemistry</td>
         <td data-value="public">Public</td>
-        <td data-value="2026-03-03T23:21:20-05:00">2026-03-03</td></tr>
+        <td data-value="2024-07-17">2024-07-17</td></tr>
     
       
       
       
       
-      
-      <tr 
+      <tr
         data-domain="biochemistry"
         data-level="basic"
         data-topic="protein analysis;protein detection"
@@ -171,14 +178,13 @@
         <td data-value="Western blotting"><a href="/assets/protocols/pdf/sop_0008-v1-blotting_western.pdf">Western blotting</a></td>
         <td data-value="biochemistry">Biochemistry</td>
         <td data-value="public">Public</td>
-        <td data-value="2026-03-03T16:59:39-05:00">2026-03-03</td></tr>
+        <td data-value="2023-01-13">2023-01-13</td></tr>
     
       
       
       
       
-      
-      <tr 
+      <tr
         data-domain="biochemistry"
         data-level="basic"
         data-topic="protein analysis;protein detection"
@@ -189,14 +195,13 @@
         <td data-value="Immunoblotting"><a href="/assets/protocols/pdf/sop_0009-v1-immunoblotting.pdf">Immunoblotting</a></td>
         <td data-value="biochemistry">Biochemistry</td>
         <td data-value="public">Public</td>
-        <td data-value="2026-03-03T21:55:49-05:00">2026-03-03</td></tr>
+        <td data-value="2023-01-15">2023-01-15</td></tr>
     
       
       
       
       
-      
-      <tr 
+      <tr
         data-domain="biochemistry"
         data-level="basic"
         data-topic="protein analysis;protein visualization"
@@ -207,14 +212,13 @@
         <td data-value="In-gel protein staining with Coomassie Brilliant Blue"><a href="/assets/protocols/pdf/sop_0010-v1-protein_gel_coomassie_staining.pdf">In-gel protein staining with Coomassie Brilliant Blue</a></td>
         <td data-value="biochemistry">Biochemistry</td>
         <td data-value="public">Public</td>
-        <td data-value="2026-03-03T17:55:21-05:00">2026-03-03</td></tr>
+        <td data-value="2023-01-16">2023-01-16</td></tr>
     
       
       
       
       
-      
-      <tr 
+      <tr
         data-domain="biochemistry"
         data-level="advanced"
         data-topic="protein analysis;protein visualization"
@@ -225,14 +229,13 @@
         <td data-value="In-gel protein staining with silver nitrate"><a href="/assets/protocols/pdf/sop_0011-v1-protein_gel_silver_staining.pdf">In-gel protein staining with silver nitrate</a></td>
         <td data-value="biochemistry">Biochemistry</td>
         <td data-value="public">Public</td>
-        <td data-value="2026-03-03T21:55:49-05:00">2026-03-03</td></tr>
+        <td data-value="2025-04-05">2025-04-05</td></tr>
     
       
       
       
       
-      
-      <tr 
+      <tr
         data-domain="tissue culture"
         data-level="basic"
         data-topic="cell engineering;transient expression"
@@ -243,14 +246,13 @@
         <td data-value="Non-viral transfection of animal tissue culture cells"><a href="/assets/protocols/pdf/sop_0012-v2-transfection_chemical.pdf">Non-viral transfection of animal tissue culture cells</a></td>
         <td data-value="tissue culture">Tissue culture</td>
         <td data-value="public">Public</td>
-        <td data-value="2026-03-03T23:21:20-05:00">2026-03-03</td></tr>
+        <td data-value="2025-04-05">2025-04-05</td></tr>
     
       
       
       
       
-      
-      <tr 
+      <tr
         data-domain="tissue culture"
         data-level="advanced"
         data-topic="cell engineering;transient expression"
@@ -261,14 +263,13 @@
         <td data-value="Electroporation of animal tissue culture cells">Electroporation of animal tissue culture cells</td>
         <td data-value="tissue culture">Tissue culture</td>
         <td data-value="internal">Internal</td>
-        <td data-value="2026-02-28T10:31:04-05:00">2026-02-28</td></tr>
+        <td data-value="2023-03-09">2023-03-09</td></tr>
     
       
       
       
       
-      
-      <tr 
+      <tr
         data-domain="tissue culture"
         data-level="basic"
         data-topic="cell maintenance;viability assessment"
@@ -279,14 +280,13 @@
         <td data-value="Counting cells"><a href="/assets/protocols/pdf/sop_0014-v1-counting_cells.pdf">Counting cells</a></td>
         <td data-value="tissue culture">Tissue culture</td>
         <td data-value="public">Public</td>
-        <td data-value="2026-02-27T13:10:30-05:00">2026-02-27</td></tr>
+        <td data-value="2023-03-14">2023-03-14</td></tr>
     
       
       
       
       
-      
-      <tr 
+      <tr
         data-domain="tissue culture"
         data-level="basic"
         data-topic="cell maintenance"
@@ -297,14 +297,13 @@
         <td data-value="Cultivating HeLa cells"><a href="/assets/protocols/pdf/sop_0015-v1-routine_cell_culture_HeLa.pdf">Cultivating HeLa cells</a></td>
         <td data-value="tissue culture">Tissue culture</td>
         <td data-value="public">Public</td>
-        <td data-value="2026-02-28T10:09:57-05:00">2026-02-28</td></tr>
+        <td data-value="2023-03-13">2023-03-13</td></tr>
     
       
       
       
       
-      
-      <tr 
+      <tr
         data-domain="tissue culture"
         data-level="intermediate"
         data-topic="cell maintenance"
@@ -315,14 +314,13 @@
         <td data-value="Cultivating MCF 10A cells"><a href="/assets/protocols/pdf/sop_0016-v1-routine_cell_culture_MCF10A.pdf">Cultivating MCF 10A cells</a></td>
         <td data-value="tissue culture">Tissue culture</td>
         <td data-value="public">Public</td>
-        <td data-value="2026-03-03T21:55:49-05:00">2026-03-03</td></tr>
+        <td data-value="2023-03-14">2023-03-14</td></tr>
     
       
       
       
       
-      
-      <tr 
+      <tr
         data-domain="tissue culture"
         data-level="advanced"
         data-topic="cell engineering;stable expression"
@@ -333,14 +331,13 @@
         <td data-value="Lentiviral generation of stable animal cell lines"><a href="/assets/protocols/pdf/sop_0017-v3-stable_cell_lines_lentiviral.pdf">Lentiviral generation of stable animal cell lines</a></td>
         <td data-value="tissue culture">Tissue culture</td>
         <td data-value="public">Public</td>
-        <td data-value="2026-03-03T21:55:49-05:00">2026-03-03</td></tr>
+        <td data-value="2025-07-25">2025-07-25</td></tr>
     
       
       
       
       
-      
-      <tr 
+      <tr
         data-domain="tissue culture"
         data-level="intermediate"
         data-topic="cell engineering;stable expression"
@@ -351,14 +348,13 @@
         <td data-value="Generation of stable cell lines using DNA transposases"><a href="/assets/protocols/pdf/sop_0018-v1-stable_cell_lines_transposase.pdf">Generation of stable cell lines using DNA transposases</a></td>
         <td data-value="tissue culture">Tissue culture</td>
         <td data-value="public">Public</td>
-        <td data-value="2026-02-28T10:37:05-05:00">2026-02-28</td></tr>
+        <td data-value="2023-11-12">2023-11-12</td></tr>
     
       
       
       
       
-      
-      <tr 
+      <tr
         data-domain="tissue culture"
         data-level="basic"
         data-topic="cell engineering;phenotypic screening"
@@ -369,14 +365,13 @@
         <td data-value="Selection and screening of stable mammalian cell lines"><a href="/assets/protocols/pdf/sop_0019-v1-selection_screening_mammalian_cells.pdf">Selection and screening of stable mammalian cell lines</a></td>
         <td data-value="tissue culture">Tissue culture</td>
         <td data-value="public">Public</td>
-        <td data-value="2026-02-27T23:37:40-05:00">2026-02-27</td></tr>
+        <td data-value="2023-04-28">2023-04-28</td></tr>
     
       
       
       
       
-      
-      <tr 
+      <tr
         data-domain="molecular biology"
         data-level="basic"
         data-topic="nucleic acid purification;dna purification"
@@ -387,14 +382,13 @@
         <td data-value="Plasmid preparation by alkaline lysis"><a href="/assets/protocols/pdf/sop_0020-v1-plasmid_isolation.pdf">Plasmid preparation by alkaline lysis</a></td>
         <td data-value="molecular biology">Molecular biology</td>
         <td data-value="public">Public</td>
-        <td data-value="2026-02-27T19:11:45-05:00">2026-02-27</td></tr>
+        <td data-value="2023-05-30">2023-05-30</td></tr>
     
       
       
       
       
-      
-      <tr 
+      <tr
         data-domain="molecular biology"
         data-level="basic"
         data-topic="nucleic acid purification;dna purification"
@@ -405,14 +399,13 @@
         <td data-value="Purification of nucleic acids"><a href="/assets/protocols/pdf/sop_0021-v1-purification_nucleic_acids.pdf">Purification of nucleic acids</a></td>
         <td data-value="molecular biology">Molecular biology</td>
         <td data-value="public">Public</td>
-        <td data-value="2026-02-28T09:39:56-05:00">2026-02-28</td></tr>
+        <td data-value="2023-06-10">2023-06-10</td></tr>
     
       
       
       
       
-      
-      <tr 
+      <tr
         data-domain="molecular biology"
         data-level="basic"
         data-topic="nucleic acid purification;dna purification"
@@ -423,14 +416,13 @@
         <td data-value="Purification of nucleic acids from agarose gels"><a href="/assets/protocols/pdf/sop_0022-v1-gel_extraction.pdf">Purification of nucleic acids from agarose gels</a></td>
         <td data-value="molecular biology">Molecular biology</td>
         <td data-value="public">Public</td>
-        <td data-value="2026-02-28T09:39:06-05:00">2026-02-28</td></tr>
+        <td data-value="2023-11-26">2023-11-26</td></tr>
     
       
       
       
       
-      
-      <tr 
+      <tr
         data-domain="molecular biology"
         data-level="intermediate"
         data-topic="nucleic acid purification;rna extraction"
@@ -441,14 +433,13 @@
         <td data-value="Separation of RNA from DNA with guanidinium thiocyanate"><a href="/assets/protocols/pdf/sop_0023-v1-rna_isolation_trizol.pdf">Separation of RNA from DNA with guanidinium thiocyanate</a></td>
         <td data-value="molecular biology">Molecular biology</td>
         <td data-value="public">Public</td>
-        <td data-value="2026-03-03T23:21:20-05:00">2026-03-03</td></tr>
+        <td data-value="2023-06-10">2023-06-10</td></tr>
     
       
       
       
       
-      
-      <tr 
+      <tr
         data-domain="molecular biology"
         data-level="intermediate"
         data-topic="nucleic acid purification;dna extraction"
@@ -459,14 +450,13 @@
         <td data-value="Extraction of genomic DNA from tissue culture cells"><a href="/assets/protocols/pdf/sop_0024-v1-dna_isolation_mammalian_cells.pdf">Extraction of genomic DNA from tissue culture cells</a></td>
         <td data-value="molecular biology">Molecular biology</td>
         <td data-value="public">Public</td>
-        <td data-value="2026-03-03T21:55:49-05:00">2026-03-03</td></tr>
+        <td data-value="2023-11-11">2023-11-11</td></tr>
     
       
       
       
       
-      
-      <tr 
+      <tr
         data-domain="cell biology"
         data-level="advanced"
         data-topic="chromatin biology;sub-cellular fractionation"
@@ -477,14 +467,13 @@
         <td data-value="Nuclear extraction and fractionation of chromatin-associated proteins"><a href="/assets/protocols/pdf/sop_0025-v1-nuclear_extraction.pdf">Nuclear extraction and fractionation of chromatin-associated proteins</a></td>
         <td data-value="cell biology">Cell biology</td>
         <td data-value="public">Public</td>
-        <td data-value="2026-03-03T21:55:49-05:00">2026-03-03</td></tr>
+        <td data-value="2023-12-10">2023-12-10</td></tr>
     
       
       
       
       
-      
-      <tr 
+      <tr
         data-domain="cell biology"
         data-level="advanced"
         data-topic="chromatin biology;sub-cellular fractionation"
@@ -495,14 +484,13 @@
         <td data-value="Acidic extraction of histone proteins"><a href="/assets/protocols/pdf/sop_0026-v1-histone_extraction.pdf">Acidic extraction of histone proteins</a></td>
         <td data-value="cell biology">Cell biology</td>
         <td data-value="public">Public</td>
-        <td data-value="2026-02-28T09:28:37-05:00">2026-02-28</td></tr>
+        <td data-value="2023-10-26">2023-10-26</td></tr>
     
       
       
       
       
-      
-      <tr 
+      <tr
         data-domain="biochemistry"
         data-level="advanced"
         data-topic="protein analysis;protein complex analysis"
@@ -513,14 +501,13 @@
         <td data-value="Immunoprecipitation of nuclear and cytosolic proteins">Immunoprecipitation of nuclear and cytosolic proteins</td>
         <td data-value="biochemistry">Biochemistry</td>
         <td data-value="internal">Internal</td>
-        <td data-value="2026-03-03T21:55:49-05:00">2026-03-03</td></tr>
+        <td data-value="2025-04-13">2025-04-13</td></tr>
     
       
       
       
       
-      
-      <tr 
+      <tr
         data-domain="tissue culture"
         data-level="advanced"
         data-topic="cell synchronization;cell cycle control"
@@ -531,14 +518,13 @@
         <td data-value="Cell cycle synchronization of mammalian cell lines">Cell cycle synchronization of mammalian cell lines</td>
         <td data-value="tissue culture">Tissue culture</td>
         <td data-value="internal">Internal</td>
-        <td data-value="2026-03-03T21:55:49-05:00">2026-03-03</td></tr>
+        <td data-value="2025-04-17">2025-04-17</td></tr>
     
       
       
       
       
-      
-      <tr 
+      <tr
         data-domain="tissue culture"
         data-level="advanced"
         data-topic="cell synchronization;cell cycle analysis"
@@ -549,14 +535,13 @@
         <td data-value="Cell cycle analysis by fluorescence staining">Cell cycle analysis by fluorescence staining</td>
         <td data-value="tissue culture">Tissue culture</td>
         <td data-value="internal">Internal</td>
-        <td data-value="2026-03-03T21:55:50-05:00">2026-03-03</td></tr>
+        <td data-value="2025-04-17">2025-04-17</td></tr>
     
       
       
       
       
-      
-      <tr 
+      <tr
         data-domain="core skills"
         data-level="introductory"
         data-topic="reagent preparation;solution handling"
@@ -567,14 +552,13 @@
         <td data-value="Making reagents and buffers"><a href="/assets/protocols/pdf/sop_0030-v1-preparation_reagents.pdf">Making reagents and buffers</a></td>
         <td data-value="core skills">Core skills</td>
         <td data-value="public">Public</td>
-        <td data-value="2026-02-28T10:12:11-05:00">2026-02-28</td></tr>
+        <td data-value="2026-02-25">2026-02-25</td></tr>
     
       
       
       
       
-      
-      <tr 
+      <tr
         data-domain="core skills"
         data-level="introductory"
         data-topic="reagent preparation;solution handling"
@@ -585,14 +569,13 @@
         <td data-value="Designing and performing dilutions"><a href="/assets/protocols/pdf/sop_0031-v1-serial_dilutions.pdf">Designing and performing dilutions</a></td>
         <td data-value="core skills">Core skills</td>
         <td data-value="public">Public</td>
-        <td data-value="2026-02-28T10:21:30-05:00">2026-02-28</td></tr>
+        <td data-value="2026-02-26">2026-02-26</td></tr>
     
       
       
       
       
-      
-      <tr 
+      <tr
         data-domain="molecular biology"
         data-level="basic"
         data-topic="nucleic acid analysis;dna visualization"
@@ -603,14 +586,13 @@
         <td data-value="Making and running agarose gels"><a href="/assets/protocols/pdf/sop_0032-v1-agarose_gel_electrophoresis.pdf">Making and running agarose gels</a></td>
         <td data-value="molecular biology">Molecular biology</td>
         <td data-value="public">Public</td>
-        <td data-value="2026-03-03T23:21:20-05:00">2026-03-03</td></tr>
+        <td data-value="2023-11-26">2023-11-26</td></tr>
     
       
       
       
       
-      
-      <tr 
+      <tr
         data-domain="molecular biology"
         data-level="basic"
         data-topic="cloning;cloning strategies"
@@ -621,14 +603,13 @@
         <td data-value="Restriction digest, end modification, and ligation of DNA"><a href="/assets/protocols/pdf/sop_0033-v1-restriction_ligation_cloning.pdf">Restriction digest, end modification, and ligation of DNA</a></td>
         <td data-value="molecular biology">Molecular biology</td>
         <td data-value="public">Public</td>
-        <td data-value="2026-02-27T18:05:20-05:00">2026-02-27</td></tr>
+        <td data-value="2024-07-22">2024-07-22</td></tr>
     
       
       
       
       
-      
-      <tr 
+      <tr
         data-domain="molecular biology"
         data-level="basic"
         data-topic="cloning;cloning strategies"
@@ -639,14 +620,13 @@
         <td data-value="Transformation of plasmids into a bacterial host"><a href="/assets/protocols/pdf/sop_0034-v1-transformation.pdf">Transformation of plasmids into a bacterial host</a></td>
         <td data-value="molecular biology">Molecular biology</td>
         <td data-value="public">Public</td>
-        <td data-value="2026-03-03T21:55:50-05:00">2026-03-03</td></tr>
+        <td data-value="2025-02-19">2025-02-19</td></tr>
     
       
       
       
       
-      
-      <tr 
+      <tr
         data-domain="core skills"
         data-level="advanced"
         data-topic="reproducible research"
@@ -657,14 +637,13 @@
         <td data-value="Writing a good protocol">Writing a good protocol</td>
         <td data-value="core skills">Core skills</td>
         <td data-value="internal">Internal</td>
-        <td data-value="2026-03-03T23:21:20-05:00">2026-03-03</td></tr>
+        <td data-value="2025-08-14">2025-08-14</td></tr>
     
       
       
       
       
-      
-      <tr 
+      <tr
         data-domain="core skills"
         data-level="introductory"
         data-topic="reproducible research;data management"
@@ -675,14 +654,13 @@
         <td data-value="Banking, tracking, and sharing of materials">Banking, tracking, and sharing of materials</td>
         <td data-value="core skills">Core skills</td>
         <td data-value="internal">Internal</td>
-        <td data-value="2026-02-25T13:05:55-05:00">2026-02-25</td></tr>
+        <td data-value="2025-04-10">2025-04-10</td></tr>
     
       
       
       
       
-      
-      <tr 
+      <tr
         data-domain="tissue culture"
         data-level="advanced"
         data-topic="cell engineering;genome editing"
@@ -693,14 +671,13 @@
         <td data-value="Design and cloning of CRISPR guide RNAs"><a href="/assets/protocols/pdf/sop_0038-v1-crispr_design.pdf">Design and cloning of CRISPR guide RNAs</a></td>
         <td data-value="tissue culture">Tissue culture</td>
         <td data-value="public">Public</td>
-        <td data-value="2026-02-28T09:48:24-05:00">2026-02-28</td></tr>
+        <td data-value="2025-05-28">2025-05-28</td></tr>
     
       
       
       
       
-      
-      <tr 
+      <tr
         data-domain="molecular biology"
         data-level="basic"
         data-topic="nucleic acid analysis;dna amplification"
@@ -711,14 +688,13 @@
         <td data-value="Qualitative polymerase chain reactions"><a href="/assets/protocols/pdf/sop_0039-v1-pcr_qualitative.pdf">Qualitative polymerase chain reactions</a></td>
         <td data-value="molecular biology">Molecular biology</td>
         <td data-value="public">Public</td>
-        <td data-value="2026-03-03T21:55:50-05:00">2026-03-03</td></tr>
+        <td data-value="2025-06-08">2025-06-08</td></tr>
     
       
       
       
       
-      
-      <tr 
+      <tr
         data-domain="data management"
         data-level="introductory"
         data-topic="reproducible research;data management"
@@ -729,13 +705,16 @@
         <td data-value="Version control using Git and GitHub"><a href="/assets/protocols/pdf/sop_0101-v1-github.pdf">Version control using Git and GitHub</a></td>
         <td data-value="data management">Data management</td>
         <td data-value="public">Public</td>
-        <td data-value="2026-02-28T10:25:09-05:00">2026-02-28</td></tr>
+        <td data-value="2025-10-31">2025-10-31</td></tr>
     
     </tbody>
   </table>
 </div>
 
-<script src="/assets/js/protocol-index.js" defer></script>
+<div id="chapter-view" class="chapter-view"></div>
+
+<script>const PROTOCOL_CHAPTERS = [{"name":"Basics","protocols":["SOP0030","SOP0031","SOP0036","SOP0035","SOP0101"]},{"name":"Tissue culture","protocols":["SOP0014","SOP0015","SOP0016","SOP0012","SOP0013","SOP0017","SOP0018","SOP0038","SOP0019","SOP0028","SOP0029"]},{"name":"Molecular biology","protocols":["SOP0024","SOP0023","SOP0020","SOP0032","SOP0021","SOP0022","SOP0034","SOP0033","SOP0039"]},{"name":"Biochemistry","protocols":["SOP0003","SOP0007","SOP0010","SOP0011","SOP0008","SOP0009","SOP0027"]},{"name":"Sub-cellular fractionation","protocols":["SOP0002","SOP0001"]},{"name":"Native chromatin","protocols":["SOP0025","SOP0026"]},{"name":"Designer chromatin","protocols":["SOP0004","SOP0005","SOP0006"]},{"name":"Bioinformatics & data analysis","protocols":[]}];</script>
+<script src="/assets/js/protocol-index.js?v=1773029746" defer></script>
 
 <div class="line-split">
   <span class="footnote"></span>
