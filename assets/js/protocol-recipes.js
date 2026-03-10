@@ -125,10 +125,12 @@ document.addEventListener("DOMContentLoaded", function () {
   }
 
   function parseAmt(str) {
-    if (!str) return { value: null, unit: "" };
-    var m = str.match(/^([\d.]+)\s+(.+)$/);
-    if (m) return { value: parseFloat(m[1]), unit: convertUnit(m[2]) };
-    return { value: null, unit: str };
+    if (!str) return { value: null, value2: null, unit: "" };
+    var rm = str.match(/^([\d.]+)\s+to\s+([\d.]+)\s+(.+)$/);
+    if (rm) return { value: parseFloat(rm[1]), value2: parseFloat(rm[2]), unit: convertUnit(rm[3]) };
+    var sm = str.match(/^([\d.]+)\s+(.+)$/);
+    if (sm) return { value: parseFloat(sm[1]), value2: null, unit: convertUnit(sm[2]) };
+    return { value: null, value2: null, unit: str };
   }
 
   /* ==== Parse recipe element ==== */
@@ -272,6 +274,9 @@ document.addEventListener("DOMContentLoaded", function () {
     var baseVal = ing.amount && ing.amount.value !== null
       ? ing.amount.value
       : null;
+    var baseVal2 = ing.amount && ing.amount.value2 !== null
+      ? ing.amount.value2
+      : null;
 
     var propsHtml = ing.props.map(function (p) {
       return ', <span class="rc-ing-props">' + p + "</span>";
@@ -306,7 +311,10 @@ document.addEventListener("DOMContentLoaded", function () {
     return "<tr>" +
       '<td class="col-amount">' +
         (baseVal !== null
-          ? '<span class="rc-amt" data-base="' + baseVal + '">' + fmt(baseVal) + "</span>"
+          ? '<span class="rc-amt" data-base="' + baseVal + '"' +
+            (baseVal2 !== null ? ' data-base2="' + baseVal2 + '"' : '') + '>' +
+            (baseVal2 !== null ? fmt(baseVal) + "\u2013" + fmt(baseVal2) : fmt(baseVal)) +
+            "</span>"
           : "") +
       "</td>" +
       '<td class="col-unit">' + (ing.amount ? ing.amount.unit : "") + "</td>" +
@@ -694,7 +702,11 @@ document.addEventListener("DOMContentLoaded", function () {
       var s = getScale(id);
       card.querySelectorAll(".rc-amt").forEach(function (node) {
         var base = parseFloat(node.dataset.base);
-        if (!isNaN(base)) node.textContent = fmt(base * s);
+        if (isNaN(base)) return;
+        var base2 = parseFloat(node.dataset.base2);
+        node.textContent = !isNaN(base2)
+          ? fmt(base * s) + "\u2013" + fmt(base2 * s)
+          : fmt(base * s);
       });
     });
   }
