@@ -117,8 +117,10 @@
 
 .recipe-card {
   background: var(--surface-raised);
+  border: #{$line-s} solid var(--border-subtle);
   border-radius: #{$round-m};
-  padding: var(--pad-l) var(--pad-l) var(--pad-s) var(--pad-l);
+  box-shadow: none;
+  padding: var(--pad-l);
   overflow: hidden;
 }
 
