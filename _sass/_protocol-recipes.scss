@@ -1,8 +1,8 @@
 .recipes-page {
   display: flex;
   flex-direction: column;
-  height: calc(100vh - var(--footer-height) - var(--header-height) - 2 * var(--pad-l));
-  margin: var(--pad-l) auto;
+  height: calc(100vh - var(--footer-height) - var(--header-height) - var(--pad-l));
+  margin: var(--pad-l) auto 0;
   max-width: min(95ch, 100% - 2 * var(--pad-l));
 }
 
@@ -52,6 +52,8 @@
   min-width: 0;
   overflow-y: auto;
   padding-right: var(--pad-l);
+  mask-image: linear-gradient(to bottom, black calc(100% - 2rem), transparent 100%);
+  -webkit-mask-image: linear-gradient(to bottom, black calc(100% - 2rem), transparent 100%);
 }
 
 /* ---- List items ---- */
@@ -489,6 +491,8 @@
     flex: 1 1 0;
     min-height: 0;
     padding-right: 0;
+    mask-image: none;
+    -webkit-mask-image: none;
   }
 
   .rc-table {
