@@ -12,8 +12,12 @@
 
 .checker-form .row {
   display: flex;
-  flex-wrap: wrap;
   gap: var(--pad-m);
+
+  input {
+    flex: 1;
+    min-width: 0;
+  }
 }
 
 /* Results */

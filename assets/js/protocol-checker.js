@@ -12,6 +12,10 @@ document.addEventListener("DOMContentLoaded", function () {
     inputField.value = initialHash;
   }
 
+  if (inputField) {
+    inputField.addEventListener('focus', () => setTimeout(() => inputField.select(), 0));
+  }
+
   if (formEl) {
     formEl.addEventListener("submit", function (evt) {
       evt.preventDefault();
