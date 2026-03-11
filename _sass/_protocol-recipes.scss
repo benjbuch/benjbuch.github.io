@@ -52,6 +52,7 @@
   min-width: 0;
   overflow-y: auto;
   padding-right: var(--pad-l);
+  padding-bottom: var(--section-gap);
   mask-image: linear-gradient(to bottom, black calc(100% - 2rem), transparent 100%);
   -webkit-mask-image: linear-gradient(to bottom, black calc(100% - 2rem), transparent 100%);
 }
