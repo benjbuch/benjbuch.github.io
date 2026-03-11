@@ -51,6 +51,7 @@
 
   var currentView = "chapters";
   var openChapters = new Set();
+  var firstRender = true;
 
   // Toggle handlers
   document.querySelectorAll(".view-btn").forEach(function(btn) {
@@ -104,6 +105,11 @@
     var autoExpand = activeCounts.length > 0 &&
                      activeCounts.length < 3 &&
                      activeCounts.every(function(n) { return n < 3; });
+
+    if (firstRender && chapters.length > 0) {
+      openChapters.add(chapters[0].name);
+      firstRender = false;
+    }
 
     chapters.forEach(function(chapter) {
       var protocols = chapter.protocols || [];
