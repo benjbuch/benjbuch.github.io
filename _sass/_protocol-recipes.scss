@@ -451,18 +451,24 @@
 /* Source */
 
 .rc-sources {
+  border-top: #{$line-s} solid var(--border-subtle);
   color: var(--text-tertiary);
   margin-top: calc(2 * var(--pad-l));
-  padding: var(--pad-m) 0;
+  padding-top: var(--pad-m);
 }
 
-.rc-sources p {
+.rc-source-links {
   margin: 0;
-  padding-top: var(--pad-s);
 }
 
-.rc-sources a {
-  color: var(--text-secondary);
+.rc-sources-label {
+  margin-right: 0.2em;
+}
+
+a.rc-source-link {
+  &, &:visited {
+    color: var(--text-primary);
+  }
 }
 
 /* ---- Responsive ---- */

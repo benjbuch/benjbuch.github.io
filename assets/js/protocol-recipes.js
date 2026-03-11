@@ -556,18 +556,17 @@ document.addEventListener("DOMContentLoaded", function () {
     // Sources
     if (recipe.sources.length) {
       h += '<div class="rc-sources">';
-      h += "<p>For research use. Users are responsible for compliance with local regulations and institutional policies. Amounts scale proportionally with total solvent volume.</p>";
-      h += "<p>Recipe used in ";
+      h += '<p class="rc-source-links"><span class="rc-sources-label">Used in</span> ';
       h += recipe.sources.map(function (s) {
         var text = s.doc_type + s.id + "-v" + s.version;
-        if (s.primary) text += " (shown here)";
         if (s.visibility === "public") {
-          return '<a target="_blank" rel="noopener noreferrer" href="/assets/protocols/pdf/' +
-            s.filename + '.pdf">' + text + '</a>';
+          return '<a class="rc-source-link" target="_blank" rel="noopener noreferrer" href="/assets/protocols/pdf/' +
+            s.filename + '.pdf"><span class="fa fa-external-link" aria-hidden="true"></span>\u2009' + text + '</a>';
         }
         return '<span class="rc-source-missing">' + text + '</span>';
-      }).join(", ");
-      h += ".</p></div>";
+      }).join(" &middot; ");
+      h += "<p>For research use. Always verify amounts and procedures independently before use. Users are responsible for compliance with local regulations and institutional policies.</p>";
+      h += "</p></div>";
     }
 
     h += "</div>"; // rc-body
