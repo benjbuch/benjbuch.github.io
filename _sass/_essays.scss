@@ -105,12 +105,11 @@
 // Media Queries
 // ============================================================================
 
-@media (max-width: #{$card-w}) {
+@media (max-width: #{$bp-l}) {
   .essay-summary {
     float: none;
     width: 100%;
     margin: 0;
-    
   }
   .essay > *:not(.essay-summary) {
     margin-right: 0;
