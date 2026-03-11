@@ -592,29 +592,9 @@ input {
   }
 
   .menu {
-    background: var(--surface-raised);
-    border: #{$line-s} solid var(--hover);
-    border-radius: #{$round-m};
-    box-shadow: var(--shadow);
-    display: grid;
-    opacity: 0;
-    padding: var(--pad-s);
-    pointer-events: none;
-    position: absolute;
-    right: var(--pad-l);
-    top: var(--header-height);
-    transform: translate(0.5rem, -0.5rem);
-    transform-origin: top right;
-    transition: opacity 0.22s ease, transform 0.22s cubic-bezier(0.2, 0.7, 0.2, 1);
-    width: #{$menu-w};
+    display: none;
   }
 
-  .menu.open {
-    grid-template-columns: 1fr;
-    opacity: 1;
-    pointer-events: auto;
-    transform: translate(0, 0);
-  }
 }
 
 // Medium devices
@@ -647,9 +627,6 @@ input {
     transition: none;
   }
 
-  .menu.open {
-    opacity: 1;
-  }
 }
 
 // Print
