@@ -286,15 +286,6 @@ section {
   }
 }
 
-.burger {
-  background: transparent;
-  border: none;
-  border-radius: #{$round-m};
-  display: none;
-  font-size: 1.25rem;
-  padding: var(--pad-m);
-}
-
 .nav-icons {
   align-items: center;
   display: none;
@@ -302,17 +293,18 @@ section {
 }
 
 .nav-icon {
-  --nav-icon-size: 2.2rem;
+  --nav-icon-size: 1.8rem;
   align-items: center;
   background: var(--surface-raised);
-  border: #{$line-s} solid var(--border-subtle);
   border-radius: 50%;
+  border: #{$line-s} solid var(--border-subtle);
   box-shadow: var(--shadow);
   color: var(--text-secondary);
   display: flex;
   font-size: 1.0rem;
   height: var(--nav-icon-size);
   justify-content: center;
+  margin-left: var(--pad-m);
   text-decoration: none;
   transition: background 0.15s, border-color 0.15s, color 0.15s;
   width: var(--nav-icon-size);

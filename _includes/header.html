@@ -1,8 +1,7 @@
 <header>
 	<nav class="nav" aria-label="Primary">
 		<a href="{{ '/' | relative_url }}#about" class="brand">{{ site.title }}</a>
-		<button class="burger" aria-label="Toggle menu" aria-expanded="false">☰</button>
-		<div class="menu" id="menu">
+<div class="menu" id="menu">
 			{%- assign items = site.sections
 				| where_exp: "s", "s.anchor"
 				| where_exp: "s", "s.weight"
