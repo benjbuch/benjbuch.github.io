@@ -34,6 +34,10 @@
   --surface-page:    #{$warm-100};
   --surface-accent:  #{$warm-300};
   --surface-raised:  #{$white};  // cards, panels
+
+  // Frosted glass backgrounds (rgba, not color-mix, for Safari compatibility)
+  --header-bg:       #{rgba($warm-300, 0.30)};
+  --footer-bg:       #{rgba($warm-300, 0.98)};
   
   // code blocks, highlights on cards
   --surface-inset: color-mix(in srgb, var(--text-strong) 6%, var(--surface-raised));     
@@ -180,7 +184,7 @@ header {
 footer {
   -webkit-backdrop-filter: blur(8px);
   backdrop-filter: blur(8px);
-  background: color-mix(in srgb, var(--surface-accent) 98%, black);
+  background: var(--footer-bg);
   border-top: #{$line-s} solid var(--border-subtle);
   bottom: 0;
   color: var(--text-secondary);
@@ -197,7 +201,7 @@ footer {
 header {
   -webkit-backdrop-filter: blur(8px);
   backdrop-filter: blur(8px);
-  background: color-mix(in srgb, var(--surface-accent) 30%, transparent);
+  background: var(--header-bg);
   border-bottom: #{$line-s} solid var(--border-subtle);
   box-shadow: 0 1px 0 rgba(0,0,0,0.04);
   inset: 0 0 auto 0;
@@ -562,6 +566,9 @@ input {
     --surface-page:    #{$dark-100};
     --surface-accent:  #{$dark-200};
     --surface-raised:  #{$dark-200};
+
+    --header-bg:       #{rgba($dark-200, 0.30)};
+    --footer-bg:       #{rgba($dark-200, 0.98)};
 
     --text-strong:     #{$dark-900};
     --text-primary:    #{$dark-800};
