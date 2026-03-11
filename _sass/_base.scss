@@ -88,15 +88,6 @@ img.invertible {
   }
 }
 
-// Safari uses overlay scrollbars by default; defining ::-webkit-scrollbar opts
-// it into the classic (space-taking) model. Guard with @supports so Safari
-// keeps its native overlay behavior and only Chrome/Edge get custom styling.
-@supports (scrollbar-width: thin) {
-  ::-webkit-scrollbar { width: 6px; height: 6px; }
-  ::-webkit-scrollbar-track { background: transparent; }
-  ::-webkit-scrollbar-thumb { background: transparent; border-radius: 3px; }
-  *:hover::-webkit-scrollbar-thumb { background: var(--border-subtle); }
-}
 
 html,
 body {
@@ -107,15 +98,7 @@ body {
 
 html {
   scroll-behavior: smooth;
-}
-
-// Reserve scrollbar gutter only where classic (space-taking) scrollbars are used.
-// Safari uses overlay scrollbars and doesn't support scrollbar-width, so this
-// correctly excludes it — no gutter needed there and no empty strip appears.
-@supports (scrollbar-width: thin) {
-  html {
-    scrollbar-gutter: stable;
-  }
+  scrollbar-gutter: stable;
 }
 
 body {
