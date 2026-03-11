@@ -206,7 +206,10 @@ header {
 main {
   flex: 1;
   overflow: visible;
-  padding-bottom: var(--section-gap);
+}
+
+section:last-of-type {
+  padding-bottom: calc(2 * var(--section-gap));
 }
 
 section {
