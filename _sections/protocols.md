@@ -1,6 +1,7 @@
 ---
 title: Protocols
 anchor: protocols
+nav_icon: book
 weight: 03
 layout: card
 github: https://github.com/benjbuch/lab-protocols.git

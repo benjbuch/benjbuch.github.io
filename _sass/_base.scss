@@ -254,7 +254,7 @@ section {
   padding: var(--pad-m) var(--pad-l);
 }
 
-.nav a {
+.nav a:not(.brand) {
 //  border: 1px solid transparent;
   border-radius: #{$round-s};
   color: var(--text-secondary);
@@ -262,7 +262,7 @@ section {
   text-decoration: none;
 }
 
-.nav a:hover {
+.nav a:not(.brand):hover {
   background: var(--hover);
 //  border: 1px solid var(--border-strong);
 }
@@ -277,6 +277,13 @@ section {
   color: var(--text-primary);
   font-weight: 700;
   letter-spacing: 0.2px;
+  text-decoration: none;
+
+  &:visited, &:hover, &:active, &:focus, &:focus-visible {
+    color: var(--text-primary);
+    outline: none;
+    text-decoration: none;
+  }
 }
 
 .burger {
@@ -286,6 +293,36 @@ section {
   display: none;
   font-size: 1.25rem;
   padding: var(--pad-m);
+}
+
+.nav-icons {
+  align-items: center;
+  display: none;
+  gap: var(--pad-s);
+}
+
+.nav-icon {
+  --nav-icon-size: 2.2rem;
+  align-items: center;
+  background: var(--surface-raised);
+  border: #{$line-s} solid var(--border-subtle);
+  border-radius: 50%;
+  box-shadow: var(--shadow);
+  color: var(--text-secondary);
+  display: flex;
+  font-size: 1.0rem;
+  height: var(--nav-icon-size);
+  justify-content: center;
+  text-decoration: none;
+  transition: background 0.15s, border-color 0.15s, color 0.15s;
+  width: var(--nav-icon-size);
+
+  &:hover, &:active, &.active {
+    background: var(--hover);
+    border-color: var(--border-strong);
+    color: var(--link);
+    text-decoration: none;
+  }
 }
 
 // ============================================================================
@@ -543,9 +580,15 @@ input {
 // Tablet and mobile
 
 @media (max-width: #{$bp-l}) {
-  .burger {
-    display: inline-grid;
-    place-items: center;
+  .nav-icons {
+    display: flex;
+  }
+
+  .brand {
+    flex: 1 1 auto;
+    min-width: 0;
+    overflow: hidden;
+    white-space: nowrap;
   }
 
   .menu {
@@ -579,6 +622,15 @@ input {
 @media (max-width: #{$bp-m}) {
   .grid.cols-2 {
     grid-template-columns: 1fr 1fr;
+  }
+}
+
+// Small mobile: show icons 2–4 only (brand covers "about"; essays omitted)
+
+@media (max-width: #{$bp-s}) {
+  .nav-icon:first-child,
+  .nav-icon:nth-child(n+5) {
+    display: none;
   }
 }
 

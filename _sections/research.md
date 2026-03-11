@@ -1,6 +1,7 @@
 ---
 title: Research interests
 anchor: research
+nav_icon: rocket
 nav_title: Research
 weight: 01
 layout: card

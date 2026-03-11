@@ -2,10 +2,12 @@
 anchor: about
 hero: Ben
 layout: hero
+nav_icon: user-circle
+nav_title: About
 portrait: /assets/img/portrait/ben-buch.png
 show_title: false
 title: About me
-weight: 01
+weight: 00
 ---
 
 <!-- Begin JSON-LD -->

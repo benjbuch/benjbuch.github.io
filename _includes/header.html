@@ -1,6 +1,6 @@
 <header>
 	<nav class="nav" aria-label="Primary">
-		<div class="brand">{{ site.title }}</div>
+		<a href="{{ '/' | relative_url }}#about" class="brand">{{ site.title }}</a>
 		<button class="burger" aria-label="Toggle menu" aria-expanded="false">☰</button>
 		<div class="menu" id="menu">
 			{%- assign items = site.sections
@@ -12,6 +12,18 @@
 				<a href="{{ '/' | relative_url }}#{{ s.anchor }}">{{ s.nav_title | default: s.title }}</a>
 			{%- endfor -%}
 			<a href="{{ '/essays/' | relative_url }}">Essays</a>
+		</div>
+		<div class="nav-icons">
+			{%- for s in items -%}
+				{%- if s.nav_icon -%}
+				<a href="{{ '/' | relative_url }}#{{ s.anchor }}" class="nav-icon" aria-label="{{ s.nav_title | default: s.title }}">
+					<span class="fa fa-{{ s.nav_icon }}" aria-hidden="true"></span>
+				</a>
+				{%- endif -%}
+			{%- endfor -%}
+			<a href="{{ '/essays/' | relative_url }}" class="nav-icon" aria-label="Essays">
+				<span class="fa fa-pencil" aria-hidden="true"></span>
+			</a>
 		</div>
 	</nav>
 </header>

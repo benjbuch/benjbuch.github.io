@@ -1,6 +1,7 @@
 ---
 anchor: publications
 layout: card
+nav_icon: file-text-o
 title: Publications
 weight: 02
 ---
