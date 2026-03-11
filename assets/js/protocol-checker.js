@@ -82,9 +82,12 @@ document.addEventListener("DOMContentLoaded", function () {
       if (!record) {
         inputEl.textContent = "";
         resultsEl.innerHTML =
-        '<div class = "check-result">' +
-        '<p><strong>Error:</strong> Unrecognized commit <code>' + queryHash + '</code>.</p>' +
-        '<p>This PDF may be outdated or not generated from this site.</p>' +
+        '<div class="check-result">' +
+        '<div class="result-status-row">' +
+        '<span class="fa fa-ban result-icon-error" aria-hidden="true"></span>' +
+        '<span class="status-badge status-error">Not found</span>' +
+        '</div>' +
+        '<p>Commit <code>' + queryHash + '</code> was not recognised. This PDF may not have been generated from this repository.</p>' +
         '</div>';
         return;
       }
@@ -114,34 +117,35 @@ document.addEventListener("DOMContentLoaded", function () {
         snapshotDateStr = record.time;
       }
 
-      var statusHtml = "";
+      var statusRow, updatesHtml = "";
       if (newerChanges.length === 0) {
-        statusHtml =
-        '<p><strong>Status:</strong> <span class = "status-badge status-current">Current</span></p>' +
-        '<p>No recorded changes after ' + snapshotDateStr + '.</p>';
+        statusRow =
+        '<span class="fa fa-check-circle result-icon-current" aria-hidden="true"></span>' +
+        '<span class="status-badge status-current">Current</span>';
       } else {
         var listItems = newerChanges.map(function (ch) {
-          return '<li><strong>' + ch.time + ':</strong> ' + ch.text + '</li>';
+          return '<li><strong>' + ch.time + '</strong> — ' + ch.text + '</li>';
         }).join("");
 
-        statusHtml =
-        '<p><strong>Status:</strong> <span class = "status-badge status-outdated">Outdated</span></p>' +
-        '<p><a href = "' + latestLink + '" target="_blank" rel="noopener">' +
-        'Open the most recent version of ' + documentId +
-        '</a></p>' +
-        '<p>We have ' + newerChanges.length + ' recorded update' +
-        (newerChanges.length > 1 ? 's' : '') + ' after ' + snapshotDateStr + ':</p>' +
-        '<ul class = "updates-list">' + listItems + '</ul>';
+        statusRow =
+        '<span class="fa fa-clock result-icon-outdated" aria-hidden="true"></span>' +
+        '<span class="status-badge status-outdated">Outdated</span>' +
+        '<a href="' + latestLink + '" class="result-open-link" rel="noopener noreferrer">' +
+        '<span class="fa fa-external-link" aria-hidden="true"></span> Open current version</a>';
+
+        updatesHtml =
+        '<p>' + newerChanges.length + ' update' + (newerChanges.length > 1 ? 's' : '') +
+        ' since ' + snapshotDateStr + ':</p>' +
+        '<ul class="updates-list">' + listItems + '</ul>';
       }
 
       inputEl.textContent = "";
       resultsEl.innerHTML =
-      '<section class = "check-result">' +
+      '<div class="check-result">' +
       '<h2>' + documentId + '</h2>' +
-      '<div><strong>Commit:</strong> <code>' + record.hash + '</code></div>' +
-      '<div><strong>Snapshot time:</strong> ' + snapshotDateStr + '</div>' +
-      '<div class  = "result-status">' + statusHtml + '</div>' +
-      '</section>';
+      '<div class="result-status-row">' + statusRow + '</div>' +
+      updatesHtml +
+      '</div>';
     })
     .catch(function (err) {
       console.error("Lookup error:", err);
