@@ -80,12 +80,32 @@ img.invertible {
 
 * {
   box-sizing: border-box;
-  scrollbar-width: thin;
-  scrollbar-color: transparent transparent;
+}
 
-  &:hover {
-    scrollbar-color: var(--border-subtle) transparent;
+// Standard scrollbar styling — Chrome 121+, Firefox 64+, Safari 18.2+.
+// When both standard and webkit rules are present, standard properties win,
+// so this also overrides the webkit block below in modern browsers.
+@supports (scrollbar-width: auto) {
+  * {
+    scrollbar-width: thin;
+    scrollbar-color: transparent transparent;
+
+    &:hover {
+      scrollbar-color: var(--border-subtle) transparent;
+    }
   }
+}
+
+// Legacy webkit fallback — Chrome/Edge 79-120 and Safari < 18.2.
+// Transparent by default and revealed on hover to avoid forcing classic
+// (space-taking) scrollbars in older Safari. The dummy --fix property works
+// around a Safari bug where :hover doesn't retrigger scrollbar repaints.
+@supports selector(::-webkit-scrollbar) {
+  ::-webkit-scrollbar         { width: 6px; height: 6px; }
+  ::-webkit-scrollbar-track   { background: transparent; }
+  ::-webkit-scrollbar-thumb   { background: transparent; border-radius: 3px; }
+  *:hover::-webkit-scrollbar-thumb { background: var(--border-subtle); }
+  *:hover                     { --fix: ; }
 }
 
 
