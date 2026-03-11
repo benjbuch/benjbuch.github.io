@@ -532,22 +532,33 @@ document.addEventListener("DOMContentLoaded", function () {
 
       h += '</div>'; // rc-safety-header
 
-      // Hazard statements
-      var visible = recipe.safety.hazards.filter(function (hz) { return !hz.hide; });
-      if (visible.length) {
-        h += '<div class="rc-safety-hazards">';
-        h += visible.map(function (hz) { return hz.text; }).join("; ");
-        h += '</div>';
+      // Hazard statements — category 1 bold + "!", categories 2/3 normal
+      var cat1  = recipe.safety.hazards.filter(function (hz) { return !hz.hide && hz.category === "1"; });
+      var cat23 = recipe.safety.hazards.filter(function (hz) { return !hz.hide && hz.category !== "1"; });
+      if (cat1.length || cat23.length) {
+        h += '<p class="rc-safety-hazards">';
+        if (cat1.length) h += '<strong>' + cat1.map(function (hz) { return hz.text; }).join('; ') + '</strong>';
+        if (cat1.length && cat23.length) h += '; ';
+        if (cat23.length) h += cat23.map(function (hz) { return hz.text; }).join('; ');
+        h += '</p>';
       }
 
       // Precautionary statements
-      for (var pc = 0; pc < recipe.safety.precautions.length; pc++) {
-        h += '<p class="rc-precaution">' + recipe.safety.precautions[pc] + '</p>';
+      if (recipe.safety.precautions.length) {
+        h += '<ul class="rc-precaution-list">';
+        for (var pc = 0; pc < recipe.safety.precautions.length; pc++) {
+          h += '<li>' + recipe.safety.precautions[pc] + '</li>';
+        }
+        h += '</ul>';
       }
 
       // Disposal statements
-      for (var dp = 0; dp < recipe.safety.disposals.length; dp++) {
-        h += '<p class="rc-disposal">' + recipe.safety.disposals[dp] + '</p>';
+      if (recipe.safety.disposals.length) {
+        h += '<ul class="rc-disposal-list">';
+        for (var dp = 0; dp < recipe.safety.disposals.length; dp++) {
+          h += '<li>' + recipe.safety.disposals[dp] + '</li>';
+        }
+        h += '</ul>';
       }
 
       h += '</div>'; // rc-safety
@@ -556,18 +567,17 @@ document.addEventListener("DOMContentLoaded", function () {
     // Sources
     if (recipe.sources.length) {
       h += '<div class="rc-sources">';
-      h += "<p>For research use. Users are responsible for compliance with local regulations and institutional policies. Amounts scale proportionally with total solvent volume.</p>";
-      h += "<p>Recipe used in ";
+      h += '<p class="rc-source-links"><span class="rc-sources-label">Used in</span> ';
       h += recipe.sources.map(function (s) {
         var text = s.doc_type + s.id + "-v" + s.version;
-        if (s.primary) text += " (shown here)";
         if (s.visibility === "public") {
-          return '<a target="_blank" rel="noopener noreferrer" href="/assets/protocols/pdf/' +
-            s.filename + '.pdf">' + text + '</a>';
+          return '<a class="rc-source-link" target="_blank" rel="noopener noreferrer" href="/assets/protocols/pdf/' +
+            s.filename + '.pdf"><span class="fa fa-external-link" aria-hidden="true"></span>\u2009' + text + '</a>';
         }
         return '<span class="rc-source-missing">' + text + '</span>';
-      }).join(", ");
-      h += ".</p></div>";
+      }).join(" &middot; ");
+      h += "<p>For research use. Always verify amounts and procedures independently before use. Users are responsible for compliance with local regulations and institutional policies.</p>";
+      h += "</p></div>";
     }
 
     h += "</div>"; // rc-body

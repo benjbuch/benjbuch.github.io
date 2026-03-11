@@ -30,54 +30,6 @@ document.addEventListener('DOMContentLoaded', () => {
   if (y) y.textContent = new Date().getFullYear();
 });
 
-// Elements
-document.addEventListener('DOMContentLoaded', () => {
-  const btn  = document.querySelector('.burger');
-  const menu = document.getElementById('menu');
-  const main = document.querySelector('main');
-
-  // Mobile menu toggle
-  if (btn && menu) {
-    btn.addEventListener('click', () => {
-      menu.classList.toggle('open');
-      btn.setAttribute('aria-expanded', menu.classList.contains('open'));
-    });
-
-    // Smooth scroll only on same-page; always close burger on click
-    menu.querySelectorAll('.menu a[href*="#"]').forEach(a => {
-      a.addEventListener('click', (e) => {
-        const url = new URL(a.href, location.href);
-        const samePage = (url.pathname === location.pathname);
-
-        menu.classList.remove('open');
-        btn.setAttribute('aria-expanded', 'false');
-
-        if (samePage) {
-          e.preventDefault();
-          const id = url.hash.slice(1);
-          document.getElementById(id)?.scrollIntoView({ behavior: 'smooth', block: 'start' });
-        }
-      });
-    });
-
-    // Close burger on outside click
-    document.addEventListener('click', (e) => {
-      if (menu.classList.contains('open') && !menu.contains(e.target) && !btn.contains(e.target)) {
-        menu.classList.remove('open');
-        btn.setAttribute('aria-expanded', 'false');
-      }
-    });
-
-    // Close burger on escape
-    document.addEventListener('keydown', (e) => {
-      if (e.key === 'Escape' && menu.classList.contains('open')) {
-        menu.classList.remove('open');
-        btn.setAttribute('aria-expanded', 'false');
-      }
-    });
-  }
-});
-
 // Active section highlighting
 (() => {
   const init = () => {
