@@ -95,6 +95,7 @@
 .recipe-item-name {
   overflow: hidden;
   text-overflow: ellipsis;
+  white-space: nowrap;
 }
 
 .recipe-item-id {
