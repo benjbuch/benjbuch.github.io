@@ -1,6 +1,6 @@
 .checker {
-  margin: 2rem auto;
-  max-width: 60ch;
+  margin: var(--pad-l) auto;
+  max-width: min(60ch, 100% - 2 * var(--pad-l));
 }
 
 /* Form */
