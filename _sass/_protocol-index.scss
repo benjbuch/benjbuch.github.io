@@ -117,7 +117,12 @@
 }
 
 .chapter-group {
-  border-bottom: #{$line-s} solid var(--border-subtle);
+  &::after {
+    content: "";
+    display: block;
+    height: #{$line-s};
+    background: linear-gradient(to right, var(--border-subtle) 50%, transparent 100%);
+  }
 }
 
 .chapter-heading {
