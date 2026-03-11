@@ -30,6 +30,13 @@
   color: var(--text-secondary);
   margin-top: var(--pad-m);
   margin-bottom: var(--pad-s);
+
+  &::before {
+    content: "\f017";
+    font-family: "Font APEX Large";
+    font-style: normal;
+    margin-right: 0.35em;
+  }
 }
 
 .essay-history {

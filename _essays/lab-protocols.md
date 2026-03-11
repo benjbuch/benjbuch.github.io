@@ -16,7 +16,7 @@ excerpt: How lab protocols can be tracked, built, and published
     <li>XML source rendered to PDF and HTML</li>
     <li>Online version checker for printed copies</li>
   </ul>
-   <p class="meta">⏱️ {{ page.reads_in }} read · Updated {{ page.last_modified | date: "%B %d, %Y" }}</p>
+   <p class="meta">{{ page.reads_in }} read · Updated {{ page.last_modified | date: "%B %d, %Y" }}</p>
 </div>
 
 #### ___A: You've built a version-controlled protocol system for the lab bench. Tell us more about the problem you wanted to solve.___

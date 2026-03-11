@@ -14,7 +14,7 @@ excerpt: Strand-asymmetric DNA modifications
   <p>Symmetry is a key organizing principle in the heredity of epigenetic DNA modifications; but also places where this symmetry breaks can carry information the cell knows how to read.</p>
   <p>Here, I discuss my work on strand-asymmetric cytosine modifications in mammalian genomes, carried out in Daniel Summerer's lab during my PhD.</p>
   <p></p>
-  <p class="meta">⏱️ {{ page.reads_in }} read · Updated {{ page.last_modified | date: "%B %d, %Y" }}</p>
+  <p class="meta">{{ page.reads_in }} read · Updated {{ page.last_modified | date: "%B %d, %Y" }}</p>
 </div>
 
 Information can exist wherever entities are neither purely uniformly nor entirely randomly distributed. Biological systems are certainly no exception.
