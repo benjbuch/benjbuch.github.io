@@ -289,7 +289,7 @@ document.addEventListener("DOMContentLoaded", function () {
       typeHtml = ' <span class="rc-ing-optional">(add fresh)</span>';
 
     var refHtml = ing.refId
-      ? ' <button class="rc-ref-link" data-ref="' + ing.refId + '">[' + ing.refId + "]</button>"
+      ? ' <button class="rc-ref-link" data-ref="' + ing.refId + '"><span class="fa fa-vial" aria-hidden="true"></span>\u2009' + ing.refId + "</button>"
       : "";
 
     var casHtml = "";
