@@ -82,9 +82,8 @@ img.invertible {
   box-sizing: border-box;
 }
 
-// Standard scrollbar styling — Chrome 121+, Firefox 64+, Safari 18.2+.
-// When both standard and webkit rules are present, standard properties win,
-// so this also overrides the webkit block below in modern browsers.
+// Standard scrollbar styling — Chrome 121+, Firefox 64+.
+// (Safari is handled separately below via the hanging-punctuation detector.)
 @supports (scrollbar-width: auto) {
   * {
     scrollbar-width: thin;
@@ -96,14 +95,20 @@ img.invertible {
   }
 }
 
-// Legacy webkit fallback — Chrome/Edge 79-120 and Safari < 18.2.
-// Transparent by default and revealed on hover to avoid forcing classic
-// (space-taking) scrollbars in older Safari. The dummy --fix property works
-// around a Safari bug where :hover doesn't retrigger scrollbar repaints.
-@supports selector(::-webkit-scrollbar) {
-  ::-webkit-scrollbar         { width: 6px; height: 6px; }
-  ::-webkit-scrollbar-track   { background: transparent; }
-  ::-webkit-scrollbar-thumb   { background: transparent; border-radius: 3px; }
+// Safari-only scrollbar styling.
+// hanging-punctuation is implemented only in Safari; Chrome and Firefox have
+// never shipped it, making it a reliable CSS-only Safari feature query.
+// Reset standard properties to auto so they don't override the webkit rules,
+// then apply webkit-only styling (option 4 from scrollbar-test.html).
+@supports (hanging-punctuation: first) {
+  * {
+    scrollbar-width: auto;
+    scrollbar-color: auto;
+  }
+
+  *::-webkit-scrollbar        { width: 6px; height: 6px; }
+  *::-webkit-scrollbar-track  { background: transparent; }
+  *::-webkit-scrollbar-thumb  { background: transparent; border-radius: 3px; }
   *:hover::-webkit-scrollbar-thumb { background: var(--border-subtle); }
   *:hover                     { --fix: ; }
 }

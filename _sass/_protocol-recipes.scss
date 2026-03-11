@@ -36,6 +36,15 @@
   box-sizing: border-box;
 }
 
+/* Reserve gutter space on both panels so content width stays stable when
+   the scrollbar appears. Works in Chrome/Firefox natively; in Safari the
+   global webkit rules (hanging-punctuation detector) switch these to classic
+   scrollbars, making scrollbar-gutter: stable effective there too. */
+.recipe-list,
+.recipe-detail {
+  scrollbar-gutter: stable;
+}
+
 .recipe-list {
   flex: 1 1 0;
   min-height: 0;
