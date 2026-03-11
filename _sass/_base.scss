@@ -107,7 +107,15 @@ body {
 
 html {
   scroll-behavior: smooth;
-  scrollbar-gutter: stable;
+}
+
+// Reserve scrollbar gutter only where classic (space-taking) scrollbars are used.
+// Safari uses overlay scrollbars and doesn't support scrollbar-width, so this
+// correctly excludes it — no gutter needed there and no empty strip appears.
+@supports (scrollbar-width: thin) {
+  html {
+    scrollbar-gutter: stable;
+  }
 }
 
 body {
