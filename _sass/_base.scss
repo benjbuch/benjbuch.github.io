@@ -255,7 +255,7 @@ section {
 }
 
 .nav a:not(.brand) {
-//  border: 1px solid transparent;
+  background: transparent;
   border-radius: #{$round-s};
   color: var(--text-secondary);
   padding: 0.1rem 0.6rem;
@@ -264,12 +264,11 @@ section {
 
 .nav a:not(.brand):hover {
   background: var(--hover);
-//  border: 1px solid var(--border-strong);
+  color: var(--text-primary);
 }
 
 .nav a.active {
-  background: var(--hover-raised);
-//  border: 1px solid var(--border-subtle);
+  background: var(--hover);
   color: var(--text-primary);
 }
 
@@ -294,8 +293,9 @@ section {
 
 .nav-icon {
   --nav-icon-size: 1.8rem;
+  -webkit-tap-highlight-color: transparent;
   align-items: center;
-  background: var(--surface-raised);
+  background: var(--surface-raised); 
   border-radius: 50%;
   border: #{$line-s} solid var(--border-subtle);
   box-shadow: var(--shadow);
@@ -309,9 +309,16 @@ section {
   transition: background 0.15s, border-color 0.15s, color 0.15s;
   width: var(--nav-icon-size);
 
-  &:hover, &:active, &.active {
-    background: var(--hover);
+  &:hover {
+    background: color-mix(in srgb, var(--surface-raised) 50%, transparent);
     border-color: var(--border-strong);
+    color: var(--link);
+    text-decoration: none;
+  }
+
+  &:active, &.active {
+    background: color-mix(in srgb, var(--link) 12%, transparent);
+    border-color: var(--link);
     color: var(--link);
     text-decoration: none;
   }
