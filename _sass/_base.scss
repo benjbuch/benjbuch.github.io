@@ -84,10 +84,15 @@ img.invertible {
   }
 }
 
-::-webkit-scrollbar { width: 6px; height: 6px; }
-::-webkit-scrollbar-track { background: transparent; }
-::-webkit-scrollbar-thumb { background: transparent; border-radius: 3px; }
-*:hover::-webkit-scrollbar-thumb { background: var(--border-subtle); }
+// Safari uses overlay scrollbars by default; defining ::-webkit-scrollbar opts
+// it into the classic (space-taking) model. Guard with @supports so Safari
+// keeps its native overlay behavior and only Chrome/Edge get custom styling.
+@supports (scrollbar-width: thin) {
+  ::-webkit-scrollbar { width: 6px; height: 6px; }
+  ::-webkit-scrollbar-track { background: transparent; }
+  ::-webkit-scrollbar-thumb { background: transparent; border-radius: 3px; }
+  *:hover::-webkit-scrollbar-thumb { background: var(--border-subtle); }
+}
 
 html,
 body {
@@ -173,6 +178,7 @@ header {
 }
 
 footer {
+  -webkit-backdrop-filter: blur(8px);
   backdrop-filter: blur(8px);
   background: color-mix(in srgb, var(--surface-accent) 98%, black);
   border-top: #{$line-s} solid var(--border-subtle);
@@ -189,6 +195,7 @@ footer {
 }
 
 header {
+  -webkit-backdrop-filter: blur(8px);
   backdrop-filter: blur(8px);
   background: color-mix(in srgb, var(--surface-accent) 30%, transparent);
   border-bottom: #{$line-s} solid var(--border-subtle);
