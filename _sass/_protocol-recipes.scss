@@ -338,7 +338,7 @@
 .rc-body {
   border-top: #{$line-s} solid var(--border-subtle);
   font-size: 0.9rem;
-  padding: var(--pad-l) var(--pad-s) var(--pad-s);
+  padding-top: var(--pad-l);
   hyphens: auto;
 }
 
@@ -347,7 +347,6 @@
 }
 
 .rc-storage {
-  color: var(--text-secondary);
   margin-bottom: var(--pad-l);
 }
 
