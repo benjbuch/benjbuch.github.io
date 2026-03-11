@@ -532,22 +532,33 @@ document.addEventListener("DOMContentLoaded", function () {
 
       h += '</div>'; // rc-safety-header
 
-      // Hazard statements
-      var visible = recipe.safety.hazards.filter(function (hz) { return !hz.hide; });
-      if (visible.length) {
-        h += '<div class="rc-safety-hazards">';
-        h += visible.map(function (hz) { return hz.text; }).join("; ");
-        h += '</div>';
+      // Hazard statements — category 1 bold + "!", categories 2/3 normal
+      var cat1  = recipe.safety.hazards.filter(function (hz) { return !hz.hide && hz.category === "1"; });
+      var cat23 = recipe.safety.hazards.filter(function (hz) { return !hz.hide && hz.category !== "1"; });
+      if (cat1.length || cat23.length) {
+        h += '<p class="rc-safety-hazards">';
+        if (cat1.length) h += '<strong>' + cat1.map(function (hz) { return hz.text; }).join('; ') + '</strong>';
+        if (cat1.length && cat23.length) h += '; ';
+        if (cat23.length) h += cat23.map(function (hz) { return hz.text; }).join('; ');
+        h += '</p>';
       }
 
       // Precautionary statements
-      for (var pc = 0; pc < recipe.safety.precautions.length; pc++) {
-        h += '<p class="rc-precaution">' + recipe.safety.precautions[pc] + '</p>';
+      if (recipe.safety.precautions.length) {
+        h += '<ul class="rc-precaution-list">';
+        for (var pc = 0; pc < recipe.safety.precautions.length; pc++) {
+          h += '<li>' + recipe.safety.precautions[pc] + '</li>';
+        }
+        h += '</ul>';
       }
 
       // Disposal statements
-      for (var dp = 0; dp < recipe.safety.disposals.length; dp++) {
-        h += '<p class="rc-disposal">' + recipe.safety.disposals[dp] + '</p>';
+      if (recipe.safety.disposals.length) {
+        h += '<ul class="rc-disposal-list">';
+        for (var dp = 0; dp < recipe.safety.disposals.length; dp++) {
+          h += '<li>' + recipe.safety.disposals[dp] + '</li>';
+        }
+        h += '</ul>';
       }
 
       h += '</div>'; // rc-safety

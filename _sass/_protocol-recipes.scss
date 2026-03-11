@@ -378,14 +378,10 @@
   padding: var(--pad-m);
 }
 
-.rc-safety-danger {
-  background: color-mix(in srgb, var(--accent-red) 8%, transparent);
-  border: #{$line-s} solid color-mix(in srgb, var(--accent-red) 30%, transparent);
-}
-
+.rc-safety-danger,
 .rc-safety-warning {
-  background: color-mix(in srgb, var(--accent-gold) 8%, transparent);
-  border: #{$line-s} solid color-mix(in srgb, var(--accent-gold) 30%, transparent);
+  background: color-mix(in srgb, var(--ghs-red) 8%, transparent);
+  border: #{$line-s} solid color-mix(in srgb, var(--ghs-red) 30%, transparent);
 }
 
 .rc-safety-none {
@@ -404,13 +400,9 @@
   padding: 0.05rem 0.25rem;
 }
 
-.rc-signal-danger {
-  background: var(--accent-red, #dc2626);
-  color: #fff;
-}
-
+.rc-signal-danger,
 .rc-signal-warning {
-  background: var(--accent-gold, #d97706);
+  background: var(--ghs-red);
   color: #fff;
 }
 
@@ -429,23 +421,55 @@
 }
 
 .rc-ghs-icon {
-  width: 3em;
-  height: 3em;
+  width: max(3em, 10mm);
+  height: max(3em, 10mm);
 }
 
 .rc-safety-hazards {
-  margin-bottom: var(--pad-s);
+  margin: 0 0 var(--pad-s);
+
+  strong {
+    font-weight: 700;
+  }
 }
 
-.rc-precaution {
-  font-style: italic;
-  margin: 0;
+.rc-precaution-list,
+.rc-disposal-list {
+  list-style: none;
   padding: 0;
+
+  li {
+    padding-left: 1.6em;
+    position: relative;
+    margin-bottom: 0;
+
+    &::before {
+      font-family: "Font APEX Large";
+      font-size: 1.2rem;
+      line-height: 1;
+      position: absolute;
+      left: 0;
+      top: 50%;
+      transform: translateY(-50%);
+    }
+  }
 }
 
-.rc-disposal {
+.rc-precaution-list {
   margin: var(--pad-s) 0 0;
-  padding: 0;
+
+  li::before {
+    content: "\f04b";
+    font-style: normal;
+  }
+}
+
+.rc-disposal-list {
+  margin: var(--pad-m) 0 0;
+
+  li::before {
+    content: "\f04d";
+  }
 }
 
 /* Source */
