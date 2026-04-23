@@ -460,10 +460,10 @@
 		<!-- ORGANIZATION -->
 		<category>buffer</category>
 		<category>nucleics</category>
+		<source doc_type="SOP" id="0020" version="1" visibility="public" license="CC-BY-SA-4.0"  definition="no">sop_0020-v1-plasmid_isolation</source>
+		<source doc_type="SOP" id="0021" version="1" visibility="public" license="CC-BY-SA-4.0"  definition="no">sop_0021-v1-purification_nucleic_acids</source>
 		<source doc_type="COL" id="0001" version="1" visibility="internal" license="CC-BY-SA-4.0"  definition="yes" primary="yes">co_0001-v1-stock_solutions</source>
 		<source doc_type="SOP" id="0024" version="1" visibility="public" license="CC-BY-SA-4.0"  definition="no">sop_0024-v1-dna_isolation_mammalian_cells</source>
-		<source doc_type="SOP" id="0021" version="1" visibility="public" license="CC-BY-SA-4.0"  definition="no">sop_0021-v1-purification_nucleic_acids</source>
-		<source doc_type="SOP" id="0020" version="1" visibility="public" license="CC-BY-SA-4.0"  definition="no">sop_0020-v1-plasmid_isolation</source>
 	</recipe>
 	<recipe id="R0011">
 		<name>Buffer PE (Wash buffer)</name>
@@ -498,8 +498,8 @@
 		<!-- ORGANIZATION -->
 		<category>buffer</category>
 		<category>nucleics</category>
-		<source doc_type="COL" id="0001" version="1" visibility="internal" license="CC-BY-SA-4.0"  definition="yes" primary="yes">co_0001-v1-stock_solutions</source>
 		<source doc_type="SOP" id="0021" version="1" visibility="public" license="CC-BY-SA-4.0"  definition="no">sop_0021-v1-purification_nucleic_acids</source>
+		<source doc_type="COL" id="0001" version="1" visibility="internal" license="CC-BY-SA-4.0"  definition="yes" primary="yes">co_0001-v1-stock_solutions</source>
 		<source doc_type="SOP" id="0020" version="1" visibility="public" license="CC-BY-SA-4.0"  definition="no">sop_0020-v1-plasmid_isolation</source>
 	</recipe>
 	<recipe id="R0012">
@@ -700,6 +700,37 @@
 		<category>nucleics</category>
 		<source doc_type="COL" id="0001" version="1" visibility="internal" license="CC-BY-SA-4.0"  definition="yes" primary="yes">co_0001-v1-stock_solutions</source>
 		<source doc_type="SOP" id="0033" version="1" visibility="public" license="CC-BY-SA-4.0"  definition="no">sop_0033-v1-restriction_ligation_cloning</source>
+	</recipe>
+	<recipe id="R0196">
+		<name>Doxycycline</name>
+		<stock>20 gram per liter</stock>
+		<!-- PREPARATION -->
+		<solvent CAS="7732-18-5" PubChem="compound/962">
+			<name>Water</name>
+			<property>reagent-grade</property>
+			<amount>50 milliliter</amount>
+		</solvent>
+		<ingredient CAS="10592-13-9" PubChem="compound/54685920">
+			<name>Doxycycline</name>
+			<property>· HCl</property>
+			<stock>480.9 gram per mol</stock>
+			<amount>1 gram</amount>
+			<final>20 gram per liter</final>
+		</ingredient>
+		<workup>Mild warming may be required to fully dissolve the material</workup>
+		<workup>Filter sterilize</workup>
+		<storage class="freezer" shelflife="2 years" type="dark"/>
+		<storage class="fridge" shelflife="2 days"/>
+		<note type="orientation">Working concentration is <unit>0.1 to 10 microgram per milliliter</unit> in cell culture</note>
+		<note>Doxycycline is a broad spectrum inhibitor of matrix metalloproteases in vivo</note>
+		<!-- ENVIRONMENT, HEALTH, SAFETY -->
+		<safety signal="danger">
+			<hazard category="3" type="health_hazard">Acute oral toxicity</hazard>
+		</safety>
+		<!-- ORGANIZATION -->
+		<category>solution</category>
+		<category>mammalian</category>
+		<source doc_type="COL" id="0001" version="1" visibility="internal" license="CC-BY-SA-4.0"  definition="yes" primary="yes">co_0001-v1-stock_solutions</source>
 	</recipe>
 	<recipe id="R0018">
 		<name>Ethidium bromide</name>
@@ -1544,12 +1575,12 @@
 		<!-- ORGANIZATION -->
 		<category>buffer</category>
 		<category>common</category>
-		<source doc_type="COL" id="0001" version="1" visibility="internal" license="CC-BY-SA-4.0"  definition="yes" primary="yes">co_0001-v1-stock_solutions</source>
-		<source doc_type="SOP" id="0001" version="1" visibility="public" license="CC-BY-SA-4.0"  definition="no">sop_0001-v1-isolation_nuclei</source>
-		<source doc_type="SOP" id="0027" version="1" visibility="internal" license="CC-BY-SA-4.0"  definition="no">sop_0027-v1-immunoprecipitation</source>
-		<source doc_type="SOP" id="0002" version="1" visibility="public" license="CC-BY-SA-4.0"  definition="no">sop_0002-v1-whole_cell_extraction_mammalian_cells</source>
 		<source doc_type="SOP" id="0028" version="2" visibility="internal" license="CC-BY-SA-4.0"  definition="no">sop_0028-v2-cell_cycle_synchronization</source>
+		<source doc_type="COL" id="0001" version="1" visibility="internal" license="CC-BY-SA-4.0"  definition="yes" primary="yes">co_0001-v1-stock_solutions</source>
+		<source doc_type="SOP" id="0002" version="1" visibility="public" license="CC-BY-SA-4.0"  definition="no">sop_0002-v1-whole_cell_extraction_mammalian_cells</source>
+		<source doc_type="SOP" id="0001" version="1" visibility="public" license="CC-BY-SA-4.0"  definition="no">sop_0001-v1-isolation_nuclei</source>
 		<source doc_type="SOP" id="0029" version="1" visibility="internal" license="CC-BY-SA-4.0"  definition="no">sop_0029-v1-cell_cycle_flow_cytometry</source>
+		<source doc_type="SOP" id="0027" version="1" visibility="internal" license="CC-BY-SA-4.0"  definition="no">sop_0027-v1-immunoprecipitation</source>
 	</recipe>
 	<recipe id="R0074">
 		<name>Phosphatase inhibitor cocktail</name>
@@ -3023,8 +3054,8 @@
 		<!-- ORGANIZATION -->
 		<category>buffer</category>
 		<category>common</category>
-		<source doc_type="COL" id="0001" version="1" visibility="internal" license="CC-BY-SA-4.0"  definition="yes" primary="yes">co_0001-v1-stock_solutions</source>
 		<source doc_type="SOP" id="0021" version="1" visibility="public" license="CC-BY-SA-4.0"  definition="no">sop_0021-v1-purification_nucleic_acids</source>
+		<source doc_type="COL" id="0001" version="1" visibility="internal" license="CC-BY-SA-4.0"  definition="yes" primary="yes">co_0001-v1-stock_solutions</source>
 		<source doc_type="SOP" id="0020" version="1" visibility="public" license="CC-BY-SA-4.0"  definition="no">sop_0020-v1-plasmid_isolation</source>
 	</recipe>
 	<recipe id="R0057">
@@ -3054,9 +3085,9 @@
 		<!-- ORGANIZATION -->
 		<category>solution</category>
 		<category>common</category>
-		<source doc_type="COL" id="0001" version="1" visibility="internal" license="CC-BY-SA-4.0"  definition="yes" primary="yes">co_0001-v1-stock_solutions</source>
-		<source doc_type="SOP" id="0001" version="1" visibility="public" license="CC-BY-SA-4.0"  definition="no">sop_0001-v1-isolation_nuclei</source>
 		<source doc_type="SOP" id="0004" version="3" visibility="internal" license="CC-BY-SA-4.0"  definition="no">sop_0004-v3-production_recombinant_histones</source>
+		<source doc_type="SOP" id="0001" version="1" visibility="public" license="CC-BY-SA-4.0"  definition="no">sop_0001-v1-isolation_nuclei</source>
+		<source doc_type="COL" id="0001" version="1" visibility="internal" license="CC-BY-SA-4.0"  definition="yes" primary="yes">co_0001-v1-stock_solutions</source>
 	</recipe>
 	<recipe id="R0081">
 		<name>Trypsin solution</name>
@@ -3104,7 +3135,7 @@
 	</recipe>
 	<recipe id="R0082">
 		<name>Trypsin inhibitor solution</name>
-		<stock>10 fold</stock>
+		<stock>0.25 percent</stock>
 		<!-- PREPARATION -->
 		<solvent CAS="7732-18-5" PubChem="compound/962">
 			<name>Water</name>
@@ -3133,7 +3164,7 @@
 		<workup>Use sterile liquids or filter sterilize</workup>
 		<workup>Dispense in <unit>15 milliliter</unit> aliquots</workup>
 		<storage class="freezer">Not stable at <unit>4 celsius</unit>.</storage>
-		<note type="orientation">Resuspend cells in <unit>1 milliliter</unit> <unit>1 fold</unit> trypsin inhibitor solution per milliliter trypisin solution used for dissociation</note>
+		<note type="orientation">The amount of soy inhibitor is directly related to the amount of trypsin it will inhibit; add an equal volume of trypsin inhibitor matching the concentration of the trypisin solution used for dissociation</note>
 		<!-- ENVIRONMENT, HEALTH, SAFETY -->
 		<safety signal="warning">
 			<hazard category="2" type="health_hazard">Skin sensitization</hazard>
@@ -5866,8 +5897,8 @@
 		<category>solution</category>
 		<category>special</category>
 		<category>nucleics</category>
-		<source doc_type="SOP" id="0032" version="1" visibility="public" license="CC-BY-SA-4.0"  definition="yes">sop_0032-v1-agarose_gel_electrophoresis</source>
 		<source doc_type="SOP" id="0023" version="1" visibility="public" license="CC-BY-SA-4.0"  definition="yes" primary="yes">sop_0023-v1-rna_isolation_trizol</source>
+		<source doc_type="SOP" id="0032" version="1" visibility="public" license="CC-BY-SA-4.0"  definition="yes">sop_0032-v1-agarose_gel_electrophoresis</source>
 	</recipe>
 	<recipe id="R0142">
 		<name>Cell lysis buffer</name>
