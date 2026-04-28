@@ -1,4 +1,4 @@
-- abstract: '5-Methylcytosine (mC) and 5-hydroxymethylcytosine (hmC) are
+- abstract: 5-Methylcytosine (mC) and 5-hydroxymethylcytosine (hmC) are
     the main epigenetic modifications of mammalian DNA, and play crucial
     roles in cell differentiation, development, and tumorigenesis. Both
     modifications co-exist with unmodified cytosine in palindromic CpG dyads
@@ -10,40 +10,39 @@
     CpG dyad hmC/mC. Binding studies reveal a high discrimination of MECP2
     HM against off-target dinucleotides. We conduct comparative mapping
     experiments for mESC genomes with HM-DyadCap, standard MethylCap employing
-    wild type MECP2, as well as MeDIP and hMeDIP protocols. We find that
-    MECP2 HM is blocked by hmC glucosylation, and conduct control enrichments
+    wild-type MECP2, as well as MeDIP and hMeDIP protocols. We find that
+    MECP2 HM is blocked by hmC glucosylation and conduct control enrichments
     with glucosylated genomes that indicate highly selective enrichment
     of hmC/mC dyads by MECP2 HM. Metagene profiles correlate hmC/mC marks
-    with actively transcribed genes, and reveal global enrichment in gene
+    with actively transcribed genes and reveal global enrichment in gene
     bodies as well as depletion at transcription start sites. We anticipate
     that HM-DyadCap will enable effective enrichment and mapping of hmC/mC
-    marks with broad applicability for unravelling the function of this
-    dyad in chromatin biology and cancer.Competing Interest StatementThe
-    authors declare the following competing financial interest: TU Dortmund
-    University has filed a patent application for the engineered MBD employed
-    in the present study (PCT/EP2020/087979, pending). No further competing
-    financial interests have been declared.Deutsche Forschungsgemeinschaft,
-    SU726/10-1Ministry of Culture and Science of the State of Northrhine
-    Westphalia, Netzwerke 2021, CANTAR, NRW Returning Scholars ProgramEuropean
-    Research Council, https://ror.org/0472cxd90, 101100794 COMBICODE'
+    marks with broad applicability for unraveling the function of this dyad
+    in chromatin biology and cancer.
   audience: specialist
   authors: Engelhard, Lena and Schiller, Damian and Zambrano-Mila, Marlon
-    S. and Keliuotyte, Kotryna and Buchmuller, Benjamin and Tiwari, Shashank
+    S and Keliuotyte, Kotryna and Buchmuller, Benjamin and Tiwari, Shashank
     and Imig, Jochen and Simeone, Angela and Schröter, Christian and Becker,
     Sidney and Summerer, Daniel
-  doi: 10.1101/2025.10.29.685270
+  doi: 10.1093/nar/gkag389
   first_authors: '2'
-  group: preprint
-  id: Engelhard2025.10.29.685270
-  journal: bioRxiv
+  group: original-research
+  id: PMID:42023651
+  impact: Demonstrated that our engineered MBD (Buchmuller et al., JACS
+    2022) is capable of profiling hmC/mC marks in mammalian genomes
+  issn: 0305-1048
+  journal: Nucleic Acids Res.
   keywords: DNA Modifications, Genomics
+  number: '8'
+  pages: gkag389
+  pmcid: PMC13103736
+  pmid: '42023651'
   priority: high
-  publisher: Cold Spring Harbor Laboratory
-  title: HM-DyadCap – Capture and Mapping of 5-Hydroxymethylcytosine/5-Methylcytosine
-    CpG Dyads in Mammalian DNA
+  title: HM-DyadCap – capture and mapping of 5-hydroxymethylcytosine/5-methylcytosine
+    CpG dyads in mammalian DNA
   type: article
-  url: https://www.biorxiv.org/content/early/2025/10/30/2025.10.29.685270
-  year: 2025
+  volume: '54'
+  year: 2026
 - abstract: Mammalian genomes are regulated by epigenetic cytosine (C) modifications
     in palindromic CpG dyads. Including canonical cytosine 5‐methylation
     (mC), a total of four different 5‐modifications can theoretically co‐exist
@@ -495,9 +494,9 @@
   doi: 10.1083/jcb.201910210
   group: original-research
   id: PMID:32406907
-  impact: Extended our CASTLING approach for gene editing to mammalian cells
-    with up to 60% in-frame tagging efficiency; now widely adopted for endogenous
-    protein tagging studies
+  impact: Extended our CASTLING approach (Buchmuller et al., Nat. Commun.
+    2019) for gene editing to mammalian cells with up to 60% in-frame tagging
+    efficiency; now widely adopted for endogenous protein tagging studies
   issn: 0021-9525
   journal: J. Cell Biol.
   keywords: CRISPR, Functional Genomics, Methods
@@ -628,7 +627,8 @@
   id: PMID:31273196
   impact: CASTLING enables rapid construction of yeast clone libraries with
     >90% tagging efficiency; method adapted for mammalian gene tagging (Fueller
-    et al. 2020, J Cell Biol) and cited in advanced Cas12a engineering studies
+    et al., J. Cell Biol. 2020) and cited in advanced Cas12a engineering
+    studies
   journal: Nat. Commun.
   keywords: Functional Genomics, Yeast, Methods, CRISPR
   month: '07'
