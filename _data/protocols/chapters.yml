@@ -13,5 +13,5 @@
 - name: Designer chromatin
   protocols: [SOP0004, SOP0005, SOP0006]
 - name: Bioinformatics & data analysis
-  protocols: []
+  protocols: [SOP0042]
 
