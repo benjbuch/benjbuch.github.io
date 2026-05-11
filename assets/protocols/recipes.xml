@@ -320,8 +320,8 @@
 		<!-- ORGANIZATION -->
 		<category>buffer</category>
 		<category>nucleics</category>
-		<source doc_type="SOP" id="0020" version="1" visibility="public" license="CC-BY-SA-4.0"  definition="no">sop_0020-v1-plasmid_isolation</source>
 		<source doc_type="COL" id="0001" version="1" visibility="internal" license="CC-BY-SA-4.0"  definition="yes" primary="yes">co_0001-v1-stock_solutions</source>
+		<source doc_type="SOP" id="0020" version="1" visibility="public" license="CC-BY-SA-4.0"  definition="no">sop_0020-v1-plasmid_isolation</source>
 	</recipe>
 	<recipe id="R0007">
 		<name>Buffer P2 (Lysis buffer)</name>
@@ -359,8 +359,8 @@
 		<!-- ORGANIZATION -->
 		<category>buffer</category>
 		<category>nucleics</category>
-		<source doc_type="SOP" id="0020" version="1" visibility="public" license="CC-BY-SA-4.0"  definition="no">sop_0020-v1-plasmid_isolation</source>
 		<source doc_type="COL" id="0001" version="1" visibility="internal" license="CC-BY-SA-4.0"  definition="yes" primary="yes">co_0001-v1-stock_solutions</source>
+		<source doc_type="SOP" id="0020" version="1" visibility="public" license="CC-BY-SA-4.0"  definition="no">sop_0020-v1-plasmid_isolation</source>
 	</recipe>
 	<recipe id="R0008">
 		<name>Buffer P3 (Neutralization buffer)</name>
@@ -423,8 +423,8 @@
 		<!-- ORGANIZATION -->
 		<category>buffer</category>
 		<category>nucleics</category>
-		<source doc_type="SOP" id="0020" version="1" visibility="public" license="CC-BY-SA-4.0"  definition="no">sop_0020-v1-plasmid_isolation</source>
 		<source doc_type="COL" id="0001" version="1" visibility="internal" license="CC-BY-SA-4.0"  definition="yes" primary="yes">co_0001-v1-stock_solutions</source>
+		<source doc_type="SOP" id="0020" version="1" visibility="public" license="CC-BY-SA-4.0"  definition="no">sop_0020-v1-plasmid_isolation</source>
 	</recipe>
 	<recipe id="R0010">
 		<name>Buffer PB (Binding buffer)</name>
@@ -460,10 +460,10 @@
 		<!-- ORGANIZATION -->
 		<category>buffer</category>
 		<category>nucleics</category>
-		<source doc_type="SOP" id="0020" version="1" visibility="public" license="CC-BY-SA-4.0"  definition="no">sop_0020-v1-plasmid_isolation</source>
 		<source doc_type="COL" id="0001" version="1" visibility="internal" license="CC-BY-SA-4.0"  definition="yes" primary="yes">co_0001-v1-stock_solutions</source>
-		<source doc_type="SOP" id="0024" version="1" visibility="public" license="CC-BY-SA-4.0"  definition="no">sop_0024-v1-dna_isolation_mammalian_cells</source>
 		<source doc_type="SOP" id="0021" version="1" visibility="public" license="CC-BY-SA-4.0"  definition="no">sop_0021-v1-purification_nucleic_acids</source>
+		<source doc_type="SOP" id="0020" version="1" visibility="public" license="CC-BY-SA-4.0"  definition="no">sop_0020-v1-plasmid_isolation</source>
+		<source doc_type="SOP" id="0024" version="1" visibility="public" license="CC-BY-SA-4.0"  definition="no">sop_0024-v1-dna_isolation_mammalian_cells</source>
 	</recipe>
 	<recipe id="R0011">
 		<name>Buffer PE (Wash buffer)</name>
@@ -498,8 +498,8 @@
 		<!-- ORGANIZATION -->
 		<category>buffer</category>
 		<category>nucleics</category>
-		<source doc_type="SOP" id="0020" version="1" visibility="public" license="CC-BY-SA-4.0"  definition="no">sop_0020-v1-plasmid_isolation</source>
 		<source doc_type="COL" id="0001" version="1" visibility="internal" license="CC-BY-SA-4.0"  definition="yes" primary="yes">co_0001-v1-stock_solutions</source>
+		<source doc_type="SOP" id="0020" version="1" visibility="public" license="CC-BY-SA-4.0"  definition="no">sop_0020-v1-plasmid_isolation</source>
 		<source doc_type="SOP" id="0021" version="1" visibility="public" license="CC-BY-SA-4.0"  definition="no">sop_0021-v1-purification_nucleic_acids</source>
 	</recipe>
 	<recipe id="R0012">
@@ -528,8 +528,8 @@
 		<!-- ORGANIZATION -->
 		<category>solution</category>
 		<category>common</category>
-		<source doc_type="SOP" id="0012" version="2" visibility="public" license="CC-BY-SA-4.0"  definition="no">sop_0012-v2-transfection_chemical</source>
 		<source doc_type="COL" id="0001" version="1" visibility="internal" license="CC-BY-SA-4.0"  definition="yes" primary="yes">co_0001-v1-stock_solutions</source>
+		<source doc_type="SOP" id="0012" version="2" visibility="public" license="CC-BY-SA-4.0"  definition="no">sop_0012-v2-transfection_chemical</source>
 	</recipe>
 	<recipe id="R0013">
 		<name>Carbenicillin</name>
@@ -589,7 +589,7 @@
 		<storage class="incubator" shelflife="5 days"/>
 		<storage class="fridge" shelflife="4 weeks"/>
 		<note type="quality">Photochemical decomposition results in yellowing</note>
-		<note type="orientation">Working concentration is <unit>10 to 30 microgram per milliliter</unit></note>
+		<note type="orientation">Working concentration is <unit>10 to 30 microgram per milliliter</unit>; use low-salt LB broths (“Lennox” or “Luria”) for selection</note>
 		<!-- ENVIRONMENT, HEALTH, SAFETY -->
 		<safety signal="danger">
 			<hazard category="2" type="serious_health_hazard">Carcinogenicity</hazard>
@@ -698,8 +698,8 @@
 		<!-- ORGANIZATION -->
 		<category>buffer</category>
 		<category>nucleics</category>
-		<source doc_type="SOP" id="0033" version="1" visibility="public" license="CC-BY-SA-4.0"  definition="no">sop_0033-v1-restriction_ligation_cloning</source>
 		<source doc_type="COL" id="0001" version="1" visibility="internal" license="CC-BY-SA-4.0"  definition="yes" primary="yes">co_0001-v1-stock_solutions</source>
+		<source doc_type="SOP" id="0033" version="1" visibility="public" license="CC-BY-SA-4.0"  definition="no">sop_0033-v1-restriction_ligation_cloning</source>
 	</recipe>
 	<recipe id="R0196">
 		<name>Doxycycline</name>
@@ -761,8 +761,8 @@
 		<!-- ORGANIZATION -->
 		<category>solution</category>
 		<category>common</category>
-		<source doc_type="SOP" id="0032" version="1" visibility="public" license="CC-BY-SA-4.0"  definition="no">sop_0032-v1-agarose_gel_electrophoresis</source>
 		<source doc_type="COL" id="0001" version="1" visibility="internal" license="CC-BY-SA-4.0"  definition="yes" primary="yes">co_0001-v1-stock_solutions</source>
+		<source doc_type="SOP" id="0032" version="1" visibility="public" license="CC-BY-SA-4.0"  definition="no">sop_0032-v1-agarose_gel_electrophoresis</source>
 	</recipe>
 	<recipe id="R0019">
 		<name>Ethidium bromide</name>
@@ -909,8 +909,8 @@
 		<!-- ORGANIZATION -->
 		<category>solution</category>
 		<category>common</category>
-		<source doc_type="SOP" id="0004" version="3" visibility="internal" license="CC-BY-SA-4.0"  definition="no">sop_0004-v3-production_recombinant_histones</source>
 		<source doc_type="COL" id="0001" version="1" visibility="internal" license="CC-BY-SA-4.0"  definition="yes" primary="yes">co_0001-v1-stock_solutions</source>
+		<source doc_type="SOP" id="0004" version="3" visibility="internal" license="CC-BY-SA-4.0"  definition="no">sop_0004-v3-production_recombinant_histones</source>
 	</recipe>
 	<recipe id="R0022">
 		<name>Glycerol</name>
@@ -1128,8 +1128,8 @@
 		<!-- ORGANIZATION -->
 		<category>solution</category>
 		<category>special</category>
-		<source doc_type="SOP" id="0004" version="3" visibility="internal" license="CC-BY-SA-4.0"  definition="no">sop_0004-v3-production_recombinant_histones</source>
 		<source doc_type="COL" id="0001" version="1" visibility="internal" license="CC-BY-SA-4.0"  definition="yes" primary="yes">co_0001-v1-stock_solutions</source>
+		<source doc_type="SOP" id="0004" version="3" visibility="internal" license="CC-BY-SA-4.0"  definition="no">sop_0004-v3-production_recombinant_histones</source>
 	</recipe>
 	<recipe id="R0029">
 		<name>Kanamycin</name>
@@ -1162,8 +1162,8 @@
 		<!-- category>solution</category -->
 		<category>antibiotics</category>
 		<category>bacterial</category>
-		<source doc_type="SOP" id="0035" version="1" visibility="internal" license="CC-BY-SA-4.0"  definition="yes">sop_0035-v1-protocol_writing</source>
 		<source doc_type="COL" id="0001" version="1" visibility="internal" license="CC-BY-SA-4.0"  definition="yes" primary="yes">co_0001-v1-stock_solutions</source>
+		<source doc_type="SOP" id="0035" version="1" visibility="internal" license="CC-BY-SA-4.0"  definition="yes">sop_0035-v1-protocol_writing</source>
 	</recipe>
 	<recipe id="R0030">
 		<name>LB medium (Miller)</name>
@@ -1191,17 +1191,18 @@
 		</ingredient>
 		<ingredient CAS="7647-14-5" PubChem="compound/5234">
 			<name>NaCl</name>
-			<amount>5.0 gram</amount>
+			<amount>10.0 gram</amount>
 			<stock>58.44 gram per mol</stock>
 			<final>86 millimolar</final>
 		</ingredient>
+		<note type="orientation">Sodium chloride content varies between LB broths. Miller&apos;s LB broth (sometimes referred to as “Luria”) contains <unit>10 gram per liter</unit> sodium chloride; the modified Miller&apos;s broths “Lennox” and “Luria” contain <unit>5 gram per liter</unit> and <unit>0.5 gram per liter</unit> for salt-sensitive strains or selection with salt-sensitive antibiotics such as tetracycline and chrloramphenicol</note>
 		<note type="critical">Although the pH is adjusted near <pH>7.0</pH> with sodium hydroxide, LB medium is not very highly buffered</note>
 		<!-- ENVIRONMENT, HEALTH, SAFETY -->
 		<!-- ORGANIZATION -->
 		<category>media</category>
 		<category>bacterial</category>
-		<source doc_type="SOP" id="0004" version="3" visibility="internal" license="CC-BY-SA-4.0"  definition="no">sop_0004-v3-production_recombinant_histones</source>
 		<source doc_type="COL" id="0001" version="1" visibility="internal" license="CC-BY-SA-4.0"  definition="yes" primary="yes">co_0001-v1-stock_solutions</source>
+		<source doc_type="SOP" id="0004" version="3" visibility="internal" license="CC-BY-SA-4.0"  definition="no">sop_0004-v3-production_recombinant_histones</source>
 	</recipe>
 	<recipe id="R0079">
 		<name>Lysozyme</name>
@@ -1575,12 +1576,12 @@
 		<!-- ORGANIZATION -->
 		<category>buffer</category>
 		<category>common</category>
-		<source doc_type="SOP" id="0027" version="1" visibility="internal" license="CC-BY-SA-4.0"  definition="no">sop_0027-v1-immunoprecipitation</source>
 		<source doc_type="COL" id="0001" version="1" visibility="internal" license="CC-BY-SA-4.0"  definition="yes" primary="yes">co_0001-v1-stock_solutions</source>
+		<source doc_type="SOP" id="0028" version="2" visibility="internal" license="CC-BY-SA-4.0"  definition="no">sop_0028-v2-cell_cycle_synchronization</source>
+		<source doc_type="SOP" id="0027" version="1" visibility="internal" license="CC-BY-SA-4.0"  definition="no">sop_0027-v1-immunoprecipitation</source>
+		<source doc_type="SOP" id="0029" version="1" visibility="internal" license="CC-BY-SA-4.0"  definition="no">sop_0029-v1-cell_cycle_flow_cytometry</source>
 		<source doc_type="SOP" id="0002" version="1" visibility="public" license="CC-BY-SA-4.0"  definition="no">sop_0002-v1-whole_cell_extraction_mammalian_cells</source>
 		<source doc_type="SOP" id="0001" version="1" visibility="public" license="CC-BY-SA-4.0"  definition="no">sop_0001-v1-isolation_nuclei</source>
-		<source doc_type="SOP" id="0029" version="1" visibility="internal" license="CC-BY-SA-4.0"  definition="no">sop_0029-v1-cell_cycle_flow_cytometry</source>
-		<source doc_type="SOP" id="0028" version="2" visibility="internal" license="CC-BY-SA-4.0"  definition="no">sop_0028-v2-cell_cycle_synchronization</source>
 	</recipe>
 	<recipe id="R0074">
 		<name>Phosphatase inhibitor cocktail</name>
@@ -1697,8 +1698,8 @@
 		<!-- ORGANIZATION -->
 		<category>solution</category>
 		<category>mammalian</category>
-		<source doc_type="SOP" id="0013" version="1" visibility="internal" license="CC-BY-SA-4.0"  definition="no">sop_0013-v1-transfection_electroporation</source>
 		<source doc_type="COL" id="0001" version="1" visibility="internal" license="CC-BY-SA-4.0"  definition="yes" primary="yes">co_0001-v1-stock_solutions</source>
+		<source doc_type="SOP" id="0013" version="1" visibility="internal" license="CC-BY-SA-4.0"  definition="no">sop_0013-v1-transfection_electroporation</source>
 	</recipe>
 	<recipe id="R0038">
 		<name>Potassium chloride</name>
@@ -2020,8 +2021,8 @@
 		<!-- ORGANIZATION -->
 		<category>solution</category>
 		<category>special</category>
-		<source doc_type="SOP" id="0024" version="1" visibility="public" license="CC-BY-SA-4.0"  definition="no">sop_0024-v1-dna_isolation_mammalian_cells</source>
 		<source doc_type="COL" id="0001" version="1" visibility="internal" license="CC-BY-SA-4.0"  definition="yes" primary="yes">co_0001-v1-stock_solutions</source>
+		<source doc_type="SOP" id="0024" version="1" visibility="public" license="CC-BY-SA-4.0"  definition="no">sop_0024-v1-dna_isolation_mammalian_cells</source>
 	</recipe>
 	<recipe id="R0044">
 		<name>S. O. C. medium</name>
@@ -2114,8 +2115,8 @@
 		<!-- ORGANIZATION -->
 		<category>solution</category>
 		<category>common</category>
-		<source doc_type="SOP" id="0021" version="1" visibility="public" license="CC-BY-SA-4.0"  definition="no">sop_0021-v1-purification_nucleic_acids</source>
 		<source doc_type="COL" id="0001" version="1" visibility="internal" license="CC-BY-SA-4.0"  definition="yes" primary="yes">co_0001-v1-stock_solutions</source>
+		<source doc_type="SOP" id="0021" version="1" visibility="public" license="CC-BY-SA-4.0"  definition="no">sop_0021-v1-purification_nucleic_acids</source>
 	</recipe>
 	<recipe id="R0077">
 		<name>Sodium azide</name>
@@ -2466,8 +2467,8 @@
 		<!-- ORGANIZATION -->
 		<category>solution</category>
 		<category>common</category>
-		<source doc_type="SOP" id="0003" version="1" visibility="public" license="CC-BY-SA-4.0"  definition="no">sop_0003-v1-native_page</source>
 		<source doc_type="COL" id="0001" version="1" visibility="internal" license="CC-BY-SA-4.0"  definition="yes" primary="yes">co_0001-v1-stock_solutions</source>
+		<source doc_type="SOP" id="0003" version="1" visibility="public" license="CC-BY-SA-4.0"  definition="no">sop_0003-v1-native_page</source>
 	</recipe>
 	<recipe id="R0041">
 		<name>Synthetic dextrose (SD) minimal medium</name>
@@ -2772,7 +2773,7 @@
 		<workup>Dispense into <unit>1 milliliter</unit> aliquots</workup>
 		<storage class="freezer"/>
 		<storage class="fridge" shelflife="4 days"/>
-		<note type="orientation">Working concentration is <unit>10 to 15 microgram per milliliter</unit></note>
+		<note type="orientation">Working concentration is <unit>10 to 15 microgram per milliliter</unit>; use low-salt LB broths (“Lennox” or “Luria”) for selection</note>
 		<!-- ENVIRONMENT, HEALTH, SAFETY -->
 		<safety signal="warning">
 			<hazard category="2" type="flammable">Flammable liquid</hazard>
@@ -2909,8 +2910,8 @@
 		<!-- ORGANIZATION -->
 		<category>buffer</category>
 		<category>common</category>
-		<source doc_type="SOP" id="0003" version="1" visibility="public" license="CC-BY-SA-4.0"  definition="no">sop_0003-v1-native_page</source>
 		<source doc_type="COL" id="0001" version="1" visibility="internal" license="CC-BY-SA-4.0"  definition="yes" primary="yes">co_0001-v1-stock_solutions</source>
+		<source doc_type="SOP" id="0003" version="1" visibility="public" license="CC-BY-SA-4.0"  definition="no">sop_0003-v1-native_page</source>
 	</recipe>
 	<recipe id="R0053">
 		<name>Tris-buffered saline</name>
@@ -3054,8 +3055,8 @@
 		<!-- ORGANIZATION -->
 		<category>buffer</category>
 		<category>common</category>
-		<source doc_type="SOP" id="0020" version="1" visibility="public" license="CC-BY-SA-4.0"  definition="no">sop_0020-v1-plasmid_isolation</source>
 		<source doc_type="COL" id="0001" version="1" visibility="internal" license="CC-BY-SA-4.0"  definition="yes" primary="yes">co_0001-v1-stock_solutions</source>
+		<source doc_type="SOP" id="0020" version="1" visibility="public" license="CC-BY-SA-4.0"  definition="no">sop_0020-v1-plasmid_isolation</source>
 		<source doc_type="SOP" id="0021" version="1" visibility="public" license="CC-BY-SA-4.0"  definition="no">sop_0021-v1-purification_nucleic_acids</source>
 	</recipe>
 	<recipe id="R0057">
@@ -3085,9 +3086,9 @@
 		<!-- ORGANIZATION -->
 		<category>solution</category>
 		<category>common</category>
-		<source doc_type="SOP" id="0001" version="1" visibility="public" license="CC-BY-SA-4.0"  definition="no">sop_0001-v1-isolation_nuclei</source>
 		<source doc_type="COL" id="0001" version="1" visibility="internal" license="CC-BY-SA-4.0"  definition="yes" primary="yes">co_0001-v1-stock_solutions</source>
 		<source doc_type="SOP" id="0004" version="3" visibility="internal" license="CC-BY-SA-4.0"  definition="no">sop_0004-v3-production_recombinant_histones</source>
+		<source doc_type="SOP" id="0001" version="1" visibility="public" license="CC-BY-SA-4.0"  definition="no">sop_0001-v1-isolation_nuclei</source>
 	</recipe>
 	<recipe id="R0081">
 		<name>Trypsin solution</name>
@@ -3130,8 +3131,8 @@
 		<!-- ORGANIZATION -->
 		<category>solution</category>
 		<category>mammalian</category>
-		<source doc_type="SOP" id="0015" version="1" visibility="public" license="CC-BY-SA-4.0"  definition="no">sop_0015-v1-routine_cell_culture_HeLa</source>
 		<source doc_type="COL" id="0001" version="1" visibility="internal" license="CC-BY-SA-4.0"  definition="yes" primary="yes">co_0001-v1-stock_solutions</source>
+		<source doc_type="SOP" id="0015" version="1" visibility="public" license="CC-BY-SA-4.0"  definition="no">sop_0015-v1-routine_cell_culture_HeLa</source>
 	</recipe>
 	<recipe id="R0082">
 		<name>Trypsin inhibitor solution</name>
@@ -3477,8 +3478,8 @@
 		<!-- ORGANIZATION -->
 		<category>solution</category>
 		<category>special</category>
-		<source doc_type="SOP" id="0002" version="1" visibility="public" license="CC-BY-SA-4.0"  definition="no">sop_0002-v1-whole_cell_extraction_mammalian_cells</source>
 		<source doc_type="SOP" id="0001" version="1" visibility="public" license="CC-BY-SA-4.0"  definition="yes" primary="yes">sop_0001-v1-isolation_nuclei</source>
+		<source doc_type="SOP" id="0002" version="1" visibility="public" license="CC-BY-SA-4.0"  definition="no">sop_0002-v1-whole_cell_extraction_mammalian_cells</source>
 	</recipe>
 	<recipe id="R0091">
 		<name>Swelling buffer</name>
@@ -3620,8 +3621,8 @@
 			<amount>10 milliliter</amount>
 		</ingredient>
 		<workup>Dissolve the dye in <unit>80 percent</unit> of the final volume; bring to a slow boil, cool down and make up with water</workup>
-		<source doc_type="SOP" id="0014" version="1" visibility="public" license="CC-BY-SA-4.0"  definition="yes" primary="yes">sop_0014-v1-counting_cells</source>
 		<source doc_type="SOP" id="0001" version="1" visibility="public" license="CC-BY-SA-4.0"  definition="no">sop_0001-v1-isolation_nuclei</source>
+		<source doc_type="SOP" id="0014" version="1" visibility="public" license="CC-BY-SA-4.0"  definition="yes" primary="yes">sop_0014-v1-counting_cells</source>
 	</recipe>
 	<recipe id="R0148">
 		<name>Radioimmunoprecipitation lysis buffer</name>
@@ -4225,8 +4226,8 @@
 		<!-- ORGANIZATION -->
 		<category>buffer</category>
 		<category>special</category>
+		<source doc_type="SOP" id="0006" version="3" visibility="internal" license="CC-BY-SA-4.0"  definition="yes">sop_0006-v3-production_nucleosome</source>
 		<source doc_type="SOP" id="0005" version="2" visibility="public" license="CC-BY-SA-4.0"  definition="yes" primary="yes">sop_0005-v2-production_histone_octamers</source>
-		<source doc_type="SOP" id="0006" version="2" visibility="internal" license="CC-BY-SA-4.0"  definition="yes">sop_0006-v2-production_nucleosome</source>
 	</recipe>
 	<recipe id="R0101">
 		<name>Tris-EDTA-KCl</name>
@@ -4271,7 +4272,7 @@
 		<!-- ORGANIZATION -->
 		<category>buffer</category>
 		<category>special</category>
-		<source doc_type="SOP" id="0006" version="2" visibility="internal" license="CC-BY-SA-4.0"  definition="yes" primary="yes">sop_0006-v2-production_nucleosome</source>
+		<source doc_type="SOP" id="0006" version="3" visibility="internal" license="CC-BY-SA-4.0"  definition="yes" primary="yes">sop_0006-v3-production_nucleosome</source>
 	</recipe>
 	<recipe id="R0102">
 		<name>Tris-Cl</name>
