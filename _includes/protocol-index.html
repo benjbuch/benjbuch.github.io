@@ -32,8 +32,13 @@
     {% for item in sorted %}
       {%- assign is_share = item.visibility == 'public' or item.visibility == 'draft' -%}
       {%- assign pdf_path = '/assets/protocols/pdf/' | append: item.filename | append: '.pdf' -%}
+      {%- assign compact_path = '/assets/protocols/pdf/' | append: item.filename | append: '-compact.pdf' -%}
       {%- assign has_file = site.static_files
             | where: 'path', pdf_path
+            | size
+      -%}
+      {%- assign has_compact = site.static_files
+            | where: 'path', compact_path
             | size
       -%}
       {% assign kw = item.keywords %}
@@ -60,6 +65,9 @@
             <a href="{{ pdf_path }}">{{ item.title }}</a>
           {%- else -%}
             {{ item.title }}
+          {%- endif -%}
+          {%- if is_share and has_compact > 0 -%}
+            <a href="{{ compact_path }}" title="Compact version for the bench" aria-label="Compact version for the bench" style="margin-left: 0.5em;"><span class="fa fa-sticky-note muted" aria-hidden="true"></span></a>
           {%- endif -%}
         </td>
         <td data-value="{{ attr_domain | escape }}">{{ attr_domain | capitalize }}</td>
