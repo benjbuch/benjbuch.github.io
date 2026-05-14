@@ -257,11 +257,11 @@
   title: "Plasmid preparation by alkaline lysis"
   visibility: "public"
   keywords:
-    domain: molecular biology
-    level: basic
     topic: [nucleic acid purification, DNA purification]
     workflow: sample preparation
+    level: basic
     technique: [alkaline lysis, silica column, plasmid preparation]
+    domain: molecular biology
   current_commit_hash: "e27f3a6"
   current_commit_time: "2026-05-14T00:51:27-04:00"
   revision_date: "2023-05-30"
@@ -581,11 +581,11 @@
   title: "Restriction digest, end modification, and ligation of DNA"
   visibility: "public"
   keywords:
-    domain: molecular biology
-    level: basic
-    technique: [restriction digestion, ligation, vector construction]
     topic: [cloning, cloning strategies]
+    level: basic
     workflow: sample preparation
+    domain: molecular biology
+    technique: [restriction digestion, ligation, vector construction]
   current_commit_hash: "8ddfcb6"
   current_commit_time: "2026-02-27T18:05:20-05:00"
   revision_date: "2024-07-22"
