@@ -98,7 +98,11 @@
     });
     var otherCount = allRows.filter(function(tr) {
       var idCell = tr.children[0];
-      return idCell && !assignedIds.has(idCell.getAttribute('data-value') || '') && !tr.hidden;
+      if (!idCell) return false;
+      if (assignedIds.has(idCell.getAttribute('data-value') || '')) return false;
+      if (tr.hidden) return false;
+      var titleCell = tr.children[1];
+      return !!(titleCell && titleCell.querySelector('a'));
     }).length;
     var allCounts = matchCounts.concat(otherCount > 0 ? [otherCount] : []);
     var activeCounts = allCounts.filter(function(n) { return n > 0; });
@@ -160,11 +164,15 @@
       container.appendChild(group);
     });
 
-    // "Other" — protocols not listed in any chapter
+    // "Other" — protocols not listed in any chapter, excluding stubs
+    // (rows whose title cell has no link because there's no PDF yet).
     var otherRows = allRows.filter(function(tr) {
       var idCell = tr.children[0];
       if (!idCell) return false;
-      return !assignedIds.has(idCell.getAttribute('data-value') || '') && !tr.hidden;
+      if (assignedIds.has(idCell.getAttribute('data-value') || '')) return false;
+      if (tr.hidden) return false;
+      var titleCell = tr.children[1];
+      return !!(titleCell && titleCell.querySelector('a'));
     });
 
     if (otherRows.length > 0) {

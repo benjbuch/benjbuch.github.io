@@ -133,6 +133,16 @@
           "text": "Add procedures for submodules and rename history preservation."
         }]
   },{
+    "id": "SOP0036",
+    "filename": "sop_0036-v2-banking_and_tracking",
+    "changes": [{
+          "time": "2025-04-10",
+          "text": "Initial draft, based on content from SOP0019."
+        },{
+          "time": "2026-05-13",
+          "text": "Folded guidelines into a “Setting up the inventory system” procedure; retired the element. Editorial pass: reorder, rename banking variants, grammar fixes. Reframed setup steps as default-engineering; rewrote abstract."
+        }]
+  },{
     "id": "SOP0038",
     "filename": "sop_0038-v1-crispr_design",
     "changes": [{
@@ -159,7 +169,7 @@
           "text": "Corrected diluted molar concentrations of MES and MOPS running buffers to 50 millimolar; added a section on crosslinker ratios."
         },{
           "time": "2024-07-17",
-          "text": "Adjusted volumes of resolving gels to accomodate three gels with 1.5 millimeter spacer or four gels with 1.0 millimeter."
+          "text": "Adjusted volumes of resolving gels to accommodate three gels with 1.5 millimeter spacer or four gels with 1.0 millimeter."
         }]
   },{
     "id": "SOP0020",
@@ -432,16 +442,6 @@
         },{
           "time": "2025-04-17",
           "text": ""
-        }]
-  },{
-    "id": "SOP0036",
-    "filename": "sop_0036-v2-banking_and_tracking",
-    "changes": [{
-          "time": "2025-04-10",
-          "text": "Initial draft, based on content from SOP0019."
-        },{
-          "time": "2026-05-13",
-          "text": "Folded guidelines into a “Setting up the inventory system” procedure; retired the element. Editorial pass: reorder, rename banking variants, grammar fixes. Reframed setup steps as default-engineering; rewrote abstract."
         }]
   },{
     "id": "SOP0027",
