@@ -22,7 +22,7 @@ def main():
         ARTIFACTS_CORE = Path(os.environ['ARTIFACTS_CORE']).expanduser()
     
     if not ARTIFACTS_CORE.exists():
-        print(f"[ERROR] Artifact core not found: {ARTIFACTS_CORE}")
+        print(f"artifacts.py: error: core not found: {ARTIFACTS_CORE}", file=sys.stderr)
         sys.exit(1)
     
     result = subprocess.run(
