@@ -754,7 +754,7 @@ document.addEventListener("DOMContentLoaded", function () {
     var id = card.getAttribute("data-recipe-id");
 
     // Close button
-    if (e.target.classList.contains("rc-close")) {
+    if (e.target.closest(".rc-close")) {
       var idx = selectedIds.indexOf(id);
       if (idx !== -1) selectedIds.splice(idx, 1);
       delete scaleMap[id];
@@ -764,8 +764,9 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 
     // Scale preset buttons
-    if (e.target.classList.contains("rc-scale-btn")) {
-      var scale = parseFloat(e.target.dataset.scale);
+    var scaleBtn = e.target.closest(".rc-scale-btn");
+    if (scaleBtn) {
+      var scale = parseFloat(scaleBtn.dataset.scale);
       if (isNaN(scale) || scale <= 0) return;
       setScale(id, scale);
       syncScaleUI();
@@ -774,9 +775,10 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 
     // Cross-reference links
-    if (e.target.classList.contains("rc-ref-link")) {
+    var refBtn = e.target.closest(".rc-ref-link");
+    if (refBtn) {
       e.stopPropagation();
-      var refId = e.target.getAttribute("data-ref");
+      var refId = refBtn.getAttribute("data-ref");
       var target = allRecipes.find(function (r) { return r.id === refId; });
       if (target && selectedIds.indexOf(refId) === -1) {
         selectedIds.push(refId);
