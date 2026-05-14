@@ -2529,8 +2529,8 @@
 		<category>solution</category>
 		<category>special</category>
 		<category>nucleics</category>
-		<source doc_type="SOP" id="0023" version="1" visibility="public" license="CC-BY-SA-4.0"  definition="yes" primary="yes">sop_0023-v1-rna_isolation_trizol</source>
 		<source doc_type="SOP" id="0032" version="1" visibility="public" license="CC-BY-SA-4.0"  definition="yes">sop_0032-v1-agarose_gel_electrophoresis</source>
+		<source doc_type="SOP" id="0023" version="1" visibility="public" license="CC-BY-SA-4.0"  definition="yes" primary="yes">sop_0023-v1-rna_isolation_trizol</source>
 	</recipe>
 	<recipe id="R0142">
 		<name>Cell lysis buffer</name>
