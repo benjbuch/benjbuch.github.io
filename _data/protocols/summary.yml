@@ -5,11 +5,11 @@
   title: "In-gel protein staining with Coomassie Brilliant Blue"
   visibility: "public"
   keywords:
-    topic: [protein analysis, protein visualization]
-    workflow: analysis
     domain: biochemistry
+    workflow: analysis
     technique: Coomassie staining
     level: basic
+    topic: [protein analysis, protein visualization]
   current_commit_hash: "7de12ac"
   current_commit_time: "2026-03-03T17:55:21-05:00"
   revision_date: "2023-01-16"
@@ -23,11 +23,11 @@
   title: "Designing and performing dilutions"
   visibility: "public"
   keywords:
-    workflow: sample preparation
-    level: introductory
     domain: core skills
-    topic: [reagent preparation, solution handling]
+    level: introductory
+    workflow: sample preparation
     technique: [pipetting, serial dilution, concentration control, standard curve generation]
+    topic: [reagent preparation, solution handling]
   current_commit_hash: "d24ec88"
   current_commit_time: "2026-02-28T10:21:30-05:00"
   revision_date: "2026-02-26"
@@ -41,10 +41,10 @@
   title: "Cultivating MCF 10A cells"
   visibility: "public"
   keywords:
-    domain: tissue culture
-    topic: cell maintenance
-    workflow: sample preparation
     technique: [cell seeding, Matrigel culture, 3D culture, organoid formation]
+    domain: tissue culture
+    workflow: sample preparation
+    topic: cell maintenance
     level: intermediate
   current_commit_hash: "bd69776"
   current_commit_time: "2026-03-03T21:55:49-05:00"
@@ -77,11 +77,11 @@
   title: "Purification of nucleic acids from agarose gels"
   visibility: "public"
   keywords:
-    technique: [agarose gel excision, silica purification, electrophoresis]
     level: basic
-    topic: [nucleic acid purification, DNA purification]
-    workflow: sample preparation
     domain: molecular biology
+    workflow: sample preparation
+    technique: [agarose gel excision, silica purification, electrophoresis]
+    topic: [nucleic acid purification, DNA purification]
   current_commit_hash: "b50402c"
   current_commit_time: "2026-03-04T12:57:20-05:00"
   revision_date: "2023-11-26"
@@ -95,11 +95,11 @@
   title: "Making reagents and buffers"
   visibility: "public"
   keywords:
-    topic: [reagent preparation, solution handling]
-    technique: [buffer preparation, pH adjustment, sample storage]
-    level: introductory
     workflow: sample preparation
     domain: core skills
+    level: introductory
+    technique: [buffer preparation, pH adjustment, sample storage]
+    topic: [reagent preparation, solution handling]
   current_commit_hash: "73a04ee"
   current_commit_time: "2026-02-28T10:12:11-05:00"
   revision_date: "2026-02-25"
@@ -113,10 +113,10 @@
   title: "Cultivating HeLa cells"
   visibility: "public"
   keywords:
-    topic: cell maintenance
-    workflow: sample preparation
     level: basic
+    workflow: sample preparation
     technique: cell seeding
+    topic: cell maintenance
     domain: tissue culture
   current_commit_hash: "75071e5"
   current_commit_time: "2026-02-28T10:09:57-05:00"
@@ -131,11 +131,11 @@
   title: "Purification of nucleic acids"
   visibility: "public"
   keywords:
+    technique: [alcohol precipitation, silica column]
+    topic: [nucleic acid purification, DNA purification]
+    domain: molecular biology
     level: basic
     workflow: sample preparation
-    domain: molecular biology
-    topic: [nucleic acid purification, DNA purification]
-    technique: [alcohol precipitation, silica column]
   current_commit_hash: "afdf440"
   current_commit_time: "2026-02-28T09:39:56-05:00"
   revision_date: "2023-06-10"
@@ -149,11 +149,11 @@
   title: "Native polyacrylamide gel electrophoresis"
   visibility: "public"
   keywords:
+    level: advanced
     topic: [protein analysis, protein complex analysis]
     domain: biochemistry
-    technique: [native PAGE, gel casting, gel electrophoresis]
-    level: advanced
     workflow: analysis
+    technique: [native PAGE, gel casting, gel electrophoresis]
   current_commit_hash: "d7773cc"
   current_commit_time: "2026-02-28T09:34:15-05:00"
   revision_date: "2025-03-30"
@@ -167,11 +167,11 @@
   title: "Nuclear extraction and fractionation of chromatin-associated proteins"
   visibility: "public"
   keywords:
+    technique: [hypotonic lysis, salt extraction, fractionation]
+    topic: [chromatin biology, sub-cellular fractionation]
     workflow: sample preparation
     domain: cell biology
-    technique: [hypotonic lysis, salt extraction, fractionation]
     level: advanced
-    topic: [chromatin biology, sub-cellular fractionation]
   current_commit_hash: "ece3127"
   current_commit_time: "2026-03-04T12:57:20-05:00"
   revision_date: "2023-12-10"
@@ -185,11 +185,11 @@
   title: "Version control using Git and GitHub"
   visibility: "public"
   keywords:
-    topic: [reproducible research, data management]
-    level: introductory
-    domain: data management
     technique: [Git, GitHub, version control, git submodule, git filter-repo]
+    topic: [reproducible research, data management]
     workflow: documentation
+    domain: data management
+    level: introductory
   current_commit_hash: "94670e8"
   current_commit_time: "2026-05-12T22:02:43-04:00"
   revision_date: "2026-05-12"
@@ -203,11 +203,11 @@
   title: "Design and cloning of CRISPR guide RNAs"
   visibility: "public"
   keywords:
-    level: advanced
-    technique: [CRISPR design, off-target analysis, guide RNA design]
     domain: tissue culture
-    workflow: sample preparation
+    technique: [CRISPR design, off-target analysis, guide RNA design]
     topic: [cell engineering, genome editing]
+    workflow: sample preparation
+    level: advanced
   current_commit_hash: "c378edf"
   current_commit_time: "2026-02-28T09:48:24-05:00"
   revision_date: "2025-05-28"
@@ -223,9 +223,9 @@
   keywords:
     topic: [protein analysis, protein separation]
     workflow: analysis
-    domain: biochemistry
     level: basic
     technique: [SDS-PAGE, gel casting, gel electrophoresis, denaturing electrophoresis]
+    domain: biochemistry
   current_commit_hash: "a102351"
   current_commit_time: "2026-03-03T23:21:20-05:00"
   revision_date: "2024-07-17"
@@ -239,11 +239,11 @@
   title: "Plasmid preparation by alkaline lysis"
   visibility: "public"
   keywords:
+    domain: molecular biology
     technique: [alkaline lysis, silica column, plasmid preparation]
+    level: basic
     topic: [nucleic acid purification, DNA purification]
     workflow: sample preparation
-    level: basic
-    domain: molecular biology
   current_commit_hash: "336cef9"
   current_commit_time: "2026-02-27T19:11:45-05:00"
   revision_date: "2023-05-30"
@@ -257,11 +257,11 @@
   title: "Non-viral transfection of animal tissue culture cells"
   visibility: "public"
   keywords:
-    level: basic
     workflow: sample preparation
-    topic: [cell engineering, transient expression]
-    technique: [lipofection, PEI transfection]
     domain: tissue culture
+    topic: [cell engineering, transient expression]
+    level: basic
+    technique: [lipofection, PEI transfection]
   current_commit_hash: "8e345b3"
   current_commit_time: "2026-03-03T23:21:20-05:00"
   revision_date: "2025-04-05"
@@ -275,11 +275,11 @@
   title: "Acidic extraction of histone proteins"
   visibility: "public"
   keywords:
-    technique: [acid extraction, acetone precipitation, fractionation]
+    level: advanced
     topic: [chromatin biology, sub-cellular fractionation]
     workflow: sample preparation
     domain: cell biology
-    level: advanced
+    technique: [acid extraction, acetone precipitation, fractionation]
   current_commit_hash: "153579f"
   current_commit_time: "2026-02-28T09:28:37-05:00"
   revision_date: "2023-10-26"
@@ -293,11 +293,11 @@
   title: "Making and running agarose gels"
   visibility: "public"
   keywords:
-    technique: [agarose gel electrophoresis, ethidium bromide staining]
     domain: molecular biology
-    workflow: analysis
     level: basic
     topic: [nucleic acid analysis, DNA visualization]
+    workflow: analysis
+    technique: [agarose gel electrophoresis, ethidium bromide staining]
   current_commit_hash: "c20caa8"
   current_commit_time: "2026-03-04T12:57:20-05:00"
   revision_date: "2023-11-26"
@@ -312,9 +312,9 @@
   visibility: "public"
   keywords:
     domain: cell biology
+    technique: [cell lysis, nuclear isolation]
     workflow: sample preparation
     topic: [chromatin biology, sub-cellular fractionation]
-    technique: [cell lysis, nuclear isolation]
     level: basic
   current_commit_hash: "88dcc8c"
   current_commit_time: "2026-03-03T21:50:08-05:00"
@@ -329,11 +329,11 @@
   title: "Generation of stable cell lines using DNA transposases"
   visibility: "public"
   keywords:
-    topic: [cell engineering, stable expression]
-    domain: tissue culture
-    workflow: sample preparation
     level: intermediate
+    domain: tissue culture
     technique: PiggyBac integration
+    workflow: sample preparation
+    topic: [cell engineering, stable expression]
   current_commit_hash: "a3ffad2"
   current_commit_time: "2026-03-04T12:57:19-05:00"
   revision_date: "2023-11-12"
@@ -347,11 +347,11 @@
   title: "Writing a good protocol"
   visibility: "public"
   keywords:
-    level: introductory
     domain: core skills
-    topic: reproducible research
     workflow: documentation
+    level: introductory
     technique: writing
+    topic: reproducible research
   current_commit_hash: "17ad3a0"
   current_commit_time: "2026-05-13T01:47:41-04:00"
   revision_date: "2026-05-12"
@@ -365,11 +365,11 @@
   title: "Western blotting"
   visibility: "public"
   keywords:
-    topic: [protein analysis, protein detection]
     technique: [Western blot, transfer]
-    domain: biochemistry
     level: basic
     workflow: analysis
+    domain: biochemistry
+    topic: [protein analysis, protein detection]
   current_commit_hash: "4241117"
   current_commit_time: "2026-03-03T16:59:39-05:00"
   revision_date: "2023-01-13"
@@ -383,11 +383,11 @@
   title: "Selection and screening of stable mammalian cell lines"
   visibility: "public"
   keywords:
-    technique: [drug resistance assay, reporter assay, antibiotic selection]
-    level: basic
-    workflow: analysis
     topic: [cell engineering, phenotypic screening]
     domain: tissue culture
+    workflow: analysis
+    technique: [drug resistance assay, reporter assay, antibiotic selection]
+    level: basic
   current_commit_hash: "698664f"
   current_commit_time: "2026-03-04T12:57:20-05:00"
   revision_date: "2023-04-28"
@@ -401,11 +401,11 @@
   title: "Immunoblotting"
   visibility: "public"
   keywords:
-    workflow: analysis
-    technique: [Western blot, antibody labeling, chemiluminescence, immunodetection, immunoassay]
-    topic: [protein analysis, protein detection]
-    level: basic
     domain: biochemistry
+    topic: [protein analysis, protein detection]
+    technique: [Western blot, antibody labeling, chemiluminescence, immunodetection, immunoassay]
+    level: basic
+    workflow: analysis
   current_commit_hash: "e1dd568"
   current_commit_time: "2026-03-03T21:55:49-05:00"
   revision_date: "2023-01-15"
@@ -419,11 +419,11 @@
   title: "In-gel protein staining with silver nitrate"
   visibility: "public"
   keywords:
+    workflow: analysis
+    topic: [protein analysis, protein visualization]
     domain: biochemistry
     level: advanced
     technique: silver staining
-    topic: [protein analysis, protein visualization]
-    workflow: analysis
   current_commit_hash: "c29d2eb"
   current_commit_time: "2026-03-03T21:55:49-05:00"
   revision_date: "2025-04-05"
@@ -437,10 +437,10 @@
   title: "Transformation of plasmids into a bacterial host"
   visibility: "public"
   keywords:
+    technique: [heat shock, antibiotic selection, bacterial cloning, competent cells]
+    level: basic
     workflow: sample preparation
     domain: molecular biology
-    level: basic
-    technique: [heat shock, antibiotic selection, bacterial cloning, competent cells]
     topic: [cloning, cloning strategies]
   current_commit_hash: "ba46f46"
   current_commit_time: "2026-04-15T16:48:12-04:00"
@@ -455,11 +455,11 @@
   title: "Lentiviral generation of stable animal cell lines"
   visibility: "public"
   keywords:
-    level: advanced
-    technique: [lentiviral transduction, MOI optimization]
-    domain: tissue culture
-    workflow: sample preparation
     topic: [cell engineering, stable expression]
+    technique: [lentiviral transduction, MOI optimization]
+    level: advanced
+    workflow: sample preparation
+    domain: tissue culture
   current_commit_hash: "19cff4e"
   current_commit_time: "2026-03-04T12:55:52-05:00"
   revision_date: "2025-07-25"
@@ -473,11 +473,11 @@
   title: "Environment management for scientific computing"
   visibility: "public"
   keywords:
-    domain: data management
-    level: introductory
-    workflow: software setup
-    technique: [conda, mamba, package management]
     topic: [reproducible research, computational environment]
+    domain: data management
+    technique: [conda, mamba, package management]
+    workflow: software setup
+    level: introductory
   current_commit_hash: "e9c2681"
   current_commit_time: "2026-05-11T17:57:16-04:00"
   revision_date: "2026-05-10"
@@ -493,9 +493,9 @@
   keywords:
     technique: [cell counting, hemocytometer, trypan blue exclusion]
     topic: [cell maintenance, viability assessment]
-    level: basic
     workflow: analysis
     domain: tissue culture
+    level: basic
   current_commit_hash: "47ee1cc"
   current_commit_time: "2026-02-27T13:10:30-05:00"
   revision_date: "2023-03-14"
@@ -510,10 +510,10 @@
   visibility: "public"
   keywords:
     domain: cell biology
+    topic: [protein analysis, sub-cellular fractionation]
     workflow: sample preparation
     technique: [cell lysis, whole-cell extraction]
     level: basic
-    topic: [protein analysis, sub-cellular fractionation]
   current_commit_hash: "a298d81"
   current_commit_time: "2026-03-03T23:21:19-05:00"
   revision_date: "2026-03-03"
@@ -527,11 +527,11 @@
   title: "Extraction of genomic DNA from tissue culture cells"
   visibility: "public"
   keywords:
+    technique: [cell lysis, proteinase K digestion, silica purification]
     domain: molecular biology
     level: intermediate
     workflow: sample preparation
     topic: [nucleic acid purification, DNA extraction]
-    technique: [cell lysis, proteinase K digestion, silica purification]
   current_commit_hash: "a555329"
   current_commit_time: "2026-03-03T21:55:49-05:00"
   revision_date: "2023-11-11"
@@ -545,11 +545,11 @@
   title: "Qualitative polymerase chain reactions"
   visibility: "public"
   keywords:
+    workflow: analysis
+    domain: molecular biology
     topic: [nucleic acid analysis, DNA amplification]
     level: basic
-    domain: molecular biology
     technique: [qualitative PCR, gel analysis, PCR]
-    workflow: analysis
   current_commit_hash: "7026ca8"
   current_commit_time: "2026-03-03T21:55:50-05:00"
   revision_date: "2025-06-08"
@@ -563,11 +563,11 @@
   title: "Restriction digest, end modification, and ligation of DNA"
   visibility: "public"
   keywords:
-    topic: [cloning, cloning strategies]
-    domain: molecular biology
-    technique: [restriction digestion, ligation, vector construction]
-    level: basic
     workflow: sample preparation
+    domain: molecular biology
+    level: basic
+    topic: [cloning, cloning strategies]
+    technique: [restriction digestion, ligation, vector construction]
   current_commit_hash: "8ddfcb6"
   current_commit_time: "2026-02-27T18:05:20-05:00"
   revision_date: "2024-07-22"
@@ -581,16 +581,70 @@
   title: "Separation of RNA from DNA with guanidinium thiocyanate"
   visibility: "public"
   keywords:
-    technique: [guanidinium thiocyanate, phenol-chloroform, phase separation]
-    workflow: sample preparation
     topic: [nucleic acid purification, RNA extraction]
     domain: molecular biology
+    technique: [guanidinium thiocyanate, phenol-chloroform, phase separation]
+    workflow: sample preparation
     level: intermediate
   current_commit_hash: "a1fff60"
   current_commit_time: "2026-03-03T23:21:20-05:00"
   revision_date: "2023-06-10"
   abstract: "Guanidinium thiocyanate extraction is a classical method for isolating high-quality RNA from cultured cells or tissue samples. It is particularly effective for recovering small RNA…"
   filename: "sop_0023-v1-rna_isolation_trizol"
+
+- id: "SOP0004"
+  version: "3"
+  license: CC-BY-SA-4.0
+  open_license: "true"
+  title: "Core histone expression and purification"
+  visibility: "internal"
+  keywords:
+    domain: biochemistry
+    level: advanced
+    topic: [chromatin biology, recombinant protein production]
+    technique: [bacterial expression, histone expression, cation exchange chromatography, ultracentrifugation]
+    workflow: sample preparation
+  current_commit_hash: ""
+  current_commit_time: ""
+  revision_date: "2025-03-23"
+  abstract: ""
+  filename: "sop_0004-v3-production_recombinant_histones"
+
+- id: "SOP0013"
+  version: "1"
+  license: CC-BY-SA-4.0
+  open_license: "true"
+  title: "Electroporation of animal tissue culture cells"
+  visibility: "internal"
+  keywords:
+    topic: [cell engineering, transient expression]
+    technique: [electroporation, transfection]
+    workflow: sample preparation
+    level: advanced
+    domain: tissue culture
+  current_commit_hash: ""
+  current_commit_time: ""
+  revision_date: "2023-03-09"
+  abstract: ""
+  filename: "sop_0013-v1-transfection_electroporation"
+
+- id: "SOP0029"
+  version: "1"
+  license: CC-BY-SA-4.0
+  open_license: "true"
+  title: "Cell cycle analysis by fluorescence staining"
+  visibility: "internal"
+  keywords:
+    level: advanced
+    technique: [flow cytometry, PI staining]
+    workflow: analysis
+    domain: tissue culture
+    topic: [cell synchronization, cell cycle analysis]
+  current_commit_hash: ""
+  current_commit_time: ""
+  revision_date: "2025-04-17"
+  abstract: ""
+  filename: "sop_0029-v1-cell_cycle_flow_cytometry"
 
 - id: "SOP0036"
   version: "2"
@@ -599,14 +653,99 @@
   title: "Banking, tracking, and sharing of materials"
   visibility: "public"
   keywords:
-    domain: core skills
     level: introductory
+    technique: [cryopreservation, inventory management, sample storage, record keeping]
+    domain: core skills
     workflow: documentation
     topic: [reproducible research, data management]
-    technique: [cryopreservation, inventory management, sample storage, record keeping]
   current_commit_hash: ""
   current_commit_time: ""
   revision_date: "2026-05-13"
   abstract: "Have you ever looked for that one sample—cell line, plasmid, oligo, or reagent—only to find it unlabeled, misplaced, degraded, or missing entirely? Losing track of materials wa…"
   filename: "sop_0036-v2-banking_and_tracking"
+
+- id: "SOP0027"
+  version: "1"
+  license: CC-BY-SA-4.0
+  open_license: "true"
+  title: "Immunoprecipitation of nuclear and cytosolic proteins"
+  visibility: "internal"
+  keywords:
+    level: advanced
+    workflow: sample preparation
+    topic: [protein analysis, protein complex analysis]
+    domain: biochemistry
+    technique: [antibody coupling, bead capture, immunodetection, immunoprecipitation]
+  current_commit_hash: ""
+  current_commit_time: ""
+  revision_date: "2025-04-13"
+  abstract: ""
+  filename: "sop_0027-v1-immunoprecipitation"
+
+- id: "SOP0000"
+  version: "1"
+  license: CC-BY-SA-4.0
+  open_license: "true"
+  title: "Writing a protocol in XML (lab-protocols reference)"
+  visibility: "internal"
+  keywords:
+    level: advanced
+    domain: core skills
+    workflow: documentation
+    technique: [XML markup, ConTeXt conversion]
+    topic: reproducible research
+  current_commit_hash: ""
+  current_commit_time: ""
+  revision_date: "2026-05-12"
+  abstract: ""
+  filename: "sop_0000-v1-protocol_writing_xml"
+
+- id: "SOP0028"
+  version: "2"
+  license: CC-BY-SA-4.0
+  open_license: "true"
+  title: "Cell cycle synchronization of mammalian cell lines"
+  visibility: "internal"
+  keywords:
+    domain: tissue culture
+    topic: [cell synchronization, cell cycle control]
+    level: advanced
+    technique: [thymidine block, nocodazole treatment]
+    workflow: sample preparation
+  current_commit_hash: ""
+  current_commit_time: ""
+  revision_date: "2025-04-17"
+  abstract: ""
+  filename: "sop_0028-v2-cell_cycle_synchronization"
+
+- id: "SOP0006"
+  version: "3"
+  license: CC-BY-SA-4.0
+  open_license: "true"
+  title: "Reconstitution of mononucleosomes and nucleosome arrays"
+  visibility: "internal"
+  keywords:
+    domain: biochemistry
+    workflow: sample preparation
+    topic: [chromatin biology, recombinant protein production]
+    technique: [salt dialysis, chromatography, nucleosome assembly]
+    level: advanced
+  current_commit_hash: ""
+  current_commit_time: ""
+  revision_date: "2026-05-10"
+  abstract: ""
+  filename: "sop_0006-v3-production_nucleosome"
+
+- id: "Chapter "
+  version: "1"
+  license: proprietary
+  open_license: "false"
+  title: "Basics"
+  visibility: "internal"
+  keywords: []
+  current_commit_hash: ""
+  current_commit_time: ""
+  revision_date: "2025-05-07"
+  abstract: ""
+  filename: "ch_00-v1-basics"
 
