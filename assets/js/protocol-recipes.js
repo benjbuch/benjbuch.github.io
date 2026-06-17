@@ -218,10 +218,23 @@ document.addEventListener("DOMContentLoaded", function () {
         }
       }
 
+      // <benign scil="…" use="…"> — an EPA Safer Choice low-concern (SILC)
+      // endorsement when @scil is present; a half-circle is provisional.
+      var benignEl = directChildren(safetyEl, "benign")[0];
+      var benign = benignEl ? {
+        scil: benignEl.getAttribute("scil") || "",
+        use: benignEl.getAttribute("use") || "",
+        text: textOf(benignEl)
+      } : null;
+
       safety = {
         signal: safetyEl.getAttribute("signal") || "",
+        disposal: safetyEl.getAttribute("disposal") || "",
+        incomplete: safetyEl.getAttribute("incomplete") === "yes",
+        gap: safetyEl.getAttribute("gap") || "",
         hazards: hazards,
         pictograms: pictograms,
+        benign: benign,
         precautions: directChildren(safetyEl, "precaution").map(function (p) { return textOf(p); }),
         disposals: directChildren(safetyEl, "disposal").map(function (d) { return htmlOf(d); })
       };
@@ -438,10 +451,11 @@ document.addEventListener("DOMContentLoaded", function () {
     // Body
     h += '<div class="rc-body">';
 
-    // Workup
+    // Workup — punctuation rendered as authored (matching the PDF); steps are
+    // joined with a space rather than synthesising "." separators/terminators.
     if (recipe.workup.length) {
       h += '<div class="rc-workup">';
-      h += recipe.workup.join(". ") + ".";
+      h += recipe.workup.join(" ");
       h += "</div>";
     }
 
@@ -486,51 +500,86 @@ document.addEventListener("DOMContentLoaded", function () {
       quality: "Quality assurance",
       explanation: "This is why"
     };
-    var notePunct = { critical: "!" };
-
     for (var ni = 0; ni < noteOrder.length; ni++) {
       var ntype = noteOrder[ni];
       var group = recipe.notes.filter(function (n) { return n.type === ntype; });
       if (!group.length) continue;
 
-      var punct = notePunct[ntype] || ".";
       var cls = ntype === "critical" ? "rc-note rc-note-critical" : "rc-note";
       var label = noteLabels[ntype];
 
+      // Punctuation is rendered as authored, matching the PDF renderer; the
+      // index no longer appends "!" to critical notes or "." to the rest.
       h += '<div class="' + cls + '">';
       h += "<em>" + label + ":</em>";
-      h += group.map(function (n) { return n.html + punct; }).join(" ");
+      h += group.map(function (n) { return n.html; }).join(" ");
       h += "</div>";
     }
 
     // Safety
     if (recipe.safety) {
       var sig = recipe.safety.signal;
+      // Green ("all clear") is reserved for recipes that are an EPA Safer Choice
+      // low-concern (SILC) endorsement, or benign to handle AND sink-disposable.
+      // A plain-benign recipe that still routes to hazardous-waste / treatment
+      // gets a neutral box — green alongside "collect as hazardous waste" reads
+      // as a contradiction.
+      var sinkSafe = recipe.safety.disposal === "sanitary-sewer";
+      var isSilc = !!(recipe.safety.benign && recipe.safety.benign.scil);
       var cls = sig === "danger" ? "rc-safety-danger"
               : sig === "warning" ? "rc-safety-warning"
-              : "rc-safety-none";
+              : (isSilc || sinkSafe) ? "rc-safety-none"
+              : "rc-safety-disposal";
 
       h += '<div class="rc-safety ' + cls + '">';
 
-      // Header: pictograms + signal badge
-      h += '<div class="rc-safety-header">';
+      // Header: pictograms + signal badge + SILC endorsement. Emitted only when
+      // it has content — a plain-benign recipe (no pictograms, no signal, no
+      // SILC) would otherwise leave an empty header reserving vertical space.
+      if (recipe.safety.pictograms.length || sig || isSilc) {
+        h += '<div class="rc-safety-header">';
 
-      if (recipe.safety.pictograms.length) {
-        h += '<div class="rc-ghs-pictograms">';
-        for (var pi = 0; pi < recipe.safety.pictograms.length; pi++) {
-          var type = recipe.safety.pictograms[pi];
-          var alt = type.replace(/_/g, " ");
-          h += '<img class="rc-ghs-icon" src="/assets/ghs/ghs_' + type + '.svg" alt="' + alt + '" title="' + alt + '" />';
+        if (recipe.safety.pictograms.length) {
+          h += '<div class="rc-ghs-pictograms">';
+          for (var pi = 0; pi < recipe.safety.pictograms.length; pi++) {
+            var type = recipe.safety.pictograms[pi];
+            var alt = type.replace(/_/g, " ");
+            h += '<img class="rc-ghs-icon" src="/assets/ghs/ghs_' + type + '.svg" alt="' + alt + '" title="' + alt + '" />';
+          }
+          h += '</div>';
         }
-        h += '</div>';
+
+        if (sig) {
+          var scls = sig === "danger" ? "rc-signal-danger" : "rc-signal-warning";
+          h += '<span class="rc-signal ' + scls + '">' + sig + '</span>';
+        }
+
+        if (isSilc) {
+          var prov = recipe.safety.benign.scil === "green-half-circle";
+          var useTitle = recipe.safety.benign.use
+            ? ' title="EPA Safer Choice use class: ' + recipe.safety.benign.use + '"'
+            : "";
+          h += '<span class="rc-silc"' + useTitle + '>'
+            + '<span class="fa fa-leaf" aria-hidden="true"></span> EPA Safer Choice'
+            + (prov ? " (provisional)" : "")
+            + '</span>';
+        }
+
+        h += '</div>'; // rc-safety-header
       }
 
-      if (sig) {
-        var scls = sig === "danger" ? "rc-signal-danger" : "rc-signal-warning";
-        h += '<span class="rc-signal ' + scls + '">' + sig + '</span>';
+      // Incomplete derivation — a component could not be classified. Mirror the
+      // PDF's gap messaging so the panel never reads as a clean bill of health.
+      if (recipe.safety.incomplete) {
+        var gapMsg = recipe.safety.gap === "unindexed"
+            ? "Contains a component outside the substance collection; classify it from its SDS before use."
+          : recipe.safety.gap === "noconc"
+            ? "Assess at working strength before use."
+          : recipe.safety.gap === "uncharacterised"
+            ? "Assess before use — a component is not yet characterised."
+            : "Under review.";
+        h += '<p class="rc-safety-gap">' + gapMsg + '</p>';
       }
-
-      h += '</div>'; // rc-safety-header
 
       // Hazard statements — category 1 bold + "!", categories 2/3 normal
       var cat1  = recipe.safety.hazards.filter(function (hz) { return !hz.hide && hz.category === "1"; });
@@ -633,9 +682,17 @@ document.addEventListener("DOMContentLoaded", function () {
       for (var i = 0; i < filtered.length; i++) {
         var r = filtered[i];
         var sel = selectedIds.indexOf(r.id) !== -1 ? " selected" : "";
+        // Disambiguate same-named recipes (e.g. Tris 8.0 vs 7.4) by appending
+        // stock concentration + recipe-level properties (pH …), mirroring the
+        // detail-card header.
+        var meta = [];
+        if (r.stock) meta.push(r.stock);
+        if (r.properties && r.properties.length) meta.push(r.properties.join(", "));
+        var metaHtml = meta.length
+          ? '<span class="recipe-item-meta">, ' + meta.join(", ") + "</span>"
+          : "";
         h += '<button class="recipe-item' + sel + '" data-id="' + r.id + '">';
-        h += '<span class="recipe-item-name">' + r.nameHtml + "</span>";
-        // h += '<span class="recipe-item-id">' + r.id + "</span>";
+        h += '<span class="recipe-item-name">' + r.nameHtml + metaHtml + "</span>";
         h += "</button>";
       }
     }
@@ -860,6 +917,8 @@ document.addEventListener("DOMContentLoaded", function () {
             r.name,
             r.abbreviation,
             r.id,
+            r.stock,
+            (r.properties || []).join(" ").replace(/<[^>]+>/g, ""),
             (r.categories || []).join(" ")
           ].join(" ").toLowerCase();
         }

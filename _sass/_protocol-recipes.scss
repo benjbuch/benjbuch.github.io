@@ -108,6 +108,12 @@
   white-space: nowrap;
 }
 
+/* Stock + pH appended to the list label to disambiguate same-named recipes. */
+.recipe-item-meta {
+  color: var(--text-secondary);
+  font-weight: 400;
+}
+
 .recipe-item-id {
   color: var(--text-secondary);
   font-family: var(--font-mono);
@@ -398,6 +404,13 @@
   border: #{$line-s} solid color-mix(in srgb, var(--accent-green, #16a34a) 30%, transparent);
 }
 
+/* Benign to handle, but routes to special disposal (hazardous-waste / treat):
+   neutral, not the all-clear green. */
+.rc-safety-disposal {
+  background: color-mix(in srgb, var(--text-secondary) 6%, transparent);
+  border: #{$line-s} solid var(--border-subtle);
+}
+
 /* Signal word badge */
 
 .rc-signal {
@@ -413,6 +426,17 @@
 .rc-signal-warning {
   background: var(--ghs-red);
   color: #fff;
+}
+
+/* EPA Safer Choice (SILC) endorsement badge — a positive, not a hazard. */
+.rc-silc {
+  display: inline-block;
+  font-size: 0.8rem;
+  font-weight: 600;
+  padding: 0.05rem 0.4rem;
+  border-radius: 0.2rem;
+  background: color-mix(in srgb, var(--accent-green, #16a34a) 15%, transparent);
+  color: var(--accent-green, #16a34a);
 }
 
 /* Safety header: pictograms + signal */
@@ -442,6 +466,13 @@
   }
 }
 
+/* Incomplete-derivation notice: a component could not be classified. */
+.rc-safety-gap {
+  margin: 0 0 var(--pad-s);
+  font-style: italic;
+  color: var(--text-secondary);
+}
+
 .rc-precaution-list,
 .rc-disposal-list {
   list-style: none;
@@ -462,6 +493,15 @@
       transform: translateY(-50%);
     }
   }
+}
+
+// The top margin separates a list from preceding content (pictograms,
+// hazards, …). When the list is the first thing in the safety box — a benign
+// recipe whose only content is its disposal route — drop it so the box's own
+// padding isn't doubled at the top.
+.rc-precaution-list:first-child,
+.rc-disposal-list:first-child {
+  margin-top: 0;
 }
 
 .rc-precaution-list {
@@ -488,6 +528,10 @@
   color: var(--text-tertiary);
   margin-top: calc(2 * var(--pad-l));
   padding-top: var(--pad-m);
+
+  p {
+    text-align: left; // override the global justified `p` for the source list + disclaimer
+  }
 }
 
 .rc-source-links {
@@ -502,6 +546,13 @@ a.rc-source-link {
   &, &:visited {
     color: var(--text-primary);
   }
+}
+
+/* Keep each provenance id intact — no line break on its internal hyphens
+   (e.g. "SOP0040-v1" must not wrap to "SOP0040-/v1"). */
+.rc-source-link,
+.rc-source-missing {
+  white-space: nowrap;
 }
 
 /* ---- Responsive ---- */
