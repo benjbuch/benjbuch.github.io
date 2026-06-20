@@ -10,7 +10,6 @@ warn = printf "warning: %s\n" "$(1)" >&2
 # --------------------------------------------------------------------
 # Scripts
 # --------------------------------------------------------------------
-ARTIFACTS := python3 artifacts.py
 S_DEPLOY  := scripts/publish_protocols.sh
 
 # --------------------------------------------------------------------
@@ -22,6 +21,13 @@ LP_ARTIFACTS_SRC  := $(LAB_PROTOCOLS)/output/artifacts
 PDF_DST           := assets/protocols/pdf
 DATA_DST          := _data/protocols
 RECIPES_DST       := assets/protocols/recipes.xml
+
+# --------------------------------------------------------------------
+# Sibling lab-publications repo (direct source for abbreviated pubs YAML)
+# --------------------------------------------------------------------
+LAB_PUBS          := ../lab-publications
+LP_PUBS_SRC       := $(LAB_PUBS)/pubs_own/build/publications_full.yml
+PUBS_DST          := _data/publications/publications.yml
 
 # --------------------------------------------------------------------
 # Git settings
@@ -37,21 +43,21 @@ help:
 	@printf 'Website Publishing Pipeline (GitHub Pages)\n'
 	@printf '  Update site data and publish to GitHub Pages.\n\n'
 	@printf 'Targets:\n'
-	@printf '  %-16s %s\n' "all"            "Update artifacts and deploy site"
+	@printf '  %-16s %s\n' "all"            "Update site data and deploy site"
 	@printf '  %-16s %s\n' "publish"        "Alias for 'all'"
-	@printf '  %-16s %s\n' "update"         "Pull artifacts and commit changes"
-	@printf '  %-16s %s\n' "commit-changes" "Commit tracked artifact changes"
+	@printf '  %-16s %s\n' "update"         "Pull site data and commit changes"
+	@printf '  %-16s %s\n' "commit-changes" "Commit tracked data changes"
 	@printf '  %-16s %s\n' "deploy"         "Build and deploy site to 'gh-pages'"
 	@printf '  %-16s %s\n' "deploy-dry"     "Deploy with --dry-run"
 	@printf '  %-16s %s\n' "deploy-force"   "Deploy with --force-publish"
 	@printf '  %-16s %s\n' "serve"          "Start Jekyll development server"
 	@printf '  %-16s %s\n' "build"          "Build Jekyll site locally"
-	@printf '  %-16s %s\n' "status"         "Show artifact and git status"
+	@printf '  %-16s %s\n' "status"         "Show data and git status"
 	@printf '  %-16s %s\n' "help"           "Show this message"
-	@printf '\nArtifacts:\n'
-	@printf '  %-16s %s\n' "pull"           "Sync protocols from ../lab-protocols + pull other artifacts"
-	@printf '  %-16s %s\n' "pull-protocols" "Sync public PDFs/metadata from ../lab-protocols only"
-	@printf '  %-16s %s\n' "push"           "Push artifacts to shared directory"
+	@printf '\nData sync:\n'
+	@printf '  %-16s %s\n' "pull"             "Sync protocols + publications from sibling repos"
+	@printf '  %-16s %s\n' "pull-protocols"   "Sync public PDFs/metadata from ../lab-protocols only"
+	@printf '  %-16s %s\n' "pull-publications" "Sync abbreviated pubs YAML from ../lab-publications only"
 	@printf '\nExamples:\n'
 	@printf '  make publish\n'
 	@printf '  make deploy-dry\n'
@@ -67,11 +73,10 @@ all: update deploy
 publish: update deploy
 
 # --------------------------------------------------------------------
-# Artifacts (delegates to ./artifacts.py against artifacts.yaml)
+# Data sync (direct reads from sibling repos' build output)
 # --------------------------------------------------------------------
-.PHONY: pull pull-protocols push
-pull: pull-protocols
-	@$(ARTIFACTS) pull
+.PHONY: pull pull-protocols pull-publications
+pull: pull-protocols pull-publications
 
 # Mirror public protocol PDFs + metadata + recipes from the sibling
 # lab-protocols repo. PDFs are mirrored (rsync --delete) so withdrawn
@@ -90,11 +95,16 @@ pull-protocols:
 	@cp "$(LP_ARTIFACTS_SRC)/recipes.xml" "$(RECIPES_DST)"
 	@printf 'pull-protocols: synced from %s\n' "$(LAB_PROTOCOLS)"
 
-push:
-	@$(ARTIFACTS) push
+# Mirror the abbreviated publications YAML from the sibling
+# lab-publications repo's build output.
+pull-publications:
+	@[ -f "$(LP_PUBS_SRC)" ] || { $(call err,not found: $(LP_PUBS_SRC) (run 'make build' in lab-publications/pubs_own)); exit 1; }
+	@mkdir -p "$(dir $(PUBS_DST))"
+	@cp "$(LP_PUBS_SRC)" "$(PUBS_DST)"
+	@printf 'pull-publications: synced from %s\n' "$(LAB_PUBS)"
 
 # --------------------------------------------------------------------
-# Update: pull artifacts and commit tracked changes
+# Update: pull site data and commit tracked changes
 # --------------------------------------------------------------------
 .PHONY: update
 update: pull commit-changes
@@ -105,7 +115,7 @@ commit-changes:
 		git status --short; \
 		read -r -p "commit these changes? [y/N] " r; \
 		if [ "$$r" = "y" ] || [ "$$r" = "Y" ]; then \
-			git add -A && git commit -m "Update artifacts ($$(date -Iseconds))"; \
+			git add -A && git commit -m "Update site data ($$(date -Iseconds))"; \
 		else \
 			$(call err,aborted); exit 1; \
 		fi; \
@@ -140,8 +150,6 @@ status:
 	@printf 'remote:  %s\n' "$(REMOTE)"
 	@printf 'dry-run: %s\n' "$(if $(filter true 1 yes on,$(DRY_RUN)),yes,no)"
 	@printf 'force:   %s\n' "$(if $(filter true 1 yes on,$(FORCE_PUBLISH)),yes,no)"
-	@echo
-	@$(ARTIFACTS) status
 	@echo
 	@if [ -z "$$(git status --porcelain 2>/dev/null)" ]; then \
 		echo 'git: clean'; \

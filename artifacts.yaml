@@ -1,8 +1,0 @@
-# artifacts.yaml
-
-namespace: gh-pages
-
-pull:
-  - from: public/lab-publications/my_publications_abbr.yml
-    to: _data/publications/publications.yml
-    required: true

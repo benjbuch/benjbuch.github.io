@@ -76,7 +76,6 @@ include:
   - robots.txt
 
 exclude:
-  - artifacts.*
   - Makefile
   - README.md
   - CLAUDE.md

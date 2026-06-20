@@ -4,7 +4,7 @@ set -euo pipefail
 # --------------------------------------------------------------------
 # Jekyll site deployment to gh-pages
 #
-# Prerequisites: run 'make update' first to pull artifacts.
+# Prerequisites: run 'make update' first to pull site data.
 # --------------------------------------------------------------------
 
 # CLI helpers: errors/warnings on stderr, "<prog>: error|warning: ..." format.
