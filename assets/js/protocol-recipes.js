@@ -702,7 +702,13 @@ document.addEventListener("DOMContentLoaded", function () {
         var metaHtml = meta.length
           ? '<span class="recipe-item-meta">, ' + meta.join(", ") + "</span>"
           : "";
-        h += '<button class="recipe-item' + sel + '" data-id="' + r.id + '">';
+        // Native tooltip with the full label — list items often truncate (…),
+        // so hovering reveals the complete name + disambiguating meta. Strip
+        // markup to plain text; escape quotes so they can't break the attribute.
+        var title = (r.nameHtml + metaHtml)
+          .replace(/<[^>]+>/g, "")
+          .replace(/"/g, "&quot;");
+        h += '<button class="recipe-item' + sel + '" data-id="' + r.id + '" title="' + title + '">';
         h += '<span class="recipe-item-name">' + r.nameHtml + metaHtml + "</span>";
         h += "</button>";
       }
@@ -881,6 +887,102 @@ document.addEventListener("DOMContentLoaded", function () {
       updateScaledValues();
     }
   }, true);
+
+  /* ==== Resizable list panel ==== */
+
+  // Width is driven by a custom property (not an inline width) so the
+  // responsive width:100% rule still wins on narrow screens. Persisted across
+  // visits; double-click the handle to restore the stylesheet default.
+  (function () {
+    var pageEl   = document.querySelector(".recipes-page");
+    var layoutEl = document.querySelector(".recipe-layout");
+    var panelEl  = document.querySelector(".recipe-list-panel");
+    var resizer  = document.getElementById("recipe-resizer");
+    if (!pageEl || !layoutEl || !panelEl || !resizer) return;
+
+    var LS_KEY = "recipeListWidth";
+    var MIN_W = 180;
+
+    // Resolve the card's max-width (a `ch` value) and the detail panel's
+    // horizontal padding to pixels. Cached; refreshed on resize since `ch`
+    // tracks the font. The card cap is the floor the detail must never drop
+    // below — that is what keeps the card from shrinking as the list grows.
+    var cardCapPx = 0, detailPadX = 0;
+    function measureMetrics() {
+      var probe = document.createElement("div");
+      probe.style.cssText =
+        "position:absolute;visibility:hidden;height:0;width:var(--recipe-card-max,60ch)";
+      detailEl.appendChild(probe);
+      cardCapPx = probe.getBoundingClientRect().width || 0;
+      detailEl.removeChild(probe);
+      var cs = getComputedStyle(detailEl);
+      detailPadX = (parseFloat(cs.paddingLeft) || 0) + (parseFloat(cs.paddingRight) || 0);
+    }
+    measureMetrics();
+
+    // Largest list width that still leaves the detail's content box >= the card
+    // cap. panelWidth + detailContentWidth is invariant under the drag (the
+    // resizer and gaps are fixed), so this evaluates to a stable bound.
+    function maxW() {
+      var panelNow = panelEl.getBoundingClientRect().width;
+      var detailContent = detailEl.clientWidth - detailPadX;
+      return Math.max(MIN_W, Math.round(panelNow + detailContent - cardCapPx));
+    }
+
+    function applyWidth(px) {
+      var w = Math.min(Math.max(px, MIN_W), maxW());
+      pageEl.style.setProperty("--recipe-list-width", w + "px");
+      return w;
+    }
+
+    function store(w) { try { localStorage.setItem(LS_KEY, String(Math.round(w))); } catch (e) {} }
+
+    // Restore a saved width (re-clamped to the current viewport).
+    try {
+      var saved = parseFloat(localStorage.getItem(LS_KEY));
+      if (!isNaN(saved)) applyWidth(saved);
+    } catch (e) {}
+
+    var dragging = false, startX = 0, startW = 0;
+
+    resizer.addEventListener("pointerdown", function (e) {
+      dragging = true;
+      startX = e.clientX;
+      startW = panelEl.getBoundingClientRect().width;
+      pageEl.classList.add("resizing");
+      try { resizer.setPointerCapture(e.pointerId); } catch (err) {}
+      e.preventDefault();
+    });
+
+    resizer.addEventListener("pointermove", function (e) {
+      if (!dragging) return;
+      applyWidth(startW + (e.clientX - startX));
+    });
+
+    function endDrag(e) {
+      if (!dragging) return;
+      dragging = false;
+      pageEl.classList.remove("resizing");
+      try { resizer.releasePointerCapture(e.pointerId); } catch (err) {}
+      store(panelEl.getBoundingClientRect().width);
+    }
+    resizer.addEventListener("pointerup", endDrag);
+    resizer.addEventListener("pointercancel", endDrag);
+
+    // Double-click resets to the stylesheet default.
+    resizer.addEventListener("dblclick", function () {
+      pageEl.style.removeProperty("--recipe-list-width");
+      try { localStorage.removeItem(LS_KEY); } catch (e) {}
+    });
+
+    // Keep a stored width within bounds if the window is resized smaller.
+    window.addEventListener("resize", function () {
+      measureMetrics();
+      if (pageEl.style.getPropertyValue("--recipe-list-width")) {
+        applyWidth(panelEl.getBoundingClientRect().width);
+      }
+    });
+  })();
 
   /* ==== URL parameter support ==== */
 
