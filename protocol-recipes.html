@@ -22,4 +22,17 @@ extra_css: protocol-recipes
   </div>
 </div>
 
+{%- comment -%}
+  Manifest of rendered PDF basenames under /assets/protocols/pdf/. The recipe
+  renderer links a source only when its file is present here, so sources whose
+  PDF has not been rendered yet (e.g. collections) degrade to plain text rather
+  than a broken link.
+{%- endcomment -%}
+{%- assign recipe_pdfs = "" | split: "" -%}
+{%- for f in site.static_files -%}
+  {%- if f.extname == ".pdf" and f.path contains "/assets/protocols/pdf/" -%}
+    {%- assign recipe_pdfs = recipe_pdfs | push: f.basename -%}
+  {%- endif -%}
+{%- endfor -%}
+<script>window.RECIPE_PDFS = {{ recipe_pdfs | jsonify }};</script>
 <script src="/assets/js/protocol-recipes.js" defer></script>
