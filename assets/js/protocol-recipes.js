@@ -126,10 +126,13 @@ document.addEventListener("DOMContentLoaded", function () {
 
   function parseAmt(str) {
     if (!str) return { value: null, value2: null, unit: "" };
-    var rm = str.match(/^([\d.]+)\s+to\s+([\d.]+)\s+(.+)$/);
-    if (rm) return { value: parseFloat(rm[1]), value2: parseFloat(rm[2]), unit: convertUnit(rm[3]) };
-    var sm = str.match(/^([\d.]+)\s+(.+)$/);
-    if (sm) return { value: parseFloat(sm[1]), value2: null, unit: convertUnit(sm[2]) };
+    // Numbers may carry thousands separators ("1,000") or underscore grouping;
+    // strip them before parseFloat, which would otherwise stop at the comma.
+    function num(s) { return parseFloat(s.replace(/[,_]/g, "")); }
+    var rm = str.match(/^([-\d,._]+)\s+to\s+([-\d,._]+)\s+(.+)$/);
+    if (rm) return { value: num(rm[1]), value2: num(rm[2]), unit: convertUnit(rm[3]) };
+    var sm = str.match(/^([-\d,._]+)\s+(.+)$/);
+    if (sm) return { value: num(sm[1]), value2: null, unit: convertUnit(sm[2]) };
     return { value: null, value2: null, unit: str };
   }
 
@@ -619,7 +622,9 @@ document.addEventListener("DOMContentLoaded", function () {
       h += '<p class="rc-source-links"><span class="rc-sources-label">Used in</span> ';
       h += recipe.sources.map(function (s) {
         var text = s.doc_type + s.id + "-v" + s.version;
-        if (s.visibility === "public") {
+        // Link only when the PDF actually exists; "public" sources without a
+        // rendered file (e.g. collections) would otherwise 404.
+        if (s.visibility === "public" && PDF_SET[s.filename]) {
           return '<a class="rc-source-link" target="_blank" rel="noopener noreferrer" href="/assets/protocols/pdf/' +
             s.filename + '.pdf"><span class="fa fa-external-link" aria-hidden="true"></span>\u2009' + text + '</a>';
         }
@@ -634,6 +639,12 @@ document.addEventListener("DOMContentLoaded", function () {
   }
 
   /* ==== State ==== */
+
+  // Basenames of PDFs actually present under /assets/protocols/pdf/, injected by
+  // the host page from Jekyll's static file list. A source is linked only when
+  // its file exists here; otherwise it degrades to plain text (no broken link).
+  var PDF_SET = {};
+  (window.RECIPE_PDFS || []).forEach(function (n) { PDF_SET[n] = true; });
 
   var allRecipes = [];
   var activeCats = {};
