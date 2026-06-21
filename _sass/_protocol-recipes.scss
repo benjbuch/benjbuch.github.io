@@ -1,9 +1,11 @@
 .recipes-page {
+  --recipe-card-max: 60ch;  // detail card reading width; also the resize floor
+
   display: flex;
   flex-direction: column;
   height: calc(100vh - var(--footer-height) - var(--header-height) - var(--pad-l));
   margin: var(--pad-l) auto 0;
-  max-width: min(95ch, 100% - 2 * var(--pad-l));
+  max-width: min(120ch, 100% - 2 * var(--pad-l));
 }
 
 /* ---- Two-column layout ---- */
@@ -19,12 +21,44 @@
 /* ---- Left panel ---- */
 
 .recipe-list-panel {
-  width: 24ch;
+  width: var(--recipe-list-width, 24ch);
   flex: 0 0 auto;
   display: flex;
   flex-direction: column;
   padding-right: var(--pad-m);
-  border-right: #{$line-s} solid var(--border-subtle);
+}
+
+/* Drag handle between the list and detail panels. The thin line is the column
+   divider (replacing the panel's old border-right); a wider invisible ::before
+   gives a comfortable grab zone without affecting layout. */
+.recipe-resizer {
+  flex: 0 0 auto;
+  align-self: stretch;
+  width: #{$line-s};
+  background: var(--border-subtle);
+  cursor: col-resize;
+  position: relative;
+  touch-action: none;
+}
+
+.recipe-resizer::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: calc(-1 * var(--pad-m));
+  right: calc(-1 * var(--pad-m));
+}
+
+.recipe-resizer:hover,
+.recipes-page.resizing .recipe-resizer {
+  background: var(--focus-ring);
+}
+
+/* Suppress text selection / show the resize cursor everywhere while dragging. */
+.recipes-page.resizing {
+  cursor: col-resize;
+  user-select: none;
 }
 
 .recipe-form {
@@ -140,6 +174,11 @@
   box-shadow: none;
   padding: var(--pad-l);
   overflow: hidden;
+  // Fixed reading width, left-aligned in the detail panel: widening the list
+  // slides the card right into the freed slack rather than squeezing it. The
+  // resizer caps the list so the panel never narrows below this width, so in
+  // practice the card never shrinks. Reset to full-bleed when stacked.
+  max-width: var(--recipe-card-max, 60ch);
 }
 
 .recipe-card + .recipe-card {
@@ -562,6 +601,16 @@ a.rc-source-link {
     flex-direction: column;
   }
 
+  /* Stacked layout — horizontal resize is meaningless, hide the handle. */
+  .recipe-resizer {
+    display: none;
+  }
+
+  /* No side-by-side panel to slide into; let the card use the full width. */
+  .recipe-card {
+    max-width: none;
+  }
+
   .recipe-list-panel {
     width: 100%;
     flex: 0 0 auto;
@@ -625,7 +674,8 @@ a.rc-source-link {
 
 @media print {
   .recipe-list-panel,
-  .recipe-form {
+  .recipe-form,
+  .recipe-resizer {
     display: none;
   }
 
