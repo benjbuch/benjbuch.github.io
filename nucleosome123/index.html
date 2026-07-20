@@ -567,7 +567,7 @@
     // without this a rebuilt table is served stale until a hard reload. site.time changes
     // on every `jekyll build`, so a rebuild always refetches — the whole point is that a
     // reload shows the version we just built, not a cached one.
-    const CACHE_BUST       = '?v=1784568894';
+    const CACHE_BUST       = '?v=1784570238';
     const PROTEINS_URL     = new URL('/nucleosome123/data/proteins.parquet' + CACHE_BUST, document.baseURI).href;
     const MASSES_URL       = new URL('/nucleosome123/data/residue_masses.parquet' + CACHE_BUST, document.baseURI).href;
     const PTM_URL          = new URL('/nucleosome123/data/ptm_deltas.parquet' + CACHE_BUST, document.baseURI).href;
@@ -4110,10 +4110,11 @@ function beadsHtml(u, sel, index, multi) {
 function unitEl(u, i, sel, multi) {
   const beads = beadsHtml(u, sel, i, multi);
   const cap = escapeHtml(unitCaption(u.subtree, u.kind));
+  // Explicit linker length: show the bp count as text on the caption line at the
+  // junction (zero-width, so adjacent beads still abut and the SVG DNA linkers
+  // join). No graphic linker element for now.
   const linker = u.linkerAfter
-    ? `<span class="linker" aria-hidden="true"><svg width="72" height="26" viewBox="0 0 72 26">` +
-      `<path d="M2 13 C 24 2, 48 24, 70 13" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"/></svg>` +
-      `<span class="bp">${u.linkerAfter.bp} bp</span></span>`
+    ? `<span class="linker"><span class="bp">${u.linkerAfter.bp} bp</span></span>`
     : '';
   return `<div class="unit${u.orphaned ? ' bad' : ''}" role="option" tabindex="${sel ? 0 : -1}" aria-selected="${sel}" data-i="${i}">` +
     `<span class="bead-wrap">${beads}</span><span class="cap">${cap}</span></div>${linker}`;
