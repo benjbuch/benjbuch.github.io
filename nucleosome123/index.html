@@ -567,7 +567,7 @@
     // without this a rebuilt table is served stale until a hard reload. site.time changes
     // on every `jekyll build`, so a rebuild always refetches — the whole point is that a
     // reload shows the version we just built, not a cached one.
-    const CACHE_BUST       = '?v=1784570238';
+    const CACHE_BUST       = '?v=1784577878';
     const PROTEINS_URL     = new URL('/nucleosome123/data/proteins.parquet' + CACHE_BUST, document.baseURI).href;
     const MASSES_URL       = new URL('/nucleosome123/data/residue_masses.parquet' + CACHE_BUST, document.baseURI).href;
     const PTM_URL          = new URL('/nucleosome123/data/ptm_deltas.parquet' + CACHE_BUST, document.baseURI).href;
@@ -4330,6 +4330,7 @@ async function onInput() {
     selectedWorld = null; selectedArr = null; selectedUnit = 0; arrTouched = false;
     unitArr.clear();                                   // drop per-member arrangement memory
     Object.keys(pinned).forEach(k => delete pinned[k]);
+    clearLatch(); clearSeqLatch();                     // drop measurement/sequence-highlight latches
   }
   currentRender = { parsed, info, key };
   // Absence model (from resolve, try/catch inside). Computed once per render and
