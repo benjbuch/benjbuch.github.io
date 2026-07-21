@@ -567,7 +567,7 @@
     // without this a rebuilt table is served stale until a hard reload. site.time changes
     // on every `jekyll build`, so a rebuild always refetches — the whole point is that a
     // reload shows the version we just built, not a cached one.
-    const CACHE_BUST       = '?v=1784577878';
+    const CACHE_BUST       = '?v=1784611704';
     const PROTEINS_URL     = new URL('/nucleosome123/data/proteins.parquet' + CACHE_BUST, document.baseURI).href;
     const MASSES_URL       = new URL('/nucleosome123/data/residue_masses.parquet' + CACHE_BUST, document.baseURI).href;
     const PTM_URL          = new URL('/nucleosome123/data/ptm_deltas.parquet' + CACHE_BUST, document.baseURI).href;
@@ -1544,7 +1544,11 @@ function alignmentMassTableHtml(rows /* , hasMods (unused: mark lives in Materia
     if (row.unknown)
       return `${trOpen}${mat}<td class="mt-na" colspan="2">${MW_UNAVAILABLE}</td>${par}${sp}</tr>`;
     const avg = row.baseAvg + row.dAvg, mono = row.baseMono + row.dMono;
-    return `${trOpen}${mat}<td class="mt-mw">${kDa(avg)}</td><td class="mt-mw">${uMass(mono)}</td>${par}${sp}</tr>`;
+    // MW column is the AVERAGE (shown rounded in kDa); Mass column is the
+    // MONOISOTOPIC (precise, in u). Surface the precise average — and label which
+    // is which — on hover of either cell, so the two mass types aren't confused.
+    const massTitle = `${uMass(avg)} average · ${uMass(mono)} monoisotopic`;
+    return `${trOpen}${mat}<td class="mt-mw" title="${massTitle}">${kDa(avg)}</td><td class="mt-mw" title="${massTitle}">${uMass(mono)}</td>${par}${sp}</tr>`;
   }).join('');
   const columns = [...MATERIAL_LEAD, { header: 'MW' }, { header: 'Mass' }, ...MATERIAL_TRAIL];
   return renderLayerTable(columns, body, { wrapClass: 'scrollable-table mass-scroll' });
@@ -3503,14 +3507,20 @@ initPortEditor();
   // "\x1fH2A.Z" = variant, "\x1fH2A.Z,K27M" = variant + mark(s).
   function copyDeco(copy) {
     var c = String(copy == null ? '' : copy);
-    if (c === '∅') return { variant: null, marked: false, absent: true };
-    if (c === '') return { variant: null, marked: false, absent: false };
-    var variant = null, marks = 0;
+    if (c === '∅') return { variant: null, marked: false, absent: true, positions: [] };
+    if (c === '') return { variant: null, marked: false, absent: false, positions: [] };
+    var variant = null, marks = 0, positions = [];
     c.split(',').forEach(function (k) {
       if (k.charCodeAt(0) === 0x1f) variant = k.slice(1);
-      else if (k) marks++;
+      else if (k) {
+        marks++;
+        // A mark token is residue+position+variant/PTM ("K27M", "K27ac",
+        // "K27Mme3"); the embedded integer is the residue number its dot sits on.
+        var m = /(\d+)/.exec(k);
+        if (m) positions.push(+m[1]);
+      }
     });
-    return { variant: variant, marked: marks > 0, absent: false };
+    return { variant: variant, marked: marks > 0, absent: false, positions: positions };
   }
 
   // parseArrangement world → per-subunit-copy decoration keyed by SVG base id
@@ -3985,6 +3995,30 @@ function beadCentroid(base) {
   return c;
 }
 
+// {x, y} of a 1-indexed residue number along a subunit's residue trajectory.
+// The topview SVG stores a per-chain "<base>:trajectory" path as a RELATIVE
+// polyline ("m x0,y0 dx,dy dx,dy …") whose node N is residue N — the same
+// encoding diagram.js's getPathNode reads. Coordinates are the authored artboard
+// space shared by the HFD parts and beadCentroid, so a dot placed here lands
+// inside the <g transform="${gt}"> wrapper on the subunit. Node lists are parsed
+// once and cached on beadDefs. Returns null if the path is missing or `pos` runs
+// past the trajectory (out of the modelled residue range).
+function beadTrajectoryPoint(base, pos) {
+  if (!beadDefs || !beadDefs.holder || !pos || pos < 1) return null;
+  beadDefs.trajNodes = beadDefs.trajNodes || {};
+  let nums = beadDefs.trajNodes[base];
+  if (nums === undefined) {
+    const el = beadDefs.holder.querySelector('[id="' + base + ':trajectory"]');
+    const d = el && el.getAttribute('d');
+    nums = d ? (d.match(/-?[\d.]+(?:e[+-]?\d+)?/gi) || []).map(Number) : null;
+    beadDefs.trajNodes[base] = nums;
+  }
+  if (!nums || nums.length < pos * 2) return null;   // residue past trajectory end
+  let x = nums[0], y = nums[1];                       // node 1 = residue 1 (the `m` start)
+  for (let i = 1; i < pos; i++) { x += nums[2 * i]; y += nums[2 * i + 1]; }
+  return { x, y };
+}
+
 // One bead <svg>. Iterates the source SVG's drawable elements in DOCUMENT ORDER
 // so the DNA gyre keeps its authored z-layering (some strands cross in front of
 // the histones, some behind). `set.ids` selects which subunit copies to show;
@@ -4004,7 +4038,7 @@ function beadSvgFromSet(set, deco, vb, dnaMode, hideLinker1, showSelector) {
   // standalone particles use the tight core viewBox so they sit centered.
   vb = (dnaMode === 'array') ? beadDefs.viewBox : (beadDefs.coreViewBox || beadDefs.viewBox);
   const present = new Set(set.ids);
-  const marked = new Set();
+  const marked = new Map();   // base → residue positions ([] ⇒ no positions known)
   let inner = '';
   Array.from(beadDefs.holder.querySelectorAll('[id]')).forEach(el => {
     const id = el.id;
@@ -4036,12 +4070,18 @@ function beadSvgFromSet(set, deco, vb, dnaMode, hideLinker1, showSelector) {
     } else {
       inner += `<use href="#${id}"/>`;
     }
-    if (d && d.marked) marked.add(base);
+    if (d && d.marked) marked.set(base, (d.positions || []).slice());
   });
+  // One dot PER MODIFICATION, placed at that modification's residue number along
+  // the subunit's traced trajectory — so two mods on one histone (e.g. K27M and
+  // G34V) read as two dots at two points on the chain. Falls back to a single
+  // centroid dot when no residue positions are known or the trajectory is missing.
   let dots = '';
-  marked.forEach(base => {
-    const c = beadCentroid(base);
-    if (c) dots += `<circle class="bead-dot" cx="${c.x}" cy="${c.y}" r="1.5"/>`;
+  marked.forEach((positions, base) => {
+    const pts = [];
+    (positions || []).forEach(pos => { const p = beadTrajectoryPoint(base, pos); if (p) pts.push(p); });
+    if (!pts.length) { const c = beadCentroid(base); if (c) pts.push(c); }
+    pts.forEach(p => { dots += `<circle class="bead-dot" cx="${p.x}" cy="${p.y}" r="1.5"/>`; });
   });
   const gt = beadDefs.groupTransform || '';
   return `<svg class="bead" viewBox="${vb}" aria-hidden="true"><g transform="${gt}">${inner}${dots}</g></svg>`;
@@ -4052,7 +4092,15 @@ function beadSvgFromSet(set, deco, vb, dnaMode, hideLinker1, showSelector) {
 // unselected units and non-octamer units, where no arrangement world applies.
 function fallbackDeco(u) {
   const deco = {};
-  markedFamilies(u).forEach(f => { deco[f + ':1'] = Object.assign(deco[f + ':1'] || {}, { marked: true }); });
+  // Residue positions per family from the unit's marks (labels like "K27M,G34V"),
+  // so the fallback path draws one dot per modification along the trajectory too.
+  const posByFam = {};
+  ((u && u.marks) || []).forEach(m => {
+    if (!m.family) return;
+    const ps = (posByFam[m.family] = posByFam[m.family] || []);
+    String(m.label || '').split(',').forEach(tok => { const g = /(\d+)/.exec(tok); if (g) ps.push(+g[1]); });
+  });
+  markedFamilies(u).forEach(f => { deco[f + ':1'] = Object.assign(deco[f + ':1'] || {}, { marked: true, positions: posByFam[f] || [] }); });
   variantFamilies(u.subtree).forEach(f => { deco[f + ':1'] = Object.assign(deco[f + ':1'] || {}, { variant: f }); });
   return deco;
 }
