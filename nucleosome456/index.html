@@ -7,7 +7,7 @@
   <!-- Same ?v=<build epoch> stamp as the JS bundles and parquet URLs: a cached stylesheet against a
        rebuilt page is the same class of silent-staleness bug, and it would render the engine-fallback
        alarm below as unstyled text. -->
-  <link rel="stylesheet" href="/nucleosome456/assets/css/main.css?v=1785015189">
+  <link rel="stylesheet" href="/nucleosome456/assets/css/main.css?v=1785018681">
 </head>
 <body>
 
@@ -598,7 +598,7 @@
          cached page, full stop. #engine-stamp is filled at runtime with which enumeration engine
          actually loaded (v2 = interpret2 present; v1 = the bundle is stale or broken). -->
     <footer class="buildstamp">
-      built 2026-07-25 17:33:09 EDT
+      built 2026-07-25 18:31:21 EDT
       &middot; <span id="engine-stamp">engine&nbsp;&hellip;</span>
     </footer>
 
@@ -623,7 +623,7 @@
        the one failure the load-error trap below cannot see, because a stale bundle loads and runs
        perfectly, just with superseded code. -->
   <script>
-    window.__PARSER2_EXPECTED = "c5e0c5035c1b";
+    window.__PARSER2_EXPECTED = "d405920f1b10";
     window.__loadErrors = [];
     window.addEventListener('error', function (e) {
       window.__loadErrors.push({
@@ -636,12 +636,12 @@
   </script>
 
   <!-- Generated vocabulary (families, PTMs) -->
-  <script src="/nucleosome456/assets/js/vocabulary.js?v=1785015189"></script>
+  <script src="/nucleosome456/assets/js/vocabulary.js?v=1785018681"></script>
   <!-- Compiled nucleosome notation parser (legacy stack: parse/normalizeIR/interpret/match) -->
-  <script src="/nucleosome456/assets/js/parser.js?v=1785015189"></script>
+  <script src="/nucleosome456/assets/js/parser.js?v=1785018681"></script>
   <!-- New-stack bundle: parse2 → lift2 → resolve2 → meet2/normalize2 (canon), real registry,
        and the v2→v1 bridge (adaptToLegacy). The single canon; legacy consumers read via the bridge. -->
-  <script src="/nucleosome456/assets/js/parser2.js?v=1785015189"></script>
+  <script src="/nucleosome456/assets/js/parser2.js?v=1785018681"></script>
 
   <script type="module">
     /* Pinned deliberately. The console warning "The WebAssembly exception handling 'try'
@@ -661,7 +661,7 @@
     // without this a rebuilt table is served stale until a hard reload. site.time changes
     // on every `jekyll build`, so a rebuild always refetches — the whole point is that a
     // reload shows the version we just built, not a cached one.
-    const CACHE_BUST       = '?v=1785015189';
+    const CACHE_BUST       = '?v=1785018681';
     const PROTEINS_URL     = new URL('/nucleosome456/data/proteins.parquet' + CACHE_BUST, document.baseURI).href;
     const MASSES_URL       = new URL('/nucleosome456/data/residue_masses.parquet' + CACHE_BUST, document.baseURI).href;
     const PTM_URL          = new URL('/nucleosome456/data/ptm_deltas.parquet' + CACHE_BUST, document.baseURI).href;
@@ -674,6 +674,9 @@
     // three-table shape (column superset), read unchanged by the existing views + matcher.
     const CONFIG_URL       = new URL('/nucleosome456/data/measurement_config.parquet' + CACHE_BUST, document.baseURI).href;
     const SVG_URL          = '/nucleosome456/assets/img/nucleosome_topview3.svg';
+    // The cartoon's baked geometry (see scripts/build_sprite_atlas.js). SVG_URL is still used by the
+    // legacy diagram.js; the units bar reads the atlas instead and never fetches the sprite.
+    const ATLAS_URL        = '/nucleosome456/data/sprite-atlas.json';
 
     // Shared mutable state (referenced by all included modules below).
     let db        = null;
@@ -4013,52 +4016,16 @@ initPortEditor();
   else Object.assign(root, api);
 })(typeof globalThis !== 'undefined' ? globalThis : this);
 
-    // Pure model for the units bar. DOM-free, node-exportable. Turns a raw parse
-// tree into a list of physical units, each with a sprite glyph id, using the
-// IR's classify() (via nucleosomeParser.unitClass) — no parallel assembly model.
+    // Pure model for the units bar: the v2 IR -> the list of physical units on screen.
+//
+// This file was the cartoon's whole model — family multisets, glyph ids, per-copy decoration, a
+// kind->seat table. All of it answered "what does this copy look like", from the v1 parse tree or
+// from an arrangement string, and particle-scene.js now answers it once from the IR. What is left
+// is the only question that was ever this file's own: how many units are there, and what separates
+// them.
 (function (root) {
   'use strict';
   var FAMS = ['H2A', 'H2B', 'H3', 'H4'];
-
-  // Walk a raw unit subtree collecting the family multiset. Handles proteoform
-  // leaves (family + assembly count) inside nucleosome slots / bracket members.
-  function unitFamilies(subtree) {
-    var c = {};
-    (function add(n, mult) {
-      if (n == null) return;
-      if (Array.isArray(n)) { n.forEach(function (m) { add(m, mult); }); return; }
-      // Explicitly-absent leaf (grammar's expandSubscript sets `absent` for a
-      // `_0` member): excluded from the count, mirroring ir.js's
-      // completedCounts (bare-absence leaves pin the family but don't add to it).
-      if (n.absent) return;
-      if (n.family && (n.level === 'histone' || n.node === 'proteoform' || !n.members && !n.slots)) {
-        c[n.family] = (c[n.family] || 0) + mult; // one chain per leaf occurrence
-      }
-      if (n.slots) n.slots.forEach(function (m) { add(m, mult); });
-      if (n.members) n.members.forEach(function (m) { add(m, mult * (n.count || 1)); });
-    })(subtree, 1);
-    return c;
-  }
-
-  // Marks: proteoforms in the subtree carrying a substitution or PTM.
-  function unitMarks(subtree) {
-    var out = [];
-    (function walk(n) {
-      if (n == null) return;
-      if (Array.isArray(n)) { n.forEach(walk); return; }
-      var mods = n.modifications || [];
-      if (n.family && mods.length) {
-        var label = mods.map(function (m) {
-          var pos = (m.residue || '') + (m.position != null ? m.position : '');
-          return pos + (m.variant || '') + (m.modification || '');
-        }).join(',');
-        if (label) out.push({ family: n.family, label: label });
-      }
-      if (n.slots) n.slots.forEach(walk);
-      if (n.members) n.members.forEach(walk);
-    })(subtree);
-    return out;
-  }
 
   // `unitCaption` lived here (BB, 2026-07-25: dropped). It was a THIRD opinion about how to write a
   // particle down — its own walk over the v1 subtree, its own bracket precedence — sitting next to
@@ -4066,197 +4033,401 @@ initPortEditor();
   // STATED slots, so `(H3:K27M)` read "(H3K27M)" while every other pane discussed a completed
   // octamer. The query now has one caption, derived from canon in shell.js (`renderCanonCaption`).
 
-  function famKey(c) {
-    return FAMS.filter(function (f) { return c[f]; })
-               .map(function (f) { return f + c[f]; }).join(',');
-  }
-
-  // (classify result, family multiset) → sprite symbol id.
-  function glyphId(kind, families) {
-    var c = families || {};
-    if (kind === 'proteoform' || kind === 'homotypic-set') {
-      var f = FAMS.filter(function (x) { return c[x]; })[0];
-      return f ? 'unit-' + f.toLowerCase() : 'unit-h3';
-    }
-    if (kind === 'dimer') {
-      return (c.H2A && c.H2B) ? 'unit-dimer-h2a-h2b' : 'unit-dimer-h3-h4';
-    }
-    if (kind === 'tetramer') return 'unit-tetramer';
-    if (kind === 'octamer')  return 'unit-nucleosome';   // DNA or bare → disc (bare-octamer art deferred)
-    if (kind === 'hexasome') return 'unit-hexasome';
-    if (kind === 'tetrasome') return 'unit-tetramer';    // fallback: tetramer + DNA stub (§2 deferred)
-    if (kind === 'half-octamer') return 'composite';     // renders dimer-h3-h4 + dimer-h2a-h2b
-    return 'composite';                                   // 'other'/orphan → decomposed view
-  }
-
-  // Greedy split of a family multiset into canonical particles + orphan monomers.
-  function decompose(families) {
-    var c = {}; FAMS.forEach(function (f) { c[f] = families[f] || 0; });
-    var particles = [], orphans = [];
-    var t = Math.min(c.H3, c.H4);
-    while (t >= 2) { particles.push('unit-tetramer'); c.H3 -= 2; c.H4 -= 2; t -= 2; }
-    while (c.H3 >= 1 && c.H4 >= 1) { particles.push('unit-dimer-h3-h4'); c.H3--; c.H4--; }
-    while (c.H2A >= 1 && c.H2B >= 1) { particles.push('unit-dimer-h2a-h2b'); c.H2A--; c.H2B--; }
-    FAMS.forEach(function (f) { for (var i = 0; i < c[f]; i++) orphans.push('unit-' + f.toLowerCase()); });
-    return { particles: particles, orphans: orphans };
-  }
-
-  // Top-level units. deps = { unitClass } (defaults to global nucleosomeParser).
-  function unitList(parsed, deps) {
-    deps = deps || (typeof nucleosomeParser !== 'undefined' ? nucleosomeParser : null);
-    if (!parsed) return [];
-    var subtrees, linkers;
-    // A new PARTICLE (unit) is only opened by an array — an assembly with more
-    // than one nucleosome member. Everything else is ONE particle: a bare
-    // top-level @ list (H3 @ H4) is the first nucleosome's slots, classified as a
-    // whole (→ dimer/tetramer/…), NOT one unit per slot. (Previously a bare @
-    // list split per-slot, which wrongly showed H3K4me3 @ H4K16ac as two beads.)
-    if (parsed.level === 'array') {
-      subtrees = parsed.nucleosomes || [];
-      linkers = parsed.linkers || [];
-    } else {
-      subtrees = [parsed];
-      linkers = [];
-    }
-    return subtrees.map(function (sub, i) {
-      var families = unitFamilies(sub);
-      var kind = deps ? deps.unitClass(sub) : null;
-      var glyph = glyphId(kind, families);
-      var orphaned = (kind === 'other');
+  // Top-level units, from the v2 IR.
+  //
+  // A new PARTICLE is opened only by an array with more than one member; everything else is ONE
+  // unit (a bare top-level `@` list is a single free assembly, not one bead per slot). The unit now
+  // carries just its NODE, its classification and the linker that follows it — the families, marks
+  // and glyph id it used to carry were only ever inputs to the renderer, and the renderer reads the
+  // node itself now.
+  //
+  // `subtree` is kept as an alias of `node` while the panes that still take a v1 subtree are ported.
+  function unitList(ir, deps) {
+    deps = deps || (typeof nucleosomeParser2 !== 'undefined' ? nucleosomeParser2 : null);
+    if (!ir || typeof ir !== 'object') return [];
+    var isArray = ir.node === 'array' && (ir.members || []).length > 1;
+    var nodes = isArray ? ir.members : [ir.node === 'array' ? (ir.members || [])[0] || ir : ir];
+    return nodes.map(function (n, i) {
+      // The linker after member i is carried by member i's OWN dna — `(A)-50-(B)` puts {bp:50} on A,
+      // the particle the linker trails from — and only counts when something follows it.
+      var link = (isArray && i < nodes.length - 1 && n.dna) ? n.dna.linker : null;
       return {
-        kind: kind, glyph: glyph, families: families,
-        marks: unitMarks(sub), orphaned: orphaned, subtree: sub,
-        linkerAfter: (parsed.level === 'array' && i < subtrees.length - 1) ? (linkers[i] || null) : null
+        node: n, subtree: n,
+        kind: (deps && deps.classify2) ? deps.classify2(n) : null,
+        linkerAfter: (link && link.bp != null) ? link : null,
       };
     });
   }
 
-  // Full octamer, in canonical order (two copies of each core family).
-  var ALL8 = ['H3:1', 'H3:2', 'H4:1', 'H4:2', 'H2A:1', 'H2A:2', 'H2B:1', 'H2B:2'];
+  // WHAT LEFT (BB, 2026-07-25, stage 3). Eleven functions moved into particle-scene.js or died with
+  // the old renderer: unitMarks, markedFamilies, variantFamilies, copyDeco, worldDeco, worldSubunits,
+  // subunitSet, glyphSubunitSet, glyphId, famKey, decompose. Every one of them answered "what does
+  // this copy look like" from the v1 parse tree or from an arrangement string; `seats()` answers it
+  // once, from the IR. `decompose` is not replaced — an unnameable composition is now reported
+  // rather than drawn as a greedy guess.
+  var api = { unitList: unitList, FAMS: FAMS };
+  if (typeof module !== 'undefined' && module.exports) module.exports = api;
+  else Object.assign(root, api);
+})(typeof globalThis !== 'undefined' ? globalThis : this);
 
-  // Classified particle kind → the subunit BASE ids to show + whether DNA shows.
-  // Base ids ("H3:1") expand to the SVG's Family:copy:part elements at render time
-  // (shell.js beadSvg). 'other' is NOT handled here — it routes through decompose()
-  // and each canonical particle is rendered via glyphSubunitSet() below.
-  function subunitSet(kind, families) {
-    var c = families || {};
-    var only = FAMS.filter(function (f) { return c[f]; })[0] || 'H3';
-    switch (kind) {
-      case 'proteoform':
-      case 'homotypic-set':
-        return { ids: [only + ':1'], dna: false };
-      case 'dimer':
-        return (c.H2A && c.H2B)
-          ? { ids: ['H2A:1', 'H2B:1'], dna: false }
-          : { ids: ['H3:1', 'H4:1'], dna: false };
-      case 'tetramer':
-        return { ids: ['H3:1', 'H3:2', 'H4:1', 'H4:2'], dna: false };
-      case 'tetrasome':
-        return { ids: ['H3:1', 'H3:2', 'H4:1', 'H4:2'], dna: true };
-      case 'hexasome':
-        return { ids: ['H3:1', 'H3:2', 'H4:1', 'H4:2', 'H2A:1', 'H2B:1'], dna: true };
-      case 'half-octamer':
-        return { ids: ['H3:1', 'H4:1', 'H2A:1', 'H2B:1'], dna: false };
-      case 'octamer':
-        return { ids: ALL8.slice(), dna: true };
-      default:
-        return { ids: ALL8.slice(), dna: true };   // defensive: a full nucleosome
+    // docs/_includes/js/particle-scene.js — the v2 IR node → cartoon renderer.
+//
+//   seats(node)                  IR  → SeatMap      which physical copy is what
+//   layout(seatMap, opts)        SeatMap → Scene    geometry, z-order, colour
+//   emit(scene)                  Scene → string     syntax only
+//   renderParticle(node, opts)   the composition of the three
+//
+// ── WHY THIS REPLACES THE OLD PATH ───────────────────────────────────────────────────────────────
+// The cartoon had TWO paths into the same picture: `worldDeco(parseArrangement(str))` when an
+// arrangement tile was selected, and `fallbackDeco(unit)` — a walk over the v1 parse subtree — when
+// it was not. They computed the same thing, per-copy decoration, from two different sources, and
+// only one of them could be right about a partially stated query.
+//
+// They collapse because a WORLD IS AN IR NODE: `interpret2().worlds[i]` is an assembly, so drawing
+// the selected world is just `renderParticle(worldIR)`. One input, one path. Nothing here consults
+// an arrangement string.
+//
+// ── WHICH COPY HOLDS THE MARK ────────────────────────────────────────────────────────────────────
+// A world IR is a flat eight-member assembly with NO face/copy/seat field:
+//
+//   (H3:K27M) world 0   H3[K27M] H4[] H2A[] H2B[]  H3[K27M] H4[] H2A[] H2B[]   homotypic
+//   (H3:K27M) world 1   H3[K27M] H4[] H2A[] H2B[]  H3[]     H4[] H2A[] H2B[]   heterotypic
+//
+// so member POSITION looks like the only carrier of face identity, and `seats` was written to
+// honour it. The oracle test overturned that: `interpret2` lists the marked copy first while the
+// arrangement STRING it derives from the same world puts wild-type first ("/K27M"), so honouring
+// member order made the cartoon disagree with its own arrangement tile about which copy is lit.
+//
+// Copies are therefore sorted into seats by a canonical signature. Nothing is lost: `interpret2`
+// enumerates distinct MULTISETS, so two worlds never differ by permutation alone — worlds 0 and 1
+// above differ in content ({M,M} vs {M,·}) and stay distinguishable. The two views of one object
+// now agree by construction rather than by coincidence.
+//
+// ── THE FRAME IS THE MEMBERSHIP ──────────────────────────────────────────────────────────────────
+// There is no kind → seat-set table (the old `subunitSet`). `lift2` completes a particle at parse
+// time, so a tetrasome's IR ALREADY carries its absent H2A/H2B as `count: 0` members; they take
+// their seats and are drawn as ghosts. A free dimer's IR has exactly two members and gets exactly
+// two seats. The membership answers the question the table used to answer, so the table is gone.
+(function (root) {
+  'use strict';
+
+  var FAMS = ['H3', 'H4', 'H2A', 'H2B'];
+
+  // Dark family tints for a variant copy. The cartoon's authored fills are theme-invariant, so
+  // these are too (the darker member of each ColorBrewer pair).
+  var FAM_DARK = { H3: '#1f78b4', H4: '#33a02c', H2A: '#b3b300', H2B: '#e31a1c' };
+  var FAM_LIGHT = { H3: '#a6cee3', H4: '#b2df8a', H2A: '#ffff99', H2B: '#fb9a99' };
+
+  function isNeg(m) { return !!(m && (m.negated || m.absent)); }
+
+  // A modification's display token: residue + position + substitution/PTM ("K27M", "K16ac",
+  // "K27Mme3"). The position is what the dot is placed at.
+  function markToken(m) {
+    return (m.residue || '') + (m.position != null ? m.position : '')
+         + (m.substitution || '') + (m.modification || '');
+  }
+
+  // The variant this proteoform pins, or null. `variant` is SET-valued in the IR; a set of one that
+  // differs from the bare family is a pinned variant. A wider set is a disjunction — the picture
+  // cannot show "one of these", so it shows the family.
+  function pinnedVariant(pf) {
+    var v = pf.variant;
+    if (!Array.isArray(v) || v.length !== 1) return null;
+    return v[0] && v[0] !== pf.family ? v[0] : null;
+  }
+
+  // ── seats ───────────────────────────────────────────────────────────────────────────────────────
+  // Walk the assembly in member order, flattening nested DNA-free sub-assemblies (a co-bracket is a
+  // CO-LOCATION constraint on seats, not a picture of its own) and expanding counts into copies.
+  //
+  // Returns { seats, order, kind, counts, dna, pins }. `order` is the seat ids in the order they
+  // were filled — the paint order, so a copy never changes stacking layer between two renders.
+  // An array of one IS that particle — the same rule `classify2` applies. `resolve2` wraps every
+  // single particle in a one-member array, so without this the renderer reads `dna` off the wrapper
+  // (undefined) and quietly draws every nucleosome as a DNA-free assembly.
+  function particleOf(node) {
+    return (node && node.node === 'array' && (node.members || []).length === 1)
+      ? node.members[0] : node;
+  }
+
+  // Copy signature, used ONLY to order the copies of one family within their seats.
+  //
+  // I first wrote this order-sensitively, on the reasoning that member position is the sole carrier
+  // of face identity in a world IR. The oracle overturned that: `interpret2` emits its member list
+  // marked-copy-first while the arrangement STRING it derives puts wild-type first, so honouring
+  // member order made the cartoon and its own arrangement tile disagree about which copy is lit.
+  // Sorting is safe because `interpret2` enumerates distinct MULTISETS — two worlds never differ by
+  // permutation alone — so no distinction is lost by imposing a canonical order, and the two views
+  // of one object now agree by construction.
+  function copySig(c) {
+    return (c.variant || '') + ' '
+         + c.marks.map(function (m) { return m.position + ':' + m.token; }).sort().join(',');
+  }
+
+  // Copies of one family within one face, as a comparable string.
+  function copySig(c) {
+    return (c.variant || '') + ' '
+         + c.marks.map(function (m) { return m.position + ':' + m.token; }).sort().join(',');
+  }
+  // A copy in `interpret2`'s own `stateSig` spelling: "" wild-type, "K27M" / "K27M,S28ph" marks,
+  // "\x1fH2A.Z" a variant, "\u2205" absent. The FORMAT matters, not just the content — the dyad
+  // comparison below is a string comparison and `/` (0x2F) sorting below letters and digits is
+  // exactly what makes a wild-type copy win the canonical first position.
+  function stateSig(c) {
+    if (!c) return '\u2205';
+    var parts = [];
+    if (c.variant) parts.push('\x1f' + c.variant);
+    c.marks.forEach(function (m) { parts.push(m.token); });
+    return parts.join(',');
+  }
+
+  // The arrangement string for one face ORDER — byte-identical in shape to `interpret2`'s
+  // `sig`/`flipSig` ("K27M/|/K16ac|/|/"), so comparing two of these reproduces its canonical choice.
+  function orderSig(faceA, faceB) {
+    var pick = function (face, f) {
+      var cs = face.filter(function (c) { return c.family === f; });
+      return cs.length ? stateSig(cs[0]) : '';
+    };
+    return FAMS.map(function (f) { return pick(faceA, f) + '/' + pick(faceB, f); }).join('|');
+  }
+
+  // Walk one member list into a flat list of copies (expanding `count`, flattening co-brackets).
+  function copiesOf(members, node) {
+    var out = [], pins = {}, pinN = 0;
+    (function walk(list, pin) {
+      (list || []).forEach(function (n) {
+        if (!n || typeof n !== 'object') return;
+        if (n.node === 'proteoform') {
+          var fam = n.family;
+          if (!fam || FAMS.indexOf(fam) < 0) return;    // H1 and friends have no seat in this art
+          var k = (n.count == null) ? 1 : n.count;
+          if (k <= 0) return;                            // a consumed absence — see THE FRAME
+          for (var i = 0; i < k; i++) out.push({
+            family: fam, occupied: true, variant: pinnedVariant(n),
+            marks: (n.modifications || []).filter(function (m) { return !isNeg(m); })
+                     .map(function (m) { return { position: m.position, token: markToken(m) }; }),
+            pin: pin,
+          });
+          return;
+        }
+        if (n.node !== 'assembly' && n.node !== 'array') return;
+        var p = pin;
+        if (p == null && n.dna == null && n !== node) { p = 'p' + (++pinN); pins[p] = true; }
+        walk(n.members, p);
+      });
+    })(members, null);
+    return { copies: out, pins: Object.keys(pins) };
+  }
+
+  // A face holds at most one copy of any family; the families it holds, as a comparable key.
+  function halfOctamer(copies) {
+    var seen = {};
+    for (var i = 0; i < copies.length; i++) {
+      if (seen[copies[i].family]) return false;
+      seen[copies[i].family] = 1;
     }
+    return true;
+  }
+  function famSet(copies) {
+    return copies.map(function (c) { return c.family; }).sort().join(',');
   }
 
-  // Families carrying at least one mark (for subunit emphasis). By family, not copy.
-  function markedFamilies(unit) {
-    var seen = {}, out = [];
-    ((unit && unit.marks) || []).forEach(function (m) {
-      if (m.family && !seen[m.family]) { seen[m.family] = true; out.push(m.family); }
-    });
-    return out;
-  }
+  function seats(node, deps) {
+    deps = deps || root;
+    node = particleOf(node);
+    var isParticle = !!(node && node.dna != null);
+    var members = (node && node.members) || (node && node.node === 'proteoform' ? [node] : []);
 
-  // Families whose proteoform pins a non-canonical variant (→ dark-tint fill on
-  // the cartoon). A variant leaf carries `variant` (e.g. "H2A.Z") distinct from
-  // its bare `family`.
-  function variantFamilies(subtree) {
-    var seen = {}, out = [];
-    (function walk(n) {
-      if (n == null) return;
-      if (Array.isArray(n)) { n.forEach(walk); return; }
-      if (!n.absent && n.family && n.variant && n.variant !== n.family && !seen[n.family]) {
-        seen[n.family] = true; out.push(n.family);
-      }
-      if (n.slots) n.slots.forEach(walk);
-      if (n.members) n.members.forEach(walk);
-    })(subtree);
-    return out;
-  }
-
-  // Decode one arrangement copy signature (a half of a parseArrangement segment)
-  // into its cartoon decoration: `absent` (→ ghost), `variant` (→ dark fill) and
-  // `marked` (→ a modification-site dot) — a 1:1 mirror of the copy's arrangement
-  // dot (absent/normal/marked). Copy strings come from ir-interpret's world
-  // notation: "" = wild type, "∅" = absent, "K27M"/"K27M,S28ph" = mark(s),
-  // "\x1fH2A.Z" = variant, "\x1fH2A.Z,K27M" = variant + mark(s).
-  function copyDeco(copy) {
-    var c = String(copy == null ? '' : copy);
-    if (c === '∅') return { variant: null, marked: false, absent: true, positions: [] };
-    if (c === '') return { variant: null, marked: false, absent: false, positions: [] };
-    var variant = null, marks = 0, positions = [];
-    c.split(',').forEach(function (k) {
-      if (k.charCodeAt(0) === 0x1f) variant = k.slice(1);
-      else if (k) {
-        marks++;
-        // A mark token is residue+position+variant/PTM ("K27M", "K27ac",
-        // "K27Mme3"); the embedded integer is the residue number its dot sits on.
-        var m = /(\d+)/.exec(k);
-        if (m) positions.push(+m[1]);
-      }
-    });
-    return { variant: variant, marked: marks > 0, absent: false, positions: positions };
-  }
-
-  // parseArrangement world → per-subunit-copy decoration keyed by SVG base id
-  // ("H3:1","H3:2",…). Two copies per core family.
-  function worldDeco(world) {
-    var out = {};
-    if (!world) return out;
-    FAMS.forEach(function (f) {
-      var seg = world[f] || ['', ''];
-      out[f + ':1'] = copyDeco(seg[0]);
-      out[f + ':2'] = copyDeco(seg[1]);
-    });
-    return out;
-  }
-
-  // Every copy position of the arrangement world (all eight base ids), so the
-  // cartoon draws one subunit per arrangement dot. Absent copies stay in the list
-  // (worldDeco tags them absent → the renderer ghosts them) so the cartoon is a
-  // faithful 1:1 image of the tile. Ordered by ALL8 (H3,H4,H2A,H2B) — the same
-  // paint/z-order the fixed octamer template uses, so a subunit does not change
-  // stacking layer when the unit becomes world-driven on selection. DNA always
-  // present (arrangement = nucleosome).
-  function worldSubunits() {
-    return { ids: ALL8.slice(), dna: true };
-  }
-
-  // decompose() glyph id (composite/'other' path) → subunit set.
-  function glyphSubunitSet(glyph) {
-    switch (glyph) {
-      case 'unit-tetramer':      return { ids: ['H3:1', 'H3:2', 'H4:1', 'H4:2'], dna: false };
-      case 'unit-dimer-h3-h4':   return { ids: ['H3:1', 'H4:1'], dna: false };
-      case 'unit-dimer-h2a-h2b': return { ids: ['H2A:1', 'H2B:1'], dna: false };
-      case 'unit-h3': return { ids: ['H3:1'], dna: false };
-      case 'unit-h4': return { ids: ['H4:1'], dna: false };
-      case 'unit-h2a': return { ids: ['H2A:1'], dna: false };
-      case 'unit-h2b': return { ids: ['H2B:1'], dna: false };
-      default: return { ids: [], dna: false };
+    // FACE STRUCTURE. `interpret2` builds a world IR one face at a time (its `[0,1].forEach(face)`
+    // loop), so an even member list splits down the middle into the two half-octamers, and face i is
+    // copy i. A query IR need not be face-structured (`(H3:K27M)` is one proteoform with count 2), so
+    // faces are used only when they are actually there.
+    var faces = null;
+    if (isParticle && members.length >= 2 && members.length % 2 === 0) {
+      var h = members.length / 2;
+      var a = copiesOf(members.slice(0, h), node), b = copiesOf(members.slice(h), node);
+      // Both halves must be plausible HALF-OCTAMERS. "Same number of copies" is not enough: a
+      // completed query IR like `(H3:K27M@H4:K16ac)` has six members — H3ᴹ, H3, H4ᴬᶜ, H4, {H2A}2,
+      // {H2B}2 — and splitting it down the middle produced a "face" holding two H3 and no H2A,
+      // which then lost seats for the families that fell entirely into one half. A real face holds
+      // AT MOST ONE copy of each family, and the two faces cover the same families.
+      if (a.copies.length && halfOctamer(a.copies) && halfOctamer(b.copies)
+          && famSet(a.copies) === famSet(b.copies)) faces = [a, b];
     }
+
+    var byFam = {}, pins = [];
+    if (faces) {
+      // THE DYAD FLIP. The two faces are related by a symmetry, and `interpret2` canonicalises its
+      // arrangement STRING under it (`flipSig`, taking the lexicographically smaller of the two) while
+      // leaving the world IR unflipped. Rendering the IR's own face order therefore lit the wrong copy
+      // for exactly those worlds whose canonical string is the flipped one — the cartoon and its own
+      // tile disagreeing about which half of the particle carries the mark. Applying the same rule
+      // here makes them agree by construction rather than by luck.
+      if (orderSig(faces[1].copies, faces[0].copies) < orderSig(faces[0].copies, faces[1].copies))
+        faces = [faces[1], faces[0]];
+      pins = faces[0].pins.concat(faces[1].pins);
+      faces.forEach(function (face, fi) {
+        FAMS.forEach(function (f) {
+          face.copies.filter(function (c) { return c.family === f; })
+            .forEach(function (c) { (byFam[f] = byFam[f] || [])[fi] = c; });
+        });
+      });
+    } else {
+      var all = copiesOf(members, node);
+      pins = all.pins;
+      // No face structure to honour: order each family\'s copies canonically so the picture is
+      // stable across renders of the same node.
+      FAMS.forEach(function (f) {
+        byFam[f] = all.copies.filter(function (c) { return c.family === f; })
+          .sort(function (x, y) { var i = copySig(x), j = copySig(y); return i < j ? -1 : i > j ? 1 : 0; });
+      });
+    }
+
+    // THE FRAME. A PARTICLE (dna != null) always has all eight seats — a tetrasome is a nucleosome
+    // with two EMPTY ones, and those empty seats are what make it readable as a tetrasome rather than
+    // as a small tetramer. They cannot come from the membership: `lift2` CONSUMES a `count: 0` member
+    // into an exclusion, so `(H3@H4@{H2A}0@{H2B}0)` resolves to four proteoforms with no trace of the
+    // absence. What separates it from a free `[H3@H4@H3@H4]` is the DNA — the same field `classify2`
+    // reads to tell a tetrasome from a tetramer, so the picture and the word agree by construction.
+    //
+    // A FREE assembly gets only the seats it fills: a dimer is two subunits, not eight with six holes.
+    var out = {}, order = [];
+    FAMS.forEach(function (fam) {
+      for (var s = 1; s <= 2; s++) {
+        var seat = fam + ':' + s, c = (byFam[fam] || [])[s - 1];
+        if (c) { out[seat] = Object.assign({ seat: seat }, c); order.push(seat); }
+        else if (isParticle) {
+          out[seat] = { seat: seat, family: fam, occupied: false, variant: null, marks: [], pin: null };
+          order.push(seat);
+        }
+      }
+    });
+
+    var P = deps || {};
+    return {
+      seats: out, order: order, pins: pins,
+      kind: P.classify2 ? P.classify2(node) : null,
+      counts: P.compositionCounts ? P.compositionCounts(node) : null,
+      dna: isParticle ? node.dna : null,
+    };
   }
 
-  var api = { unitFamilies: unitFamilies, unitMarks: unitMarks, famKey: famKey,
-              glyphId: glyphId, decompose: decompose, unitList: unitList, FAMS: FAMS,
-              subunitSet: subunitSet, markedFamilies: markedFamilies, glyphSubunitSet: glyphSubunitSet,
-              variantFamilies: variantFamilies, copyDeco: copyDeco, worldDeco: worldDeco,
-              worldSubunits: worldSubunits };
+  // ── layout ──────────────────────────────────────────────────────────────────────────────────────
+  // opts:
+  //   atlas          (required) build/sprite-atlas.json — the baked geometry
+  //   dnaMode        'auto' | 'off'; 'auto' follows the node's own `dna` field. It can SUPPRESS
+  //                  DNA (a legend glyph) but never add it — that would make the picture disagree
+  //                  with `classify2`, which reads the same field to tell a tetramer from a tetrasome.
+  //   arrayMember    include the linker strands so adjacent particles join
+  //   leadingLinker  false on the first array member — nothing joins on its left
+  //   selected       draw the selection disc
+  function layout(sm, opts) {
+    opts = opts || {};
+    var atlas = opts.atlas;
+    if (!atlas || !atlas.parts || !atlas.parts.length)
+      throw new Error('particle-scene: no sprite atlas. An empty atlas renders a plausible blank '
+                    + 'bead, so this is an error rather than a fallback.');
+
+    var wantDna = opts.dnaMode === 'off' ? false : (sm.dna != null);
+    var arrayMember = !!opts.arrayMember;
+    var vb = (wantDna && arrayMember) ? atlas.viewBox : (atlas.coreViewBox || atlas.viewBox);
+
+    var parts = [], dots = [];
+    atlas.parts.forEach(function (p) {
+      if (p.kind === 'selector') {
+        if (opts.selected) parts.push({ markup: p.markup, cls: 'bead-sel' });   // first → behind
+        return;
+      }
+      if (p.kind === 'dna' || p.kind === 'linker') {
+        if (!wantDna) return;
+        if (p.kind === 'linker') {
+          if (!arrayMember) return;
+          if (p.id === 'DNA:linker1' && opts.leadingLinker === false) return;
+        }
+        parts.push({ markup: p.markup, cls: 'bead-dna' });
+        return;
+      }
+      var st = sm.seats[p.seat];
+      if (!st) return;                                        // this copy is not in this particle
+      if (!st.occupied) { parts.push({ markup: p.markup, cls: 'bead-absent', wrap: true }); return; }
+      if (st.variant && p.part === 'HFD') {
+        parts.push({ markup: recolor(p.markup, FAM_DARK[st.family] || '#555'), cls: null });
+        return;
+      }
+      parts.push({ markup: p.markup, cls: null });
+    });
+
+    // One dot per modification, at that residue's point on the traced chain. A mark whose residue
+    // runs past the modelled trajectory falls back to the subunit centroid — recorded as such, so a
+    // numbering regression shows up as `placement: 'centroid'` in the scene rather than as a dot
+    // that merely looks a bit central.
+    sm.order.forEach(function (seat) {
+      var st = sm.seats[seat];
+      if (!st.occupied || !st.marks.length) return;
+      var traj = atlas.trajectories[seat] || [], c = atlas.centroids[seat];
+      var fill = st.variant ? (FAM_DARK[st.family] || '#555') : (FAM_LIGHT[st.family] || '#999');
+      st.marks.forEach(function (mk) {
+        var pt = (mk.position >= 1 && traj[mk.position - 1]) ? traj[mk.position - 1] : null;
+        var placement = pt ? 'trajectory' : 'centroid';
+        var xy = pt ? { x: pt[0], y: pt[1] } : c;
+        if (!xy) return;
+        dots.push({ x: xy.x, y: xy.y, seat: seat, fill: fill,
+                    position: mk.position, token: mk.token, placement: placement });
+      });
+    });
+
+    return { viewBox: vb, transform: atlas.groupTransform || '', parts: parts, dots: dots,
+             kind: sm.kind, dna: wantDna };
+  }
+
+  function recolor(markup, hex) {
+    return markup.replace(/fill\s*=\s*"[^"]*"/i, 'fill="' + hex + '"')
+                 .replace(/fill\s*:\s*#[0-9a-fA-F]+/i, 'fill:' + hex);
+  }
+
+  // ── emit ────────────────────────────────────────────────────────────────────────────────────────
+  // Syntax only. No decisions live here, so nothing about the picture can be decided in two places.
+  function emit(scene, opts) {
+    opts = opts || {};
+    var inner = scene.parts.map(function (p) {
+      var m = p.cls ? p.markup.replace(/^<(\w+)/, '<$1 class="' + p.cls + '"') : p.markup;
+      return p.wrap ? '<g class="' + p.cls + '">' + p.markup + '</g>' : m;
+    }).join('');
+    var dots = scene.dots.map(function (d) {
+      return '<circle class="bead-dot" fill="' + d.fill + '" cx="' + d.x + '" cy="' + d.y + '" r="1.7"/>'
+           + '<circle class="bead-dot-mark" cx="' + d.x + '" cy="' + d.y + '" r="0.62"/>';
+    }).join('');
+    return '<svg class="bead" viewBox="' + scene.viewBox + '" aria-hidden="true">'
+         + '<g transform="' + scene.transform + '">' + inner + dots + '</g></svg>';
+  }
+
+  // ── the whole thing ─────────────────────────────────────────────────────────────────────────────
+  // An ARRAY recurses and composes: each particle keeps its own full (linker-margin) frame and is
+  // translated by one frame width, so the strands join inside ONE <svg>. Array geometry therefore
+  // lives here rather than in CSS abutment of sibling elements plus a `hideLinker1` flag threaded
+  // down from a v1 tree check.
+  function renderParticle(node, opts) {
+    opts = opts || {};
+    if (!node || typeof node !== 'object') return '';
+    if (node.node === 'array' && (node.members || []).length > 1) {
+      var vb = (opts.atlas.viewBox || '0 0 1 1').split(/\s+/).map(Number);
+      var n = node.members.length;
+      var gs = node.members.map(function (m, i) {
+        var sc = layout(seats(m, opts.deps), Object.assign({}, opts, {
+          arrayMember: true, leadingLinker: i !== 0, selected: opts.selected && i === opts.selectedIndex,
+        }));
+        var inner = emit(sc).replace(/^<svg[^>]*>/, '').replace(/<\/svg>$/, '');
+        return '<g transform="translate(' + (i * vb[2]) + ',0)">' + inner + '</g>';
+      }).join('');
+      return '<svg class="bead bead-array" viewBox="' + vb[0] + ' ' + vb[1] + ' ' + (n * vb[2]) + ' ' + vb[3]
+           + '" aria-hidden="true">' + gs + '</svg>';
+    }
+    var one = (node.node === 'array' && node.members && node.members.length === 1) ? node.members[0] : node;
+    return emit(layout(seats(one, opts.deps), opts));
+  }
+
+  var api = { seats: seats, layout: layout, emit: emit, renderParticle: renderParticle,
+              FAM_DARK: FAM_DARK, FAM_LIGHT: FAM_LIGHT, markToken: markToken, pinnedVariant: pinnedVariant };
   if (typeof module !== 'undefined' && module.exports) module.exports = api;
   else Object.assign(root, api);
 })(typeof globalThis !== 'undefined' ? globalThis : this);
@@ -4857,8 +5028,8 @@ function setValidity(state) {
 // ── Units bar (Task 7) ──────────────────────────────────────────────────────
 // Renders the physical-unit selector (units-bar.js's unitList()) above the
 // stage and scopes the materials/arrangements/measurements panes to whichever
-// unit is focused. Pure-model logic (unitFamilies/unitMarks/glyphId/decompose/
-// unitList) lives in units-bar.js; this file only does DOM + the pane splice.
+// unit is focused. The cartoon itself is rendered by particle-scene.js (IR node -> SVG) and the
+// unit list by units-bar.js; this file only does DOM + the pane splice.
 
 // `<use href="#id">` against the units.svg sprite inlined near the top of
 // <body> (index.html includes assets/img/units.svg once, relatively). No
@@ -4866,236 +5037,24 @@ function setValidity(state) {
 // (Task 6); .uses sizing is CSS-only (see _shell.scss).
 function useSvg(id) { return `<svg class="uses"><use href="#${id}"/></svg>`; }
 
-// Bead defs: the topview SVG's subunit paths, inlined once (hidden) so each
-// subunit id resolves for <use>. Loaded lazily; renderUnitBar repaints once ready.
-let beadDefs = null;           // { holder: <svg>, viewBox: string, groupTransform: string }
-let beadDefsPromise = null;
+// The baked sprite atlas (build/sprite-atlas.json, served as data/sprite-atlas.json). It replaces
+// the runtime-fetched <svg> holder appended to <body> AND the getBBox() geometry that needed it —
+// see scripts/build_sprite_atlas.js. Nothing is measured in the browser any more, which is what
+// makes the renderer testable in Node at all.
+let beadAtlas = null;
+let beadAtlasPromise = null;
 function ensureBeadDefs() {
-  if (beadDefs) return Promise.resolve(beadDefs);
-  if (beadDefsPromise) return beadDefsPromise;
-  beadDefsPromise = fetch(SVG_URL).then(r => r.text()).then(txt => {
-    const doc = new DOMParser().parseFromString(txt, 'image/svg+xml');
-    const svg = doc.querySelector('svg');
-    const vb = (svg && svg.getAttribute('viewBox')) || '0 0 40.284 40.284';
-    const particles = doc.getElementById('particles');
-    const group = doc.getElementById('nucleosome') || particles || svg;
-    // The subunit/DNA paths are authored in the pre-translate artboard space
-    // and are direct children of #particles; `<use>` clones only the
-    // referenced element, not ancestor transforms, so we must capture and
-    // reapply #particles' transform ourselves (see diagram.js's
-    // parseGroupTranslate for the equivalent compensation there).
-    const groupTransform = (particles && particles.getAttribute('transform')) || '';
-    const holder = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
-    holder.setAttribute('aria-hidden', 'true');
-    holder.style.cssText = 'position:absolute;width:0;height:0;overflow:hidden';
-    holder.appendChild(document.importNode(group, true));
-    document.body.appendChild(holder);
-    // Make the DNA and the selection disc theme-drivable: swap their hard-coded
-    // black/white for currentColor so CSS (.bead-dna / .bead-sel) can recolor them
-    // per light/dark theme. DNA is mostly black STROKE (DNA:1-6) but DNA:7/8 are
-    // black FILL — recolor both, and drop any inline `color:` so currentColor
-    // resolves to the CSS-inherited colour, not a baked black. Opacity is kept.
-    Array.from(holder.querySelectorAll('[id]')).forEach(el => {
-      const st = el.getAttribute('style'); if (!st) return;
-      if (el.id.startsWith('DNA:')) {
-        el.setAttribute('style', st
-          .replace(/stroke\s*:\s*(#0{3}|#0{6}|black)\b/ig, 'stroke:currentColor')
-          .replace(/fill\s*:\s*(#0{3}|#0{6}|black)\b/ig, 'fill:currentColor')
-          .replace(/(^|;)\s*color\s*:\s*[^;]+/ig, '$1'));
-      } else if (el.id === 'selector') {
-        el.setAttribute('style', st.replace(/fill\s*:\s*(#f{3}|#f{6}|white)\b/i, 'fill:currentColor'));
-      }
-    });
-    beadDefs = { holder, viewBox: vb, groupTransform, coreViewBox: coreViewBox(holder, groupTransform, vb) || vb };
-    return beadDefs;
-  }).catch(() => { beadDefs = { holder: null, viewBox: '0 0 40.284 40.284', groupTransform: '' }; return beadDefs; });
-  return beadDefsPromise;
+  if (beadAtlas) return Promise.resolve(beadAtlas);
+  if (beadAtlasPromise) return beadAtlasPromise;
+  beadAtlasPromise = fetch(ATLAS_URL).then(r => r.json()).then(a => { beadAtlas = a; return a; })
+    // A MISSING ATLAS IS AN ERROR, not a fallback. The old path caught its fetch failure and handed
+    // back `{holder: null}`, which rendered an empty <svg> — a bead-shaped hole that looked like a
+    // rendering choice. renderParticle throws on an empty atlas; here we simply leave it null and
+    // let the caller draw nothing rather than draw a lie.
+    .catch(() => { beadAtlas = null; return null; });
+  return beadAtlasPromise;
 }
 
-// The viewBox for a STANDALONE particle: a square the full SVG height, centered
-// horizontally on the histone octamer. The full SVG viewBox reserves a side
-// margin for array-linker tiling, which throws a mononucleosome/sub-particle
-// off-centre; this recentres on the octamer (histone-fold centroid) while keeping
-// the SVG's vertical framing (so the wrapped DNA and hanging arms read the same).
-function coreViewBox(holder, groupTransform, fullVb) {
-  const t = /translate\(\s*(-?[\d.]+)[ ,]+(-?[\d.]+)\s*\)/.exec(groupTransform || '');
-  const tx = t ? +t[1] : 0;
-  const vb = (fullVb || '0 0 40 40').split(/\s+/).map(Number);     // [x, y, w, h]
-  let minX = Infinity, maxX = -Infinity;
-  Array.from(holder.querySelectorAll('[id$=":HFD"]')).forEach(el => {
-    try { const b = el.getBBox(); minX = Math.min(minX, b.x); maxX = Math.max(maxX, b.x + b.width); }
-    catch (e) { /* getBBox unavailable */ }
-  });
-  if (!isFinite(minX)) return null;
-  const side = vb[3];                                              // full height → square side
-  const cx = (minX + maxX) / 2 + tx;                              // octamer centre, final coords
-  return `${(cx - side / 2).toFixed(3)} ${vb[1]} ${side.toFixed(3)} ${side.toFixed(3)}`;
-}
-
-// Dark family tints (light-mode --h3..--h2b), inlined for variant subunits. The
-// cartoon SVG's own fills are theme-invariant hard-coded light hex, so the dark
-// override is a matching theme-invariant hex (the darker member of each
-// ColorBrewer pair).
-const FAM_DARK = { H3: '#1f78b4', H4: '#33a02c', H2A: '#b3b300', H2B: '#e31a1c' };
-
-// Centroid of a subunit (its HFD, or first non-trajectory part) in the SVG's
-// artboard space — the same space the <use>/inlined parts occupy inside the
-// <g transform="${gt}"> wrapper, so a dot placed here lands on the subunit.
-// Cached on beadDefs; getBBox needs the holder rendered (it is, appended to body).
-function beadCentroid(base) {
-  if (!beadDefs || !beadDefs.holder) return null;
-  beadDefs.centroids = beadDefs.centroids || {};
-  if (base in beadDefs.centroids) return beadDefs.centroids[base];
-  let c = null;
-  const el = beadDefs.holder.querySelector('[id="' + base + ':HFD"]')
-          || Array.from(beadDefs.holder.querySelectorAll('[id^="' + base + ':"]'))
-               .find(e => !e.id.endsWith(':trajectory'));
-  try { if (el) { const b = el.getBBox(); c = { x: b.x + b.width / 2, y: b.y + b.height / 2 }; } }
-  catch (e) { c = null; }
-  beadDefs.centroids[base] = c;
-  return c;
-}
-
-// {x, y} of a 1-indexed residue number along a subunit's residue trajectory.
-// The topview SVG stores a per-chain "<base>:trajectory" path as a RELATIVE
-// polyline ("m x0,y0 dx,dy dx,dy …") whose node N is residue N — the same
-// encoding diagram.js's getPathNode reads. Coordinates are the authored artboard
-// space shared by the HFD parts and beadCentroid, so a dot placed here lands
-// inside the <g transform="${gt}"> wrapper on the subunit. Node lists are parsed
-// once and cached on beadDefs. Returns null if the path is missing or `pos` runs
-// past the trajectory (out of the modelled residue range).
-function beadTrajectoryPoint(base, pos) {
-  if (!beadDefs || !beadDefs.holder || !pos || pos < 1) return null;
-  beadDefs.trajNodes = beadDefs.trajNodes || {};
-  let nums = beadDefs.trajNodes[base];
-  if (nums === undefined) {
-    const el = beadDefs.holder.querySelector('[id="' + base + ':trajectory"]');
-    const d = el && el.getAttribute('d');
-    nums = d ? (d.match(/-?[\d.]+(?:e[+-]?\d+)?/gi) || []).map(Number) : null;
-    beadDefs.trajNodes[base] = nums;
-  }
-  if (!nums || nums.length < pos * 2) return null;   // residue past trajectory end
-  let x = nums[0], y = nums[1];                       // node 1 = residue 1 (the `m` start)
-  for (let i = 1; i < pos; i++) { x += nums[2 * i]; y += nums[2 * i + 1]; }
-  return { x, y };
-}
-
-// One bead <svg>. Iterates the source SVG's drawable elements in DOCUMENT ORDER
-// so the DNA gyre keeps its authored z-layering (some strands cross in front of
-// the histones, some behind). `set.ids` selects which subunit copies to show;
-// `deco[base]` ({ absent, variant, marked }) styles each — a variant copy is
-// inlined with the family's dark tint, an absent copy is ghosted in place, a
-// marked copy gets a modification-site dot (drawn last, on top). `dnaMode`:
-//   'none'  → no DNA (a bare particle: dimer/tetramer/…)
-//   'core'  → the wrapped core DNA only (a mononucleosome)
-//   'array' → core + the DNA:linker* strands (an array member, so adjacent beads
-//             join side by side)
-// Returns an empty-viewBox shell until defs load (renderUnitBar repaints then).
-// THE VARIANT-COLOUR BLEED (BB). A variant copy cannot be drawn with `<use>` — it needs a different
-// fill — so its element is INLINED. Inlined verbatim, it brought the sprite's `id` with it, and that
-// duplicate id is what bled: three facts compose into it.
-//   1. the bead sprite (nucleosome_topview3.svg) is fetched and appended to the END of <body>;
-//   2. the units bar renders EARLIER in the document (the units.svg inlined at the top is a different
-//      sprite with unrelated ids, so it never shadowed anything);
-//   3. `<use href="#id">` resolves to the FIRST element with that id in document order.
-// So the moment one array member inlined a dark-filled `H2A:1:HFD`, every other member's
-// `<use href="#H2A:1:HFD">` resolved to THAT clone instead of the sprite — one member's variant colour
-// appearing on all its neighbours. Only visible on arrays, because that is when a second bead exists.
-//
-// Pure and Node-testable on purpose: the bug is invisible in any single bead's markup (each one is
-// individually correct) and only emerges from the whole document, which is exactly the kind of thing a
-// unit test has to pin at the one place it can — the injection point.
-function stripIds(markup) {
-  return String(markup).replace(/\s+id\s*=\s*"[^"]*"/g, '');
-}
-
-function beadSvgFromSet(set, deco, vb, dnaMode, hideLinker1, showSelector) {
-  vb = vb || (beadDefs && beadDefs.viewBox) || '0 0 40.284 40.284';
-  if (!beadDefs || !beadDefs.holder) return `<svg class="bead" viewBox="${vb}" aria-hidden="true"></svg>`;
-  dnaMode = dnaMode || (set.dna ? 'core' : 'none');
-  // Array members use the full viewBox (linker margins reserved for tiling);
-  // standalone particles use the tight core viewBox so they sit centered.
-  vb = (dnaMode === 'array') ? beadDefs.viewBox : (beadDefs.coreViewBox || beadDefs.viewBox);
-  const present = new Set(set.ids);
-  const marked = new Map();   // base → residue positions ([] ⇒ no positions known)
-  let inner = '';
-  Array.from(beadDefs.holder.querySelectorAll('[id]')).forEach(el => {
-    const id = el.id;
-    if (id === 'selector') {                                          // the SVG's centred selection disc
-      if (showSelector) inner += `<use class="bead-sel" href="#selector"/>`;  // only when a unit is chosen (first → behind)
-      return;
-    }
-    if (id.startsWith('DNA:')) {
-      if (dnaMode === 'none') return;
-      if (id.startsWith('DNA:linker')) {
-        if (dnaMode !== 'array') return;                    // linkers: arrays only
-        if (id === 'DNA:linker1' && hideLinker1) return;    // first member: no leading linker
-      }
-      inner += `<use class="bead-dna" href="#${id}"/>`;
-      return;
-    }
-    const m = /^(H(?:2A|2B|3|4):[12]):(.+)$/.exec(id);   // subunit part "H3:1:HFD"
-    if (!m || m[2] === 'trajectory') return;
-    const base = m[1];
-    if (!present.has(base)) return;                        // subunit not in this particle
-    const d = (deco && deco[base]) || null;
-    if (d && d.absent) {
-      inner += `<g class="bead-absent"><use href="#${id}"/></g>`;
-    } else if (d && d.variant) {
-      const dk = FAM_DARK[base.split(':')[0]] || '#555';
-      inner += stripIds(el.outerHTML)
-        .replace(/fill\s*=\s*"[^"]*"/i, `fill="${dk}"`)
-        .replace(/fill\s*:\s*#[0-9a-fA-F]+/i, `fill:${dk}`);
-    } else {
-      inner += `<use href="#${id}"/>`;
-    }
-    if (d && d.marked) marked.set(base, (d.positions || []).slice());
-  });
-  // One dot PER MODIFICATION, placed at that modification's residue number along
-  // the subunit's traced trajectory — so two mods on one histone (e.g. K27M and
-  // G34V) read as two dots at two points on the chain. Falls back to a single
-  // centroid dot when no residue positions are known or the trajectory is missing.
-  let dots = '';
-  marked.forEach((positions, base) => {
-    const pts = [];
-    (positions || []).forEach(pos => { const p = beadTrajectoryPoint(base, pos); if (p) pts.push(p); });
-    if (!pts.length) { const c = beadCentroid(base); if (c) pts.push(c); }
-    // A modification marker is the SAME composite object as an arrangement tile copy, at bead scale
-    // (BB, 2026-07-24): a family-coloured disc carrying identity, plus a small black dot carrying
-    // decoration. Identity uses the same light/dark pair the tile does — light tint for a plain
-    // family copy (H3 light blue), full shade when that copy is a variant (H3 dark blue) — so a mark
-    // on the cartoon and the same mark on the tile are recognisably one thing.
-    const famOfBase = String(base).split(':')[0];
-    const famVar = FAM_COLORVAR[famOfBase];                  // '--h3' … ; the light tint is '<var>-lt'
-    const isVariantCopy = !!(deco && deco[base] && deco[base].variant);
-    const dotFill = (isVariantCopy ? cv(famVar) : cv(famVar + '-lt'))
-      || FAM_DARK[famOfBase] || '#555';
-    pts.forEach(p => {
-      dots += `<circle class="bead-dot" fill="${dotFill}" cx="${p.x}" cy="${p.y}" r="1.7"/>`
-            + `<circle class="bead-dot-mark" cx="${p.x}" cy="${p.y}" r="0.62"/>`;
-    });
-  });
-  const gt = beadDefs.groupTransform || '';
-  return `<svg class="bead" viewBox="${vb}" aria-hidden="true"><g transform="${gt}">${inner}${dots}</g></svg>`;
-}
-
-// Query-level (no selected world) decoration for a unit: dot the first copy of
-// each marked family, dark-fill the first copy of each variant family. Used for
-// unselected units and non-octamer units, where no arrangement world applies.
-function fallbackDeco(u) {
-  const deco = {};
-  // Residue positions per family from the unit's marks (labels like "K27M,G34V"),
-  // so the fallback path draws one dot per modification along the trajectory too.
-  const posByFam = {};
-  ((u && u.marks) || []).forEach(m => {
-    if (!m.family) return;
-    const ps = (posByFam[m.family] = posByFam[m.family] || []);
-    String(m.label || '').split(',').forEach(tok => { const g = /(\d+)/.exec(tok); if (g) ps.push(+g[1]); });
-  });
-  markedFamilies(u).forEach(f => { deco[f + ':1'] = Object.assign(deco[f + ':1'] || {}, { marked: true, positions: posByFam[f] || [] }); });
-  variantFamilies(u.subtree).forEach(f => { deco[f + ':1'] = Object.assign(deco[f + ':1'] || {}, { variant: f }); });
-  return deco;
-}
 
 // The arrangement world a unit's cartoon should mirror: the focused unit's live
 // selection; another array member's saved selection; or — if that member was
@@ -5383,64 +5342,73 @@ function unitIR2(unitIndex) {
   return ir;
 }
 
+// The concrete world IR behind an arrangement string, for one unit. A LOOKUP, not a re-derivation:
+// interpret2 emits `worlds` aligned index-for-index with `octamers`, so the string the tile carries
+// selects the node directly. (particle-scene.test.js proves seats(worldIR) equals the old
+// worldDeco(parseArrangement(str)) for every world of the corpus, which is what licenses this.)
+function worldIRFor(index, arrStr) {
+  if (!arrStr) return null;
+  try {
+    const interp = interpretWorlds(unitIR2(index));
+    if (!interp || interp.node !== 'interpretation') return null;
+    const i = (interp.octamers || []).indexOf(arrStr);
+    return i >= 0 ? ((interp.worlds || [])[i] || null) : null;
+  } catch (e) { return null; }
+}
+
+// Which world a unit's cartoon shows: the focused unit's live selection; another array member's
+// saved choice; or — never visited — its own default lowest C2. Returns an IR NODE, so the cartoon
+// and the materials pane consume the same object.
 function unitWorld(u, index, sel) {
-  if (sel) return selectedWorld;                       // focused: live selection (may be null)
-  const saved = unitArr.get(index);
-  if (saved) return saved.arr ? parseArrangement(saved.arr) : null;  // visited: its saved choice
-  try {                                                // never visited: its own default lowest C2
-    const interp = interpretWorlds(unitIR2(index) || describe(u.subtree).canonical);
-    if (interp && interp.node === 'interpretation') {
-      const c2 = lowestC2(interp.octamers);
-      if (c2) return parseArrangement(c2);
-    }
-  } catch (e) { /* not enumerable */ }
-  return null;
+  let arr = null;
+  if (sel) arr = selectedArr;
+  else {
+    const saved = unitArr.get(index);
+    if (saved) arr = saved.arr;
+    else try {
+      const interp = interpretWorlds(unitIR2(index));
+      if (interp && interp.node === 'interpretation') arr = lowestC2(interp.octamers);
+    } catch (e) { /* not enumerable */ }
+  }
+  return worldIRFor(index, arr);
 }
 
-// The bead markup for a unit. A unit that has an arrangement world (its selection
-// or its default C2) draws one subunit per arrangement dot, mirroring each copy's
-// state 1:1 (absent → ghost, marked → dot, variant → dark fill); a non-enumerable
-// unit uses the fixed kind template + query-level fallbackDeco.
+// The bead markup for a unit: ONE call into the IR renderer.
+//
+// This used to branch — worldDeco when a tile was selected, fallbackDeco (a walk over the v1 parse
+// subtree) when not — two sources for one picture, only one of which could be right about a
+// partially stated query. A world IS an IR node, so both are `renderParticle(node)` and the branch
+// is now only about WHICH node: the selected world if there is one, else the query itself.
 function beadsHtml(u, sel, index, multi) {
-  const vb = beadDefs && beadDefs.viewBox;
-  if (u.kind === 'other') {
-    const d = decompose(u.families);
-    return d.particles.map(g => beadSvgFromSet(glyphSubunitSet(g), null, vb, 'none')).join('') +
-           d.orphans.map(g => `<span class="orphan">${beadSvgFromSet(glyphSubunitSet(g), null, vb, 'none')}</span>`).join('');
-  }
-  // A nucleosome that is part of an array shows its linker DNA so adjacent beads
-  // join; a standalone mononucleosome shows the core wrap only. The first array
-  // member drops its leading linker (DNA:linker1) — nothing joins on its left.
-  // The selection disc shows only when this unit is chosen AND there is a choice.
-  const arrayMember = !!(topParsed && topParsed.level === 'array');
-  const hideLinker1 = arrayMember && index === 0;
-  const showSelector = !!sel && !!multi;
-  const world = unitWorld(u, index, sel);
-  if (world) {
-    return beadSvgFromSet(worldSubunits(), worldDeco(world), vb, arrayMember ? 'array' : 'core', hideLinker1, showSelector);
-  }
-  const set = subunitSet(u.kind, u.families);
-  const dnaMode = !set.dna ? 'none' : (arrayMember ? 'array' : 'core');
-  return beadSvgFromSet(set, fallbackDeco(u), vb, dnaMode, hideLinker1, showSelector);
+  if (!beadAtlas) return '';                       // not loaded yet — renderUnitBar repaints on ready
+  const node = unitWorld(u, index, sel) || unitIR2(index);
+  if (!node) return '';
+  const arrayMember = !!(currentIR && currentIR.node === 'array' && (currentIR.members || []).length > 1);
+  return renderParticle(node, {
+    atlas: beadAtlas, deps: nucleosomeParser2,
+    arrayMember,
+    leadingLinker: !(arrayMember && index === 0),  // nothing joins on the first member's left
+    selected: !!sel && !!multi,                    // a selection disc only when there is a choice
+  });
 }
 
-// One unit's markup. kind === 'other' (no canonical shape) renders
-// decompose()'s canonical particles plus any leftover orphan monomers, the
-// orphans dimmed via .orphan and the whole unit flagged .bad. Everything
-// else (including half-octamer) renders directly via subunitSet().
+// One unit's markup.
+//
+// A composition `classify2` cannot name ('other' — e.g. two H2A–H2B dimers with no H3/H4) is
+// reported, NOT drawn (BB, 2026-07-25). It used to be decomposed into whichever canonical particles
+// could be greedily extracted plus dimmed "orphan" monomers, which is a picture of something the
+// user did not ask for: a greedy split is one reading among several, and drawing it asserts that
+// reading. Saying "no canonical particle" is the honest answer, and the caption above already gives
+// the composition in full.
 function unitEl(u, i, sel, multi) {
-  const beads = beadsHtml(u, sel, i, multi);
-  // No per-bead caption: the query has ONE caption now, under the bar (`renderCanonCaption`). The
-  // bead is the picture; naming it once beneath the row says the same thing without repeating the
-  // family fills on every unit.
-  // Explicit linker length: show the bp count as text on the caption line at the
-  // junction (zero-width, so adjacent beads still abut and the SVG DNA linkers
-  // join). No graphic linker element for now.
   const linker = u.linkerAfter
     ? `<span class="linker"><span class="bp">${u.linkerAfter.bp} bp</span></span>`
     : '';
-  return `<div class="unit${u.orphaned ? ' bad' : ''}" role="option" tabindex="${sel ? 0 : -1}" aria-selected="${sel}" data-i="${i}">` +
-    `<span class="bead-wrap">${beads}</span></div>${linker}`;
+  const head = `<div class="unit${u.kind === 'other' ? ' bad' : ''}" role="option" `
+             + `tabindex="${sel ? 0 : -1}" aria-selected="${sel}" data-i="${i}">`;
+  if (u.kind === 'other')
+    return head + '<span class="unit-warn" role="status">no canonical particle</span></div>' + linker;
+  return head + `<span class="bead-wrap">${beadsHtml(u, sel, i, multi)}</span></div>` + linker;
 }
 
 // Renders the bar from unitList(parsed). Hides it (0 units — shouldn't happen
@@ -5448,7 +5416,7 @@ function unitEl(u, i, sel, multi) {
 // on every call, including from selectUnit().
 function renderUnitBar(parsed, key) {
   const bar = document.getElementById('unitbar');
-  const units = unitList(parsed, nucleosomeParser);
+  const units = unitList(currentIR, nucleosomeParser2);
   bar.className = 'unitbar';                       // clear any prior error surface
   if (!units.length) { bar.hidden = true; bar.innerHTML = ''; return units; }
   bar.hidden = false;
@@ -5459,7 +5427,7 @@ function renderUnitBar(parsed, key) {
     el.addEventListener('click', () => selectUnit(+el.dataset.i, parsed, key));
     el.addEventListener('keydown', e => onUnitKey(e, el, parsed, key));
   });
-  if (!beadDefs) ensureBeadDefs().then(() => {
+  if (!beadAtlas) ensureBeadDefs().then(() => {
     const live = document.getElementById('unitbar');
     if (live !== bar || bar.classList.contains('unitbar-error') || bar.hidden) return;
     bar.innerHTML = units.map((u, idx) => unitEl(u, idx, idx === selectedUnit, multi)).join('');
@@ -5492,7 +5460,7 @@ async function selectUnit(i, parsed, key) {
 function repaintSelectedBead(parsed) {
   const bar = document.getElementById('unitbar');
   if (!bar || bar.hidden) return;
-  const units = unitList(parsed, nucleosomeParser);
+  const units = unitList(currentIR, nucleosomeParser2);
   const u = units[selectedUnit];
   if (!u) return;
   const wrap = bar.querySelector('.unit[data-i="' + selectedUnit + '"] .bead-wrap');
@@ -5536,7 +5504,7 @@ function clearArrangements() {
 // arrangements; a loose-monomer subtree isn't a particle, so arrangements are
 // cleared instead of calling renderArrangements with a non-particle canonical.
 async function renderFocusedPanes(parsed, key, queryInfo) {
-  const units = unitList(parsed, nucleosomeParser);
+  const units = unitList(currentIR, nucleosomeParser2);
   const u = units[selectedUnit] || units[0];
   const focus = u ? u.subtree : parsed;   // defensive: unitList() only returns [] for a null parsed
   // Reuse the caller's describe() when the focus IS the whole query (the common
@@ -6357,45 +6325,41 @@ const FAM_COLORVAR = Object.fromEntries(ARR_FAMS.map((f, i) => [f, ARR_FAMCOL[i]
 // document.documentElement returns "" for --strong and the modified-copy ring vanishes.
 function cv(n) { return getComputedStyle(document.querySelector('.shell') || document.documentElement).getPropertyValue(n).trim(); }
 
-function tileEl(arrStr) {
-  const w = parseArrangement(arrStr);
-  const ABSENT = '∅';
+// One arrangement tile. Drawn from the SAME SeatMap the cartoon uses (BB, 2026-07-25, stage 3), so
+// the bead and the tile are literally one object at two scales rather than two renderers that had
+// to be kept in agreement. It used to re-read the arrangement STRING and decode copy signatures
+// itself — a third opinion about what a copy looks like, next to worldDeco and fallbackDeco.
+//
+// `world` is the concrete world IR for this arrangement (interpret2's `worlds[i]`, aligned to
+// `octamers[i]`). Without one there is nothing to draw, so the tile is skipped rather than guessed.
+function tileEl(arrStr, world) {
+  const sm = world ? seats(world, nucleosomeParser2) : null;
   let svg = '';
   const x0 = 12, gapx = 16, gapy = 14;
   for (let h = 0; h < 2; h++) {
     for (let f = 0; f < 4; f++) {
       const fam = ARR_FAMS[f];
-      const copy = w[fam][h];
+      const st = sm && sm.seats[fam + ':' + (h + 1)];
       const cx = x0 + f * gapx, cy = 9 + h * gapy;
-      const absent = copy === ABSENT;
-      // A copy signature is comma-joined keys, variants \x1f-prefixed (interpret2 stateSig). The two
-      // axes are drawn SEPARATELY, mirroring the cartoon bead: identity (variant) is carried by the
-      // family COLOUR — light tint = canonical, full shade = variant, the same light/dark pair the
-      // bead uses (--h3 vs --h3-lt) — and decoration (a PTM/substitution) by a dot on top, in --strong
-      // (near-black in light theme, near-white in dark), matching .bead-dot. Previously both collapsed
-      // into one --strong ring, so a variant copy and a modified copy were indistinguishable.
-      const parts = (absent || copy === '') ? [] : String(copy).split(',');
-      const isVariant = parts.some(p => p.charCodeAt(0) === 0x1f);
-      const isModified = parts.some(p => p.charCodeAt(0) !== 0x1f);
+      // Identity is carried by the family COLOUR (light tint = canonical, full shade = variant) and
+      // decoration by a dot on top — the same two axes, drawn the same way, as the cartoon bead.
+      const isVariant = !!(st && st.variant);
+      const isModified = !!(st && st.marks.length);
       const famColor = cv(isVariant ? ARR_FAMCOL[f] : ARR_FAMCOL_LT[f]);
-      // Hover label: what this copy represents (\x1f is a control char — show the variant token plainly).
-      const sig = absent ? 'absent'
-        : (copy === '' ? 'wild-type' : parts.map(p => p.charCodeAt(0) === 0x1f ? p.slice(1) : p).join(' · '));
+      const sig = !st ? 'absent'
+        : (!st.occupied ? 'absent'
+          : (isVariant ? [st.variant].concat(st.marks.map(m => m.token)) : st.marks.map(m => m.token))
+              .join(' · ') || 'wild-type');
       const title = `<title>${fam} · ${sig}</title>`;
-      if (absent) {
-        // Absent copy: the family KEEPS its fill, and absence is carried entirely by black ink —
-        // the same outline the present copies (and the cartoon subunits) wear, plus a strikethrough
-        // (BB, 2026-07-24). Previously the ring and strike were drawn in the family colour with no
-        // fill, which read as a fainter version of the family rather than as a struck-out copy, and
-        // made an absent H2A hard to tell from a pale present one at tile size.
+      if (!st || !st.occupied) {
+        // An absent copy KEEPS its family fill; absence is carried entirely by black ink — the same
+        // outline the present copies wear, plus a strikethrough. Drawn in the family colour with no
+        // fill it read as a paler present copy rather than a struck-out one.
         const r = 4.6;
         svg += `<g>${title}<circle cx="${cx}" cy="${cy}" r="${r}" fill="${famColor}" fill-opacity="0.45" stroke="#000" stroke-width="0.7" stroke-opacity="0.7"/>` +
           `<line x1="${cx - r}" y1="${cy + r}" x2="${cx + r}" y2="${cy - r}" stroke="#000" stroke-width="1.2" stroke-opacity="0.85"/></g>`;
         continue;
       }
-      // Thin black outline, matching the cartoon subunits' own stroke:#000000 — the tile dot and the
-      // bead are the same object at two scales, so they carry the same edge. Theme-invariant like the
-      // family tints it sits on.
       svg += `<g>${title}<circle cx="${cx}" cy="${cy}" r="4.6" fill="${famColor}" stroke="#000" stroke-width="0.7" stroke-opacity="0.7"/>` +
         (isModified ? `<circle class="arr-dot" cx="${cx}" cy="${cy}" r="1.9"/>` : '') + '</g>';
     }
@@ -6454,7 +6418,10 @@ async function renderArrangements(query, interp) {
     .map((a, i) => ({ a, i, c2: pointGroup(a) === 'C2', p: permissive(a) }))
     .sort((x, y) => (y.c2 - x.c2) || (y.p - x.p) || (x.i - y.i))
     .map((o) => o.a);
-  ordered.slice(0, tileLimit).forEach(arrStr => facets.appendChild(tileEl(arrStr)));
+  // The world IR behind each arrangement string, so a tile draws from the node rather than from a
+  // re-parse of its own label.
+  const wmap = new Map((interp.octamers || []).map((o, i) => [o, (interp.worlds || [])[i]]));
+  ordered.slice(0, tileLimit).forEach(arrStr => facets.appendChild(tileEl(arrStr, wmap.get(arrStr))));
 
 
   // Re-apply a persisted tile selection after the rebuild (a port/context switch

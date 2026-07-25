@@ -13970,17 +13970,21 @@ undefined;
 
   // Copies per family. A count-0 member contributes nothing (it is an assertion of absence, and
   // lift2 has already kept completion from topping it up).
+  // The node's OWN count is excluded: it is how MANY of this object there are, not what the object is
+  // made of. `(H3)3` is three octamers, not one 24-mer — but with meet2 now preserving an assembly's
+  // repetition (it used to be flattened to 1, so this could never show), the root count started
+  // multiplying through and every repeated particle classified as "other".
   function counts(node) {
     var c = { H3: 0, H4: 0, H2A: 0, H2B: 0 };
-    (function add(n, mult) {
+    (function add(n, mult, root) {
       if (!n || typeof n !== "object") return;
-      var k = (n.count == null) ? 1 : n.count;
+      var k = root ? 1 : ((n.count == null) ? 1 : n.count);
       if (n.node === "proteoform") {
         if (n.family && c[n.family] != null) c[n.family] += k * mult;
         return;
       }
-      (n.members || []).forEach(function (m) { add(m, mult * k); });
-    })(node, 1);
+      (n.members || []).forEach(function (m) { add(m, mult * k, false); });
+    })(node, 1, true);
     return c;
   }
 
@@ -14375,4 +14379,4 @@ undefined;
 })();
 
 // Build id — see the Makefile stale-copy note.
-if (typeof nucleosomeParser2 !== "undefined") nucleosomeParser2.BUILD_ID = "c5e0c5035c1b";
+if (typeof nucleosomeParser2 !== "undefined") nucleosomeParser2.BUILD_ID = "d405920f1b10";
