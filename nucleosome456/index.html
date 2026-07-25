@@ -7,7 +7,7 @@
   <!-- Same ?v=<build epoch> stamp as the JS bundles and parquet URLs: a cached stylesheet against a
        rebuilt page is the same class of silent-staleness bug, and it would render the engine-fallback
        alarm below as unstyled text. -->
-  <link rel="stylesheet" href="/nucleosome456/assets/css/main.css?v=1785018681">
+  <link rel="stylesheet" href="/nucleosome456/assets/css/main.css?v=1785019295">
 </head>
 <body>
 
@@ -598,7 +598,7 @@
          cached page, full stop. #engine-stamp is filled at runtime with which enumeration engine
          actually loaded (v2 = interpret2 present; v1 = the bundle is stale or broken). -->
     <footer class="buildstamp">
-      built 2026-07-25 18:31:21 EDT
+      built 2026-07-25 18:41:35 EDT
       &middot; <span id="engine-stamp">engine&nbsp;&hellip;</span>
     </footer>
 
@@ -636,12 +636,12 @@
   </script>
 
   <!-- Generated vocabulary (families, PTMs) -->
-  <script src="/nucleosome456/assets/js/vocabulary.js?v=1785018681"></script>
+  <script src="/nucleosome456/assets/js/vocabulary.js?v=1785019295"></script>
   <!-- Compiled nucleosome notation parser (legacy stack: parse/normalizeIR/interpret/match) -->
-  <script src="/nucleosome456/assets/js/parser.js?v=1785018681"></script>
+  <script src="/nucleosome456/assets/js/parser.js?v=1785019295"></script>
   <!-- New-stack bundle: parse2 → lift2 → resolve2 → meet2/normalize2 (canon), real registry,
        and the v2→v1 bridge (adaptToLegacy). The single canon; legacy consumers read via the bridge. -->
-  <script src="/nucleosome456/assets/js/parser2.js?v=1785018681"></script>
+  <script src="/nucleosome456/assets/js/parser2.js?v=1785019295"></script>
 
   <script type="module">
     /* Pinned deliberately. The console warning "The WebAssembly exception handling 'try'
@@ -661,7 +661,7 @@
     // without this a rebuilt table is served stale until a hard reload. site.time changes
     // on every `jekyll build`, so a rebuild always refetches — the whole point is that a
     // reload shows the version we just built, not a cached one.
-    const CACHE_BUST       = '?v=1785018681';
+    const CACHE_BUST       = '?v=1785019295';
     const PROTEINS_URL     = new URL('/nucleosome456/data/proteins.parquet' + CACHE_BUST, document.baseURI).href;
     const MASSES_URL       = new URL('/nucleosome456/data/residue_masses.parquet' + CACHE_BUST, document.baseURI).href;
     const PTM_URL          = new URL('/nucleosome456/data/ptm_deltas.parquet' + CACHE_BUST, document.baseURI).href;
@@ -4033,24 +4033,37 @@ initPortEditor();
   // STATED slots, so `(H3:K27M)` read "(H3K27M)" while every other pane discussed a completed
   // octamer. The query now has one caption, derived from canon in shell.js (`renderCanonCaption`).
 
-  // Top-level units, from the v2 IR.
+  // The particles on screen, from the v2 IR.
   //
-  // A new PARTICLE is opened only by an array with more than one member; everything else is ONE
-  // unit (a bare top-level `@` list is a single free assembly, not one bead per slot). The unit now
-  // carries just its NODE, its classification and the linker that follows it — the families, marks
-  // and glyph id it used to carry were only ever inputs to the renderer, and the renderer reads the
-  // node itself now.
-  //
-  // `subtree` is kept as an alias of `node` while the panes that still take a v1 subtree are ported.
+  // A new PARTICLE is opened by an array member AND by that member's own COUNT: `(H3)3` is three
+  // nucleosomes in a row, exactly like `(H3)-(H3)-(H3)`, so it is three beads (BB, 2026-07-25). It
+  // drew as one because the count lived on the node rather than in the member list — invisible until
+  // meet2 started preserving repetition at all. A bare top-level `@` list is still ONE unit: it is a
+  // single free assembly, not a bead per slot.
+  function unitNodes(ir) {
+    if (!ir || typeof ir !== 'object') return [];
+    var members = (ir.node === 'array') ? (ir.members || []) : [ir];
+    var out = [];
+    members.forEach(function (m) {
+      if (!m || typeof m !== 'object') return;
+      var k = (m.count == null) ? 1 : m.count;
+      for (var i = 0; i < Math.max(1, k); i++) out.push(m);
+    });
+    return out;
+  }
+
+  // The unit carries just its NODE, its classification and the linker that follows it — the families,
+  // marks and glyph id it used to carry were only ever inputs to the renderer, and the renderer reads
+  // the node itself now. `subtree` is kept as an alias while the panes that still take a v1 subtree
+  // are ported.
   function unitList(ir, deps) {
     deps = deps || (typeof nucleosomeParser2 !== 'undefined' ? nucleosomeParser2 : null);
-    if (!ir || typeof ir !== 'object') return [];
-    var isArray = ir.node === 'array' && (ir.members || []).length > 1;
-    var nodes = isArray ? ir.members : [ir.node === 'array' ? (ir.members || [])[0] || ir : ir];
+    var nodes = unitNodes(ir);
     return nodes.map(function (n, i) {
-      // The linker after member i is carried by member i's OWN dna — `(A)-50-(B)` puts {bp:50} on A,
-      // the particle the linker trails from — and only counts when something follows it.
-      var link = (isArray && i < nodes.length - 1 && n.dna) ? n.dna.linker : null;
+      // The linker after unit i is carried by the particle it trails FROM, and only counts when
+      // something follows. Repeated copies of one particle abut, so the same linker applies between
+      // each pair.
+      var link = (i < nodes.length - 1 && n.dna) ? n.dna.linker : null;
       return {
         node: n, subtree: n,
         kind: (deps && deps.classify2) ? deps.classify2(n) : null,
@@ -4065,7 +4078,7 @@ initPortEditor();
   // this copy look like" from the v1 parse tree or from an arrangement string; `seats()` answers it
   // once, from the IR. `decompose` is not replaced — an unnameable composition is now reported
   // rather than drawn as a greedy guess.
-  var api = { unitList: unitList, FAMS: FAMS };
+  var api = { unitList: unitList, unitNodes: unitNodes, FAMS: FAMS };
   if (typeof module !== 'undefined' && module.exports) module.exports = api;
   else Object.assign(root, api);
 })(typeof globalThis !== 'undefined' ? globalThis : this);
@@ -4103,11 +4116,12 @@ initPortEditor();
 // above differ in content ({M,M} vs {M,·}) and stay distinguishable. The two views of one object
 // now agree by construction rather than by coincidence.
 //
-// ── THE FRAME IS THE MEMBERSHIP ──────────────────────────────────────────────────────────────────
-// There is no kind → seat-set table (the old `subunitSet`). `lift2` completes a particle at parse
-// time, so a tetrasome's IR ALREADY carries its absent H2A/H2B as `count: 0` members; they take
-// their seats and are drawn as ghosts. A free dimer's IR has exactly two members and gets exactly
-// two seats. The membership answers the question the table used to answer, so the table is gone.
+// ── THE FRAME ────────────────────────────────────────────────────────────────────────────────────
+// There is no kind → seat-set table (the old `subunitSet`). A PARTICLE (dna != null) has all eight
+// seats and the unfilled ones are drawn as ghosts — that is what makes a tetrasome read as a
+// tetrasome rather than as a small tetramer. A FREE assembly gets only the seats it fills. `lift2`
+// consumes a `count: 0` member into an exclusion, so the absence cannot come from the membership;
+// the DNA carries it, and that is the same field `classify2` reads to tell the two apart.
 (function (root) {
   'use strict';
 
@@ -4148,20 +4162,6 @@ initPortEditor();
   function particleOf(node) {
     return (node && node.node === 'array' && (node.members || []).length === 1)
       ? node.members[0] : node;
-  }
-
-  // Copy signature, used ONLY to order the copies of one family within their seats.
-  //
-  // I first wrote this order-sensitively, on the reasoning that member position is the sole carrier
-  // of face identity in a world IR. The oracle overturned that: `interpret2` emits its member list
-  // marked-copy-first while the arrangement STRING it derives puts wild-type first, so honouring
-  // member order made the cartoon and its own arrangement tile disagree about which copy is lit.
-  // Sorting is safe because `interpret2` enumerates distinct MULTISETS — two worlds never differ by
-  // permutation alone — so no distinction is lost by imposing a canonical order, and the two views
-  // of one object now agree by construction.
-  function copySig(c) {
-    return (c.variant || '') + ' '
-         + c.marks.map(function (m) { return m.position + ':' + m.token; }).sort().join(',');
   }
 
   // Copies of one family within one face, as a comparable string.
@@ -4350,7 +4350,10 @@ initPortEditor();
       var st = sm.seats[p.seat];
       if (!st) return;                                        // this copy is not in this particle
       if (!st.occupied) { parts.push({ markup: p.markup, cls: 'bead-absent', wrap: true }); return; }
-      if (st.variant && p.part === 'HFD') {
+      // A VARIANT COPY IS RECOLOURED WHOLE — fold and tails (BB, 2026-07-25). Restricting this to the
+      // HFD left a dark core wearing wild-type arms, which reads as a fold-domain annotation rather
+      // than as a different protein. The old renderer inlined every part of the copy; this does too.
+      if (st.variant) {
         parts.push({ markup: recolor(p.markup, FAM_DARK[st.family] || '#555'), cls: null });
         return;
       }
@@ -5331,15 +5334,13 @@ function interpretWorlds(str) {
 // walks. Returns null when the raw text can't be lifted, so callers fall back to the old string path
 // rather than losing the panel.
 function unitIR2(unitIndex) {
-  // The SHARED object (Phase 4b), not a re-parse. It is resolved where this used to be merely
-  // lifted — verified not to move `queryConfig` or the world enumeration on the corpus, so the
-  // change is strictly more resolution, not different semantics.
+  // The SHARED object (Phase 4b), not a re-parse — and split into units by the SAME function the bar
+  // uses (`unitNodes`), so a repeated particle like `(H3)3` cannot be three beads in the bar and one
+  // node here.
   const ir = currentIR;
   if (!ir || ir.node === 'error' || ir.node === 'bottom') return null;
-  if (ir.node === 'array' && Array.isArray(ir.members) && ir.members.length) {
-    return ir.members[unitIndex] || ir.members[0];
-  }
-  return ir;
+  const nodes = unitNodes(ir);
+  return nodes.length ? (nodes[unitIndex] || nodes[0]) : ir;
 }
 
 // The concrete world IR behind an arrangement string, for one unit. A LOOKUP, not a re-derivation:
