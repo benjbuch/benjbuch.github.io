@@ -12578,6 +12578,19 @@ undefined;
     var mods = pf.modifications;
     if (handle && registry && registry.classify) {
       var c = registry.classify(handle, ctx);
+      // AN UNCLASSIFIABLE HANDLE IS AN ERROR, not a proteoform with no identity (2026-07-26).
+      // It used to fall through with `family: null`, and the page's DuckDB realization pass caught it
+      // and said so. That pass was removed in Phase 5 on the assumption — stated in the commit, never
+      // tested — that resolve2 already errored here. It did not, so an unclassifiable token such as
+      // `GlcNAc` (a PTM name the entity grammar also accepts as a handle) produced a proteoform with
+      // no family: `valid2` passed it, `emit2` wrote the literal string "null" as its token, and the
+      // materials pane offered a card headed "no null sequences are registered".
+      //
+      // The IR should not be able to hold a proteoform that names nothing. Refusing here is what the
+      // realization pass was doing, moved to where identity is actually decided.
+      if (!c || (c.family == null && family == null)) {
+        return { node: "error", reason: "unresolved-handle", accession: handle };
+      }
       if (c) {
         if (family != null && c.family != null && family !== c.family)
           return { node: "error", reason: "family-conflict", family: family, resolved: c.family, accession: handle };
@@ -13900,6 +13913,10 @@ undefined;
     if (pf.accession) return null;                       // no notation for an accession-pinned copy
     var v = pf.variant;
     var head;
+    // A proteoform that names nothing has no token. `String(null)` put the literal word into the
+    // notation; emit2's contract is to REFUSE rather than approximate, and this is the clearest case
+    // of it. resolve2 now rejects such a node outright, so this is the second line of defence.
+    if (pf.family == null && (v == null || (Array.isArray(v) && !v.length))) return null;
     if (v == null) head = pf.family;
     else if (Array.isArray(v) && v.length === 1) head = v[0];
     else return null;                                    // complement / multi-variant set: no token
@@ -14456,4 +14473,4 @@ undefined;
 })();
 
 // Build id — see the Makefile stale-copy note.
-if (typeof nucleosomeParser2 !== "undefined") nucleosomeParser2.BUILD_ID = "19df5c8aba41";
+if (typeof nucleosomeParser2 !== "undefined") nucleosomeParser2.BUILD_ID = "d338ee844bd2";

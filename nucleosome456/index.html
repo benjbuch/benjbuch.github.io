@@ -7,7 +7,7 @@
   <!-- Same ?v=<build epoch> stamp as the JS bundles and parquet URLs: a cached stylesheet against a
        rebuilt page is the same class of silent-staleness bug, and it would render the engine-fallback
        alarm below as unstyled text. -->
-  <link rel="stylesheet" href="/nucleosome456/assets/css/main.css?v=1785087380">
+  <link rel="stylesheet" href="/nucleosome456/assets/css/main.css?v=1785088714">
 </head>
 <body>
 
@@ -598,7 +598,7 @@
          cached page, full stop. #engine-stamp is filled at runtime with which enumeration engine
          actually loaded (v2 = interpret2 present; v1 = the bundle is stale or broken). -->
     <footer class="buildstamp">
-      built 2026-07-26 13:36:20 EDT
+      built 2026-07-26 13:58:34 EDT
       &middot; <span id="engine-stamp">engine&nbsp;&hellip;</span>
     </footer>
 
@@ -623,7 +623,7 @@
        the one failure the load-error trap below cannot see, because a stale bundle loads and runs
        perfectly, just with superseded code. -->
   <script>
-    window.__PARSER2_EXPECTED = "19df5c8aba41";
+    window.__PARSER2_EXPECTED = "d338ee844bd2";
     window.__loadErrors = [];
     window.addEventListener('error', function (e) {
       window.__loadErrors.push({
@@ -636,10 +636,10 @@
   </script>
 
   <!-- Generated vocabulary (families, PTMs) -->
-  <script src="/nucleosome456/assets/js/vocabulary.js?v=1785087380"></script>
+  <script src="/nucleosome456/assets/js/vocabulary.js?v=1785088714"></script>
   <!-- Compiled nucleosome notation parser (legacy stack: parse/normalizeIR/interpret/match) --><!-- New-stack bundle: parse2 → lift2 → resolve2 → meet2/normalize2 (canon), real registry,
        and the v2→v1 bridge (adaptToLegacy). The single canon; legacy consumers read via the bridge. -->
-  <script src="/nucleosome456/assets/js/parser2.js?v=1785087380"></script>
+  <script src="/nucleosome456/assets/js/parser2.js?v=1785088714"></script>
 
   <script type="module">
     /* Pinned deliberately. The console warning "The WebAssembly exception handling 'try'
@@ -659,7 +659,7 @@
     // without this a rebuilt table is served stale until a hard reload. site.time changes
     // on every `jekyll build`, so a rebuild always refetches — the whole point is that a
     // reload shows the version we just built, not a cached one.
-    const CACHE_BUST       = '?v=1785087380';
+    const CACHE_BUST       = '?v=1785088714';
     const PROTEINS_URL     = new URL('/nucleosome456/data/proteins.parquet' + CACHE_BUST, document.baseURI).href;
     const MASSES_URL       = new URL('/nucleosome456/data/residue_masses.parquet' + CACHE_BUST, document.baseURI).href;
     const PTM_URL          = new URL('/nucleosome456/data/ptm_deltas.parquet' + CACHE_BUST, document.baseURI).href;
@@ -5585,6 +5585,26 @@ async function onInput() {
   // two disagreed: an entry name shared across species, which the DuckDB lookup deliberately leaves
   // open). An unresolvable handle is now a resolve2 error, caught by the validity gate below.
   currentRaw = raw.trim();
+
+  // A RESOLUTION ERROR names the thing that could not be resolved. It is not a physics failure, and
+  // saying "not a stable assembly" about a token that names nothing would send the reader looking for
+  // the wrong problem. This restores what the deleted realization pass used to report, from the place
+  // that now decides identity.
+  if (currentIR && currentIR.node === 'error') {
+    const r = currentIR;
+    const what = r.accession || r.handle || currentRaw || raw.trim();
+    failSoft(raw, () => renderUnitError('physics',
+      r.reason === 'unresolved-handle'
+        ? `<div class="errhd">Couldn't resolve <code>${escapeHtml(what)}</code></div>` +
+          `<p>This parses as a material handle, but it isn't a known UniProt accession, protein ` +
+          `name, or gene symbol, so it can't be tied to a histone family.</p>` +
+          `<p class="errhint">Try a family (<code>H3</code>), a variant (<code>H2A.Z</code>), ` +
+          `or an accession (<code>P68431</code>).</p>`
+        : `<div class="errhd">Couldn't resolve this query</div>` +
+          `<p>${escapeHtml(r.reason || 'unknown reason')}` +
+          (r.position != null ? ` at position ${escapeHtml(r.position)}` : '') + `</p>`));
+    return;
+  }
 
   // THE PHYSICS GATE, from v2's own fixpoint: valid2(A) === (meet2(A,A) ≠ ⊥). This runs BEFORE the
   // v1 `describe().error` gate below, because the two do not agree — v1 has no notion of a repeated
