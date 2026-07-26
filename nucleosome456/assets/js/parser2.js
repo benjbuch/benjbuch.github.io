@@ -13082,6 +13082,16 @@ undefined;
     }
     return null;
   }
+  // Can this free assembly stack with a copy of itself? Only the tetramer pair does: `[H3@H4]2` is
+  // the (H3–H4)₂ tetramer. Anything else repeated is a collection, not an assembly.
+  function selfAssociating(counts, copies) {
+    for (var f in counts) {
+      if (!counts[f]) continue;
+      if (OBLIGATORY_CORE.indexOf(f) < 0) return false;     // a non-tetramer family is present
+    }
+    return OBLIGATORY_CORE.every(function (g) { return (counts[g] || 0) > 0; });
+  }
+
   function fullNative() { return { start: "-inf", end: "+inf", certainty: "native" }; }
   function leafCopy(pf) {
     return { node: "proteoform", family: pf.family, variant: pf.variant == null ? null : pf.variant,
@@ -13402,6 +13412,21 @@ undefined;
     if (A.dna != null && dna == null) return [];                     // linker (DNA) conflict → ⊥
     var cnt = countMeet(A.count, B.count);
     if (cnt === CONFLICT) return [];                                 // 2 copies vs 3 = different objects → ⊥
+    // A REPEATED FREE ASSEMBLY NEEDS SOMETHING TO HOLD THE COPIES TOGETHER (BB, 2026-07-25).
+    // `[H2A@H2B]2` is not an object, it is two objects: free H2A–H2B dimers do not associate with
+    // each other — inside a particle the (H3–H4)₂ tetramer holds them apart, and there is no tetramer
+    // here. A repeated PARTICLE is different: `(H3)3` is a legitimate polymer, joined by its DNA.
+    // The H3–H4 pair is exempt because it IS the bridge — two H3–H4 dimers are the tetramer, which is
+    // a real free species and the standard way to write one.
+    if (A.dna == null && cnt > 1) {
+      var ms = familyMultiset(da.groups.concat(da.loose));
+      if (!selfAssociating(ms, copies)) return [];
+      // …and stacking still obeys the copy limit: `[H3@H4]2` is the tetramer, `[H3@H4]3` is not a
+      // thing. The per-family bound is checked against the REPEATED counts, which the ordinary
+      // copies-exceeded test cannot see — it runs on one copy's membership.
+      for (var sf in ms)
+        if (copies[sf] != null && ms[sf] * cnt > copies[sf]) return [];
+    }
     meetChildren(da.groups.concat(da.loose), db.groups.concat(db.loose), function (members) {
       var asm = { node: "assembly", ordered: false, count: cnt, dna: dna, members: members };
       var k = asmKey(asm);
@@ -13970,15 +13995,19 @@ undefined;
 
   // Copies per family. A count-0 member contributes nothing (it is an assertion of absence, and
   // lift2 has already kept completion from topping it up).
-  // The node's OWN count is excluded: it is how MANY of this object there are, not what the object is
-  // made of. `(H3)3` is three octamers, not one 24-mer — but with meet2 now preserving an assembly's
-  // repetition (it used to be flattened to 1, so this could never show), the root count started
-  // multiplying through and every repeated particle classified as "other".
+  // THE ROOT'S OWN COUNT MEANS TWO DIFFERENT THINGS, and which one decides whether it is part of the
+  // composition:
+  //   a PARTICLE (dna != null) repeats along DNA — `(H3)3` is three octamers, not one 24-mer, so the
+  //     count is HOW MANY of the object there are and is excluded here;
+  //   a FREE assembly repeats by SELF-ASSOCIATION — `[H3@H4]2` is the (H3–H4)₂ tetramer, one object,
+  //     so the count is part of WHAT it is and multiplies through. (meet2 only admits a repeated free
+  //     assembly when its copies actually bond, which is what makes this reading safe.)
+  // Neither could arise until meet2 stopped flattening every assembly count to 1 (2026-07-25).
   function counts(node) {
     var c = { H3: 0, H4: 0, H2A: 0, H2B: 0 };
     (function add(n, mult, root) {
       if (!n || typeof n !== "object") return;
-      var k = root ? 1 : ((n.count == null) ? 1 : n.count);
+      var k = (root && n.dna != null) ? 1 : ((n.count == null) ? 1 : n.count);
       if (n.node === "proteoform") {
         if (n.family && c[n.family] != null) c[n.family] += k * mult;
         return;
@@ -14379,4 +14408,4 @@ undefined;
 })();
 
 // Build id — see the Makefile stale-copy note.
-if (typeof nucleosomeParser2 !== "undefined") nucleosomeParser2.BUILD_ID = "d405920f1b10";
+if (typeof nucleosomeParser2 !== "undefined") nucleosomeParser2.BUILD_ID = "756479892c0e";

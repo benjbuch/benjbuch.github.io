@@ -7,7 +7,7 @@
   <!-- Same ?v=<build epoch> stamp as the JS bundles and parquet URLs: a cached stylesheet against a
        rebuilt page is the same class of silent-staleness bug, and it would render the engine-fallback
        alarm below as unstyled text. -->
-  <link rel="stylesheet" href="/nucleosome456/assets/css/main.css?v=1785019295">
+  <link rel="stylesheet" href="/nucleosome456/assets/css/main.css?v=1785028326">
 </head>
 <body>
 
@@ -598,7 +598,7 @@
          cached page, full stop. #engine-stamp is filled at runtime with which enumeration engine
          actually loaded (v2 = interpret2 present; v1 = the bundle is stale or broken). -->
     <footer class="buildstamp">
-      built 2026-07-25 18:41:35 EDT
+      built 2026-07-25 21:12:06 EDT
       &middot; <span id="engine-stamp">engine&nbsp;&hellip;</span>
     </footer>
 
@@ -623,7 +623,7 @@
        the one failure the load-error trap below cannot see, because a stale bundle loads and runs
        perfectly, just with superseded code. -->
   <script>
-    window.__PARSER2_EXPECTED = "d405920f1b10";
+    window.__PARSER2_EXPECTED = "756479892c0e";
     window.__loadErrors = [];
     window.addEventListener('error', function (e) {
       window.__loadErrors.push({
@@ -636,12 +636,12 @@
   </script>
 
   <!-- Generated vocabulary (families, PTMs) -->
-  <script src="/nucleosome456/assets/js/vocabulary.js?v=1785019295"></script>
+  <script src="/nucleosome456/assets/js/vocabulary.js?v=1785028326"></script>
   <!-- Compiled nucleosome notation parser (legacy stack: parse/normalizeIR/interpret/match) -->
-  <script src="/nucleosome456/assets/js/parser.js?v=1785019295"></script>
+  <script src="/nucleosome456/assets/js/parser.js?v=1785028326"></script>
   <!-- New-stack bundle: parse2 → lift2 → resolve2 → meet2/normalize2 (canon), real registry,
        and the v2→v1 bridge (adaptToLegacy). The single canon; legacy consumers read via the bridge. -->
-  <script src="/nucleosome456/assets/js/parser2.js?v=1785019295"></script>
+  <script src="/nucleosome456/assets/js/parser2.js?v=1785028326"></script>
 
   <script type="module">
     /* Pinned deliberately. The console warning "The WebAssembly exception handling 'try'
@@ -661,7 +661,7 @@
     // without this a rebuilt table is served stale until a hard reload. site.time changes
     // on every `jekyll build`, so a rebuild always refetches — the whole point is that a
     // reload shows the version we just built, not a cached one.
-    const CACHE_BUST       = '?v=1785019295';
+    const CACHE_BUST       = '?v=1785028326';
     const PROTEINS_URL     = new URL('/nucleosome456/data/proteins.parquet' + CACHE_BUST, document.baseURI).href;
     const MASSES_URL       = new URL('/nucleosome456/data/residue_masses.parquet' + CACHE_BUST, document.baseURI).href;
     const PTM_URL          = new URL('/nucleosome456/data/ptm_deltas.parquet' + CACHE_BUST, document.baseURI).href;
@@ -4046,7 +4046,11 @@ initPortEditor();
     var out = [];
     members.forEach(function (m) {
       if (!m || typeof m !== 'object') return;
-      var k = (m.count == null) ? 1 : m.count;
+      // Only a PARTICLE's repetition opens new units. `(H3)3` is three nucleosomes in a row, joined
+      // by DNA. A repeated FREE assembly is one object, not several: `[H3@H4]2` is the (H3–H4)₂
+      // tetramer — the copies self-associate, which is the only reason meet2 admits the repetition
+      // at all. Expanding it drew a tetramer as two separate dimer beads.
+      var k = (m.dna != null && m.count != null) ? m.count : 1;
       for (var i = 0; i < Math.max(1, k); i++) out.push(m);
     });
     return out;
@@ -5625,6 +5629,30 @@ async function onInput() {
     }
   }
   currentRaw = raw.trim();
+
+  // THE PHYSICS GATE, from v2's own fixpoint: valid2(A) === (meet2(A,A) ≠ ⊥). This runs BEFORE the
+  // v1 `describe().error` gate below, because the two do not agree — v1 has no notion of a repeated
+  // free assembly, so `[H2A@H2B]2` reached the renderer and drew as a single dimer, quietly
+  // discarding the "2". Two free H2A–H2B dimers are not one object: nothing holds them together
+  // without the (H3–H4)₂ tetramer, and meet now says so (BB, 2026-07-25).
+  if (currentIR && typeof nucleosomeParser2.valid2 === 'function'
+      && nucleosomeParser2.valid2(currentIR) === false) {
+    if (inputEl.value !== raw) return;
+    inputEl.className = 'invalid';
+    onboardingEl.hidden = true;
+    renderUnitError('physics',
+      '<div class="errhd">Not a stable assembly</div>' +
+      '<p>The parts are individually fine, but nothing holds this combination together — ' +
+      'a free assembly can only repeat if its copies bond to each other ' +
+      '(<code>[H3@H4]2</code> is the tetramer; <code>[H2A@H2B]2</code> is two separate dimers).</p>' +
+      '<p class="errhint">Inside a nucleosome the (H3&ndash;H4)<sub>2</sub> tetramer is what holds ' +
+      'the two H2A&ndash;H2B dimers apart &mdash; try <code>(H2A@H2B)</code>.</p>');
+    clearArrangementCounts();
+    lastKey = null;
+    markReady();
+    return;
+  }
+
   const info = describe(parsed);
   // Physics gate (RC3): the notation parsed, but normalize() rejected the
   // assembly (bad pairing/arity/copies/partner/tetramer/range). Route to the
