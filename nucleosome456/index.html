@@ -7,7 +7,7 @@
   <!-- Same ?v=<build epoch> stamp as the JS bundles and parquet URLs: a cached stylesheet against a
        rebuilt page is the same class of silent-staleness bug, and it would render the engine-fallback
        alarm below as unstyled text. -->
-  <link rel="stylesheet" href="/nucleosome456/assets/css/main.css?v=1785031134">
+  <link rel="stylesheet" href="/nucleosome456/assets/css/main.css?v=1785035606">
 </head>
 <body>
 
@@ -598,7 +598,7 @@
          cached page, full stop. #engine-stamp is filled at runtime with which enumeration engine
          actually loaded (v2 = interpret2 present; v1 = the bundle is stale or broken). -->
     <footer class="buildstamp">
-      built 2026-07-25 21:58:54 EDT
+      built 2026-07-25 23:13:26 EDT
       &middot; <span id="engine-stamp">engine&nbsp;&hellip;</span>
     </footer>
 
@@ -636,12 +636,12 @@
   </script>
 
   <!-- Generated vocabulary (families, PTMs) -->
-  <script src="/nucleosome456/assets/js/vocabulary.js?v=1785031134"></script>
+  <script src="/nucleosome456/assets/js/vocabulary.js?v=1785035606"></script>
   <!-- Compiled nucleosome notation parser (legacy stack: parse/normalizeIR/interpret/match) -->
-  <script src="/nucleosome456/assets/js/parser.js?v=1785031134"></script>
+  <script src="/nucleosome456/assets/js/parser.js?v=1785035606"></script>
   <!-- New-stack bundle: parse2 → lift2 → resolve2 → meet2/normalize2 (canon), real registry,
        and the v2→v1 bridge (adaptToLegacy). The single canon; legacy consumers read via the bridge. -->
-  <script src="/nucleosome456/assets/js/parser2.js?v=1785031134"></script>
+  <script src="/nucleosome456/assets/js/parser2.js?v=1785035606"></script>
 
   <script type="module">
     /* Pinned deliberately. The console warning "The WebAssembly exception handling 'try'
@@ -661,7 +661,7 @@
     // without this a rebuilt table is served stale until a hard reload. site.time changes
     // on every `jekyll build`, so a rebuild always refetches — the whole point is that a
     // reload shows the version we just built, not a cached one.
-    const CACHE_BUST       = '?v=1785031134';
+    const CACHE_BUST       = '?v=1785035606';
     const PROTEINS_URL     = new URL('/nucleosome456/data/proteins.parquet' + CACHE_BUST, document.baseURI).href;
     const MASSES_URL       = new URL('/nucleosome456/data/residue_masses.parquet' + CACHE_BUST, document.baseURI).href;
     const PTM_URL          = new URL('/nucleosome456/data/ptm_deltas.parquet' + CACHE_BUST, document.baseURI).href;
@@ -1273,10 +1273,29 @@ function classifyIR(parsed, canonical) {
 // Interface label for a derived class token. `half-octamer` shows as "half".
 function classLabel(cls) { return cls === 'half-octamer' ? 'half' : cls; }
 
-// Maps a target-IR node to { assembly, error }. assembly is the display class
-// (octamer/hexasome/tetrasome, dimer/tetramer/half, dimer×2, …); error is the
-// normalize reason on an Error node. Structural class is derived via
-// nucleosomeParser.classify(); a bare assembly with count N renders unit×N.
+// The DISPLAY CLASS, from the v2 classifier on the v2 IR (Phase 5, item 3).
+//
+// `classify2` is gated at 88/88 against v1's `classify` over the corpus, and it is the same function
+// the units bar draws from — so the label above the stage and the cartoon in it can no longer
+// disagree about what the query is.
+//
+// Counting differs by kind, and that IS the classification (see grammar/classify2.js): a PARTICLE's
+// count is repetition along DNA, so `(H3)3` is three octamers and the label carries the ×3; a FREE
+// assembly's count is self-association, so `[H3@H4]2` is one tetramer, not "dimer×2" — which is what
+// v1 called it, having flattened the count away.
+function assemblyLabel(ir2) {
+  const P2 = (typeof nucleosomeParser2 !== 'undefined') ? nucleosomeParser2 : null;
+  if (!P2 || typeof P2.classify2 !== 'function' || !ir2) return undefined;
+  const node = (ir2.node === 'array' && (ir2.members || []).length === 1) ? ir2.members[0] : ir2;
+  const cls = P2.classify2(node);
+  if (!cls) return undefined;
+  const n = (node.dna != null && node.count > 1) ? node.count : 1;
+  return classLabel(cls) + (n > 1 ? '\u00d7' + n : '');
+}
+
+// Maps a target-IR node to { assembly, error }. `error` is the v1 normalize reason on an Error node
+// — still v1, and the last thing in this function that is. `assembly` is overridden by
+// `assemblyLabel` above whenever the v2 IR is available.
 function irClassify(ir) {
   if (!ir) return { assembly: null, error: null };
   if (ir.node === 'error')      return { assembly: null, error: ir.reason };
@@ -1329,8 +1348,12 @@ function prettyAssembly(a) {
 
 // Returns a structured descriptor for every level of the schema.
 // { type, canonical, detail, queryable, family, variant, position, wt, variant, ptm }
-function describe(parsed) {
+function describe(parsed, ir2) {
   if (!parsed) return null;
+  // The v2 label, when the caller hands over the IR. Threaded rather than recomputed here: shell.js
+  // already has the ONE resolved IR for this query, and a second derivation is exactly the kind of
+  // parallel opinion this port exists to remove.
+  const v2label = assemblyLabel(ir2);
 
   // ── Family ──
   if (parsed.level === 'family') {
@@ -1368,7 +1391,7 @@ function describe(parsed) {
     const canonical = fs + modsCanonical(mods);
     // Consult the IR: a malformed/non-containing range (or any engine error)
     // must surface here too, not read as a bare point mod (RC1/RC5).
-    const { assembly, error } = irClassify(classifyIR(parsed, canonical));
+    const { assembly: _a, error } = irClassify(classifyIR(parsed, canonical));
 
     let detail;
     if (error)                           detail = errorDetail(error);
@@ -1393,7 +1416,7 @@ function describe(parsed) {
       type: dm.type, canonical, detail,
       family: parsed.family, variant: parsed.variant,
       position: dm.pos, wt: dm.wt, variant: dm.sub, ptm: dm.ptm,
-      assembly, error,
+      assembly: v2label !== undefined ? v2label : _a, error,
       queryable: !error
     };
   }
@@ -1405,7 +1428,9 @@ function describe(parsed) {
     const families   = [...new Set(slots.map(s => s.family).filter(Boolean))].join(' + ');
     // Classify by the assembly IR, not the raw (subscript-expanded) slot count
     // (RC1): dimer/tetramer/half/tetrasome/hexasome/octamer + engine errors.
-    const { assembly, error } = irClassify(classifyIR(parsed, canonical));
+    const { assembly: _a, error } = irClassify(classifyIR(parsed, canonical));
+    // One name for the label from here down, whichever engine produced it.
+    const assembly = v2label !== undefined ? v2label : _a;
 
     let detail;
     if (error) {
@@ -1419,7 +1444,8 @@ function describe(parsed) {
       const nSlots = slots.length;
       detail = `nucleosome · ${nSlots} slot${nSlots !== 1 ? 's' : ''}${families ? ` · ${families}` : ''}`;
     }
-    return { type: 'nucleosome', canonical, detail, assembly, error, queryable: false };
+    return { type: 'nucleosome', canonical, detail,
+             assembly, error, queryable: false };
   }
 
   // ── Array ──
@@ -5669,7 +5695,7 @@ async function onInput() {
     return;
   }
 
-  const info = describe(parsed);
+  const info = describe(parsed, currentIR);
   // Physics gate (RC3): the notation parsed, but normalize() rejected the
   // assembly (bad pairing/arity/copies/partner/tetramer/range). Route to the
   // physics-error state — the reason surfaces in the units pane (setValidity →
@@ -5682,7 +5708,24 @@ async function onInput() {
   inputEl.className = 'valid';
   errorRequested = false;              // a good query settles the question the last Return asked
   renderCanonCaption(built.ir);        // the caption names THIS answer, now that there is one
-  const key = info.canonical;
+
+  // THE FRESHNESS KEY IS THE CANON (Phase 5, item 1). Every async branch guards
+  // `if (key !== lastKey) return` against this string, so it decides whether what is on screen is
+  // still about what was typed. It used to be `describe().canonical` — v1's normalisation — which
+  // meant the freshness of a page whose CONTENT comes from v2 was decided by the engine we are
+  // retiring: two authorities, agreeing today, free to diverge on any grammar edit.
+  //
+  // `canonNotation` is the same string the caption and the inspector's Canon line show, so a
+  // re-render is triggered by exactly what a reader would call a different query — including a
+  // context switch, since canon is emitted through `abstract2` under the current context.
+  //
+  // Falls back to v1's canonical only when emit2 REFUSES (a construct it cannot write faithfully).
+  // That is a real, narrow case rather than a silent catch-all, and it is logged.
+  const canonKey = canonNotation(built.ir);
+  const usableCanon = canonKey && canonKey.indexOf('no faithful notation') < 0
+                   && canonKey.indexOf('canon failed') < 0 && canonKey.charAt(0) !== '\u22a5';
+  if (!usableCanon) console.warn('render key: canon unavailable, falling back to v1 canonical for', raw);
+  const key = usableCanon ? canonKey : info.canonical;
   if (key === lastKey) return;
   lastKey = key;
   // A genuine new query (canonical text changed) resets the tile selection and
