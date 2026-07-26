@@ -7,7 +7,7 @@
   <!-- Same ?v=<build epoch> stamp as the JS bundles and parquet URLs: a cached stylesheet against a
        rebuilt page is the same class of silent-staleness bug, and it would render the engine-fallback
        alarm below as unstyled text. -->
-  <link rel="stylesheet" href="/nucleosome456/assets/css/main.css?v=1785076581">
+  <link rel="stylesheet" href="/nucleosome456/assets/css/main.css?v=1785080419">
 </head>
 <body>
 
@@ -598,7 +598,7 @@
          cached page, full stop. #engine-stamp is filled at runtime with which enumeration engine
          actually loaded (v2 = interpret2 present; v1 = the bundle is stale or broken). -->
     <footer class="buildstamp">
-      built 2026-07-26 10:36:21 EDT
+      built 2026-07-26 11:40:19 EDT
       &middot; <span id="engine-stamp">engine&nbsp;&hellip;</span>
     </footer>
 
@@ -636,10 +636,10 @@
   </script>
 
   <!-- Generated vocabulary (families, PTMs) -->
-  <script src="/nucleosome456/assets/js/vocabulary.js?v=1785076581"></script>
+  <script src="/nucleosome456/assets/js/vocabulary.js?v=1785080419"></script>
   <!-- Compiled nucleosome notation parser (legacy stack: parse/normalizeIR/interpret/match) --><!-- New-stack bundle: parse2 → lift2 → resolve2 → meet2/normalize2 (canon), real registry,
        and the v2→v1 bridge (adaptToLegacy). The single canon; legacy consumers read via the bridge. -->
-  <script src="/nucleosome456/assets/js/parser2.js?v=1785076581"></script>
+  <script src="/nucleosome456/assets/js/parser2.js?v=1785080419"></script>
 
   <script type="module">
     /* Pinned deliberately. The console warning "The WebAssembly exception handling 'try'
@@ -659,7 +659,7 @@
     // without this a rebuilt table is served stale until a hard reload. site.time changes
     // on every `jekyll build`, so a rebuild always refetches — the whole point is that a
     // reload shows the version we just built, not a cached one.
-    const CACHE_BUST       = '?v=1785076581';
+    const CACHE_BUST       = '?v=1785080419';
     const PROTEINS_URL     = new URL('/nucleosome456/data/proteins.parquet' + CACHE_BUST, document.baseURI).href;
     const MASSES_URL       = new URL('/nucleosome456/data/residue_masses.parquet' + CACHE_BUST, document.baseURI).href;
     const PTM_URL          = new URL('/nucleosome456/data/ptm_deltas.parquet' + CACHE_BUST, document.baseURI).href;
@@ -1836,7 +1836,11 @@ function formatMWDelta(avg_delta, mono_delta) {
 // enumerate the exclusions carried by a negated-mark asterisk's tooltip.
 function negMarkLabel(m) {
   const base = `${m.residue ?? ''}${m.position ?? ''}`;
-  if (m.variant) return `${base}→${m.variant}`;
+  // A substituted residue is `substitution` in the IR and `variant` on the retired v1 tree. Cards
+  // are built from canon now, so the IR name is the live one — reading only `variant` made a negated
+  // substitution print as a bare position.
+  const sub = m.substitution ?? m.variant;
+  if (sub) return `${base}→${sub}`;
   return `${base}${m.modification ?? ''}`;
 }
 
@@ -3033,6 +3037,82 @@ initPortEditor();
     });
   }
 
+  // ── materials, from the canon ────────────────────────────────────────────────────────────────────
+  //
+  // A MATERIAL CARD IS A CANON MEMBER. `fuseCanon` (meet2) already fuses meet-identical copies into
+  // counts and leaves distinct ones apart, so the grouping the old `materialsModel` did by hand —
+  // key on `family|variant`, then re-split via `_proteoforms` when a family stated two different
+  // marks — is what canon does structurally. The hand-rolled version could only ever be a second
+  // opinion about identity; this one asks meet.
+  //
+  // The visible consequence: the pane now lists what the PARTICLE IS, not only what was stated, so
+  // `(H3:K27M)` shows the marked H3 and the wild-type H3 beside it, and the H2A/H2B/H4 pairs that
+  // complete the octamer. That agrees with the cartoon and the arrangements, which have always drawn
+  // the completed particle.
+  //
+  // COMPLETION FILLS ARE QUIET (BB, 2026-07-25, option A). A fill is a member carrying no mark and no
+  // pinned variant — the SAME rule the caption uses to elide a term (shell.js `elidableTerm`), so
+  // "fill" means one thing in this project. And, as there, the rule is conditional: when EVERY member
+  // is a fill nothing is quieted, because a caption or a pane that withdraws all of its content is
+  // saying less than one that shows it.
+  function isFillMember(pf) {
+    const marks = (pf.modifications || []).filter((m) => m && !m.negated);
+    const variant = (pf.variant && pf.variant.length === 1) ? pf.variant[0] : null;
+    return !marks.length && (variant == null || variant === pf.family);
+  }
+
+  // Certainty for the whole member: closed iff every stated extent is closed (meet2's `certAt` with a
+  // null position — a positionless claim is closed only if all present material is).
+  function memberCertainty(pf) {
+    const segs = pf.segments || [];
+    if (!segs.length) return null;
+    return segs.every((x) => x.certainty === 'defined') ? 'defined' : 'native';
+  }
+
+  function materialsFromCanon(node) {
+    if (!node || typeof node !== 'object') return [];
+    // canon of a bare histone IS a proteoform, not an assembly with members.
+    const members = node.node === 'proteoform' ? [node]
+                  : (node.node === 'array' && (node.members || []).length === 1)
+                    ? materialsFromCanonMembers(node.members[0])
+                    : materialsFromCanonMembers(node);
+    const list = Array.isArray(members) ? members : [];
+    const entries = list.map((pf) => {
+      const variant = (pf.variant && pf.variant.length === 1 && pf.variant[0] !== pf.family)
+        ? pf.variant[0] : null;
+      const mods = (pf.modifications || []).filter((m) => m && m.rangeEnd == null && m.position != null);
+      const segs = (pf.segments || []).filter((x) =>
+        !(x.start === '-inf' && x.end === '+inf' && x.certainty === 'native'));
+      const e = {
+        family: pf.family, variant,
+        count: pf.count == null ? 1 : pf.count,
+        certainty: memberCertainty(pf),
+        segments: segs.length ? segs.map((x) => Object.assign({}, x)) : null,
+        mods, _markMods: {},
+        hasMark: mods.some((m) => modSub(m) || m.modification),
+        isFill: isFillMember(pf),
+      };
+      mods.forEach((m) => { if (modSub(m) || m.modification) e._markMods[markKey(m)] = m; });
+      // Card identity must distinguish two members of one family — the marked H3 and its wild-type
+      // partner — or `openCards` and the ghost lookup collapse them back together, which is exactly
+      // the merge this replaces.
+      e.key = e.family + '|' + (e.variant ?? '') + '|' + mods.map(modSig).sort().join(',');
+      return e;
+    });
+    // Conditional, as in the caption: quiet the fills only when something else is speaking.
+    if (entries.every((e) => e.isFill)) entries.forEach((e) => { e.isFill = false; });
+    return entries;
+  }
+  function materialsFromCanonMembers(n) {
+    const out = [];
+    (function walk(x) {
+      if (!x || typeof x !== 'object') return;
+      if (x.node === 'proteoform') { out.push(x); return; }
+      (x.members || []).forEach(walk);
+    })(n);
+    return out;
+  }
+
   const EXPECT_MAP = {
     '[A-Z]': 'a residue letter', '[0-9]': 'a position number', 'modification': 'a modification',
     ']': 'a closing bracket', ')': 'a closing paren', '}': 'a closing brace', '@': 'a histone separator',
@@ -3072,7 +3152,7 @@ initPortEditor();
     };
   }
 
-  const api = { materialsModel, humanizeExpected, syntaxError, modSub };
+  const api = { materialsModel, materialsFromCanon, isFillMember, humanizeExpected, syntaxError, modSub };
   if (typeof module !== 'undefined' && module.exports) module.exports = api;
   else Object.assign(root, api);
 })(typeof globalThis !== 'undefined' ? globalThis : this);
@@ -4547,7 +4627,7 @@ let unitArr = new Map();
 // new query (reset selection/pins) from a same-query re-lens (port/context
 // switch, which nulls lastKey to force a re-render but keeps the canonical).
 let lastQueryKey = null;
-let currentRender = { parsed: null, info: null, key: null };
+let currentRender = { parsed: null, key: null };
 // The RAW query text of the current render. The v2 stack must be fed THIS, never describe().canonical:
 // the v1 serializer flattens co-brackets — `[H2A@H2B]0@[H2A@H2B]1` round-trips as
 // `[H2A]0@[H2B]0@[H2A]@[H2B]` — which silently drops the statement that those two histones form one
@@ -4844,6 +4924,19 @@ function irMarksFor(ir, family, variant) {
 //
 // Every one of those round-trips (lift2(parse(s)) deep-equals the node), which the emit2 contract
 // requires and the accession-pinned form could never satisfy.
+// The canonical node for an IR — canon2 with the set/⊥ cases resolved. `canonNotation` emits from
+// exactly this, and the materials pane is built from its members, so the notation under the cartoon
+// and the cards beside it describe one object.
+function canonNode(ir) {
+  const P2 = (typeof nucleosomeParser2 !== 'undefined') ? nucleosomeParser2 : null;
+  if (!P2 || !ir || typeof P2.canon2 !== 'function') return null;
+  try {
+    const c = P2.canon2(ir);
+    const n = Array.isArray(c) ? c[0] : c;
+    return (!n || n.node === 'bottom' || n.node === 'error') ? null : n;
+  } catch (e) { return null; }
+}
+
 function canonNotation(ir) {
   const P2 = (typeof nucleosomeParser2 !== 'undefined') ? nucleosomeParser2 : null;
   if (!P2 || !ir || typeof P2.canon2 !== 'function') return null;
@@ -5563,14 +5656,14 @@ async function renderFocusedPanes(parsed, key, queryInfo) {
   const units = unitList(currentIR, nucleosomeParser2);
   const u = units[selectedUnit] || units[0];
   const focus = u ? u.subtree : parsed;   // defensive: unitList() only returns [] for a null parsed
-  // Reuse the caller's describe() when the focus IS the whole query (the common
-  // single-unit case); only a subtree focus (multi-unit) needs a fresh describe.
-  const info = (focus === parsed && queryInfo) ? queryInfo : describe(focus);
+  // `describe()` is GONE (Phase 5, step 4). Its last consumer was the render-key fallback above;
+  // before that the materials pane, which now reads canon's members. What it produced — a display
+  // class, a physics error, a canonical string — all have v2 owners: classify2, valid2, emit2.
   // The #facets tile-click handler and renderArrangements() both read
   // currentRender.{parsed,info,key} — point it at the FOCUSED subtree so a
   // tile click re-invokes renderMaterials() scoped to this unit, not the
   // whole query.
-  currentRender = { parsed: focus, info, key };
+  currentRender = { parsed: focus, key };
   // A single-unit query is always a particle from the top-level query's own
   // point of view (renderArrangements() itself shows the "wrap in ( )"/engine-
   // error placeholder when it isn't enumerable — that's today's behavior,
@@ -5614,7 +5707,7 @@ async function renderFocusedPanes(parsed, key, queryInfo) {
   // The selected octamer's cartoon mirrors the chosen world; the world is only
   // known now (renderUnitBar painted before this default), so refresh its bead.
   repaintSelectedBead(parsed);
-  await renderMaterials(focus, info, key, world0);
+  await renderMaterials(focus, key, world0);
   if (key !== lastKey) return;          // a newer query superseded us — don't paint stale arrangements
   if (isParticle) {
     await renderArrangements(particleOf(unitIR2(selectedUnit)), interp);   // re-applies .sel; fetches candidates
@@ -5725,7 +5818,6 @@ async function onInput() {
     return;
   }
 
-  const info = describe(parsed, currentIR);
   // Physics gate (RC3): the notation parsed, but normalize() rejected the
   // assembly (bad pairing/arity/copies/partner/tetramer/range). Route to the
   // physics-error state — the reason surfaces in the units pane (setValidity →
@@ -5754,8 +5846,12 @@ async function onInput() {
   const canonKey = canonNotation(built.ir);
   const usableCanon = canonKey && canonKey.indexOf('no faithful notation') < 0
                    && canonKey.indexOf('canon failed') < 0 && canonKey.charAt(0) !== '\u22a5';
-  if (!usableCanon) console.warn('render key: canon unavailable, falling back to v1 canonical for', raw);
-  const key = usableCanon ? canonKey : info.canonical;
+  // When emit2 REFUSES there is no canonical string to key on, and the honest fallback is what was
+  // typed. It was `describe().canonical` — a v1 re-serialisation — which made the last consumer of
+  // `describe()` a construct emit2 could not write. Raw text keys wider (two spellings of one query
+  // re-render), which is the safe direction: a redundant repaint, never a stale view.
+  if (!usableCanon) console.warn('render key: canon unavailable, keying on the raw text for', raw);
+  const key = usableCanon ? canonKey : raw.trim();
   if (key === lastKey) return;
   lastKey = key;
   // A genuine new query (canonical text changed) resets the tile selection and
@@ -5773,7 +5869,7 @@ async function onInput() {
     Object.keys(pinned).forEach(k => delete pinned[k]);
     clearLatch(); clearSeqLatch();                     // drop measurement/sequence-highlight latches
   }
-  currentRender = { parsed, info, key };
+  currentRender = { parsed, key };
   // Absence model (from resolve, try/catch inside). Computed once per render and
   // read by renderMaterials/tileEl/renderArrangementCounts. null → no absence,
   // so every consumer flows exactly as before.
@@ -5786,7 +5882,7 @@ async function onInput() {
   // is the whole query) — see renderFocusedPanes below for the invariant.
   topParsed = parsed;
   renderUnitBar(parsed, key);
-  await renderFocusedPanes(parsed, key, info);   // reuse this render's describe()
+  await renderFocusedPanes(parsed, key);
   markReady();                                   // valid query fully rendered — settled
 }
 
@@ -6557,7 +6653,7 @@ async function renderArrangements(query, interp) {
       if (first) {
         const c2 = cells.find(c => c.dataset.arr === first);
         if (c2) c2.classList.add('sel');
-        renderMaterials(currentRender.parsed, currentRender.info, currentRender.key, selectedWorld);
+        renderMaterials(currentRender.parsed, currentRender.key, selectedWorld);
         renderMeasurements(selectedWorld);
       }
     }
@@ -6567,10 +6663,25 @@ async function renderArrangements(query, interp) {
   // the query's union of modifications, then per-tile filter via
   // tileMods()+filterEntailedRows() (per-world entailment). Table/pin wiring
   // for these candidates is Task 3 — this only places the dot.
-  const { parsed, info, key } = currentRender;
+  const { parsed, key } = currentRender;
   const gen = materialsToken;                          // capture generation BEFORE the await
-  const materials = materialsModel(parsed, info, (f, v) => irMarksFor(currentIR, f, v),
-                                                  (f, v) => irSegmentsFor(currentIR, f, v));
+  // THE CARDS ARE CANON'S MEMBERS. `fuseCanon` fuses meet-identical copies and leaves distinct ones
+  // apart, so the pane lists what the particle IS — which is what the cartoon and the arrangements
+  // have always drawn. `materialsModel`'s hand-rolled grouping (key on family|variant, then re-split
+  // via `_proteoforms`) was a second opinion about identity; this one asks meet.
+  const canon = canonNode(currentIR);
+  const materials = canon ? materialsFromCanon(canon) : [];
+  // AN ABSENT FAMILY HAS NO CANON MEMBER — that is what its absence means — so the ghost cards a
+  // hexasome/tetrasome shows have to be put back. `absenceModel` already knows which families went
+  // unseated (it reads the same `seats()` the cartoon ghosts), so this is one derivation surfacing in
+  // two places rather than two derivations. Appended after the present materials: a hole is read
+  // last, after what is there.
+  for (const k of (absenceModel?.absentKeys ?? [])) {
+    const family = String(k).split('|')[0];
+    if (materials.some((m) => m.family === family)) continue;
+    materials.push({ family, variant: null, count: 0, certainty: null, segments: null,
+                     mods: [], _markMods: {}, hasMark: false, isFill: false, key: k, _absent: true });
+  }
   const unionMods = queryUnionMods(materials);
   const candidates = await queryScreenCandidates(unionMods);
   if (key !== lastKey || gen !== materialsToken) return;  // stale-guard: a newer query/tile-click superseded us
@@ -6628,7 +6739,7 @@ document.getElementById('arr-counts').addEventListener('click', e => {
 document.getElementById('facets').addEventListener('click', e => {
   const cell = e.target.closest('.cell[data-arr]');
   if (!cell) return;
-  const { parsed, info, key } = currentRender;
+  const { parsed, key } = currentRender;
   if (!parsed) return;                                    // nothing rendered yet
   arrTouched = true;                                      // this member's choice is the user's, not the default
   // Clicking the selected tile is a NO-OP: a world is always chosen. Deselecting used to drop the
@@ -6642,7 +6753,7 @@ document.getElementById('facets').addEventListener('click', e => {
   selectedWorld = parseArrangement(cell.dataset.arr);
   unitArr.set(selectedUnit, { arr: selectedArr, touched: true });  // remember this member's choice
   repaintSelectedBead(topParsed);              // cartoon mirrors the picked world
-  renderMaterials(parsed, info, key, selectedWorld);
+  renderMaterials(parsed, key, selectedWorld);
   renderMeasurements(selectedWorld);
 });
 
@@ -6737,8 +6848,12 @@ async function buildMaterialCard(m, mods, copyPill, key, gen, lit) {
   const card = document.createElement('div');
   // Stable across re-renders (ignores the copy split so a family stays open
   // whether shown as one ×2 card or two copy cards).
-  const cardKeyId = m.family + '|' + (m.variant ?? '');
-  card.className = 'su' + (lit ? ' sel' : '') + (openCards.has(cardKeyId) ? ' open' : '');
+  const cardKeyId = m.key || (m.family + '|' + (m.variant ?? ''));
+  // A COMPLETION FILL is withdrawn, not hidden: it is part of the particle and the reader may want
+  // it, but it is not what they asked about. Same distinction the caption makes when it elides a
+  // wild-type term, and the same conditional — when everything is a fill, nothing is withdrawn.
+  card.className = 'su' + (lit ? ' sel' : '') + (openCards.has(cardKeyId) ? ' open' : '')
+                 + (m.isFill ? ' fill' : '');
   card.dataset.cardkey = cardKeyId;   // family|variant — measurement-highlight targets this
   const famVar = FAM_COLORVAR[m.family];
   if (famVar) card.style.setProperty('--fam', `var(${famVar})`);
@@ -6953,24 +7068,43 @@ async function buildMaterialCard(m, mods, copyPill, key, gen, lit) {
 // copies (c0===c1) collapse to one ×2 card; differing copies split into copy 1 /
 // copy 2, each showing its signature's mark (a wild-type "" copy shows none) —
 // mirroring the mockup's renderMaterials(world)/buildCard(fk, state, copy, both, lit).
-async function renderMaterials(parsed, info, key, world) {
+async function renderMaterials(parsed, key, world) {
   // Capture our generation before touching the DOM. Any later renderMaterials()
   // call (from a subsequent tile click or a new query) bumps materialsToken,
   // making every `gen !== materialsToken` check below fail — so a superseded
   // render's continuations bail out instead of interleaving with the new one.
   const gen = ++materialsToken;
   const host = document.getElementById('subunits');
-  const materials = materialsModel(parsed, info, (f, v) => irMarksFor(currentIR, f, v),
-                                                  (f, v) => irSegmentsFor(currentIR, f, v));
+  // THE CARDS ARE CANON'S MEMBERS. `fuseCanon` fuses meet-identical copies and leaves distinct ones
+  // apart, so the pane lists what the particle IS — which is what the cartoon and the arrangements
+  // have always drawn. `materialsModel`'s hand-rolled grouping (key on family|variant, then re-split
+  // via `_proteoforms`) was a second opinion about identity; this one asks meet.
+  const canon = canonNode(currentIR);
+  const materials = canon ? materialsFromCanon(canon) : [];
+  // AN ABSENT FAMILY HAS NO CANON MEMBER — that is what its absence means — so the ghost cards a
+  // hexasome/tetrasome shows have to be put back. `absenceModel` already knows which families went
+  // unseated (it reads the same `seats()` the cartoon ghosts), so this is one derivation surfacing in
+  // two places rather than two derivations. Appended after the present materials: a hole is read
+  // last, after what is there.
+  for (const k of (absenceModel?.absentKeys ?? [])) {
+    const family = String(k).split('|')[0];
+    if (materials.some((m) => m.family === family)) continue;
+    materials.push({ family, variant: null, count: 0, certainty: null, segments: null,
+                     mods: [], _markMods: {}, hasMark: false, isFill: false, key: k, _absent: true });
+  }
 
   // Default the single card open for a bare histone (nothing else to explore).
   // For a nucleosome / array, leave every card collapsed so the header row invites
   // exploring the arrangements first and judging from the headers what to open.
   // Once the user opens any shown card, openCards reflects their choice as-is.
-  const isAssembly = parsed && (parsed.level === 'nucleosome' || parsed.level === 'array');
-  const anyOpen = materials.some(m => openCards.has(m.family + '|' + (m.variant ?? '')));
+  // `parsed` here is the focused unit, and since unitList started returning IR nodes that is an IR
+  // node — which has no `.level`, so this silently read false for every query and a bare histone
+  // stopped opening its card. The IR says the same thing more directly: an assembly is a thing with
+  // members.
+  const isAssembly = !!(parsed && (parsed.node === 'assembly' || parsed.node === 'array'));
+  const anyOpen = materials.some(m => openCards.has(m.key));
   if (!anyOpen && materials.length && !isAssembly) {
-    openCards.add(materials[0].family + '|' + (materials[0].variant ?? ''));
+    openCards.add(materials[0].key);
   }
 
   // Build into a detached node list and swap it in once at the end, instead of
@@ -7027,7 +7161,7 @@ async function renderMaterials(parsed, info, key, world) {
     const toParseMod = (mm) => ({ position: mm.position, residue: mm.residue,
       variant: mm.substitution ?? null, modification: mm.modification ?? null, negated: false });
     for (const m of materials) {                                     // ghosts: families absent in every world
-      if (absenceModel?.absentKeys?.has(m.family + '|' + (m.variant ?? ''))) nodes.push(buildGhostCard(m));
+      if (m._absent) nodes.push(buildGhostCard(m));
     }
     for (const g of worldView(viewIR).materials) {
       const copyPill = `<span class="copyn"${g.count > 1 ? ' title="identical copies"' : ''}>${g.count} cop${g.count > 1 ? 'ies' : 'y'}</span>`;
@@ -7046,24 +7180,12 @@ async function renderMaterials(parsed, info, key, world) {
     // Absent unit (case 2 / case 4): the whole family/variant is claimed absent
     // — render a hollow ghost card and skip the sequence/mass/AM body entirely.
     // Independent of tile selection (an absent unit is absent in every world).
-    if (absenceModel?.absentKeys?.has(m.family + '|' + (m.variant ?? ''))) {
-      nodes.push(buildGhostCard(m));
-      continue;
-    }
+    if (m._absent) { nodes.push(buildGhostCard(m)); continue; }
     if (!world) {
-      // Default view: no copy pill, never highlighted (mockup: world===null →
-      // lit=false always). A family with distinct proteoforms renders one card
-      // per proteoform so the marks are never shown cis on a single card.
-      if (m._proteoforms) {
-        let i = 0;
-        for (const pf of m._proteoforms) {
-          const pill = `<span class="copyn" title="distinct proteoform">proteoform ${++i}</span>`;
-          const card = await buildMaterialCard(m, pf.mods, pill, key, gen, false);
-          if (key !== lastKey || gen !== materialsToken) return;
-          if (card) nodes.push(card);
-        }
-        continue;
-      }
+      // Default view: no copy pill, never highlighted (mockup: world === null → lit = false always).
+      // The `_proteoforms` branch that stood here is gone: it re-split a family whose marks the model
+      // had just merged, and canon never merges them — two distinct proteoforms are two members, so
+      // they arrive as two entries with two card keys.
       const card = await buildMaterialCard(m, m.mods, '', key, gen, false);
       if (key !== lastKey || gen !== materialsToken) return;
       if (card) nodes.push(card);
