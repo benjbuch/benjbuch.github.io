@@ -7,7 +7,7 @@
   <!-- Same ?v=<build epoch> stamp as the JS bundles and parquet URLs: a cached stylesheet against a
        rebuilt page is the same class of silent-staleness bug, and it would render the engine-fallback
        alarm below as unstyled text. -->
-  <link rel="stylesheet" href="/nucleosome456/assets/css/main.css?v=1785080419">
+  <link rel="stylesheet" href="/nucleosome456/assets/css/main.css?v=1785085175">
 </head>
 <body>
 
@@ -598,7 +598,7 @@
          cached page, full stop. #engine-stamp is filled at runtime with which enumeration engine
          actually loaded (v2 = interpret2 present; v1 = the bundle is stale or broken). -->
     <footer class="buildstamp">
-      built 2026-07-26 11:40:19 EDT
+      built 2026-07-26 12:59:35 EDT
       &middot; <span id="engine-stamp">engine&nbsp;&hellip;</span>
     </footer>
 
@@ -636,10 +636,10 @@
   </script>
 
   <!-- Generated vocabulary (families, PTMs) -->
-  <script src="/nucleosome456/assets/js/vocabulary.js?v=1785080419"></script>
+  <script src="/nucleosome456/assets/js/vocabulary.js?v=1785085175"></script>
   <!-- Compiled nucleosome notation parser (legacy stack: parse/normalizeIR/interpret/match) --><!-- New-stack bundle: parse2 → lift2 → resolve2 → meet2/normalize2 (canon), real registry,
        and the v2→v1 bridge (adaptToLegacy). The single canon; legacy consumers read via the bridge. -->
-  <script src="/nucleosome456/assets/js/parser2.js?v=1785080419"></script>
+  <script src="/nucleosome456/assets/js/parser2.js?v=1785085175"></script>
 
   <script type="module">
     /* Pinned deliberately. The console warning "The WebAssembly exception handling 'try'
@@ -659,7 +659,7 @@
     // without this a rebuilt table is served stale until a hard reload. site.time changes
     // on every `jekyll build`, so a rebuild always refetches — the whole point is that a
     // reload shows the version we just built, not a cached one.
-    const CACHE_BUST       = '?v=1785080419';
+    const CACHE_BUST       = '?v=1785085175';
     const PROTEINS_URL     = new URL('/nucleosome456/data/proteins.parquet' + CACHE_BUST, document.baseURI).href;
     const MASSES_URL       = new URL('/nucleosome456/data/residue_masses.parquet' + CACHE_BUST, document.baseURI).href;
     const PTM_URL          = new URL('/nucleosome456/data/ptm_deltas.parquet' + CACHE_BUST, document.baseURI).href;
@@ -739,8 +739,17 @@ async function resolveContext(family, variant, overrides = {}) {
     const userOv    = contextOverrides[lookupKey] ?? contextOverrides[family] ?? {};
     const ov        = { ...userOv, ...overrides };
 
-    // Default taxon to 9606 (human) if no constraint specified
-    const taxon = ov.taxon_id ?? 9606;
+    // A PINNED MATERIAL CARRIES ITS OWN SPECIES (BB, 2026-07-26: "maybe it shouldn't pin species").
+    // An accession names ONE molecule, and that molecule already has a taxon; constraining taxon
+    // alongside it asks the material to agree with a lens the query never put it under. Worse, the
+    // default was 9606, so `P02294` (yeast H2B) resolved against `taxon_id = 9606 AND uniprot_id =
+    // 'P02294'` — zero rows, no context, for a query that names a real molecule unambiguously.
+    //
+    // So: the human default applies only when nothing else fixes the material. An EXPLICIT lens
+    // still constrains — a human lens over a yeast accession yields nothing, which is the honest
+    // answer and the one `materialize2` already has a word for (accession-ruled-out).
+    const pinsMaterial = ov.uniprot_id != null || ov.protein_name != null;
+    const taxon = ov.taxon_id ?? (pinsMaterial ? null : 9606);
 
     const sql = `
       WITH pick AS (
@@ -753,7 +762,7 @@ async function resolveContext(family, variant, overrides = {}) {
           AND ($3 IS NULL OR uniprot_id = $3)
           AND ($4 IS NULL OR protein_name = $4)
           AND ($5 IS NULL OR species = $5)
-          AND taxon_id = $6
+          AND ($6 IS NULL OR taxon_id = $6)
         ORDER BY n_gene_loci DESC, identity DESC
         LIMIT 1
       ),
@@ -4760,12 +4769,18 @@ async function resolveRealizations(parsed, raw) {
     if (!res.resolved) return { unresolved: s.realization };
     s.family = res.family;
     s.variant = res.variant;
-    s._realization = { uniprot_id: res.uniprot_id, taxon_id: res.taxon_id, speciesPinned: res.speciesPinned };
+    // `s._realization` was stashed here and read by nothing — the last carrier of the taxon this
+    // token used to assert. Removed with it.
     // Pin the exact material only when the token fixed it (accession/name). A
     // family-only resolution leaves species to the context lens (precedence #2).
+    // THE PIN NAMES A MATERIAL, NOT A SPECIES (BB, 2026-07-26). It used to carry `taxon_id` too, so
+    // an accession asserted a context as well as a molecule — two claims from one token, and the
+    // query only made one. The molecule already knows its species: `resolveContext` now leaves taxon
+    // unconstrained when a material is pinned, so the species falls out of the material instead of
+    // being asserted beside it. An explicit lens still constrains, and still rules the accession out
+    // when they disagree.
     if (res.speciesPinned && res.uniprot_id != null) {
-      realizationPins.set(res.family + '|' + (res.variant ?? ''),
-        { uniprot_id: res.uniprot_id, taxon_id: res.taxon_id });
+      realizationPins.set(res.family + '|' + (res.variant ?? ''), { uniprot_id: res.uniprot_id });
     }
   }
   return { ok: true };
