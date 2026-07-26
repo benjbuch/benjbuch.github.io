@@ -7,7 +7,7 @@
   <!-- Same ?v=<build epoch> stamp as the JS bundles and parquet URLs: a cached stylesheet against a
        rebuilt page is the same class of silent-staleness bug, and it would render the engine-fallback
        alarm below as unstyled text. -->
-  <link rel="stylesheet" href="/nucleosome456/assets/css/main.css?v=1785036194">
+  <link rel="stylesheet" href="/nucleosome456/assets/css/main.css?v=1785076581">
 </head>
 <body>
 
@@ -598,7 +598,7 @@
          cached page, full stop. #engine-stamp is filled at runtime with which enumeration engine
          actually loaded (v2 = interpret2 present; v1 = the bundle is stale or broken). -->
     <footer class="buildstamp">
-      built 2026-07-25 23:23:14 EDT
+      built 2026-07-26 10:36:21 EDT
       &middot; <span id="engine-stamp">engine&nbsp;&hellip;</span>
     </footer>
 
@@ -636,10 +636,10 @@
   </script>
 
   <!-- Generated vocabulary (families, PTMs) -->
-  <script src="/nucleosome456/assets/js/vocabulary.js?v=1785036194"></script>
+  <script src="/nucleosome456/assets/js/vocabulary.js?v=1785076581"></script>
   <!-- Compiled nucleosome notation parser (legacy stack: parse/normalizeIR/interpret/match) --><!-- New-stack bundle: parse2 → lift2 → resolve2 → meet2/normalize2 (canon), real registry,
        and the v2→v1 bridge (adaptToLegacy). The single canon; legacy consumers read via the bridge. -->
-  <script src="/nucleosome456/assets/js/parser2.js?v=1785036194"></script>
+  <script src="/nucleosome456/assets/js/parser2.js?v=1785076581"></script>
 
   <script type="module">
     /* Pinned deliberately. The console warning "The WebAssembly exception handling 'try'
@@ -659,7 +659,7 @@
     // without this a rebuilt table is served stale until a hard reload. site.time changes
     // on every `jekyll build`, so a rebuild always refetches — the whole point is that a
     // reload shows the version we just built, not a cached one.
-    const CACHE_BUST       = '?v=1785036194';
+    const CACHE_BUST       = '?v=1785076581';
     const PROTEINS_URL     = new URL('/nucleosome456/data/proteins.parquet' + CACHE_BUST, document.baseURI).href;
     const MASSES_URL       = new URL('/nucleosome456/data/residue_masses.parquet' + CACHE_BUST, document.baseURI).href;
     const PTM_URL          = new URL('/nucleosome456/data/ptm_deltas.parquet' + CACHE_BUST, document.baseURI).href;
@@ -1578,6 +1578,39 @@ function alignmentRuler(chunk, rulerLabel) {
        + `<span class="al-rseq">${cells.join('').replace(/ /g, '&nbsp;')}</span></div>`;
 }
 
+// THE QUERY'S EXTENT, drawn as a rule under the ruler (BB, 2026-07-25: "underlined is great").
+//
+// Certainty lives only on segments in the v2 IR, and until now the front end had no way to SAY a
+// segment: `H3[1-30]` drew a grid identical to `H3`. The vocabulary is deliberately small, because
+// the distinction it carries is small — an extent is claimed, and the claim is either closed or open:
+//
+//   solid rule   `[1-30]`  defined — this extent and no more
+//   dotted rule  `{31-40}` native  — this extent, open to more
+//
+// Segment positions are in the query's coordinate, which is the coordinate the grid's columns are
+// keyed by (`alignmentCoord`), so no translation happens here — if that ever stops being true this
+// band is the thing that will look wrong first, which is the right place for it to show.
+function alignmentSegBand(chunk, segments, rulerLabel) {
+  if (!segments || !segments.length) return '';
+  const at = rulerLabel || ((p) => p);
+  const lo = (x) => (x.start === '-inf' ? -Infinity : x.start);
+  const hi = (x) => (x.end === '+inf' ? Infinity : x.end);
+  let any = false;
+  const cells = chunk.map((p) => {
+    const n = at(p);
+    if (n == null) return '<span>&nbsp;</span>';
+    const seg = segments.find((x) => lo(x) <= n && n <= hi(x));
+    if (!seg) return '<span>&nbsp;</span>';
+    any = true;
+    return `<span class="al-seg ${seg.certainty === 'defined' ? 'seg-d' : 'seg-n'}" `
+         + `title="${seg.certainty === 'defined' ? 'defined' : 'native'} extent `
+         + `${seg.start === '-inf' ? 'N-terminus' : seg.start}\u2013${seg.end === '+inf' ? 'C-terminus' : seg.end}">&nbsp;</span>`;
+  });
+  if (!any) return '';                       // this block lies entirely outside the stated extent
+  return `<div class="al-row al-segrow"><span class="al-label"></span>`
+       + `<span class="al-rseq">${cells.join('')}</span></div>`;
+}
+
 // Build the "possible sequences" alignment grid HTML (materials-alignment-grid-design §2,§6).
 // model = { coord, positions[], rows[], conserved, counts:{pos:{res:n}} }.
 // modPositions = Set of coordinate positions the query modifies (highlighted columns).
@@ -1594,7 +1627,7 @@ function alignmentRuler(chunk, rulerLabel) {
 // target differ. Grid columns are idea positions, so this keying is the one that lines up.
 // Visual language (from the design prototype): a MARK is a fill, species DRIFT is an outline. They
 // compose — a mark sitting on a drifted position gets both, which is the case worth reading twice.
-function alignmentGridHtml(model, modPositions, driftIdea) {
+function alignmentGridHtml(model, modPositions, driftIdea, segments) {
   if (!model || !model.rows.length) return '';
   const mods = modPositions || new Set();
   const drift = driftIdea || new Map();
@@ -1666,7 +1699,8 @@ function alignmentGridHtml(model, modPositions, driftIdea) {
       return `<div class="al-row" data-acc="${row.uniprot_id}" data-variant="${row.variant ?? ''}"><span class="al-label" title="${full}">${label}${offTag}${ext}</span>`
            + `<span class="al-seq">${seq}${tail}</span></div>`;
     }).join('');
-    blocksHtml += `<div class="al-block">${alignmentRuler(chunk, rulerLabel)}${rowsHtml}</div>`;
+    blocksHtml += `<div class="al-block">${alignmentRuler(chunk, rulerLabel)}`
+                + `${alignmentSegBand(chunk, segments, rulerLabel)}${rowsHtml}</div>`;
   }
   return `<p class="al-meta">${gridMeta(model)}</p><div class="al-grid">${blocksHtml}</div>`;
 }
@@ -2942,7 +2976,12 @@ initPortEditor();
   //
   // Returning null (or nothing) leaves the tree marks in place, so a card the IR cannot speak for is
   // stale rather than empty.
-  function materialsModel(parsed, info, irMarks) {
+  // `irSegments(family, variant)` is the IR's segment list for a material, or null for "the whole
+  // chain". Range marks are skipped in the point-mod loop below (they are extents, not marks) and
+  // used to be lost entirely at that point — so a ranged query produced a card identical to the
+  // unranged one, and materialize-card.js then fabricated a full-native segment to replace what had
+  // just been discarded. Certainty lives only on segments, so this is also the card's certainty.
+  function materialsModel(parsed, info, irMarks, irSegments) {
     const order = [];
     const byKey = new Map();
     for (const s of collectSlots(parsed, info)) {
@@ -2952,7 +2991,9 @@ initPortEditor();
         // certainty carries the slot's [..] (defined/exact) vs (..)/{..} (native/open)
         // stance, so worldToIR can build the query world at the query's certainty —
         // a closed query excludes supersets under entails (shell.js markAxisAccepts).
-        byKey.set(key, { family: s.family, variant, certainty: s.certainty ?? null, mods: [], _seen: new Set(), _pf: new Map(), _markMods: {} });
+        byKey.set(key, { family: s.family, variant, certainty: s.certainty ?? null,
+                         segments: (typeof irSegments === 'function') ? irSegments(s.family, variant) : null,
+                         mods: [], _seen: new Set(), _pf: new Map(), _markMods: {} });
         order.push(key);
       }
       const e = byKey.get(key);
@@ -3626,7 +3667,7 @@ initPortEditor();
 
   var DROP_REASONS = { 'accession-ruled-out': 1, 'no-frame': 1, 'position-gap': 1 };
 
-  function materializeCard(family, variant, mods, ctx, portCtx, pin) {
+  function materializeCard(family, variant, mods, ctx, portCtx, pin, segments) {
     var p = P2(), reg = p && p.DEFAULT_REGISTRY;
     // No engine (isolated Node use, or a load failure) → say nothing rather than guess. A null
     // verdict leaves the grid unfiltered, which is the honest degradation: we did not decide.
@@ -3641,7 +3682,13 @@ initPortEditor();
       accession: (pin && Array.isArray(pin.accession) && pin.accession.length) ? pin.accession.slice()
                : (pin && pin.uniprot_id) ? [pin.uniprot_id] : null,
       modifications: irMods(mods),
-      segments: [{ start: '-inf', end: '+inf', certainty: 'native' }],
+      // THE QUERY'S OWN EXTENT. This was hardcoded to a single full-native segment, which does not
+      // merely lose the range — it ASSERTS a different one, so `H3[1-30]` was materialised against
+      // the whole chain and every accession that differs only outside 1-30 was kept or dropped on
+      // evidence the query never gave. Absent segments still mean "the whole chain", which is what
+      // the fallback says; the difference is that it is now a default rather than an override.
+      segments: (segments && segments.length) ? segments.map(function (x) { return Object.assign({}, x); })
+                                              : [{ start: '-inf', end: '+inf', certainty: 'native' }],
       count: 1,
       // These marks came from an IDEA handle, so their positions are already idea positions;
       // saying so keeps resolve2 from treating a realized accession as an authoring frame.
@@ -4729,6 +4776,35 @@ function buildQueryObjects(raw) {
 // The RESOLVED marks for one material card, in IDEA positions with the accession already applied.
 // Returns null when the IR cannot speak for this card, so the caller keeps its tree-derived mods
 // rather than silently losing them — a card is better stale than empty.
+// The SEGMENTS the IR states for a material, or null when it states none beyond the whole chain.
+//
+// Certainty lives here and nowhere else in the v2 IR: `[1-30]` is a defined extent, `{31-40}` a
+// native one, and `certAt` reads the certainty in force at a position off exactly this list. The
+// materials pane used to drop range marks on the floor (`shell-model.js`: `if (m.rangeEnd != null)
+// continue`) and `materialize-card.js` then FABRICATED a full-native segment — so `H3[1-30]` was
+// materialised, and drawn, as the whole of H3.
+//
+// A single full-native segment is the absence of a claim, not a claim, so it is reported as null:
+// callers can then treat "no segments" as "the whole chain" without inventing one.
+function irSegmentsFor(ir, family, variant) {
+  if (!ir || ir.node === 'error' || ir.node === 'bottom') return null;
+  let found = null;
+  (function walk(n) {
+    if (found || !n || typeof n !== 'object') return;
+    if (n.node === 'proteoform') {
+      if (n.family !== family) return;
+      if (variant != null && !(n.variant || []).includes(variant)) return;
+      const segs = n.segments || [];
+      const whole = segs.length === 1 && segs[0].start === '-inf' && segs[0].end === '+inf'
+                 && segs[0].certainty === 'native';
+      if (segs.length && !whole) found = segs.map((x) => Object.assign({}, x));
+      return;
+    }
+    (n.members || []).forEach(walk);
+  })(ir);
+  return found;
+}
+
 function irMarksFor(ir, family, variant) {
   if (!ir || ir.node === 'error' || ir.node === 'bottom') return null;
   const out = [], seen = new Set();
@@ -4997,14 +5073,10 @@ function setValidity(state) {
       `<p>${escapeHtml(state.message)}${escapeHtml(near)}</p>`);
     return;
   }
-  // physics: the notation parsed, but the assembly it describes isn't physically
-  // valid (a normalize {level:"error"} verdict). Surface the specific reason.
-  if (state.info) {
-    renderUnitError('physics',
-      `<div class="errhd">Can't assemble <code>${escapeHtml(state.info.canonical)}</code></div>` +
-      `<p>${escapeHtml(state.info.detail)}</p>` +
-      `<p class="errhint">This parses, but the assembly it describes isn't physically valid.</p>`);
-  }
+  // The `{ kind: 'physics', info }` branch that stood here is GONE. It rendered v1 `normalize`'s
+  // verdict, and that gate was removed once `valid2` was measured to reject a superset of it; the
+  // physics error is now written where it is decided, in onInput's valid2 branch. Nothing calls
+  // setValidity with an `info` any more.
 }
 
 // ── Units bar (Task 7) ──────────────────────────────────────────────────────
@@ -5512,7 +5584,10 @@ async function renderFocusedPanes(parsed, key, queryInfo) {
   let interp = null;
   if (isParticle) {
     const qIR = particleOf(unitIR2(selectedUnit));
-    try { interp = interpretWorlds(qIR || info.canonical); } catch (e) { interp = null; }
+    // The NODE, never a canonical string. `interpretWorlds` accepts either, and the string path
+    // re-parses to recover exactly the node we are holding — a second derivation whose only possible
+    // contribution is to disagree. If there is no node there is nothing to enumerate.
+    try { interp = qIR ? interpretWorlds(qIR) : null; } catch (e) { interp = null; }
     currentInterp = interp;  // so "show more tiles" / "enumerate anyway" can re-render without re-work
     indexWorldIRs(interp, qIR);   // arr-string → world IR (tiles) + the query's glyph set C (relevance)
     // A world is ALWAYS selected for an enumerable particle — tiles are not deselectable (BB,
@@ -5542,13 +5617,13 @@ async function renderFocusedPanes(parsed, key, queryInfo) {
   await renderMaterials(focus, info, key, world0);
   if (key !== lastKey) return;          // a newer query superseded us — don't paint stale arrangements
   if (isParticle) {
-    await renderArrangements(info.canonical, interp);   // re-applies .sel to selectedArr; fetches candidates
+    await renderArrangements(particleOf(unitIR2(selectedUnit)), interp);   // re-applies .sel; fetches candidates
     if (key !== lastKey) return;                        // a newer query superseded us while candidates were fetching
     currentMeasurementsWorld = world0;
     renderMeasurements(world0);
-    // Arrays are query-level, not tile-level: pass the whole query's canonical (queryInfo), since a
-    // focused unit is one nucleosome and would gate every multi-particle datum out at Tier 0.
-    await renderArrays((queryInfo && queryInfo.canonical) || info.canonical, currentRender.materials, key);
+    // Arrays are query-level, not tile-level: the WHOLE query's IR, since a focused unit is one
+    // nucleosome and would gate every multi-particle datum out at Tier 0.
+    await renderArrays(currentIR, currentRender.materials, key);
   } else {
     clearArrangements();
   }
@@ -6042,17 +6117,18 @@ function renderMeasurements(world) {
 // The IR handed in is the WHOLE query, not the focused unit: an array datum only survives Tier 0 when
 // the query itself spans >= 2 particles, and the focused unit is a single nucleosome (pc 1).
 let arraysToken = 0;
-async function renderArrays(canonical, materials, key) {
+async function renderArrays(queryNode, materials, key) {
   const host = document.getElementById('arraybody');
   if (!host) return;
   const gen = ++arraysToken;
   const P = (typeof nucleosomeParser2 !== 'undefined') ? nucleosomeParser2 : null;
   let groups = [], failure = null;
-  if (P && canonical) {
+  if (P && queryNode) {
     try {
-      // The SHARED object again. This decides which measurements attach, so reading a half-built
-      // level here meant a material-handled query matched on the number as TYPED.
-      const queryIR = currentIR || P.lift2(P.parse(currentRaw || canonical));
+      // The SHARED object, handed in. It used to take a canonical STRING and re-parse it when
+      // `currentIR` happened to be unset — a path that could only ever produce a second opinion
+      // about the same query.
+      const queryIR = queryNode;
       // Tier 0 is q.pc >= d.pc and an array datum has d.pc >= 2, so a single-particle query can never
       // admit one. Asking anyway is not merely wasteful, it is the whole cost: the query then reduces
       // to "every measurement with particle_count <= 1", i.e. the entire material layer.
@@ -6493,7 +6569,8 @@ async function renderArrangements(query, interp) {
   // for these candidates is Task 3 — this only places the dot.
   const { parsed, info, key } = currentRender;
   const gen = materialsToken;                          // capture generation BEFORE the await
-  const materials = materialsModel(parsed, info, (f, v) => irMarksFor(currentIR, f, v));
+  const materials = materialsModel(parsed, info, (f, v) => irMarksFor(currentIR, f, v),
+                                                  (f, v) => irSegmentsFor(currentIR, f, v));
   const unionMods = queryUnionMods(materials);
   const candidates = await queryScreenCandidates(unionMods);
   if (key !== lastKey || gen !== materialsToken) return;  // stale-guard: a newer query/tile-click superseded us
@@ -6727,12 +6804,12 @@ async function buildMaterialCard(m, mods, copyPill, key, gen, lit) {
       const irAcc = irAccessionFor(currentIR, m.family, m.variant);
       const effPin = irAcc ? { uniprot_id: irAcc[0], accession: irAcc } : pin;
       const { accessions, verdicts } =
-        materializeCard(m.family, m.variant, mods, ctx, portCtxForGrid, effPin);
+        materializeCard(m.family, m.variant, mods, ctx, portCtxForGrid, effPin, m.segments);
       const alnModel = await resolvedAlignment(m.family, m.variant, target.taxon_id, accessions, verdicts);
       if (key !== lastKey || gen !== materialsToken) return null;        // stale-guard
       survivorAccessions = new Set(alnModel.rows.map(r => r.uniprot_id));
       const modPos = new Set(mods.filter(x => x.position != null).map(x => x.position));
-      const grid = alignmentGridHtml(alnModel, modPos, driftIdea);
+      const grid = alignmentGridHtml(alnModel, modPos, driftIdea, m.segments);
       // No "Possible sequences" subhead — the grid's own meta line ("N sequences the
       // query could mean · aligned on family · N/M conserved") is the section header.
       // D4.3 — silent when the QUERY narrows (that is your own statement, not a loss), but never
@@ -6883,7 +6960,8 @@ async function renderMaterials(parsed, info, key, world) {
   // render's continuations bail out instead of interleaving with the new one.
   const gen = ++materialsToken;
   const host = document.getElementById('subunits');
-  const materials = materialsModel(parsed, info, (f, v) => irMarksFor(currentIR, f, v));
+  const materials = materialsModel(parsed, info, (f, v) => irMarksFor(currentIR, f, v),
+                                                  (f, v) => irSegmentsFor(currentIR, f, v));
 
   // Default the single card open for a bare histone (nothing else to explore).
   // For a nucleosome / array, leave every card collapsed so the header row invites
