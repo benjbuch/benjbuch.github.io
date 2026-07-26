@@ -7,7 +7,7 @@
   <!-- Same ?v=<build epoch> stamp as the JS bundles and parquet URLs: a cached stylesheet against a
        rebuilt page is the same class of silent-staleness bug, and it would render the engine-fallback
        alarm below as unstyled text. -->
-  <link rel="stylesheet" href="/nucleosome456/assets/css/main.css?v=1785028326">
+  <link rel="stylesheet" href="/nucleosome456/assets/css/main.css?v=1785031134">
 </head>
 <body>
 
@@ -598,7 +598,7 @@
          cached page, full stop. #engine-stamp is filled at runtime with which enumeration engine
          actually loaded (v2 = interpret2 present; v1 = the bundle is stale or broken). -->
     <footer class="buildstamp">
-      built 2026-07-25 21:12:06 EDT
+      built 2026-07-25 21:58:54 EDT
       &middot; <span id="engine-stamp">engine&nbsp;&hellip;</span>
     </footer>
 
@@ -636,12 +636,12 @@
   </script>
 
   <!-- Generated vocabulary (families, PTMs) -->
-  <script src="/nucleosome456/assets/js/vocabulary.js?v=1785028326"></script>
+  <script src="/nucleosome456/assets/js/vocabulary.js?v=1785031134"></script>
   <!-- Compiled nucleosome notation parser (legacy stack: parse/normalizeIR/interpret/match) -->
-  <script src="/nucleosome456/assets/js/parser.js?v=1785028326"></script>
+  <script src="/nucleosome456/assets/js/parser.js?v=1785031134"></script>
   <!-- New-stack bundle: parse2 → lift2 → resolve2 → meet2/normalize2 (canon), real registry,
        and the v2→v1 bridge (adaptToLegacy). The single canon; legacy consumers read via the bridge. -->
-  <script src="/nucleosome456/assets/js/parser2.js?v=1785028326"></script>
+  <script src="/nucleosome456/assets/js/parser2.js?v=1785031134"></script>
 
   <script type="module">
     /* Pinned deliberately. The console warning "The WebAssembly exception handling 'try'
@@ -661,7 +661,7 @@
     // without this a rebuilt table is served stale until a hard reload. site.time changes
     // on every `jekyll build`, so a rebuild always refetches — the whole point is that a
     // reload shows the version we just built, not a cached one.
-    const CACHE_BUST       = '?v=1785028326';
+    const CACHE_BUST       = '?v=1785031134';
     const PROTEINS_URL     = new URL('/nucleosome456/data/proteins.parquet' + CACHE_BUST, document.baseURI).href;
     const MASSES_URL       = new URL('/nucleosome456/data/residue_masses.parquet' + CACHE_BUST, document.baseURI).href;
     const PTM_URL          = new URL('/nucleosome456/data/ptm_deltas.parquet' + CACHE_BUST, document.baseURI).href;
@@ -5575,6 +5575,30 @@ async function renderFocusedPanes(parsed, key, queryInfo) {
   }
 }
 
+// ── TYPING IS NOT AN ERROR (BB, 2026-07-25) ──────────────────────────────────────────────────────
+// Every partial query is an invalid query: `(H3:K27` is on the way to `(H3:K27M)`. Blowing the stage
+// away on each keystroke meant the answer you were reading vanished while you extended the thing
+// that produced it, and came back a moment later — the page flickering between an answer and a
+// complaint.
+//
+// So an invalid query REPORTS ITSELF IN THE FIELD (red frame) and otherwise changes nothing: the
+// last correct response stays on screen. The error card is shown only when the user ASKS for it, by
+// pressing Return — an explicit "I am done, tell me what is wrong". Any further edit withdraws the
+// request, because the input is in motion again.
+//
+// This is a display rule, not a validity rule: the query is exactly as invalid either way, and
+// `lastKey` is still cleared so that editing back to a previously-valid query re-renders.
+let errorRequested = false;
+
+// `commit` does the destructive part (error card, cleared stage); it runs only when asked.
+function failSoft(raw, commit) {
+  if (inputEl.value !== raw) return;                     // superseded by a newer keystroke
+  inputEl.className = 'invalid';                         // the red frame, always
+  lastKey = null;                                        // so re-typing a good query re-renders
+  if (errorRequested) { onboardingEl.hidden = true; renderCanonCaption(null); commit(); }
+  markReady();
+}
+
 async function onInput() {
   const raw = inputEl.value;
   if (!raw.trim()) { setEmpty(); return; }
@@ -5587,8 +5611,10 @@ async function onInput() {
   // staleness class rather than one instance of it.
   const built = buildQueryObjects(raw);
   currentIR = built.ir;
+  // The IR inspector stays unconditional — it is a DIAGNOSTIC, and the one panel that can say
+  // something useful about an input everything else rejects. The caption is not: it names the answer
+  // on screen, so it moves with the answer (below, on the valid path) and not with the keystroke.
   renderCanonicalIR(raw);
-  renderCanonCaption(built.ir);   // same place, same reason: unconditional, so it cannot go stale
   // `tryParse` only for the load-order fallback — when the v2 bundle is missing there is no tree
   // from the shared parse, and v1 is the only thing left that can produce one.
   const parsed = built.tree || tryParse(raw);
@@ -5600,10 +5626,7 @@ async function onInput() {
     const p2 = (typeof nucleosomeParser2 !== 'undefined') ? nucleosomeParser2 : nucleosomeParser;
     try { p2.parse(raw.trim()); }
     catch (err) { e = err; }
-    setValidity(Object.assign({ kind: 'syntax' }, syntaxError(e)));
-    inputEl.className = 'invalid';
-    lastKey = null;   // so editing back to a previously-valid query re-renders (clears this error)
-    markReady();                                         // syntax-error state is settled
+    failSoft(raw, () => setValidity(Object.assign({ kind: 'syntax' }, syntaxError(e))));
     return;
   }
   // Realization resolution pass — MUST run before describe/normalize/interpret,
@@ -5620,11 +5643,7 @@ async function onInput() {
     const rr = await resolveRealizations(parsed, raw);
     if (rr.stale || inputEl.value !== raw) return;       // a newer keystroke superseded us
     if (rr.unresolved) {
-      inputEl.className = 'invalid';
-      onboardingEl.hidden = true;
-      showRealizationError(rr.unresolved);
-      lastKey = null;                                    // so a later re-type of the same token re-renders
-      markReady();                                        // unresolved-realization state is settled
+      failSoft(raw, () => showRealizationError(rr.unresolved));
       return;
     }
   }
@@ -5637,19 +5656,16 @@ async function onInput() {
   // without the (H3–H4)₂ tetramer, and meet now says so (BB, 2026-07-25).
   if (currentIR && typeof nucleosomeParser2.valid2 === 'function'
       && nucleosomeParser2.valid2(currentIR) === false) {
-    if (inputEl.value !== raw) return;
-    inputEl.className = 'invalid';
-    onboardingEl.hidden = true;
-    renderUnitError('physics',
-      '<div class="errhd">Not a stable assembly</div>' +
-      '<p>The parts are individually fine, but nothing holds this combination together — ' +
-      'a free assembly can only repeat if its copies bond to each other ' +
-      '(<code>[H3@H4]2</code> is the tetramer; <code>[H2A@H2B]2</code> is two separate dimers).</p>' +
-      '<p class="errhint">Inside a nucleosome the (H3&ndash;H4)<sub>2</sub> tetramer is what holds ' +
-      'the two H2A&ndash;H2B dimers apart &mdash; try <code>(H2A@H2B)</code>.</p>');
-    clearArrangementCounts();
-    lastKey = null;
-    markReady();
+    failSoft(raw, () => {
+      renderUnitError('physics',
+        '<div class="errhd">Not a stable assembly</div>' +
+        '<p>The parts are individually fine, but nothing holds this combination together — ' +
+        'a free assembly can only repeat if its copies bond to each other ' +
+        '(<code>[H3@H4]2</code> is the tetramer; <code>[H2A@H2B]2</code> is two separate dimers).</p>' +
+        '<p class="errhint">Inside a nucleosome the (H3&ndash;H4)<sub>2</sub> tetramer is what holds ' +
+        'the two H2A&ndash;H2B dimers apart &mdash; try <code>(H2A@H2B)</code>.</p>');
+      clearArrangementCounts();
+    });
     return;
   }
 
@@ -5660,16 +5676,12 @@ async function onInput() {
   // renderUnitError, which also clears the stage) — and do NOT fall through to
   // green + material cards as if valid.
   if (info && info.error) {
-    if (inputEl.value !== raw) return;                   // superseded mid-describe
-    inputEl.className = 'invalid';
-    onboardingEl.hidden = true;
-    setValidity({ kind: 'physics', info });
-    clearArrangementCounts();
-    lastKey = null;                                       // let a later re-type of the same text re-render
-    markReady();                                          // physics-invalid state is settled
+    failSoft(raw, () => { setValidity({ kind: 'physics', info }); clearArrangementCounts(); });
     return;
   }
   inputEl.className = 'valid';
+  errorRequested = false;              // a good query settles the question the last Return asked
+  renderCanonCaption(built.ir);        // the caption names THIS answer, now that there is one
   const key = info.canonical;
   if (key === lastKey) return;
   lastKey = key;
@@ -7037,8 +7049,20 @@ inputEl.addEventListener('keydown', e => {
 
 let _inputDebounce = null;
 inputEl.addEventListener('input', () => {
+  errorRequested = false;                      // editing withdraws a request to see the error
   clearTimeout(_inputDebounce);
   _inputDebounce = setTimeout(onInput, 150);   // debounce: no wobble / premature red mid-token
+});
+
+// RETURN ASKS FOR THE ERROR. Until it is pressed an unfinished query only reddens the field and
+// leaves the last answer standing; Return means "I am done — tell me what is wrong". It also skips
+// the debounce, so the answer arrives on the keystroke rather than 150 ms after it.
+inputEl.addEventListener('keydown', (e) => {
+  if (e.key !== 'Enter') return;
+  e.preventDefault();
+  clearTimeout(_inputDebounce);
+  errorRequested = true;
+  onInput();
 });
 
 // ── Query-global context + port controls (beside the query bar) ────────────
