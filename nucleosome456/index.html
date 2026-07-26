@@ -7,7 +7,7 @@
   <!-- Same ?v=<build epoch> stamp as the JS bundles and parquet URLs: a cached stylesheet against a
        rebuilt page is the same class of silent-staleness bug, and it would render the engine-fallback
        alarm below as unstyled text. -->
-  <link rel="stylesheet" href="/nucleosome456/assets/css/main.css?v=1785035606">
+  <link rel="stylesheet" href="/nucleosome456/assets/css/main.css?v=1785036194">
 </head>
 <body>
 
@@ -598,7 +598,7 @@
          cached page, full stop. #engine-stamp is filled at runtime with which enumeration engine
          actually loaded (v2 = interpret2 present; v1 = the bundle is stale or broken). -->
     <footer class="buildstamp">
-      built 2026-07-25 23:13:26 EDT
+      built 2026-07-25 23:23:14 EDT
       &middot; <span id="engine-stamp">engine&nbsp;&hellip;</span>
     </footer>
 
@@ -636,12 +636,10 @@
   </script>
 
   <!-- Generated vocabulary (families, PTMs) -->
-  <script src="/nucleosome456/assets/js/vocabulary.js?v=1785035606"></script>
-  <!-- Compiled nucleosome notation parser (legacy stack: parse/normalizeIR/interpret/match) -->
-  <script src="/nucleosome456/assets/js/parser.js?v=1785035606"></script>
-  <!-- New-stack bundle: parse2 → lift2 → resolve2 → meet2/normalize2 (canon), real registry,
+  <script src="/nucleosome456/assets/js/vocabulary.js?v=1785036194"></script>
+  <!-- Compiled nucleosome notation parser (legacy stack: parse/normalizeIR/interpret/match) --><!-- New-stack bundle: parse2 → lift2 → resolve2 → meet2/normalize2 (canon), real registry,
        and the v2→v1 bridge (adaptToLegacy). The single canon; legacy consumers read via the bridge. -->
-  <script src="/nucleosome456/assets/js/parser2.js?v=1785035606"></script>
+  <script src="/nucleosome456/assets/js/parser2.js?v=1785036194"></script>
 
   <script type="module">
     /* Pinned deliberately. The console warning "The WebAssembly exception handling 'try'
@@ -661,7 +659,7 @@
     // without this a rebuilt table is served stale until a hard reload. site.time changes
     // on every `jekyll build`, so a rebuild always refetches — the whole point is that a
     // reload shows the version we just built, not a cached one.
-    const CACHE_BUST       = '?v=1785035606';
+    const CACHE_BUST       = '?v=1785036194';
     const PROTEINS_URL     = new URL('/nucleosome456/data/proteins.parquet' + CACHE_BUST, document.baseURI).href;
     const MASSES_URL       = new URL('/nucleosome456/data/residue_masses.parquet' + CACHE_BUST, document.baseURI).href;
     const PTM_URL          = new URL('/nucleosome456/data/ptm_deltas.parquet' + CACHE_BUST, document.baseURI).href;
@@ -1093,10 +1091,12 @@ function tryParse(input) {
   // `typeof adaptTree2 === 'function'` was therefore false in every browser, so this whole switch
   // silently fell through to v1 and the suite could not see it — the tests require() the module.
   const P2 = (typeof nucleosomeParser2 !== 'undefined') ? nucleosomeParser2 : null;
+  // No v1 fallback: it was reachable only if the v2 bundle failed to load entirely, in which case
+  // the page is broken in ways a parse cannot repair — and a fallback that silently answers with the
+  // retired engine is the shape that let the 4a switch ship inert.
   try {
-    if (P2 && typeof P2.adaptTree2 === 'function') return P2.adaptTree2(P2.parse(s));
+    return (P2 && typeof P2.adaptTree2 === 'function') ? P2.adaptTree2(P2.parse(s)) : null;
   } catch { return null; }
-  try { return nucleosomeParser.parse(s); } catch { return null; }
 }
 
 // ── Schema vocabulary ─────────────────────────────────────────────────────
@@ -1258,17 +1258,15 @@ function nucleosomeCanonical(nuc) {
        : inner;
 }
 
-// ── IR bridge (RC1 / A6) ──────────────────────────────────────────────────────
-// describe() classifies by the target IR (nucleosomeParser.normalize → the
-// recursive Proteoform | Assembly model), not the raw slot count. normalize takes
-// a STRING, so we pass the canonical re-serialization (faithful round-trip); the
-// resulting IR is mapped to { assembly, error } by irClassify.
-function classifyIR(parsed, canonical) {
-  if (typeof nucleosomeParser !== 'undefined' && nucleosomeParser.normalize && canonical != null) {
-    try { return nucleosomeParser.normalize(canonical); } catch (e) { return null; }
-  }
-  return null;
-}
+// ── the v1 IR bridge is GONE (Phase 5) ───────────────────────────────────────────────────────────
+// `classifyIR` re-serialised the query and fed it to `nucleosomeParser.normalize` — v1's engine —
+// for two things: a display class, and a physics `error`. Both now come from v2. The class is
+// `classify2` (below), gated 88/88 against v1's classifier. The error is `valid2` = meet2(A,A) ≠ ⊥,
+// checked in shell.js BEFORE this function is reached.
+//
+// Measured before deleting, over tests/parser_cases.yaml: v1's gate rejects NOTHING that v2's does
+// not, and v2 additionally rejects an unresolvable token. So the v1 gate was redundant, and the
+// `error` field it fed is now always null.
 
 // Interface label for a derived class token. `half-octamer` shows as "half".
 function classLabel(cls) { return cls === 'half-octamer' ? 'half' : cls; }
@@ -1291,33 +1289,6 @@ function assemblyLabel(ir2) {
   if (!cls) return undefined;
   const n = (node.dna != null && node.count > 1) ? node.count : 1;
   return classLabel(cls) + (n > 1 ? '\u00d7' + n : '');
-}
-
-// Maps a target-IR node to { assembly, error }. `error` is the v1 normalize reason on an Error node
-// — still v1, and the last thing in this function that is. `assembly` is overridden by
-// `assemblyLabel` above whenever the v2 IR is available.
-function irClassify(ir) {
-  if (!ir) return { assembly: null, error: null };
-  if (ir.node === 'error')      return { assembly: null, error: ir.reason };
-  const classify = (typeof nucleosomeParser !== 'undefined' && nucleosomeParser.classify)
-    ? nucleosomeParser.classify : () => null;
-  if (ir.node === 'array') {
-    // A lone-nucleosome array displays as its particle; a multi-particle array as its
-    // own token (per-member rendering is the diagram's job, not this class label).
-    if (ir.members.length === 1) return irClassify(ir.members[0]);
-    return { assembly: 'array', error: null };
-  }
-  if (ir.node === 'proteoform')
-    return { assembly: ir.count > 1 ? 'homotypic-set' : 'protomer', error: null };
-  if (ir.node === 'assembly') {
-    if (ir.dna != null) return { assembly: classLabel(classify(ir)), error: null };
-    if (ir.count > 1) {
-      const unit = { node: 'assembly', members: ir.members, count: 1, dna: null };
-      return { assembly: classLabel(classify(unit)) + '×' + ir.count, error: null };
-    }
-    return { assembly: classLabel(classify(ir)), error: null };
-  }
-  return { assembly: null, error: null };
 }
 
 // Readable phrasing for an engine (normalize) error reason. The reason string is
@@ -1391,7 +1362,7 @@ function describe(parsed, ir2) {
     const canonical = fs + modsCanonical(mods);
     // Consult the IR: a malformed/non-containing range (or any engine error)
     // must surface here too, not read as a bare point mod (RC1/RC5).
-    const { assembly: _a, error } = irClassify(classifyIR(parsed, canonical));
+    const assembly = v2label, error = null;   // see the note above irClassify's removal
 
     let detail;
     if (error)                           detail = errorDetail(error);
@@ -1416,7 +1387,7 @@ function describe(parsed, ir2) {
       type: dm.type, canonical, detail,
       family: parsed.family, variant: parsed.variant,
       position: dm.pos, wt: dm.wt, variant: dm.sub, ptm: dm.ptm,
-      assembly: v2label !== undefined ? v2label : _a, error,
+      assembly, error,
       queryable: !error
     };
   }
@@ -1428,9 +1399,8 @@ function describe(parsed, ir2) {
     const families   = [...new Set(slots.map(s => s.family).filter(Boolean))].join(' + ');
     // Classify by the assembly IR, not the raw (subscript-expanded) slot count
     // (RC1): dimer/tetramer/half/tetrasome/hexasome/octamer + engine errors.
-    const { assembly: _a, error } = irClassify(classifyIR(parsed, canonical));
-    // One name for the label from here down, whichever engine produced it.
-    const assembly = v2label !== undefined ? v2label : _a;
+    const assembly = v2label;                 // classify2, or undefined when no IR was threaded
+    const error = null;                       // physics is gated by valid2 in shell.js, before here
 
     let detail;
     if (error) {
@@ -4588,7 +4558,7 @@ document.addEventListener('click', (e) => {
 let realizationPins = new Map();
 
 // Absence model for the current query (specs/2026-07-16-absence-representation-design.md).
-// Derived from nucleosomeParser.resolve() in a try/catch and consumed by the
+// Derived from the v2 IR (seats + classify2) and consumed by the
 // render loop to draw the four kinds of "absence":
 //   { absentKeys:  Set("family|variant") fully-absent units → ghost cards,
 //     composition: "hexasome"|"tetrasome"|null (sub-octamer only) → caption }
@@ -4600,50 +4570,29 @@ let absenceModel = null;
 
 // Build the absence model from the resolved canonical Assembly. Never throws:
 // any error / unexpected shape returns null so the caller falls back cleanly.
-function computeAbsenceModel(raw) {
+function computeAbsenceModel(ir) {
   try {
-    if (!raw || !raw.trim() || typeof nucleosomeParser.resolve !== 'function') return null;
-    const r = nucleosomeParser.resolve(raw.trim());
-    if (!r || r.node === 'error') return null;
+    const P2 = (typeof nucleosomeParser2 !== 'undefined') ? nucleosomeParser2 : null;
+    if (!P2 || !ir || ir.node === 'error' || ir.node === 'bottom') return null;
+    const node = (ir.node === 'array' && (ir.members || []).length === 1) ? ir.members[0] : ir;
+    if (!node || node.dna == null) return null;          // absence is a statement about a PARTICLE
 
-    // Flatten every proteoform leaf, carrying its effective multiplicity DOWN
-    // through nested assemblies — a family's copies may straddle a co-bracket
-    // (spec §F1), so counting only top-level `r.members` would miss the grouped
-    // ones and mis-read a completed octamer as a hexasome. Each entry keeps the
-    // proteoform and the product of enclosing assembly counts.
-    const leaves = [];
-    (function walk(n, mult) {
-      if (!n) return;
-      if (n.node === 'proteoform') { leaves.push({ pf: n, mult }); return; }
-      (n.members || []).forEach(m => walk(m, mult * (n.count == null ? 1 : n.count)));
-    })(r, 1);
-
-    // A leaf is an absent UNIT when it has no present copy (count 0) or is a
-    // negated member carrying no present mark (the `_0` dimer-omission form).
-    const byKey = new Map();
-    for (const { pf } of leaves) {
-      if (!pf || !pf.family) continue;
-      const key = pf.family + '|' + (pf.variant ?? '');
-      const hasPresentMark = (pf.modifications || []).some(x => x && !x.negated);
-      const absent = pf.count === 0 || (pf.negated === true && !hasPresentMark);
-      const g = byKey.get(key) || { present: false, absent: false };
-      if (absent) g.absent = true; else g.present = true;
-      byKey.set(key, g);
-    }
+    // `seats()` already answers this. A particle has all eight seats and `lift2` has consumed the
+    // `count: 0` members into exclusions, so an absent family is simply one whose seats went
+    // unfilled — the same fact the cartoon ghosts and `classify2` names. Deriving it a second time
+    // from a second engine is what this port removes.
+    const sm = seats(node, P2);
     const absentKeys = new Set();
-    for (const [k, g] of byKey) if (g.absent && !g.present) absentKeys.add(k);
+    ['H3', 'H4', 'H2A', 'H2B'].forEach((f) => {
+      const st1 = sm.seats[f + ':1'], st2 = sm.seats[f + ':2'];
+      if (st1 && st2 && !st1.occupied && !st2.occupied) absentKeys.add(f + '|');
+    });
 
-    // Composition from the number of PRESENT H2A/H2B dimer copies, counted across
-    // group boundaries. Only surfaced for a sub-octamer particle so a plain
+    // The composition word comes from the classifier the whole page now shares, instead of being
+    // recounted from H2A/H2B dimer copies here. Only a sub-octamer particle is named, so a plain
     // octamer query is untouched.
-    let composition = null;
-    if (r.node === 'assembly') {
-      const presentCopies = fam => leaves
-        .filter(({ pf }) => pf.family === fam && !pf.negated && pf.count !== 0)
-        .reduce((s, { pf, mult }) => s + (pf.count || 0) * mult, 0);
-      const dimers = Math.min(presentCopies('H2A'), presentCopies('H2B'));
-      if (dimers <= 1) composition = dimers === 0 ? 'tetrasome' : 'hexasome';
-    }
+    const cls = P2.classify2(node);
+    const composition = (cls === 'hexasome' || cls === 'tetrasome') ? cls : null;
     return { absentKeys, composition };
   } catch (e) {
     return null;
@@ -5317,9 +5266,13 @@ function interpretWorlds(str) {
     if (str && typeof str === 'object') return nucleosomeParser2.interpret2(str);
     return nucleosomeParser2.interpret2(nucleosomeParser2.lift2(nucleosomeParser2.parse(str)));
   } catch (e) {
-    console.warn('interpret2 gap, falling back to v1 for:', str, '—', e.message);
+    // NO v1 FALLBACK (Phase 5, item 2). It existed while interpret2 was being brought up, and a
+    // fallback whose failure mode is "the previous engine quietly answers instead" is exactly the
+    // shape that let the parse2 switch ship inert. The alarm still fires; the caller gets null and
+    // renders an empty arrangements panel, which is visible, rather than v1's answer, which is not.
+    console.warn('interpret2 failed for:', str, '—', e.message);
     reportEngineFallback(str, e);
-    return nucleosomeParser.interpret(str);
+    return null;
   }
 }
 // Fill the build stamp as soon as the script runs; flag the whole page when v2 never loaded at all.
@@ -5648,9 +5601,11 @@ async function onInput() {
     // The error comes from the grammar that now GATES input (parse2). The "not usable here yet"
     // state this replaces is gone: after the 4a switch there is no longer a class of notation the
     // engine accepts and the views cannot render.
+    // Re-parse purely to recover the grammar's own message. No v1 fallback: with the v1 bundle no
+    // longer served, naming it here would have thrown ReferenceError on the one branch where the v2
+    // bundle is missing — a crash reachable only when the page is already broken.
     let e = {};
-    const p2 = (typeof nucleosomeParser2 !== 'undefined') ? nucleosomeParser2 : nucleosomeParser;
-    try { p2.parse(raw.trim()); }
+    try { nucleosomeParser2.parse(raw.trim()); }
     catch (err) { e = err; }
     failSoft(raw, () => setValidity(Object.assign({ kind: 'syntax' }, syntaxError(e))));
     return;
@@ -5701,10 +5656,10 @@ async function onInput() {
   // physics-error state — the reason surfaces in the units pane (setValidity →
   // renderUnitError, which also clears the stage) — and do NOT fall through to
   // green + material cards as if valid.
-  if (info && info.error) {
-    failSoft(raw, () => { setValidity({ kind: 'physics', info }); clearArrangementCounts(); });
-    return;
-  }
+  // The v1 `describe().error` gate that stood here is GONE (Phase 5). It ran v1's `normalize` on a
+  // re-serialisation of the query; measured over tests/parser_cases.yaml it rejected NOTHING the
+  // `valid2` gate above does not, and valid2 additionally catches an unresolvable token. Keeping it
+  // meant a second physics opinion that could only ever disagree by being wrong.
   inputEl.className = 'valid';
   errorRequested = false;              // a good query settles the question the last Return asked
   renderCanonCaption(built.ir);        // the caption names THIS answer, now that there is one
@@ -5747,7 +5702,7 @@ async function onInput() {
   // Absence model (from resolve, try/catch inside). Computed once per render and
   // read by renderMaterials/tileEl/renderArrangementCounts. null → no absence,
   // so every consumer flows exactly as before.
-  absenceModel = computeAbsenceModel(inputEl.value);
+  absenceModel = computeAbsenceModel(currentIR);
   if (!db) { document.getElementById('subunits').innerHTML = '<p class="loading">Initialising database…</p>'; return; }
   // Units bar (Task 7): renders the physical-unit selector for this query and
   // scopes the two panes to the focused unit. renderFocusedPanes() reproduces
@@ -6324,7 +6279,7 @@ function lowestC2(octamers) {
 }
 
 // ── Arrangements panel: counts + C2/C1 + facet tiles ────────────────────────
-// Consumes nucleosomeParser.interpret() (sub-project #2 Task 1) and the pure
+// Consumes interpret2() (sub-project #2 Task 1) and the pure
 // arrangements-model helpers (parseArrangement/pointGroup/countsByGroup,
 // Task 2). Mirrors specs/mockups/2026-07-13-shell-materials-arrangements.html
 // (.counts/.sym/.cell markup, tile() glyph), adapted to real arrStr data
