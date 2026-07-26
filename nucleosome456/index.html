@@ -7,7 +7,7 @@
   <!-- Same ?v=<build epoch> stamp as the JS bundles and parquet URLs: a cached stylesheet against a
        rebuilt page is the same class of silent-staleness bug, and it would render the engine-fallback
        alarm below as unstyled text. -->
-  <link rel="stylesheet" href="/nucleosome456/assets/css/main.css?v=1785085175">
+  <link rel="stylesheet" href="/nucleosome456/assets/css/main.css?v=1785087380">
 </head>
 <body>
 
@@ -598,7 +598,7 @@
          cached page, full stop. #engine-stamp is filled at runtime with which enumeration engine
          actually loaded (v2 = interpret2 present; v1 = the bundle is stale or broken). -->
     <footer class="buildstamp">
-      built 2026-07-26 12:59:35 EDT
+      built 2026-07-26 13:36:20 EDT
       &middot; <span id="engine-stamp">engine&nbsp;&hellip;</span>
     </footer>
 
@@ -623,7 +623,7 @@
        the one failure the load-error trap below cannot see, because a stale bundle loads and runs
        perfectly, just with superseded code. -->
   <script>
-    window.__PARSER2_EXPECTED = "756479892c0e";
+    window.__PARSER2_EXPECTED = "19df5c8aba41";
     window.__loadErrors = [];
     window.addEventListener('error', function (e) {
       window.__loadErrors.push({
@@ -636,10 +636,10 @@
   </script>
 
   <!-- Generated vocabulary (families, PTMs) -->
-  <script src="/nucleosome456/assets/js/vocabulary.js?v=1785085175"></script>
+  <script src="/nucleosome456/assets/js/vocabulary.js?v=1785087380"></script>
   <!-- Compiled nucleosome notation parser (legacy stack: parse/normalizeIR/interpret/match) --><!-- New-stack bundle: parse2 → lift2 → resolve2 → meet2/normalize2 (canon), real registry,
        and the v2→v1 bridge (adaptToLegacy). The single canon; legacy consumers read via the bridge. -->
-  <script src="/nucleosome456/assets/js/parser2.js?v=1785085175"></script>
+  <script src="/nucleosome456/assets/js/parser2.js?v=1785087380"></script>
 
   <script type="module">
     /* Pinned deliberately. The console warning "The WebAssembly exception handling 'try'
@@ -659,7 +659,7 @@
     // without this a rebuilt table is served stale until a hard reload. site.time changes
     // on every `jekyll build`, so a rebuild always refetches — the whole point is that a
     // reload shows the version we just built, not a cached one.
-    const CACHE_BUST       = '?v=1785085175';
+    const CACHE_BUST       = '?v=1785087380';
     const PROTEINS_URL     = new URL('/nucleosome456/data/proteins.parquet' + CACHE_BUST, document.baseURI).href;
     const MASSES_URL       = new URL('/nucleosome456/data/residue_masses.parquet' + CACHE_BUST, document.baseURI).href;
     const PTM_URL          = new URL('/nucleosome456/data/ptm_deltas.parquet' + CACHE_BUST, document.baseURI).href;
@@ -1080,33 +1080,13 @@ function clearRealizationCache() {
 
     // ── Parser ────────────────────────────────────────────────────────────────
 
-// PARSE2 + adaptTree2 — the Phase-4a switch (2026-07-25).
+// `tryParse` and `describe` lived here (removed 2026-07-26, Phase 5 step 5).
 //
-// The view-models read the v1 parse tree at a dozen sites, so the parser is swapped underneath them
-// rather than porting all twelve at once: `adaptTree2` produces a tree that is deep-equal to v1's on
-// every input v1 accepts (356/356, tests/js/tree-adapter.test.js), and parse2 accepts a superset
-// (tests/js/grammar-parity.test.js). Both gates are standing tests, not a one-off check.
-//
-// The v1 fallback is for load order only — if the v2 bundle is missing there is nothing to adapt.
-// It is not a correctness fallback and should never fire in the browser.
-//
-// What this unlocks immediately: entity handles. `H2B1A` and `H2B1A:K120ub` adapt to the same
-// `realization` shape v1 produces for a bare accession, which the shell's realization-resolution
-// pass already understands — so a name the materials grid PRINTS as a row label is finally typeable.
-function tryParse(input) {
-  const s = input.trim();
-  // `nucleosomeParser2.adaptTree2`, NOT a bare `adaptTree2`. The bundle attaches its modules as
-  // PROPERTIES of the parser global; only Node's require() gives a bare binding. Checking
-  // `typeof adaptTree2 === 'function'` was therefore false in every browser, so this whole switch
-  // silently fell through to v1 and the suite could not see it — the tests require() the module.
-  const P2 = (typeof nucleosomeParser2 !== 'undefined') ? nucleosomeParser2 : null;
-  // No v1 fallback: it was reachable only if the v2 bundle failed to load entirely, in which case
-  // the page is broken in ways a parse cannot repair — and a fallback that silently answers with the
-  // retired engine is the shape that let the 4a switch ship inert.
-  try {
-    return (P2 && typeof P2.adaptTree2 === 'function') ? P2.adaptTree2(P2.parse(s)) : null;
-  } catch { return null; }
-}
+// `tryParse` handed the page a v1-SHAPED tree via `adaptTree2` while the view-models were ported one
+// at a time; `describe` was the descriptor built from that tree. Every consumer now reads the IR:
+// the class is `classify2`, the physics verdict `valid2`, the canonical string `emit2`, the
+// materials canon's own members, and the units bar the array's members. `adaptTree2` itself stays in
+// the bundle — it is v2 code, and the JS suites use it to gate classify2 against the v1 oracle.
 
 // ── Schema vocabulary ─────────────────────────────────────────────────────
 // PTM_NAMES is loaded from vocabulary.js (generated from vocabulary.yaml).
@@ -1326,146 +1306,6 @@ function prettyAssembly(a) {
   return (ASSEMBLY_LABEL[base] || base) + suffix;
 }
 
-// Returns a structured descriptor for every level of the schema.
-// { type, canonical, detail, queryable, family, variant, position, wt, variant, ptm }
-function describe(parsed, ir2) {
-  if (!parsed) return null;
-  // The v2 label, when the caller hands over the IR. Threaded rather than recomputed here: shell.js
-  // already has the ONE resolved IR for this query, and a second derivation is exactly the kind of
-  // parallel opinion this port exists to remove.
-  const v2label = assemblyLabel(ir2);
-
-  // ── Family ──
-  if (parsed.level === 'family') {
-    const fs    = famStr(parsed.family, parsed.variant) || parsed.realization || '?';
-    const label = variantLabel(parsed.variant);
-    return {
-      type: 'family', canonical: fs,
-      detail: label ?? 'all paralogs',
-      family: parsed.family, variant: parsed.variant,
-      assembly: null, error: null,
-      queryable: false
-    };
-  }
-
-  // ── Histone (standalone query) ──
-  if (parsed.level === 'histone') {
-    const mods = parsed.modifications ?? [];
-    const fs    = famStr(parsed.family, parsed.variant) || parsed.realization || '?';
-    const label = variantLabel(parsed.variant);
-
-    if (mods.length === 0) {
-      // Unmodified histone in certainty brackets, e.g. [H3]
-      const cert = parsed.certainty === 'exact' ? 'exact' : parsed.certainty === 'native' ? 'native' : null;
-      const canonical = cert === 'exact' ? `[${fs}]` : cert === 'native' ? `{${fs}}` : fs;
-      const detail = label ?? 'all paralogs';
-      return {
-        type: 'family', canonical, detail,
-        family: parsed.family, variant: parsed.variant,
-        assembly: 'protomer', error: null,
-        queryable: false
-      };
-    }
-
-    const dm    = describeMod(mods[0]);
-    const canonical = fs + modsCanonical(mods);
-    // Consult the IR: a malformed/non-containing range (or any engine error)
-    // must surface here too, not read as a bare point mod (RC1/RC5).
-    const assembly = v2label, error = null;   // see the note above irClassify's removal
-
-    let detail;
-    if (error)                           detail = errorDetail(error);
-    else if (dm.pos != null && mods[0].rangeEnd != null) {
-      // Residue range/segment — NOT a point "substitution" (RC5).
-      const seg = `${ptStr(mods[0].position)}–${ptStr(mods[0].rangeEnd)}`;
-      detail = mods[0].certainty === 'native' ? `native segment ${seg}` : `range ${seg}`;
-      if (label) detail = `${label} · ${detail}`;
-    }
-    else if (dm.type === 'position')     detail = `position ${dm.pos} · all substitutions`;
-    else if (dm.type === 'modification') detail = `position ${dm.pos} · ${PTM_NAMES[dm.ptm] ?? dm.ptm}`;
-    else if (dm.type === 'substitution') detail = `position ${dm.pos} · ${dm.wt ?? '?'}\u2192${dm.sub}`;
-    else if (dm.type === 'mut+ptm')      detail = `position ${dm.pos} · ${dm.sub} + ${PTM_NAMES[dm.ptm] ?? dm.ptm}`;
-    // label/count decoration only for the plain point-mod path (error & range
-    // details are already fully formed above).
-    if (!error && mods[0].rangeEnd == null) {
-      if (label)           detail = `${label} · ${detail}`;
-      if (mods.length > 1) detail += ` · ${mods.length} modifications`;
-    }
-
-    return {
-      type: dm.type, canonical, detail,
-      family: parsed.family, variant: parsed.variant,
-      position: dm.pos, wt: dm.wt, variant: dm.sub, ptm: dm.ptm,
-      assembly, error,
-      queryable: !error
-    };
-  }
-
-  // ── Nucleosome ──
-  if (parsed.level === 'nucleosome') {
-    const slots      = parsed.slots ?? [];
-    const canonical  = nucleosomeCanonical(parsed);
-    const families   = [...new Set(slots.map(s => s.family).filter(Boolean))].join(' + ');
-    // Classify by the assembly IR, not the raw (subscript-expanded) slot count
-    // (RC1): dimer/tetramer/half/tetrasome/hexasome/octamer + engine errors.
-    const assembly = v2label;                 // classify2, or undefined when no IR was threaded
-    const error = null;                       // physics is gated by valid2 in shell.js, before here
-
-    let detail;
-    if (error) {
-      detail = errorDetail(error);
-    } else if (assembly) {
-      // Particles read as the bare kind ("octamer"); fragments name their chains.
-      detail = (/dimer|tetramer|half|protomer_group|×/.test(assembly) && families)
-        ? `${prettyAssembly(assembly)} · ${families}`
-        : prettyAssembly(assembly);
-    } else {
-      const nSlots = slots.length;
-      detail = `nucleosome · ${nSlots} slot${nSlots !== 1 ? 's' : ''}${families ? ` · ${families}` : ''}`;
-    }
-    return { type: 'nucleosome', canonical, detail,
-             assembly, error, queryable: false };
-  }
-
-  // ── Array ──
-  if (parsed.level === 'array') {
-    const nucs = parsed.nucleosomes ?? [];
-    const links = parsed.linkers ?? [];
-    const n = nucs.length;
-    // Interleave nucleosome canonicals with -N- linker joins; bare (null) joins
-    // concatenate directly, preserving the legacy "(A)(B)" round-trip.
-    let canonical = '';
-    nucs.forEach((nuc, i) => {
-      canonical += nucleosomeCanonical(nuc);
-      if (i < n - 1) {
-        const link = links[i];
-        canonical += link && link.bp != null ? `-${link.bp}-` : '';
-      }
-    });
-    return {
-      type: 'array', canonical,
-      detail: `${n}-nucleosome array`,
-      assembly: null, error: null,
-      queryable: false
-    };
-  }
-
-  // ── Group (co-bracketed sub-assembly, e.g. mixed-certainty [H2A@{H2B}]) ──
-  // A nested group parses to { node:'group', members, certainty }, which has no
-  // `.level`; handle it here so callers don't crash on a null descriptor.
-  if (parsed.node === 'group') {
-    const canonical = slotCanonical(parsed, parsed.certainty);
-    const families  = [...new Set((parsed.members ?? []).map(m => m.family).filter(Boolean))].join(' + ');
-    return {
-      type: 'group', canonical,
-      detail: families ? `group · ${families}` : 'group',
-      assembly: null, error: null,
-      queryable: false
-    };
-  }
-
-  return null;
-}
 
     // docs/_includes/js/measurement-port.js
 // The measurement port-context store: slotKey → ported context for a measurement.
@@ -4691,7 +4531,6 @@ document.addEventListener('click', (e) => {
 // call-level override to resolveContext, so the token's material wins over the
 // species lens (precedence #1). Empty for any query without a pinned material —
 // non-realization queries never read it, so they flow exactly as today.
-let realizationPins = new Map();
 
 // Absence model for the current query (specs/2026-07-16-absence-representation-design.md).
 // Derived from the v2 IR (seats + classify2) and consumed by the
@@ -4735,56 +4574,17 @@ function computeAbsenceModel(ir) {
   }
 }
 
-// The mutable slot objects that may carry a `realization` head token, by level.
-// Returns the same references collectSlots() would, so filling slot.family here
-// is visible to describe()/materialsModel() downstream.
-function realizationSlots(parsed) {
-  if (!parsed) return [];
-  if (parsed.level === 'array') return (parsed.nucleosomes || []).flatMap(n => n.slots || []);
-  if (parsed.level === 'nucleosome') return parsed.slots || [];
-  if (parsed.level === 'histone') return [parsed];
-  return [];
-}
-
 function escapeHtml(s) {
   return String(s).replace(/[&<>"']/g, c =>
     ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
 }
 
-// Resolution pass. Walks the realization slots; for each, resolves the token to
-// a material via DuckDB and applies the precedence chain (realization-model.js),
-// FILLING slot.family/slot.variant BEFORE describe/normalize/interpret run (they
-// key on family; a null-family slot drops out of every downstream consumer).
-// Returns { ok:true } (all filled / nothing to do), { stale:true } (input
-// changed mid-resolution), or { unresolved:<token> } (a token resolved to
-// nothing → error card).
-async function resolveRealizations(parsed, raw) {
-  realizationPins = new Map();
-  const pending = realizationSlots(parsed).filter(s => s.realization && !s.family);
-  if (!pending.length) return { ok: true };
-  for (const s of pending) {
-    const lookup = await resolveRealizationLookup(s.realization);
-    if (inputEl.value !== raw) return { stale: true };   // superseded mid-resolution
-    const res = resolveRealization(lookup, contextOverrideForQuery());
-    if (!res.resolved) return { unresolved: s.realization };
-    s.family = res.family;
-    s.variant = res.variant;
-    // `s._realization` was stashed here and read by nothing — the last carrier of the taxon this
-    // token used to assert. Removed with it.
-    // Pin the exact material only when the token fixed it (accession/name). A
-    // family-only resolution leaves species to the context lens (precedence #2).
-    // THE PIN NAMES A MATERIAL, NOT A SPECIES (BB, 2026-07-26). It used to carry `taxon_id` too, so
-    // an accession asserted a context as well as a molecule — two claims from one token, and the
-    // query only made one. The molecule already knows its species: `resolveContext` now leaves taxon
-    // unconstrained when a material is pinned, so the species falls out of the material instead of
-    // being asserted beside it. An explicit lens still constrains, and still rules the accession out
-    // when they disagree.
-    if (res.speciesPinned && res.uniprot_id != null) {
-      realizationPins.set(res.family + '|' + (res.variant ?? ''), { uniprot_id: res.uniprot_id });
-    }
-  }
-  return { ok: true };
-}
+// `realizationSlots` / `resolveRealizations` / `realizationPins` lived here (removed 2026-07-26).
+// They walked the v1-shaped tree for a bare accession or gene handle, asked DuckDB what it was, and
+// wrote the answer back onto the slot so the downstream view-models could key on `slot.family`.
+// `resolve2` does all of it synchronously, against the same tables frozen into the registry, and the
+// view-models now read the IR rather than the slot. `showRealizationError` went with them: an
+// unresolvable handle is a resolve2 error, which the validity gate already reports.
 
 // Hide both right-column panels (arrangements + measurements). Used only for the
 // no-query and error states, where the whole stage is cleared.
@@ -4822,16 +4622,6 @@ function renderUnitError(kind, html) {
   document.getElementById('subunits').innerHTML = '';
 }
 
-// Unresolvable-realization dead end (Task 4): the notation parsed, but the head
-// token names no known material, so it can't be tied to a histone family.
-function showRealizationError(token) {
-  renderUnitError('physics',
-    `<div class="errhd">Couldn't resolve <code>${escapeHtml(token)}</code></div>` +
-    `<p>This isn't a known UniProt accession, protein name, or material synonym, ` +
-    `so it can't be tied to a histone family.</p>` +
-    `<p class="errhint">Try a registered family (<code>H3</code>), a variant ` +
-    `(<code>H2A.Z</code>), or a UniProt accession (<code>P68431</code>).</p>`);
-}
 
 // Live canonical-IR inspector: resolve() + validateResolved for the current query,
 // shown in the (formerly dead) #debug-tree panel. Fully contained — a throw here
@@ -4852,20 +4642,17 @@ function showRealizationError(token) {
 // object rather than the only thing that builds it correctly.
 let currentIR = null;
 
-// ONE parse. Both things the page needs come off it: the canonical IR that every pane reasons
-// over, and the v1-shaped tree the not-yet-ported view-models still read. Parsing twice would leave
-// two objects that agree today and could stop agreeing after any grammar edit — the whole defect
-// this refactor exists to remove, in miniature.
-function buildQueryObjects(raw) {
+// ONE parse, ONE object. The v1-SHAPED tree that used to be threaded alongside is gone with its last
+// reader (Phase 5, step 5): `adaptTree2` was v2 code producing a v1 shape, and every view-model it
+// fed — the materials pane, describe(), the units bar, the cartoon — now reads the IR itself.
+//
+// `null` for an unparseable query, which is the caller's syntax branch.
+function buildQueryIR(raw) {
   const P2 = (typeof nucleosomeParser2 !== 'undefined') ? nucleosomeParser2 : null;
-  const empty = { ir: null, tree: null };
-  if (!P2 || !raw || !raw.trim() || typeof P2.resolve2 !== 'function') return empty;
-  let t;
-  try { t = P2.parse(raw.trim()); } catch (e) { return empty; }
-  let ir = null, tree = null;
-  try { ir = P2.resolve2(P2.lift2(t), contextOverrideForQuery(), P2.DEFAULT_REGISTRY); } catch (e) { ir = null; }
-  try { tree = (typeof P2.adaptTree2 === 'function') ? P2.adaptTree2(t) : null; } catch (e) { tree = null; }
-  return { ir: ir, tree: tree };
+  if (!P2 || !raw || !raw.trim() || typeof P2.resolve2 !== 'function') return null;
+  try {
+    return P2.resolve2(P2.lift2(P2.parse(raw.trim())), contextOverrideForQuery(), P2.DEFAULT_REGISTRY);
+  } catch (e) { return null; }
 }
 
 // The RESOLVED marks for one material card, in IDEA positions with the accession already applied.
@@ -5771,16 +5558,14 @@ async function onInput() {
   // BB's `H3:K27M|K,K36ac` is refused above and fully representable here. Self-contained (parses
   // `raw` itself, try/catch inside), so calling it early costs nothing and removes the whole
   // staleness class rather than one instance of it.
-  const built = buildQueryObjects(raw);
-  currentIR = built.ir;
+  const ir = buildQueryIR(raw);
+  currentIR = ir;
   // The IR inspector stays unconditional — it is a DIAGNOSTIC, and the one panel that can say
   // something useful about an input everything else rejects. The caption is not: it names the answer
   // on screen, so it moves with the answer (below, on the valid path) and not with the keystroke.
   renderCanonicalIR(raw);
-  // `tryParse` only for the load-order fallback — when the v2 bundle is missing there is no tree
-  // from the shared parse, and v1 is the only thing left that can produce one.
-  const parsed = built.tree || tryParse(raw);
-  if (!parsed) {                                       // Peggy threw → syntax
+  const parsed = ir;                                   // the panes take the IR now; the name stays
+  if (!parsed) {                                       // the grammar threw → syntax
     // The error comes from the grammar that now GATES input (parse2). The "not usable here yet"
     // state this replaces is gone: after the 4a switch there is no longer a class of notation the
     // engine accepts and the views cannot render.
@@ -5793,24 +5578,12 @@ async function onInput() {
     failSoft(raw, () => setValidity(Object.assign({ kind: 'syntax' }, syntaxError(e))));
     return;
   }
-  // Realization resolution pass — MUST run before describe/normalize/interpret,
-  // which key on slot.family; a realization slot arrives with family:null and
-  // would otherwise render as "null" and drop from materialsModel. Additive: a
-  // tree with no realization slot returns { ok:true } and flows exactly as today.
-  realizationPins = new Map();
-  if (realizationSlots(parsed).some(s => s.realization && !s.family)) {
-    if (!db) {                                           // can't resolve until WASM + parquet are ready
-      onboardingEl.hidden = true; setValidity(null);
-      document.getElementById('subunits').innerHTML = '<p class="loading">Initialising database…</p>';
-      return;
-    }
-    const rr = await resolveRealizations(parsed, raw);
-    if (rr.stale || inputEl.value !== raw) return;       // a newer keystroke superseded us
-    if (rr.unresolved) {
-      failSoft(raw, () => showRealizationError(rr.unresolved));
-      return;
-    }
-  }
+  // THE REALIZATION PASS IS GONE (Phase 5, step 5). It round-tripped a bare accession or gene handle
+  // through DuckDB to recover its family/variant and pin the material — work `resolve2` already does
+  // synchronously, against the same tables frozen into the registry. Its only surviving product was
+  // the accession pin, and `irAccessionFor` reads that straight off the IR (and already WON where the
+  // two disagreed: an entry name shared across species, which the DuckDB lookup deliberately leaves
+  // open). An unresolvable handle is now a resolve2 error, caught by the validity gate below.
   currentRaw = raw.trim();
 
   // THE PHYSICS GATE, from v2's own fixpoint: valid2(A) === (meet2(A,A) ≠ ⊥). This runs BEFORE the
@@ -5844,7 +5617,7 @@ async function onInput() {
   // meant a second physics opinion that could only ever disagree by being wrong.
   inputEl.className = 'valid';
   errorRequested = false;              // a good query settles the question the last Return asked
-  renderCanonCaption(built.ir);        // the caption names THIS answer, now that there is one
+  renderCanonCaption(ir);        // the caption names THIS answer, now that there is one
 
   // THE FRESHNESS KEY IS THE CANON (Phase 5, item 1). Every async branch guards
   // `if (key !== lastKey) return` against this string, so it decides whether what is on screen is
@@ -5858,7 +5631,7 @@ async function onInput() {
   //
   // Falls back to v1's canonical only when emit2 REFUSES (a construct it cannot write faithfully).
   // That is a real, narrow case rather than a silent catch-all, and it is logged.
-  const canonKey = canonNotation(built.ir);
+  const canonKey = canonNotation(ir);
   const usableCanon = canonKey && canonKey.indexOf('no faithful notation') < 0
                    && canonKey.indexOf('canon failed') < 0 && canonKey.charAt(0) !== '\u22a5';
   // When emit2 REFUSES there is no canonical string to key on, and the honest fallback is what was
@@ -6825,7 +6598,11 @@ async function buildMaterialCard(m, mods, copyPill, key, gen, lit) {
   // A realization slot that pinned a specific material (accession/name) forces
   // that material + species — the token wins over the query species lens
   // (precedence #1). Spread last so its uniprot_id/taxon_id override the lens.
-  const pin = realizationPins.get(m.family + '|' + (m.variant ?? ''));
+  // The accession the IR resolved for this material, if it named one. This replaces a DuckDB
+  // round-trip that answered the same question less well: a handle can resolve to more than one
+  // molecule, and `resolve2`'s classify is taxon-aware where that lookup deliberately is not.
+  const irAccPin = irAccessionFor(currentIR, m.family, m.variant);
+  const pin = irAccPin ? { uniprot_id: irAccPin[0], accession: irAccPin } : null;
   const callOverride = { ...(contextOverrideForQuery() ?? {}), ...(pin ?? {}) };
   const ctx = await resolveContext(m.family, m.variant, callOverride);
   if (key !== lastKey || gen !== materialsToken) return null;         // stale-guard
@@ -6931,8 +6708,7 @@ async function buildMaterialCard(m, mods, copyPill, key, gen, lit) {
       const target = portCtxForGrid || ctx;
       // The IR's accession wins over the realization pin: it is the one object, and it resolves
       // handles the DuckDB lookup deliberately leaves open (an entry name shared across species).
-      const irAcc = irAccessionFor(currentIR, m.family, m.variant);
-      const effPin = irAcc ? { uniprot_id: irAcc[0], accession: irAcc } : pin;
+      const effPin = pin;                     // one pin, from the IR, for the context and the grid
       const { accessions, verdicts } =
         materializeCard(m.family, m.variant, mods, ctx, portCtxForGrid, effPin, m.segments);
       const alnModel = await resolvedAlignment(m.family, m.variant, target.taxon_id, accessions, verdicts);

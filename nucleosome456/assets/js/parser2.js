@@ -13836,9 +13836,16 @@ undefined;
   // A proteoform's own certainty, read off its segments. `defined` → [...], anything else → the bare
   // form; `{...}` is only needed where a bare token would be ambiguous, and wrapping every native
   // proteoform in braces makes the common case unreadable for no semantic gain.
+  // A proteoform's own certainty, read off its segments — but ONLY when it has a single full-extent
+  // segment. A stated RANGE carries its certainty in its own brackets (`rangeStr`), so taking it
+  // here as well wrapped `H3[1-30]` as `[H3[1-30]]` and, worse, read a mixed-certainty proteoform's
+  // stance off whichever segment happened to be first.
   function certOf(pf) {
     var segs = pf.segments || [];
-    return (segs.length && segs[0] && segs[0].certainty) || "native";
+    if (segs.length !== 1) return "native";
+    var s = segs[0];
+    if (!(s.start === "-inf" && s.end === "+inf")) return "native";   // a range speaks for itself
+    return s.certainty || "native";
   }
 
   // A value axis may be SET-VALUED (`H3:K27M|K` — substitution is {M,K}); the grammar allows one
@@ -13850,20 +13857,43 @@ undefined;
   function axis(v) { return Array.isArray(v) ? v.join("|") : v; }
 
   function markStr(m) {
-    var s = (m.negated ? "!" : "") + (axis(m.residue) || "") + String(m.position);
+    // A TERMINAL LOCUS is a position, and it is written the way it is typed: `α` for the N-terminal
+    // amine, `ω` for the C-terminus. Printing the sentinel gave `-infac`, which does not parse — the
+    // same class of bug as the open-ended range below, and found by the same test.
+    // A POSITIONLESS mark ("ubiquitylated, site unstated") has no position to write. `String(null)`
+    // put the literal word `null` into the notation — `H2A:!nullub` — which is the second of the two
+    // bugs this test's header names, still live in emit2 after being fixed in the retired v1 path.
+    var pos = m.position == null ? ""
+            : m.position === "-inf" ? "\u03b1"
+            : m.position === "+inf" ? "\u03c9" : String(m.position);
+    var s = (m.negated ? "!" : "") + (axis(m.residue) || "") + pos;
     if (m.substitution) s += axis(m.substitution);
     if (m.modification) s += axis(m.modification);
     return s;
   }
 
-  // A non-infinite segment is a RANGE, notated `[start-end]` after the family token.
+  // A non-full segment is a RANGE, notated after the family token. EVERY stated segment is emitted,
+  // each in its OWN bracket, because the bracket is what carries that extent's certainty:
+  // `H3[1-30]{31-40}` is defined over 1-30 and native over 31-40, and a single pair cannot say that.
+  //
+  // Two bugs lived here (found 2026-07-26 by re-basing canonical-r0 onto emit2): only `segs[0]` was
+  // emitted, so every segment after the first was silently dropped — the canonical MEANT something
+  // narrower than the query; and an open end printed the sentinel literally (`[-inf-40]`), which the
+  // grammar does not accept, so the canonical did not parse at all. An open end is written by
+  // OMITTING the bound, the same way it is typed.
+  function bound(v, lowEnd) {
+    if (v === (lowEnd ? "-inf" : "+inf")) return "";
+    return String(v);
+  }
   function rangeStr(pf) {
     var segs = (pf.segments || []).filter(function (s) {
       return s && !(s.start === "-inf" && s.end === "+inf");
     });
-    if (!segs.length) return "";
-    var s = segs[0];
-    return "[" + s.start + "-" + s.end + "]";
+    return segs.map(function (s) {
+      var open = s.certainty === "defined" ? "[" : "{";
+      var close = s.certainty === "defined" ? "]" : "}";
+      return open + bound(s.start, true) + "-" + bound(s.end, false) + close;
+    }).join("");
   }
 
   function emitProteoform(pf) {
@@ -13894,8 +13924,26 @@ undefined;
       if (s == null) return null;
       parts.push(s);
     }
+    // A co-bracket's own certainty is the stance its members share. `certOf` deliberately reports
+    // `native` for a RANGED proteoform (its brackets carry their own certainty), which is right for
+    // the member's wrapper and wrong here — it flipped `[H3[1-40]{41-52}@H4:S1C]` to a native group,
+    // a different statement. So the group asks the segments: every stated extent closed.
+    var allDefined = function (m) {
+      var segs = m.segments || [];
+      return segs.length ? segs.every(function (x) { return x.certainty === "defined"; }) : false;
+    };
+    // MIXED CERTAINTY INSIDE A CO-BRACKET HAS NO NOTATION. The group's bracket sets one stance for
+    // its members; a member that states its own mixed extents (`H3[1-40]{41-52}`) cannot be placed
+    // under either bracket without saying something the IR does not. emit2's contract is to REFUSE
+    // rather than approximate, so it does — silently picking `{` turned a defined group into a
+    // native one, which the round-trip caught as "means something else".
+    var mixed = (node.members || []).some(function (m) {
+      var segs = (m.node === "proteoform" && m.segments) || [];
+      return segs.length > 1 && !segs.every(function (x) { return x.certainty === segs[0].certainty; });
+    });
+    if (mixed) return null;
     var defined = (node.members || []).every(function (m) {
-      return m.node !== "proteoform" || certOf(m) === "defined";
+      return m.node !== "proteoform" || allDefined(m);
     });
     // Members inside a co-bracket inherit its certainty, so drop their own wrappers to avoid `[[H2A]]`.
     var inner = (node.members || []).map(function (m) {
@@ -14408,4 +14456,4 @@ undefined;
 })();
 
 // Build id — see the Makefile stale-copy note.
-if (typeof nucleosomeParser2 !== "undefined") nucleosomeParser2.BUILD_ID = "756479892c0e";
+if (typeof nucleosomeParser2 !== "undefined") nucleosomeParser2.BUILD_ID = "19df5c8aba41";
