@@ -7,7 +7,7 @@
   <!-- Same ?v=<build epoch> stamp as the JS bundles and parquet URLs: a cached stylesheet against a
        rebuilt page is the same class of silent-staleness bug, and it would render the engine-fallback
        alarm below as unstyled text. -->
-  <link rel="stylesheet" href="/nucleosome456/assets/css/main.css?v=1785088714">
+  <link rel="stylesheet" href="/nucleosome456/assets/css/main.css?v=1785090088">
 </head>
 <body>
 
@@ -598,7 +598,7 @@
          cached page, full stop. #engine-stamp is filled at runtime with which enumeration engine
          actually loaded (v2 = interpret2 present; v1 = the bundle is stale or broken). -->
     <footer class="buildstamp">
-      built 2026-07-26 13:58:34 EDT
+      built 2026-07-26 14:21:28 EDT
       &middot; <span id="engine-stamp">engine&nbsp;&hellip;</span>
     </footer>
 
@@ -623,7 +623,7 @@
        the one failure the load-error trap below cannot see, because a stale bundle loads and runs
        perfectly, just with superseded code. -->
   <script>
-    window.__PARSER2_EXPECTED = "d338ee844bd2";
+    window.__PARSER2_EXPECTED = "9fcd1bba8bae";
     window.__loadErrors = [];
     window.addEventListener('error', function (e) {
       window.__loadErrors.push({
@@ -636,10 +636,10 @@
   </script>
 
   <!-- Generated vocabulary (families, PTMs) -->
-  <script src="/nucleosome456/assets/js/vocabulary.js?v=1785088714"></script>
+  <script src="/nucleosome456/assets/js/vocabulary.js?v=1785090088"></script>
   <!-- Compiled nucleosome notation parser (legacy stack: parse/normalizeIR/interpret/match) --><!-- New-stack bundle: parse2 → lift2 → resolve2 → meet2/normalize2 (canon), real registry,
        and the v2→v1 bridge (adaptToLegacy). The single canon; legacy consumers read via the bridge. -->
-  <script src="/nucleosome456/assets/js/parser2.js?v=1785088714"></script>
+  <script src="/nucleosome456/assets/js/parser2.js?v=1785090088"></script>
 
   <script type="module">
     /* Pinned deliberately. The console warning "The WebAssembly exception handling 'try'
@@ -659,7 +659,7 @@
     // without this a rebuilt table is served stale until a hard reload. site.time changes
     // on every `jekyll build`, so a rebuild always refetches — the whole point is that a
     // reload shows the version we just built, not a cached one.
-    const CACHE_BUST       = '?v=1785088714';
+    const CACHE_BUST       = '?v=1785090088';
     const PROTEINS_URL     = new URL('/nucleosome456/data/proteins.parquet' + CACHE_BUST, document.baseURI).href;
     const MASSES_URL       = new URL('/nucleosome456/data/residue_masses.parquet' + CACHE_BUST, document.baseURI).href;
     const PTM_URL          = new URL('/nucleosome456/data/ptm_deltas.parquet' + CACHE_BUST, document.baseURI).href;
@@ -4760,6 +4760,25 @@ function canonNotation(ir) {
 // human Q96A08, so the token pins no species and that lookup returns family/variant only, by its own
 // contract. `resolve2`'s classify IS context-aware, so the IR has the answer: Q96A08. Without this
 // the pane showed every human H2B.1 for a query that named ONE molecule.
+// The species this query NAMES, via any accession its materials resolved to, or null when it names
+// none. One taxon only: a query that names two materials from different organisms is not asking to
+// be looked at through either lens, so it moves nothing.
+function queryTaxon(ir) {
+  const P2 = (typeof nucleosomeParser2 !== 'undefined') ? nucleosomeParser2 : null;
+  const reg = P2 && P2.DEFAULT_REGISTRY;
+  if (!reg || typeof reg.taxonOfAccession !== 'function' || !ir || ir.node === 'error') return null;
+  const found = new Set();
+  (function walk(n) {
+    if (!n || typeof n !== 'object') return;
+    if (n.node === 'proteoform') {
+      (n.accession || []).forEach((a) => { const t = reg.taxonOfAccession(a); if (t != null) found.add(t); });
+      return;
+    }
+    (n.members || []).forEach(walk);
+  })(ir);
+  return found.size === 1 ? [...found][0] : null;
+}
+
 function irAccessionFor(ir, family, variant) {
   if (!ir || ir.node === 'error' || ir.node === 'bottom') return null;
   let found = null;
@@ -5558,7 +5577,26 @@ async function onInput() {
   // BB's `H3:K27M|K,K36ac` is refused above and fully representable here. Self-contained (parses
   // `raw` itself, try/catch inside), so calling it early costs nothing and removes the whole
   // staleness class rather than one instance of it.
-  const ir = buildQueryIR(raw);
+  let ir = buildQueryIR(raw);
+  // AN ACCESSION MOVES THE SPECIES LENS (BB, 2026-07-26, option A). A material names its own
+  // species, and the query means that molecule — so the lens follows rather than fights it, and the
+  // chip shows WHY you are looking at yeast. This is the visible version of the pin we removed: the
+  // same information, asserted where the reader can see and change it instead of inside a context
+  // override they never made.
+  //
+  // The IR is rebuilt afterwards because the lens is an INPUT to resolve2 (variant sets and frames
+  // are per-taxon), so the first pass would otherwise stand as an answer computed under the old lens.
+  const wantTaxon = queryTaxon(ir);
+  if (wantTaxon != null && SPECIES_TAXON[qcontext] !== wantTaxon) {
+    const label = Object.keys(SPECIES_TAXON).find((k) => SPECIES_TAXON[k] === wantTaxon);
+    if (label) {
+      if (qport === qcontext) qport = label;      // an unmoved port follows the context
+      qcontext = label;
+      updateControls();
+      clearContextCache();
+      ir = buildQueryIR(raw);
+    }
+  }
   currentIR = ir;
   // The IR inspector stays unconditional — it is a DIAGNOSTIC, and the one panel that can say
   // something useful about an input everything else rejects. The caption is not: it names the answer
@@ -7097,7 +7135,6 @@ let qcontext = 'Hs', qport = 'Hs';
 // taxon_id the user already set via the pre-existing Context editor
 // (context-editor.js's `contextOverrides` global, i.e. userOv), even though
 // qcontext defaults to 'Hs' and the user never touched this control.
-let qcontextTouched = false;
 
 function closeMenus() {
   document.querySelectorAll('.ctxmenu.open').forEach(m => m.classList.remove('open'));
@@ -7151,12 +7188,14 @@ function showEditor(id) {
 // edited via the existing #context-yaml/apply path (context-editor.js),
 // which the #ctxeditor "specify your own" panel links to.
 //
-// Untouched default state (qcontextTouched === false) must NOT inject a
-// call-level taxon_id override — that would silently overwrite any
-// per-family taxon_id already set in contextOverrides (see qcontextTouched
-// above). Only an explicit species pick acts as the global species lens.
+// THE LENS IS ALWAYS EXPLICIT (BB, 2026-07-26: "context and port should be set by default as Hs,
+// not silently be false"). It used to have a hidden third state — the chip SAID `Hs` while
+// `qcontextTouched === false` made it assert nothing — so the displayed context and the applied one
+// disagreed until you touched the control. A lens that shows a species and imposes none is the kind
+// of quiet disagreement this project keeps finding; if `Hs` is what the page says, `Hs` is what it
+// means. Explicit `custom` still defers to the per-family YAML.
 function contextOverrideForQuery() {
-  if (!qcontextTouched || qcontext === 'custom') return {};
+  if (qcontext === 'custom') return {};
   const taxon = SPECIES_TAXON[qcontext];
   return taxon ? { taxon_id: taxon } : {};
 }
@@ -7200,7 +7239,7 @@ function onQueryPortChanged() {
 
 bindCtl('qctx', 'qctxmenu', (btn, it) => {
   if (it.dataset.custom) { showEditor('ctxeditor'); qcontext = 'custom'; }
-  else { qcontext = it.dataset.qc; qcontextTouched = true; }
+  else { qcontext = it.dataset.qc; }
   updateControls();
   onQueryContextChanged();
 });
