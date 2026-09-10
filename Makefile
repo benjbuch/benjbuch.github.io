@@ -52,6 +52,7 @@ help:
 	@printf '  %-16s %s\n' "deploy-force"   "Deploy with --force-publish"
 	@printf '  %-16s %s\n' "serve"          "Start Jekyll development server"
 	@printf '  %-16s %s\n' "build"          "Build Jekyll site locally"
+	@printf '  %-16s %s\n' "verify-pdfs"    "Check every public protocol has a rendered PDF"
 	@printf '  %-16s %s\n' "status"         "Show data and git status"
 	@printf '  %-16s %s\n' "help"           "Show this message"
 	@printf '\nData sync:\n'
@@ -104,6 +105,34 @@ pull-publications:
 	@printf 'pull-publications: synced from %s\n' "$(LAB_PUBS)"
 
 # --------------------------------------------------------------------
+# Verify: every public protocol has a rendered PDF
+#
+# The PDFs live in a gitignored directory, so no git-based check in this
+# pipeline can see whether they arrived. The Liquid templates gate on
+# site.static_files and silently omit the link when one is missing, which
+# turns a partial sync into a site that looks fine and is missing pages.
+# This target makes that mismatch fatal instead.
+# --------------------------------------------------------------------
+.PHONY: verify-pdfs
+verify-pdfs:
+	@[ -f "$(DATA_DST)/summary.yml" ] || { $(call err,not found: $(DATA_DST)/summary.yml (run 'make pull-protocols')); exit 1; }
+	@expected=0; missing=0; \
+	for f in $$(awk '\
+		/^- id:/ { if (vis == "public" && fn != "") print fn; vis=""; fn="" } \
+		/^[ \t]+visibility:/ { v=$$2; gsub(/"/,"",v); vis=v } \
+		/^[ \t]+filename:/ { g=$$2; gsub(/"/,"",g); fn=g } \
+		END { if (vis == "public" && fn != "") print fn }' "$(DATA_DST)/summary.yml"); do \
+		expected=$$((expected+1)); \
+		[ -f "$(PDF_DST)/$$f.pdf" ] || { printf 'missing pdf: %s\n' "$$f" >&2; missing=$$((missing+1)); }; \
+	done; \
+	if [ "$$missing" -gt 0 ]; then \
+		$(call err,$$missing of $$expected public protocol(s) have no rendered PDF); \
+		$(call err,run 'make typeset' in $(LAB_PROTOCOLS) then 'make pull-protocols' here); \
+		exit 1; \
+	fi; \
+	printf 'verify-pdfs: %s public protocols, all present\n' "$$expected"
+
+# --------------------------------------------------------------------
 # Update: pull site data and commit tracked changes
 # --------------------------------------------------------------------
 .PHONY: update
@@ -127,17 +156,17 @@ commit-changes:
 # Deploy: build and publish site
 # --------------------------------------------------------------------
 .PHONY: deploy
-deploy:
+deploy: verify-pdfs
 	@[ -f "$(S_DEPLOY)" ] || { $(call err,deploy script not found: $(S_DEPLOY)); exit 1; }
 	@bash $(S_DEPLOY)
 
 .PHONY: deploy-dry
-deploy-dry:
+deploy-dry: verify-pdfs
 	@[ -f "$(S_DEPLOY)" ] || { $(call err,deploy script not found: $(S_DEPLOY)); exit 1; }
 	@bash $(S_DEPLOY) --dry-run
 
 .PHONY: deploy-force
-deploy-force:
+deploy-force: verify-pdfs
 	@[ -f "$(S_DEPLOY)" ] || { $(call err,deploy script not found: $(S_DEPLOY)); exit 1; }
 	@bash $(S_DEPLOY) --force-publish
 
