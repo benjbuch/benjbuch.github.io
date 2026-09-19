@@ -167,26 +167,22 @@
       
       <li class="pub{{ tag_slugs }}" data-priority="{{ pub.priority | default: 'medium' }}" data-num="{{ items.size | minus: forloop.index0 }}">
         <div class="pub-main">
+            {%- if pub.title -%}
+          <div class="pub-line pub-line-title">
+            <span class="pub-title">{{ pub.title }}</span>
+          </div>
+            {%- endif -%}
           <div class="pub-line">
             <span class="pub-authors">
               {{ formatted_authors }}
               {%- if style == "acs" %}. {% endif -%}
             </span>
           </div>
-            {%- if pub.title -%}
-          <div class="pub-line">
-            <span class="pub-title">
-              {%- if style == "acs" %}{{ pub.title }}. 
-              {% else %}"{{ pub.title }}" 
-              {% endif -%}
-            </span>
-          </div>
-            {%- endif -%}
           <div class="pub-line">
           {%- if pub.journal or pub.booktitle -%}
             <em>{{ pub.journal | default: pub.booktitle }}</em>
           {%- endif -%}
-          {%- if pub.year %} <strong>{{ pub.year }}</strong>{% endif -%}
+          {%- if pub.year %} {{ pub.year }}{% endif -%}
           {%- if pub.volume %}, <em>{{ pub.volume }}</em>{% endif -%}
           {%- if pub.number %}({{ pub.number }}){% endif -%}
           {%- if pub.pages %}, {{ pub.pages }}{% endif -%}.
@@ -235,7 +231,7 @@
         {%- endif -%}
         {%- endcomment -%}
         
-        {%- if (pub.priority == "high" or pub.priority == "pinned") and (pub.impact or pub.myrole) -%}
+        {%- if pub.impact or pub.myrole -%}
           <div class="pub-notes">
             {%- if pub.impact %}<span class="note"><strong>Impact:</strong> {{ pub.impact }}</span>{% endif -%}
             {%- if pub.myrole %}<span class="note"><strong>Role:</strong> {{ pub.myrole }}</span>{% endif -%}

@@ -7,8 +7,7 @@
   padding-top: var(--pad-m);
   padding-left: var(--pad-l);
   padding-right: var(--pad-l);
-  text-align: justify;
-  text-justify: inter-word;
+  text-align: left;
 }
 
 // Publication item structure
@@ -25,7 +24,9 @@
 // Numbering
 
 .publist .pub::before {
+  color: var(--text-secondary);
   content: attr(data-num) ".";
+  font-variant-numeric: tabular-nums;
   grid-column: 1;
   grid-row: 1;
   justify-self: end;
@@ -35,10 +36,15 @@
   display: none;
 }
 
+// Numbering is discontinuous once the list is filtered, so the selected
+// view shows a plain marker instead.
+
 .publist.high-only .pub::before {
   content: "–";
   justify-self: center;
 }
+
+
 
 // Layout
 
@@ -68,19 +74,19 @@
 // Main content area
 
 .pub-main {
-  -moz-hyphens: auto;
-  -ms-hyphens: auto;
-  -webkit-hyphens: auto;
-  hyphens: auto;
   line-height: 1.5;
 }
 
 // Author highlighting
 
+.pub-authors {
+  color: var(--text-secondary);
+  font-size: 0.95em;
+}
+
 .pub-authors .me {
-//  text-decoration: underline;
-//  text-underline-offset: 2px;
-  font-weight: 600;
+  color: var(--text-primary);
+  font-weight: 700;
 }
 
 // Individual lines
@@ -90,10 +96,19 @@
   display: inline;
 }
 
+// The title is the entry point: always its own line, at every width.
+
+.pub-line-title {
+  display: block;
+}
+
 // Title styling
- 
+
 .pub-title {
-  font-style: italic;
+  color: var(--text-strong);
+  font-size: 1em;
+  font-weight: 700;
+  line-height: 1.35;
 }
 
 // ============================================================================
@@ -126,10 +141,9 @@
 // Notes (impact, role, etc.)
  
 .pub-notes {
-  color: var(--text-secondary);
+  color: var(--text-primary);
   font-size: 0.9em;
   margin: var(--pad-s) 0;
-  opacity: 0.9;
 }
 
 .pub-notes strong {
