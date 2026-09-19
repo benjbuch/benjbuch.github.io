@@ -76,7 +76,7 @@ Directed evolution nevertheless navigated to readers that fully abandon the cons
 
 ## Distribution of modified CpGs in the mammalian genome
 
-In 2025, a capture and sequencing workflow based on these probes (HM-DyadCap) enabled the first genome-wide map of 5hmC/5mC dyads in mammalian DNA [(Engelhard et al., bioRxiv 2025)](https://doi.org/10.1101/2025.10.29.685270).
+A capture and sequencing workflow based on these probes (HM-DyadCap) enabled the first genome-wide map of 5hmC/5mC dyads in mammalian DNA [(Engelhard et al., Nucleic Acids Res. 2026)](https://pubmed.ncbi.nlm.nih.gov/42023651).
 While bulk 5hmC had previously been found across both promoters and gene bodies, this specific asymmetric form **accumulates in the bodies of actively transcribed genes** and is depleted at transcription start sites, suggesting that TET oxidizes one strand without immediately completing the conversion on the other to drive both strands toward 5hmC.
 
 Whether that intermediate is specifically oriented with respect to the coding strand, whether it is actively maintained as a regulatory signal, or whether MBD-like readers enforce it is an open question.
