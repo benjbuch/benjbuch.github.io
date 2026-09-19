@@ -7,6 +7,14 @@
 
 {%- assign total_count = pubs | size -%}
 
+{%- comment -%}Count what the "selected" view actually shows (see .high-only in _publications.scss){%- endcomment -%}
+{%- assign selected_count = 0 -%}
+{%- for pub in pubs -%}
+  {%- if pub.priority == "high" or pub.priority == "pinned" -%}
+    {%- assign selected_count = selected_count | plus: 1 -%}
+  {%- endif -%}
+{%- endfor -%}
+
 <!-- {%- comment -%}Count first authorships{%- endcomment -%}
 {%- assign first_auth_count = 0 -%}
 {%- for pub in pubs -%}
@@ -37,7 +45,7 @@
     <span class="switch-ui" aria-hidden="true"></span>
     <span class="switch-text">
       <span class="off">All works</span>
-      <span class="on">Selected publications (out of {{ total_count }} works)</span>
+      <span class="on">Selected publications ({{ selected_count }} out of {{ total_count }} works shown)</span>
     </span>
   </label>
 </div>
@@ -210,6 +218,12 @@
           </div>
         </div>
         
+        {%- comment -%}
+          TODO: restore the keyword tags once filtering works. script.js sets
+          body[data-pubfilter] on click, but no CSS rule acts on it, so the
+          buttons currently take up space without filtering anything. The
+          tag-* classes on the <li> above are kept for that future rule.
+
         {%- if show_keywords and kw_list -%}
           <div class="pub-tags">
             {%- for k in kw_list -%}
@@ -219,6 +233,7 @@
             {%- endfor -%}
           </div>
         {%- endif -%}
+        {%- endcomment -%}
         
         {%- if (pub.priority == "high" or pub.priority == "pinned") and (pub.impact or pub.myrole) -%}
           <div class="pub-notes">
