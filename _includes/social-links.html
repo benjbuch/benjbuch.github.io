@@ -1,4 +1,9 @@
+{%- assign cv_pdf = site.static_files | where_exp: "f", "f.path contains '/assets/cv/'" | where: "extname", ".pdf" | first -%}
 <div class="social-links">
+  {%- if cv_pdf %}
+  <a href="{{ cv_pdf.path | relative_url }}" rel="nofollow noopener">CV</a>
+  &middot;
+  {% endif -%}
   <a href="{{ site.owner.orcid }}">ORCID</a>
   &middot;
   <a href="{{ site.owner.scholar }}">Google Scholar</a>

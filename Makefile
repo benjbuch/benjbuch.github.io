@@ -30,6 +30,12 @@ LP_PUBS_SRC       := $(LAB_PUBS)/pubs_own/build/publications_full.yml
 PUBS_DST          := _data/publications/publications.yml
 
 # --------------------------------------------------------------------
+# CV (hand-placed ConTeXt output; gitignored on both ends)
+# --------------------------------------------------------------------
+CV_SRC            := _data/cv
+CV_DST            := assets/cv
+
+# --------------------------------------------------------------------
 # Git settings
 # --------------------------------------------------------------------
 REMOTE := origin
@@ -59,6 +65,7 @@ help:
 	@printf '  %-16s %s\n' "pull"             "Sync protocols + publications from sibling repos"
 	@printf '  %-16s %s\n' "pull-protocols"   "Sync public PDFs/metadata from ../lab-protocols only"
 	@printf '  %-16s %s\n' "pull-publications" "Sync abbreviated pubs YAML from ../lab-publications only"
+	@printf '  %-16s %s\n' "pull-cv"          "Copy CV PDF from $(CV_SRC) to $(CV_DST)"
 	@printf '\nExamples:\n'
 	@printf '  make publish\n'
 	@printf '  make deploy-dry\n'
@@ -76,8 +83,8 @@ publish: update deploy
 # --------------------------------------------------------------------
 # Data sync (direct reads from sibling repos' build output)
 # --------------------------------------------------------------------
-.PHONY: pull pull-protocols pull-publications
-pull: pull-protocols pull-publications
+.PHONY: pull pull-protocols pull-publications pull-cv
+pull: pull-protocols pull-publications pull-cv
 
 # Mirror public protocol PDFs + metadata + recipes from the sibling
 # lab-protocols repo. PDFs are mirrored (rsync --delete) so withdrawn
@@ -103,6 +110,21 @@ pull-publications:
 	@mkdir -p "$(dir $(PUBS_DST))"
 	@cp "$(LP_PUBS_SRC)" "$(PUBS_DST)"
 	@printf 'pull-publications: synced from %s\n' "$(LAB_PUBS)"
+
+# Copy the CV PDF (built elsewhere with ConTeXt, dropped into $(CV_SRC))
+# into the served assets tree. Both directories are gitignored, so the
+# file reaches the site through the working tree, not through git.
+# Absence is not an error: the CV link is omitted when no PDF is there.
+pull-cv:
+	@set -- $(CV_SRC)/*.pdf; \
+	if [ ! -f "$$1" ]; then \
+		rm -f $(CV_DST)/*.pdf; \
+		$(call warn,no CV pdf in $(CV_SRC); site will omit the CV link); \
+		exit 0; \
+	fi; \
+	mkdir -p "$(CV_DST)"; \
+	rsync -a --delete --include='*.pdf' --exclude='*' "$(CV_SRC)/" "$(CV_DST)/"; \
+	printf 'pull-cv: synced %s\n' "$$(ls $(CV_DST)/*.pdf | tr '\n' ' ')"
 
 # --------------------------------------------------------------------
 # Verify: every public protocol has a rendered PDF

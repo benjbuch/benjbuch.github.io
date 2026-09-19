@@ -5,8 +5,7 @@ permalink: /robots.txt
 
 User-agent: *
 Allow: /
-Disallow: /research/
-Disallow: /protocols/
+Disallow: /assets/cv/
 Crawl-delay: 10
 
 Sitemap: {{ "/sitemap.xml" | absolute_url }}
