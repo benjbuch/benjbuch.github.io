@@ -275,7 +275,7 @@
   id: Buchmuller2021
   keywords: DNA Modifications, Protein Engineering, Methods
   month: '10'
-  priority: high
+  priority: medium
   title: Deciphering strand-asymmetrically modified CpG dyads in the DNA
     double-helix
   type: phdthesis
@@ -505,7 +505,7 @@
   pages: e201910210
   pmcid: PMC7265327
   pmid: '32406907'
-  priority: high
+  priority: medium
   title: CRISPR-Cas12a–assisted PCR tagging of mammalian genes
   type: article
   volume: '219'
@@ -548,7 +548,7 @@
   pages: 8927–8931
   pmcid: PMC7318601
   pmid: '32167219'
-  priority: high
+  priority: medium
   title: Designer Receptors for Nucleotide‐Resolution Analysis of Genomic
     5‐Methylcytosine by Cellular Imaging
   type: article
