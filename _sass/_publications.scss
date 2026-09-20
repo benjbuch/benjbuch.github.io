@@ -62,6 +62,12 @@
   margin: 0 0 0.75rem 0;
 }
 
+// Section headings hidden by the toggle (see script.js)
+
+.pub-section[hidden] {
+  display: none;
+}
+
 .pub.dim {
   opacity: 0.25;
   transition: opacity 160ms ease;

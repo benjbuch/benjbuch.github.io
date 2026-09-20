@@ -125,10 +125,29 @@ document.addEventListener('click', (e) => {
     const lists  = Array.from(document.querySelectorAll('#publications .publist'));
     if (!toggle || lists.length === 0) return;
 
+    const isSelected = pub => {
+      const p = pub.dataset.priority;
+      return p === 'high' || p === 'pinned';
+    };
+
     const applyFilter = () => {
       const highOnly = toggle.checked;
-      lists.forEach(list => {
+
+      // A section heading is rendered whenever its group has entries, but the
+      // selected view hides entries in CSS. So a heading can be left standing
+      // over an empty list -- and a single remaining heading labels nothing.
+      const counts = lists.map(list => {
         list.classList.toggle('high-only', highOnly);
+        const pubs = Array.from(list.querySelectorAll('.pub'));
+        return highOnly ? pubs.filter(isSelected).length : pubs.length;
+      });
+      const sectionsShown = counts.filter(n => n > 0).length;
+
+      lists.forEach((list, i) => {
+        const heading = list.previousElementSibling;
+        if (heading && heading.classList.contains('pub-section')) {
+          heading.hidden = counts[i] === 0 || sectionsShown < 2;
+        }
       });
     };
 

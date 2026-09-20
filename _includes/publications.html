@@ -39,6 +39,28 @@
 {%- comment -%}Define sections: "Display Name::group1::group2::..."{%- endcomment -%}
 {%- assign sections = "Preprints::preprint|Original Research::original-research|Reviews, Book Chapters, Monographs::chapter::monograph::review" | split: "|" -%}
 
+{%- comment -%}How many sections have anything to show in the selected view?
+A lone heading labels nothing, so it is hidden.{%- endcomment -%}
+{%- assign sections_with_selected = 0 -%}
+{%- for sec in sections -%}
+  {%- assign sec_parts = sec | split: "::" -%}
+  {%- assign sec_groups = sec_parts | slice: 1, sec_parts.size -%}
+  {%- assign sec_count = 0 -%}
+  {%- for pub in pubs -%}
+    {%- if pub.priority == "high" or pub.priority == "pinned" -%}
+      {%- for g in sec_groups -%}
+        {%- if pub.group == g or pub.type == g -%}
+          {%- assign sec_count = sec_count | plus: 1 -%}
+          {%- break -%}
+        {%- endif -%}
+      {%- endfor -%}
+    {%- endif -%}
+  {%- endfor -%}
+  {%- if sec_count > 0 -%}
+    {%- assign sections_with_selected = sections_with_selected | plus: 1 -%}
+  {%- endif -%}
+{%- endfor -%}
+
 <div class="priority-toggle">
   <label class="switch">
     <input type="checkbox" id="priority-toggle" aria-label="Show key publications" checked>
@@ -71,7 +93,15 @@
   {%- endfor -%}
   
   {%- if items.size > 0 -%}
-  <h3 class="pub-section">{{ section_name }}</h3>
+  {%- comment -%}The toggle starts in the selected view, so a section with
+  nothing selected starts hidden; script.js takes over from there.{%- endcomment -%}
+  {%- assign section_selected = 0 -%}
+  {%- for pub in items -%}
+    {%- if pub.priority == "high" or pub.priority == "pinned" -%}
+      {%- assign section_selected = section_selected | plus: 1 -%}
+    {%- endif -%}
+  {%- endfor -%}
+  <h3 class="pub-section"{% if section_selected == 0 or sections_with_selected < 2 %} hidden{% endif %}>{{ section_name }}</h3>
     <ul class="publist" id="pub-list-{{ forloop.index }}">
     {%- for pub in items -%}
       {%- assign nfirst = pub.first_authors | default: 0 | plus: 0 -%}
