@@ -7,16 +7,15 @@ weight: 01
 layout: card
 ---
 
-My work focuses on:
+I work on chemical modifications of biological macromolecules and their role in epigenetic adaptation; or, how cells change what their genome means without changing what it says.
 
-* How do **small chemical changes in chromatin** control cell-type-specific gene regulation?
-* How do **diseases exploit or disrupt epigenetic mechanisms?**
+### Current research
 
-I study these questions using **chemical biology** approaches, pooled **genetic screens,** and integrated **analysis of multi-omics data,** connecting molecular features to regulatory outcomes and potential therapeutic vulnerabilities.
+Clinical sequencing of tumors has revealed histone mutations that appear repeatedly across multiple patients. I am testing what that recurrence implies, what these mutations do to a cell, and through which mechanism they act.
 
-## Current research
-
-I study how **cancer-associated mutations in histone proteins** disrupt nucleosome function. In healthy tissue, histone proteins form protein–DNA complexes, the nucleosomes, that govern access to the underlying genetic information. Although there are roughly 16&nbsp;million nucleosomes for every copy of the human genome, there are only a few dozen per gene which can be enzymatically modified to signal different gene activity states. Defective nucleosomes can cause aberrant gene expression or silencing, promoting hallmark cancer phenotypes such as unrestrained proliferation, migration, and invasion.
+- **Selection and opportunity in cancer genomes.** Many histone mutations recur because they are likely, not because they are selected. I use modeling approaches to find selected mutations that recurrence alone overlooks.
+- **Functional consequences across cellular contexts.** A lesion can be innocuous in one context and transforming in another. I screen barcoded histone libraries across cell lines to map where that boundary falls.
+- **Biochemical models of chromatin.** I reconstitute defined nucleosome substrates, "designer chromatin," to isolate the biochemical mechanism of a histone mutation.
 
 <img
   src="/assets/img/oncohistones/gallery-single_mutations.svg"
@@ -25,8 +24,19 @@ I study how **cancer-associated mutations in histone proteins** disrupt nucleoso
   width="90%"
   style="display:block;margin:auto;">
 
-A key challenge is **distinguishing innocuous from detrimental histone mutations.** To address this, I create and screen libraries of cancer-associated histones in cells, use chemical synthesis to reconstitute defined nucleosome substrates, and integrate screening data with structural and clinical information to identify functionally meaningful patterns.
+Measurements of nucleosomes are scattered across decades of papers, each using their own naming conventions.
 
-## Past projects
+- I built [nucleosomekb](/nucleosomekb), an open index where you can ask for a histone mark or mutation, a whole nucleosome, a sub-nucleosomal particle, or an array – and see what has been measured.
 
-Engineered proteins to [detect rare combinatorial DNA modifications](essays/mod-symmetry-1-dna) in mammalian genomes
+### Earlier work
+
+- **Protein engineering by directed evolution** to [detect rare combinatorial DNA modifications in mammalian genomes](/essays/mod-symmetry-1-dna). The probes underpin the genome-wide HM-DyadCap maps published in Nucleic Acids Research this year.
+- **High-throughput genome engineering** using CRISPR-Cas12a (CASTLING) for library-scale gene tagging in yeast and mammalian cells.
+
+### Fellowships and awards
+
+- EMBO Postdoctoral Research Fellowship, 2022–2024
+- Biomedizin-Preis (Young Talent Award), 2023
+- Rainer Rudolph Prize, 2022
+- Add-on Fellowship for Interdisciplinary Life Science, Joachim Herz Stiftung, 2019–2022
+- Fellow of the International Max Planck Research School for Living Matter, 2017–2021

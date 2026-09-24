@@ -18,6 +18,8 @@ weight: 00
 
 Hi, I’m {{ page.hero }}!
 
-I am an Associate Research Scholar in the Department of Chemistry at Princeton University, where I work with [Prof. Tom Muir](https://muir.princeton.edu/) on **how cancer seizes control of gene regulation**. I joined the lab as an EMBO Postdoctoral Research Fellow.
+I am an Associate Research Scholar in the Department of Chemistry at Princeton University, working in the lab of [Prof. Tom Muir](https://muir.princeton.edu/).
 
-In 2021, I received my PhD in Chemical Biology, advised by [Prof. Daniel Summerer](https://ccb.tu-dortmund.de/en/professorships/cb/summerer/), for developing **proteins that recognize rare DNA modifications** in the human genome.
+My research asks why only a few **histone mutations** drive cancer.
+
+Before that, I developed proteins that recognize **rare enzymatic DNA modifications** with [Prof. Daniel Summerer](https://ccb.tu-dortmund.de/en/professorships/cb/summerer/) for my PhD in Chemical Biology at TU Dortmund University.
