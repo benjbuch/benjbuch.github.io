@@ -38,16 +38,16 @@
 	<header>
 	<nav class="nav" aria-label="Primary">
 		<a href="/#about" class="brand">Benjamin C. Buchmuller</a>
-<div class="menu" id="menu"><a href="/#about">About</a><a href="/#research">Research</a><a href="/#publications">Publications</a><a href="/#protocols">Protocols</a><a href="/essays/">Essays</a>
+<div class="menu" id="menu"><a href="/#about">About</a><a href="/#research">Research</a><a href="/#protocols">Protocols</a><a href="/#publications">Publications</a><a href="/essays/">Essays</a>
 		</div>
 		<div class="nav-icons"><a href="/#about" class="nav-icon" aria-label="About">
 					<span class="fa fa-user-circle" aria-hidden="true"></span>
 				</a><a href="/#research" class="nav-icon" aria-label="Research">
 					<span class="fa fa-rocket" aria-hidden="true"></span>
-				</a><a href="/#publications" class="nav-icon" aria-label="Publications">
-					<span class="fa fa-file-text-o" aria-hidden="true"></span>
 				</a><a href="/#protocols" class="nav-icon" aria-label="Protocols">
 					<span class="fa fa-book" aria-hidden="true"></span>
+				</a><a href="/#publications" class="nav-icon" aria-label="Publications">
+					<span class="fa fa-file-text-o" aria-hidden="true"></span>
 				</a><a href="/essays/" class="nav-icon" aria-label="Essays">
 				<span class="fa fa-pencil" aria-hidden="true"></span>
 			</a>
@@ -74,7 +74,7 @@
   "@context": "https://schema.org",
   "@type": "Person",
   "name": "Benjamin Buchmuller",
-  "jobTitle": "Senior Research Associate",
+  "jobTitle": "Associate Research Scholar",
   "affiliation": {
     "@type": "Organization",
     "name": "Princeton University"
@@ -87,11 +87,15 @@
 
 <p>Hi, I’m Ben!</p>
 
-<p>I am an Associate Research Scholar and former EMBO Postdoctoral Research Fellow in the Department of Chemistry at Princeton University where I work with <a href="https://muir.princeton.edu/">Prof. Tom Muir</a> on <strong>how cancer seizes control of gene regulation</strong>.</p>
+<p>I am an Associate Research Scholar in the Department of Chemistry at Princeton University, working in the lab of <a href="https://muir.princeton.edu/">Prof. Tom Muir</a>.</p>
 
-<p>In 2021, I received my PhD in Chemical Biology, advised by <a href="https://ccb.tu-dortmund.de/en/professorships/cb/summerer/">Prof. Daniel Summerer</a>, for developing <strong>proteins that recognize rare DNA modifications</strong> in the human genome.</p>
+<p>My research asks why only a few <strong>histone mutations</strong> drive cancer.</p>
+
+<p>Before that, I developed proteins that recognize <strong>rare enzymatic DNA modifications</strong> with <a href="https://ccb.tu-dortmund.de/en/professorships/cb/summerer/">Prof. Daniel Summerer</a> for my PhD in Chemical Biology at TU Dortmund University.</p>
 
       <div class="social-links">
+  <a href="/assets/cv/Buchmuller_Benjamin_CV.pdf" rel="nofollow noopener">CV</a>
+  &middot;
   <a href="https://orcid.org/0000-0002-4915-5949">ORCID</a>
   &middot;
   <a href="https://scholar.google.com/citations?user=H3kb0RQAAAAJ">Google Scholar</a>
@@ -128,642 +132,42 @@
 		
 			<h1 class="section-header">Research interests</h1>
 		
-		<p>My work focuses on:</p>
+		<p>I work on chemical modifications of biological macromolecules and their role in epigenetic adaptation; or, how cells change what their genome means without changing what it says.</p>
+
+<h3 id="current-research">Current research</h3>
+
+<p>Clinical sequencing of tumors has revealed histone mutations that appear repeatedly across multiple patients. I am testing what that recurrence implies, what these mutations do to a cell, and through which mechanism they act.</p>
 
 <ul>
-  <li>How do <strong>small chemical changes in chromatin</strong> control cell-type-specific gene regulation?</li>
-  <li>How do <strong>diseases exploit or disrupt epigenetic mechanisms?</strong></li>
+  <li><strong>Selection and opportunity in cancer genomes.</strong> Many histone mutations recur because they are likely, not because they are selected. I use modeling approaches to find selected mutations that recurrence alone overlooks.</li>
+  <li><strong>Functional consequences across cellular contexts.</strong> A lesion can be innocuous in one context and transforming in another. I screen barcoded histone libraries across cell lines to map where that boundary falls.</li>
+  <li><strong>Biochemical models of chromatin.</strong> I reconstitute defined nucleosome substrates, “designer chromatin,” to isolate the biochemical mechanism of a histone mutation.</li>
 </ul>
-
-<p>I study these questions using <strong>chemical biology</strong> approaches, pooled <strong>genetic screens,</strong> and integrated <strong>analysis of multi-omics data,</strong> connecting molecular features to regulatory outcomes and potential therapeutic vulnerabilities.</p>
-
-<h2 id="current-research">Current research</h2>
-
-<p>I study how <strong>cancer-associated mutations in histone proteins</strong> disrupt nucleosome function. In healthy tissue, histone proteins form protein–DNA complexes, the nucleosomes, that govern access to the underlying genetic information. Although there are roughly 16 million nucleosomes for every copy of the human genome, there are only a few dozen per gene which can be enzymatically modified to signal different gene activity states. Defective nucleosomes can cause aberrant gene expression or silencing, promoting hallmark cancer phenotypes such as unrestrained proliferation, migration, and invasion.</p>
 
 <p><img src="/assets/img/oncohistones/gallery-single_mutations.svg" alt="Nucleosomes bearing different single-site mutations" class="invertible" width="90%" style="display:block;margin:auto;" /></p>
 
-<p>A key challenge is <strong>distinguishing innocuous from detrimental histone mutations.</strong> To address this, I create and screen libraries of cancer-associated histones in cells, use chemical synthesis to reconstitute defined nucleosome substrates, and integrate screening data with structural and clinical information to identify functionally meaningful patterns.</p>
+<p>Measurements of nucleosomes are scattered across decades of papers, each using their own naming conventions.</p>
 
-<h2 id="past-projects">Past projects</h2>
+<ul>
+  <li>I built <a href="/nucleosomekb">nucleosomekb</a>, an open index where you can ask for a histone mark or mutation, a whole nucleosome, a sub-nucleosomal particle, or an array – and see what has been measured.</li>
+</ul>
 
-<p>Engineered proteins to <a href="essays/mod-symmetry-1-dna">detect rare combinatorial DNA modifications</a> in mammalian genomes</p>
+<h3 id="earlier-work">Earlier work</h3>
 
-	</div>
-</section>
-<section id="publications">
-	<div class="container card">
-		
-			<h1 class="section-header">Publications</h1>
-		
-		<!-- Begin JSON-LD -->
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@graph": [{
-      "@type": "ScholarlyArticle",
-      "name": "Pooled clone collections by multiplexed CRISPR-Cas12a-assisted gene tagging in yeast",
-      "author": [{ "@type": "Person", "name": "Benjamin Buchmuller" }, { "@type": "Person", "name": "Konrad Herbst" }, { "@type": "Person", "name": "Matthias Meurer" }, { "@type": "Person", "name": "Daniel Kirrmaier" }, { "@type": "Person", "name": "Ehud Sass" }, { "@type": "Person", "name": "Emmanuel D. Levy" }, { "@type": "Person", "name": "Michael Knop" }],
-      "isPartOf": { "@type": "Periodical", "name": "Nat. Commun." },
-      "datePublished": "2019",
-      "pagination": "2960",
-      "identifier": [{ "@type": "PropertyValue", "propertyID": "DOI", "value": "10.1038/s41467-019-10816-7" }, { "@type": "PropertyValue", "propertyID": "PMID", "value": "31273196" }, { "@type": "PropertyValue", "propertyID": "PMCID", "value": "PMC6609715" }],
-      "sameAs": ["https://doi.org/10.1038/s41467-019-10816-7", "https://pubmed.ncbi.nlm.nih.gov/31273196", "https://www.ncbi.nlm.nih.gov/pmc/articles/PMC6609715"],
-      "keywords": "Functional Genomics, Yeast, Methods, CRISPR",
-      "url": "https://doi.org/10.1038/s41467-019-10816-7"}, {
-      "@type": "ScholarlyArticle",
-      "name": "HM-DyadCap – capture and mapping of 5-hydroxymethylcytosine/5-methylcytosine CpG dyads in mammalian DNA",
-      "author": [{ "@type": "Person", "name": "Lena Engelhard" }, { "@type": "Person", "name": "Damian Schiller" }, { "@type": "Person", "name": "Marlon S Zambrano-Mila" }, { "@type": "Person", "name": "Kotryna Keliuotyte" }, { "@type": "Person", "name": "Benjamin Buchmuller" }, { "@type": "Person", "name": "Shashank Tiwari" }, { "@type": "Person", "name": "Jochen Imig" }, { "@type": "Person", "name": "Angela Simeone" }, { "@type": "Person", "name": "Christian Schröter" }, { "@type": "Person", "name": "Sidney Becker" }, { "@type": "Person", "name": "Daniel Summerer" }],
-      "isPartOf": { "@type": "Periodical", "name": "Nucleic Acids Res." },
-      "datePublished": "2026",
-      "pagination": "gkag389",
-      "identifier": [{ "@type": "PropertyValue", "propertyID": "DOI", "value": "10.1093/nar/gkag389" }, { "@type": "PropertyValue", "propertyID": "PMID", "value": "42023651" }, { "@type": "PropertyValue", "propertyID": "PMCID", "value": "PMC13103736" }],
-      "sameAs": ["https://doi.org/10.1093/nar/gkag389", "https://pubmed.ncbi.nlm.nih.gov/42023651", "https://www.ncbi.nlm.nih.gov/pmc/articles/PMC13103736"],
-      "keywords": "DNA Modifications, Genomics",
-      "url": "https://doi.org/10.1093/nar/gkag389"}, {
-      "@type": "ScholarlyArticle",
-      "name": "Evolved DNA Duplex Readers for Strand-Asymmetrically Modified 5‑Hydroxymethylcytosine/5-Methylcytosine CpG Dyads",
-      "author": [{ "@type": "Person", "name": "Benjamin Buchmuller" }, { "@type": "Person", "name": "Jessica Dröden" }, { "@type": "Person", "name": "Himanshu Singh" }, { "@type": "Person", "name": "Shubhendu Palei" }, { "@type": "Person", "name": "Malte Drescher" }, { "@type": "Person", "name": "Rasmus Linser" }, { "@type": "Person", "name": "Daniel Summerer" }],
-      "isPartOf": { "@type": "Periodical", "name": "JACS" },
-      "datePublished": "2022",
-      "pagination": "2987–2993",
-      "identifier": [{ "@type": "PropertyValue", "propertyID": "DOI", "value": "10.1021/jacs.1c10678" }, { "@type": "PropertyValue", "propertyID": "PMID", "value": "35157801" }, { "@type": "PropertyValue", "propertyID": "PMCID", "value": "PMC8874921" }],
-      "sameAs": ["https://doi.org/10.1021/jacs.1c10678", "https://pubmed.ncbi.nlm.nih.gov/35157801", "https://www.ncbi.nlm.nih.gov/pmc/articles/PMC8874921"],
-      "keywords": "DNA Modifications, Protein Engineering",
-      "url": "https://doi.org/10.1021/jacs.1c10678"}, {
-      "@type": "ScholarlyArticle",
-      "name": "Deciphering strand-asymmetrically modified CpG dyads in the DNA double-helix",
-      "author": [{ "@type": "Person", "name": "Benjamin Buchmuller" }],
-      "datePublished": "2021",
-      "identifier": [{ "@type": "PropertyValue", "propertyID": "DOI", "value": "10.17877/DE290R-22422" }],
-      "sameAs": ["https://doi.org/10.17877/DE290R-22422"],
-      "keywords": "DNA Modifications, Protein Engineering, Methods",
-      "url": "https://doi.org/10.17877/DE290R-22422"}, {
-      "@type": "ScholarlyArticle",
-      "name": "Complete Profiling of Methyl-CpG-Binding Domains for Combinations of Cytosine Modifications at CpG Dinucleotides Reveals Differential Read-out in Normal and Rett-Associated States",
-      "author": [{ "@type": "Person", "name": "Benjamin Buchmuller" }, { "@type": "Person", "name": "Brinja Kosel" }, { "@type": "Person", "name": "Daniel Summerer" }],
-      "isPartOf": { "@type": "Periodical", "name": "Sci. Rep." },
-      "datePublished": "2020",
-      "pagination": "4053",
-      "identifier": [{ "@type": "PropertyValue", "propertyID": "DOI", "value": "10.1038/s41598-020-61030-1" }, { "@type": "PropertyValue", "propertyID": "PMID", "value": "32132616" }, { "@type": "PropertyValue", "propertyID": "PMCID", "value": "PMC7055227" }],
-      "sameAs": ["https://doi.org/10.1038/s41598-020-61030-1", "https://pubmed.ncbi.nlm.nih.gov/32132616", "https://www.ncbi.nlm.nih.gov/pmc/articles/PMC7055227"],
-      "keywords": "Chromatin, DNA Modifications, Human Disease",
-      "url": "https://doi.org/10.1038/s41598-020-61030-1"}, {
-      "@type": "ScholarlyArticle",
-      "name": "Designer Receptors for Nucleotide‐Resolution Analysis of Genomic 5‐Methylcytosine by Cellular Imaging",
-      "author": [{ "@type": "Person", "name": "Álvaro Muñoz‐López" }, { "@type": "Person", "name": "Benjamin Buchmuller" }, { "@type": "Person", "name": "Jan Wolffgramm" }, { "@type": "Person", "name": "Anne Jung" }, { "@type": "Person", "name": "Michelle Hussong" }, { "@type": "Person", "name": "Julian Kanne" }, { "@type": "Person", "name": "Michal R. Schweiger" }, { "@type": "Person", "name": "Daniel Summerer" }],
-      "isPartOf": { "@type": "Periodical", "name": "Angew. Chem. Int. Ed." },
-      "datePublished": "2020",
-      "pagination": "8927–8931",
-      "identifier": [{ "@type": "PropertyValue", "propertyID": "DOI", "value": "10.1002/anie.202001935" }, { "@type": "PropertyValue", "propertyID": "PMID", "value": "32167219" }, { "@type": "PropertyValue", "propertyID": "PMCID", "value": "PMC7318601" }],
-      "sameAs": ["https://doi.org/10.1002/anie.202001935", "https://pubmed.ncbi.nlm.nih.gov/32167219", "https://www.ncbi.nlm.nih.gov/pmc/articles/PMC7318601"],
-      "url": "https://doi.org/10.1002/anie.202001935"}]
-}
-</script>
-<!-- End JSON-LD -->
+<ul>
+  <li><strong>Protein engineering by directed evolution</strong> to <a href="/essays/mod-symmetry-1-dna">detect rare combinatorial DNA modifications in mammalian genomes</a>. The probes underpin the genome-wide HM-DyadCap maps published in Nucleic Acids Research this year.</li>
+  <li><strong>High-throughput genome engineering</strong> using CRISPR-Cas12a (CASTLING) for library-scale gene tagging in yeast and mammalian cells.</li>
+</ul>
 
-<!----><div class="priority-toggle">
-  <label class="switch">
-    <input type="checkbox" id="priority-toggle" aria-label="Show key publications" checked>
-    <span class="switch-ui" aria-hidden="true"></span>
-    <span class="switch-text">
-      <span class="off">All works</span>
-      <span class="on">Selected publications (out of 21 works)</span>
-    </span>
-  </label>
-</div><h3 class="pub-section">Original Research</h3>
-    <ul class="publist" id="pub-list-2"><li class="pub tag-dna-modifications tag-genomics" data-priority="high" data-num="18">
-        <div class="pub-main">
-          <div class="pub-line">
-            <span class="pub-authors">
-              L. Engelhard*; D. Schiller*; M. S. Zambrano-Mila; K. Keliuotyte; <span class="me">B. Buchmuller</span>; S. Tiwari; J. Imig; A. Simeone; C. Schröter; S. Becker; D. Summerer. </span>
-          </div><div class="pub-line">
-            <span class="pub-title">HM-DyadCap – capture and mapping of 5-hydroxymethylcytosine/5-methylcytosine CpG dyads in mammalian DNA. 
-              </span>
-          </div><div class="pub-line"><em>Nucleic Acids Res.</em> <strong>2026</strong>, <em>54</em>(8), gkag389.
-            <span class="pub-id">
-              <a href="https://doi.org/10.1093/nar/gkag389" class="pub-doi">
-                <span class="pub-id-full">doi:10.1093/nar/gkag389</span>
-                <span class="pub-id-short">DOI</span>
-              </a>
-            </span>
-          <span class="pub-id">
-              <a href="https://pubmed.ncbi.nlm.nih.gov/42023651/" class="pub-pmid">
-                <span class="pub-id-full">PMID:42023651</span>
-                <span class="pub-id-short">PMID</span>
-              </a>
-            </span>
-            <span class="pub-id">
-              <a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC13103736/" class="pub-pmcid">
-                <span class="pub-id-full">PMC13103736</span>
-                <span class="pub-id-short">PMC</span>
-              </a>
-            </span>
-          </div>
-        </div><div class="pub-tags"><button class="tag" type="button" data-tag="dna-modifications">DNA Modifications</button><button class="tag" type="button" data-tag="genomics">Genomics</button></div><div class="pub-notes"><span class="note"><strong>Impact:</strong> Demonstrated that our engineered MBD (Buchmuller et al., JACS 2022) is capable of profiling hmC/mC marks in mammalian genomes</span></div></li><li class="pub tag-dna-modifications" data-priority="medium" data-num="17">
-        <div class="pub-main">
-          <div class="pub-line">
-            <span class="pub-authors">
-              B. Kosel; K. Bigler; <span class="me">B. C. Buchmuller</span>; S. R. Acharyya; R. Linser; D. Summerer. </span>
-          </div><div class="pub-line">
-            <span class="pub-title">Evolved Readers of 5‐Carboxylcytosine CpG Dyads Reveal a High Versatility of the Methyl‐CpG‐Binding Domain for Recognition of Noncanonical Epigenetic Marks. 
-              </span>
-          </div><div class="pub-line"><em>Angew. Chem. Int. Ed.</em> <strong>2024</strong>, <em>63</em>(17), e202318837.
-            <span class="pub-id">
-              <a href="https://doi.org/10.1002/anie.202318837" class="pub-doi">
-                <span class="pub-id-full">doi:10.1002/anie.202318837</span>
-                <span class="pub-id-short">DOI</span>
-              </a>
-            </span>
-          <span class="pub-id">
-              <a href="https://pubmed.ncbi.nlm.nih.gov/38284298/" class="pub-pmid">
-                <span class="pub-id-full">PMID:38284298</span>
-                <span class="pub-id-short">PMID</span>
-              </a>
-            </span></div>
-        </div><div class="pub-tags"><button class="tag" type="button" data-tag="dna-modifications">DNA Modifications</button></div></li><li class="pub tag-dna-modifications tag-protein-binding" data-priority="medium" data-num="16">
-        <div class="pub-main">
-          <div class="pub-line">
-            <span class="pub-authors">
-              H. Singh; C. K. Das; <span class="me">B. C. Buchmuller</span>; L. V. Schäfer; D. Summerer; R. Linser. </span>
-          </div><div class="pub-line">
-            <span class="pub-title">Epigenetic CpG duplex marks probed by an evolved DNA reader via a well-tempered conformational plasticity. 
-              </span>
-          </div><div class="pub-line"><em>Nucleic Acids Res.</em> <strong>2023</strong>, <em>51</em>(12), 6495–6506.
-            <span class="pub-id">
-              <a href="https://doi.org/10.1093/nar/gkad134" class="pub-doi">
-                <span class="pub-id-full">doi:10.1093/nar/gkad134</span>
-                <span class="pub-id-short">DOI</span>
-              </a>
-            </span>
-          <span class="pub-id">
-              <a href="https://pubmed.ncbi.nlm.nih.gov/36919612/" class="pub-pmid">
-                <span class="pub-id-full">PMID:36919612</span>
-                <span class="pub-id-short">PMID</span>
-              </a>
-            </span>
-            <span class="pub-id">
-              <a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC10325892/" class="pub-pmcid">
-                <span class="pub-id-full">PMC10325892</span>
-                <span class="pub-id-short">PMC</span>
-              </a>
-            </span>
-          </div>
-        </div><div class="pub-tags"><button class="tag" type="button" data-tag="dna-modifications">DNA Modifications</button><button class="tag" type="button" data-tag="protein-binding">Protein Binding</button></div></li><li class="pub tag-rna-translation" data-priority="low" data-num="15">
-        <div class="pub-main">
-          <div class="pub-line">
-            <span class="pub-authors">
-              J. Nowacki; M. Malenica; S. Schmeing; D. Schiller; <span class="me">B. Buchmuller</span>; G. Amrahova; P. ‘t Hart. </span>
-          </div><div class="pub-line">
-            <span class="pub-title">A translational repression reporter assay for the analysis of RNA-binding protein consensus sites. 
-              </span>
-          </div><div class="pub-line"><em>RNA Biol.</em> <strong>2023</strong>, <em>20</em>(1), 85–94.
-            <span class="pub-id">
-              <a href="https://doi.org/10.1080/15476286.2023.2192553" class="pub-doi">
-                <span class="pub-id-full">doi:10.1080/15476286.2023.2192553</span>
-                <span class="pub-id-short">DOI</span>
-              </a>
-            </span>
-          <span class="pub-id">
-              <a href="https://pubmed.ncbi.nlm.nih.gov/36946649/" class="pub-pmid">
-                <span class="pub-id-full">PMID:36946649</span>
-                <span class="pub-id-short">PMID</span>
-              </a>
-            </span>
-            <span class="pub-id">
-              <a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC10038052/" class="pub-pmcid">
-                <span class="pub-id-full">PMC10038052</span>
-                <span class="pub-id-short">PMC</span>
-              </a>
-            </span>
-          </div>
-        </div><div class="pub-tags"><button class="tag" type="button" data-tag="rna-translation">RNA Translation</button></div></li><li class="pub tag-dna-modifications tag-imaging tag-methods" data-priority="low" data-num="14">
-        <div class="pub-main">
-          <div class="pub-line">
-            <span class="pub-authors">
-              A. Jung; A. Munõz-López; <span class="me">B. C. Buchmuller</span>; S. Banerjee; D. Summerer. </span>
-          </div><div class="pub-line">
-            <span class="pub-title">Imaging-Based In Situ Analysis of 5‑Methylcytosine at Low Repetitive Single Gene Loci with Transcription-Activator-Like Effector Probes. 
-              </span>
-          </div><div class="pub-line"><em>ACS Chem. Biol.</em> <strong>2023</strong>, <em>18</em>(2), 230–236.
-            <span class="pub-id">
-              <a href="https://doi.org/10.1021/acschembio.2c00857" class="pub-doi">
-                <span class="pub-id-full">doi:10.1021/acschembio.2c00857</span>
-                <span class="pub-id-short">DOI</span>
-              </a>
-            </span>
-          <span class="pub-id">
-              <a href="https://pubmed.ncbi.nlm.nih.gov/36693632/" class="pub-pmid">
-                <span class="pub-id-full">PMID:36693632</span>
-                <span class="pub-id-short">PMID</span>
-              </a>
-            </span>
-            <span class="pub-id">
-              <a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC9942090/" class="pub-pmcid">
-                <span class="pub-id-full">PMC9942090</span>
-                <span class="pub-id-short">PMC</span>
-              </a>
-            </span>
-          </div>
-        </div><div class="pub-tags"><button class="tag" type="button" data-tag="dna-modifications">DNA Modifications</button><button class="tag" type="button" data-tag="imaging">Imaging</button><button class="tag" type="button" data-tag="methods">Methods</button></div></li><li class="pub tag-dna-modifications tag-medicinal-chemistry" data-priority="low" data-num="13">
-        <div class="pub-main">
-          <div class="pub-line">
-            <span class="pub-authors">
-              S. Palei; J. Weisner; M. Vogt; R. Gontla; <span class="me">B. Buchmuller</span>; C. Ehrt; T. Grabe; S. Kleinbölting; M. Müller; G. H. Clever; D. Rauh; D. Summerer. </span>
-          </div><div class="pub-line">
-            <span class="pub-title">A high-throughput effector screen identifies a novel small molecule scaffold for inhibition of ten-eleven translocation dioxygenase 2. 
-              </span>
-          </div><div class="pub-line"><em>RSC Med. Chem.</em> <strong>2022</strong>, <em>13</em>(12), 1540–1548.
-            <span class="pub-id">
-              <a href="https://doi.org/10.1039/d2md00186a" class="pub-doi">
-                <span class="pub-id-full">doi:10.1039/d2md00186a</span>
-                <span class="pub-id-short">DOI</span>
-              </a>
-            </span>
-          <span class="pub-id">
-              <a href="https://pubmed.ncbi.nlm.nih.gov/36545435/" class="pub-pmid">
-                <span class="pub-id-full">PMID:36545435</span>
-                <span class="pub-id-short">PMID</span>
-              </a>
-            </span>
-            <span class="pub-id">
-              <a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC9749932/" class="pub-pmcid">
-                <span class="pub-id-full">PMC9749932</span>
-                <span class="pub-id-short">PMC</span>
-              </a>
-            </span>
-          </div>
-        </div><div class="pub-tags"><button class="tag" type="button" data-tag="dna-modifications">DNA Modifications</button><button class="tag" type="button" data-tag="medicinal-chemistry">Medicinal Chemistry</button></div></li><li class="pub tag-dna-modifications tag-protein-engineering" data-priority="high" data-num="12">
-        <div class="pub-main">
-          <div class="pub-line">
-            <span class="pub-authors">
-              <span class="me">B. C. Buchmuller</span>; J. Dröden; H. Singh; S. Palei; M. Drescher; R. Linser; D. Summerer. </span>
-          </div><div class="pub-line">
-            <span class="pub-title">Evolved DNA Duplex Readers for Strand-Asymmetrically Modified 5‑Hydroxymethylcytosine/5-Methylcytosine CpG Dyads. 
-              </span>
-          </div><div class="pub-line"><em>JACS</em> <strong>2022</strong>, <em>144</em>(7), 2987–2993.
-            <span class="pub-id">
-              <a href="https://doi.org/10.1021/jacs.1c10678" class="pub-doi">
-                <span class="pub-id-full">doi:10.1021/jacs.1c10678</span>
-                <span class="pub-id-short">DOI</span>
-              </a>
-            </span>
-          <span class="pub-id">
-              <a href="https://pubmed.ncbi.nlm.nih.gov/35157801/" class="pub-pmid">
-                <span class="pub-id-full">PMID:35157801</span>
-                <span class="pub-id-short">PMID</span>
-              </a>
-            </span>
-            <span class="pub-id">
-              <a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC8874921/" class="pub-pmcid">
-                <span class="pub-id-full">PMC8874921</span>
-                <span class="pub-id-short">PMC</span>
-              </a>
-            </span>
-          </div>
-        </div><div class="pub-tags"><button class="tag" type="button" data-tag="dna-modifications">DNA Modifications</button><button class="tag" type="button" data-tag="protein-engineering">Protein Engineering</button></div><div class="pub-notes"><span class="note"><strong>Impact:</strong> First affinity probes enabling selective enrichment of strand-asymmetric epigenetic DNA marks from genomic DNA</span></div></li><li class="pub tag-dna-modifications tag-imaging tag-methods" data-priority="low" data-num="11">
-        <div class="pub-main">
-          <div class="pub-line">
-            <span class="pub-authors">
-              Á. Muñoz‐López; A. Jung; <span class="me">B. Buchmuller</span>; J. Wolffgramm; S. Maurer; A. Witte; D. Summerer. </span>
-          </div><div class="pub-line">
-            <span class="pub-title">Engineered TALE Repeats for Enhanced Imaging‐Based Analysis of Cellular 5‐Methylcytosine. 
-              </span>
-          </div><div class="pub-line"><em>ChemBioChem</em> <strong>2021</strong>, <em>22</em>(4), 645–651.
-            <span class="pub-id">
-              <a href="https://doi.org/10.1002/cbic.202000563" class="pub-doi">
-                <span class="pub-id-full">doi:10.1002/cbic.202000563</span>
-                <span class="pub-id-short">DOI</span>
-              </a>
-            </span>
-          <span class="pub-id">
-              <a href="https://pubmed.ncbi.nlm.nih.gov/32991020/" class="pub-pmid">
-                <span class="pub-id-full">PMID:32991020</span>
-                <span class="pub-id-short">PMID</span>
-              </a>
-            </span>
-            <span class="pub-id">
-              <a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC7894354/" class="pub-pmcid">
-                <span class="pub-id-full">PMC7894354</span>
-                <span class="pub-id-short">PMC</span>
-              </a>
-            </span>
-          </div>
-        </div><div class="pub-tags"><button class="tag" type="button" data-tag="dna-modifications">DNA Modifications</button><button class="tag" type="button" data-tag="imaging">Imaging</button><button class="tag" type="button" data-tag="methods">Methods</button></div></li><li class="pub tag-chemical-biology tag-dna-modifications tag-methods" data-priority="medium" data-num="10">
-        <div class="pub-main">
-          <div class="pub-line">
-            <span class="pub-authors">
-              J. Wolffgramm; <span class="me">B. Buchmuller</span>; S. Palei; Á. Muñoz‐López; J. Kanne; P. Janning; M. R. Schweiger; D. Summerer. </span>
-          </div><div class="pub-line">
-            <span class="pub-title">Light‐Activation of DNA‐Methyltransferases. 
-              </span>
-          </div><div class="pub-line"><em>Angew. Chem. Int. Ed.</em> <strong>2021</strong>, <em>60</em>(24), 13507–13512.
-            <span class="pub-id">
-              <a href="https://doi.org/10.1002/anie.202103945" class="pub-doi">
-                <span class="pub-id-full">doi:10.1002/anie.202103945</span>
-                <span class="pub-id-short">DOI</span>
-              </a>
-            </span>
-          <span class="pub-id">
-              <a href="https://pubmed.ncbi.nlm.nih.gov/33826797/" class="pub-pmid">
-                <span class="pub-id-full">PMID:33826797</span>
-                <span class="pub-id-short">PMID</span>
-              </a>
-            </span>
-            <span class="pub-id">
-              <a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC8251764/" class="pub-pmcid">
-                <span class="pub-id-full">PMC8251764</span>
-                <span class="pub-id-short">PMC</span>
-              </a>
-            </span>
-          </div>
-        </div><div class="pub-tags"><button class="tag" type="button" data-tag="chemical-biology">Chemical Biology</button><button class="tag" type="button" data-tag="dna-modifications">DNA Modifications</button><button class="tag" type="button" data-tag="methods">Methods</button></div></li><li class="pub tag-chemical-biology tag-dna-modifications tag-methods" data-priority="high" data-num="9">
-        <div class="pub-main">
-          <div class="pub-line">
-            <span class="pub-authors">
-              S. Palei; <span class="me">B. Buchmuller</span>; J. Wolffgramm; A. Muñoz-Lopez; S. Jung; P. Czodrowski; D. Summerer. </span>
-          </div><div class="pub-line">
-            <span class="pub-title">Light-Activatable TET-Dioxygenases Reveal Dynamics of 5‑Methylcytosine Oxidation and Transcriptome Reorganization. 
-              </span>
-          </div><div class="pub-line"><em>JACS</em> <strong>2020</strong>, <em>142</em>(16), 7289–7294.
-            <span class="pub-id">
-              <a href="https://doi.org/10.1021/jacs.0c01193" class="pub-doi">
-                <span class="pub-id-full">doi:10.1021/jacs.0c01193</span>
-                <span class="pub-id-short">DOI</span>
-              </a>
-            </span>
-          <span class="pub-id">
-              <a href="https://pubmed.ncbi.nlm.nih.gov/32286069/" class="pub-pmid">
-                <span class="pub-id-full">PMID:32286069</span>
-                <span class="pub-id-short">PMID</span>
-              </a>
-            </span></div>
-        </div><div class="pub-tags"><button class="tag" type="button" data-tag="chemical-biology">Chemical Biology</button><button class="tag" type="button" data-tag="dna-modifications">DNA Modifications</button><button class="tag" type="button" data-tag="methods">Methods</button></div><div class="pub-notes"><span class="note"><strong>Impact:</strong> First temporal control of TET dioxygenase activity in mammalian cells enabling time-resolved monitoring of methylation dynamics and transcriptome reorganization</span></div></li><li class="pub tag-crispr tag-functional-genomics tag-methods" data-priority="high" data-num="8">
-        <div class="pub-main">
-          <div class="pub-line">
-            <span class="pub-authors">
-              J. Fueller; K. Herbst; M. Meurer; K. Gubicza; B. Kurtulmus; J. D. Knopf; D. Kirrmaier; <span class="me">B. C. Buchmuller</span>; G. Pereira; M. K. Lemberg; M. Knop. </span>
-          </div><div class="pub-line">
-            <span class="pub-title">CRISPR-Cas12a–assisted PCR tagging of mammalian genes. 
-              </span>
-          </div><div class="pub-line"><em>J. Cell Biol.</em> <strong>2020</strong>, <em>219</em>(6), e201910210.
-            <span class="pub-id">
-              <a href="https://doi.org/10.1083/jcb.201910210" class="pub-doi">
-                <span class="pub-id-full">doi:10.1083/jcb.201910210</span>
-                <span class="pub-id-short">DOI</span>
-              </a>
-            </span>
-          <span class="pub-id">
-              <a href="https://pubmed.ncbi.nlm.nih.gov/32406907/" class="pub-pmid">
-                <span class="pub-id-full">PMID:32406907</span>
-                <span class="pub-id-short">PMID</span>
-              </a>
-            </span>
-            <span class="pub-id">
-              <a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC7265327/" class="pub-pmcid">
-                <span class="pub-id-full">PMC7265327</span>
-                <span class="pub-id-short">PMC</span>
-              </a>
-            </span>
-          </div>
-        </div><div class="pub-tags"><button class="tag" type="button" data-tag="crispr">CRISPR</button><button class="tag" type="button" data-tag="functional-genomics">Functional Genomics</button><button class="tag" type="button" data-tag="methods">Methods</button></div><div class="pub-notes"><span class="note"><strong>Impact:</strong> Extended our CASTLING approach (Buchmuller et al., Nat. Commun. 2019) for gene editing to mammalian cells with up to 60% in-frame tagging efficiency; now widely adopted for endogenous protein tagging studies</span></div></li><li class="pub" data-priority="high" data-num="7">
-        <div class="pub-main">
-          <div class="pub-line">
-            <span class="pub-authors">
-              Á. Muñoz‐López; <span class="me">B. Buchmuller</span>; J. Wolffgramm; A. Jung; M. Hussong; J. Kanne; M. R. Schweiger; D. Summerer. </span>
-          </div><div class="pub-line">
-            <span class="pub-title">Designer Receptors for Nucleotide‐Resolution Analysis of Genomic 5‐Methylcytosine by Cellular Imaging. 
-              </span>
-          </div><div class="pub-line"><em>Angew. Chem. Int. Ed.</em> <strong>2020</strong>, <em>59</em>(23), 8927–8931.
-            <span class="pub-id">
-              <a href="https://doi.org/10.1002/anie.202001935" class="pub-doi">
-                <span class="pub-id-full">doi:10.1002/anie.202001935</span>
-                <span class="pub-id-short">DOI</span>
-              </a>
-            </span>
-          <span class="pub-id">
-              <a href="https://pubmed.ncbi.nlm.nih.gov/32167219/" class="pub-pmid">
-                <span class="pub-id-full">PMID:32167219</span>
-                <span class="pub-id-short">PMID</span>
-              </a>
-            </span>
-            <span class="pub-id">
-              <a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC7318601/" class="pub-pmcid">
-                <span class="pub-id-full">PMC7318601</span>
-                <span class="pub-id-short">PMC</span>
-              </a>
-            </span>
-          </div>
-        </div><div class="pub-notes"><span class="note"><strong>Impact:</strong> First nucleotide-resolution imaging of 5mC in single cells; enabled direct correlation between epigenetic marks and transcription factor recruitment</span></div></li><li class="pub tag-chromatin tag-dna-modifications tag-human-disease" data-priority="high" data-num="6">
-        <div class="pub-main">
-          <div class="pub-line">
-            <span class="pub-authors">
-              <span class="me">B. C. Buchmuller</span>; B. Kosel; D. Summerer. </span>
-          </div><div class="pub-line">
-            <span class="pub-title">Complete Profiling of Methyl-CpG-Binding Domains for Combinations of Cytosine Modifications at CpG Dinucleotides Reveals Differential Read-out in Normal and Rett-Associated States. 
-              </span>
-          </div><div class="pub-line"><em>Sci. Rep.</em> <strong>2020</strong>, <em>10</em>(1), 4053.
-            <span class="pub-id">
-              <a href="https://doi.org/10.1038/s41598-020-61030-1" class="pub-doi">
-                <span class="pub-id-full">doi:10.1038/s41598-020-61030-1</span>
-                <span class="pub-id-short">DOI</span>
-              </a>
-            </span>
-          <span class="pub-id">
-              <a href="https://pubmed.ncbi.nlm.nih.gov/32132616/" class="pub-pmid">
-                <span class="pub-id-full">PMID:32132616</span>
-                <span class="pub-id-short">PMID</span>
-              </a>
-            </span>
-            <span class="pub-id">
-              <a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC7055227/" class="pub-pmcid">
-                <span class="pub-id-full">PMC7055227</span>
-                <span class="pub-id-short">PMC</span>
-              </a>
-            </span>
-          </div>
-        </div><div class="pub-tags"><button class="tag" type="button" data-tag="chromatin">Chromatin</button><button class="tag" type="button" data-tag="dna-modifications">DNA Modifications</button><button class="tag" type="button" data-tag="human-disease">Human Disease</button></div><div class="pub-notes"><span class="note"><strong>Impact:</strong> First comprehensive profiling of the human MBD protein family revealing differential recognition of oxidized CpG marks by Rett syndrome-associated MeCP2 mutations</span></div></li><li class="pub tag-functional-genomics tag-yeast tag-methods tag-crispr" data-priority="pinned" data-num="5">
-        <div class="pub-main">
-          <div class="pub-line">
-            <span class="pub-authors">
-              <span class="me">B. C. Buchmuller</span>*; K. Herbst*; M. Meurer; D. Kirrmaier; E. Sass; E. D. Levy; M. Knop. </span>
-          </div><div class="pub-line">
-            <span class="pub-title">Pooled clone collections by multiplexed CRISPR-Cas12a-assisted gene tagging in yeast. 
-              </span>
-          </div><div class="pub-line"><em>Nat. Commun.</em> <strong>2019</strong>, <em>10</em>(1), 2960.
-            <span class="pub-id">
-              <a href="https://doi.org/10.1038/s41467-019-10816-7" class="pub-doi">
-                <span class="pub-id-full">doi:10.1038/s41467-019-10816-7</span>
-                <span class="pub-id-short">DOI</span>
-              </a>
-            </span>
-          <span class="pub-id">
-              <a href="https://pubmed.ncbi.nlm.nih.gov/31273196/" class="pub-pmid">
-                <span class="pub-id-full">PMID:31273196</span>
-                <span class="pub-id-short">PMID</span>
-              </a>
-            </span>
-            <span class="pub-id">
-              <a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC6609715/" class="pub-pmcid">
-                <span class="pub-id-full">PMC6609715</span>
-                <span class="pub-id-short">PMC</span>
-              </a>
-            </span>
-          </div>
-        </div><div class="pub-tags"><button class="tag" type="button" data-tag="functional-genomics">Functional Genomics</button><button class="tag" type="button" data-tag="yeast">Yeast</button><button class="tag" type="button" data-tag="methods">Methods</button><button class="tag" type="button" data-tag="crispr">CRISPR</button></div><div class="pub-notes"><span class="note"><strong>Impact:</strong> CASTLING enables rapid construction of yeast clone libraries with >90% tagging efficiency; method adapted for mammalian gene tagging (Fueller et al., J. Cell Biol. 2020) and cited in advanced Cas12a engineering studies</span></div></li><li class="pub tag-dna-modifications tag-methods" data-priority="low" data-num="4">
-        <div class="pub-main">
-          <div class="pub-line">
-            <span class="pub-authors">
-              M. Gieß; A. Muñoz-López; <span class="me">B. Buchmuller</span>; G. Kubik; D. Summerer. </span>
-          </div><div class="pub-line">
-            <span class="pub-title">Programmable Protein–DNA Cross-Linking for the Direct Capture and Quantification of 5‑Formylcytosine. 
-              </span>
-          </div><div class="pub-line"><em>JACS</em> <strong>2019</strong>, <em>141</em>(24), 9453–9457.
-            <span class="pub-id">
-              <a href="https://doi.org/10.1021/jacs.9b01432" class="pub-doi">
-                <span class="pub-id-full">doi:10.1021/jacs.9b01432</span>
-                <span class="pub-id-short">DOI</span>
-              </a>
-            </span>
-          <span class="pub-id">
-              <a href="https://pubmed.ncbi.nlm.nih.gov/31180648/" class="pub-pmid">
-                <span class="pub-id-full">PMID:31180648</span>
-                <span class="pub-id-short">PMID</span>
-              </a>
-            </span></div>
-        </div><div class="pub-tags"><button class="tag" type="button" data-tag="dna-modifications">DNA Modifications</button><button class="tag" type="button" data-tag="methods">Methods</button></div></li><li class="pub tag-dna-modifications tag-protein-engineering" data-priority="low" data-num="3">
-        <div class="pub-main">
-          <div class="pub-line">
-            <span class="pub-authors">
-              S. Maurer; <span class="me">B. Buchmuller</span>; C. Ehrt; J. Jasper; O. Koch; D. Summerer. </span>
-          </div><div class="pub-line">
-            <span class="pub-title">Overcoming conservation in TALE–DNA interactions: a minimal repeat scaffold enables selective recognition of an oxidized 5-methylcytosine. 
-              </span>
-          </div><div class="pub-line"><em>Chem. Sci.</em> <strong>2018</strong>, <em>9</em>(36), 7247–7252.
-            <span class="pub-id">
-              <a href="https://doi.org/10.1039/c8sc01958d" class="pub-doi">
-                <span class="pub-id-full">doi:10.1039/c8sc01958d</span>
-                <span class="pub-id-short">DOI</span>
-              </a>
-            </span>
-          <span class="pub-id">
-              <a href="https://pubmed.ncbi.nlm.nih.gov/30288245/" class="pub-pmid">
-                <span class="pub-id-full">PMID:30288245</span>
-                <span class="pub-id-short">PMID</span>
-              </a>
-            </span>
-            <span class="pub-id">
-              <a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC6148557/" class="pub-pmcid">
-                <span class="pub-id-full">PMC6148557</span>
-                <span class="pub-id-short">PMC</span>
-              </a>
-            </span>
-          </div>
-        </div><div class="pub-tags"><button class="tag" type="button" data-tag="dna-modifications">DNA Modifications</button><button class="tag" type="button" data-tag="protein-engineering">Protein Engineering</button></div></li><li class="pub tag-functional-genomics tag-yeast tag-methods" data-priority="medium" data-num="2">
-        <div class="pub-main">
-          <div class="pub-line">
-            <span class="pub-authors">
-              M. Meurer; Y. Duan; E. Sass; I. Kats; K. Herbst; <span class="me">B. C. Buchmuller</span>; V. Dederer; F. Huber; D. Kirrmaier; M. Štefl; K. V. Laer; T. P. Dick; M. K. Lemberg; A. Khmelinskii; E. D. Levy; M. Knop. </span>
-          </div><div class="pub-line">
-            <span class="pub-title">Genome-wide C-SWAT library for high-throughput yeast genome tagging. 
-              </span>
-          </div><div class="pub-line"><em>Nat. Methods</em> <strong>2018</strong>, <em>15</em>(8), 598–600.
-            <span class="pub-id">
-              <a href="https://doi.org/10.1038/s41592-018-0045-8" class="pub-doi">
-                <span class="pub-id-full">doi:10.1038/s41592-018-0045-8</span>
-                <span class="pub-id-short">DOI</span>
-              </a>
-            </span>
-          <span class="pub-id">
-              <a href="https://pubmed.ncbi.nlm.nih.gov/29988096/" class="pub-pmid">
-                <span class="pub-id-full">PMID:29988096</span>
-                <span class="pub-id-short">PMID</span>
-              </a>
-            </span></div>
-        </div><div class="pub-tags"><button class="tag" type="button" data-tag="functional-genomics">Functional Genomics</button><button class="tag" type="button" data-tag="yeast">Yeast</button><button class="tag" type="button" data-tag="methods">Methods</button></div></li><li class="pub tag-cancer tag-medicinal-chemistry tag-imaging" data-priority="low" data-num="1">
-        <div class="pub-main">
-          <div class="pub-line">
-            <span class="pub-authors">
-              C. Liolios; <span class="me">B. Buchmuller</span>; U. Bauder-Wüst; M. Schäfer; K. Leotta; U. Haberkorn; M. Eder; K. Kopka. </span>
-          </div><div class="pub-line">
-            <span class="pub-title">Monomeric and Dimeric 68Ga-Labeled Bombesin Analogues for Positron Emission Tomography (PET) Imaging of Tumors Expressing Gastrin-Releasing Peptide Receptors (GRPrs). 
-              </span>
-          </div><div class="pub-line"><em>J. Med. Chem.</em> <strong>2018</strong>, <em>61</em>(5), 2062–2074.
-            <span class="pub-id">
-              <a href="https://doi.org/10.1021/acs.jmedchem.7b01856" class="pub-doi">
-                <span class="pub-id-full">doi:10.1021/acs.jmedchem.7b01856</span>
-                <span class="pub-id-short">DOI</span>
-              </a>
-            </span>
-          <span class="pub-id">
-              <a href="https://pubmed.ncbi.nlm.nih.gov/29432691/" class="pub-pmid">
-                <span class="pub-id-full">PMID:29432691</span>
-                <span class="pub-id-short">PMID</span>
-              </a>
-            </span></div>
-        </div><div class="pub-tags"><button class="tag" type="button" data-tag="cancer">Cancer</button><button class="tag" type="button" data-tag="medicinal-chemistry">Medicinal Chemistry</button><button class="tag" type="button" data-tag="imaging">Imaging</button></div></li></ul><h3 class="pub-section">Reviews, Book Chapters, Monographs</h3>
-    <ul class="publist" id="pub-list-3"><li class="pub tag-dna-modifications tag-protein-engineering tag-methods" data-priority="high" data-num="3">
-        <div class="pub-main">
-          <div class="pub-line">
-            <span class="pub-authors">
-              <span class="me">B. C. Buchmuller</span>. </span>
-          </div><div class="pub-line">
-            <span class="pub-title">Deciphering strand-asymmetrically modified CpG dyads in the DNA double-helix. 
-              </span>
-          </div><div class="pub-line"> <strong>2021</strong>.
-            <span class="pub-id">
-              <a href="https://doi.org/10.17877/DE290R-22422" class="pub-doi">
-                <span class="pub-id-full">doi:10.17877/DE290R-22422</span>
-                <span class="pub-id-short">DOI</span>
-              </a>
-            </span>
-          </div>
-        </div><div class="pub-tags"><button class="tag" type="button" data-tag="dna-modifications">DNA Modifications</button><button class="tag" type="button" data-tag="protein-engineering">Protein Engineering</button><button class="tag" type="button" data-tag="methods">Methods</button></div><div class="pub-notes"></div></li><li class="pub tag-dna-modifications tag-imaging tag-methods" data-priority="low" data-num="2">
-        <div class="pub-main">
-          <div class="pub-line">
-            <span class="pub-authors">
-              <span class="me">B. Buchmuller</span>; Á. Muñoz-López; M. Gieß; D. Summerer. </span>
-          </div><div class="pub-line">
-            <span class="pub-title">DNA Modifications, Methods and Protocols. 
-              </span>
-          </div><div class="pub-line"><em>Methods Mol. Biol.</em> <strong>2021</strong>, <em>2198</em>, 381–399.
-            <span class="pub-id">
-              <a href="https://doi.org/10.1007/978-1-0716-0876-0" class="pub-doi">
-                <span class="pub-id-full">doi:10.1007/978-1-0716-0876-0</span>
-                <span class="pub-id-short">DOI</span>
-              </a>
-            </span>
-          <span class="pub-id">
-              <a href="https://pubmed.ncbi.nlm.nih.gov/32822046/" class="pub-pmid">
-                <span class="pub-id-full">PMID:32822046</span>
-                <span class="pub-id-short">PMID</span>
-              </a>
-            </span></div>
-        </div><div class="pub-tags"><button class="tag" type="button" data-tag="dna-modifications">DNA Modifications</button><button class="tag" type="button" data-tag="imaging">Imaging</button><button class="tag" type="button" data-tag="methods">Methods</button></div></li><li class="pub tag-dna-modifications tag-imaging tag-methods" data-priority="low" data-num="1">
-        <div class="pub-main">
-          <div class="pub-line">
-            <span class="pub-authors">
-              <span class="me">B. Buchmuller</span>; A. Jung; Á. Muñoz-López; D. Summerer. </span>
-          </div><div class="pub-line">
-            <span class="pub-title">Programmable tools for targeted analysis of epigenetic DNA modifications. 
-              </span>
-          </div><div class="pub-line"><em>Curr. Opin. Chem. Biol.</em> <strong>2021</strong>, <em>63</em>, 1–10.
-            <span class="pub-id">
-              <a href="https://doi.org/10.1016/j.cbpa.2021.01.002" class="pub-doi">
-                <span class="pub-id-full">doi:10.1016/j.cbpa.2021.01.002</span>
-                <span class="pub-id-short">DOI</span>
-              </a>
-            </span>
-          <span class="pub-id">
-              <a href="https://pubmed.ncbi.nlm.nih.gov/33588304/" class="pub-pmid">
-                <span class="pub-id-full">PMID:33588304</span>
-                <span class="pub-id-short">PMID</span>
-              </a>
-            </span></div>
-        </div><div class="pub-tags"><button class="tag" type="button" data-tag="dna-modifications">DNA Modifications</button><button class="tag" type="button" data-tag="imaging">Imaging</button><button class="tag" type="button" data-tag="methods">Methods</button></div></li></ul><div class="line-split"><span class="footnote">* <i>denotes equal contribution</i></span><span class="footnote">
-      <a href="https://orcid.org/0000-0002-4915-5949">ORCID: 0000-0002-4915-5949</a>
-    </span></div>
+<h3 id="fellowships-and-awards">Fellowships and awards</h3>
 
+<ul>
+  <li>EMBO Postdoctoral Research Fellowship, 2022–2024</li>
+  <li>Biomedizin-Preis (Young Talent Award), 2023</li>
+  <li>Rainer Rudolph Prize, 2022</li>
+  <li>Add-on Fellowship for Interdisciplinary Life Science, Joachim Herz Stiftung, 2019–2022</li>
+  <li>Fellow of the International Max Planck Research School for Living Matter, 2017–2021</li>
+</ul>
 
 	</div>
 </section>
@@ -772,7 +176,7 @@
 		
 			<h1 class="section-header">Protocols</h1>
 		
-		<p>Good protocols evolve over time, but printed copies often don’t. Here, I share <a href="/essays/lab-protocols">version-controlled write-ups</a> to help track changes.</p>
+		<p>As in all biology, good protocols evolve over time, but printed copies often don’t. Here are my <a href="/essays/lab-protocols">version-controlled write-ups</a>:</p>
 
 <div class="proto-tools">
   <a href="/recipes" class="proto-tool">
@@ -1585,18 +989,605 @@
 <div id="chapter-view" class="chapter-view"></div>
 
 <script>const PROTOCOL_CHAPTERS = [{"name":"Basics","protocols":["SOP0030","SOP0031","SOP0036","SOP0035","SOP0101"]},{"name":"Tissue culture","protocols":["SOP0014","SOP0015","SOP0016","SOP0012","SOP0013","SOP0017","SOP0018","SOP0038","SOP0019","SOP0028","SOP0029"]},{"name":"Molecular biology","protocols":["SOP0024","SOP0023","SOP0020","SOP0032","SOP0021","SOP0022","SOP0034","SOP0033","SOP0039"]},{"name":"Biochemistry","protocols":["SOP0003","SOP0007","SOP0010","SOP0011","SOP0008","SOP0009","SOP0027"]},{"name":"Sub-cellular fractionation","protocols":["SOP0002","SOP0001"]},{"name":"Native chromatin","protocols":["SOP0025","SOP0026"]},{"name":"Designer chromatin","protocols":["SOP0004","SOP0005","SOP0006"]},{"name":"Bioinformatics & data analysis","protocols":["SOP0042"]}];</script>
-<script src="/assets/js/protocol-index.js?v=1789000109" defer></script>
+<script src="/assets/js/protocol-index.js?v=1790413287" defer></script>
 
 <div class="line-split">
   <span class="footnote"></span>
   <span class="footnote">
-    <span href="https://github.com/benjbuch/lab-protocols.git" target="_blank" rel="noopener">View on GitHub</span>
+    <!-- TODO: restore as a real <a> link once the lab-protocols repo is public -->
+    <!-- <span href="https://github.com/benjbuch/lab-protocols.git" target="_blank" rel="noopener">View on GitHub</span> -->
     <!-- <span class="muted">GitHub: <em>(not yet public)</em></span> -->
-    ·
-    <a href="https://buymeacoffee.com/benjbuch" rel="noopener">Buy me a coffee</a>
   </span>
 </div>
 
+
+
+	</div>
+</section>
+<section id="publications">
+	<div class="container card">
+		
+			<h1 class="section-header">Publications</h1>
+		
+		<!-- Begin JSON-LD -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [{
+      "@type": "ScholarlyArticle",
+      "name": "Pooled clone collections by multiplexed CRISPR-Cas12a-assisted gene tagging in yeast",
+      "author": [{ "@type": "Person", "name": "Benjamin Buchmuller" }, { "@type": "Person", "name": "Konrad Herbst" }, { "@type": "Person", "name": "Matthias Meurer" }, { "@type": "Person", "name": "Daniel Kirrmaier" }, { "@type": "Person", "name": "Ehud Sass" }, { "@type": "Person", "name": "Emmanuel D. Levy" }, { "@type": "Person", "name": "Michael Knop" }],
+      "isPartOf": { "@type": "Periodical", "name": "Nat. Commun." },
+      "datePublished": "2019",
+      "pagination": "2960",
+      "identifier": [{ "@type": "PropertyValue", "propertyID": "DOI", "value": "10.1038/s41467-019-10816-7" }, { "@type": "PropertyValue", "propertyID": "PMID", "value": "31273196" }, { "@type": "PropertyValue", "propertyID": "PMCID", "value": "PMC6609715" }],
+      "sameAs": ["https://doi.org/10.1038/s41467-019-10816-7", "https://pubmed.ncbi.nlm.nih.gov/31273196", "https://www.ncbi.nlm.nih.gov/pmc/articles/PMC6609715"],
+      "keywords": "Functional Genomics, Yeast, Methods, CRISPR",
+      "url": "https://doi.org/10.1038/s41467-019-10816-7"}, {
+      "@type": "ScholarlyArticle",
+      "name": "HM-DyadCap – capture and mapping of 5-hydroxymethylcytosine/5-methylcytosine CpG dyads in mammalian DNA",
+      "author": [{ "@type": "Person", "name": "Lena Engelhard" }, { "@type": "Person", "name": "Damian Schiller" }, { "@type": "Person", "name": "Marlon S Zambrano-Mila" }, { "@type": "Person", "name": "Kotryna Keliuotyte" }, { "@type": "Person", "name": "Benjamin Buchmuller" }, { "@type": "Person", "name": "Shashank Tiwari" }, { "@type": "Person", "name": "Jochen Imig" }, { "@type": "Person", "name": "Angela Simeone" }, { "@type": "Person", "name": "Christian Schröter" }, { "@type": "Person", "name": "Sidney Becker" }, { "@type": "Person", "name": "Daniel Summerer" }],
+      "isPartOf": { "@type": "Periodical", "name": "Nucleic Acids Res." },
+      "datePublished": "2026",
+      "pagination": "gkag389",
+      "identifier": [{ "@type": "PropertyValue", "propertyID": "DOI", "value": "10.1093/nar/gkag389" }, { "@type": "PropertyValue", "propertyID": "PMID", "value": "42023651" }, { "@type": "PropertyValue", "propertyID": "PMCID", "value": "PMC13103736" }],
+      "sameAs": ["https://doi.org/10.1093/nar/gkag389", "https://pubmed.ncbi.nlm.nih.gov/42023651", "https://www.ncbi.nlm.nih.gov/pmc/articles/PMC13103736"],
+      "keywords": "DNA Modifications, Genomics",
+      "url": "https://doi.org/10.1093/nar/gkag389"}, {
+      "@type": "ScholarlyArticle",
+      "name": "Evolved DNA Duplex Readers for Strand-Asymmetrically Modified 5‑Hydroxymethylcytosine/5-Methylcytosine CpG Dyads",
+      "author": [{ "@type": "Person", "name": "Benjamin Buchmuller" }, { "@type": "Person", "name": "Jessica Dröden" }, { "@type": "Person", "name": "Himanshu Singh" }, { "@type": "Person", "name": "Shubhendu Palei" }, { "@type": "Person", "name": "Malte Drescher" }, { "@type": "Person", "name": "Rasmus Linser" }, { "@type": "Person", "name": "Daniel Summerer" }],
+      "isPartOf": { "@type": "Periodical", "name": "JACS" },
+      "datePublished": "2022",
+      "pagination": "2987–2993",
+      "identifier": [{ "@type": "PropertyValue", "propertyID": "DOI", "value": "10.1021/jacs.1c10678" }, { "@type": "PropertyValue", "propertyID": "PMID", "value": "35157801" }, { "@type": "PropertyValue", "propertyID": "PMCID", "value": "PMC8874921" }],
+      "sameAs": ["https://doi.org/10.1021/jacs.1c10678", "https://pubmed.ncbi.nlm.nih.gov/35157801", "https://www.ncbi.nlm.nih.gov/pmc/articles/PMC8874921"],
+      "keywords": "DNA Modifications, Protein Engineering",
+      "url": "https://doi.org/10.1021/jacs.1c10678"}, {
+      "@type": "ScholarlyArticle",
+      "name": "Complete Profiling of Methyl-CpG-Binding Domains for Combinations of Cytosine Modifications at CpG Dinucleotides Reveals Differential Read-out in Normal and Rett-Associated States",
+      "author": [{ "@type": "Person", "name": "Benjamin Buchmuller" }, { "@type": "Person", "name": "Brinja Kosel" }, { "@type": "Person", "name": "Daniel Summerer" }],
+      "isPartOf": { "@type": "Periodical", "name": "Sci. Rep." },
+      "datePublished": "2020",
+      "pagination": "4053",
+      "identifier": [{ "@type": "PropertyValue", "propertyID": "DOI", "value": "10.1038/s41598-020-61030-1" }, { "@type": "PropertyValue", "propertyID": "PMID", "value": "32132616" }, { "@type": "PropertyValue", "propertyID": "PMCID", "value": "PMC7055227" }],
+      "sameAs": ["https://doi.org/10.1038/s41598-020-61030-1", "https://pubmed.ncbi.nlm.nih.gov/32132616", "https://www.ncbi.nlm.nih.gov/pmc/articles/PMC7055227"],
+      "keywords": "Chromatin, DNA Modifications, Human Disease",
+      "url": "https://doi.org/10.1038/s41598-020-61030-1"}, {
+      "@type": "ScholarlyArticle",
+      "name": "Light-Activatable TET-Dioxygenases Reveal Dynamics of 5‑Methylcytosine Oxidation and Transcriptome Reorganization",
+      "author": [{ "@type": "Person", "name": "Shubhendu Palei" }, { "@type": "Person", "name": "Benjamin Buchmuller" }, { "@type": "Person", "name": "Jan Wolffgramm" }, { "@type": "Person", "name": "Álvaro Muñoz-Lopez" }, { "@type": "Person", "name": "Sascha Jung" }, { "@type": "Person", "name": "Paul Czodrowski" }, { "@type": "Person", "name": "Daniel Summerer" }],
+      "isPartOf": { "@type": "Periodical", "name": "JACS" },
+      "datePublished": "2020",
+      "pagination": "7289–7294",
+      "identifier": [{ "@type": "PropertyValue", "propertyID": "DOI", "value": "10.1021/jacs.0c01193" }, { "@type": "PropertyValue", "propertyID": "PMID", "value": "32286069" }],
+      "sameAs": ["https://doi.org/10.1021/jacs.0c01193", "https://pubmed.ncbi.nlm.nih.gov/32286069"],
+      "keywords": "Chemical Biology, DNA Modifications, Methods",
+      "url": "https://doi.org/10.1021/jacs.0c01193"}]
+}
+</script>
+<!-- End JSON-LD -->
+
+<!----><div class="priority-toggle">
+  <label class="switch">
+    <input type="checkbox" id="priority-toggle" aria-label="Show key publications" checked>
+    <span class="switch-ui" aria-hidden="true"></span>
+    <span class="switch-text">
+      <span class="off">All works</span>
+      <span class="on">Selected publications (5 out of 21 works shown)</span>
+    </span>
+  </label>
+</div><h3 class="pub-section" hidden>Original Research</h3>
+    <ul class="publist" id="pub-list-2"><li class="pub tag-dna-modifications tag-genomics" data-priority="high" data-num="18">
+        <div class="pub-main"><div class="pub-line pub-line-title">
+            <span class="pub-title">HM-DyadCap – capture and mapping of 5-hydroxymethylcytosine/5-methylcytosine CpG dyads in mammalian DNA</span>
+          </div><div class="pub-line">
+            <span class="pub-authors">
+              L. Engelhard*; D. Schiller*; M. S. Zambrano-Mila; K. Keliuotyte; <span class="me">B. Buchmuller</span>; S. Tiwari; J. Imig; A. Simeone; C. Schröter; S. Becker; D. Summerer. </span>
+          </div>
+          <div class="pub-line"><em>Nucleic Acids Res.</em> 2026, <em>54</em>(8), gkag389.
+            <span class="pub-id">
+              <a href="https://doi.org/10.1093/nar/gkag389" class="pub-doi">
+                <span class="pub-id-full">doi:10.1093/nar/gkag389</span>
+                <span class="pub-id-short">DOI</span>
+              </a>
+            </span>
+          <span class="pub-id">
+              <a href="https://pubmed.ncbi.nlm.nih.gov/42023651/" class="pub-pmid">
+                <span class="pub-id-full">PMID:42023651</span>
+                <span class="pub-id-short">PMID</span>
+              </a>
+            </span>
+            <span class="pub-id">
+              <a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC13103736/" class="pub-pmcid">
+                <span class="pub-id-full">PMC13103736</span>
+                <span class="pub-id-short">PMC</span>
+              </a>
+            </span>
+          </div>
+        </div><div class="pub-notes"><span class="note"><strong>Impact:</strong> Demonstrated that our engineered MBD (Buchmuller et al., JACS 2022) is capable of profiling hmC/mC marks in mammalian genomes</span></div></li><li class="pub tag-dna-modifications" data-priority="medium" data-num="17">
+        <div class="pub-main"><div class="pub-line pub-line-title">
+            <span class="pub-title">Evolved Readers of 5‐Carboxylcytosine CpG Dyads Reveal a High Versatility of the Methyl‐CpG‐Binding Domain for Recognition of Noncanonical Epigenetic Marks</span>
+          </div><div class="pub-line">
+            <span class="pub-authors">
+              B. Kosel; K. Bigler; <span class="me">B. C. Buchmuller</span>; S. R. Acharyya; R. Linser; D. Summerer. </span>
+          </div>
+          <div class="pub-line"><em>Angew. Chem. Int. Ed.</em> 2024, <em>63</em>(17), e202318837.
+            <span class="pub-id">
+              <a href="https://doi.org/10.1002/anie.202318837" class="pub-doi">
+                <span class="pub-id-full">doi:10.1002/anie.202318837</span>
+                <span class="pub-id-short">DOI</span>
+              </a>
+            </span>
+          <span class="pub-id">
+              <a href="https://pubmed.ncbi.nlm.nih.gov/38284298/" class="pub-pmid">
+                <span class="pub-id-full">PMID:38284298</span>
+                <span class="pub-id-short">PMID</span>
+              </a>
+            </span></div>
+        </div><div class="pub-notes"><span class="note"><strong>Impact:</strong> Demonstrated the MBD scaffold can be evolved towards 5-carboxylcytosine recognition despite the stark chemical difference from the natural substrate</span></div></li><li class="pub tag-dna-modifications tag-protein-binding" data-priority="medium" data-num="16">
+        <div class="pub-main"><div class="pub-line pub-line-title">
+            <span class="pub-title">Epigenetic CpG duplex marks probed by an evolved DNA reader via a well-tempered conformational plasticity</span>
+          </div><div class="pub-line">
+            <span class="pub-authors">
+              H. Singh; C. K. Das; <span class="me">B. C. Buchmuller</span>; L. V. Schäfer; D. Summerer; R. Linser. </span>
+          </div>
+          <div class="pub-line"><em>Nucleic Acids Res.</em> 2023, <em>51</em>(12), 6495–6506.
+            <span class="pub-id">
+              <a href="https://doi.org/10.1093/nar/gkad134" class="pub-doi">
+                <span class="pub-id-full">doi:10.1093/nar/gkad134</span>
+                <span class="pub-id-short">DOI</span>
+              </a>
+            </span>
+          <span class="pub-id">
+              <a href="https://pubmed.ncbi.nlm.nih.gov/36919612/" class="pub-pmid">
+                <span class="pub-id-full">PMID:36919612</span>
+                <span class="pub-id-short">PMID</span>
+              </a>
+            </span>
+            <span class="pub-id">
+              <a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC10325892/" class="pub-pmcid">
+                <span class="pub-id-full">PMC10325892</span>
+                <span class="pub-id-short">PMC</span>
+              </a>
+            </span>
+          </div>
+        </div><div class="pub-notes"><span class="note"><strong>Impact:</strong> Revealed molecular basis of hmC/mC reader selectivity through conformational plasticity using combined insights from NMR spectroscopy, MD simulations, and directed evolution</span></div></li><li class="pub tag-rna-translation" data-priority="low" data-num="15">
+        <div class="pub-main"><div class="pub-line pub-line-title">
+            <span class="pub-title">A translational repression reporter assay for the analysis of RNA-binding protein consensus sites</span>
+          </div><div class="pub-line">
+            <span class="pub-authors">
+              J. Nowacki; M. Malenica; S. Schmeing; D. Schiller; <span class="me">B. Buchmuller</span>; G. Amrahova; P. ‘t Hart. </span>
+          </div>
+          <div class="pub-line"><em>RNA Biol.</em> 2023, <em>20</em>(1), 85–94.
+            <span class="pub-id">
+              <a href="https://doi.org/10.1080/15476286.2023.2192553" class="pub-doi">
+                <span class="pub-id-full">doi:10.1080/15476286.2023.2192553</span>
+                <span class="pub-id-short">DOI</span>
+              </a>
+            </span>
+          <span class="pub-id">
+              <a href="https://pubmed.ncbi.nlm.nih.gov/36946649/" class="pub-pmid">
+                <span class="pub-id-full">PMID:36946649</span>
+                <span class="pub-id-short">PMID</span>
+              </a>
+            </span>
+            <span class="pub-id">
+              <a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC10038052/" class="pub-pmcid">
+                <span class="pub-id-full">PMC10038052</span>
+                <span class="pub-id-short">PMC</span>
+              </a>
+            </span>
+          </div>
+        </div><div class="pub-notes"><span class="note"><strong>Impact:</strong> Expanded the translational repression assay for linear RNA sequences enabling broader RNA-binding protein studies</span></div></li><li class="pub tag-dna-modifications tag-imaging tag-methods" data-priority="low" data-num="14">
+        <div class="pub-main"><div class="pub-line pub-line-title">
+            <span class="pub-title">Imaging-Based In Situ Analysis of 5‑Methylcytosine at Low Repetitive Single Gene Loci with Transcription-Activator-Like Effector Probes</span>
+          </div><div class="pub-line">
+            <span class="pub-authors">
+              A. Jung; A. Munõz-López; <span class="me">B. C. Buchmuller</span>; S. Banerjee; D. Summerer. </span>
+          </div>
+          <div class="pub-line"><em>ACS Chem. Biol.</em> 2023, <em>18</em>(2), 230–236.
+            <span class="pub-id">
+              <a href="https://doi.org/10.1021/acschembio.2c00857" class="pub-doi">
+                <span class="pub-id-full">doi:10.1021/acschembio.2c00857</span>
+                <span class="pub-id-short">DOI</span>
+              </a>
+            </span>
+          <span class="pub-id">
+              <a href="https://pubmed.ncbi.nlm.nih.gov/36693632/" class="pub-pmid">
+                <span class="pub-id-full">PMID:36693632</span>
+                <span class="pub-id-short">PMID</span>
+              </a>
+            </span>
+            <span class="pub-id">
+              <a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC9942090/" class="pub-pmcid">
+                <span class="pub-id-full">PMC9942090</span>
+                <span class="pub-id-short">PMC</span>
+              </a>
+            </span>
+          </div>
+        </div><div class="pub-notes"><span class="note"><strong>Impact:</strong> Extended TALE imaging to low-repetitive single gene loci through signal amplification strategies</span></div></li><li class="pub tag-dna-modifications tag-medicinal-chemistry" data-priority="low" data-num="13">
+        <div class="pub-main"><div class="pub-line pub-line-title">
+            <span class="pub-title">A high-throughput effector screen identifies a novel small molecule scaffold for inhibition of ten-eleven translocation dioxygenase 2</span>
+          </div><div class="pub-line">
+            <span class="pub-authors">
+              S. Palei; J. Weisner; M. Vogt; R. Gontla; <span class="me">B. Buchmuller</span>; C. Ehrt; T. Grabe; S. Kleinbölting; M. Müller; G. H. Clever; D. Rauh; D. Summerer. </span>
+          </div>
+          <div class="pub-line"><em>RSC Med. Chem.</em> 2022, <em>13</em>(12), 1540–1548.
+            <span class="pub-id">
+              <a href="https://doi.org/10.1039/d2md00186a" class="pub-doi">
+                <span class="pub-id-full">doi:10.1039/d2md00186a</span>
+                <span class="pub-id-short">DOI</span>
+              </a>
+            </span>
+          <span class="pub-id">
+              <a href="https://pubmed.ncbi.nlm.nih.gov/36545435/" class="pub-pmid">
+                <span class="pub-id-full">PMID:36545435</span>
+                <span class="pub-id-short">PMID</span>
+              </a>
+            </span>
+            <span class="pub-id">
+              <a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC9749932/" class="pub-pmcid">
+                <span class="pub-id-full">PMC9749932</span>
+                <span class="pub-id-short">PMC</span>
+              </a>
+            </span>
+          </div>
+        </div><div class="pub-notes"><span class="note"><strong>Impact:</strong> Identified a novel quinoline-based TET2 inhibitor scaffold through high-throughput screening of 31,500 compounds</span></div></li><li class="pub tag-dna-modifications tag-protein-engineering" data-priority="high" data-num="12">
+        <div class="pub-main"><div class="pub-line pub-line-title">
+            <span class="pub-title">Evolved DNA Duplex Readers for Strand-Asymmetrically Modified 5‑Hydroxymethylcytosine/5-Methylcytosine CpG Dyads</span>
+          </div><div class="pub-line">
+            <span class="pub-authors">
+              <span class="me">B. C. Buchmuller</span>; J. Dröden; H. Singh; S. Palei; M. Drescher; R. Linser; D. Summerer. </span>
+          </div>
+          <div class="pub-line"><em>JACS</em> 2022, <em>144</em>(7), 2987–2993.
+            <span class="pub-id">
+              <a href="https://doi.org/10.1021/jacs.1c10678" class="pub-doi">
+                <span class="pub-id-full">doi:10.1021/jacs.1c10678</span>
+                <span class="pub-id-short">DOI</span>
+              </a>
+            </span>
+          <span class="pub-id">
+              <a href="https://pubmed.ncbi.nlm.nih.gov/35157801/" class="pub-pmid">
+                <span class="pub-id-full">PMID:35157801</span>
+                <span class="pub-id-short">PMID</span>
+              </a>
+            </span>
+            <span class="pub-id">
+              <a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC8874921/" class="pub-pmcid">
+                <span class="pub-id-full">PMC8874921</span>
+                <span class="pub-id-short">PMC</span>
+              </a>
+            </span>
+          </div>
+        </div><div class="pub-notes"><span class="note"><strong>Impact:</strong> First affinity probes enabling selective enrichment of strand-asymmetric epigenetic DNA marks from genomic DNA</span></div></li><li class="pub tag-dna-modifications tag-imaging tag-methods" data-priority="low" data-num="11">
+        <div class="pub-main"><div class="pub-line pub-line-title">
+            <span class="pub-title">Engineered TALE Repeats for Enhanced Imaging‐Based Analysis of Cellular 5‐Methylcytosine</span>
+          </div><div class="pub-line">
+            <span class="pub-authors">
+              Á. Muñoz‐López; A. Jung; <span class="me">B. Buchmuller</span>; J. Wolffgramm; S. Maurer; A. Witte; D. Summerer. </span>
+          </div>
+          <div class="pub-line"><em>ChemBioChem</em> 2021, <em>22</em>(4), 645–651.
+            <span class="pub-id">
+              <a href="https://doi.org/10.1002/cbic.202000563" class="pub-doi">
+                <span class="pub-id-full">doi:10.1002/cbic.202000563</span>
+                <span class="pub-id-short">DOI</span>
+              </a>
+            </span>
+          <span class="pub-id">
+              <a href="https://pubmed.ncbi.nlm.nih.gov/32991020/" class="pub-pmid">
+                <span class="pub-id-full">PMID:32991020</span>
+                <span class="pub-id-short">PMID</span>
+              </a>
+            </span>
+            <span class="pub-id">
+              <a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC7894354/" class="pub-pmcid">
+                <span class="pub-id-full">PMC7894354</span>
+                <span class="pub-id-short">PMC</span>
+              </a>
+            </span>
+          </div>
+        </div><div class="pub-notes"><span class="note"><strong>Impact:</strong> Engineered 5mC-binding TALE repeats for imaging-based quantification of DNA methylation at repetitive loci</span></div></li><li class="pub tag-chemical-biology tag-dna-modifications tag-methods" data-priority="medium" data-num="10">
+        <div class="pub-main"><div class="pub-line pub-line-title">
+            <span class="pub-title">Light‐Activation of DNA‐Methyltransferases</span>
+          </div><div class="pub-line">
+            <span class="pub-authors">
+              J. Wolffgramm; <span class="me">B. Buchmuller</span>; S. Palei; Á. Muñoz‐López; J. Kanne; P. Janning; M. R. Schweiger; D. Summerer. </span>
+          </div>
+          <div class="pub-line"><em>Angew. Chem. Int. Ed.</em> 2021, <em>60</em>(24), 13507–13512.
+            <span class="pub-id">
+              <a href="https://doi.org/10.1002/anie.202103945" class="pub-doi">
+                <span class="pub-id-full">doi:10.1002/anie.202103945</span>
+                <span class="pub-id-short">DOI</span>
+              </a>
+            </span>
+          <span class="pub-id">
+              <a href="https://pubmed.ncbi.nlm.nih.gov/33826797/" class="pub-pmid">
+                <span class="pub-id-full">PMID:33826797</span>
+                <span class="pub-id-short">PMID</span>
+              </a>
+            </span>
+            <span class="pub-id">
+              <a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC8251764/" class="pub-pmcid">
+                <span class="pub-id-full">PMC8251764</span>
+                <span class="pub-id-short">PMC</span>
+              </a>
+            </span>
+          </div>
+        </div><div class="pub-notes"><span class="note"><strong>Impact:</strong> First direct optical control of DNMT catalysis enabling insights into cancer-related mutations and programmable site-specific methylation</span></div></li><li class="pub tag-chemical-biology tag-dna-modifications tag-methods" data-priority="high" data-num="9">
+        <div class="pub-main"><div class="pub-line pub-line-title">
+            <span class="pub-title">Light-Activatable TET-Dioxygenases Reveal Dynamics of 5‑Methylcytosine Oxidation and Transcriptome Reorganization</span>
+          </div><div class="pub-line">
+            <span class="pub-authors">
+              S. Palei; <span class="me">B. Buchmuller</span>; J. Wolffgramm; A. Muñoz-Lopez; S. Jung; P. Czodrowski; D. Summerer. </span>
+          </div>
+          <div class="pub-line"><em>JACS</em> 2020, <em>142</em>(16), 7289–7294.
+            <span class="pub-id">
+              <a href="https://doi.org/10.1021/jacs.0c01193" class="pub-doi">
+                <span class="pub-id-full">doi:10.1021/jacs.0c01193</span>
+                <span class="pub-id-short">DOI</span>
+              </a>
+            </span>
+          <span class="pub-id">
+              <a href="https://pubmed.ncbi.nlm.nih.gov/32286069/" class="pub-pmid">
+                <span class="pub-id-full">PMID:32286069</span>
+                <span class="pub-id-short">PMID</span>
+              </a>
+            </span></div>
+        </div><div class="pub-notes"><span class="note"><strong>Impact:</strong> First temporal control of TET dioxygenase activity in mammalian cells enabling time-resolved monitoring of methylation dynamics and transcriptome reorganization</span></div></li><li class="pub tag-crispr tag-functional-genomics tag-methods" data-priority="medium" data-num="8">
+        <div class="pub-main"><div class="pub-line pub-line-title">
+            <span class="pub-title">CRISPR-Cas12a–assisted PCR tagging of mammalian genes</span>
+          </div><div class="pub-line">
+            <span class="pub-authors">
+              J. Fueller; K. Herbst; M. Meurer; K. Gubicza; B. Kurtulmus; J. D. Knopf; D. Kirrmaier; <span class="me">B. C. Buchmuller</span>; G. Pereira; M. K. Lemberg; M. Knop. </span>
+          </div>
+          <div class="pub-line"><em>J. Cell Biol.</em> 2020, <em>219</em>(6), e201910210.
+            <span class="pub-id">
+              <a href="https://doi.org/10.1083/jcb.201910210" class="pub-doi">
+                <span class="pub-id-full">doi:10.1083/jcb.201910210</span>
+                <span class="pub-id-short">DOI</span>
+              </a>
+            </span>
+          <span class="pub-id">
+              <a href="https://pubmed.ncbi.nlm.nih.gov/32406907/" class="pub-pmid">
+                <span class="pub-id-full">PMID:32406907</span>
+                <span class="pub-id-short">PMID</span>
+              </a>
+            </span>
+            <span class="pub-id">
+              <a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC7265327/" class="pub-pmcid">
+                <span class="pub-id-full">PMC7265327</span>
+                <span class="pub-id-short">PMC</span>
+              </a>
+            </span>
+          </div>
+        </div><div class="pub-notes"><span class="note"><strong>Impact:</strong> Extended our CASTLING approach (Buchmuller et al., Nat. Commun. 2019) for gene editing to mammalian cells with up to 60% in-frame tagging efficiency; now widely adopted for endogenous protein tagging studies</span></div></li><li class="pub" data-priority="medium" data-num="7">
+        <div class="pub-main"><div class="pub-line pub-line-title">
+            <span class="pub-title">Designer Receptors for Nucleotide‐Resolution Analysis of Genomic 5‐Methylcytosine by Cellular Imaging</span>
+          </div><div class="pub-line">
+            <span class="pub-authors">
+              Á. Muñoz‐López; <span class="me">B. Buchmuller</span>; J. Wolffgramm; A. Jung; M. Hussong; J. Kanne; M. R. Schweiger; D. Summerer. </span>
+          </div>
+          <div class="pub-line"><em>Angew. Chem. Int. Ed.</em> 2020, <em>59</em>(23), 8927–8931.
+            <span class="pub-id">
+              <a href="https://doi.org/10.1002/anie.202001935" class="pub-doi">
+                <span class="pub-id-full">doi:10.1002/anie.202001935</span>
+                <span class="pub-id-short">DOI</span>
+              </a>
+            </span>
+          <span class="pub-id">
+              <a href="https://pubmed.ncbi.nlm.nih.gov/32167219/" class="pub-pmid">
+                <span class="pub-id-full">PMID:32167219</span>
+                <span class="pub-id-short">PMID</span>
+              </a>
+            </span>
+            <span class="pub-id">
+              <a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC7318601/" class="pub-pmcid">
+                <span class="pub-id-full">PMC7318601</span>
+                <span class="pub-id-short">PMC</span>
+              </a>
+            </span>
+          </div>
+        </div><div class="pub-notes"><span class="note"><strong>Impact:</strong> First nucleotide-resolution imaging of 5mC in single cells; enabled direct correlation between epigenetic marks and transcription factor recruitment</span></div></li><li class="pub tag-chromatin tag-dna-modifications tag-human-disease" data-priority="high" data-num="6">
+        <div class="pub-main"><div class="pub-line pub-line-title">
+            <span class="pub-title">Complete Profiling of Methyl-CpG-Binding Domains for Combinations of Cytosine Modifications at CpG Dinucleotides Reveals Differential Read-out in Normal and Rett-Associated States</span>
+          </div><div class="pub-line">
+            <span class="pub-authors">
+              <span class="me">B. C. Buchmuller</span>; B. Kosel; D. Summerer. </span>
+          </div>
+          <div class="pub-line"><em>Sci. Rep.</em> 2020, <em>10</em>(1), 4053.
+            <span class="pub-id">
+              <a href="https://doi.org/10.1038/s41598-020-61030-1" class="pub-doi">
+                <span class="pub-id-full">doi:10.1038/s41598-020-61030-1</span>
+                <span class="pub-id-short">DOI</span>
+              </a>
+            </span>
+          <span class="pub-id">
+              <a href="https://pubmed.ncbi.nlm.nih.gov/32132616/" class="pub-pmid">
+                <span class="pub-id-full">PMID:32132616</span>
+                <span class="pub-id-short">PMID</span>
+              </a>
+            </span>
+            <span class="pub-id">
+              <a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC7055227/" class="pub-pmcid">
+                <span class="pub-id-full">PMC7055227</span>
+                <span class="pub-id-short">PMC</span>
+              </a>
+            </span>
+          </div>
+        </div><div class="pub-notes"><span class="note"><strong>Impact:</strong> First comprehensive profiling of the human MBD protein family revealing differential recognition of oxidized CpG marks by Rett syndrome-associated MeCP2 mutations</span></div></li><li class="pub tag-functional-genomics tag-yeast tag-methods tag-crispr" data-priority="pinned" data-num="5">
+        <div class="pub-main"><div class="pub-line pub-line-title">
+            <span class="pub-title">Pooled clone collections by multiplexed CRISPR-Cas12a-assisted gene tagging in yeast</span>
+          </div><div class="pub-line">
+            <span class="pub-authors">
+              <span class="me">B. C. Buchmuller</span>*; K. Herbst*; M. Meurer; D. Kirrmaier; E. Sass; E. D. Levy; M. Knop. </span>
+          </div>
+          <div class="pub-line"><em>Nat. Commun.</em> 2019, <em>10</em>(1), 2960.
+            <span class="pub-id">
+              <a href="https://doi.org/10.1038/s41467-019-10816-7" class="pub-doi">
+                <span class="pub-id-full">doi:10.1038/s41467-019-10816-7</span>
+                <span class="pub-id-short">DOI</span>
+              </a>
+            </span>
+          <span class="pub-id">
+              <a href="https://pubmed.ncbi.nlm.nih.gov/31273196/" class="pub-pmid">
+                <span class="pub-id-full">PMID:31273196</span>
+                <span class="pub-id-short">PMID</span>
+              </a>
+            </span>
+            <span class="pub-id">
+              <a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC6609715/" class="pub-pmcid">
+                <span class="pub-id-full">PMC6609715</span>
+                <span class="pub-id-short">PMC</span>
+              </a>
+            </span>
+          </div>
+        </div><div class="pub-notes"><span class="note"><strong>Impact:</strong> CASTLING enables rapid construction of yeast clone libraries with >90% tagging efficiency; method adapted for mammalian gene tagging (Fueller et al., J. Cell Biol. 2020) and cited in advanced Cas12a engineering studies</span></div></li><li class="pub tag-dna-modifications tag-methods" data-priority="low" data-num="4">
+        <div class="pub-main"><div class="pub-line pub-line-title">
+            <span class="pub-title">Programmable Protein–DNA Cross-Linking for the Direct Capture and Quantification of 5‑Formylcytosine</span>
+          </div><div class="pub-line">
+            <span class="pub-authors">
+              M. Gieß; A. Muñoz-López; <span class="me">B. Buchmuller</span>; G. Kubik; D. Summerer. </span>
+          </div>
+          <div class="pub-line"><em>JACS</em> 2019, <em>141</em>(24), 9453–9457.
+            <span class="pub-id">
+              <a href="https://doi.org/10.1021/jacs.9b01432" class="pub-doi">
+                <span class="pub-id-full">doi:10.1021/jacs.9b01432</span>
+                <span class="pub-id-short">DOI</span>
+              </a>
+            </span>
+          <span class="pub-id">
+              <a href="https://pubmed.ncbi.nlm.nih.gov/31180648/" class="pub-pmid">
+                <span class="pub-id-full">PMID:31180648</span>
+                <span class="pub-id-short">PMID</span>
+              </a>
+            </span></div>
+        </div><div class="pub-notes"><span class="note"><strong>Impact:</strong> Advanced TALE-based nucleobase targeting from recognition to covalent crosslinking for sensitive 5fC quantification</span></div></li><li class="pub tag-dna-modifications tag-protein-engineering" data-priority="low" data-num="3">
+        <div class="pub-main"><div class="pub-line pub-line-title">
+            <span class="pub-title">Overcoming conservation in TALE–DNA interactions: a minimal repeat scaffold enables selective recognition of an oxidized 5-methylcytosine</span>
+          </div><div class="pub-line">
+            <span class="pub-authors">
+              S. Maurer; <span class="me">B. Buchmuller</span>; C. Ehrt; J. Jasper; O. Koch; D. Summerer. </span>
+          </div>
+          <div class="pub-line"><em>Chem. Sci.</em> 2018, <em>9</em>(36), 7247–7252.
+            <span class="pub-id">
+              <a href="https://doi.org/10.1039/c8sc01958d" class="pub-doi">
+                <span class="pub-id-full">doi:10.1039/c8sc01958d</span>
+                <span class="pub-id-short">DOI</span>
+              </a>
+            </span>
+          <span class="pub-id">
+              <a href="https://pubmed.ncbi.nlm.nih.gov/30288245/" class="pub-pmid">
+                <span class="pub-id-full">PMID:30288245</span>
+                <span class="pub-id-short">PMID</span>
+              </a>
+            </span>
+            <span class="pub-id">
+              <a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC6148557/" class="pub-pmcid">
+                <span class="pub-id-full">PMC6148557</span>
+                <span class="pub-id-short">PMC</span>
+              </a>
+            </span>
+          </div>
+        </div><div class="pub-notes"><span class="note"><strong>Impact:</strong> Developed GRPr-targeting PET tracers with high binding affinity as potential diagnostic imaging tools for prostate and breast cancer</span></div></li><li class="pub tag-functional-genomics tag-yeast tag-methods" data-priority="medium" data-num="2">
+        <div class="pub-main"><div class="pub-line pub-line-title">
+            <span class="pub-title">Genome-wide C-SWAT library for high-throughput yeast genome tagging</span>
+          </div><div class="pub-line">
+            <span class="pub-authors">
+              M. Meurer; Y. Duan; E. Sass; I. Kats; K. Herbst; <span class="me">B. C. Buchmuller</span>; V. Dederer; F. Huber; D. Kirrmaier; M. Štefl; K. V. Laer; T. P. Dick; M. K. Lemberg; A. Khmelinskii; E. D. Levy; M. Knop. </span>
+          </div>
+          <div class="pub-line"><em>Nat. Methods</em> 2018, <em>15</em>(8), 598–600.
+            <span class="pub-id">
+              <a href="https://doi.org/10.1038/s41592-018-0045-8" class="pub-doi">
+                <span class="pub-id-full">doi:10.1038/s41592-018-0045-8</span>
+                <span class="pub-id-short">DOI</span>
+              </a>
+            </span>
+          <span class="pub-id">
+              <a href="https://pubmed.ncbi.nlm.nih.gov/29988096/" class="pub-pmid">
+                <span class="pub-id-full">PMID:29988096</span>
+                <span class="pub-id-short">PMID</span>
+              </a>
+            </span></div>
+        </div><div class="pub-notes"><span class="note"><strong>Impact:</strong> Created a genome-wide acceptor library (5,661 strains) enabling rapid swapping of tags and regulatory elements; widely adopted for yeast functional genomics</span></div></li><li class="pub tag-cancer tag-medicinal-chemistry tag-imaging" data-priority="low" data-num="1">
+        <div class="pub-main"><div class="pub-line pub-line-title">
+            <span class="pub-title">Monomeric and Dimeric 68Ga-Labeled Bombesin Analogues for Positron Emission Tomography (PET) Imaging of Tumors Expressing Gastrin-Releasing Peptide Receptors (GRPrs)</span>
+          </div><div class="pub-line">
+            <span class="pub-authors">
+              C. Liolios; <span class="me">B. Buchmuller</span>; U. Bauder-Wüst; M. Schäfer; K. Leotta; U. Haberkorn; M. Eder; K. Kopka. </span>
+          </div>
+          <div class="pub-line"><em>J. Med. Chem.</em> 2018, <em>61</em>(5), 2062–2074.
+            <span class="pub-id">
+              <a href="https://doi.org/10.1021/acs.jmedchem.7b01856" class="pub-doi">
+                <span class="pub-id-full">doi:10.1021/acs.jmedchem.7b01856</span>
+                <span class="pub-id-short">DOI</span>
+              </a>
+            </span>
+          <span class="pub-id">
+              <a href="https://pubmed.ncbi.nlm.nih.gov/29432691/" class="pub-pmid">
+                <span class="pub-id-full">PMID:29432691</span>
+                <span class="pub-id-short">PMID</span>
+              </a>
+            </span></div>
+        </div><div class="pub-notes"><span class="note"><strong>Impact:</strong> Potential diagnostic tools for prostate and breast cancer</span></div></li></ul><h3 class="pub-section" hidden>Reviews, Book Chapters, Monographs</h3>
+    <ul class="publist" id="pub-list-3"><li class="pub tag-dna-modifications tag-protein-engineering tag-methods" data-priority="medium" data-num="3">
+        <div class="pub-main"><div class="pub-line pub-line-title">
+            <span class="pub-title">Deciphering strand-asymmetrically modified CpG dyads in the DNA double-helix</span>
+          </div><div class="pub-line">
+            <span class="pub-authors">
+              <span class="me">B. C. Buchmuller</span>. </span>
+          </div>
+          <div class="pub-line"> 2021.
+            <span class="pub-id">
+              <a href="https://doi.org/10.17877/DE290R-22422" class="pub-doi">
+                <span class="pub-id-full">doi:10.17877/DE290R-22422</span>
+                <span class="pub-id-short">DOI</span>
+              </a>
+            </span>
+          </div>
+        </div></li><li class="pub tag-dna-modifications tag-imaging tag-methods" data-priority="low" data-num="2">
+        <div class="pub-main"><div class="pub-line pub-line-title">
+            <span class="pub-title">DNA Modifications, Methods and Protocols</span>
+          </div><div class="pub-line">
+            <span class="pub-authors">
+              <span class="me">B. Buchmuller</span>; Á. Muñoz-López; M. Gieß; D. Summerer. </span>
+          </div>
+          <div class="pub-line"><em>Methods Mol. Biol.</em> 2021, <em>2198</em>, 381–399.
+            <span class="pub-id">
+              <a href="https://doi.org/10.1007/978-1-0716-0876-0" class="pub-doi">
+                <span class="pub-id-full">doi:10.1007/978-1-0716-0876-0</span>
+                <span class="pub-id-short">DOI</span>
+              </a>
+            </span>
+          <span class="pub-id">
+              <a href="https://pubmed.ncbi.nlm.nih.gov/32822046/" class="pub-pmid">
+                <span class="pub-id-full">PMID:32822046</span>
+                <span class="pub-id-short">PMID</span>
+              </a>
+            </span></div>
+        </div></li><li class="pub tag-dna-modifications tag-imaging tag-methods" data-priority="low" data-num="1">
+        <div class="pub-main"><div class="pub-line pub-line-title">
+            <span class="pub-title">Programmable tools for targeted analysis of epigenetic DNA modifications</span>
+          </div><div class="pub-line">
+            <span class="pub-authors">
+              <span class="me">B. Buchmuller</span>; A. Jung; Á. Muñoz-López; D. Summerer. </span>
+          </div>
+          <div class="pub-line"><em>Curr. Opin. Chem. Biol.</em> 2021, <em>63</em>, 1–10.
+            <span class="pub-id">
+              <a href="https://doi.org/10.1016/j.cbpa.2021.01.002" class="pub-doi">
+                <span class="pub-id-full">doi:10.1016/j.cbpa.2021.01.002</span>
+                <span class="pub-id-short">DOI</span>
+              </a>
+            </span>
+          <span class="pub-id">
+              <a href="https://pubmed.ncbi.nlm.nih.gov/33588304/" class="pub-pmid">
+                <span class="pub-id-full">PMID:33588304</span>
+                <span class="pub-id-short">PMID</span>
+              </a>
+            </span></div>
+        </div></li></ul><div class="line-split"><span class="footnote">* <i>denotes equal contribution</i></span><span class="footnote">
+      <a href="https://orcid.org/0000-0002-4915-5949">ORCID: 0000-0002-4915-5949</a>
+    </span></div>
 
 
 	</div>
@@ -1608,6 +1599,6 @@
 	<small>© <span id="year"></span> Benjamin Buchmuller · Built with Jekyll on GitHub Pages</small>
 </footer>
 
-	<script src="/assets/js/script.js" defer></script>
+	<script src="/assets/js/script.js?v=1790413287" defer></script>
 </body>
 </html>
