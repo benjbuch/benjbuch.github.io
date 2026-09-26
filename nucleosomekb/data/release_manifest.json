@@ -1,0 +1,355 @@
+{
+  "schema_version": 1,
+  "families": [
+    {
+      "family": "H1",
+      "n_members": 37,
+      "n_columns": 572,
+      "input_sha256": "70532fcb67d836e8a216f76dddc841dca541be52db80a81e6b1df2a4b0cbe40e",
+      "aln_version": "70532fcb67d8",
+      "method": "DECIPHER::AlignSeqs",
+      "method_version": "3.0.0"
+    },
+    {
+      "family": "H2A",
+      "n_members": 60,
+      "n_columns": 387,
+      "input_sha256": "6c5dee516edd9e22d6e6622f722ff772908216fbc7823af61ad63fb086264fa0",
+      "aln_version": "6c5dee516edd",
+      "method": "DECIPHER::AlignSeqs",
+      "method_version": "3.0.0"
+    },
+    {
+      "family": "H2B",
+      "n_members": 40,
+      "n_columns": 159,
+      "input_sha256": "92d369a43e8d946d038c53666672a2ed2db0620857f1525cf30c03071f0d821a",
+      "aln_version": "92d369a43e8d",
+      "method": "DECIPHER::AlignSeqs",
+      "method_version": "3.0.0"
+    },
+    {
+      "family": "H3",
+      "n_members": 30,
+      "n_columns": 392,
+      "input_sha256": "b52a3a174299c12ca51dc897953a439b4133d16e93cf65fc140175d30e9ec422",
+      "aln_version": "b52a3a174299",
+      "method": "DECIPHER::AlignSeqs",
+      "method_version": "3.0.0"
+    },
+    {
+      "family": "H4",
+      "n_members": 8,
+      "n_columns": 103,
+      "input_sha256": "e5df1fa95df13f2feafa1effd27a4b40d010466439b9873254b39f5999b0d428",
+      "aln_version": "e5df1fa95df1",
+      "method": "DECIPHER::AlignSeqs",
+      "method_version": "3.0.0"
+    }
+  ],
+  "variants": [
+    {
+      "token": "H1.0",
+      "family": "H1",
+      "within": null,
+      "reference": null,
+      "canonical": false
+    },
+    {
+      "token": "H1.1",
+      "family": "H1",
+      "within": "caH1",
+      "reference": null,
+      "canonical": false
+    },
+    {
+      "token": "H1.10",
+      "family": "H1",
+      "within": null,
+      "reference": null,
+      "canonical": false
+    },
+    {
+      "token": "H1.2",
+      "family": "H1",
+      "within": "caH1",
+      "reference": null,
+      "canonical": false
+    },
+    {
+      "token": "H1.3",
+      "family": "H1",
+      "within": "caH1",
+      "reference": null,
+      "canonical": false
+    },
+    {
+      "token": "H1.4",
+      "family": "H1",
+      "within": "caH1",
+      "reference": null,
+      "canonical": false
+    },
+    {
+      "token": "H1.5",
+      "family": "H1",
+      "within": "caH1",
+      "reference": null,
+      "canonical": false
+    },
+    {
+      "token": "H1.6",
+      "family": "H1",
+      "within": "caH1",
+      "reference": null,
+      "canonical": false
+    },
+    {
+      "token": "H1.7",
+      "family": "H1",
+      "within": "caH1",
+      "reference": null,
+      "canonical": false
+    },
+    {
+      "token": "H1.8",
+      "family": "H1",
+      "within": "caH1",
+      "reference": null,
+      "canonical": false
+    },
+    {
+      "token": "H1.9",
+      "family": "H1",
+      "within": "caH1",
+      "reference": null,
+      "canonical": false
+    },
+    {
+      "token": "caH1",
+      "family": "H1",
+      "within": null,
+      "reference": "P10412",
+      "canonical": true
+    },
+    {
+      "token": "scH1",
+      "family": "H1",
+      "within": null,
+      "reference": null,
+      "canonical": false
+    },
+    {
+      "token": "H2A.1",
+      "family": "H2A",
+      "within": "caH2A",
+      "reference": null,
+      "canonical": false
+    },
+    {
+      "token": "H2A.B",
+      "family": "H2A",
+      "within": null,
+      "reference": "P0C5Z0",
+      "canonical": false
+    },
+    {
+      "token": "H2A.L",
+      "family": "H2A",
+      "within": null,
+      "reference": null,
+      "canonical": false
+    },
+    {
+      "token": "H2A.P",
+      "family": "H2A",
+      "within": null,
+      "reference": null,
+      "canonical": false
+    },
+    {
+      "token": "H2A.W",
+      "family": "H2A",
+      "within": null,
+      "reference": null,
+      "canonical": false
+    },
+    {
+      "token": "H2A.X",
+      "family": "H2A",
+      "within": null,
+      "reference": "P16104",
+      "canonical": false
+    },
+    {
+      "token": "H2A.Z",
+      "family": "H2A",
+      "within": null,
+      "reference": "P0C0S5",
+      "canonical": false
+    },
+    {
+      "token": "H2A.Z.1",
+      "family": "H2A",
+      "within": "H2A.Z",
+      "reference": "P0C0S5",
+      "canonical": false
+    },
+    {
+      "token": "H2A.Z.2",
+      "family": "H2A",
+      "within": "H2A.Z",
+      "reference": "Q71UI9",
+      "canonical": false
+    },
+    {
+      "token": "caH2A",
+      "family": "H2A",
+      "within": null,
+      "reference": "P0C0S8",
+      "canonical": true
+    },
+    {
+      "token": "macroH2A",
+      "family": "H2A",
+      "within": null,
+      "reference": "Q9P0M6",
+      "canonical": false
+    },
+    {
+      "token": "macroH2A.1",
+      "family": "H2A",
+      "within": "macroH2A",
+      "reference": "O75367",
+      "canonical": false
+    },
+    {
+      "token": "macroH2A.2",
+      "family": "H2A",
+      "within": "macroH2A",
+      "reference": "Q9P0M6",
+      "canonical": false
+    },
+    {
+      "token": "H2B.1",
+      "family": "H2B",
+      "within": "caH2B",
+      "reference": null,
+      "canonical": false
+    },
+    {
+      "token": "H2B.W",
+      "family": "H2B",
+      "within": null,
+      "reference": null,
+      "canonical": false
+    },
+    {
+      "token": "H2B.Z",
+      "family": "H2B",
+      "within": null,
+      "reference": null,
+      "canonical": false
+    },
+    {
+      "token": "caH2B",
+      "family": "H2B",
+      "within": null,
+      "reference": "P62807",
+      "canonical": true
+    },
+    {
+      "token": "sperm_H2B",
+      "family": "H2B",
+      "within": null,
+      "reference": null,
+      "canonical": false
+    },
+    {
+      "token": "subH2B",
+      "family": "H2B",
+      "within": null,
+      "reference": null,
+      "canonical": false
+    },
+    {
+      "token": "H3.1",
+      "family": "H3",
+      "within": "caH3",
+      "reference": "P68431",
+      "canonical": false
+    },
+    {
+      "token": "H3.2",
+      "family": "H3",
+      "within": "caH3",
+      "reference": null,
+      "canonical": false
+    },
+    {
+      "token": "H3.3",
+      "family": "H3",
+      "within": null,
+      "reference": "P84243",
+      "canonical": false
+    },
+    {
+      "token": "H3.4",
+      "family": "H3",
+      "within": "caH3",
+      "reference": null,
+      "canonical": false
+    },
+    {
+      "token": "H3.5",
+      "family": "H3",
+      "within": null,
+      "reference": "Q6NXT2",
+      "canonical": false
+    },
+    {
+      "token": "H3.Y",
+      "family": "H3",
+      "within": null,
+      "reference": null,
+      "canonical": false
+    },
+    {
+      "token": "caH3",
+      "family": "H3",
+      "within": null,
+      "reference": "P68431",
+      "canonical": true
+    },
+    {
+      "token": "cenH3",
+      "family": "H3",
+      "within": null,
+      "reference": "P49450",
+      "canonical": false
+    },
+    {
+      "token": "H4G",
+      "family": "H4",
+      "within": null,
+      "reference": null,
+      "canonical": false
+    },
+    {
+      "token": "caH4",
+      "family": "H4",
+      "within": null,
+      "reference": "P62805",
+      "canonical": true
+    }
+  ],
+  "row_counts": {
+    "proteins": 27511,
+    "protein_families": 175,
+    "alignment_columns": 27372,
+    "gene_index": 1530,
+    "literature_papers": 43051,
+    "literature_mentions": 59655,
+    "literature_descriptors": 3195
+  }
+}

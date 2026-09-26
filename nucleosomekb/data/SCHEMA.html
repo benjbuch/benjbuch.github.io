@@ -1,0 +1,625 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+<!-- Begin Jekyll SEO tag v2.8.0 -->
+<title>docs/data/ — the shipped artifact | Nucleosome knowledge base (beta)</title>
+<meta name="generator" content="Jekyll v3.10.0" />
+<meta property="og:title" content="docs/data/ — the shipped artifact" />
+<meta property="og:locale" content="en" />
+<meta name="description" content="Canonical histone position lookup" />
+<meta property="og:description" content="Canonical histone position lookup" />
+<link rel="canonical" href="/nucleosomekb/data/SCHEMA.html" />
+<meta property="og:url" content="/nucleosomekb/data/SCHEMA.html" />
+<meta property="og:site_name" content="Nucleosome knowledge base (beta)" />
+<meta property="og:type" content="website" />
+<meta name="twitter:card" content="summary" />
+<meta property="twitter:title" content="docs/data/ — the shipped artifact" />
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"WebPage","description":"Canonical histone position lookup","headline":"docs/data/ — the shipped artifact","url":"/nucleosomekb/data/SCHEMA.html"}</script>
+<!-- End Jekyll SEO tag -->
+
+    <link rel="stylesheet" href="/nucleosomekb/assets/css/style.css?v=46151acc0c08381cc39951e89c584fa3a142e521">
+    <!-- start custom head snippets, customize with your own _includes/head-custom.html file -->
+
+<!-- Setup Google Analytics -->
+
+
+
+<!-- You can set your favicon here -->
+<!-- link rel="shortcut icon" type="image/x-icon" href="/nucleosomekb/favicon.ico" -->
+
+<!-- end custom head snippets -->
+
+  </head>
+  <body>
+    <div class="container-lg px-3 my-5 markdown-body">
+      
+      <h1><a href="/nucleosomekb/">Nucleosome knowledge base (beta)</a></h1>
+      
+
+      <h1 id="docsdata--the-shipped-artifact"><code class="language-plaintext highlighter-rouge">docs/data/</code> — the shipped artifact</h1>
+
+<p>These parquet files are what the browser reads, and what an outside consumer gets when they
+vendor this project. This file documents the four <strong>literature</strong> tables, which had no schema
+anywhere; the registry tables (<code class="language-plaintext highlighter-rouge">proteins</code>, <code class="language-plaintext highlighter-rouge">protein_families</code>, <code class="language-plaintext highlighter-rouge">alignment_*</code>, <code class="language-plaintext highlighter-rouge">gene_index</code>,
+<code class="language-plaintext highlighter-rouge">*_masses</code>, <code class="language-plaintext highlighter-rouge">ptm_deltas</code>) are documented in <strong><code class="language-plaintext highlighter-rouge">tables/SCHEMA.md</code></strong>, which describes the same
+files under their build-time name.</p>
+
+<p>Written 2026-08-25 in response to notes from a downstream consumer, which established each
+of the traps below by hitting it. <strong>Revised 2026-08-31</strong> after a second round from the same
+consumer: <code class="language-plaintext highlighter-rouge">literature_gapmap.parquet</code> was added, the artifact was regenerated from a curated store
+it had fallen five days behind, and <code class="language-plaintext highlighter-rouge">taxa</code> became <code class="language-plaintext highlighter-rouge">taxon_id</code>. Counts are <code class="language-plaintext highlighter-rouge">[measured 2026-08-31]</code>
+unless stated; where a count below is materially different from the 2026-08-25 one it is because
+~500 curated mentions from ~100 papers had never been built into the artifact.</p>
+
+<hr />
+
+<h2 id="read-this-first-the-corpus-is-a-query-result-not-the-literature">Read this first: the corpus is a query result, not the literature</h2>
+
+<p>Membership is decided by <code class="language-plaintext highlighter-rouge">[tiab]</code> search legs over EDAT 1996–2026 — <strong>title and abstract only</strong>,
+the same scope as extraction. A paper can therefore be invisible in two different ways:</p>
+
+<ul>
+  <li><strong>In the corpus, contributing no mention.</strong> Its sites live in tables the sweep cannot see.</li>
+  <li><strong>Never admitted at all.</strong> The search legs did not match its title or abstract.</li>
+</ul>
+
+<p><strong>“No mentions” does not mean “not in the literature.”</strong> Measured by a downstream consumer:
+<strong>79% of the alleles the index called silent were in a catalog it could not see</strong> — 104 of 131,
+all in one supplementary table. That is the failure mode this file exists to warn about, and it
+is invisible from inside the data: the counts simply come out low, and nothing looks wrong.</p>
+
+<hr />
+
+<h2 id="literature_papersparquet"><code class="language-plaintext highlighter-rouge">literature_papers.parquet</code></h2>
+
+<p>One row per <strong>study</strong>, 43,065 rows — 43,051 in-query plus 14 out-of-query. The corpus holds
+43,348 <em>records</em>; 297 are duplicates merged by <code class="language-plaintext highlighter-rouge">dedup.js</code>, so this table answers questions about
+studies, not records.</p>
+
+<p><strong>This table is no longer “the corpus, exactly” — it is the papers the artifact can cite</strong>
+[2026-09-01, <code class="language-plaintext highlighter-rouge">specs/2026-09-01-out-of-query-papers.md</code>]. A curated paper the <code class="language-plaintext highlighter-rouge">[tiab]</code> search legs
+never admitted gets a row here from an authored <code class="language-plaintext highlighter-rouge">citation:</code> in <code class="language-plaintext highlighter-rouge">papers/PMID*/paper.yaml</code>, so that
+its mentions have something to join to. <strong><code class="language-plaintext highlighter-rouge">admitted</code> says which route a row took, and asking the
+old question is <code class="language-plaintext highlighter-rouge">WHERE admitted = 'in-query'</code>.</strong> 14 out-of-query rows today; the count is not the
+membership rule, the column is.</p>
+
+<h3 id="corpus-identity">Corpus identity</h3>
+
+<table>
+  <thead>
+    <tr>
+      <th>Column</th>
+      <th>Type</th>
+      <th>Notes</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">pmid</code></td>
+      <td>VARCHAR</td>
+      <td>PubMed ID. The key everywhere.</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">admitted</code></td>
+      <td>VARCHAR</td>
+      <td><code class="language-plaintext highlighter-rouge">in-query</code> (the search found it) or <code class="language-plaintext highlighter-rouge">out-of-query</code> (a curator read it and stated its citation). Never NULL. An out-of-query row has NULL <code class="language-plaintext highlighter-rouge">edat</code>, <code class="language-plaintext highlighter-rouge">pmcid</code>, <code class="language-plaintext highlighter-rouge">pub_types</code>, <code class="language-plaintext highlighter-rouge">citations</code> and <code class="language-plaintext highlighter-rouge">rcr</code>, and <code class="language-plaintext highlighter-rouge">metadata_known = 0</code>.</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">edat</code></td>
+      <td>DATE</td>
+      <td>Entrez date — what the 1996–2026 window is applied to, not the publication date.</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">pmcid</code></td>
+      <td>VARCHAR</td>
+      <td>PMC ID where one exists; NULL for 15,173. Presence means full text is <em>fetchable</em>, not that it was read.</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">year</code>, <code class="language-plaintext highlighter-rouge">journal</code></td>
+      <td> </td>
+      <td>19 and 11 NULLs respectively.</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">built</code>, <code class="language-plaintext highlighter-rouge">onco</code>, <code class="language-plaintext highlighter-rouge">variant</code>, <code class="language-plaintext highlighter-rouge">mark</code>, <code class="language-plaintext highlighter-rouge">linker</code>, <code class="language-plaintext highlighter-rouge">position</code></td>
+      <td>INT</td>
+      <td>Which search leg admitted this paper — <strong>why it is in the corpus</strong>. A corpus fetched before a leg existed simply lacks that column.</td>
+    </tr>
+  </tbody>
+</table>
+
+<h3 id="publication-metadata-from-pubmed--icite-regenerable">Publication metadata (from PubMed + iCite, regenerable)</h3>
+
+<table>
+  <thead>
+    <tr>
+      <th>Column</th>
+      <th>Type</th>
+      <th>Notes</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">title</code>, <code class="language-plaintext highlighter-rouge">authors</code>, <code class="language-plaintext highlighter-rouge">author_n</code></td>
+      <td> </td>
+      <td><code class="language-plaintext highlighter-rouge">authors</code> is elided in the middle (<code class="language-plaintext highlighter-rouge">Bhat YA, Mocavini I … Rando OJ, Peterson CL</code>), not truncated — first and last authors both survive.</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">indexed</code></td>
+      <td>INT</td>
+      <td>1 if MEDLINE has indexed the record. 5,697 papers are legitimately indexed=0.</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">histone_mesh</code>, <code class="language-plaintext highlighter-rouge">histone_mesh_n</code>, <code class="language-plaintext highlighter-rouge">mesh_n</code></td>
+      <td> </td>
+      <td>NLM’s controlled vocabulary. A <strong>precision</strong> signal, never a selector — a wide MeSH set captures only 43–64% of this corpus.</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">pub_types</code></td>
+      <td>VARCHAR</td>
+      <td>NLM’s raw publication-type list, <code class="language-plaintext highlighter-rouge">; </code>-separated.</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">is_review</code>, <code class="language-plaintext highlighter-rouge">is_retracted</code>, <code class="language-plaintext highlighter-rouge">is_preprint</code>, <code class="language-plaintext highlighter-rouge">is_editorial</code></td>
+      <td>INT</td>
+      <td>Derived from <code class="language-plaintext highlighter-rouge">pub_types</code>. <strong>May be NULL — see below.</strong></td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">metadata_known</code></td>
+      <td>INT</td>
+      <td><strong>1 if this paper’s publication metadata was actually fetched.</strong></td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">citations</code>, <code class="language-plaintext highlighter-rouge">rcr</code></td>
+      <td>INT / DOUBLE</td>
+      <td>iCite. <code class="language-plaintext highlighter-rouge">rcr</code> is field- and time-normalised; raw counts just rank old papers first. Both NULL where iCite does not hold the PMID (213 and 5,083). <strong>A missing RCR is NULL, never 0</strong> — 0 is a real value meaning “cited at the field floor”.</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">notice</code></td>
+      <td>VARCHAR</td>
+      <td>Publisher marker parsed from the title: <code class="language-plaintext highlighter-rouge">retracted</code>, <code class="language-plaintext highlighter-rouge">withdrawn</code>, <code class="language-plaintext highlighter-rouge">retraction-notice</code>, or <code class="language-plaintext highlighter-rouge">""</code>.</td>
+    </tr>
+  </tbody>
+</table>
+
+<p><strong><code class="language-plaintext highlighter-rouge">metadata_known = 0</code> means the four <code class="language-plaintext highlighter-rouge">is_*</code> flags are NULL, and NULL means <em>unknown</em>, not
+<em>false</em>.</strong> <code class="language-plaintext highlighter-rouge">enrich.js</code> fetches PubMed in batches of 200; a batch that exhausts its retries leaves
+its rows blank and the run carries on. Until 2026-08-25 those blanks were coerced to 0, so 199
+papers asserted “not retracted, not a review” on no evidence — and one of them, PMID 31504810, is
+a Retracted Publication about H3 K27M. <strong>If you filter on <code class="language-plaintext highlighter-rouge">is_retracted = 0</code>, decide deliberately
+whether you mean “known not retracted” (<code class="language-plaintext highlighter-rouge">is_retracted = 0 AND metadata_known = 1</code>).</strong> All rows are
+<code class="language-plaintext highlighter-rouge">metadata_known = 1</code> for every in-query row; the 14 out-of-query rows are 0 by construction,
+because nothing has fetched their publication types — see <code class="language-plaintext highlighter-rouge">admitted</code> above.</p>
+
+<p><code class="language-plaintext highlighter-rouge">is_retracted</code> also folds in <code class="language-plaintext highlighter-rouge">notice</code>: three withdrawn papers carry no retraction publication type
+at all, and the marker lives only in the title. A <code class="language-plaintext highlighter-rouge">retraction-notice</code> is deliberately <em>not</em> folded
+in — the notice is not itself retracted, it announces a retraction.</p>
+
+<h3 id="curation-state">Curation state</h3>
+
+<table>
+  <thead>
+    <tr>
+      <th>Column</th>
+      <th>Type</th>
+      <th>Notes</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">import_verdict</code></td>
+      <td>VARCHAR</td>
+      <td><code class="language-plaintext highlighter-rouge">not-assessed</code> (41,335 — <strong>96%</strong>), <code class="language-plaintext highlighter-rouge">NO</code> (919), <code class="language-plaintext highlighter-rouge">CONTACT</code> (767), <code class="language-plaintext highlighter-rouge">YES</code> (30).</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">entity_scope</code></td>
+      <td>VARCHAR</td>
+      <td>The <strong>primary</strong> material: <code class="language-plaintext highlighter-rouge">chromatin-invivo</code> 1,076, <code class="language-plaintext highlighter-rouge">no-substrate</code> 233, <code class="language-plaintext highlighter-rouge">mononucleosome</code> 144, <code class="language-plaintext highlighter-rouge">no-measurement</code> 125, <code class="language-plaintext highlighter-rouge">free-histone</code> 49, <code class="language-plaintext highlighter-rouge">array</code> 47, <code class="language-plaintext highlighter-rouge">peptide</code> 33.</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">entity_scopes</code></td>
+      <td>VARCHAR</td>
+      <td><strong>Scope is a list.</strong> Every material a measurement was made on, <code class="language-plaintext highlighter-rouge">;</code>-separated. <code class="language-plaintext highlighter-rouge">entity_scope</code> stays the primary one so existing consumers read what they always read.</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">substrate</code></td>
+      <td>VARCHAR</td>
+      <td>mn notation for what was studied (<code class="language-plaintext highlighter-rouge">({H3.3:Q5H})</code>). NULL for 36,806.</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">substrate_certainty</code></td>
+      <td>VARCHAR</td>
+      <td><code class="language-plaintext highlighter-rouge">agent</code> or a curator’s stamp.</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">taxon_id</code></td>
+      <td>INT</td>
+      <td>NCBI taxonomy id. <strong>Sparse by construction — 1,529 of 43,051 (3.6%)</strong>, set only where an agent READ the paper. It is <em>not</em> a corpus-wide organism filter and cannot be made into one: the corpus search legs carry no organism term, so a NULL here means “nobody read this paper”, never “not this organism”. Named <code class="language-plaintext highlighter-rouge">taxa</code> until 2026-08-31, when it was migrated to the name every other table uses.</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">agent_sampled</code></td>
+      <td>INT</td>
+      <td>The hash-uniform <strong>stratified</strong> draw. This is the flag corpus estimates may be reweighted from.</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">agent_selection</code></td>
+      <td>VARCHAR</td>
+      <td><em>Which</em> draw read the paper. Its <code class="language-plaintext highlighter-rouge">display</code> value is <strong>citation-biased by construction</strong> — do not use it for estimates.</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">protocol_version</code></td>
+      <td>VARCHAR</td>
+      <td>Which curation protocol produced the row. Versioned: rows are not comparable across versions.</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">review_status</code>, <code class="language-plaintext highlighter-rouge">container_id</code></td>
+      <td> </td>
+      <td>Currently all NULL. <code class="language-plaintext highlighter-rouge">container_id</code> closes the loop when a <code class="language-plaintext highlighter-rouge">data/</code> container names its PMID; nothing does yet.</td>
+    </tr>
+  </tbody>
+</table>
+
+<p><strong>96% of the corpus is <code class="language-plaintext highlighter-rouge">not-assessed</code>.</strong> Absence of a verdict is not a negative verdict.</p>
+
+<hr />
+
+<h2 id="literature_mentionsparquet"><code class="language-plaintext highlighter-rouge">literature_mentions.parquet</code></h2>
+
+<p>One row per <strong>mention</strong> — a descriptor found in a paper. 60,292 rows.</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>Column</th>
+      <th>Type</th>
+      <th>Notes</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">mention_id</code></td>
+      <td>VARCHAR</td>
+      <td><code class="language-plaintext highlighter-rouge">&lt;layer&gt;:&lt;pmid&gt;-&lt;n&gt;</code> — <code class="language-plaintext highlighter-rouge">MNT:</code> swept, <code class="language-plaintext highlighter-rouge">cur:</code> curated, <code class="language-plaintext highlighter-rouge">con:</code> container. The prefix is the <code class="language-plaintext highlighter-rouge">source</code> row below, without the join. Curated and container ids were positional (<code class="language-plaintext highlighter-rouge">cur:1</code>, <code class="language-plaintext highlighter-rouge">cur:2</code>, assigned in directory order) until 2026-09-01, so adding one record re-keyed every id after it; they are pmid-keyed now, like the swept ones always were.</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">pmid</code></td>
+      <td>VARCHAR</td>
+      <td>Repointed to the surviving study for merged duplicates.</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">descriptor</code></td>
+      <td>VARCHAR</td>
+      <td>mn notation. Join key to <code class="language-plaintext highlighter-rouge">literature_descriptors</code>.</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">axis</code></td>
+      <td>VARCHAR</td>
+      <td><code class="language-plaintext highlighter-rouge">mark</code> 44,295 · <code class="language-plaintext highlighter-rouge">variant</code> 11,495 · <code class="language-plaintext highlighter-rouge">mutation</code> 4,401 · <code class="language-plaintext highlighter-rouge">site</code> 18; NULL for 83. <strong><code class="language-plaintext highlighter-rouge">site</code> is a position named with neither a substitution nor a mark</strong> — a structure that puts the residue in a contact, an MD trajectory measuring its salt bridge. It counts as attention at the column and joins neither abstract-layer bucket. An assembly descriptor takes the axis of its members, so a particle is no longer NULL for carrying its mutation one level down.</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">layer</code></td>
+      <td>VARCHAR</td>
+      <td><code class="language-plaintext highlighter-rouge">deterministic</code> for all 57,279 swept rows; NULL for the 2,977 that are not swept. <strong>The agent layer never writes mentions</strong> on these axes, and that is asserted over the shipped table.</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">field</code></td>
+      <td>VARCHAR</td>
+      <td><code class="language-plaintext highlighter-rouge">abstract</code> 56,516 · <code class="language-plaintext highlighter-rouge">title</code> 763 · <code class="language-plaintext highlighter-rouge">supplementary</code> 1,877 · <code class="language-plaintext highlighter-rouge">container</code> 498 · <code class="language-plaintext highlighter-rouge">full-text</code> 602. <strong><code class="language-plaintext highlighter-rouge">field</code> follows from the curator’s <code class="language-plaintext highlighter-rouge">read_depth</code>, so a new reading depth mints a new value here</strong> — <code class="language-plaintext highlighter-rouge">full-text</code> appeared when array substrates began to be curated from Methods sections.</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">source</code></td>
+      <td>VARCHAR</td>
+      <td><code class="language-plaintext highlighter-rouge">swept</code> 57,279 · <code class="language-plaintext highlighter-rouge">curated</code> 2,479 · <code class="language-plaintext highlighter-rouge">container</code> 498.</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">record_kind</code></td>
+      <td>VARCHAR</td>
+      <td><code class="language-plaintext highlighter-rouge">catalog</code> 1,877 · <code class="language-plaintext highlighter-rouge">study</code> 915 · empty 57,464. <strong>What the row asserts, and it is a fact about the PAPER</strong> — every row a curated paper contributes carries it, on whichever layer the row came from, including the <code class="language-plaintext highlighter-rouge">container</code> layer (147 rows, which read empty until 2026-09-01 because the carry-over ran before the containers were composed in). <code class="language-plaintext highlighter-rouge">catalog</code> means the paper compiled a census, so the row says the site was <em>observed somewhere</em>, not that the paper investigated it. Empty means no curated record for that paper, not “swept layer”. See <code class="language-plaintext highlighter-rouge">literature_gapmap</code> below, where this becomes a count.</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">offset_start</code>, <code class="language-plaintext highlighter-rouge">offset_end</code></td>
+      <td>INT</td>
+      <td>Character offsets into the abstract. Evidence is stored as offsets <em>on purpose</em>: the artifact points into a document you fetch from PubMed yourself, so publisher text is never redistributed.</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">phrase_id</code>, <code class="language-plaintext highlighter-rouge">sweep_id</code></td>
+      <td>VARCHAR</td>
+      <td>Which phrase pattern and which sweep produced the row.</td>
+    </tr>
+  </tbody>
+</table>
+
+<h3 id="source-is-the-column-that-decides-what-a-row-claims"><code class="language-plaintext highlighter-rouge">source</code> is the column that decides what a row <em>claims</em></h3>
+
+<p><strong>A <code class="language-plaintext highlighter-rouge">swept</code> row is a claim; a <code class="language-plaintext highlighter-rouge">curated</code>/<code class="language-plaintext highlighter-rouge">supplementary</code> row is an observation.</strong> They are not the
+same kind of statement and they arrive on the same <code class="language-plaintext highlighter-rouge">axis</code>:</p>
+
+<ul>
+  <li><strong><code class="language-plaintext highlighter-rouge">swept</code></strong> — machine-mined from title/abstract. The paper <em>says something about</em> the site.
+Coverage is title and abstract <strong>only</strong>.</li>
+  <li><strong><code class="language-plaintext highlighter-rouge">curated</code> + <code class="language-plaintext highlighter-rouge">field = supplementary</code></strong> — extracted by a named curator from a table. Typically a
+catalog: <em>this mutation was observed in a tumour</em>. That is not an assertion that anyone studied
+it, or that it does anything.</li>
+  <li><strong><code class="language-plaintext highlighter-rouge">curated</code> + <code class="language-plaintext highlighter-rouge">field = full-text</code></strong> — extracted by a curator from Methods or Results. This is a
+CLAIM and a strong one: the paper deliberately built this material and measured it. <strong>So <code class="language-plaintext highlighter-rouge">source</code>
+alone no longer separates claims from observations — you need <code class="language-plaintext highlighter-rouge">field</code> too.</strong> The distinction was
+introduced when array and designer-chromatin substrates began to be curated, and it is the
+opposite polarity from the supplementary rows sitting under the same <code class="language-plaintext highlighter-rouge">source</code> value.</li>
+  <li><strong><code class="language-plaintext highlighter-rouge">container</code></strong> — deposited measurement data from <code class="language-plaintext highlighter-rouge">data/</code>. The deposit is thereafter the
+authority.</li>
+</ul>
+
+<p>Measured cost of conflating them: a consumer counting “constructs we predict inert that the
+literature has published on” got <strong>41</strong>; splitting on <code class="language-plaintext highlighter-rouge">source</code> returned <strong>1</strong>, and all 40
+additions were catalog rows. <strong>A consumer who joins on <code class="language-plaintext highlighter-rouge">axis</code> alone and never looks at <code class="language-plaintext highlighter-rouge">source</code>
+overcounts silently</strong> — the numbers just come out high.</p>
+
+<p>Note the scale: of 4,113 mutation-axis mentions, only 1,932 are swept. Supplementary extraction is
+now comparable in size to the abstract sweep on that axis.</p>
+
+<hr />
+
+<h2 id="literature_descriptorsparquet"><code class="language-plaintext highlighter-rouge">literature_descriptors.parquet</code></h2>
+
+<p>One row per distinct descriptor, 3,284 rows. This is the <strong>prefilter index</strong> for the page’s
+relevance query, and it is built from tracked inputs so it can always be rebuilt.</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>Column</th>
+      <th>Type</th>
+      <th>Notes</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">descriptor</code></td>
+      <td>VARCHAR</td>
+      <td>mn notation, e.g. <code class="language-plaintext highlighter-rouge">H3:K27M</code>.</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">col_keys</code></td>
+      <td>VARCHAR</td>
+      <td><code class="language-plaintext highlighter-rouge">family:column</code> for every marked member, comma-separated. NULL for 197 variant-only / family-only descriptors, where the prefilter stands down.</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">n_keys</code></td>
+      <td>INT</td>
+      <td>Number of alignment <strong>columns</strong>.</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">n_alternatives</code></td>
+      <td>INT</td>
+      <td>Number of <strong>proteoforms the descriptor denotes</strong>.</td>
+    </tr>
+  </tbody>
+</table>
+
+<p><strong><code class="language-plaintext highlighter-rouge">n_keys</code> and <code class="language-plaintext highlighter-rouge">n_alternatives</code> are different questions, and using the first as the second is a
+known trap.</strong> <code class="language-plaintext highlighter-rouge">H3:K27A|C|D|…|Y</code> packs 19 alternatives at one alignment column, so its <code class="language-plaintext highlighter-rouge">n_keys</code> is
+1 and its <code class="language-plaintext highlighter-rouge">n_alternatives</code> is 19. A consumer expanding the pipe and giving every allele the set’s
+paper count read K27N, K27R and K27T as three independent literatures with identical PMID lists.</p>
+
+<p>133 of 3,284 descriptors are sets (widths 2, 3, 5 and 19). <strong>Sets are not a mutation-axis
+phenomenon</strong> — <code class="language-plaintext highlighter-rouge">H3:K9me1|me2|me3</code> is a mark-axis set and <code class="language-plaintext highlighter-rouge">H4:R3me1|me2a|me2s</code> an arginine one.
+<code class="language-plaintext highlighter-rouge">n_alternatives</code> is the product over comma-separated members, because alternation is scoped to one
+member: <code class="language-plaintext highlighter-rouge">H3:R2me2a|me2s,K9me2</code> denotes 2 proteoforms, not 3.</p>
+
+<p><strong><code class="language-plaintext highlighter-rouge">col_keys</code> is a fact about a VERSION of the alignment.</strong> When the H3 realignment moved K27 from
+column 222 to 258, every H3 descriptor key went stale and “Further reading” returned nothing on H3
+queries. See <em>Versioning</em> below.</p>
+
+<hr />
+
+<h2 id="literature_gapmapparquet"><code class="language-plaintext highlighter-rouge">literature_gapmap.parquet</code></h2>
+
+<p><strong>Attention per position, and the zeros are the product.</strong> One row per alignment column of every
+family frame — 734 rows, 728 posable — not only the columns that have literature, because a table of
+the positions that <em>have</em> attention cannot express “nobody has studied this one”; it can only fail to
+mention it, and a missing row reads as an absent fact rather than a measured one.</p>
+
+<p>Added 2026-08-31. Before that it was computed and written to a gitignored directory, so the only
+route to “how much attention has H3 R131 had” was to regex <code class="language-plaintext highlighter-rouge">^H3:R131[A-Z]$</code> over <code class="language-plaintext highlighter-rouge">descriptor</code> —
+a consumer writing a parser over our string format, over a key we do not promise.</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>Column</th>
+      <th>Type</th>
+      <th>Notes</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">family</code></td>
+      <td>VARCHAR</td>
+      <td>NULL on an unposable cell.</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">aln_column</code></td>
+      <td>INT</td>
+      <td>Column index in the family MSA. <strong>Versions with the alignment</strong> — see <em>Versioning</em> below.</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">family_position</code></td>
+      <td>INT</td>
+      <td>The family reference member’s own number there — <code class="language-plaintext highlighter-rouge">H3:K27</code> is 27. <strong>The stable key where it exists</strong>, and it does not always exist: see the note below.</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">residue</code></td>
+      <td>VARCHAR</td>
+      <td>The reference member’s residue there. NULL on the same rows as <code class="language-plaintext highlighter-rouge">family_position</code>.</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">n_mutation_papers</code>, <code class="language-plaintext highlighter-rouge">n_mark_papers</code></td>
+      <td>INT</td>
+      <td>Abstract layer, per axis.</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">n_papers_abstract</code></td>
+      <td>INT</td>
+      <td>Distinct papers over both axes. A pure function of the swept layer.</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">n_papers_all</code></td>
+      <td>INT</td>
+      <td>The above <strong>plus</strong> papers read to supplementary or full-text depth.</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">n_papers_studied</code></td>
+      <td>INT</td>
+      <td>Papers contributing anything that is <strong>not</strong> a census row. <strong>This is the one to read for “has anyone looked”.</strong></td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">n_papers_catalog</code></td>
+      <td>INT</td>
+      <td>Papers contributing a census row here.</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">unposable</code></td>
+      <td>INT</td>
+      <td>1 where the walk could not identify a column. Filter <code class="language-plaintext highlighter-rouge">= 0</code> for the frame.</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">mutation_pmids</code>, <code class="language-plaintext highlighter-rouge">mark_pmids</code>, <code class="language-plaintext highlighter-rouge">deep_pmids</code>, <code class="language-plaintext highlighter-rouge">catalog_pmids</code></td>
+      <td>VARCHAR</td>
+      <td>Comma-separated.</td>
+    </tr>
+  </tbody>
+</table>
+
+<h3 id="family_position-is-null-for-19-posable-columns-and-one-of-them-is-the-second-biggest-row"><code class="language-plaintext highlighter-rouge">family_position</code> is NULL for 19 posable columns, and one of them is the second-biggest row</h3>
+
+<p><strong>This is structural, not a glitch, and it is the one trap in this table.</strong> <code class="language-plaintext highlighter-rouge">family_position</code> is the
+family REFERENCE member’s own number at a column (H2A P0C0S8, H3 P68431, …). A column the reference
+does not occupy — an insertion relative to it — therefore has no family-frame name at all. Measured
+on the shipped table: <strong>19 of 728 posable columns</strong>, 18 in H2A and 1 in H2B, because H2A’s reference
+occupies only 129 of the family’s 387 columns.</p>
+
+<p>The largest of them is <strong><code class="language-plaintext highlighter-rouge">H2A</code> <code class="language-plaintext highlighter-rouge">aln_column</code> 177 — γH2A.X S139, with 5,199 papers</strong>, the
+second-most-attended cell in the entire map after H3 K27. Canonical H2A simply does not have that
+residue; the site lives in the H2A.X C-terminal extension.</p>
+
+<p><strong>So a join on <code class="language-plaintext highlighter-rouge">(family, family_position)</code> silently drops it, and 5,231 papers’ worth of attention
+with it.</strong> Two ways to be correct:</p>
+
+<div class="language-sql highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">-- the frame where it exists, the column where it does not</span>
+<span class="k">SELECT</span> <span class="n">family</span><span class="p">,</span> <span class="n">coalesce</span><span class="p">(</span><span class="k">CAST</span><span class="p">(</span><span class="n">family_position</span> <span class="k">AS</span> <span class="nb">VARCHAR</span><span class="p">),</span> <span class="s1">'col'</span> <span class="o">||</span> <span class="n">aln_column</span><span class="p">)</span> <span class="k">AS</span> <span class="n">site</span><span class="p">,</span> <span class="p">...</span>
+<span class="k">FROM</span> <span class="n">literature_gapmap</span> <span class="k">WHERE</span> <span class="n">unposable</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+</code></pre></div></div>
+
+<p>or join on <code class="language-plaintext highlighter-rouge">(family, aln_column)</code> throughout and <strong>pin the alignment version</strong> — <code class="language-plaintext highlighter-rouge">aln_column</code> covers
+every column but is a fact about a VERSION of the registry (see <em>Versioning</em>, and
+<code class="language-plaintext highlighter-rouge">NUMBERING_CHANGELOG.md</code> for when it last moved). The frame is stable and partial; the column is
+total and versioned. There is no key that is both, and that is the “positions are alignment columns”
+ruling rather than a gap someone forgot to fill.</p>
+
+<h3 id="a-catalog-is-not-attention-and-this-is-the-count-most-likely-to-be-read-wrongly">A catalog is not attention, and this is the count most likely to be read wrongly</h3>
+
+<p>Nacev 2019 (PMID 30894748) tabulates 1,877 residue changes across ~3,000 tumours, so every position
+it lists has at least one paper — and 0 vs 1 is exactly the difference between <em>unstudied</em> and
+<em>unknown</em>. Measured 2026-08-31:</p>
+
+<table>
+  <thead>
+    <tr>
+      <th> </th>
+      <th>posable positions</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">n_papers_all = 0</code></td>
+      <td><strong>208</strong></td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">n_papers_studied = 0</code></td>
+      <td><strong>499</strong></td>
+    </tr>
+  </tbody>
+</table>
+
+<p>The <strong>291</strong> in between are positions a census names and nobody has studied.</p>
+
+<p><code class="language-plaintext highlighter-rouge">n_papers_studied</code> and <code class="language-plaintext highlighter-rouge">n_papers_catalog</code> need not sum to <code class="language-plaintext highlighter-rouge">n_papers_all</code> — a paper contributing both
+a census row and an ordinary one is in both. <code class="language-plaintext highlighter-rouge">studied</code> is accumulated positively for exactly that
+reason, so <strong>do not compute <code class="language-plaintext highlighter-rouge">n_papers_all - n_papers_catalog</code></strong>.</p>
+
+<div class="language-sql highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">SELECT</span> <span class="n">family</span><span class="p">,</span> <span class="n">family_position</span><span class="p">,</span> <span class="n">residue</span><span class="p">,</span> <span class="n">n_papers_abstract</span><span class="p">,</span> <span class="n">n_papers_all</span><span class="p">,</span> <span class="n">n_papers_catalog</span>
+<span class="k">FROM</span>   <span class="n">literature_gapmap</span>
+<span class="k">WHERE</span>  <span class="n">unposable</span> <span class="o">=</span> <span class="mi">0</span> <span class="k">AND</span> <span class="n">n_papers_studied</span> <span class="o">=</span> <span class="mi">0</span>      <span class="c1">-- NOT n_papers_all = 0</span>
+<span class="k">ORDER</span>  <span class="k">BY</span> <span class="n">family</span><span class="p">,</span> <span class="n">family_position</span><span class="p">;</span>
+</code></pre></div></div>
+
+<h3 id="n_papers_abstract-vs-n_papers_all-and-why-neither-is-inferred-from-the-other"><code class="language-plaintext highlighter-rouge">n_papers_abstract</code> vs <code class="language-plaintext highlighter-rouge">n_papers_all</code>, and why neither is inferred from the other</h3>
+
+<p>The first is uniform over all 43,051 papers in the corpus; the second additionally counts papers read
+to supplementary or full-text depth, which is a handful. <strong>A zero in the first is “the field has not
+named this position in any title or abstract in this corpus”</strong> — never “not assayed”. H3
+<code class="language-plaintext highlighter-rouge">family_position</code> 30 and 131 are both <code class="language-plaintext highlighter-rouge">(0, 4)</code>.</p>
+
+<hr />
+
+<h2 id="versioning--what-a-coordinate-is-a-fact-about">Versioning — what a coordinate is a fact about</h2>
+
+<p>Every <code class="language-plaintext highlighter-rouge">aln_column</code>, <code class="language-plaintext highlighter-rouge">family_position</code> and <code class="language-plaintext highlighter-rouge">variant_position</code> is a fact about a <strong>version of the
+registry</strong>: the alignment, the prune threshold and the numbering are one versioned object, and any
+of them moving may move all of them.</p>
+
+<p>The thing to pin is <strong><code class="language-plaintext highlighter-rouge">input_sha256</code> in <code class="language-plaintext highlighter-rouge">alignment_meta.parquet</code>, per family — record all five.</strong>
+A stamp that pinned only one family reads as verified provenance while naming the wrong alignment.
+<code class="language-plaintext highlighter-rouge">tables/SCHEMA.md</code> §<em>Detecting stale positions</em> has the full rule.</p>
+
+<p><strong>And when it DID move: <a href="/nucleosomekb/data/NUMBERING_CHANGELOG.html"><code class="language-plaintext highlighter-rouge">NUMBERING_CHANGELOG.md</code></a>, in this directory.</strong> The
+hash tells you the version you hold is not the one that ships; the changelog tells you when it
+changed, what happened, and — the column that matters — <strong>how many residues actually landed in a
+different <code class="language-plaintext highlighter-rouge">aln_column</code></strong>. Those are different questions: admitting a member re-runs the MSA and
+changes the version even where every existing index survives. Both cases are in the history —
+<code class="language-plaintext highlighter-rouge">ffcfd44</code> bumped H3 with <strong>0</strong> residues moved, <code class="language-plaintext highlighter-rouge">bdefd76</code> moved <strong>3,963</strong>. It is generated from git
+history of the shipped parquet, never hand-appended.</p>
+
+<p><strong>A variant rename is not a coordinate move, and from outside they look identical.</strong> <code class="language-plaintext highlighter-rouge">caH1 →
+H1.1–H1.5</code> and <code class="language-plaintext highlighter-rouge">H2A.1 / H2B.1 → caH2A / caH2B</code> both surfaced to a consumer as failing tests, and
+distinguishing them required recomputing per-family hashes by hand. <code class="language-plaintext highlighter-rouge">release_manifest.json</code> ships
+that comparison — see below.</p>
+
+<hr />
+
+<h2 id="release_manifestjson"><code class="language-plaintext highlighter-rouge">release_manifest.json</code></h2>
+
+<p>A small tracked JSON capturing everything that defines coordinates and vocabulary at build time,
+so two releases can be diffed without recomputing anything:</p>
+
+<ul>
+  <li>per family: <code class="language-plaintext highlighter-rouge">n_members</code>, <code class="language-plaintext highlighter-rouge">n_columns</code>, <code class="language-plaintext highlighter-rouge">input_sha256</code>, <code class="language-plaintext highlighter-rouge">aln_version</code></li>
+  <li>the variant vocabulary: every token, its family, its <code class="language-plaintext highlighter-rouge">within:</code> parent and its reference</li>
+  <li>table row counts</li>
+</ul>
+
+<p>Regenerate with <code class="language-plaintext highlighter-rouge">make release-manifest</code>; diff two copies with
+<code class="language-plaintext highlighter-rouge">Rscript scripts/diff_release_manifest.R &lt;old.json&gt;</code>, which prints, per family, whether the
+numbering moved — and separately, which variant tokens were added, removed or re-parented. That is
+the assertion <em>“numbering unchanged; these variants were renamed”</em>, which this project has always
+had the data to make and did not ship.</p>
+
+<hr />
+
+<h2 id="not-covered-here">Not covered here</h2>
+
+<p><code class="language-plaintext highlighter-rouge">docs/_data/literature.yml</code> carries the reading-effort counts behind the “Further reading”
+empty-state note (full-text reads, abstract reads, publication span). Two of its three numbers are
+not in the parquet and cannot be queried from it.</p>
+
+
+      
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/anchor-js/4.1.0/anchor.min.js" integrity="sha256-lZaRhKri35AyJSypXXs4o6OPFTbTmUoltBbDCbdzegg=" crossorigin="anonymous"></script>
+    <script>anchors.add();</script>
+  </body>
+</html>
