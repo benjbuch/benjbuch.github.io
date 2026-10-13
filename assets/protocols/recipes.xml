@@ -46,7 +46,7 @@
 		<source doc_type="SOP" id="0020" version="1" visibility="public" license="CC-BY-SA-4.0" title="Plasmid preparation by alkaline lysis" definition="no">sop_0020-v1-plasmid_isolation</source>
 		<source doc_type="SOP" id="0022" version="1" visibility="public" license="CC-BY-SA-4.0" title="Purification of nucleic acids from agarose gels" definition="no">sop_0022-v1-gel_extraction</source>
 		<source doc_type="SOP" id="0025" version="2" visibility="public" license="CC-BY-SA-4.0" title="Nuclear extraction and fractionation of chromatin-associated proteins" definition="no">sop_0025-v2-nuclear_extraction</source>
-		<source doc_type="SOP" id="0027" version="2" visibility="internal" license="CC-BY-SA-4.0" title="Immunoprecipitation of soluble proteins" definition="no">sop_0027-v2-immunoprecipitation</source>
+		<source doc_type="SOP" id="0027" version="2" visibility="public" license="CC-BY-SA-4.0" title="Immunoprecipitation of soluble proteins" definition="no">sop_0027-v2-immunoprecipitation</source>
 		<source doc_type="SOP" id="0039" version="1" visibility="public" license="CC-BY-SA-4.0" title="Qualitative polymerase chain reactions" definition="no">sop_0039-v1-pcr_qualitative</source>
 	</recipe>
 	<recipe id="R0046">
@@ -83,10 +83,11 @@
 		<source doc_type="SOP" id="0017" version="3" visibility="public" license="CC-BY-SA-4.0" title="Lentiviral generation of stable animal cell lines" definition="no">sop_0017-v3-stable_cell_lines_lentiviral</source>
 		<source doc_type="SOP" id="0021" version="1" visibility="public" license="CC-BY-SA-4.0" title="Purification of nucleic acids" definition="no">sop_0021-v1-purification_nucleic_acids</source>
 		<source doc_type="SOP" id="0025" version="2" visibility="public" license="CC-BY-SA-4.0" title="Nuclear extraction and fractionation of chromatin-associated proteins" definition="no">sop_0025-v2-nuclear_extraction</source>
-		<source doc_type="SOP" id="0027" version="2" visibility="internal" license="CC-BY-SA-4.0" title="Immunoprecipitation of soluble proteins" definition="no">sop_0027-v2-immunoprecipitation</source>
+		<source doc_type="SOP" id="0027" version="2" visibility="public" license="CC-BY-SA-4.0" title="Immunoprecipitation of soluble proteins" definition="no">sop_0027-v2-immunoprecipitation</source>
 		<source doc_type="SOP" id="0040" version="1" visibility="internal" license="CC-BY-SA-4.0" title="In vitro transcription with T7 RNA polymerase" definition="no">sop_0040-v1-in_vitro_transcription</source>
-		<source doc_type="SOP" id="0044" version="1" visibility="internal" license="CC-BY-SA-4.0" title="TEV protease production and use as a cleavage tool" definition="no">sop_0044-v1-tev_protease</source>
-		<source doc_type="SOP" id="0045" version="1" visibility="internal" license="CC-BY-SA-4.0" title="IMAC purification of His-tagged proteins" definition="no">sop_0045-v1-imac_his_tag_purification</source>
+		<source doc_type="SOP" id="0044" version="1" visibility="public" license="CC-BY-SA-4.0" title="TEV protease production and cleavage" definition="no">sop_0044-v1-tev_protease</source>
+		<source doc_type="SOP" id="0045" version="1" visibility="public" license="CC-BY-SA-4.0" title="IMAC purification of His-tagged proteins" definition="no">sop_0045-v1-imac_his_tag_purification</source>
+		<source doc_type="SOP" id="0047" version="1" visibility="public" license="CC-BY-SA-4.0" title="Immunoprecipitation of nucleosomes from native chromatin" definition="no">sop_0047-v1-immunoprecipitation_native_chromatin</source>
 	</recipe>
 	<recipe id="R0017">
 		<name>Ethylenediaminetetraacetate</name>
@@ -130,9 +131,9 @@
 		<source doc_type="SOP" id="0007" version="1" visibility="public" license="CC-BY-SA-4.0" title="Denaturing SDS polyacrylamide gel electrophoresis" definition="no">sop_0007-v1-sds_page</source>
 		<source doc_type="SOP" id="0020" version="1" visibility="public" license="CC-BY-SA-4.0" title="Plasmid preparation by alkaline lysis" definition="no">sop_0020-v1-plasmid_isolation</source>
 		<source doc_type="SOP" id="0024" version="1" visibility="public" license="CC-BY-SA-4.0" title="Extraction of genomic DNA from tissue culture cells" definition="no">sop_0024-v1-dna_isolation_mammalian_cells</source>
-		<source doc_type="SOP" id="0027" version="2" visibility="internal" license="CC-BY-SA-4.0" title="Immunoprecipitation of soluble proteins" definition="no">sop_0027-v2-immunoprecipitation</source>
+		<source doc_type="SOP" id="0027" version="2" visibility="public" license="CC-BY-SA-4.0" title="Immunoprecipitation of soluble proteins" definition="no">sop_0027-v2-immunoprecipitation</source>
 		<source doc_type="SOP" id="0032" version="1" visibility="public" license="CC-BY-SA-4.0" title="Making and running agarose gels" definition="no">sop_0032-v1-agarose_gel_electrophoresis</source>
-		<source doc_type="SOP" id="0045" version="1" visibility="internal" license="CC-BY-SA-4.0" title="IMAC purification of His-tagged proteins" definition="no">sop_0045-v1-imac_his_tag_purification</source>
+		<source doc_type="SOP" id="0045" version="1" visibility="public" license="CC-BY-SA-4.0" title="IMAC purification of His-tagged proteins" definition="no">sop_0045-v1-imac_his_tag_purification</source>
 	</recipe>
 	<recipe id="R0015">
 		<name>Dithiothreitol</name>
@@ -177,7 +178,7 @@
 		<source doc_type="SOP" id="0002" version="2" visibility="public" license="CC-BY-SA-4.0" title="Whole cell lysates from tissue culture cells" definition="no">sop_0002-v2-whole_cell_extraction_mammalian_cells</source>
 		<source doc_type="SOP" id="0004" version="3" visibility="internal" license="CC-BY-SA-4.0" title="Core histone expression and purification" definition="no">sop_0004-v3-production_recombinant_histones</source>
 		<source doc_type="SOP" id="0005" version="2" visibility="public" license="CC-BY-SA-4.0" title="Histone octamer, tetramer, or dimer formation" definition="no">sop_0005-v2-production_histone_octamers</source>
-		<source doc_type="SOP" id="0027" version="2" visibility="internal" license="CC-BY-SA-4.0" title="Immunoprecipitation of soluble proteins" definition="no">sop_0027-v2-immunoprecipitation</source>
+		<source doc_type="SOP" id="0027" version="2" visibility="public" license="CC-BY-SA-4.0" title="Immunoprecipitation of soluble proteins" definition="no">sop_0027-v2-immunoprecipitation</source>
 		<source doc_type="SOP" id="0040" version="1" visibility="internal" license="CC-BY-SA-4.0" title="In vitro transcription with T7 RNA polymerase" definition="no">sop_0040-v1-in_vitro_transcription</source>
 	</recipe>
 	<recipe id="R0035">
@@ -196,10 +197,10 @@
 			<final>100 millimolar</final>
 		</ingredient>
 		<storage class="freezer"/>
-		<workup>Stir viguorously if added to a solution without detergents.</workup>
+		<workup>Stir vigorously if added to a solution without detergents.</workup>
 		<note type="critical">Make fresh dilutions from stock for each use.</note>
 		<note type="critical">Half-life in aqueous solution is less than <unit>30 minute</unit> at room temperature, or a few hours on ice.</note>
-		<note type="safety">PMSF is extremely destructive to the respriatory tract, eyes, and the skin; immediatly flush with copious amounts of water when exposed.</note>
+		<note type="safety">PMSF is extremely destructive to the respiratory tract, eyes, and the skin; immediately flush with copious amounts of water when exposed.</note>
 		<!-- ORGANIZATION -->
 		<category>solution</category>
 		<category>special</category>
@@ -213,7 +214,8 @@
 		</safety>
 		<source doc_type="COL" id="0001" version="1" visibility="public" license="CC-BY-SA-4.0" title="Stock solutions" definition="yes" primary="yes">co_0001-v1-stock_solutions</source>
 		<source doc_type="SOP" id="0004" version="3" visibility="internal" license="CC-BY-SA-4.0" title="Core histone expression and purification" definition="no">sop_0004-v3-production_recombinant_histones</source>
-		<source doc_type="SOP" id="0045" version="1" visibility="internal" license="CC-BY-SA-4.0" title="IMAC purification of His-tagged proteins" definition="no">sop_0045-v1-imac_his_tag_purification</source>
+		<source doc_type="SOP" id="0045" version="1" visibility="public" license="CC-BY-SA-4.0" title="IMAC purification of His-tagged proteins" definition="no">sop_0045-v1-imac_his_tag_purification</source>
+		<source doc_type="SOP" id="0047" version="1" visibility="public" license="CC-BY-SA-4.0" title="Immunoprecipitation of nucleosomes from native chromatin" definition="no">sop_0047-v1-immunoprecipitation_native_chromatin</source>
 	</recipe>
 	<recipe id="R0068">
 		<!-- NOLINT: MIX006 — Gomori feedstock, intrinsic salt pH; mixed with monobasic feedstock to a buffered pH downstream -->
@@ -462,9 +464,9 @@
 			<property>reagent-grade</property>
 			<amount>50 milliliter</amount>
 		</solvent>
-		<ingredient CAS="2315-67-5" PubChem="compound/5590">
+		<ingredient CAS="9036-19-5" PubChem="compound/5590">
 			<name>Triton™ X-100</name>
-			<stock>250.38 gram per mol</stock>
+			<stock>625 gram per mol</stock>
 			<amount>5 gram</amount>
 			<final>10 percent</final>
 		</ingredient>
@@ -486,9 +488,10 @@
 		<source doc_type="SOP" id="0004" version="3" visibility="internal" license="CC-BY-SA-4.0" title="Core histone expression and purification" definition="no">sop_0004-v3-production_recombinant_histones</source>
 		<source doc_type="SOP" id="0024" version="1" visibility="public" license="CC-BY-SA-4.0" title="Extraction of genomic DNA from tissue culture cells" definition="no">sop_0024-v1-dna_isolation_mammalian_cells</source>
 		<source doc_type="SOP" id="0025" version="2" visibility="public" license="CC-BY-SA-4.0" title="Nuclear extraction and fractionation of chromatin-associated proteins" definition="no">sop_0025-v2-nuclear_extraction</source>
-		<source doc_type="SOP" id="0027" version="2" visibility="internal" license="CC-BY-SA-4.0" title="Immunoprecipitation of soluble proteins" definition="no">sop_0027-v2-immunoprecipitation</source>
+		<source doc_type="SOP" id="0027" version="2" visibility="public" license="CC-BY-SA-4.0" title="Immunoprecipitation of soluble proteins" definition="no">sop_0027-v2-immunoprecipitation</source>
 		<source doc_type="SOP" id="0039" version="1" visibility="public" license="CC-BY-SA-4.0" title="Qualitative polymerase chain reactions" definition="no">sop_0039-v1-pcr_qualitative</source>
-		<source doc_type="SOP" id="0045" version="1" visibility="internal" license="CC-BY-SA-4.0" title="IMAC purification of His-tagged proteins" definition="no">sop_0045-v1-imac_his_tag_purification</source>
+		<source doc_type="SOP" id="0045" version="1" visibility="public" license="CC-BY-SA-4.0" title="IMAC purification of His-tagged proteins" definition="no">sop_0045-v1-imac_his_tag_purification</source>
+		<source doc_type="SOP" id="0047" version="1" visibility="public" license="CC-BY-SA-4.0" title="Immunoprecipitation of nucleosomes from native chromatin" definition="no">sop_0047-v1-immunoprecipitation_native_chromatin</source>
 	</recipe>
 	<recipe id="R0094">
 		<name>Urea extraction buffer</name>
@@ -909,608 +912,10 @@
 		<source doc_type="SOP" id="0015" version="1" visibility="public" license="CC-BY-SA-4.0" title="Cultivating HeLa cells" definition="no">sop_0015-v1-routine_cell_culture_HeLa</source>
 		<source doc_type="SOP" id="0016" version="1" visibility="public" license="CC-BY-SA-4.0" title="Cultivating MCF 10A cells" definition="no">sop_0016-v1-routine_cell_culture_MCF10A</source>
 		<source doc_type="SOP" id="0017" version="3" visibility="public" license="CC-BY-SA-4.0" title="Lentiviral generation of stable animal cell lines" definition="no">sop_0017-v3-stable_cell_lines_lentiviral</source>
-		<source doc_type="SOP" id="0027" version="2" visibility="internal" license="CC-BY-SA-4.0" title="Immunoprecipitation of soluble proteins" definition="no">sop_0027-v2-immunoprecipitation</source>
+		<source doc_type="SOP" id="0027" version="2" visibility="public" license="CC-BY-SA-4.0" title="Immunoprecipitation of soluble proteins" definition="no">sop_0027-v2-immunoprecipitation</source>
 		<source doc_type="SOP" id="0028" version="2" visibility="internal" license="CC-BY-SA-4.0" title="Cell cycle synchronization of mammalian cell lines" definition="no">sop_0028-v2-cell_cycle_synchronization</source>
 		<source doc_type="SOP" id="0029" version="1" visibility="internal" license="CC-BY-SA-4.0" title="Cell cycle analysis by fluorescence staining" definition="no">sop_0029-v1-cell_cycle_flow_cytometry</source>
-	</recipe>
-	<recipe id="R0022">
-		<name>Glycerol</name>
-		<stock>50 percent</stock>
-		<!-- PREPARATION -->
-		<solvent CAS="7732-18-5" PubChem="compound/962">
-			<name>Water</name>
-			<property>reagent-grade</property>
-			<amount>100 milliliter</amount>
-		</solvent>
-		<ingredient CAS="56-81-5" PubChem="compound/753">
-			<name>Glycerol</name>
-			<property>anhydrous</property>
-			<stock>92.09 gram per mol</stock>
-			<amount>50 milliliter</amount>
-			<final>50 percent</final>
-		</ingredient>
-		<workup>Autoclave.</workup>
-		<note type="orientation">Pure glycerol has a density of <unit>1.26 gram per milliliter</unit> at <unit>20 celsius</unit>.</note>
-		<note type="orientation">This stock is <unit>6.8 molar</unit>.</note>
-		<!-- ORGANIZATION -->
-		<category>solution</category>
-		<category>common</category>
-		<!-- ENVIRONMENT, HEALTH, SAFETY (derived) -->
-		<safety source="derived" disposal="sanitary-sewer">
-			<benign source="derived" scil="green-circle" use="Solvents">EPA Safer Choice low-concern</benign>
-			<disposal source="derived">Flush to drain with excess water</disposal>
-		</safety>
-		<source doc_type="COL" id="0001" version="1" visibility="public" license="CC-BY-SA-4.0" title="Stock solutions" definition="yes" primary="yes">co_0001-v1-stock_solutions</source>
-		<source doc_type="SOP" id="0002" version="2" visibility="public" license="CC-BY-SA-4.0" title="Whole cell lysates from tissue culture cells" definition="no">sop_0002-v2-whole_cell_extraction_mammalian_cells</source>
-		<source doc_type="SOP" id="0027" version="2" visibility="internal" license="CC-BY-SA-4.0" title="Immunoprecipitation of soluble proteins" definition="no">sop_0027-v2-immunoprecipitation</source>
-		<source doc_type="SOP" id="0034" version="1" visibility="public" license="CC-BY-SA-4.0" title="Transformation of plasmids into a bacterial host" definition="no">sop_0034-v1-transformation</source>
-		<source doc_type="SOP" id="0044" version="1" visibility="internal" license="CC-BY-SA-4.0" title="TEV protease production and use as a cleavage tool" definition="no">sop_0044-v1-tev_protease</source>
-	</recipe>
-	<recipe id="R0031">
-		<name>Magnesium chloride</name>
-		<abbreviation><chemical>MgCl_2</chemical></abbreviation>
-		<stock>1 molar</stock>
-		<!-- PREPARATION -->
-		<solvent CAS="7732-18-5" PubChem="compound/962">
-			<name>Water</name>
-			<property>reagent-grade</property>
-			<amount>100 milliliter</amount>
-		</solvent>
-		<ingredient CAS="7791-18-6" PubChem="compound/643991">
-			<name form="hexahydrate"><chemical>MgCl_2</chemical></name>
-			<stock>203.30 gram per mol</stock>
-			<amount>20.3 gram</amount>
-			<final>1 molar</final>
-		</ingredient>
-		<workup>Autoclave.</workup>
-		<storage class="ambient"/>
-		<note>The solid is very hygroscopic; buy only small quantities.</note>
-		<!-- ORGANIZATION -->
-		<category>solution</category>
-		<category>common</category>
-		<!-- ENVIRONMENT, HEALTH, SAFETY (derived) -->
-		<safety source="derived" disposal="sanitary-sewer">
-			<benign source="derived" scil="green-circle" use="Processing Aids and Additives">EPA Safer Choice low-concern</benign>
-			<disposal source="derived">Flush to drain with excess water</disposal>
-		</safety>
-		<source doc_type="COL" id="0001" version="1" visibility="public" license="CC-BY-SA-4.0" title="Stock solutions" definition="yes" primary="yes">co_0001-v1-stock_solutions</source>
-		<source doc_type="COL" id="0003" version="1" visibility="public" license="CC-BY-SA-4.0" title="Growth media" definition="no">co_0003-v1-growth_media</source>
-		<source doc_type="SOP" id="0001" version="2" visibility="public" license="CC-BY-SA-4.0" title="Isolation of nuclei from tissue culture cells" definition="no">sop_0001-v2-isolation_nuclei</source>
-		<source doc_type="SOP" id="0025" version="2" visibility="public" license="CC-BY-SA-4.0" title="Nuclear extraction and fractionation of chromatin-associated proteins" definition="no">sop_0025-v2-nuclear_extraction</source>
-		<source doc_type="SOP" id="0027" version="2" visibility="internal" license="CC-BY-SA-4.0" title="Immunoprecipitation of soluble proteins" definition="no">sop_0027-v2-immunoprecipitation</source>
-		<source doc_type="SOP" id="0034" version="1" visibility="public" license="CC-BY-SA-4.0" title="Transformation of plasmids into a bacterial host" definition="no">sop_0034-v1-transformation</source>
-		<source doc_type="SOP" id="0040" version="1" visibility="internal" license="CC-BY-SA-4.0" title="In vitro transcription with T7 RNA polymerase" definition="no">sop_0040-v1-in_vitro_transcription</source>
-		<source doc_type="SOP" id="0045" version="1" visibility="internal" license="CC-BY-SA-4.0" title="IMAC purification of His-tagged proteins" definition="no">sop_0045-v1-imac_his_tag_purification</source>
-	</recipe>
-	<recipe id="R0145">
-		<name>Ethylene glycol tetraacetic acid</name>
-		<abbreviation>EGTA</abbreviation>
-		<stock>0.5 molar</stock>
-		<amount>10 microliter</amount>
-		<!-- PREPARATION -->
-		<solvent CAS="7732-18-5" PubChem="compound/962">
-			<name>Water</name>
-			<property>reagent-grade</property>
-			<amount>10 milliliter</amount>
-		</solvent>
-		<ingredient CAS="67-42-5" PubChem="compound/6207">
-			<name>Egtazic acid</name>
-			<stock>380.35 gram per mol</stock>
-			<amount>1.90 gram</amount>
-			<final>0.5 molar</final>
-		</ingredient>
-		<workup>EGTA will not dissolve well until <pH>8</pH>; titrate in with NaOH.</workup>
-		<!-- ORGANIZATION -->
-		<category>solution</category>
-		<category>common</category>
-		<!-- ENVIRONMENT, HEALTH, SAFETY (derived) -->
-		<safety source="derived" disposal="treat">
-			<benign source="derived">No GHS hazards at the indicated concentrations</benign>
-			<disposal source="derived">Dilute below the discharge limit</disposal>
-			<disposal source="derived">Flush to drain with excess water</disposal>
-		</safety>
-		<source doc_type="SOP" id="0025" version="2" visibility="public" license="CC-BY-SA-4.0" title="Nuclear extraction and fractionation of chromatin-associated proteins" definition="yes" primary="yes">sop_0025-v2-nuclear_extraction</source>
-		<source doc_type="SOP" id="0027" version="2" visibility="internal" license="CC-BY-SA-4.0" title="Immunoprecipitation of soluble proteins" definition="no">sop_0027-v2-immunoprecipitation</source>
-	</recipe>
-	<recipe id="R0090">
-		<!-- Classical "Schreiber lab" PMSF/Leu/Pep/Apr protease mix. -->
-		<name>Inhibitor cocktail</name>
-		<stock>100 fold</stock>
-		<!-- PREPARATION -->
-		<solvent CAS="7732-18-5" PubChem="compound/962">
-			<name>Water</name>
-			<property>reagent-grade</property>
-			<amount>1 milliliter</amount>
-		</solvent>
-		<ingredient id="R0035">
-			<name>Phenylmethylsufonyl fluoride</name>
-			<abbreviation>PMSF</abbreviation>
-			<stock>100 millimolar</stock>
-			<amount>200 microliter</amount>
-			<final>20 millimolar</final>
-		</ingredient>
-		<ingredient CAS="24125-16-4" PubChem="compound/13209094">
-			<name form="hydrochloride">Leupeptin</name>
-			<stock>25 gram per liter</stock>
-			<amount>370 microliter</amount>
-			<final>2.0 millimolar</final>
-		</ingredient>
-		<ingredient CAS="26305-03-3" PubChem="compound/5478883">
-			<name>Pepstatin A</name>
-			<stock>25 gram per liter</stock>
-			<amount>411 microliter</amount>
-			<final>1.5 millimolar</final>
-		</ingredient>
-		<ingredient CAS="9087-70-1" PubChem="compound/22833874">
-			<name>Aprotinin</name>
-			<stock>10 gram per liter</stock>
-			<amount>500 microliter</amount>
-			<final>80 micromolar</final>
-		</ingredient>
-		<workup>Add or omit inhibitors as needed.</workup>
-		<note>This cocktail covers serine and cysteine proteases. To preserve phospho- and acetyl-modifications, add phosphatase (<seealso type="recipe">0164</seealso>, <seealso type="recipe">0075</seealso>) and HDAC (<seealso type="recipe">0165</seealso>, <seealso type="recipe">0166</seealso>) inhibitors fresh to the consuming buffer.</note>
-		<!-- ORGANIZATION -->
-		<category>solution</category>
-		<category>special</category>
-		<!-- ENVIRONMENT, HEALTH, SAFETY (derived) -->
-		<safety source="derived" signal="danger" disposal="hazardous-waste">
-			<hazard code="H361" category="2" type="serious_health_hazard" source="derived">Reproductive toxicity</hazard>
-			<hazard code="H225" category="2" type="flammable" source="derived">Flammable liquid</hazard>
-			<hazard code="H319" category="2" type="health_hazard" source="derived">Serious eye irritation</hazard>
-			<hazard code="H336" category="3" type="health_hazard" source="derived">Drowsiness or dizziness</hazard>
-			<disposal source="derived">Collect as ORGANIC SOLVENT WASTE</disposal>
-			<disposal source="derived">Keep away from oxidizers</disposal>
-		</safety>
-		<source doc_type="COL" id="0001" version="1" visibility="public" license="CC-BY-SA-4.0" title="Stock solutions" definition="yes" primary="yes">co_0001-v1-stock_solutions</source>
-		<source doc_type="SOP" id="0001" version="2" visibility="public" license="CC-BY-SA-4.0" title="Isolation of nuclei from tissue culture cells" definition="no">sop_0001-v2-isolation_nuclei</source>
-		<source doc_type="SOP" id="0002" version="2" visibility="public" license="CC-BY-SA-4.0" title="Whole cell lysates from tissue culture cells" definition="no">sop_0002-v2-whole_cell_extraction_mammalian_cells</source>
-		<source doc_type="SOP" id="0025" version="2" visibility="public" license="CC-BY-SA-4.0" title="Nuclear extraction and fractionation of chromatin-associated proteins" definition="no">sop_0025-v2-nuclear_extraction</source>
-		<source doc_type="SOP" id="0027" version="2" visibility="internal" license="CC-BY-SA-4.0" title="Immunoprecipitation of soluble proteins" definition="no">sop_0027-v2-immunoprecipitation</source>
-	</recipe>
-	<recipe id="R0038">
-		<name>Potassium chloride</name>
-		<abbreviation><chemical>KCl</chemical></abbreviation>
-		<stock>3 molar</stock>
-		<!-- PREPARATION -->
-		<solvent CAS="7732-18-5" PubChem="compound/962">
-			<name>Water</name>
-			<property>reagent-grade</property>
-			<amount>100 milliliter</amount>
-		</solvent>
-		<ingredient CAS="7447-40-7" PubChem="compound/4873">
-			<name>KCl</name>
-			<stock>74.55 gram per mol</stock>
-			<amount>22.4 gram</amount>
-			<final>3 molar</final>
-		</ingredient>
-		<workup>Autoclave.</workup>
-		<storage class="ambient"/>
-		<!-- ORGANIZATION -->
-		<category>solution</category>
-		<category>common</category>
-		<!-- ENVIRONMENT, HEALTH, SAFETY (derived) -->
-		<safety source="derived" disposal="sanitary-sewer">
-			<benign source="derived" scil="green-circle" use="Processing Aids and Additives">EPA Safer Choice low-concern</benign>
-			<disposal source="derived">Flush to drain with excess water</disposal>
-		</safety>
-		<source doc_type="COL" id="0001" version="1" visibility="public" license="CC-BY-SA-4.0" title="Stock solutions" definition="yes" primary="yes">co_0001-v1-stock_solutions</source>
-		<source doc_type="COL" id="0003" version="1" visibility="public" license="CC-BY-SA-4.0" title="Growth media" definition="no">co_0003-v1-growth_media</source>
-		<source doc_type="SOP" id="0001" version="2" visibility="public" license="CC-BY-SA-4.0" title="Isolation of nuclei from tissue culture cells" definition="no">sop_0001-v2-isolation_nuclei</source>
-		<source doc_type="SOP" id="0025" version="2" visibility="public" license="CC-BY-SA-4.0" title="Nuclear extraction and fractionation of chromatin-associated proteins" definition="no">sop_0025-v2-nuclear_extraction</source>
-		<source doc_type="SOP" id="0027" version="2" visibility="internal" license="CC-BY-SA-4.0" title="Immunoprecipitation of soluble proteins" definition="no">sop_0027-v2-immunoprecipitation</source>
-		<source doc_type="SOP" id="0039" version="1" visibility="public" license="CC-BY-SA-4.0" title="Qualitative polymerase chain reactions" definition="no">sop_0039-v1-pcr_qualitative</source>
-	</recipe>
-	<recipe id="R0189">
-		<name>Formaldehyde</name>
-		<abbreviation>FA</abbreviation>
-		<stock>1 percent</stock>
-		<!-- PREPARATION -->
-		<solvent CAS="7732-18-5" PubChem="compound/962">
-			<name>Water</name>
-			<property>reagent-grade</property>
-			<amount>10 milliliter</amount>
-		</solvent>
-		<ingredient id="R0037">
-			<name>Phosphate-buffered saline</name>
-			<abbreviation>PBS</abbreviation>
-			<property><pH>7.4</pH></property>
-			<stock>10 fold</stock>
-			<amount>1 milliliter</amount>
-			<final>1 fold</final>
-		</ingredient>
-		<ingredient CAS="50-00-0" PubChem="compound/712">
-			<name>Formaldehyde</name>
-			<property>in water</property>
-			<property>stabilized with methanol</property>
-			<stock>37 percent</stock>
-			<amount>270 microliter</amount>
-			<final>1 percent</final>
-		</ingredient>
-		<workup>Prepare fresh before use.</workup>
-		<note type="orientation">When starting from paraformaldehyde, bring to <unit>80 celsius</unit> for <unit>1 to 2 hour</unit> and filter through a <unit>0.22 micrometer</unit> pore.</note>
-		<storage class="ambient" shelflife="4 weeks"/>
-		<!-- ORGANIZATION -->
-		<category>solution</category>
-		<category>special</category>
-		<!-- ENVIRONMENT, HEALTH, SAFETY (derived) -->
-		<safety source="derived" signal="danger" disposal="hazardous-waste">
-			<hazard code="H350" category="1" type="serious_health_hazard" source="derived">Carcinogenicity</hazard>
-			<hazard code="H341" category="2" type="serious_health_hazard" source="derived">Germ cell mutagenicity</hazard>
-			<hazard code="H317" category="1" type="health_hazard" source="derived">Skin sensitization</hazard>
-			<disposal source="derived">Collect as HAZARDOUS WASTE</disposal>
-			<disposal source="derived">DO NOT wash into sewer</disposal>
-		</safety>
-		<source doc_type="SOP" id="0027" version="2" visibility="internal" license="CC-BY-SA-4.0" title="Immunoprecipitation of soluble proteins" definition="yes" primary="yes">sop_0027-v2-immunoprecipitation</source>
-	</recipe>
-	<recipe id="R0190">
-		<!-- NOLINT: MIX006 — storage stock at neutral pH; the buffering use case is downstream at pH 2.5 (acidic elution) -->
-		<name>Glycine</name>
-		<stock>1.25 molar</stock>
-		<property><pH>7.0</pH></property>
-		<!-- PREPARATION -->
-		<solvent CAS="7732-18-5" PubChem="compound/962">
-			<name>Water</name>
-			<property>reagent-grade</property>
-			<amount>50 milliliter</amount>
-		</solvent>
-		<ingredient CAS="56-40-6" PubChem="compound/750">
-			<name>Glycine</name>
-			<stock>75.07 gram per mol</stock>
-			<amount>4.69 gram</amount>
-			<final>1.25 molar</final>
-		</ingredient>
-		<workup>Adjust pH with hydrochloric acid.</workup>
-		<storage class="fridge" shelflife="2 weeks"/>
-		<category>solution</category>
-		<category>common</category>
-		<!-- ENVIRONMENT, HEALTH, SAFETY (derived) -->
-		<safety source="derived" disposal="sanitary-sewer">
-			<benign source="derived" scil="green-circle" use="Processing Aids and Additives">EPA Safer Choice low-concern</benign>
-			<disposal source="derived">Flush to drain with excess water</disposal>
-		</safety>
-		<source doc_type="SOP" id="0027" version="2" visibility="internal" license="CC-BY-SA-4.0" title="Immunoprecipitation of soluble proteins" definition="yes" primary="yes">sop_0027-v2-immunoprecipitation</source>
-	</recipe>
-	<recipe id="R0191">
-		<!-- NOLINT: MIX006 — pH 8.0 is the intrinsic pH of the salt in water (sits between carbonate pKa1 6.35 and pKa2 10.33); used as a volatile MS-compatible diluent for tryptic digestion, not for buffering -->
-		<name>Ammonium bicarbonate</name>
-		<stock>0.5 molar</stock>
-		<property><pH>8.0</pH></property>
-		<!-- PREPARATION -->
-		<solvent CAS="7732-18-5" PubChem="compound/962">
-			<name>Water</name>
-			<property>reagent-grade</property>
-			<amount>50 milliliter</amount>
-		</solvent>
-		<ingredient CAS="1066-33-7" PubChem="compound/14013">
-			<name>Ammonium bicarbonate</name>
-			<stock>79.06 gram per mol</stock>
-			<amount>1.98 gram</amount>
-			<final>0.5 molar</final>
-		</ingredient>
-		<workup>Prepare fresh before use.</workup>
-		<storage class="fridge" shelflife="1 week"/>
-		<category>solution</category>
-		<category>common</category>
-		<!-- ENVIRONMENT, HEALTH, SAFETY (derived) -->
-		<safety source="derived" disposal="hazardous-waste">
-			<benign source="derived">No GHS hazards at the indicated concentrations</benign>
-			<disposal source="derived">Hold for EHS review before disposal</disposal>
-		</safety>
-		<source doc_type="SOP" id="0027" version="2" visibility="internal" license="CC-BY-SA-4.0" title="Immunoprecipitation of soluble proteins" definition="yes" primary="yes">sop_0027-v2-immunoprecipitation</source>
-	</recipe>
-	<recipe id="R0156">
-		<name>General IP buffer</name>
-		<!-- PREPARATION -->
-		<solvent CAS="7732-18-5" PubChem="compound/962">
-			<name>Water</name>
-			<property>reagent-grade</property>
-			<amount>50 milliliter</amount>
-		</solvent>
-		<ingredient id="R0055">
-			<name>Tris-Cl</name>
-			<property><pH>7.4</pH></property>
-			<stock>1 molar</stock>
-			<amount>0.5 milliliter</amount>
-			<final>10 millimolar</final>
-		</ingredient>
-		<ingredient id="R0046">
-			<name>Sodium chloride</name>
-			<abbreviation><chemical>NaCl</chemical></abbreviation>
-			<stock>5 molar</stock>
-			<amount>1.5 milliliter</amount>
-			<final>150 millimolar</final>
-		</ingredient>
-		<ingredient id="R0022">
-			<name>Glycerol</name>
-			<stock>50 percent</stock>
-			<amount>10 milliliter</amount>
-			<final>10 percent</final>
-		</ingredient>
-		<ingredient id="R0031">
-			<name><chemical>MgCl_2</chemical></name>
-			<stock>1 molar</stock>
-			<amount>100 microliter</amount>
-			<final>2 millimolar</final>
-		</ingredient>
-		<ingredient id="R0145">
-			<name>EGTA</name>
-			<property><pH>8.0</pH></property>
-			<stock>0.5 molar</stock>
-			<amount>200 microliter</amount>
-			<final>2 millimolar</final>
-		</ingredient>
-		<ingredient id="R0057">
-			<name>Triton™ X-100</name>
-			<stock>10 percent</stock>
-			<amount>500 microliter</amount>
-			<final>0.1 percent</final>
-		</ingredient>
-		<ingredient id="R0015" type="fresh">
-			<name>Dithiothreitol</name>
-			<abbreviation>DTT</abbreviation>
-			<stock>1 molar</stock>
-			<amount>50 microliter</amount>
-			<final>1 millimolar</final>
-		</ingredient>
-		<ingredient id="R0090" type="fresh">
-			<name>Inhibitor cocktail</name>
-			<stock>100 fold</stock>
-			<amount>500 microliter</amount>
-			<final>1 fold</final>
-		</ingredient>
-		<workup>Filter sterilize.</workup>
-		<storage class="ambient"/>
-		<note type="orientation">This IP buffer is recommended for cytosolic proteins and soluble nuclear factors.</note>
-		<note type="critical">Replace Tris-Cl with HEPES when amine-reactive labeling such as TMT is planned for mass spectrometry; the primary amine of Tris consumes the label.</note>
-		<note type="orientation">Triton™ X-100 can be replaced with other non-ionic detergents such as IGEPAL® CA-630 as an alternative to Shell’s discontinued NP-40 to preserve native protein interactions.</note>
-		<!-- ENVIRONMENT, HEALTH, SAFETY (derived) -->
-		<safety source="derived" signal="warning" disposal="hazardous-waste">
-			<hazard code="H361" category="2" type="serious_health_hazard" source="derived">Reproductive toxicity</hazard>
-			<disposal source="derived">Collect as HAZARDOUS WASTE</disposal>
-			<disposal source="derived">DO NOT wash into sewer</disposal>
-		</safety>
-		<source doc_type="SOP" id="0027" version="2" visibility="internal" license="CC-BY-SA-4.0" title="Immunoprecipitation of soluble proteins" definition="yes" primary="yes">sop_0027-v2-immunoprecipitation</source>
-	</recipe>
-	<recipe id="R0157">
-		<name>Nuclear extract IP buffer</name>
-		<!-- PREPARATION -->
-		<solvent CAS="7732-18-5" PubChem="compound/962">
-			<name>Water</name>
-			<property>reagent-grade</property>
-			<amount>50 milliliter</amount>
-		</solvent>
-		<ingredient id="R0055">
-			<name>Tris-Cl</name>
-			<property><pH>7.4</pH></property>
-			<stock>1 molar</stock>
-			<amount>1.0 milliliter</amount>
-			<final>20 millimolar</final>
-		</ingredient>
-		<ingredient id="R0038">
-			<name>Potassium chloride</name>
-			<abbreviation><chemical>KCl</chemical></abbreviation>
-			<stock>3 molar</stock>
-			<amount>1.7 milliliter</amount>
-			<final>100 millimolar</final>
-		</ingredient>
-		<ingredient id="R0022">
-			<name>Glycerol</name>
-			<stock>50 percent</stock>
-			<amount>20 milliliter</amount>
-			<final>20 percent</final>
-		</ingredient>
-		<ingredient id="R0017">
-			<name>EDTA</name>
-			<property><pH>8.0</pH></property>
-			<stock>0.5 molar</stock>
-			<amount>20 microliter</amount>
-			<final>0.2 millimolar</final>
-		</ingredient>
-		<ingredient id="R0057">
-			<name>Triton™ X-100</name>
-			<stock>10 percent</stock>
-			<amount>50 microliter</amount>
-			<final>0.01 percent</final>
-		</ingredient>
-		<ingredient id="R0015" type="fresh">
-			<name>Dithiothreitol</name>
-			<abbreviation>DTT</abbreviation>
-			<stock>1 molar</stock>
-			<amount>50 microliter</amount>
-			<final>1 millimolar</final>
-		</ingredient>
-		<ingredient id="R0090" type="fresh">
-			<name>Inhibitor cocktail</name>
-			<stock>100 fold</stock>
-			<amount>500 microliter</amount>
-			<final>1 fold</final>
-		</ingredient>
-		<workup>Filter sterilize.</workup>
-		<storage class="ambient"/>
-		<note type="orientation">Dignam buffer D, the dialysis buffer for salt-extracted nuclear proteins: potassium mimics the intracellular cation, the heavy glycerol and minimal detergent hold fragile complexes together, and the EDTA scavenges metals against metalloproteases and nucleases. Use it for high-salt nuclear extracts and acid-extracted histones; native nucleosomes use the chelator-free nucleosome IP buffer of the native chromatin protocol <seealso type="protocol">0047</seealso>.</note>
-		<note type="critical">Replace Tris-Cl with HEPES when amine-reactive labeling such as TMT is planned for mass spectrometry; the primary amine of Tris consumes the label.</note>
-		<!-- ENVIRONMENT, HEALTH, SAFETY (derived) -->
-		<safety source="derived" signal="warning" disposal="hazardous-waste">
-			<hazard code="H361" category="2" type="serious_health_hazard" source="derived">Reproductive toxicity</hazard>
-			<disposal source="derived">Collect as HAZARDOUS WASTE</disposal>
-			<disposal source="derived">DO NOT wash into sewer</disposal>
-		</safety>
-		<source doc_type="SOP" id="0027" version="2" visibility="internal" license="CC-BY-SA-4.0" title="Immunoprecipitation of soluble proteins" definition="yes" primary="yes">sop_0027-v2-immunoprecipitation</source>
-	</recipe>
-	<recipe id="R0158">
-		<!-- NOLINT: MIX006 — pH chosen above TEA pKa to favor DMP imidoester reactivity, not for optimal buffering -->
-		<name>Triethanolamine solution</name>
-		<property><pH>8.9</pH></property>
-		<stock>200 millimolar</stock>
-		<amount>10 milliliter</amount>
-		<!-- PREPARATION -->
-		<solvent CAS="7732-18-5" PubChem="compound/962">
-			<name>Water</name>
-			<property>reagent-grade</property>
-			<amount>10 milliliter</amount>
-		</solvent>
-		<ingredient CAS="102-71-6" PubChem="compound/7618">
-			<name>Triethanolamine</name>
-			<abbreviation>TEA</abbreviation>
-			<stock>149.19 gram per mol</stock>
-			<!-- density: 1.13 g/mL -->
-			<amount>264 microliter</amount>
-			<final>200 millimolar</final>
-		</ingredient>
-		<workup>Adjust to <pH>8.9</pH> with hydrochloric acid or sodium hydroxide as needed.</workup>
-		<storage class="fridge" shelflife="2 weeks"/>
-		<!-- ENVIRONMENT, HEALTH, SAFETY (derived) -->
-		<safety source="derived" disposal="hazardous-waste">
-			<benign source="derived">No GHS hazards at the indicated concentrations</benign>
-			<disposal source="derived">Hold for EHS review before disposal</disposal>
-		</safety>
-		<source doc_type="SOP" id="0027" version="2" visibility="internal" license="CC-BY-SA-4.0" title="Immunoprecipitation of soluble proteins" definition="yes" primary="yes">sop_0027-v2-immunoprecipitation</source>
-	</recipe>
-	<recipe id="R0159">
-		<name>Dimethyl pimelimidate</name>
-		<abbreviation>DMP</abbreviation>
-		<stock>20 millimolar</stock>
-		<!-- PREPARATION -->
-		<solvent id="R0158">
-			<name>Triethanolamine buffer</name>
-			<property><pH>8.9</pH></property>
-			<stock>200 millimolar</stock>
-			<amount>10 milliliter</amount>
-		</solvent>
-		<ingredient CAS="58537-94-3" PubChem="compound/11402688">
-			<name form="dihydrochloride">Dimethyl pimelimidate</name>
-			<abbreviation>DMP</abbreviation>
-			<stock>259.17 gram per mol</stock>
-			<amount>51.8 milligram</amount>
-			<final>20 millimolar</final>
-		</ingredient>
-		<workup>Prepare fresh immediately before use.</workup>
-		<!-- ENVIRONMENT, HEALTH, SAFETY (derived) -->
-		<safety source="derived" disposal="hazardous-waste">
-			<benign source="derived">No GHS hazards at the indicated concentrations</benign>
-			<disposal source="derived">Hold for EHS review before disposal</disposal>
-		</safety>
-		<source doc_type="SOP" id="0027" version="2" visibility="internal" license="CC-BY-SA-4.0" title="Immunoprecipitation of soluble proteins" definition="yes" primary="yes">sop_0027-v2-immunoprecipitation</source>
-	</recipe>
-	<recipe id="R0104">
-		<!-- NOLINT: MIX006 — sample buffer matched to the stacking-gel Tris pH 6.8 (R0102); buffering capacity is not the design target -->
-		<name>Laemmli sample buffer</name>
-		<property><pH>6.8</pH></property>
-		<stock>4 fold</stock>
-		<!-- PREPARATION -->
-		<ingredient id="R0102">
-			<name>Tris hydrochloride</name>
-			<abbreviation>Tris-Cl</abbreviation>
-			<property><pH>6.8</pH></property>
-			<stock>0.5 molar</stock>
-			<amount>5.0 milliliter</amount>
-			<final>250 millimolar</final>
-		</ingredient>
-		<ingredient CAS="141-21-3" PubChem="compound/3423265">
-			<name>SDS</name>
-			<stock>288.38 gram per mol</stock>
-			<amount>0.80 gram</amount>
-			<final>8 percent</final>
-		</ingredient>
-		<ingredient CAS="115-39-9" PubChem="compound/8272">
-			<name>Bromophenol blue</name>
-			<stock>670.00 gram per mol</stock>
-			<amount>2.0 milligram</amount>
-			<final>0.2 gram per liter</final>
-		</ingredient>
-		<ingredient CAS="56-81-5" PubChem="compound/753">
-			<name>Glycerol</name>
-			<property>anhydrous</property>
-			<stock>92.09 gram per mol</stock>
-			<amount>4.0 milliliter</amount>
-			<final>40 percent</final>
-		</ingredient>
-		<!-- <ingredient id="R0015" type="fresh">
-			<name>Dithiothreitol</name>
-			<abbreviation>DTT</abbreviation>
-			<stock>1 molar</stock>
-			<amount>4.0 milliliter</amount>
-			<final>400 millimolar</final>
-		</ingredient> -->
-		<ingredient CAS="60-24-2" PubChem="compound/1567" type="fresh">
-			<name>2-Mercaptoethanol</name>
-			<!-- <stock>1.11 gram per milliliter</stock> -->
-			<stock>78.14 gram per mol</stock>
-			<amount>0.8 milliliter</amount>
-			<final>1.14 molar</final>
-		</ingredient>
-		<workup>Add reducing agent freshly; dispense into <unit>920 microliter</unit> aliquots and make up to <unit>1 milliliter</unit> with <unit>80 microliter</unit> 2-mercaptoethanol just before use. Alternatively, make up with water and add dithiothreitol to <unit>100 millimolar</unit> when diluting samples.</workup>
-		<storage class="freezer"/>
-		<note>Bromophenol blue is saturated at <unit>1.0 gram per liter</unit>.</note>
-		<note>The high chloride concentration in this sample buffer aids stacking.</note>
-		<!-- ORGANIZATION -->
-		<category>buffer</category>
-		<category>special</category>
-		<!-- ENVIRONMENT, HEALTH, SAFETY (derived) -->
-		<safety source="derived" signal="danger" disposal="hazardous-waste">
-			<hazard code="H310" category="1" type="toxic" source="derived">Acute dermal toxicity</hazard>
-			<hazard code="H318" category="1" type="corrosive" source="derived">Serious eye damage</hazard>
-			<hazard code="H373" category="2" type="serious_health_hazard" source="derived">Organ damage through prolonged or repeated exposure</hazard>
-			<hazard code="H361" category="2" type="serious_health_hazard" source="derived">Reproductive toxicity</hazard>
-			<hazard code="H317" category="1" type="health_hazard" source="derived">Skin sensitization</hazard>
-			<hazard code="H315" category="2" type="health_hazard" source="derived">Skin irritation</hazard>
-			<hazard code="H302" category="4" type="health_hazard" source="derived">Acute oral toxicity</hazard>
-			<hazard code="H412" category="3" source="derived">Aquatic toxicity (long-term)</hazard>
-			<disposal source="derived">Collect as HAZARDOUS WASTE</disposal>
-			<disposal source="derived">DO NOT wash into sewer</disposal>
-		</safety>
-		<source doc_type="SOP" id="0007" version="1" visibility="public" license="CC-BY-SA-4.0" title="Denaturing SDS polyacrylamide gel electrophoresis" definition="yes" primary="yes">sop_0007-v1-sds_page</source>
-		<source doc_type="SOP" id="0027" version="2" visibility="internal" license="CC-BY-SA-4.0" title="Immunoprecipitation of soluble proteins" definition="no">sop_0027-v2-immunoprecipitation</source>
-	</recipe>
-	<recipe id="R0160">
-		<name>Acidic elution buffer</name>
-		<property><pH>2.5</pH></property>
-		<solvent CAS="7732-18-5" PubChem="compound/962">
-			<name>Water</name>
-			<property>reagent-grade</property>
-			<amount>50 milliliter</amount>
-		</solvent>
-		<ingredient CAS="56-40-6" PubChem="compound/750">
-			<name>Glycine</name>
-			<stock>75.07 gram per mol</stock>
-			<amount>0.75 gram</amount>
-			<final>200 millimolar</final>
-		</ingredient>
-		<workup>Adjust the pH to 2.5 at <unit>4 celsius</unit>.</workup>
-		<!-- ENVIRONMENT, HEALTH, SAFETY (derived) -->
-		<safety source="derived" signal="warning" disposal="treat">
-			<hazard code="H319" category="2" type="health_hazard" source="derived">Serious eye irritation</hazard>
-			<hazard code="H315" category="2" type="health_hazard" source="derived">Skin irritation</hazard>
-			<disposal source="derived">Neutralise to pH 6–9</disposal>
-			<disposal source="derived">Flush to drain with excess water</disposal>
-		</safety>
-		<source doc_type="SOP" id="0027" version="2" visibility="internal" license="CC-BY-SA-4.0" title="Immunoprecipitation of soluble proteins" definition="yes" primary="yes">sop_0027-v2-immunoprecipitation</source>
-	</recipe>
-	<recipe id="R0161">
-		<!-- NOLINT: MIX006 — 1 M Tris base used as a strong base to neutralize pH 2.5 glycine eluate; pH is near-intrinsic of Tris base in water, not a buffering target -->
-		<name>Neutralization base</name>
-		<property><pH>10.4</pH></property>
-		<solvent CAS="7732-18-5" PubChem="compound/962">
-			<name>Water</name>
-			<property>reagent-grade</property>
-			<amount>50 milliliter</amount>
-		</solvent>
-		<ingredient CAS="77-86-1" PubChem="compound/6503">
-			<name>Tris base</name>
-			<stock>121.14 gram per mol</stock>
-			<amount>6.06 gram</amount>
-			<final>1 molar</final>
-		</ingredient>
-		<workup>Adjust the pH to 10.4 at <unit>4 celsius</unit>.</workup>
-		<!-- ENVIRONMENT, HEALTH, SAFETY (derived) -->
-		<safety source="derived" signal="warning" disposal="treat">
-			<hazard code="H319" category="2" type="health_hazard" source="derived">Serious eye irritation</hazard>
-			<hazard code="H315" category="2" type="health_hazard" source="derived">Skin irritation</hazard>
-			<disposal source="derived">Neutralise to pH 6–9</disposal>
-			<disposal source="derived">Dilute below the discharge limit</disposal>
-			<disposal source="derived">Flush to drain with excess water</disposal>
-		</safety>
-		<source doc_type="SOP" id="0027" version="2" visibility="internal" license="CC-BY-SA-4.0" title="Immunoprecipitation of soluble proteins" definition="yes" primary="yes">sop_0027-v2-immunoprecipitation</source>
+		<source doc_type="SOP" id="0047" version="1" visibility="public" license="CC-BY-SA-4.0" title="Immunoprecipitation of nucleosomes from native chromatin" definition="no">sop_0047-v1-immunoprecipitation_native_chromatin</source>
 	</recipe>
 	<recipe id="R0162">
 		<name>Thymidine</name>
@@ -1765,39 +1170,173 @@
 		</safety>
 		<source doc_type="SOP" id="0029" version="1" visibility="internal" license="CC-BY-SA-4.0" title="Cell cycle analysis by fluorescence staining" definition="yes" primary="yes">sop_0029-v1-cell_cycle_flow_cytometry</source>
 	</recipe>
-	<recipe id="R0048">
-		<name>Sodium hydroxide</name>
-		<abbreviation><chemical>NaOH</chemical></abbreviation>
-		<property><pH>14.0</pH></property>
+	<recipe id="R0056">
+		<name>Tris hydrochloride</name>
+		<abbreviation>Tris-Cl</abbreviation>
+		<property><pH>8.0</pH></property>
 		<stock>1 molar</stock>
 		<!-- PREPARATION -->
 		<solvent CAS="7732-18-5" PubChem="compound/962">
 			<name>Water</name>
 			<property>reagent-grade</property>
-			<amount>250 milliliter</amount>
+			<amount>1.0 liter</amount>
 		</solvent>
-		<ingredient CAS="1310-73-2" PubChem="compound/14798">
-			<name>NaOH</name>
-			<stock>40.00 gram per mol</stock>
-			<amount>10.0 gram</amount>
+		<ingredient CAS="77-86-1" PubChem="compound/6503">
+			<name>Tris base</name>
+			<stock>121.14 gram per mol</stock>
+			<amount>121.1 gram</amount>
 			<final>1 molar</final>
 		</ingredient>
-		<workup>Add solids slowly into well stirred solution.</workup>
-		<note type="safety">Work inside a chemical fume hood.</note>
-		<storage class="ambient">Keep in a plastic container.</storage>
+		<ingredient CAS="7647-01-0" PubChem="compound/313">
+			<name>HCl</name>
+			<property><unit>37 percent</unit></property>
+			<stock>11.65 molar</stock>
+			<amount>42 milliliter</amount>
+		</ingredient>
+		<workup>Autoclave.</workup>
+		<storage class="ambient" shelflife="2 years"/>
+		<note type="quality">If stock appears yellow, discard and obtain better quality Tris.</note>
+		<note type="critical">The pH of Tris buffers significantly changes with temperature.</note>
+		<note type="orientation">Use between pH <unit>7.4 to 8.8 unitless</unit> as buffer.</note>
+		<!-- ORGANIZATION -->
+		<category>buffer</category>
+		<category>common</category>
+		<!-- ENVIRONMENT, HEALTH, SAFETY (derived) -->
+		<safety source="derived" disposal="treat">
+			<benign source="derived">No GHS hazards at the indicated concentrations</benign>
+			<disposal source="derived">Dilute below the discharge limit</disposal>
+			<disposal source="derived">Flush to drain with excess water</disposal>
+		</safety>
+		<source doc_type="COL" id="0002" version="1" visibility="public" license="CC-BY-SA-4.0" title="Buffers" definition="yes" primary="yes">co_0002-v1-buffers</source>
+		<source doc_type="SOP" id="0020" version="1" visibility="public" license="CC-BY-SA-4.0" title="Plasmid preparation by alkaline lysis" definition="no">sop_0020-v1-plasmid_isolation</source>
+		<source doc_type="SOP" id="0021" version="1" visibility="public" license="CC-BY-SA-4.0" title="Purification of nucleic acids" definition="no">sop_0021-v1-purification_nucleic_acids</source>
+		<source doc_type="SOP" id="0024" version="1" visibility="public" license="CC-BY-SA-4.0" title="Extraction of genomic DNA from tissue culture cells" definition="no">sop_0024-v1-dna_isolation_mammalian_cells</source>
+		<source doc_type="SOP" id="0032" version="1" visibility="public" license="CC-BY-SA-4.0" title="Making and running agarose gels" definition="no">sop_0032-v1-agarose_gel_electrophoresis</source>
+		<source doc_type="SOP" id="0040" version="1" visibility="internal" license="CC-BY-SA-4.0" title="In vitro transcription with T7 RNA polymerase" definition="no">sop_0040-v1-in_vitro_transcription</source>
+		<source doc_type="SOP" id="0045" version="1" visibility="public" license="CC-BY-SA-4.0" title="IMAC purification of His-tagged proteins" definition="no">sop_0045-v1-imac_his_tag_purification</source>
+	</recipe>
+	<recipe id="R0031">
+		<name>Magnesium chloride</name>
+		<abbreviation><chemical>MgCl_2</chemical></abbreviation>
+		<stock>1 molar</stock>
+		<!-- PREPARATION -->
+		<solvent CAS="7732-18-5" PubChem="compound/962">
+			<name>Water</name>
+			<property>reagent-grade</property>
+			<amount>100 milliliter</amount>
+		</solvent>
+		<ingredient CAS="7791-18-6" PubChem="compound/643991">
+			<name form="hexahydrate"><chemical>MgCl_2</chemical></name>
+			<stock>203.30 gram per mol</stock>
+			<amount>20.3 gram</amount>
+			<final>1 molar</final>
+		</ingredient>
+		<workup>Autoclave.</workup>
+		<storage class="ambient"/>
+		<note>The solid is very hygroscopic; buy only small quantities.</note>
 		<!-- ORGANIZATION -->
 		<category>solution</category>
 		<category>common</category>
 		<!-- ENVIRONMENT, HEALTH, SAFETY (derived) -->
-		<safety source="derived" signal="danger" disposal="treat">
-			<hazard code="H318" category="1" type="corrosive" source="derived">Serious eye damage</hazard>
-			<hazard code="H314" category="1" type="corrosive" source="derived">Skin corrosion</hazard>
-			<disposal source="derived">Neutralise to pH 6–9</disposal>
+		<safety source="derived" disposal="sanitary-sewer">
+			<benign source="derived" scil="green-circle" use="Processing Aids and Additives">EPA Safer Choice low-concern</benign>
 			<disposal source="derived">Flush to drain with excess water</disposal>
+		</safety>
+		<source doc_type="COL" id="0001" version="1" visibility="public" license="CC-BY-SA-4.0" title="Stock solutions" definition="yes" primary="yes">co_0001-v1-stock_solutions</source>
+		<source doc_type="COL" id="0003" version="1" visibility="public" license="CC-BY-SA-4.0" title="Growth media" definition="no">co_0003-v1-growth_media</source>
+		<source doc_type="SOP" id="0001" version="2" visibility="public" license="CC-BY-SA-4.0" title="Isolation of nuclei from tissue culture cells" definition="no">sop_0001-v2-isolation_nuclei</source>
+		<source doc_type="SOP" id="0025" version="2" visibility="public" license="CC-BY-SA-4.0" title="Nuclear extraction and fractionation of chromatin-associated proteins" definition="no">sop_0025-v2-nuclear_extraction</source>
+		<source doc_type="SOP" id="0027" version="2" visibility="public" license="CC-BY-SA-4.0" title="Immunoprecipitation of soluble proteins" definition="no">sop_0027-v2-immunoprecipitation</source>
+		<source doc_type="SOP" id="0034" version="1" visibility="public" license="CC-BY-SA-4.0" title="Transformation of plasmids into a bacterial host" definition="no">sop_0034-v1-transformation</source>
+		<source doc_type="SOP" id="0040" version="1" visibility="internal" license="CC-BY-SA-4.0" title="In vitro transcription with T7 RNA polymerase" definition="no">sop_0040-v1-in_vitro_transcription</source>
+		<source doc_type="SOP" id="0044" version="1" visibility="public" license="CC-BY-SA-4.0" title="TEV protease production and cleavage" definition="no">sop_0044-v1-tev_protease</source>
+		<source doc_type="SOP" id="0045" version="1" visibility="public" license="CC-BY-SA-4.0" title="IMAC purification of His-tagged proteins" definition="no">sop_0045-v1-imac_his_tag_purification</source>
+		<source doc_type="SOP" id="0047" version="1" visibility="public" license="CC-BY-SA-4.0" title="Immunoprecipitation of nucleosomes from native chromatin" definition="no">sop_0047-v1-immunoprecipitation_native_chromatin</source>
+	</recipe>
+	<recipe id="R0172">
+		<name>DEPC-treated water</name>
+		<!-- PREPARATION -->
+		<solvent CAS="7732-18-5" PubChem="compound/962">
+			<name>Water</name>
+			<property>reagent-grade</property>
+			<amount>100 milliliter</amount>
+		</solvent>
+		<ingredient CAS="1609-47-8" PubChem="compound/3051">
+			<name>Diethyl pyrocarbonate</name>
+			<abbreviation>DEPC</abbreviation>
+			<stock>162.14 gram per mol</stock>
+			<amount>0.1 milliliter</amount>
+			<final>0.1 percent</final>
+		</ingredient>
+		<workup>Shake vigorously; incubate overnight at <unit>37 celsius</unit>; autoclave to decompose residual DEPC.</workup>
+		<storage class="ambient"/>
+		<note type="explanation">DEPC covalently inactivates RNases by carbethoxylation of histidine residues. DEPC itself hydrolyses in water to ethanol and <chemical>CO_2</chemical> during autoclaving, so DEPC-treated water is safe for enzymatic reactions once decomposed.</note>
+		<note type="safety">DEPC is sensitive to ammonia, which causes decomposition to urethane, a possible carcinogen. Work with DEPC stock in a certified chemical fume hood; do not handle the uninactivated solution at the open bench.</note>
+		<!-- ENVIRONMENT, HEALTH, SAFETY -->
+		<!-- Curated override: the autoclave workup decomposes DEPC to ethanol
+		     + CO2, so the prepared water is drain-safe. The component model
+		     cannot credit the decomposition, so state the route by hand. -->
+		<!-- ORGANIZATION -->
+		<category>solution</category>
+		<category>special</category>
+		<category>nucleics</category>
+		<!-- ENVIRONMENT, HEALTH, SAFETY (derived) -->
+		<safety source="derived" disposal="sanitary-sewer">
+			<benign source="derived">No GHS hazards at the indicated concentrations</benign>
+			<disposal source="curated">Flush to drain with excess water</disposal>
 		</safety>
 		<source doc_type="COL" id="0001" version="1" visibility="public" license="CC-BY-SA-4.0" title="Stock solutions" definition="yes" primary="yes">co_0001-v1-stock_solutions</source>
 		<source doc_type="SOP" id="0023" version="1" visibility="public" license="CC-BY-SA-4.0" title="Separation of RNA from DNA with guanidinium thiocyanate" definition="no">sop_0023-v1-rna_isolation_trizol</source>
 		<source doc_type="SOP" id="0032" version="1" visibility="public" license="CC-BY-SA-4.0" title="Making and running agarose gels" definition="no">sop_0032-v1-agarose_gel_electrophoresis</source>
+		<source doc_type="SOP" id="0040" version="1" visibility="internal" license="CC-BY-SA-4.0" title="In vitro transcription with T7 RNA polymerase" definition="no">sop_0040-v1-in_vitro_transcription</source>
+	</recipe>
+	<recipe id="R0200">
+		<name>T7 transcription buffer</name>
+		<stock>5 fold</stock>
+		<!-- PREPARATION -->
+		<solvent CAS="7732-18-5" PubChem="compound/962">
+			<name>Water</name>
+			<property>reagent-grade</property>
+			<amount>10 milliliter</amount>
+		</solvent>
+		<ingredient id="R0056">
+			<name>Tris hydrochloride</name>
+			<abbreviation>Tris-Cl</abbreviation>
+			<property><pH>8.0</pH></property>
+			<stock>1 molar</stock>
+			<amount>2.0 milliliter</amount>
+			<final>200 millimolar</final>
+		</ingredient>
+		<ingredient id="R0046">
+			<name>NaCl</name>
+			<stock>5 molar</stock>
+			<amount>100 microliter</amount>
+			<final>50 millimolar</final>
+		</ingredient>
+		<ingredient id="R0031">
+			<name><chemical>MgCl_2</chemical></name>
+			<stock>1 molar</stock>
+			<amount>300 microliter</amount>
+			<final>30 millimolar</final>
+		</ingredient>
+		<ingredient CAS="124-20-9" PubChem="substance/24899434">
+			<name>Spermidine</name>
+			<!-- <stock>0.925 gram per milliliter</stock> -->
+			<stock>145.25 gram per mol</stock>
+			<amount>15.7 microliter</amount>
+			<final>10 millimolar</final>
+		</ingredient>
+		<storage class="freezer"/>
+		<!-- ORGANIZATION -->
+		<category>buffer</category>
+		<category>nucleics</category>
+		<!-- ENVIRONMENT, HEALTH, SAFETY (derived) -->
+		<safety source="derived" disposal="hazardous-waste">
+			<benign source="derived">No GHS hazards at the indicated concentrations</benign>
+			<disposal source="derived">Collect as HAZARDOUS WASTE</disposal>
+			<disposal source="derived">DO NOT wash into sewer</disposal>
+		</safety>
+		<source doc_type="SOP" id="0040" version="1" visibility="internal" license="CC-BY-SA-4.0" title="In vitro transcription with T7 RNA polymerase" definition="yes" primary="yes">sop_0040-v1-in_vitro_transcription</source>
 	</recipe>
 	<recipe id="R0045">
 		<name>Sodium acetate</name>
@@ -1843,6 +1382,219 @@
 		<source doc_type="SOP" id="0034" version="1" visibility="public" license="CC-BY-SA-4.0" title="Transformation of plasmids into a bacterial host" definition="no">sop_0034-v1-transformation</source>
 		<source doc_type="SOP" id="0040" version="1" visibility="internal" license="CC-BY-SA-4.0" title="In vitro transcription with T7 RNA polymerase" definition="no">sop_0040-v1-in_vitro_transcription</source>
 	</recipe>
+	<recipe id="R0203">
+		<name>Formamide RNA loading buffer</name>
+		<solvent CAS="7732-18-5" PubChem="compound/962">
+			<name>Water</name>
+			<property>nuclease-free</property>
+			<amount>10 milliliter</amount>
+		</solvent>
+		<ingredient CAS="75-12-7" PubChem="compound/713">
+			<name>Formamide (deionised)</name>
+			<stock>100 percent</stock>
+			<amount>8 milliliter</amount>
+			<final>80 percent</final>
+		</ingredient>
+		<ingredient CAS="6381-92-6" PubChem="compound/636371">
+			<name>EDTA</name>
+			<stock>0.5 molar</stock>
+			<amount>40 microliter</amount>
+			<final>2 millimolar</final>
+		</ingredient>
+		<note>Omit dyes when downstream UV-shadowing or fluorescence imaging will be used to locate bands.</note>
+		<storage class="freezer"/>
+		<!-- ORGANIZATION -->
+		<category>buffer</category>
+		<category>nucleics</category>
+		<!-- ENVIRONMENT, HEALTH, SAFETY (derived) -->
+		<safety source="derived" signal="danger" disposal="hazardous-waste">
+			<hazard code="H360" category="1" type="serious_health_hazard" source="derived">Reproductive toxicity</hazard>
+			<disposal source="derived">Collect as HAZARDOUS WASTE</disposal>
+			<disposal source="derived">DO NOT wash into sewer</disposal>
+		</safety>
+		<source doc_type="SOP" id="0040" version="1" visibility="internal" license="CC-BY-SA-4.0" title="In vitro transcription with T7 RNA polymerase" definition="yes" primary="yes">sop_0040-v1-in_vitro_transcription</source>
+	</recipe>
+	<recipe id="R0052">
+		<name>Tris-borate-EDTA</name>
+		<abbreviation>TBE</abbreviation>
+		<property><pH>8.3</pH></property>
+		<stock>10 fold</stock>
+		<!-- PREPARATION -->
+		<solvent CAS="7732-18-5" PubChem="compound/962">
+			<name>Water</name>
+			<property>reagent-grade</property>
+			<amount>1 liter</amount>
+		</solvent>
+		<ingredient CAS="77-86-1" PubChem="compound/6503">
+			<name>Tris base</name>
+			<stock>121.14 gram per mol</stock>
+			<amount>121.1 gram</amount>
+			<final>1 molar</final>
+		</ingredient>
+		<ingredient CAS="10043-35-3" PubChem="compound/7628">
+			<name>Boric acid</name>
+			<stock>61.83 gram per mol</stock>
+			<amount>61.8 gram</amount>
+			<final>1 molar</final>
+		</ingredient>
+		<ingredient id="R0017">
+			<name>EDTA</name>
+			<property><pH>8.0</pH></property>
+			<stock>0.5 molar</stock>
+			<amount>40 milliliter</amount>
+			<final>20 millimolar</final>
+		</ingredient>
+		<!-- <ingredient CAS="60-00-4" PubChem="compound/6049">
+			<name>EDTA</name>
+			<property>anhydrous</property>
+			<stock>292.24 gram per mol</stock>
+			<amount>5.8 gram</amount>
+			<final>20 millimolar</final>
+		</ingredient> -->
+		<workup>Filter through <unit>0.45 micrometer</unit> filter.</workup>
+		<workup>Autoclave.</workup>
+		<storage class="ambient" shelflife="6 months">Do not store below <unit>4 celsius</unit> to avoid precipitation of the stock.</storage>
+		<note type="critical">Although substitution of disodium EDTA for the free acid will reduce electrical current and heat generated during electrophoresis, this is detrimental to the resolution of small DNA bands due to breakdown of buffering capacity.</note>
+		<!-- <citation type="authoryear">PMID:24637158</citation> -->
+		<!-- ORGANIZATION -->
+		<category>buffer</category>
+		<category>common</category>
+		<!-- ENVIRONMENT, HEALTH, SAFETY (derived) -->
+		<safety source="derived" signal="danger" disposal="hazardous-waste">
+			<hazard code="H360" category="1" type="serious_health_hazard" source="derived">Reproductive toxicity</hazard>
+			<disposal source="derived">Collect as HAZARDOUS WASTE</disposal>
+			<disposal source="derived">DO NOT wash into sewer</disposal>
+		</safety>
+		<source doc_type="COL" id="0002" version="1" visibility="public" license="CC-BY-SA-4.0" title="Buffers" definition="yes" primary="yes">co_0002-v1-buffers</source>
+		<source doc_type="SOP" id="0003" version="1" visibility="public" license="CC-BY-SA-4.0" title="Native polyacrylamide gel electrophoresis" definition="no">sop_0003-v1-native_page</source>
+		<source doc_type="SOP" id="0040" version="1" visibility="internal" license="CC-BY-SA-4.0" title="In vitro transcription with T7 RNA polymerase" definition="no">sop_0040-v1-in_vitro_transcription</source>
+	</recipe>
+	<recipe id="R0202">
+		<name>Denaturing PAGE running gel</name>
+		<stock>10 percent</stock>
+		<solvent id="R0052">
+			<name>TBE buffer</name>
+			<property><unit>1 fold</unit>, nuclease-free</property>
+			<amount>50 milliliter</amount>
+		</solvent>
+		<ingredient CAS="57-13-6" PubChem="compound/1176">
+			<name>Urea</name>
+			<stock>10 molar</stock>
+			<amount>35 milliliter</amount>
+			<final>7 molar</final>
+		</ingredient>
+		<ingredient CAS="79-06-1" PubChem="compound/6579">
+			<name>Acrylamide/bis-acrylamide (19:1)</name>
+			<stock>40 percent</stock>
+			<amount>12.5 milliliter</amount>
+			<final>10 percent</final>
+		</ingredient>
+		<ingredient CAS="7727-54-0" PubChem="compound/62648" type="fresh">
+			<name>Ammonium persulfate</name>
+			<abbreviation>APS</abbreviation>
+			<stock>10 percent</stock>
+			<amount>500 microliter</amount>
+			<final>0.1 percent</final>
+		</ingredient>
+		<ingredient CAS="110-18-9" PubChem="compound/8037" type="fresh">
+			<name>N,N,N&apos;,N&apos;-tetramethylethylenediamine</name>
+			<abbreviation>TEMED</abbreviation>
+			<stock>100 percent</stock>
+			<amount>50 microliter</amount>
+			<final>0.1 percent</final>
+		</ingredient>
+		<workup>Cast immediately after adding APS and TEMED; polymerisation begins within minutes.</workup>
+		<storage class="fridge">use within <unit>24 hour</unit> of casting</storage>
+		<!-- ORGANIZATION -->
+		<!-- ENVIRONMENT, HEALTH, SAFETY (derived) -->
+		<safety source="derived" signal="danger" disposal="hazardous-waste">
+			<hazard code="H350" category="1" type="serious_health_hazard" source="derived">Carcinogenicity</hazard>
+			<hazard code="H340" category="1" type="serious_health_hazard" source="derived">Germ cell mutagenicity</hazard>
+			<hazard code="H372" category="1" type="serious_health_hazard" source="derived">Organ damage through prolonged or repeated exposure</hazard>
+			<hazard code="H360" category="1" type="serious_health_hazard" source="derived">Reproductive toxicity</hazard>
+			<hazard code="H317" category="1" type="health_hazard" source="derived">Skin sensitization</hazard>
+			<hazard code="H319" category="2" type="health_hazard" source="derived">Serious eye irritation</hazard>
+			<hazard code="H315" category="2" type="health_hazard" source="derived">Skin irritation</hazard>
+			<hazard code="H302" category="4" type="health_hazard" source="derived">Acute oral toxicity</hazard>
+			<disposal source="derived">Collect as HAZARDOUS WASTE</disposal>
+			<disposal source="derived">DO NOT wash into sewer</disposal>
+		</safety>
+		<source doc_type="SOP" id="0040" version="1" visibility="internal" license="CC-BY-SA-4.0" title="In vitro transcription with T7 RNA polymerase" definition="yes" primary="yes">sop_0040-v1-in_vitro_transcription</source>
+	</recipe>
+	<recipe id="R0204">
+		<name>RNA folding buffer, Mg-free</name>
+		<stock>10 fold</stock>
+		<solvent CAS="7732-18-5" PubChem="compound/962">
+			<name>Water</name>
+			<property>nuclease-free</property>
+			<amount>10 milliliter</amount>
+		</solvent>
+		<ingredient id="R0056">
+			<name>Tris hydrochloride</name>
+			<abbreviation>Tris-Cl</abbreviation>
+			<property><pH>7.5</pH></property>
+			<stock>1 molar</stock>
+			<amount>1 milliliter</amount>
+			<final>100 millimolar</final>
+		</ingredient>
+		<ingredient id="R0046">
+			<name>NaCl</name>
+			<stock>5 molar</stock>
+			<amount>2 milliliter</amount>
+			<final>1 molar</final>
+		</ingredient>
+		<ingredient CAS="6381-92-6" PubChem="compound/636371">
+			<name>EDTA</name>
+			<stock>0.5 molar</stock>
+			<amount>20 microliter</amount>
+			<final>1 millimolar</final>
+		</ingredient>
+		<storage class="freezer"/>
+		<!-- ORGANIZATION -->
+		<category>buffer</category>
+		<category>nucleics</category>
+		<!-- ENVIRONMENT, HEALTH, SAFETY (derived) -->
+		<safety source="derived" disposal="hazardous-waste">
+			<benign source="derived">No GHS hazards at the indicated concentrations</benign>
+			<disposal source="derived">Collect as HAZARDOUS WASTE</disposal>
+			<disposal source="derived">DO NOT wash into sewer</disposal>
+		</safety>
+		<source doc_type="SOP" id="0040" version="1" visibility="internal" license="CC-BY-SA-4.0" title="In vitro transcription with T7 RNA polymerase" definition="yes" primary="yes">sop_0040-v1-in_vitro_transcription</source>
+	</recipe>
+	<recipe id="R0048">
+		<name>Sodium hydroxide</name>
+		<abbreviation><chemical>NaOH</chemical></abbreviation>
+		<property><pH>14.0</pH></property>
+		<stock>1 molar</stock>
+		<!-- PREPARATION -->
+		<solvent CAS="7732-18-5" PubChem="compound/962">
+			<name>Water</name>
+			<property>reagent-grade</property>
+			<amount>250 milliliter</amount>
+		</solvent>
+		<ingredient CAS="1310-73-2" PubChem="compound/14798">
+			<name>NaOH</name>
+			<stock>40.00 gram per mol</stock>
+			<amount>10.0 gram</amount>
+			<final>1 molar</final>
+		</ingredient>
+		<workup>Add solids slowly into well stirred solution.</workup>
+		<note type="safety">Work inside a chemical fume hood.</note>
+		<storage class="ambient">Keep in a plastic container.</storage>
+		<!-- ORGANIZATION -->
+		<category>solution</category>
+		<category>common</category>
+		<!-- ENVIRONMENT, HEALTH, SAFETY (derived) -->
+		<safety source="derived" signal="danger" disposal="treat">
+			<hazard code="H318" category="1" type="corrosive" source="derived">Serious eye damage</hazard>
+			<hazard code="H314" category="1" type="corrosive" source="derived">Skin corrosion</hazard>
+			<disposal source="derived">Neutralise to pH 6–9</disposal>
+			<disposal source="derived">Flush to drain with excess water</disposal>
+		</safety>
+		<source doc_type="COL" id="0001" version="1" visibility="public" license="CC-BY-SA-4.0" title="Stock solutions" definition="yes" primary="yes">co_0001-v1-stock_solutions</source>
+		<source doc_type="SOP" id="0023" version="1" visibility="public" license="CC-BY-SA-4.0" title="Separation of RNA from DNA with guanidinium thiocyanate" definition="no">sop_0023-v1-rna_isolation_trizol</source>
+		<source doc_type="SOP" id="0032" version="1" visibility="public" license="CC-BY-SA-4.0" title="Making and running agarose gels" definition="no">sop_0032-v1-agarose_gel_electrophoresis</source>
+	</recipe>
 	<recipe id="R0018">
 		<name>Ethidium bromide</name>
 		<stock>10 gram per liter</stock>
@@ -1873,6 +1625,40 @@
 		</safety>
 		<source doc_type="COL" id="0001" version="1" visibility="public" license="CC-BY-SA-4.0" title="Stock solutions" definition="yes" primary="yes">co_0001-v1-stock_solutions</source>
 		<source doc_type="SOP" id="0032" version="1" visibility="public" license="CC-BY-SA-4.0" title="Making and running agarose gels" definition="no">sop_0032-v1-agarose_gel_electrophoresis</source>
+	</recipe>
+	<recipe id="R0022">
+		<name>Glycerol</name>
+		<stock>50 percent</stock>
+		<!-- PREPARATION -->
+		<solvent CAS="7732-18-5" PubChem="compound/962">
+			<name>Water</name>
+			<property>reagent-grade</property>
+			<amount>100 milliliter</amount>
+		</solvent>
+		<ingredient CAS="56-81-5" PubChem="compound/753">
+			<name>Glycerol</name>
+			<property>anhydrous</property>
+			<stock>92.09 gram per mol</stock>
+			<amount>50 milliliter</amount>
+			<final>50 percent</final>
+		</ingredient>
+		<workup>Autoclave.</workup>
+		<note type="orientation">Pure glycerol has a density of <unit>1.26 gram per milliliter</unit> at <unit>20 celsius</unit>.</note>
+		<note type="orientation">This stock is <unit>6.8 molar</unit>.</note>
+		<!-- ORGANIZATION -->
+		<category>solution</category>
+		<category>common</category>
+		<!-- ENVIRONMENT, HEALTH, SAFETY (derived) -->
+		<safety source="derived" disposal="sanitary-sewer">
+			<benign source="derived" scil="green-circle" use="Solvents">EPA Safer Choice low-concern</benign>
+			<disposal source="derived">Flush to drain with excess water</disposal>
+		</safety>
+		<source doc_type="COL" id="0001" version="1" visibility="public" license="CC-BY-SA-4.0" title="Stock solutions" definition="yes" primary="yes">co_0001-v1-stock_solutions</source>
+		<source doc_type="SOP" id="0002" version="2" visibility="public" license="CC-BY-SA-4.0" title="Whole cell lysates from tissue culture cells" definition="no">sop_0002-v2-whole_cell_extraction_mammalian_cells</source>
+		<source doc_type="SOP" id="0027" version="2" visibility="public" license="CC-BY-SA-4.0" title="Immunoprecipitation of soluble proteins" definition="no">sop_0027-v2-immunoprecipitation</source>
+		<source doc_type="SOP" id="0034" version="1" visibility="public" license="CC-BY-SA-4.0" title="Transformation of plasmids into a bacterial host" definition="no">sop_0034-v1-transformation</source>
+		<source doc_type="SOP" id="0044" version="1" visibility="public" license="CC-BY-SA-4.0" title="TEV protease production and cleavage" definition="no">sop_0044-v1-tev_protease</source>
+		<source doc_type="SOP" id="0047" version="1" visibility="public" license="CC-BY-SA-4.0" title="Immunoprecipitation of nucleosomes from native chromatin" definition="no">sop_0047-v1-immunoprecipitation_native_chromatin</source>
 	</recipe>
 	<recipe id="R0076">
 		<name>Sodium fluoride</name>
@@ -1931,8 +1717,8 @@
 			<disposal source="derived">Keep acids and bases separate</disposal>
 		</safety>
 		<source doc_type="COL" id="0001" version="1" visibility="public" license="CC-BY-SA-4.0" title="Stock solutions" definition="yes" primary="yes">co_0001-v1-stock_solutions</source>
-		<source doc_type="SOP" id="0044" version="1" visibility="internal" license="CC-BY-SA-4.0" title="TEV protease production and use as a cleavage tool" definition="no">sop_0044-v1-tev_protease</source>
-		<source doc_type="SOP" id="0045" version="1" visibility="internal" license="CC-BY-SA-4.0" title="IMAC purification of His-tagged proteins" definition="no">sop_0045-v1-imac_his_tag_purification</source>
+		<source doc_type="SOP" id="0044" version="1" visibility="public" license="CC-BY-SA-4.0" title="TEV protease production and cleavage" definition="no">sop_0044-v1-tev_protease</source>
+		<source doc_type="SOP" id="0045" version="1" visibility="public" license="CC-BY-SA-4.0" title="IMAC purification of His-tagged proteins" definition="no">sop_0045-v1-imac_his_tag_purification</source>
 	</recipe>
 	<recipe id="R0075">
 		<name>Sodium orthovanadate</name>
@@ -2195,6 +1981,7 @@
 			<disposal source="derived">Flush to drain with excess water</disposal>
 		</safety>
 		<source doc_type="COL" id="0001" version="1" visibility="public" license="CC-BY-SA-4.0" title="Stock solutions" definition="yes" primary="yes">co_0001-v1-stock_solutions</source>
+		<source doc_type="SOP" id="0047" version="1" visibility="public" license="CC-BY-SA-4.0" title="Immunoprecipitation of nucleosomes from native chromatin" definition="no">sop_0047-v1-immunoprecipitation_native_chromatin</source>
 	</recipe>
 	<recipe id="R0012">
 		<name>Calcium chloride</name>
@@ -2379,10 +2166,67 @@
 			<disposal source="derived">Flush to drain with excess water</disposal>
 		</safety>
 		<source doc_type="COL" id="0001" version="1" visibility="public" license="CC-BY-SA-4.0" title="Stock solutions" definition="yes" primary="yes">co_0001-v1-stock_solutions</source>
+		<source doc_type="SOP" id="0026" version="1" visibility="public" license="CC-BY-SA-4.0" title="Acidic extraction of histone proteins" definition="no">sop_0026-v1-histone_extraction</source>
+	</recipe>
+	<recipe id="R0090">
+		<!-- Classical "Schreiber lab" PMSF/Leu/Pep/Apr protease mix. -->
+		<name>Inhibitor cocktail</name>
+		<stock>100 fold</stock>
+		<!-- PREPARATION -->
+		<solvent CAS="7732-18-5" PubChem="compound/962">
+			<name>Water</name>
+			<property>reagent-grade</property>
+			<amount>1 milliliter</amount>
+		</solvent>
+		<ingredient id="R0035">
+			<name>Phenylmethylsulfonyl fluoride</name>
+			<abbreviation>PMSF</abbreviation>
+			<stock>100 millimolar</stock>
+			<amount>200 microliter</amount>
+			<final>20 millimolar</final>
+		</ingredient>
+		<ingredient CAS="24125-16-4" PubChem="compound/13209094">
+			<name form="hydrochloride">Leupeptin</name>
+			<stock>25 gram per liter</stock>
+			<amount>370 microliter</amount>
+			<final>2.0 millimolar</final>
+		</ingredient>
+		<ingredient CAS="26305-03-3" PubChem="compound/5478883">
+			<name>Pepstatin A</name>
+			<stock>25 gram per liter</stock>
+			<amount>411 microliter</amount>
+			<final>1.5 millimolar</final>
+		</ingredient>
+		<ingredient CAS="9087-70-1" PubChem="compound/22833874">
+			<name>Aprotinin</name>
+			<stock>10 gram per liter</stock>
+			<amount>500 microliter</amount>
+			<final>80 micromolar</final>
+		</ingredient>
+		<workup>Add or omit inhibitors as needed.</workup>
+		<note>This cocktail covers serine and cysteine proteases. To preserve phospho- and acetyl-modifications, add phosphatase (<seealso type="recipe">0164</seealso>, <seealso type="recipe">0075</seealso>) and HDAC (<seealso type="recipe">0165</seealso>, <seealso type="recipe">0166</seealso>) inhibitors fresh to the consuming buffer.</note>
+		<!-- ORGANIZATION -->
+		<category>solution</category>
+		<category>special</category>
+		<!-- ENVIRONMENT, HEALTH, SAFETY (derived) -->
+		<safety source="derived" signal="danger" disposal="hazardous-waste">
+			<hazard code="H361" category="2" type="serious_health_hazard" source="derived">Reproductive toxicity</hazard>
+			<hazard code="H225" category="2" type="flammable" source="derived">Flammable liquid</hazard>
+			<hazard code="H319" category="2" type="health_hazard" source="derived">Serious eye irritation</hazard>
+			<hazard code="H336" category="3" type="health_hazard" source="derived">Drowsiness or dizziness</hazard>
+			<disposal source="derived">Collect as ORGANIC SOLVENT WASTE</disposal>
+			<disposal source="derived">Keep away from oxidizers</disposal>
+		</safety>
+		<source doc_type="COL" id="0001" version="1" visibility="public" license="CC-BY-SA-4.0" title="Stock solutions" definition="yes" primary="yes">co_0001-v1-stock_solutions</source>
+		<source doc_type="SOP" id="0001" version="2" visibility="public" license="CC-BY-SA-4.0" title="Isolation of nuclei from tissue culture cells" definition="no">sop_0001-v2-isolation_nuclei</source>
+		<source doc_type="SOP" id="0002" version="2" visibility="public" license="CC-BY-SA-4.0" title="Whole cell lysates from tissue culture cells" definition="no">sop_0002-v2-whole_cell_extraction_mammalian_cells</source>
+		<source doc_type="SOP" id="0025" version="2" visibility="public" license="CC-BY-SA-4.0" title="Nuclear extraction and fractionation of chromatin-associated proteins" definition="no">sop_0025-v2-nuclear_extraction</source>
+		<source doc_type="SOP" id="0027" version="2" visibility="public" license="CC-BY-SA-4.0" title="Immunoprecipitation of soluble proteins" definition="no">sop_0027-v2-immunoprecipitation</source>
+		<source doc_type="SOP" id="0047" version="1" visibility="public" license="CC-BY-SA-4.0" title="Immunoprecipitation of nucleosomes from native chromatin" definition="no">sop_0047-v1-immunoprecipitation_native_chromatin</source>
 	</recipe>
 	<recipe id="R0079">
 		<name>Lysozyme</name>
-		<stock>1.5 enzymeunit per microliter</stock>
+		<stock>1,500 enzymeunit per microliter</stock>
 		<!-- PREPARATION -->
 		<solvent CAS="7732-18-5" PubChem="compound/962">
 			<name>Water</name>
@@ -2394,7 +2238,7 @@
 			<property>from hen egg white</property>
 			<stock>30,000 enzymeunit per milligram</stock>
 			<amount>2.5 gram</amount>
-			<final>1.5 enzymeunit per microliter</final>
+			<final>1,500 enzymeunit per microliter</final>
 		</ingredient>
 		<ingredient id="R0045">
 			<name>Sodium acetate</name>
@@ -2420,7 +2264,7 @@
 			<disposal source="derived">Hold for EHS review before disposal</disposal>
 		</safety>
 		<source doc_type="COL" id="0001" version="1" visibility="public" license="CC-BY-SA-4.0" title="Stock solutions" definition="yes" primary="yes">co_0001-v1-stock_solutions</source>
-		<source doc_type="SOP" id="0045" version="1" visibility="internal" license="CC-BY-SA-4.0" title="IMAC purification of His-tagged proteins" definition="no">sop_0045-v1-imac_his_tag_purification</source>
+		<source doc_type="SOP" id="0045" version="1" visibility="public" license="CC-BY-SA-4.0" title="IMAC purification of His-tagged proteins" definition="no">sop_0045-v1-imac_his_tag_purification</source>
 	</recipe>
 	<recipe id="R0032">
 		<name>Magnesium sulfate</name>
@@ -2478,6 +2322,70 @@
 			<disposal source="derived">Hold for EHS review before disposal</disposal>
 		</safety>
 		<source doc_type="COL" id="0001" version="1" visibility="public" license="CC-BY-SA-4.0" title="Stock solutions" definition="yes" primary="yes">co_0001-v1-stock_solutions</source>
+		<source doc_type="SOP" id="0047" version="1" visibility="public" license="CC-BY-SA-4.0" title="Immunoprecipitation of nucleosomes from native chromatin" definition="no">sop_0047-v1-immunoprecipitation_native_chromatin</source>
+	</recipe>
+	<recipe id="R0213">
+		<name>4-(2-Aminoethyl)benzenesulfonyl fluoride hydrochloride</name>
+		<abbreviation>AEBSF</abbreviation>
+		<stock>100 millimolar</stock>
+		<!-- PREPARATION -->
+		<solvent CAS="7732-18-5" PubChem="compound/962">
+			<name>Water</name>
+			<property>reagent-grade</property>
+			<amount>10 milliliter</amount>
+		</solvent>
+		<ingredient CAS="30827-99-7" PubChem="compound/186136">
+			<name form="hydrochloride">AEBSF</name>
+			<stock>239.69 gram per mol</stock>
+			<amount>240 milligram</amount>
+			<final>100 millimolar</final>
+		</ingredient>
+		<storage class="freezer"/>
+		<note type="orientation">Irreversible serine-protease inhibitor, working range <unit>0.1 to 1 millimolar</unit>. Preferred over PMSF <seealso type="recipe">0035</seealso> for lysates held above <pH>7.0</pH> or worked up over more than an hour: it is water-soluble and stable in aqueous buffer, where PMSF hydrolyses with a half-life of about <unit>35 minute</unit> at <pH>8.0</pH>.</note>
+		<note type="critical">Inhibits serine proteases only. It does not inhibit cysteine, aspartic or metalloproteases, so a lysate carrying those needs a cocktail.</note>
+		<note>At high concentration or over long incubations it can sulfonylate tyrosine and lysine side chains and the protein N-terminus.</note>
+		<!-- ORGANIZATION -->
+		<category>solution</category>
+		<category>special</category>
+		<!-- ENVIRONMENT, HEALTH, SAFETY (derived) -->
+		<safety source="derived" signal="danger" disposal="hazardous-waste">
+			<hazard code="H318" category="1" type="corrosive" source="derived">Serious eye damage</hazard>
+			<disposal source="derived">Hold for EHS review before disposal</disposal>
+		</safety>
+		<source doc_type="COL" id="0001" version="1" visibility="public" license="CC-BY-SA-4.0" title="Stock solutions" definition="yes" primary="yes">co_0001-v1-stock_solutions</source>
+		<source doc_type="SOP" id="0044" version="1" visibility="public" license="CC-BY-SA-4.0" title="TEV protease production and cleavage" definition="no">sop_0044-v1-tev_protease</source>
+	</recipe>
+	<recipe id="R0215">
+		<name>Tris(2-carboxyethyl)phosphine hydrochloride</name>
+		<abbreviation>TCEP</abbreviation>
+		<stock>500 millimolar</stock>
+		<!-- PREPARATION -->
+		<solvent CAS="7732-18-5" PubChem="compound/962">
+			<name>Water</name>
+			<property>reagent-grade</property>
+			<amount>10 milliliter</amount>
+		</solvent>
+		<ingredient CAS="51805-45-9" PubChem="compound/2734570">
+			<name>TCEP</name>
+			<stock>286.65 gram per mol</stock>
+			<amount>1.43 gram</amount>
+			<final>500 millimolar</final>
+		</ingredient>
+		<storage class="freezer"/>
+		<workup>Neutralize to <pH>7.0</pH> with NaOH before use.</workup>
+		<note type="critical">The hydrochloride is strongly acidic at this concentration. Added unneutralized, it drags the pH of the receiving buffer down.</note>
+		<note type="orientation">The reductant of choice for IMAC: tolerated on <chemical>Ni^2^+</chemical> resins at the usual working concentrations, whereas DTT reduces the immobilized metal and turns the resin brown or black.</note>
+		<note>Unlike DTT it does not need to be prepared fresh each day; store in single-use aliquots at <unit>-20 celsius</unit>.</note>
+		<!-- ORGANIZATION -->
+		<category>solution</category>
+		<category>special</category>
+		<!-- ENVIRONMENT, HEALTH, SAFETY (derived) -->
+		<safety source="derived" signal="danger" disposal="hazardous-waste">
+			<hazard code="H314" category="1" type="corrosive" source="derived">Skin corrosion</hazard>
+			<disposal source="derived">Hold for EHS review before disposal</disposal>
+		</safety>
+		<source doc_type="COL" id="0001" version="1" visibility="public" license="CC-BY-SA-4.0" title="Stock solutions" definition="yes" primary="yes">co_0001-v1-stock_solutions</source>
+		<source doc_type="SOP" id="0044" version="1" visibility="public" license="CC-BY-SA-4.0" title="TEV protease production and cleavage" definition="no">sop_0044-v1-tev_protease</source>
 	</recipe>
 	<recipe id="R0074">
 		<name>Phosphatase inhibitor cocktail</name>
@@ -2553,6 +2461,39 @@
 		</safety>
 		<source doc_type="COL" id="0001" version="1" visibility="public" license="CC-BY-SA-4.0" title="Stock solutions" definition="yes" primary="yes">co_0001-v1-stock_solutions</source>
 	</recipe>
+	<recipe id="R0038">
+		<name>Potassium chloride</name>
+		<abbreviation><chemical>KCl</chemical></abbreviation>
+		<stock>3 molar</stock>
+		<!-- PREPARATION -->
+		<solvent CAS="7732-18-5" PubChem="compound/962">
+			<name>Water</name>
+			<property>reagent-grade</property>
+			<amount>100 milliliter</amount>
+		</solvent>
+		<ingredient CAS="7447-40-7" PubChem="compound/4873">
+			<name>KCl</name>
+			<stock>74.55 gram per mol</stock>
+			<amount>22.4 gram</amount>
+			<final>3 molar</final>
+		</ingredient>
+		<workup>Autoclave.</workup>
+		<storage class="ambient"/>
+		<!-- ORGANIZATION -->
+		<category>solution</category>
+		<category>common</category>
+		<!-- ENVIRONMENT, HEALTH, SAFETY (derived) -->
+		<safety source="derived" disposal="sanitary-sewer">
+			<benign source="derived" scil="green-circle" use="Processing Aids and Additives">EPA Safer Choice low-concern</benign>
+			<disposal source="derived">Flush to drain with excess water</disposal>
+		</safety>
+		<source doc_type="COL" id="0001" version="1" visibility="public" license="CC-BY-SA-4.0" title="Stock solutions" definition="yes" primary="yes">co_0001-v1-stock_solutions</source>
+		<source doc_type="COL" id="0003" version="1" visibility="public" license="CC-BY-SA-4.0" title="Growth media" definition="no">co_0003-v1-growth_media</source>
+		<source doc_type="SOP" id="0001" version="2" visibility="public" license="CC-BY-SA-4.0" title="Isolation of nuclei from tissue culture cells" definition="no">sop_0001-v2-isolation_nuclei</source>
+		<source doc_type="SOP" id="0025" version="2" visibility="public" license="CC-BY-SA-4.0" title="Nuclear extraction and fractionation of chromatin-associated proteins" definition="no">sop_0025-v2-nuclear_extraction</source>
+		<source doc_type="SOP" id="0027" version="2" visibility="public" license="CC-BY-SA-4.0" title="Immunoprecipitation of soluble proteins" definition="no">sop_0027-v2-immunoprecipitation</source>
+		<source doc_type="SOP" id="0039" version="1" visibility="public" license="CC-BY-SA-4.0" title="Qualitative polymerase chain reactions" definition="no">sop_0039-v1-pcr_qualitative</source>
+	</recipe>
 	<recipe id="R0072">
 		<name>Protease inhibitor cocktail (HALT)</name>
 		<stock>100 fold</stock>
@@ -2625,7 +2566,7 @@
 			<disposal source="derived">DO NOT wash into sewer</disposal>
 		</safety>
 		<source doc_type="COL" id="0001" version="1" visibility="public" license="CC-BY-SA-4.0" title="Stock solutions" definition="yes" primary="yes">co_0001-v1-stock_solutions</source>
-		<source doc_type="SOP" id="0045" version="1" visibility="internal" license="CC-BY-SA-4.0" title="IMAC purification of His-tagged proteins" definition="no">sop_0045-v1-imac_his_tag_purification</source>
+		<source doc_type="SOP" id="0045" version="1" visibility="public" license="CC-BY-SA-4.0" title="IMAC purification of His-tagged proteins" definition="no">sop_0045-v1-imac_his_tag_purification</source>
 	</recipe>
 	<recipe id="R0073">
 		<name>Protease inhibitor cocktail</name>
@@ -2766,7 +2707,7 @@
 			<property>reagent-grade</property>
 			<amount>50 milliliter</amount>
 		</solvent>
-		<ingredient CAS="141-21-3" PubChem="compound/3423265">
+		<ingredient CAS="151-21-3" PubChem="compound/3423265">
 			<name>SDS</name>
 			<stock>288.38 gram per mol</stock>
 			<amount>10.0 gram</amount>
@@ -2793,6 +2734,7 @@
 		<source doc_type="SOP" id="0009" version="1" visibility="public" license="CC-BY-SA-4.0" title="Immunoblotting" definition="no">sop_0009-v1-immunoblotting</source>
 		<source doc_type="SOP" id="0020" version="1" visibility="public" license="CC-BY-SA-4.0" title="Plasmid preparation by alkaline lysis" definition="no">sop_0020-v1-plasmid_isolation</source>
 		<source doc_type="SOP" id="0032" version="1" visibility="public" license="CC-BY-SA-4.0" title="Making and running agarose gels" definition="no">sop_0032-v1-agarose_gel_electrophoresis</source>
+		<source doc_type="SOP" id="0045" version="1" visibility="public" license="CC-BY-SA-4.0" title="IMAC purification of His-tagged proteins" definition="no">sop_0045-v1-imac_his_tag_purification</source>
 	</recipe>
 	<recipe id="R0066">
 		<name>Sucrose</name>
@@ -2891,6 +2833,7 @@
 			<disposal source="derived">DO NOT wash into sewer</disposal>
 		</safety>
 		<source doc_type="COL" id="0001" version="1" visibility="public" license="CC-BY-SA-4.0" title="Stock solutions" definition="yes" primary="yes">co_0001-v1-stock_solutions</source>
+		<source doc_type="SOP" id="0047" version="1" visibility="public" license="CC-BY-SA-4.0" title="Immunoprecipitation of nucleosomes from native chromatin" definition="no">sop_0047-v1-immunoprecipitation_native_chromatin</source>
 	</recipe>
 	<recipe id="R0081">
 		<name>Trypsin solution</name>
@@ -3009,43 +2952,6 @@
 		</safety>
 		<source doc_type="COL" id="0001" version="1" visibility="public" license="CC-BY-SA-4.0" title="Stock solutions" definition="yes" primary="yes">co_0001-v1-stock_solutions</source>
 		<source doc_type="SOP" id="0009" version="1" visibility="public" license="CC-BY-SA-4.0" title="Immunoblotting" definition="no">sop_0009-v1-immunoblotting</source>
-	</recipe>
-	<recipe id="R0172">
-		<name>DEPC-treated water</name>
-		<!-- PREPARATION -->
-		<solvent CAS="7732-18-5" PubChem="compound/962">
-			<name>Water</name>
-			<property>reagent-grade</property>
-			<amount>100 milliliter</amount>
-		</solvent>
-		<ingredient CAS="1609-47-8" PubChem="compound/3051">
-			<name>Diethyl pyrocarbonate</name>
-			<abbreviation>DEPC</abbreviation>
-			<stock>162.14 gram per mol</stock>
-			<amount>0.1 milliliter</amount>
-			<final>0.1 percent</final>
-		</ingredient>
-		<workup>Shake vigorously; incubate overnight at <unit>37 celsius</unit>; autoclave to decompose residual DEPC.</workup>
-		<storage class="ambient"/>
-		<note type="explanation">DEPC covalently inactivates RNases by carbethoxylation of histidine residues. DEPC itself hydrolyses in water to ethanol and <chemical>CO_2</chemical> during autoclaving, so DEPC-treated water is safe for enzymatic reactions once decomposed.</note>
-		<note type="safety">DEPC is sensitive to ammonia, which causes decomposition to urethane, a possible carcinogen. Work with DEPC stock in a certified chemical fume hood; do not handle the uninactivated solution at the open bench.</note>
-		<!-- ENVIRONMENT, HEALTH, SAFETY -->
-		<!-- Curated override: the autoclave workup decomposes DEPC to ethanol
-		     + CO2, so the prepared water is drain-safe. The component model
-		     cannot credit the decomposition, so state the route by hand. -->
-		<!-- ORGANIZATION -->
-		<category>solution</category>
-		<category>special</category>
-		<category>nucleics</category>
-		<!-- ENVIRONMENT, HEALTH, SAFETY (derived) -->
-		<safety source="derived" disposal="sanitary-sewer">
-			<benign source="derived">No GHS hazards at the indicated concentrations</benign>
-			<disposal source="curated">Flush to drain with excess water</disposal>
-		</safety>
-		<source doc_type="COL" id="0001" version="1" visibility="public" license="CC-BY-SA-4.0" title="Stock solutions" definition="yes" primary="yes">co_0001-v1-stock_solutions</source>
-		<source doc_type="SOP" id="0023" version="1" visibility="public" license="CC-BY-SA-4.0" title="Separation of RNA from DNA with guanidinium thiocyanate" definition="no">sop_0023-v1-rna_isolation_trizol</source>
-		<source doc_type="SOP" id="0032" version="1" visibility="public" license="CC-BY-SA-4.0" title="Making and running agarose gels" definition="no">sop_0032-v1-agarose_gel_electrophoresis</source>
-		<source doc_type="SOP" id="0040" version="1" visibility="internal" license="CC-BY-SA-4.0" title="In vitro transcription with T7 RNA polymerase" definition="no">sop_0040-v1-in_vitro_transcription</source>
 	</recipe>
 	<recipe id="R0059">
 		<name>X-Gal</name>
@@ -3172,7 +3078,7 @@
 			<disposal source="derived">Flush to drain with excess water</disposal>
 		</safety>
 		<source doc_type="COL" id="0002" version="1" visibility="public" license="CC-BY-SA-4.0" title="Buffers" definition="yes" primary="yes">co_0002-v1-buffers</source>
-		<source doc_type="SOP" id="0045" version="1" visibility="internal" license="CC-BY-SA-4.0" title="IMAC purification of His-tagged proteins" definition="no">sop_0045-v1-imac_his_tag_purification</source>
+		<source doc_type="SOP" id="0045" version="1" visibility="public" license="CC-BY-SA-4.0" title="IMAC purification of His-tagged proteins" definition="no">sop_0045-v1-imac_his_tag_purification</source>
 	</recipe>
 	<recipe id="R0086">
 		<!-- NOLINT: MIX006 — Gomori feedstock, intrinsic salt pH; mixed with dibasic feedstock to a buffered pH downstream -->
@@ -3207,52 +3113,7 @@
 			<disposal source="derived">Flush to drain with excess water</disposal>
 		</safety>
 		<source doc_type="COL" id="0002" version="1" visibility="public" license="CC-BY-SA-4.0" title="Buffers" definition="yes" primary="yes">co_0002-v1-buffers</source>
-		<source doc_type="SOP" id="0045" version="1" visibility="internal" license="CC-BY-SA-4.0" title="IMAC purification of His-tagged proteins" definition="no">sop_0045-v1-imac_his_tag_purification</source>
-	</recipe>
-	<recipe id="R0056">
-		<name>Tris hydrochloride</name>
-		<abbreviation>Tris-Cl</abbreviation>
-		<property><pH>8.0</pH></property>
-		<stock>1 molar</stock>
-		<!-- PREPARATION -->
-		<solvent CAS="7732-18-5" PubChem="compound/962">
-			<name>Water</name>
-			<property>reagent-grade</property>
-			<amount>1.0 liter</amount>
-		</solvent>
-		<ingredient CAS="77-86-1" PubChem="compound/6503">
-			<name>Tris base</name>
-			<stock>121.14 gram per mol</stock>
-			<amount>121.1 gram</amount>
-			<final>1 molar</final>
-		</ingredient>
-		<ingredient CAS="7647-01-0" PubChem="compound/313">
-			<name>HCl</name>
-			<property><unit>37 percent</unit></property>
-			<stock>11.65 molar</stock>
-			<amount>42 milliliter</amount>
-		</ingredient>
-		<workup>Autoclave.</workup>
-		<storage class="ambient" shelflife="2 years"/>
-		<note type="quality">If stock appears yellow, discard and obtain better quality Tris.</note>
-		<note type="critical">The pH of Tris buffers significantly changes with temperature.</note>
-		<note type="orientation">Use between pH <unit>7.4 to 8.8 unitless</unit> as buffer.</note>
-		<!-- ORGANIZATION -->
-		<category>buffer</category>
-		<category>common</category>
-		<!-- ENVIRONMENT, HEALTH, SAFETY (derived) -->
-		<safety source="derived" disposal="treat">
-			<benign source="derived">No GHS hazards at the indicated concentrations</benign>
-			<disposal source="derived">Dilute below the discharge limit</disposal>
-			<disposal source="derived">Flush to drain with excess water</disposal>
-		</safety>
-		<source doc_type="COL" id="0002" version="1" visibility="public" license="CC-BY-SA-4.0" title="Buffers" definition="yes" primary="yes">co_0002-v1-buffers</source>
-		<source doc_type="SOP" id="0020" version="1" visibility="public" license="CC-BY-SA-4.0" title="Plasmid preparation by alkaline lysis" definition="no">sop_0020-v1-plasmid_isolation</source>
-		<source doc_type="SOP" id="0021" version="1" visibility="public" license="CC-BY-SA-4.0" title="Purification of nucleic acids" definition="no">sop_0021-v1-purification_nucleic_acids</source>
-		<source doc_type="SOP" id="0024" version="1" visibility="public" license="CC-BY-SA-4.0" title="Extraction of genomic DNA from tissue culture cells" definition="no">sop_0024-v1-dna_isolation_mammalian_cells</source>
-		<source doc_type="SOP" id="0032" version="1" visibility="public" license="CC-BY-SA-4.0" title="Making and running agarose gels" definition="no">sop_0032-v1-agarose_gel_electrophoresis</source>
-		<source doc_type="SOP" id="0040" version="1" visibility="internal" license="CC-BY-SA-4.0" title="In vitro transcription with T7 RNA polymerase" definition="no">sop_0040-v1-in_vitro_transcription</source>
-		<source doc_type="SOP" id="0045" version="1" visibility="internal" license="CC-BY-SA-4.0" title="IMAC purification of His-tagged proteins" definition="no">sop_0045-v1-imac_his_tag_purification</source>
+		<source doc_type="SOP" id="0045" version="1" visibility="public" license="CC-BY-SA-4.0" title="IMAC purification of His-tagged proteins" definition="no">sop_0045-v1-imac_his_tag_purification</source>
 	</recipe>
 	<recipe id="R0010">
 		<name>Buffer PB (Binding buffer)</name>
@@ -3370,7 +3231,8 @@
 		<source doc_type="COL" id="0002" version="1" visibility="public" license="CC-BY-SA-4.0" title="Buffers" definition="yes" primary="yes">co_0002-v1-buffers</source>
 		<source doc_type="SOP" id="0012" version="2" visibility="public" license="CC-BY-SA-4.0" title="Non-viral transfection of animal tissue culture cells" definition="no">sop_0012-v2-transfection_chemical</source>
 		<source doc_type="SOP" id="0033" version="1" visibility="public" license="CC-BY-SA-4.0" title="Restriction digest, end modification, and ligation of DNA" definition="no">sop_0033-v1-restriction_ligation_cloning</source>
-		<source doc_type="SOP" id="0044" version="1" visibility="internal" license="CC-BY-SA-4.0" title="TEV protease production and use as a cleavage tool" definition="no">sop_0044-v1-tev_protease</source>
+		<source doc_type="SOP" id="0044" version="1" visibility="public" license="CC-BY-SA-4.0" title="TEV protease production and cleavage" definition="no">sop_0044-v1-tev_protease</source>
+		<source doc_type="SOP" id="0047" version="1" visibility="public" license="CC-BY-SA-4.0" title="Immunoprecipitation of nucleosomes from native chromatin" definition="no">sop_0047-v1-immunoprecipitation_native_chromatin</source>
 	</recipe>
 	<recipe id="R0033">
 		<name>2-(<it kind="locant">N</it>-Morpholino)ethanesulfonic acid</name>
@@ -3523,61 +3385,6 @@
 			<disposal source="derived">Flush to drain with excess water</disposal>
 		</safety>
 		<source doc_type="COL" id="0002" version="1" visibility="public" license="CC-BY-SA-4.0" title="Buffers" definition="yes" primary="yes">co_0002-v1-buffers</source>
-	</recipe>
-	<recipe id="R0052">
-		<name>Tris-borate-EDTA</name>
-		<abbreviation>TBE</abbreviation>
-		<property><pH>8.3</pH></property>
-		<stock>10 fold</stock>
-		<!-- PREPARATION -->
-		<solvent CAS="7732-18-5" PubChem="compound/962">
-			<name>Water</name>
-			<property>reagent-grade</property>
-			<amount>1 liter</amount>
-		</solvent>
-		<ingredient CAS="77-86-1" PubChem="compound/6503">
-			<name>Tris base</name>
-			<stock>121.14 gram per mol</stock>
-			<amount>121.1 gram</amount>
-			<final>1 molar</final>
-		</ingredient>
-		<ingredient CAS="10043-35-3" PubChem="compound/7628">
-			<name>Boric acid</name>
-			<stock>61.83 gram per mol</stock>
-			<amount>61.8 gram</amount>
-			<final>1 molar</final>
-		</ingredient>
-		<ingredient id="R0017">
-			<name>EDTA</name>
-			<property><pH>8.0</pH></property>
-			<stock>0.5 molar</stock>
-			<amount>40 milliliter</amount>
-			<final>20 millimolar</final>
-		</ingredient>
-		<!-- <ingredient CAS="60-00-4" PubChem="compound/6049">
-			<name>EDTA</name>
-			<property>anhydrous</property>
-			<stock>292.24 gram per mol</stock>
-			<amount>5.8 gram</amount>
-			<final>20 millimolar</final>
-		</ingredient> -->
-		<workup>Filter through <unit>0.45 micrometer</unit> filter.</workup>
-		<workup>Autoclave.</workup>
-		<storage class="ambient" shelflife="6 months">Do not store below <unit>4 celsius</unit> to avoid precipitation of the stock.</storage>
-		<note type="critical">Although substitution of disodium EDTA for the free acid will reduce electrical current and heat generated during electrophoresis, this is detrimental to the resolution of small DNA bands due to breakdown of buffering capacity.</note>
-		<!-- <citation type="authoryear">PMID:24637158</citation> -->
-		<!-- ORGANIZATION -->
-		<category>buffer</category>
-		<category>common</category>
-		<!-- ENVIRONMENT, HEALTH, SAFETY (derived) -->
-		<safety source="derived" signal="danger" disposal="hazardous-waste">
-			<hazard code="H360" category="1" type="serious_health_hazard" source="derived">Reproductive toxicity</hazard>
-			<disposal source="derived">Collect as HAZARDOUS WASTE</disposal>
-			<disposal source="derived">DO NOT wash into sewer</disposal>
-		</safety>
-		<source doc_type="COL" id="0002" version="1" visibility="public" license="CC-BY-SA-4.0" title="Buffers" definition="yes" primary="yes">co_0002-v1-buffers</source>
-		<source doc_type="SOP" id="0003" version="1" visibility="public" license="CC-BY-SA-4.0" title="Native polyacrylamide gel electrophoresis" definition="no">sop_0003-v1-native_page</source>
-		<source doc_type="SOP" id="0040" version="1" visibility="internal" license="CC-BY-SA-4.0" title="In vitro transcription with T7 RNA polymerase" definition="no">sop_0040-v1-in_vitro_transcription</source>
 	</recipe>
 	<recipe id="R0053">
 		<name>Tris-buffered saline</name>
@@ -4376,7 +4183,7 @@
 		</safety>
 		<source doc_type="COL" id="0004" version="1" visibility="public" license="CC-BY-SA-4.0" title="Antibiotics" definition="yes" primary="yes">co_0004-v1-antibiotics</source>
 		<source doc_type="SOP" id="0034" version="1" visibility="public" license="CC-BY-SA-4.0" title="Transformation of plasmids into a bacterial host" definition="no">sop_0034-v1-transformation</source>
-		<source doc_type="SOP" id="0044" version="1" visibility="internal" license="CC-BY-SA-4.0" title="TEV protease production and use as a cleavage tool" definition="no">sop_0044-v1-tev_protease</source>
+		<source doc_type="SOP" id="0044" version="1" visibility="public" license="CC-BY-SA-4.0" title="TEV protease production and cleavage" definition="no">sop_0044-v1-tev_protease</source>
 	</recipe>
 	<recipe id="R0089">
 		<name>Blasticidin S</name>
@@ -5464,6 +5271,77 @@
 		</safety>
 		<source doc_type="SOP" id="0007" version="1" visibility="public" license="CC-BY-SA-4.0" title="Denaturing SDS polyacrylamide gel electrophoresis" definition="yes" primary="yes">sop_0007-v1-sds_page</source>
 	</recipe>
+	<recipe id="R0104">
+		<!-- NOLINT: MIX006 — sample buffer matched to the stacking-gel Tris pH 6.8 (R0102); buffering capacity is not the design target -->
+		<name>Laemmli sample buffer</name>
+		<property><pH>6.8</pH></property>
+		<stock>4 fold</stock>
+		<!-- PREPARATION -->
+		<ingredient id="R0102">
+			<name>Tris hydrochloride</name>
+			<abbreviation>Tris-Cl</abbreviation>
+			<property><pH>6.8</pH></property>
+			<stock>0.5 molar</stock>
+			<amount>5.0 milliliter</amount>
+			<final>250 millimolar</final>
+		</ingredient>
+		<ingredient CAS="151-21-3" PubChem="compound/3423265">
+			<name>SDS</name>
+			<stock>288.38 gram per mol</stock>
+			<amount>0.80 gram</amount>
+			<final>8 percent</final>
+		</ingredient>
+		<ingredient CAS="115-39-9" PubChem="compound/8272">
+			<name>Bromophenol blue</name>
+			<stock>670.00 gram per mol</stock>
+			<amount>2.0 milligram</amount>
+			<final>0.2 gram per liter</final>
+		</ingredient>
+		<ingredient CAS="56-81-5" PubChem="compound/753">
+			<name>Glycerol</name>
+			<property>anhydrous</property>
+			<stock>92.09 gram per mol</stock>
+			<amount>4.0 milliliter</amount>
+			<final>40 percent</final>
+		</ingredient>
+		<!-- <ingredient id="R0015" type="fresh">
+			<name>Dithiothreitol</name>
+			<abbreviation>DTT</abbreviation>
+			<stock>1 molar</stock>
+			<amount>4.0 milliliter</amount>
+			<final>400 millimolar</final>
+		</ingredient> -->
+		<ingredient CAS="60-24-2" PubChem="compound/1567" type="fresh">
+			<name>2-Mercaptoethanol</name>
+			<!-- <stock>1.11 gram per milliliter</stock> -->
+			<stock>78.14 gram per mol</stock>
+			<amount>0.8 milliliter</amount>
+			<final>1.14 molar</final>
+		</ingredient>
+		<workup>Add reducing agent freshly; dispense into <unit>920 microliter</unit> aliquots and make up to <unit>1 milliliter</unit> with <unit>80 microliter</unit> 2-mercaptoethanol just before use. Alternatively, make up with water and add dithiothreitol to <unit>100 millimolar</unit> when diluting samples.</workup>
+		<storage class="freezer"/>
+		<note>Bromophenol blue is saturated at <unit>1.0 gram per liter</unit>.</note>
+		<note>The high chloride concentration in this sample buffer aids stacking.</note>
+		<!-- ORGANIZATION -->
+		<category>buffer</category>
+		<category>special</category>
+		<!-- ENVIRONMENT, HEALTH, SAFETY (derived) -->
+		<safety source="derived" signal="danger" disposal="hazardous-waste">
+			<hazard code="H310" category="1" type="toxic" source="derived">Acute dermal toxicity</hazard>
+			<hazard code="H318" category="1" type="corrosive" source="derived">Serious eye damage</hazard>
+			<hazard code="H373" category="2" type="serious_health_hazard" source="derived">Organ damage through prolonged or repeated exposure</hazard>
+			<hazard code="H361" category="2" type="serious_health_hazard" source="derived">Reproductive toxicity</hazard>
+			<hazard code="H317" category="1" type="health_hazard" source="derived">Skin sensitization</hazard>
+			<hazard code="H315" category="2" type="health_hazard" source="derived">Skin irritation</hazard>
+			<hazard code="H302" category="4" type="health_hazard" source="derived">Acute oral toxicity</hazard>
+			<hazard code="H412" category="3" source="derived">Aquatic toxicity (long-term)</hazard>
+			<disposal source="derived">Collect as HAZARDOUS WASTE</disposal>
+			<disposal source="derived">DO NOT wash into sewer</disposal>
+		</safety>
+		<source doc_type="SOP" id="0007" version="1" visibility="public" license="CC-BY-SA-4.0" title="Denaturing SDS polyacrylamide gel electrophoresis" definition="yes" primary="yes">sop_0007-v1-sds_page</source>
+		<source doc_type="SOP" id="0027" version="2" visibility="public" license="CC-BY-SA-4.0" title="Immunoprecipitation of soluble proteins" definition="no">sop_0027-v2-immunoprecipitation</source>
+		<source doc_type="SOP" id="0047" version="1" visibility="public" license="CC-BY-SA-4.0" title="Immunoprecipitation of nucleosomes from native chromatin" definition="no">sop_0047-v1-immunoprecipitation_native_chromatin</source>
+	</recipe>
 	<recipe id="R0105">
 		<name>Tris-Gly running buffer</name>
 		<stock>5 fold</stock>
@@ -5488,7 +5366,7 @@
 			<!-- <amount>93.7 gram</amount> -->
 			<!-- <final>1.25 molar</final> -->
 		</ingredient>
-		<ingredient CAS="141-21-3" PubChem="compound/3423265">
+		<ingredient CAS="151-21-3" PubChem="compound/3423265">
 			<name>SDS</name>
 			<stock>288.38 gram per mol</stock>
 			<amount>5.0 gram</amount>
@@ -5633,7 +5511,7 @@
 			<amount>97.6 gram</amount>
 			<final>1 molar</final>
 		</ingredient>
-		<ingredient CAS="141-21-3" PubChem="compound/3423265">
+		<ingredient CAS="151-21-3" PubChem="compound/3423265">
 			<name>SDS</name>
 			<stock>288.38 gram per mol</stock>
 			<amount>10.0 gram</amount>
@@ -5684,7 +5562,7 @@
 			<amount>104.6 gram</amount>
 			<final>1 molar</final>
 		</ingredient>
-		<ingredient CAS="141-21-3" PubChem="compound/3423265">
+		<ingredient CAS="151-21-3" PubChem="compound/3423265">
 			<name>SDS</name>
 			<stock>288.38 gram per mol</stock>
 			<amount>10.0 gram</amount>
@@ -7362,6 +7240,36 @@
 		</safety>
 		<source doc_type="SOP" id="0024" version="1" visibility="public" license="CC-BY-SA-4.0" title="Extraction of genomic DNA from tissue culture cells" definition="yes" primary="yes">sop_0024-v1-dna_isolation_mammalian_cells</source>
 	</recipe>
+	<recipe id="R0145">
+		<name>Ethylene glycol tetraacetic acid</name>
+		<abbreviation>EGTA</abbreviation>
+		<stock>0.5 molar</stock>
+		<amount>10 microliter</amount>
+		<!-- PREPARATION -->
+		<solvent CAS="7732-18-5" PubChem="compound/962">
+			<name>Water</name>
+			<property>reagent-grade</property>
+			<amount>10 milliliter</amount>
+		</solvent>
+		<ingredient CAS="67-42-5" PubChem="compound/6207">
+			<name>Egtazic acid</name>
+			<stock>380.35 gram per mol</stock>
+			<amount>1.90 gram</amount>
+			<final>0.5 molar</final>
+		</ingredient>
+		<workup>EGTA will not dissolve well until <pH>8</pH>; titrate in with NaOH.</workup>
+		<!-- ORGANIZATION -->
+		<category>solution</category>
+		<category>common</category>
+		<!-- ENVIRONMENT, HEALTH, SAFETY (derived) -->
+		<safety source="derived" disposal="treat">
+			<benign source="derived">No GHS hazards at the indicated concentrations</benign>
+			<disposal source="derived">Dilute below the discharge limit</disposal>
+			<disposal source="derived">Flush to drain with excess water</disposal>
+		</safety>
+		<source doc_type="SOP" id="0025" version="2" visibility="public" license="CC-BY-SA-4.0" title="Nuclear extraction and fractionation of chromatin-associated proteins" definition="yes" primary="yes">sop_0025-v2-nuclear_extraction</source>
+		<source doc_type="SOP" id="0027" version="2" visibility="public" license="CC-BY-SA-4.0" title="Immunoprecipitation of soluble proteins" definition="no">sop_0027-v2-immunoprecipitation</source>
+	</recipe>
 	<recipe id="R0143">
 		<name>Tris-NaCl-KCl</name>
 		<abbreviation>TNK</abbreviation>
@@ -7561,6 +7469,348 @@
 			<disposal source="derived">DO NOT wash into sewer</disposal>
 		</safety>
 		<source doc_type="SOP" id="0025" version="2" visibility="public" license="CC-BY-SA-4.0" title="Nuclear extraction and fractionation of chromatin-associated proteins" definition="yes" primary="yes">sop_0025-v2-nuclear_extraction</source>
+	</recipe>
+	<recipe id="R0189">
+		<name>Formaldehyde</name>
+		<abbreviation>FA</abbreviation>
+		<stock>1 percent</stock>
+		<!-- PREPARATION -->
+		<solvent CAS="7732-18-5" PubChem="compound/962">
+			<name>Water</name>
+			<property>reagent-grade</property>
+			<amount>10 milliliter</amount>
+		</solvent>
+		<ingredient id="R0037">
+			<name>Phosphate-buffered saline</name>
+			<abbreviation>PBS</abbreviation>
+			<property><pH>7.4</pH></property>
+			<stock>10 fold</stock>
+			<amount>1 milliliter</amount>
+			<final>1 fold</final>
+		</ingredient>
+		<ingredient CAS="50-00-0" PubChem="compound/712">
+			<name>Formaldehyde</name>
+			<property>in water</property>
+			<property>stabilized with methanol</property>
+			<stock>37 percent</stock>
+			<amount>270 microliter</amount>
+			<final>1 percent</final>
+		</ingredient>
+		<workup>Prepare fresh before use.</workup>
+		<note type="orientation">When starting from paraformaldehyde, bring to <unit>80 celsius</unit> for <unit>1 to 2 hour</unit> and filter through a <unit>0.22 micrometer</unit> pore.</note>
+		<storage class="ambient" shelflife="4 weeks"/>
+		<!-- ORGANIZATION -->
+		<category>solution</category>
+		<category>special</category>
+		<!-- ENVIRONMENT, HEALTH, SAFETY (derived) -->
+		<safety source="derived" signal="danger" disposal="hazardous-waste">
+			<hazard code="H350" category="1" type="serious_health_hazard" source="derived">Carcinogenicity</hazard>
+			<hazard code="H341" category="2" type="serious_health_hazard" source="derived">Germ cell mutagenicity</hazard>
+			<hazard code="H317" category="1" type="health_hazard" source="derived">Skin sensitization</hazard>
+			<disposal source="derived">Collect as HAZARDOUS WASTE</disposal>
+			<disposal source="derived">DO NOT wash into sewer</disposal>
+		</safety>
+		<source doc_type="SOP" id="0027" version="2" visibility="public" license="CC-BY-SA-4.0" title="Immunoprecipitation of soluble proteins" definition="yes" primary="yes">sop_0027-v2-immunoprecipitation</source>
+	</recipe>
+	<recipe id="R0190">
+		<!-- NOLINT: MIX006 — storage stock at neutral pH; the buffering use case is downstream at pH 2.5 (acidic elution) -->
+		<name>Glycine</name>
+		<stock>1.25 molar</stock>
+		<property><pH>7.0</pH></property>
+		<!-- PREPARATION -->
+		<solvent CAS="7732-18-5" PubChem="compound/962">
+			<name>Water</name>
+			<property>reagent-grade</property>
+			<amount>50 milliliter</amount>
+		</solvent>
+		<ingredient CAS="56-40-6" PubChem="compound/750">
+			<name>Glycine</name>
+			<stock>75.07 gram per mol</stock>
+			<amount>4.69 gram</amount>
+			<final>1.25 molar</final>
+		</ingredient>
+		<workup>Adjust pH with hydrochloric acid.</workup>
+		<storage class="fridge" shelflife="2 weeks"/>
+		<category>solution</category>
+		<category>common</category>
+		<!-- ENVIRONMENT, HEALTH, SAFETY (derived) -->
+		<safety source="derived" disposal="sanitary-sewer">
+			<benign source="derived" scil="green-circle" use="Processing Aids and Additives">EPA Safer Choice low-concern</benign>
+			<disposal source="derived">Flush to drain with excess water</disposal>
+		</safety>
+		<source doc_type="SOP" id="0027" version="2" visibility="public" license="CC-BY-SA-4.0" title="Immunoprecipitation of soluble proteins" definition="yes" primary="yes">sop_0027-v2-immunoprecipitation</source>
+	</recipe>
+	<recipe id="R0191">
+		<!-- NOLINT: MIX006 — pH 8.0 is the intrinsic pH of the salt in water (sits between carbonate pKa1 6.35 and pKa2 10.33); used as a volatile MS-compatible diluent for tryptic digestion, not for buffering -->
+		<name>Ammonium bicarbonate</name>
+		<stock>0.5 molar</stock>
+		<property><pH>8.0</pH></property>
+		<!-- PREPARATION -->
+		<solvent CAS="7732-18-5" PubChem="compound/962">
+			<name>Water</name>
+			<property>reagent-grade</property>
+			<amount>50 milliliter</amount>
+		</solvent>
+		<ingredient CAS="1066-33-7" PubChem="compound/14013">
+			<name>Ammonium bicarbonate</name>
+			<stock>79.06 gram per mol</stock>
+			<amount>1.98 gram</amount>
+			<final>0.5 molar</final>
+		</ingredient>
+		<workup>Prepare fresh before use.</workup>
+		<storage class="fridge" shelflife="1 week"/>
+		<category>solution</category>
+		<category>common</category>
+		<!-- ENVIRONMENT, HEALTH, SAFETY (derived) -->
+		<safety source="derived" disposal="hazardous-waste">
+			<benign source="derived">No GHS hazards at the indicated concentrations</benign>
+			<disposal source="derived">Hold for EHS review before disposal</disposal>
+		</safety>
+		<source doc_type="SOP" id="0027" version="2" visibility="public" license="CC-BY-SA-4.0" title="Immunoprecipitation of soluble proteins" definition="yes" primary="yes">sop_0027-v2-immunoprecipitation</source>
+	</recipe>
+	<recipe id="R0156">
+		<name>General IP buffer</name>
+		<!-- PREPARATION -->
+		<solvent CAS="7732-18-5" PubChem="compound/962">
+			<name>Water</name>
+			<property>reagent-grade</property>
+			<amount>50 milliliter</amount>
+		</solvent>
+		<ingredient id="R0055">
+			<name>Tris-Cl</name>
+			<property><pH>7.4</pH></property>
+			<stock>1 molar</stock>
+			<amount>0.5 milliliter</amount>
+			<final>10 millimolar</final>
+		</ingredient>
+		<ingredient id="R0046">
+			<name>Sodium chloride</name>
+			<abbreviation><chemical>NaCl</chemical></abbreviation>
+			<stock>5 molar</stock>
+			<amount>1.5 milliliter</amount>
+			<final>150 millimolar</final>
+		</ingredient>
+		<ingredient id="R0022">
+			<name>Glycerol</name>
+			<stock>50 percent</stock>
+			<amount>10 milliliter</amount>
+			<final>10 percent</final>
+		</ingredient>
+		<ingredient id="R0031">
+			<name><chemical>MgCl_2</chemical></name>
+			<stock>1 molar</stock>
+			<amount>100 microliter</amount>
+			<final>2 millimolar</final>
+		</ingredient>
+		<ingredient id="R0145">
+			<name>EGTA</name>
+			<property><pH>8.0</pH></property>
+			<stock>0.5 molar</stock>
+			<amount>200 microliter</amount>
+			<final>2 millimolar</final>
+		</ingredient>
+		<ingredient id="R0057">
+			<name>Triton™ X-100</name>
+			<stock>10 percent</stock>
+			<amount>500 microliter</amount>
+			<final>0.1 percent</final>
+		</ingredient>
+		<ingredient id="R0015" type="fresh">
+			<name>Dithiothreitol</name>
+			<abbreviation>DTT</abbreviation>
+			<stock>1 molar</stock>
+			<amount>50 microliter</amount>
+			<final>1 millimolar</final>
+		</ingredient>
+		<ingredient id="R0090" type="fresh">
+			<name>Inhibitor cocktail</name>
+			<stock>100 fold</stock>
+			<amount>500 microliter</amount>
+			<final>1 fold</final>
+		</ingredient>
+		<workup>Filter sterilize.</workup>
+		<storage class="ambient"/>
+		<note type="orientation">For cytosolic proteins and soluble nuclear factors.</note>
+		<note type="critical">Replace Tris-Cl with HEPES when amine-reactive labeling such as TMT is planned for mass spectrometry; the primary amine of Tris consumes the label.</note>
+		<note type="orientation">Triton™ X-100 can be replaced with another non-ionic detergent such as IGEPAL® CA-630, the substitute for the discontinued NP-40.</note>
+		<!-- ENVIRONMENT, HEALTH, SAFETY (derived) -->
+		<safety source="derived" signal="warning" disposal="hazardous-waste">
+			<hazard code="H361" category="2" type="serious_health_hazard" source="derived">Reproductive toxicity</hazard>
+			<disposal source="derived">Collect as HAZARDOUS WASTE</disposal>
+			<disposal source="derived">DO NOT wash into sewer</disposal>
+		</safety>
+		<source doc_type="SOP" id="0027" version="2" visibility="public" license="CC-BY-SA-4.0" title="Immunoprecipitation of soluble proteins" definition="yes" primary="yes">sop_0027-v2-immunoprecipitation</source>
+	</recipe>
+	<recipe id="R0157">
+		<name>Nuclear extract IP buffer</name>
+		<!-- PREPARATION -->
+		<solvent CAS="7732-18-5" PubChem="compound/962">
+			<name>Water</name>
+			<property>reagent-grade</property>
+			<amount>50 milliliter</amount>
+		</solvent>
+		<ingredient id="R0055">
+			<name>Tris-Cl</name>
+			<property><pH>7.4</pH></property>
+			<stock>1 molar</stock>
+			<amount>1.0 milliliter</amount>
+			<final>20 millimolar</final>
+		</ingredient>
+		<ingredient id="R0038">
+			<name>Potassium chloride</name>
+			<abbreviation><chemical>KCl</chemical></abbreviation>
+			<stock>3 molar</stock>
+			<amount>1.7 milliliter</amount>
+			<final>100 millimolar</final>
+		</ingredient>
+		<ingredient id="R0022">
+			<name>Glycerol</name>
+			<stock>50 percent</stock>
+			<amount>20 milliliter</amount>
+			<final>20 percent</final>
+		</ingredient>
+		<ingredient id="R0017">
+			<name>EDTA</name>
+			<property><pH>8.0</pH></property>
+			<stock>0.5 molar</stock>
+			<amount>20 microliter</amount>
+			<final>0.2 millimolar</final>
+		</ingredient>
+		<ingredient id="R0057">
+			<name>Triton™ X-100</name>
+			<stock>10 percent</stock>
+			<amount>50 microliter</amount>
+			<final>0.01 percent</final>
+		</ingredient>
+		<ingredient id="R0015" type="fresh">
+			<name>Dithiothreitol</name>
+			<abbreviation>DTT</abbreviation>
+			<stock>1 molar</stock>
+			<amount>50 microliter</amount>
+			<final>1 millimolar</final>
+		</ingredient>
+		<ingredient id="R0090" type="fresh">
+			<name>Inhibitor cocktail</name>
+			<stock>100 fold</stock>
+			<amount>500 microliter</amount>
+			<final>1 fold</final>
+		</ingredient>
+		<workup>Filter sterilize.</workup>
+		<storage class="ambient"/>
+		<note type="orientation">Dignam buffer D, the dialysis buffer for salt-extracted nuclear proteins; heavy glycerol and minimal detergent hold fragile complexes together. For high-salt nuclear extracts and acid-extracted histones.</note>
+		<note type="critical">Replace Tris-Cl with HEPES when amine-reactive labeling such as TMT is planned for mass spectrometry; the primary amine of Tris consumes the label.</note>
+		<!-- ENVIRONMENT, HEALTH, SAFETY (derived) -->
+		<safety source="derived" signal="warning" disposal="hazardous-waste">
+			<hazard code="H361" category="2" type="serious_health_hazard" source="derived">Reproductive toxicity</hazard>
+			<disposal source="derived">Collect as HAZARDOUS WASTE</disposal>
+			<disposal source="derived">DO NOT wash into sewer</disposal>
+		</safety>
+		<source doc_type="SOP" id="0027" version="2" visibility="public" license="CC-BY-SA-4.0" title="Immunoprecipitation of soluble proteins" definition="yes" primary="yes">sop_0027-v2-immunoprecipitation</source>
+	</recipe>
+	<recipe id="R0158">
+		<!-- NOLINT: MIX006 — pH chosen above TEA pKa to favor DMP imidoester reactivity, not for optimal buffering -->
+		<name>Triethanolamine solution</name>
+		<property><pH>8.9</pH></property>
+		<stock>200 millimolar</stock>
+		<amount>10 milliliter</amount>
+		<!-- PREPARATION -->
+		<solvent CAS="7732-18-5" PubChem="compound/962">
+			<name>Water</name>
+			<property>reagent-grade</property>
+			<amount>10 milliliter</amount>
+		</solvent>
+		<ingredient CAS="102-71-6" PubChem="compound/7618">
+			<name>Triethanolamine</name>
+			<abbreviation>TEA</abbreviation>
+			<stock>149.19 gram per mol</stock>
+			<!-- density: 1.13 g/mL -->
+			<amount>264 microliter</amount>
+			<final>200 millimolar</final>
+		</ingredient>
+		<workup>Adjust to <pH>8.9</pH> with hydrochloric acid or sodium hydroxide as needed.</workup>
+		<storage class="fridge" shelflife="2 weeks"/>
+		<!-- ENVIRONMENT, HEALTH, SAFETY (derived) -->
+		<safety source="derived" disposal="hazardous-waste">
+			<benign source="derived">No GHS hazards at the indicated concentrations</benign>
+			<disposal source="derived">Hold for EHS review before disposal</disposal>
+		</safety>
+		<source doc_type="SOP" id="0027" version="2" visibility="public" license="CC-BY-SA-4.0" title="Immunoprecipitation of soluble proteins" definition="yes" primary="yes">sop_0027-v2-immunoprecipitation</source>
+	</recipe>
+	<recipe id="R0159">
+		<name>Dimethyl pimelimidate</name>
+		<abbreviation>DMP</abbreviation>
+		<stock>20 millimolar</stock>
+		<!-- PREPARATION -->
+		<solvent id="R0158">
+			<name>Triethanolamine buffer</name>
+			<property><pH>8.9</pH></property>
+			<stock>200 millimolar</stock>
+			<amount>10 milliliter</amount>
+		</solvent>
+		<ingredient CAS="58537-94-3" PubChem="compound/11402688">
+			<name form="dihydrochloride">Dimethyl pimelimidate</name>
+			<abbreviation>DMP</abbreviation>
+			<stock>259.17 gram per mol</stock>
+			<amount>51.8 milligram</amount>
+			<final>20 millimolar</final>
+		</ingredient>
+		<workup>Prepare fresh immediately before use.</workup>
+		<!-- ENVIRONMENT, HEALTH, SAFETY (derived) -->
+		<safety source="derived" disposal="hazardous-waste">
+			<benign source="derived">No GHS hazards at the indicated concentrations</benign>
+			<disposal source="derived">Hold for EHS review before disposal</disposal>
+		</safety>
+		<source doc_type="SOP" id="0027" version="2" visibility="public" license="CC-BY-SA-4.0" title="Immunoprecipitation of soluble proteins" definition="yes" primary="yes">sop_0027-v2-immunoprecipitation</source>
+	</recipe>
+	<recipe id="R0160">
+		<name>Acidic elution buffer</name>
+		<property><pH>2.5</pH></property>
+		<solvent CAS="7732-18-5" PubChem="compound/962">
+			<name>Water</name>
+			<property>reagent-grade</property>
+			<amount>50 milliliter</amount>
+		</solvent>
+		<ingredient CAS="56-40-6" PubChem="compound/750">
+			<name>Glycine</name>
+			<stock>75.07 gram per mol</stock>
+			<amount>0.75 gram</amount>
+			<final>200 millimolar</final>
+		</ingredient>
+		<workup>Adjust the pH to 2.5 at <unit>4 celsius</unit>.</workup>
+		<!-- ENVIRONMENT, HEALTH, SAFETY (derived) -->
+		<safety source="derived" signal="warning" disposal="treat">
+			<hazard code="H319" category="2" type="health_hazard" source="derived">Serious eye irritation</hazard>
+			<hazard code="H315" category="2" type="health_hazard" source="derived">Skin irritation</hazard>
+			<disposal source="derived">Neutralise to pH 6–9</disposal>
+			<disposal source="derived">Flush to drain with excess water</disposal>
+		</safety>
+		<source doc_type="SOP" id="0027" version="2" visibility="public" license="CC-BY-SA-4.0" title="Immunoprecipitation of soluble proteins" definition="yes" primary="yes">sop_0027-v2-immunoprecipitation</source>
+	</recipe>
+	<recipe id="R0161">
+		<!-- NOLINT: MIX006 — 1 M Tris base used as a strong base to neutralize pH 2.5 glycine eluate; pH is near-intrinsic of Tris base in water, not a buffering target -->
+		<name>Neutralization base</name>
+		<property><pH>10.4</pH></property>
+		<solvent CAS="7732-18-5" PubChem="compound/962">
+			<name>Water</name>
+			<property>reagent-grade</property>
+			<amount>50 milliliter</amount>
+		</solvent>
+		<ingredient CAS="77-86-1" PubChem="compound/6503">
+			<name>Tris base</name>
+			<stock>121.14 gram per mol</stock>
+			<amount>6.06 gram</amount>
+			<final>1 molar</final>
+		</ingredient>
+		<workup>Adjust the pH to 10.4 at <unit>4 celsius</unit>.</workup>
+		<!-- ENVIRONMENT, HEALTH, SAFETY (derived) -->
+		<safety source="derived" signal="warning" disposal="treat">
+			<hazard code="H319" category="2" type="health_hazard" source="derived">Serious eye irritation</hazard>
+			<hazard code="H315" category="2" type="health_hazard" source="derived">Skin irritation</hazard>
+			<disposal source="derived">Neutralise to pH 6–9</disposal>
+			<disposal source="derived">Dilute below the discharge limit</disposal>
+			<disposal source="derived">Flush to drain with excess water</disposal>
+		</safety>
+		<source doc_type="SOP" id="0027" version="2" visibility="public" license="CC-BY-SA-4.0" title="Immunoprecipitation of soluble proteins" definition="yes" primary="yes">sop_0027-v2-immunoprecipitation</source>
 	</recipe>
 	<recipe id="R0184">
 		<name>MOPS-acetate running buffer</name>
@@ -8059,8 +8309,8 @@
 			<name>Calcium chloride</name>
 			<abbreviation><chemical>CaCl_2</chemical></abbreviation>
 			<stock>1 molar</stock>
-			<amount>2 milliliter</amount>
-			<final>10 millimolar</final>
+			<amount>15 milliliter</amount>
+			<final>75 millimolar</final>
 		</ingredient>
 		<ingredient id="R0022">
 			<name>Glycerol</name>
@@ -8263,178 +8513,6 @@
 		</safety>
 		<source doc_type="SOP" id="0039" version="1" visibility="public" license="CC-BY-SA-4.0" title="Qualitative polymerase chain reactions" definition="yes" primary="yes">sop_0039-v1-pcr_qualitative</source>
 	</recipe>
-	<recipe id="R0200">
-		<name>T7 transcription buffer</name>
-		<stock>5 fold</stock>
-		<!-- PREPARATION -->
-		<solvent CAS="7732-18-5" PubChem="compound/962">
-			<name>Water</name>
-			<property>reagent-grade</property>
-			<amount>10 milliliter</amount>
-		</solvent>
-		<ingredient id="R0056">
-			<name>Tris hydrochloride</name>
-			<abbreviation>Tris-Cl</abbreviation>
-			<property><pH>8.0</pH></property>
-			<stock>1 molar</stock>
-			<amount>2.0 milliliter</amount>
-			<final>200 millimolar</final>
-		</ingredient>
-		<ingredient id="R0046">
-			<name>NaCl</name>
-			<stock>5 molar</stock>
-			<amount>100 microliter</amount>
-			<final>50 millimolar</final>
-		</ingredient>
-		<ingredient id="R0031">
-			<name><chemical>MgCl_2</chemical></name>
-			<stock>1 molar</stock>
-			<amount>300 microliter</amount>
-			<final>30 millimolar</final>
-		</ingredient>
-		<ingredient CAS="124-20-9" PubChem="substance/24899434">
-			<name>Spermidine</name>
-			<!-- <stock>0.925 gram per milliliter</stock> -->
-			<stock>145.25 gram per mol</stock>
-			<amount>15.7 microliter</amount>
-			<final>10 millimolar</final>
-		</ingredient>
-		<storage class="freezer"/>
-		<!-- ORGANIZATION -->
-		<category>buffer</category>
-		<category>nucleics</category>
-		<!-- ENVIRONMENT, HEALTH, SAFETY (derived) -->
-		<safety source="derived" disposal="hazardous-waste">
-			<benign source="derived">No GHS hazards at the indicated concentrations</benign>
-			<disposal source="derived">Collect as HAZARDOUS WASTE</disposal>
-			<disposal source="derived">DO NOT wash into sewer</disposal>
-		</safety>
-		<source doc_type="SOP" id="0040" version="1" visibility="internal" license="CC-BY-SA-4.0" title="In vitro transcription with T7 RNA polymerase" definition="yes" primary="yes">sop_0040-v1-in_vitro_transcription</source>
-	</recipe>
-	<recipe id="R0203">
-		<name>Formamide RNA loading buffer</name>
-		<solvent CAS="7732-18-5" PubChem="compound/962">
-			<name>Water</name>
-			<property>nuclease-free</property>
-			<amount>10 milliliter</amount>
-		</solvent>
-		<ingredient CAS="75-12-7" PubChem="compound/713">
-			<name>Formamide (deionised)</name>
-			<stock>100 percent</stock>
-			<amount>8 milliliter</amount>
-			<final>80 percent</final>
-		</ingredient>
-		<ingredient CAS="6381-92-6" PubChem="compound/636371">
-			<name>EDTA</name>
-			<stock>0.5 molar</stock>
-			<amount>40 microliter</amount>
-			<final>2 millimolar</final>
-		</ingredient>
-		<note>Omit dyes when downstream UV-shadowing or fluorescence imaging will be used to locate bands.</note>
-		<storage class="freezer"/>
-		<!-- ORGANIZATION -->
-		<category>buffer</category>
-		<category>nucleics</category>
-		<!-- ENVIRONMENT, HEALTH, SAFETY (derived) -->
-		<safety source="derived" signal="danger" disposal="hazardous-waste">
-			<hazard code="H360" category="1" type="serious_health_hazard" source="derived">Reproductive toxicity</hazard>
-			<disposal source="derived">Collect as HAZARDOUS WASTE</disposal>
-			<disposal source="derived">DO NOT wash into sewer</disposal>
-		</safety>
-		<source doc_type="SOP" id="0040" version="1" visibility="internal" license="CC-BY-SA-4.0" title="In vitro transcription with T7 RNA polymerase" definition="yes" primary="yes">sop_0040-v1-in_vitro_transcription</source>
-	</recipe>
-	<recipe id="R0202">
-		<name>Denaturing PAGE running gel</name>
-		<stock>10 percent</stock>
-		<solvent id="R0052">
-			<name>TBE buffer</name>
-			<property><unit>1 fold</unit>, nuclease-free</property>
-			<amount>50 milliliter</amount>
-		</solvent>
-		<ingredient CAS="57-13-6" PubChem="compound/1176">
-			<name>Urea</name>
-			<stock>10 molar</stock>
-			<amount>35 milliliter</amount>
-			<final>7 molar</final>
-		</ingredient>
-		<ingredient CAS="79-06-1" PubChem="compound/6579">
-			<name>Acrylamide/bis-acrylamide (19:1)</name>
-			<stock>40 percent</stock>
-			<amount>12.5 milliliter</amount>
-			<final>10 percent</final>
-		</ingredient>
-		<ingredient CAS="7727-54-0" PubChem="compound/62648" type="fresh">
-			<name>Ammonium persulfate</name>
-			<abbreviation>APS</abbreviation>
-			<stock>10 percent</stock>
-			<amount>500 microliter</amount>
-			<final>0.1 percent</final>
-		</ingredient>
-		<ingredient CAS="110-18-9" PubChem="compound/8037" type="fresh">
-			<name>N,N,N&apos;,N&apos;-tetramethylethylenediamine</name>
-			<abbreviation>TEMED</abbreviation>
-			<stock>100 percent</stock>
-			<amount>50 microliter</amount>
-			<final>0.1 percent</final>
-		</ingredient>
-		<workup>Cast immediately after adding APS and TEMED; polymerisation begins within minutes.</workup>
-		<storage class="fridge">use within <unit>24 hour</unit> of casting</storage>
-		<!-- ORGANIZATION -->
-		<!-- ENVIRONMENT, HEALTH, SAFETY (derived) -->
-		<safety source="derived" signal="danger" disposal="hazardous-waste">
-			<hazard code="H350" category="1" type="serious_health_hazard" source="derived">Carcinogenicity</hazard>
-			<hazard code="H340" category="1" type="serious_health_hazard" source="derived">Germ cell mutagenicity</hazard>
-			<hazard code="H372" category="1" type="serious_health_hazard" source="derived">Organ damage through prolonged or repeated exposure</hazard>
-			<hazard code="H360" category="1" type="serious_health_hazard" source="derived">Reproductive toxicity</hazard>
-			<hazard code="H317" category="1" type="health_hazard" source="derived">Skin sensitization</hazard>
-			<hazard code="H319" category="2" type="health_hazard" source="derived">Serious eye irritation</hazard>
-			<hazard code="H315" category="2" type="health_hazard" source="derived">Skin irritation</hazard>
-			<hazard code="H302" category="4" type="health_hazard" source="derived">Acute oral toxicity</hazard>
-			<disposal source="derived">Collect as HAZARDOUS WASTE</disposal>
-			<disposal source="derived">DO NOT wash into sewer</disposal>
-		</safety>
-		<source doc_type="SOP" id="0040" version="1" visibility="internal" license="CC-BY-SA-4.0" title="In vitro transcription with T7 RNA polymerase" definition="yes" primary="yes">sop_0040-v1-in_vitro_transcription</source>
-	</recipe>
-	<recipe id="R0204">
-		<name>RNA folding buffer, Mg-free</name>
-		<stock>10 fold</stock>
-		<solvent CAS="7732-18-5" PubChem="compound/962">
-			<name>Water</name>
-			<property>nuclease-free</property>
-			<amount>10 milliliter</amount>
-		</solvent>
-		<ingredient id="R0056">
-			<name>Tris hydrochloride</name>
-			<abbreviation>Tris-Cl</abbreviation>
-			<property><pH>7.5</pH></property>
-			<stock>1 molar</stock>
-			<amount>1 milliliter</amount>
-			<final>100 millimolar</final>
-		</ingredient>
-		<ingredient id="R0046">
-			<name>NaCl</name>
-			<stock>5 molar</stock>
-			<amount>2 milliliter</amount>
-			<final>1 molar</final>
-		</ingredient>
-		<ingredient CAS="6381-92-6" PubChem="compound/636371">
-			<name>EDTA</name>
-			<stock>0.5 molar</stock>
-			<amount>20 microliter</amount>
-			<final>1 millimolar</final>
-		</ingredient>
-		<storage class="freezer"/>
-		<!-- ORGANIZATION -->
-		<category>buffer</category>
-		<category>nucleics</category>
-		<!-- ENVIRONMENT, HEALTH, SAFETY (derived) -->
-		<safety source="derived" disposal="hazardous-waste">
-			<benign source="derived">No GHS hazards at the indicated concentrations</benign>
-			<disposal source="derived">Collect as HAZARDOUS WASTE</disposal>
-			<disposal source="derived">DO NOT wash into sewer</disposal>
-		</safety>
-		<source doc_type="SOP" id="0040" version="1" visibility="internal" license="CC-BY-SA-4.0" title="In vitro transcription with T7 RNA polymerase" definition="yes" primary="yes">sop_0040-v1-in_vitro_transcription</source>
-	</recipe>
 	<recipe id="R0205">
 		<name>TB autoinduction medium</name>
 		<abbreviation>TB-AI</abbreviation>
@@ -8443,13 +8521,7 @@
 			<property>autoclaved</property>
 			<amount>1 liter</amount>
 		</solvent>
-		<ingredient CAS="63-42-3" PubChem="compound/440995">
-			<name>Lactose</name>
-			<stock>20 percent</stock>
-			<amount>500 microliter</amount>
-			<final>0.01 percent</final>
-		</ingredient>
-		<ingredient CAS="10034-99-8" PubChem="compound/24843">
+		<ingredient CAS="10034-99-8" PubChem="compound/24843" type="fresh">
 			<name><chemical>MgSO_4</chemical></name>
 			<stock>1 molar</stock>
 			<amount>2 milliliter</amount>
@@ -8461,7 +8533,12 @@
 			<amount>1 milliliter</amount>
 			<final>100 milligram per liter</final>
 		</ingredient>
-		<workup>Add lactose, <chemical>MgSO_4</chemical> and ampicillin immediately before inoculation.</workup>
+		<ingredient CAS="63-42-3" PubChem="compound/440995" type="fresh">
+			<name>Lactose</name>
+			<stock>20 percent</stock>
+			<amount>500 microliter</amount>
+			<final>0.01 percent</final>
+		</ingredient>
 		<storage class="fridge"/>
 		<category>media</category>
 		<category>bacterial</category>
@@ -8470,57 +8547,10 @@
 			<hazard code="H317" category="1" type="health_hazard" source="derived">Skin sensitization</hazard>
 			<disposal source="derived">Hold for EHS review before disposal</disposal>
 		</safety>
-		<source doc_type="SOP" id="0044" version="1" visibility="internal" license="CC-BY-SA-4.0" title="TEV protease production and use as a cleavage tool" definition="yes" primary="yes">sop_0044-v1-tev_protease</source>
+		<source doc_type="SOP" id="0044" version="1" visibility="public" license="CC-BY-SA-4.0" title="TEV protease production and cleavage" definition="yes" primary="yes">sop_0044-v1-tev_protease</source>
 	</recipe>
 	<recipe id="R0206">
-		<name>TEV lysis / loading buffer</name>
-		<abbreviation>Buffer A</abbreviation>
-		<property><pH>8.0</pH></property>
-		<solvent CAS="7732-18-5" PubChem="compound/962">
-			<name>Water</name>
-			<property>reagent-grade</property>
-			<amount>1 liter</amount>
-		</solvent>
-		<ingredient id="R0024">
-			<name>HEPES</name>
-			<stock>1 molar</stock>
-			<amount>50 milliliter</amount>
-			<final>50 millimolar</final>
-		</ingredient>
-		<ingredient id="R0046">
-			<name>Sodium chloride</name>
-			<abbreviation><chemical>NaCl</chemical></abbreviation>
-			<stock>5 molar</stock>
-			<amount>60 milliliter</amount>
-			<final>300 millimolar</final>
-		</ingredient>
-		<ingredient id="R0027">
-			<name>Imidazole</name>
-			<stock>6 molar</stock>
-			<amount>3.33 milliliter</amount>
-			<final>20 millimolar</final>
-		</ingredient>
-		<ingredient CAS="51805-45-9" PubChem="compound/2734570" type="fresh">
-			<name>TCEP</name>
-			<stock>500 millimolar</stock>
-			<amount>2 milliliter</amount>
-			<final>1 millimolar</final>
-		</ingredient>
-		<workup>Adjust to <pH>8.0</pH> with NaOH after imidazole addition; chill to <unit>4 celsius</unit> before lysis. Add TCEP immediately before use.</workup>
-		<storage class="fridge"/>
-		<category>buffer</category>
-		<category>protein</category>
-		<!-- ENVIRONMENT, HEALTH, SAFETY (derived) -->
-		<safety source="derived" signal="danger" disposal="hazardous-waste">
-			<hazard code="H360" category="1" type="serious_health_hazard" source="derived">Reproductive toxicity</hazard>
-			<disposal source="derived">Collect as HAZARDOUS WASTE</disposal>
-			<disposal source="derived">DO NOT wash into sewer</disposal>
-		</safety>
-		<source doc_type="SOP" id="0044" version="1" visibility="internal" license="CC-BY-SA-4.0" title="TEV protease production and use as a cleavage tool" definition="yes" primary="yes">sop_0044-v1-tev_protease</source>
-	</recipe>
-	<recipe id="R0207">
-		<name>TEV elution buffer</name>
-		<abbreviation>Buffer B</abbreviation>
+		<name>TEV lysis buffer</name>
 		<property><pH>8.0</pH></property>
 		<solvent CAS="7732-18-5" PubChem="compound/962">
 			<name>Water</name>
@@ -8540,16 +8570,61 @@
 			<amount>30 milliliter</amount>
 			<final>300 millimolar</final>
 		</ingredient>
-		<ingredient id="R0027">
+		<ingredient CAS="288-32-4" PubChem="compound/795" id="R0027">
 			<name>Imidazole</name>
 			<stock>6 molar</stock>
-			<amount>41.7 milliliter</amount>
-			<final>500 millimolar</final>
+			<amount>1.67 milliliter</amount>
+			<final>20 millimolar</final>
 		</ingredient>
-		<ingredient CAS="51805-45-9" PubChem="compound/2734570" type="fresh">
+		<ingredient id="R0215" type="fresh">
 			<name>TCEP</name>
 			<stock>500 millimolar</stock>
 			<amount>1 milliliter</amount>
+			<final>1 millimolar</final>
+		</ingredient>
+		<workup>Adjust to <pH>8.0</pH> with NaOH after imidazole addition. Chill to <unit>4 celsius</unit> but do not place on ice; the buffer precipitates. Add TCEP immediately before use.</workup>
+		<storage class="fridge"/>
+		<category>buffer</category>
+		<category>protein</category>
+		<!-- ENVIRONMENT, HEALTH, SAFETY (derived) -->
+		<safety source="derived" signal="danger" disposal="hazardous-waste">
+			<hazard code="H360" category="1" type="serious_health_hazard" source="derived">Reproductive toxicity</hazard>
+			<disposal source="derived">Collect as HAZARDOUS WASTE</disposal>
+			<disposal source="derived">DO NOT wash into sewer</disposal>
+		</safety>
+		<source doc_type="SOP" id="0044" version="1" visibility="public" license="CC-BY-SA-4.0" title="TEV protease production and cleavage" definition="yes" primary="yes">sop_0044-v1-tev_protease</source>
+	</recipe>
+	<recipe id="R0207">
+		<name>TEV elution buffer</name>
+		<property><pH>8.0</pH></property>
+		<solvent CAS="7732-18-5" PubChem="compound/962">
+			<name>Water</name>
+			<property>reagent-grade</property>
+			<amount>200 milliliter</amount>
+		</solvent>
+		<ingredient id="R0024">
+			<name>HEPES</name>
+			<stock>1 molar</stock>
+			<amount>10 milliliter</amount>
+			<final>50 millimolar</final>
+		</ingredient>
+		<ingredient id="R0046">
+			<name>Sodium chloride</name>
+			<abbreviation><chemical>NaCl</chemical></abbreviation>
+			<stock>5 molar</stock>
+			<amount>12 milliliter</amount>
+			<final>300 millimolar</final>
+		</ingredient>
+		<ingredient CAS="288-32-4" PubChem="compound/795" id="R0027">
+			<name>Imidazole</name>
+			<stock>6 molar</stock>
+			<amount>16.7 milliliter</amount>
+			<final>500 millimolar</final>
+		</ingredient>
+		<ingredient id="R0215" type="fresh">
+			<name>TCEP</name>
+			<stock>500 millimolar</stock>
+			<amount>0.4 milliliter</amount>
 			<final>1 millimolar</final>
 		</ingredient>
 		<workup>Adjust to <pH>8.0</pH> with HCl after imidazole addition; chill to <unit>4 celsius</unit>. Add TCEP immediately before use.</workup>
@@ -8562,34 +8637,33 @@
 			<disposal source="derived">Collect as HAZARDOUS WASTE</disposal>
 			<disposal source="derived">DO NOT wash into sewer</disposal>
 		</safety>
-		<source doc_type="SOP" id="0044" version="1" visibility="internal" license="CC-BY-SA-4.0" title="TEV protease production and use as a cleavage tool" definition="yes" primary="yes">sop_0044-v1-tev_protease</source>
+		<source doc_type="SOP" id="0044" version="1" visibility="public" license="CC-BY-SA-4.0" title="TEV protease production and cleavage" definition="yes" primary="yes">sop_0044-v1-tev_protease</source>
 	</recipe>
 	<recipe id="R0208">
-		<name>TEV dialysis / storage buffer</name>
-		<abbreviation>Storage buffer</abbreviation>
+		<name>TEV storage buffer</name>
 		<property><pH>8.0</pH></property>
 		<solvent CAS="7732-18-5" PubChem="compound/962">
 			<name>Water</name>
 			<property>reagent-grade</property>
-			<amount>5 liter</amount>
+			<amount>1.5 liter</amount>
 		</solvent>
 		<ingredient id="R0024">
 			<name>HEPES</name>
 			<stock>1 molar</stock>
-			<amount>250 milliliter</amount>
+			<amount>75 milliliter</amount>
 			<final>50 millimolar</final>
 		</ingredient>
 		<ingredient id="R0046">
 			<name>Sodium chloride</name>
 			<abbreviation><chemical>NaCl</chemical></abbreviation>
 			<stock>5 molar</stock>
-			<amount>500 milliliter</amount>
+			<amount>150 milliliter</amount>
 			<final>500 millimolar</final>
 		</ingredient>
 		<ingredient id="R0022">
 			<name>Glycerol</name>
 			<stock>50 percent</stock>
-			<amount>1 liter</amount>
+			<amount>300 milliliter</amount>
 			<final>10 percent</final>
 		</ingredient>
 		<workup>Adjust to <pH>8.0</pH>; chill to <unit>4 celsius</unit> before dialysis. TCEP is added directly to the dialysis bag, not to the bulk buffer.</workup>
@@ -8602,11 +8676,10 @@
 			<disposal source="derived">Dilute below the discharge limit</disposal>
 			<disposal source="derived">Flush to drain with excess water</disposal>
 		</safety>
-		<source doc_type="SOP" id="0044" version="1" visibility="internal" license="CC-BY-SA-4.0" title="TEV protease production and use as a cleavage tool" definition="yes" primary="yes">sop_0044-v1-tev_protease</source>
+		<source doc_type="SOP" id="0044" version="1" visibility="public" license="CC-BY-SA-4.0" title="TEV protease production and cleavage" definition="yes" primary="yes">sop_0044-v1-tev_protease</source>
 	</recipe>
 	<recipe id="R0209">
 		<name>TEV cleavage buffer</name>
-		<abbreviation>Cleavage buffer</abbreviation>
 		<property><pH>8.0</pH></property>
 		<solvent CAS="7732-18-5" PubChem="compound/962">
 			<name>Water</name>
@@ -8626,7 +8699,7 @@
 			<amount>10 milliliter</amount>
 			<final>500 millimolar</final>
 		</ingredient>
-		<ingredient id="R0027">
+		<ingredient CAS="288-32-4" PubChem="compound/795" id="R0027">
 			<name>Imidazole</name>
 			<stock>6 molar</stock>
 			<amount>333 microliter</amount>
@@ -8638,13 +8711,13 @@
 			<amount>10 milliliter</amount>
 			<final>5 percent</final>
 		</ingredient>
-		<ingredient CAS="51805-45-9" PubChem="compound/2734570" type="fresh">
+		<ingredient id="R0215" type="fresh">
 			<name>TCEP</name>
 			<stock>500 millimolar</stock>
 			<amount>200 microliter</amount>
 			<final>1 millimolar</final>
 		</ingredient>
-		<workup>For the activity test only. The bulk storage buffer is preferred for actual cleavage of preparative samples (see appendix).</workup>
+		<note>For TEV standard activity test only.</note>
 		<storage class="fridge"/>
 		<category>buffer</category>
 		<category>protein</category>
@@ -8654,7 +8727,7 @@
 			<disposal source="derived">Collect as HAZARDOUS WASTE</disposal>
 			<disposal source="derived">DO NOT wash into sewer</disposal>
 		</safety>
-		<source doc_type="SOP" id="0044" version="1" visibility="internal" license="CC-BY-SA-4.0" title="TEV protease production and use as a cleavage tool" definition="yes" primary="yes">sop_0044-v1-tev_protease</source>
+		<source doc_type="SOP" id="0044" version="1" visibility="public" license="CC-BY-SA-4.0" title="TEV protease production and cleavage" definition="yes" primary="yes">sop_0044-v1-tev_protease</source>
 	</recipe>
 	<recipe id="R0214">
 		<name>Dialysis buffer</name>
@@ -8668,7 +8741,7 @@
 		<ingredient id="R0085">
 			<name>Sodium phosphate dibasic</name>
 			<abbreviation><chemical>Na_2HPO_4</chemical></abbreviation>
-			<property><pH>9.4</pH></property>
+			<property><pH>9.1</pH></property>
 			<stock>0.5 molar</stock>
 			<amount>420 milliliter</amount>
 			<final>210 millimolar</final>
@@ -8692,8 +8765,7 @@
 			<final type="diluted">300 millimolar</final>
 		</ingredient>
 		<workup>Combine Gomori buffers, no titration needed.</workup>
-		<storage class="fridge"/>
-		<note type="orientation">Tune pH, buffer, salt, reductant, metal cofactors, or other additives to the protein. Keep the imidazole concentration after dialysis below <unit>5 millimolar</unit> for sensitive downstream assays.</note>
+		<storage class="ambient"/>
 		<!-- ORGANIZATION -->
 		<category>buffer</category>
 		<category>protein</category>
@@ -8702,7 +8774,7 @@
 			<benign source="derived">No GHS hazards at the indicated concentrations</benign>
 			<disposal source="derived">Flush to drain with excess water</disposal>
 		</safety>
-		<source doc_type="SOP" id="0045" version="1" visibility="internal" license="CC-BY-SA-4.0" title="IMAC purification of His-tagged proteins" definition="yes" primary="yes">sop_0045-v1-imac_his_tag_purification</source>
+		<source doc_type="SOP" id="0045" version="1" visibility="public" license="CC-BY-SA-4.0" title="IMAC purification of His-tagged proteins" definition="yes" primary="yes">sop_0045-v1-imac_his_tag_purification</source>
 	</recipe>
 	<recipe id="R0210">
 		<name>Bacterial lysis buffer</name>
@@ -8715,10 +8787,10 @@
 		<ingredient id="R0085">
 			<name>Sodium phosphate dibasic</name>
 			<abbreviation><chemical>Na_2HPO_4</chemical></abbreviation>
-			<property><pH>9.4</pH></property>
+			<property><pH>9.1</pH></property>
 			<stock>0.5 molar</stock>
 			<amount>94.7 milliliter</amount>
-			<final>47.35 millimolar</final>
+			<final>47.4 millimolar</final>
 		</ingredient>
 		<ingredient id="R0086">
 			<name>Sodium phosphate monobasic</name>
@@ -8726,7 +8798,7 @@
 			<property><pH>4.2</pH></property>
 			<stock>0.5 molar</stock>
 			<amount>5.3 milliliter</amount>
-			<final>2.65 millimolar</final>
+			<final>2.6 millimolar</final>
 		</ingredient>
 		<ingredient id="R0046">
 			<name>Sodium chloride</name>
@@ -8737,15 +8809,369 @@
 		</ingredient>
 		<workup>Combine Gomori buffers, no titration needed.</workup>
 		<storage class="fridge"/>
-		<note type="orientation">For proteins used in phosphate-sensitive downstream assays (e.g., kinases), substitute <unit>50 millimolar</unit> Tris-Cl <pH>8.0</pH>. Tris weakly coordinate <chemical>Ni^2^+</chemical> at <pH>8.5</pH> over long incubations.</note>
 		<category>buffer</category>
 		<category>protein</category>
-		<note type="critical">Do not include more than <unit>5 millimolar</unit> β-mercaptoethanol or DTT. Strong reductants strip <chemical>Ni^2^+</chemical> from the NTA matrix. If a reductant is required, add TCEP to <unit>1 millimolar</unit> instead.</note>
 		<!-- ENVIRONMENT, HEALTH, SAFETY (derived) -->
 		<safety source="derived" disposal="sanitary-sewer">
 			<benign source="derived">No GHS hazards at the indicated concentrations</benign>
 			<disposal source="derived">Flush to drain with excess water</disposal>
 		</safety>
-		<source doc_type="SOP" id="0045" version="1" visibility="internal" license="CC-BY-SA-4.0" title="IMAC purification of His-tagged proteins" definition="yes" primary="yes">sop_0045-v1-imac_his_tag_purification</source>
+		<source doc_type="SOP" id="0045" version="1" visibility="public" license="CC-BY-SA-4.0" title="IMAC purification of His-tagged proteins" definition="yes" primary="yes">sop_0045-v1-imac_his_tag_purification</source>
+	</recipe>
+	<recipe id="R0241">
+		<name>Regeneration buffer</name>
+		<solvent CAS="7732-18-5" PubChem="compound/962">
+			<name>Water</name>
+			<property>reagent-grade</property>
+			<amount>500 milliliter</amount>
+		</solvent>
+		<ingredient CAS="50-01-1" PubChem="compound/5742">
+			<name form="hydrochloride">Guanidine</name>
+			<stock>95.53 gram per mol</stock>
+			<amount>286.6 gram</amount>
+			<final>6 molar</final>
+		</ingredient>
+		<ingredient CAS="64-19-7" PubChem="compound/176">
+			<name>Acetic acid</name>
+			<property>glacial</property>
+			<stock>17.4 molar</stock>
+			<amount>5.7 milliliter</amount>
+			<final>0.2 molar</final>
+		</ingredient>
+		<workup>Do not adjust the pH.</workup>
+		<!-- ORGANIZATION -->
+		<category>buffer</category>
+		<!-- ENVIRONMENT, HEALTH, SAFETY (derived) -->
+		<safety source="derived" signal="warning" disposal="hazardous-waste">
+			<hazard code="H319" category="2" type="health_hazard" source="derived">Serious eye irritation</hazard>
+			<hazard code="H315" category="2" type="health_hazard" source="derived">Skin irritation</hazard>
+			<hazard code="H302" category="4" type="health_hazard" source="derived">Acute oral toxicity</hazard>
+			<disposal source="derived">Hold for EHS review before disposal</disposal>
+		</safety>
+		<source doc_type="SOP" id="0045" version="1" visibility="public" license="CC-BY-SA-4.0" title="IMAC purification of His-tagged proteins" definition="yes" primary="yes">sop_0045-v1-imac_his_tag_purification</source>
+	</recipe>
+	<recipe id="R0242">
+		<name>Nickel recharge solution</name>
+		<solvent CAS="7732-18-5" PubChem="compound/962">
+			<name>Water</name>
+			<property>reagent-grade</property>
+			<amount>500 milliliter</amount>
+		</solvent>
+		<ingredient CAS="10101-97-0" PubChem="compound/5284429">
+			<name form="hexahydrate">Nickel(II) sulfate</name>
+			<stock>262.85 gram per mol</stock>
+			<amount>13.14 gram</amount>
+			<final>100 millimolar</final>
+		</ingredient>
+		<!-- ORGANIZATION -->
+		<category>buffer</category>
+		<!-- ENVIRONMENT, HEALTH, SAFETY (derived) -->
+		<safety source="derived" signal="danger" disposal="hazardous-waste">
+			<hazard code="H350" category="1" type="serious_health_hazard" source="derived">Carcinogenicity</hazard>
+			<hazard code="H360" category="1" type="serious_health_hazard" source="derived">Reproductive toxicity</hazard>
+			<hazard code="H341" category="2" type="serious_health_hazard" source="derived">Germ cell mutagenicity</hazard>
+			<hazard code="H373" category="2" type="serious_health_hazard" source="derived">Organ damage through prolonged or repeated exposure</hazard>
+			<hazard code="H317" category="1" type="health_hazard" source="derived">Skin sensitization</hazard>
+			<hazard code="H411" category="2" type="environment" source="derived">Aquatic toxicity (long-term)</hazard>
+			<disposal source="derived">Collect as HEAVY METAL WASTE</disposal>
+			<disposal source="derived">DO NOT wash into sewer</disposal>
+		</safety>
+		<source doc_type="SOP" id="0045" version="1" visibility="public" license="CC-BY-SA-4.0" title="IMAC purification of His-tagged proteins" definition="yes" primary="yes">sop_0045-v1-imac_his_tag_purification</source>
+	</recipe>
+	<recipe id="R0239">
+		<name>Calyculin A</name>
+		<stock>100 micromolar</stock>
+		<!-- PREPARATION -->
+		<solvent CAS="67-68-5" PubChem="compound/679">
+			<name>Dimethyl sulfoxide</name>
+			<abbreviation>DMSO</abbreviation>
+			<property>reagent-grade</property>
+			<amount>1 milliliter</amount>
+		</solvent>
+		<ingredient CAS="101932-71-2" PubChem="compound/5311365">
+			<name>Calyculin A</name>
+			<stock>1,009.2 gram per mol</stock>
+			<amount>100 microgram</amount>
+			<final>100 micromolar</final>
+		</ingredient>
+		<workup>Dissolve the vial content in DMSO and dispense into <unit>20 microliter</unit> aliquots.</workup>
+		<storage class="freezer"/>
+		<note type="critical">Calyculin A is cell-permeable and acutely toxic; handle powder and stock with gloves.</note>
+		<note type="explanation">A PP1 and PP2A inhibitor; PP1 is the phosphatase that removes histone H3 serine phosphorylation on exit from mitosis.</note>
+		<!-- ORGANIZATION -->
+		<category>solution</category>
+		<category>special</category>
+		<!-- ENVIRONMENT, HEALTH, SAFETY (derived) -->
+		<safety source="derived" disposal="hazardous-waste">
+			<benign source="derived">No GHS hazards at the indicated concentrations</benign>
+			<disposal source="derived">Collect as HAZARDOUS WASTE</disposal>
+			<disposal source="derived">DO NOT wash into sewer</disposal>
+		</safety>
+		<source doc_type="SOP" id="0047" version="1" visibility="public" license="CC-BY-SA-4.0" title="Immunoprecipitation of nucleosomes from native chromatin" definition="yes" primary="yes">sop_0047-v1-immunoprecipitation_native_chromatin</source>
+	</recipe>
+	<recipe id="R0236">
+		<name>Digest adjustment buffer</name>
+		<property><pH>7.5</pH></property>
+		<stock>2 fold</stock>
+		<!-- PREPARATION -->
+		<solvent CAS="7732-18-5" PubChem="compound/962">
+			<name>Water</name>
+			<property>reagent-grade</property>
+			<amount>10 milliliter</amount>
+		</solvent>
+		<ingredient id="R0024">
+			<name>HEPES</name>
+			<property><pH>7.5</pH></property>
+			<stock>1 molar</stock>
+			<amount>300 microliter</amount>
+			<final>30 millimolar</final>
+			<final type="diluted">15 millimolar</final>
+		</ingredient>
+		<ingredient id="R0046">
+			<name>Sodium chloride</name>
+			<abbreviation><chemical>NaCl</chemical></abbreviation>
+			<stock>5 molar</stock>
+			<amount>450 microliter</amount>
+			<final>225 millimolar</final>
+			<final type="diluted">112.5 millimolar</final>
+		</ingredient>
+		<ingredient id="R0031">
+			<name>Magnesium chloride</name>
+			<abbreviation><chemical>MgCl_2</chemical></abbreviation>
+			<stock>1 molar</stock>
+			<amount>30 microliter</amount>
+			<final>3 millimolar</final>
+			<final type="diluted">1.5 millimolar</final>
+		</ingredient>
+		<ingredient id="R0057">
+			<name>Triton™ X-100</name>
+			<stock>10 percent</stock>
+			<amount>400 microliter</amount>
+			<final>0.4 percent</final>
+			<final type="diluted">0.2 percent</final>
+		</ingredient>
+		<ingredient id="R0022">
+			<name>Glycerol</name>
+			<stock>50 percent</stock>
+			<amount>4 milliliter</amount>
+			<final>20 percent</final>
+			<final type="diluted">10 percent</final>
+		</ingredient>
+		<ingredient id="R0090" type="fresh">
+			<name>Inhibitor cocktail</name>
+			<stock>100 fold</stock>
+			<amount>200 microliter</amount>
+			<final>2 fold</final>
+			<final type="diluted">1 fold</final>
+		</ingredient>
+		<workup>Add the inhibitor cocktail and the inhibitor supplement immediately before use.</workup>
+		<storage class="fridge"/>
+		<note>For fraction S2 only; buffer E of the source protocol <citation type="authoryear">PMID:32457909</citation>.</note>
+		<!-- ORGANIZATION -->
+		<category>buffer</category>
+		<category>special</category>
+		<!-- ENVIRONMENT, HEALTH, SAFETY (derived) -->
+		<safety source="derived" signal="warning" disposal="hazardous-waste">
+			<hazard code="H361" category="2" type="serious_health_hazard" source="derived">Reproductive toxicity</hazard>
+			<hazard code="H412" category="3" source="derived">Aquatic toxicity (long-term)</hazard>
+			<disposal source="derived">Collect as HAZARDOUS WASTE</disposal>
+			<disposal source="derived">DO NOT wash into sewer</disposal>
+		</safety>
+		<source doc_type="SOP" id="0047" version="1" visibility="public" license="CC-BY-SA-4.0" title="Immunoprecipitation of nucleosomes from native chromatin" definition="yes" primary="yes">sop_0047-v1-immunoprecipitation_native_chromatin</source>
+	</recipe>
+	<recipe id="R0240">
+		<name>Release adjustment buffer</name>
+		<property><pH>7.5</pH></property>
+		<stock>2 fold</stock>
+		<!-- PREPARATION -->
+		<solvent CAS="7732-18-5" PubChem="compound/962">
+			<name>Water</name>
+			<property>reagent-grade</property>
+			<amount>10 milliliter</amount>
+		</solvent>
+		<ingredient id="R0024">
+			<name>HEPES</name>
+			<property><pH>7.5</pH></property>
+			<stock>1 molar</stock>
+			<amount>300 microliter</amount>
+			<final>30 millimolar</final>
+			<final type="diluted">15 millimolar</final>
+		</ingredient>
+		<ingredient id="R0046">
+			<name>Sodium chloride</name>
+			<abbreviation><chemical>NaCl</chemical></abbreviation>
+			<stock>5 molar</stock>
+			<amount>600 microliter</amount>
+			<final>300 millimolar</final>
+			<final type="diluted">150 millimolar</final>
+		</ingredient>
+		<ingredient id="R0031">
+			<name>Magnesium chloride</name>
+			<abbreviation><chemical>MgCl_2</chemical></abbreviation>
+			<stock>1 molar</stock>
+			<amount>30 microliter</amount>
+			<final>3 millimolar</final>
+			<final type="diluted">1.5 millimolar</final>
+		</ingredient>
+		<ingredient id="R0057">
+			<name>Triton™ X-100</name>
+			<stock>10 percent</stock>
+			<amount>400 microliter</amount>
+			<final>0.4 percent</final>
+			<final type="diluted">0.2 percent</final>
+		</ingredient>
+		<ingredient id="R0022">
+			<name>Glycerol</name>
+			<stock>50 percent</stock>
+			<amount>4 milliliter</amount>
+			<final>20 percent</final>
+			<final type="diluted">10 percent</final>
+		</ingredient>
+		<ingredient id="R0090" type="fresh">
+			<name>Inhibitor cocktail</name>
+			<stock>100 fold</stock>
+			<amount>200 microliter</amount>
+			<final>2 fold</final>
+			<final type="diluted">1 fold</final>
+		</ingredient>
+		<workup>Add the inhibitor cocktail and the inhibitor supplement immediately before use.</workup>
+		<storage class="fridge"/>
+		<note>For fraction S3 only; the <unit>2 fold</unit> form of the nucleosome IP buffer, which the source protocol uses as a <unit>3 fold</unit> concentrate, buffer D <citation type="authoryear">PMID:32457909</citation>.</note>
+		<!-- ORGANIZATION -->
+		<category>buffer</category>
+		<category>special</category>
+		<!-- ENVIRONMENT, HEALTH, SAFETY (derived) -->
+		<safety source="derived" signal="warning" disposal="hazardous-waste">
+			<hazard code="H361" category="2" type="serious_health_hazard" source="derived">Reproductive toxicity</hazard>
+			<hazard code="H412" category="3" source="derived">Aquatic toxicity (long-term)</hazard>
+			<disposal source="derived">Collect as HAZARDOUS WASTE</disposal>
+			<disposal source="derived">DO NOT wash into sewer</disposal>
+		</safety>
+		<source doc_type="SOP" id="0047" version="1" visibility="public" license="CC-BY-SA-4.0" title="Immunoprecipitation of nucleosomes from native chromatin" definition="yes" primary="yes">sop_0047-v1-immunoprecipitation_native_chromatin</source>
+	</recipe>
+	<recipe id="R0237">
+		<name>Nucleosome IP buffer</name>
+		<property><pH>7.5</pH></property>
+		<!-- PREPARATION -->
+		<solvent CAS="7732-18-5" PubChem="compound/962">
+			<name>Water</name>
+			<property>reagent-grade</property>
+			<amount>50 milliliter</amount>
+		</solvent>
+		<ingredient id="R0024">
+			<name>HEPES</name>
+			<property><pH>7.5</pH></property>
+			<stock>1 molar</stock>
+			<amount>750 microliter</amount>
+			<final>15 millimolar</final>
+		</ingredient>
+		<ingredient id="R0046">
+			<name>Sodium chloride</name>
+			<abbreviation><chemical>NaCl</chemical></abbreviation>
+			<stock>5 molar</stock>
+			<amount>1.5 milliliter</amount>
+			<final>150 millimolar</final>
+		</ingredient>
+		<ingredient id="R0031">
+			<name>Magnesium chloride</name>
+			<abbreviation><chemical>MgCl_2</chemical></abbreviation>
+			<stock>1 molar</stock>
+			<amount>75 microliter</amount>
+			<final>1.5 millimolar</final>
+		</ingredient>
+		<ingredient id="R0057">
+			<name>Triton™ X-100</name>
+			<stock>10 percent</stock>
+			<amount>1 milliliter</amount>
+			<final>0.2 percent</final>
+		</ingredient>
+		<ingredient id="R0022">
+			<name>Glycerol</name>
+			<stock>50 percent</stock>
+			<amount>10 milliliter</amount>
+			<final>10 percent</final>
+		</ingredient>
+		<ingredient id="R0090" type="fresh">
+			<name>Inhibitor cocktail</name>
+			<stock>100 fold</stock>
+			<amount>500 microliter</amount>
+			<final>1 fold</final>
+		</ingredient>
+		<workup>Add the inhibitor cocktail and the inhibitor supplement immediately before use.</workup>
+		<storage class="fridge"/>
+		<note type="critical">Replace HEPES with Tris-Cl only when no mass spectrometry is planned; never add SDS.</note>
+		<note type="orientation">The general IP buffer of the soluble-protein protocol <seealso type="protocol">0027</seealso>, made chelator-free and buffered with HEPES. Physiological salt keeps the H2A–H2B dimers on the nucleosome and suppresses electrostatic sticking to the beads, magnesium keeps the particle compact and a universal nuclease active, and the detergent lowers hydrophobic background.</note>
+		<!-- ORGANIZATION -->
+		<category>buffer</category>
+		<category>special</category>
+		<!-- ENVIRONMENT, HEALTH, SAFETY (derived) -->
+		<safety source="derived" signal="warning" disposal="hazardous-waste">
+			<hazard code="H361" category="2" type="serious_health_hazard" source="derived">Reproductive toxicity</hazard>
+			<disposal source="derived">Collect as HAZARDOUS WASTE</disposal>
+			<disposal source="derived">DO NOT wash into sewer</disposal>
+		</safety>
+		<source doc_type="SOP" id="0047" version="1" visibility="public" license="CC-BY-SA-4.0" title="Immunoprecipitation of nucleosomes from native chromatin" definition="no" primary="yes">sop_0047-v1-immunoprecipitation_native_chromatin</source>
+	</recipe>
+	<recipe id="R0238">
+		<name>High-stringency wash buffer</name>
+		<property><pH>7.5</pH></property>
+		<!-- PREPARATION -->
+		<solvent CAS="7732-18-5" PubChem="compound/962">
+			<name>Water</name>
+			<property>reagent-grade</property>
+			<amount>50 milliliter</amount>
+		</solvent>
+		<ingredient id="R0024">
+			<name>HEPES</name>
+			<property><pH>7.5</pH></property>
+			<stock>1 molar</stock>
+			<amount>750 microliter</amount>
+			<final>15 millimolar</final>
+		</ingredient>
+		<ingredient id="R0046">
+			<name>Sodium chloride</name>
+			<abbreviation><chemical>NaCl</chemical></abbreviation>
+			<stock>5 molar</stock>
+			<amount>3 milliliter</amount>
+			<final>300 millimolar</final>
+		</ingredient>
+		<ingredient id="R0031">
+			<name>Magnesium chloride</name>
+			<abbreviation><chemical>MgCl_2</chemical></abbreviation>
+			<stock>1 molar</stock>
+			<amount>75 microliter</amount>
+			<final>1.5 millimolar</final>
+		</ingredient>
+		<ingredient CAS="9002-93-1" PubChem="compound/75622">
+			<name>IGEPAL® CA-630</name>
+			<stock>100 percent</stock>
+			<amount>25 microliter</amount>
+			<final>0.05 percent</final>
+		</ingredient>
+		<ingredient id="R0022">
+			<name>Glycerol</name>
+			<stock>50 percent</stock>
+			<amount>10 milliliter</amount>
+			<final>10 percent</final>
+		</ingredient>
+		<ingredient id="R0090" type="fresh">
+			<name>Inhibitor cocktail</name>
+			<stock>100 fold</stock>
+			<amount>500 microliter</amount>
+			<final>1 fold</final>
+		</ingredient>
+		<workup>Add the inhibitor cocktail and the inhibitor supplement immediately before use.</workup>
+		<storage class="fridge"/>
+		<note>IP buffer with the salt raised to <unit>300 millimolar</unit> and IGEPAL CA-630 in place of Triton X-100.</note>
+		<!-- ORGANIZATION -->
+		<category>buffer</category>
+		<category>special</category>
+		<!-- ENVIRONMENT, HEALTH, SAFETY (derived) -->
+		<safety source="derived" signal="warning" disposal="hazardous-waste">
+			<hazard code="H361" category="2" type="serious_health_hazard" source="derived">Reproductive toxicity</hazard>
+			<disposal source="derived">Collect as HAZARDOUS WASTE</disposal>
+			<disposal source="derived">DO NOT wash into sewer</disposal>
+		</safety>
+		<source doc_type="SOP" id="0047" version="1" visibility="public" license="CC-BY-SA-4.0" title="Immunoprecipitation of nucleosomes from native chromatin" definition="yes" primary="yes">sop_0047-v1-immunoprecipitation_native_chromatin</source>
 	</recipe>
 </recipes>
