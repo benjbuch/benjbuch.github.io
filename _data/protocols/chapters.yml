@@ -5,13 +5,13 @@
 - name: Molecular biology
   protocols: [SOP0024, SOP0023, SOP0020, SOP0032, SOP0021, SOP0022, SOP0034, SOP0033, SOP0039]
 - name: Biochemistry
-  protocols: [SOP0003, SOP0007, SOP0010, SOP0011, SOP0008, SOP0009, SOP0027]
+  protocols: [SOP0003, SOP0007, SOP0010, SOP0011, SOP0008, SOP0009, SOP0027, SOP0045, SOP0044]
 - name: Sub-cellular fractionation
   protocols: [SOP0002, SOP0001]
 - name: Native chromatin
-  protocols: [SOP0025, SOP0026]
+  protocols: [SOP0025, SOP0026, SOP0047]
 - name: Designer chromatin
   protocols: [SOP0004, SOP0005, SOP0006]
 - name: Bioinformatics & data analysis
-  protocols: [SOP0042]
+  protocols: [SOP0042, SOP0043]
 
