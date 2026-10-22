@@ -108,6 +108,10 @@
   changes:
     - time: "2026-05-24"
       text: "Initial version. Consolidates the Ni-NTA gravity workflow (Daniel Summerer lab) and the Ulp1 production workflow (Tom Muir lab) into a single protocol, ports the HisTrap FF gradient from the TEV protease production protocol, and adds denaturing-IMAC and reverse-IMAC variants."
+    - time: "2026-10-15"
+      text: "Adds the uninduced sample, the pellet weight, a caveat against inhibitor cocktails when the target is a protease, and the repeat-dose storage alternative."
+    - time: "2026-10-19"
+      text: "Culture sampling given as a fixed cell equivalent, 0.5 unitless OD600 in 70 microliter."
 - id: "SOP0044"
   filename: "sop_0044-v1-tev_protease"
   changes:
@@ -115,6 +119,12 @@
       text: "Initial version. Consolidates the Daniel Summerer lab \"Production and Activity Test of TEV Protease\" (v15) preparative workflow and use notes into a single protocol. Cleavage chemistry and the buffer-compatibility windows are supplemented from the David Waugh lab \"TEV Protease FAQ\" (2010)."
     - time: "2026-10-12"
       text: "Activity assay recast as a five-point two-fold dilution series run in duplicate from separate aliquots, which centres the reference lot in the series and makes the lot-release criterion explicit. Imidazole ingredients tagged by CAS, so the buffer cards classify its reproductive toxicity instead of reporting an unspecified concentration."
+    - time: "2026-10-18"
+      text: "Expression temperature widened to room temperature, 20 to 25 celsius. TB autoinduction mechanism noted on the medium."
+    - time: "2026-10-19"
+      text: "Carbenicillin replaces ampicillin. Lot release reads the freed product rather than the precursor. Cleavage conditions restated as a usable window."
+    - time: "2026-10-22"
+      text: "Checked the construct figures against their primary sources: the pRK793 tag is His7 and the MBP it frees by self-cleavage is untagged at 43 kilodalton, and the Daniel Summerer lab sheet “Production and Activity Test of TEV Protease” (v15) gives pOPIN as 70,293 dalton with 98,570, so its specific absorptivity is 1.40 and not 1.39."
 - id: "SOP0038"
   filename: "sop_0038-v1-crispr_design"
   changes:
@@ -361,6 +371,8 @@
     - time: "2026-05-22"
       text: ""
     - time: "2026-07-31"
+      text: ""
+    - time: "2026-10-22"
       text: ""
 - id: "SOP0013"
   filename: "sop_0013-v1-transfection_electroporation"
