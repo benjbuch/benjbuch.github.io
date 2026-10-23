@@ -4,7 +4,7 @@ hero: Ben
 layout: hero
 nav_icon: user-circle
 nav_title: About
-portrait: /assets/img/portrait/ben-buch.png
+portrait: /assets/img/portrait/ben-buch.webp
 show_title: false
 title: About me
 weight: 00

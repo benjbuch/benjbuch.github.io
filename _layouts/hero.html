@@ -4,7 +4,8 @@
       src="{{ page.portrait | relative_url }}"
       alt="Portrait of {{ page.hero }}"
       class="hero-portrait"
-      loading="lazy"
+      width="600" height="600"
+      fetchpriority="high"
       decoding="async">
     <div class="hero-text">
       {% if page.show_title != false and page.title %}
