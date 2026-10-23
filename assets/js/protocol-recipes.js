@@ -943,7 +943,14 @@ document.addEventListener("DOMContentLoaded", function () {
       if (!isNaN(saved)) applyWidth(saved);
     } catch (e) {}
 
-    var dragging = false, startX = 0, startW = 0;
+    var dragging = false, startX = 0, startW = 0, lastX = 0, frame = 0;
+
+    // Coalesce pointermove to one width update per frame: applyWidth() reads
+    // layout right after writing it, so per-event calls force extra reflows.
+    function flush() {
+      frame = 0;
+      applyWidth(startW + (lastX - startX));
+    }
 
     resizer.addEventListener("pointerdown", function (e) {
       dragging = true;
@@ -956,12 +963,14 @@ document.addEventListener("DOMContentLoaded", function () {
 
     resizer.addEventListener("pointermove", function (e) {
       if (!dragging) return;
-      applyWidth(startW + (e.clientX - startX));
+      lastX = e.clientX;
+      if (!frame) frame = requestAnimationFrame(flush);
     });
 
     function endDrag(e) {
       if (!dragging) return;
       dragging = false;
+      if (frame) { cancelAnimationFrame(frame); flush(); }
       pageEl.classList.remove("resizing");
       try { resizer.releasePointerCapture(e.pointerId); } catch (err) {}
       store(panelEl.getBoundingClientRect().width);
