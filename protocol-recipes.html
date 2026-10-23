@@ -39,4 +39,4 @@ extra_css: protocol-recipes
   {%- endif -%}
 {%- endfor -%}
 <script>window.RECIPE_PDFS = {{ recipe_pdfs | jsonify }};</script>
-<script src="/assets/js/protocol-recipes.js" defer></script>
+<script src="/assets/js/protocol-recipes.js?v={{ site.time | date: '%s' }}" defer></script>
