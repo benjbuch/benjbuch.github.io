@@ -1,9 +1,22 @@
 [{
+    "id": "SOP0022",
+    "filename": "sop_0022-v2-gel_extraction",
+    "changes": [{
+          "time": "2026-05-21",
+          "text": "Version 1, 2021 to 2026. The Nick Coleman lab protocol “Purification of DNA in gel slice”, adapted as an SOP in 2023."
+        },{
+          "time": "2026-10-27",
+          "text": "Version 2. Credited QIAGEN for Buffer QG and the gel-extraction procedure and Molecular Cloning for electro-elution into a trough, which the McDonell paper does not describe; corrected the Buffer QG volume to 3 gel volumes, the isopropanol volume to 1 gel volume and made it conditional on fragment size, the melting and pH-indicator conditions, the pH limit for binding, the column capacity (10 µg, stated twice and inconsistently before), and the long-wave UV wavelength."
+        }]
+  },{
     "id": "SOP0043",
     "filename": "sop_0043-v1-r_project_layout",
     "changes": [{
           "time": "2026-05-14",
           "text": "Initial commit; scope and structure informed by canonical R-community references: Jennifer Bryan, \"Project-oriented workflow\" (tidyverse.org, 2017); Hadley Wickham & Garrett Grolemund, \"R for Data Science\" (2nd ed., 2023, cited in body); Will Landau, \"targets\" package documentation."
+        },{
+          "time": "2026-10-30",
+          "text": "Credited Noble and Wilson for the folder layout; the rule against tracking sensitive data now carries its reason in the risk assessment, after the AACR Project GENIE terms of access. Bryan's article is now cited where the script-hygiene rules and the fresh-session argument come from, and has a bibliography entry."
         }]
   },{
     "id": "SOP0010",
@@ -14,6 +27,9 @@
         },{
           "time": "2023-01-16",
           "text": "Adaptation as SOP. Replaced methanol with less toxic isopropyl alcohol, from the Daniel Summerer lab \"Coomassie staining\" protocol."
+        },{
+          "time": "2026-10-26",
+          "text": "Credited PMID:4326772, the Tom Muir and Daniel Summerer labs, and Bio-Rad Bulletin 6040; corrected the detection limit to about 40 ng and the membrane stain to R-250 on PVDF."
         }]
   },{
     "id": "SOP0031",
@@ -30,16 +46,9 @@
         },{
           "time": "2026-02-26",
           "text": "Integrate resource table into procedure."
-        }]
-  },{
-    "id": "SOP0016",
-    "filename": "sop_0016-v1-routine_cell_culture_MCF10A",
-    "changes": [{
-          "time": "2015-03-15",
-          "text": "Initial protocols for two-dimensional and three-dimensional culture; Mohamed Bentires-Alj lab; media recipes from Jeffrey Epperly (Brugge lab) &quot;Media Recipes for MCF-10A Cells&quot;; 3D protocol after Debnath, Muthuswamy &amp; Brugge (2003) Methods PMID:12798140."
         },{
-          "time": "2023-03-14",
-          "text": "Adaptation as SOP."
+          "time": "2026-10-27",
+          "text": "Corrected the immersion-depth and wait-time table against the Gilson PIPETMAN G user&apos;s guide, whose values were shifted by one model from the P200 on, and added the missing P10mL column. Corrected the volume of diluent for the 1:4 dilution."
         }]
   },{
     "id": "SOP0005",
@@ -56,19 +65,19 @@
         },{
           "time": "2025-03-27",
           "text": "Revised size-exclusion protocol."
+        },{
+          "time": "2026-10-26",
+          "text": "Corrected the octamer elution volumes per column after PMID:14870657 and PMID:10804500, and the extinction coefficients after PMID:4474009 and PMID:3607000; noted the refolding buffer&apos;s pH at 4 celsius."
         }]
   },{
-    "id": "SOP0022",
-    "filename": "sop_0022-v1-gel_extraction",
+    "id": "SOP0038",
+    "filename": "sop_0038-v2-crispr_design",
     "changes": [{
-          "time": "2021-04-01",
-          "text": "Original protocol; Nick Coleman lab \"Purification of DNA in gel slice\"."
+          "time": "2025-05-28",
+          "text": "Version 1, 2024 to 2025. Design and cloning of pX330-based plasmids, after protocols from the Feng Zhang lab and the transgenic core at Cornell University."
         },{
-          "time": "2023-11-26",
-          "text": "Adaptation as SOP."
-        },{
-          "time": "2026-05-21",
-          "text": "Fix transcription error in Buffer QG phenol red amount (was 45 µL, now 450 µL — dropped zero; recipe v1 under-prepared at ~3 mg/L; corrected recipe yields the intended 30 mg/L, matching the indicator's visible color contribution)."
+          "time": "2026-11-02",
+          "text": "Version 2. Cloning conditions change: 8 enzymeunit of ligase per femtomol where the text said 20, and a 40 to 60 basepair homology arm after PMID:25271304. Credits: PMID:32661438 for the subpool cycle number. Also corrected the PAM orientations, the duplex dilution and the reason oligonucleotides need no phosphorylation; the clone screen now names the cloning enzyme."
         }]
   },{
     "id": "SOP0030",
@@ -82,26 +91,9 @@
         },{
           "time": "2026-02-25",
           "text": "Language improvement in formula section; add water quality and autoclave validation note."
-        }]
-  },{
-    "id": "SOP0047",
-    "filename": "sop_0047-v1-immunoprecipitation_native_chromatin",
-    "changes": [{
-          "time": "2026-09-07",
-          "text": "Initial version. Bead handling and elution from ChromoTek \"V5-Trap Agarose\" manual (2021); native chromatin preparation adapted from Umlauf et al., Epigenome NoE protocol \"Chromatin immunoprecipitation on native chromatin from cells and tissues\", and Khan et al., 2020 (Front. Cell Dev. Biol. 8:331)."
-        }]
-  },{
-    "id": "SOP0015",
-    "filename": "sop_0015-v1-routine_cell_culture_HeLa",
-    "changes": [{
-          "time": "2012-04-14",
-          "text": "Released the HeLa S3 suspension protocol of The Scripps Research Institute on ResearchGate"
         },{
-          "time": "2017-02-15",
-          "text": "Published in part as Woods Hole Physiology Course 2006 (doi:10.1575/1912/8720)"
-        },{
-          "time": "2023-03-13",
-          "text": "Adaptation as SOP."
+          "time": "2026-10-27",
+          "text": "Corrected the diluent formula and rephrased the aliquot-headroom rule, which a small aliquot could not meet. Credits: Gold Biotechnology, “Chemical purity list”, for the grade definitions; Barker:2004 for the passages this document draws on; STERIS, “Liquid cycle recommendations”, and Tuttnauer, “Liquid sterilization guide”, for the autoclave cycle."
         }]
   },{
     "id": "SOP0021",
@@ -109,19 +101,9 @@
     "changes": [{
           "time": "2023-06-10",
           "text": "Adaptation as SOP; ethanol precipitation procedure follows Green &amp; Sambrook, &quot;Molecular Cloning: A Laboratory Manual&quot; (CSH Press, 4th ed., 2012) Sambrook:2012."
-        }]
-  },{
-    "id": "SOP0003",
-    "filename": "sop_0003-v1-native_page",
-    "changes": [{
-          "time": "2022-07-23",
-          "text": "Initial version."
         },{
-          "time": "2025-03-18",
-          "text": "Revised and expanded."
-        },{
-          "time": "2025-03-30",
-          "text": "Optimized APS and TEMED concentration for stacking layer."
+          "time": "2026-10-27",
+          "text": "Corrected the precipitation thresholds, the ethanol volume for RNA, the small-fragment cut-off, the column capacity, the Buffer PE wash, the elution and drying conditions, Buffer PB to pH 5.0 and the 230 nm note; dropped vacuum drying and the mini/midi/maxi yields, which belong to sop_0020. Credits: Zeugin:1985 for the centrifugation conditions and PMID:9067025 for the pH shift."
         }]
   },{
     "id": "SOP0101",
@@ -138,6 +120,9 @@
         },{
           "time": "2026-05-12",
           "text": "Add procedures for submodules and rename history preservation."
+        },{
+          "time": "2026-10-30",
+          "text": "A work that includes GPL code is released under the GPL; Apache 2.0 is compatible with GPLv3 but not with GPLv2. Code snippets move from CC0 to MIT. Corrected the git reset --keep abort condition and the submodule pointer update. Zenodo requires a public repository."
         }]
   },{
     "id": "SOP0036",
@@ -148,19 +133,19 @@
         },{
           "time": "2026-05-13",
           "text": "Folded guidelines into a “Setting up the inventory system” procedure; retired the element. Editorial pass: reorder, rename banking variants, grammar fixes. Reframed setup steps as default-engineering; rewrote abstract."
+        },{
+          "time": "2026-10-29",
+          "text": "Corrected the bank sizes and the storage of a master bank, for which a freezer is no backup, and added a passage limit, after the cell line guidelines of Geraghty and colleagues and the ICLAC checklist."
         }]
   },{
-    "id": "SOP0045",
-    "filename": "sop_0045-v1-imac_his_tag_purification",
+    "id": "SOP0016",
+    "filename": "sop_0016-v2-routine_cell_culture_MCF10A",
     "changes": [{
-          "time": "2026-05-24",
-          "text": "Initial version. Consolidates the Ni-NTA gravity workflow (Daniel Summerer lab) and the Ulp1 production workflow (Tom Muir lab) into a single protocol, ports the HisTrap FF gradient from the TEV protease production protocol, and adds denaturing-IMAC and reverse-IMAC variants."
+          "time": "2023-03-14",
+          "text": "Version 1, 2015 to 2023. Two- and three-dimensional culture from the Mohamed Bentires-Alj lab; media recipes from Jeffrey Epperly (Brugge lab) &quot;Media Recipes for MCF-10A Cells&quot;; 3D culture after PMID:12798140. Adapted as an SOP in 2023."
         },{
-          "time": "2026-10-15",
-          "text": "Adds the uninduced sample, the pellet weight, a caveat against inhibitor cocktails when the target is a protease, and the repeat-dose storage alternative."
-        },{
-          "time": "2026-10-19",
-          "text": "Culture sampling given as a fixed cell equivalent, 0.5 unitless OD600 in 70 microliter."
+          "time": "2026-11-02",
+          "text": "Version 2. Passaging changes: trypsin at 0.05 percent where the text said 0.25, and 150 gforce where it said 500. Credits: ATCC (CRL-10317), PMID:1975513, the Brugge lab bench protocols, and Sigma-Aldrich (C8052). Also corrected the EGF stock, the cholera toxin storage, the karyotype statement, the passage limit, and the feeding schedules."
         }]
   },{
     "id": "SOP0044",
@@ -180,35 +165,19 @@
         },{
           "time": "2026-10-22",
           "text": "Checked the construct figures against their primary sources: the pRK793 tag is His7 and the MBP it frees by self-cleavage is untagged at 43 kilodalton, and the Daniel Summerer lab sheet “Production and Activity Test of TEV Protease” (v15) gives pOPIN as 70,293 dalton with 98,570, so its specific absorptivity is 1.40 and not 1.39."
+        },{
+          "time": "2026-10-30",
+          "text": "S219V is a slightly better catalyst than the wild type, not twice as active. The elution peak is given by its position in the gradient. Credits: Tom Muir lab, “E. coli Protein Expression Protocols”, Appendix A3.2, for the yield and the 2.0 g/L ceiling; PMID:17317681 for the pOPIN 3C linker; New England Biolabs for the copper and cobalt thresholds and the pH window."
         }]
   },{
-    "id": "SOP0038",
-    "filename": "sop_0038-v1-crispr_design",
+    "id": "SOP0047",
+    "filename": "sop_0047-v2-immunoprecipitation_native_chromatin",
     "changes": [{
-          "time": "2024-07-08",
-          "text": "Design and cloning of pX330-based plasmids based on protocols from the Feng Zhang lab and the transgenic core at Cornell University"
+          "time": "2026-09-07",
+          "text": "Version 1, 2026. Bead handling and elution from the ChromoTek “V5-Trap Agarose” manual (2021); native chromatin preparation adapted from Umlauf et al., Epigenome NoE protocol “Chromatin immunoprecipitation on native chromatin from cells and tissues”, and PMID:32457909."
         },{
-          "time": "2025-05-28",
-          "text": "Initial version."
-        }]
-  },{
-    "id": "SOP0007",
-    "filename": "sop_0007-v1-sds_page",
-    "changes": [{
-          "time": "2022-09-20",
-          "text": "Adaptation as SOP; added SDS/Laemmli and LDS sample buffer recipes. Tris-glycine / Mini-PROTEAN workflow informed by Bio-Rad Mini-PROTEAN and Criterion cell manuals (Bulletin 1658100, Bulletin 6040); Bis-Tris / MES / MOPS pathway drawn from the Tom Muir lab \"Pouring and running SDS-PAGE gels\" protocol."
-        },{
-          "time": "2023-01-13",
-          "text": "Added low and high molecular weight marker recipes from the C. R. Hauck lab \"SDS-PAGE gel recipes\"."
-        },{
-          "time": "2024-03-11",
-          "text": "Corrected bromophenol blue content in loading dye concentrate to 0.02 percent (w/v); literature ranges 0.01 to 0.50 percent; less is better."
-        },{
-          "time": "2024-04-21",
-          "text": "Corrected diluted molar concentrations of MES and MOPS running buffers to 50 millimolar; added a section on crosslinker ratios."
-        },{
-          "time": "2024-07-17",
-          "text": "Adjusted volumes of resolving gels to accommodate three gels with 1.5 millimeter spacer or four gels with 1.0 millimeter."
+          "time": "2026-11-01",
+          "text": "Version 2. The nucleosome survives above 400 mM NaCl: the salt can disrupt the linker histone and chromatin-binding proteins, not the core particle. Digestion is stopped with EGTA and released in Tris/EDTA. Credits: PMID:16362057 and PMID:15620353 for the JmjC and LSD1 families, PMID:10975519 for the aurora kinase and PP1 balance, Abcam:2026 for the fragment lengths and the rearrangement caveat."
         }]
   },{
     "id": "SOP0020",
@@ -222,31 +191,9 @@
         },{
           "time": "2026-05-21",
           "text": "Fix two transcription errors in Buffer P1: RNase A final concentration (was \"7 enzymeunit per liter\", now \"7 enzymeunit per milliliter\"; stock and amount unchanged, prep unaffected) and EDTA amount (was 10.0 mL, now 5.0 mL — recipe v1 over-prepared at 20 mM; corrected recipe yields the intended 10 mM, matching the Qiagen reference)."
-        }]
-  },{
-    "id": "SOP0012",
-    "filename": "sop_0012-v2-transfection_chemical",
-    "changes": [{
-          "time": "2017-05-15",
-          "text": "Initial calcium chloride protocol; Daniel Summerer lab."
         },{
-          "time": "2020-05-20",
-          "text": "Initial Lipofectamine® protocol; Tom Muir lab."
-        },{
-          "time": "2023-01-27",
-          "text": "Adaptation as SOP."
-        },{
-          "time": "2023-02-09",
-          "text": "Added FuGENE® and PEI protocols."
-        },{
-          "time": "2023-04-04",
-          "text": "Updated Lipofectamine® volumes."
-        },{
-          "time": "2025-04-05",
-          "text": "Harmonized provisions. Updated safety information for PEI."
-        },{
-          "time": "2026-06-11",
-          "text": "HBS: switch sodium phosphate dibasic from heptahydrate (efflorescent, so its effective MW drifts) to anhydrous."
+          "time": "2026-10-26",
+          "text": "Corrected the anion-exchange procedure, Buffer PB to pH 5.0 and the run-dry caution; added the lysis conditions procedure C requires and the guanidine and bleach hazard. The per-tip culture, buffer and column volumes are withdrawn: they belong to whichever midi, maxi or mega product is bought, and those are far less standardized than the mini columns. Take them from the handbook of the tip in hand. Credits: QIAGEN for Buffers P1, P2, P3, QBT, QC and QF; the Daniel Summerer lab and Tom Muir lab sheets for N3, PB and PE."
         }]
   },{
     "id": "SOP0026",
@@ -254,6 +201,9 @@
     "changes": [{
           "time": "2023-10-26",
           "text": "Adaptation as SOP."
+        },{
+          "time": "2026-10-27",
+          "text": "Storage of the crude pellet is cut from one week to a few days, and the years-long figure moved to HPLC-purified histones. Elution window corrected from 15 to 45 percent B to about 25 to 60 percent B. TCA stock stated as 1 g/mL. Dropped the one-hour processing window and the claim that the elution order is fixed. All of it follows Holt et al., 2021 (Curr Protoc 1:e32), which the procedure follows throughout."
         }]
   },{
     "id": "SOP0002",
@@ -273,6 +223,9 @@
         },{
           "time": "2026-09-07",
           "text": "Added a cell-number and lysis-volume guide. Corrected the tissue-to-buffer ratio (5 mg → 10 to 20 mg per 1 mL; v1 gave about 0.5 mg/mL). Reworked the proteome extraction after Wiśniewski et al., 2009: 8 M urea in 50 mM Tris-Cl pH 8.0 instead of 9 M urea in 200 mM HEPES, boil step removed, all urea steps at room temperature."
+        },{
+          "time": "2026-10-26",
+          "text": "Credited Abcam:2007 and PMID:25852189 for the buffer choice, Rockland for the RIPA formulation, and Thermo Scientific for the nuclease step; added the source&apos;s EDTA and EGTA to the Tris-Triton buffer; clarified the urea and DTT limits for protein assays."
         }]
   },{
     "id": "SOP0025",
@@ -292,6 +245,19 @@
         },{
           "time": "2026-09-07",
           "text": "Added the native nucleosome release after full MNase digestion (chelator, no salt step; pool with the digestion supernatant) for the native chromatin immunoprecipitation protocol. Release conditions from Khan et al., 2020 (Front. Cell Dev. Biol. 8:331)."
+        },{
+          "time": "2026-10-27",
+          "text": "The nucleosome survives above 400 mM NaCl: the salt can disrupt the linker histone and chromatin-binding proteins, not the core particle. Salt series extended to 600 mM. Credits: PMID:22183608 for the MNase digestion, PMID:32457909 for the chelator release and the salt behaviour, PMID:28845440 for the extended series."
+        }]
+  },{
+    "id": "SOP0008",
+    "filename": "sop_0008-v2-blotting_western",
+    "changes": [{
+          "time": "2026-05-22",
+          "text": "Version 1, 2020 to 2026. Initial Western blotting protocol, adapted as an SOP in 2023 with the transfer-buffer selection guide from Carl Roth, \"Information Brochure on Transfer Buffers and Parameters\", and troubleshooting after Bio-Rad Bulletin 2895 and PhosphoSolutions, \"Western Blot Transfer Efficiency\"."
+        },{
+          "time": "2026-11-02",
+          "text": "Version 2. Transfer conditions default to 30 minute to 1 hour, 35 to 30 volt, and a 0.45 micrometer membrane. Credits: the Michael Knop lab “Tris SDS-PAGE and Western transfer buffers” and the Tony Kouzarides lab for the histone conditions. The CAPS stock reverts to the Carl Roth 10-fold formulation; Ponceau S, the anode buffer, the methanol hazards and the start conditions corrected."
         }]
   },{
     "id": "SOP0032",
@@ -308,6 +274,9 @@
         },{
           "time": "2026-05-22",
           "text": "Fix transcription error in DNA ladder recipe amount (was 125 µL, now 150 µL — recipe v1 under-prepared at ~20.8 mg/L; corrected recipe yields the intended 25 mg/L from a 1 g/L stock in 6 mL total)."
+        },{
+          "time": "2026-10-27",
+          "text": "Credited the Lonza Benchguide, the source of the casting procedure, the buffer-choice table and the stop criterion. Added the optical-radiation hazard for the transilluminator, which sop_0022 already carries for the same instrument. Corrected the dilution factor of the ethidium bromide stock (was 1,000-fold, which contradicted the working concentration given in the stain table) and the molar concentration of the thiazole orange stock (was 30 mM, now 31.5 mM, as the unchanged mass and volume require)."
         }]
   },{
     "id": "SOP0018",
@@ -315,6 +284,9 @@
     "changes": [{
           "time": "2023-11-12",
           "text": "Adaptation as SOP, synthesizing the Sleeping Beauty and piggyBac transposon literature cited in the body; donor-to-helper plasmid amounts from Shany Koren-Hauer (Tom Muir lab)."
+        },{
+          "time": "2026-10-26",
+          "text": "Credited PMID:19412179, PMID:17005721, PMID:17164785, PMID:21205896 and the System Biosciences manual; corrected the name of the hyperactive Sleeping Beauty transposase, the local hopping and efficiency claims, the insertion-site preference, the seeding density, the medium change, the start of selection, and the name, scope and two-year term of the license."
         }]
   },{
     "id": "SOP0001",
@@ -334,6 +306,9 @@
         },{
           "time": "2026-05-22",
           "text": "Cleaned up inhibitor recipes; cocktail definition moved to collection."
+        },{
+          "time": "2026-10-26",
+          "text": "Credited PMID:6828386 for the swelling buffer, PMID:18323811 for alternative B, and PMID:9278236 for storage; corrected the nuclei concentration target to 0.8 to 1 µg/µL DNA. The nuclear pore imposes no sharp mass cutoff, after Timney and colleagues; the 30 to 40 kDa figure is kept as the practical one."
         }]
   },{
     "id": "SOP0035",
@@ -347,22 +322,39 @@
         },{
           "time": "2026-05-12",
           "text": "Promoted to public; scope reduced to format-agnostic guidance. XML/ConTeXt-specific authoring content moved to an internal reference document. Guidelines block folded into the procedure as concrete writing actions."
+        },{
+          "time": "2026-10-29",
+          "text": "Retired versions are kept retrievable by version control, not in the collection itself; the cited work measures internalization."
         }]
   },{
-    "id": "SOP0008",
-    "filename": "sop_0008-v1-blotting_western",
+    "id": "SOP0023",
+    "filename": "sop_0023-v1-rna_isolation_agpc",
     "changes": [{
-          "time": "2020-03-22",
-          "text": "Initial protocol."
+          "time": "2023-06-10",
+          "text": "Adaptation as SOP, based on the cited Chomczynski & Sacchi (1987) chemistry; water-saturated phenol preparation (recipe R0140) adapted from Audrey L. Atkin \"Preparation of Buffer Saturated Phenol for RNA Extractions\" (University of Nebraska–Lincoln)."
         },{
-          "time": "2023-01-13",
-          "text": "Adaptation as SOP. Added transfer-buffer selection guide from Carl Roth \"Information Brochure on Transfer Buffers and Parameters\"; troubleshooting informed by Bio-Rad \"Western Blotting / Immunoblotting Introduction\" (Bulletin 2895) and PhosphoSolutions \"Western Blot Transfer Efficiency – The Good, the Bad, and the Ugly\"."
+          "time": "2026-10-27",
+          "text": "Narrowed the Atkin credit to the handling of phenol aliquots; corrected the sodium citrate dihydrate CAS number in recipe R0138. Follow sop_0021 for precipitation."
+        }]
+  },{
+    "id": "SOP0033",
+    "filename": "sop_0033-v2-restriction_ligation_cloning",
+    "changes": [{
+          "time": "2024-07-22",
+          "text": "Version 1, 2024. Adaptation as SOP, drawing on NEB product technical resources (neb.com) for restriction, end-modification (CIP, SAP, PNK), DpnI digestion, and T4 ligation procedures."
         },{
-          "time": "2026-05-22",
-          "text": "Fix transcription error in Anode/Cathode buffer SDS final concentration (was 0.01%, now 0.05% — the prepared buffer at 0.25 mL of 20% SDS in 100 mL delivers 0.05%, well within the normal Towbin-style supplement range)."
+          "time": "2026-11-02",
+          "text": "Version 2. Reaction conditions change: Klenow with its exonuclease as the blunting enzyme, and new enzyme ratios and ligation times. Credits: Thermo Scientific and IDT alongside NEB; New England Biolabs’ buffer activity chart for the salt troubleshooting, where the enzymes named need a high-salt buffer rather than tolerating little salt, and its cleavage-close-to-the-end table, where the enzymes named need more flanking sequence rather than less. Also added the phenol hazard and dropped radioactive end labeling."
+        }]
+  },{
+    "id": "SOP0007",
+    "filename": "sop_0007-v2-sds_page",
+    "changes": [{
+          "time": "2024-07-17",
+          "text": "Version 1, 2022 to 2024. Tris-glycine on the Mini-PROTEAN after the Bio-Rad Mini-PROTEAN and Criterion cell manuals (Bulletins 1658100 and 6040); the Bis-Tris route with MES and MOPS running buffers from the Tom Muir lab “Pouring and running SDS-PAGE gels”; the molecular-weight marker recipes from the C. R. Hauck lab “SDS-PAGE gel recipes”. Adapted as an SOP in 2022."
         },{
-          "time": "2026-05-22",
-          "text": "Fix transcription error in CAPS buffer amount (was 22.1 g, now 221 g — recipe v1 delivered ~0.1 M instead of the declared 1 M, 10× under-prepared; corrected recipe yields the intended 1 M working stock that dilutes 100× to the 10 mM CAPS used for Western transfers)."
+          "time": "2026-11-04",
+          "text": "Version 2. Credited the Invitrogen NuPAGE Technical Guide (IM-1001), the Bio-Rad Mini-PROTEAN Tetra Cell manual, and the Daniel Summerer lab “Glycine-SDS gel electrophoresis”; corrected the sample buffers, SDS in the running buffer, and heating; dropped unsourced claims. The three Tris gel buffers are titrated to their stated pH."
         }]
   },{
     "id": "SOP0019",
@@ -370,76 +362,49 @@
     "changes": [{
           "time": "2023-04-28",
           "text": "Adaptation as SOP; concentration ranges and kill-curve guidance compiled from vendor reference information, principally InvivoGen \"Selective Antibiotics\" FAQ (invivogen.com) and Addgene \"Generating Stable Cell Lines\" protocol (addgene.org)."
+        },{
+          "time": "2026-10-26",
+          "text": "Credited the Mohamed Bentires-Alj lab, “Antibiotic Selection of MCF10A cells”, for the MCF 10A concentrations, and the InvivoGen product data sheets for the concentration ranges. Stated the four-fold antibiotic excess in the titration and replaced the transfection-efficiency figure."
         }]
   },{
-    "id": "SOP0009",
-    "filename": "sop_0009-v1-immunoblotting",
+    "id": "SOP0012",
+    "filename": "sop_0012-v3-transfection_chemical",
     "changes": [{
-          "time": "2020-03-22",
-          "text": "Initial protocol; Tom Muir lab."
+          "time": "2026-06-11",
+          "text": "Version 2, 2017 to 2026. Calcium chloride protocol from the Daniel Summerer lab; Lipofectamine® protocol from the Tom Muir lab; adapted as an SOP in 2023, then extended with FuGENE® and PEI. HBS moved from the heptahydrate to anhydrous sodium phosphate dibasic; PEI safety information updated."
         },{
-          "time": "2023-01-15",
-          "text": "Adaptation as SOP. Added fluorescent and chemiluminescent detection sections and membrane stripping; fluorescent detection informed by LI-COR Biosciences \"Good Westerns Gone Bad\" application guide (2008, rev. 2022); chemiluminescent ECL reagent recipe from the Michael Knop lab \"Self-made ECL\"."
-        },{
-          "time": "2026-05-22",
-          "text": "Fix transcription errors in ECL reagent stock concentrations: Luminol 100× → 200×, p-Coumaric acid 200× → 400× (50 µL and 25 µL in 10 mL total dilute 200× and 400× respectively; previous values delivered half the declared 1× final concentration and would have halved chemiluminescent signal output)."
-        }]
-  },{
-    "id": "SOP0011",
-    "filename": "sop_0011-v1-protein_gel_silver_staining",
-    "changes": [{
-          "time": "2006-11-22",
-          "text": "Initial, peer-reviewed protocol article."
-        },{
-          "time": "2023-01-16",
-          "text": "Adaptation as SOP."
-        },{
-          "time": "2025-04-05",
-          "text": "Revised protocol sections."
-        },{
-          "time": "2026-05-22",
-          "text": "Reconcile recipe arithmetic for the silver staining buffers (sensitizing solution and developer); minor changes to amounts and finals, no impact on the actual reagent chemistry."
+          "time": "2026-11-04",
+          "text": "Version 3. Transfection amounts change: DNA per well, the confluency at transfection, and the FuGENE and PEI ratios. The Opti-MEM volume per tube follows Thermo Fisher’s own per-well volumes at 13 microliter per square centimeter, up from ten; the seeding density is one figure, 5e4 unitless per square centimeter, where the row had drifted between 4.4 and 5.3; and the DNA masses are rounded to planning figures. Credits: Thermo Fisher (MAN0007824) and Promega (TM350) for the lipid handling, PMID:4705382 for calcium phosphate, PMID:18228427 and PMID:24011049 for the PEI ratios. Also corrected the PEI CAS number, added PEI MAX, and corrected the HBS pH and storage, the PEI storage, and the order of addition for FuGENE and calcium phosphate. Linear PEI is dissolved with acid before neutralising."
         }]
   },{
     "id": "SOP0034",
-    "filename": "sop_0034-v1-transformation",
+    "filename": "sop_0034-v2-transformation",
     "changes": [{
-          "time": "2012-02-06",
-          "text": "Initial protocol for preparation of chemically competent HB101, after Im, Sambrook & Russell, \"The Inoue Method for Preparation and Transformation of Competent E. coli: 'Ultra Competent' Cells\", Bio-protocol e143 (2011)."
-        },{
-          "time": "2015-11-03",
-          "text": "Integration of heat shock and electroporation methods; high-efficiency competent cell protocol; Michael Knop lab."
-        },{
-          "time": "2019-11-27",
-          "text": "Initial protocol for preparation of electrocompetent cells for library transformation; Daniel Summerer lab \"Preparation of electrocompetent E. coli cells for library transformation\"."
-        },{
-          "time": "2020-03-25",
-          "text": "TSS transformation of non-competent E. coli cells; Daniel Summerer lab \"E. coli TSS Transformation\"."
-        },{
-          "time": "2025-02-19",
-          "text": "Modularization and adaptation as SOP; added troubleshooting and efficiency guidelines."
-        },{
           "time": "2026-06-11",
-          "text": "Manganese(II) chloride: switch from dihydrate to tetrahydrate."
+          "text": "Version 1, 2012 to 2026. Chemically competent HB101 after Im, Sambrook & Russell, \"The Inoue Method for Preparation and Transformation of Competent E. coli\", Bio-protocol e143 (2011); heat shock, electroporation and high-efficiency competent cells from the Michael Knop lab; electrocompetent cells for library transformation and TSS transformation from the Daniel Summerer lab. Modularized and adapted as an SOP in 2025."
+        },{
+          "time": "2026-11-02",
+          "text": "Version 2. Transformation conditions change: heat-shock and recovery windows calibrated to the vessel, with BL21 at ten seconds, and a 3,000 to 3,700 gram per mol polyethylene glycol. Credits: the Lamitina lab; New England Biolabs for the losses measured on a shortened incubation or recovery. Also corrected the electroporation settings and cell density, the Inoue resuspension volume, the TSS incubation window and the storage figures; SOC is noted as twice as efficient as LB."
         }]
   },{
-    "id": "SOP0017",
-    "filename": "sop_0017-v3-stable_cell_lines_lentiviral",
+    "id": "SOP0009",
+    "filename": "sop_0009-v2-immunoblotting",
     "changes": [{
-          "time": "2023-03-09",
-          "text": "Adaptation as SOP, based on the Addgene \"Lentivirus Production Protocol\" (addgene.org) and the Tom Muir lab \"Lentivirus generation\" reference table."
-        },{
-          "time": "2025-04-07",
-          "text": "Revised abstract to clarify packaging system and tropism; expanded transduction procedure; added comprehensive biosafety guidance (drawn from Princeton University Environmental Health & Safety guidelines) including spill response, waste handling, and infectious material clearance. Updated dilution series table and MOI analysis. Reorganized production steps and annotated media changes."
-        },{
-          "time": "2025-07-18",
-          "text": "Added reference to lateral flow assay to determine viral titer; corrected seeding density for transduction from 5e4 unitless to 3e5 unitless; corrected Polybrene® stock concentration from 0.1 gram per liter to 0.2 gram per liter."
-        },{
-          "time": "2025-07-25",
-          "text": "Added low-speed PEG 8000 concentration protocol adapted from the Xin Chen lab (Johns Hopkins University) and the Functional Genomics Core (MD Anderson Cancer Center); Added high-speed concentration protocols from the cited references."
-        },{
           "time": "2026-05-22",
-          "text": "Fix PEG virus precipitation solution NaCl amount (20 → 30 mL) to deliver the intended 1.5 M in the 5× concentrate (0.3 M after 1:4 dilution into supernatant)."
+          "text": "Version 1, 2020 to 2026. Initial protocol from the Tom Muir lab, adapted as an SOP in 2023 with fluorescent and chemiluminescent detection and membrane stripping; fluorescent detection after LI-COR Biosciences, “Good Westerns Gone Bad” (2008, rev. 2022), and the self-made ECL reagent from the Michael Knop lab."
+        },{
+          "time": "2026-10-26",
+          "text": "Version 2. Credited the C. R. Hauck lab “Acrylamide gel reagents”; SDS stripping after PMID:3578791, glycine stripping after PMID:6166216; corrected the Tris-Cl titrant, ECL and stripping-buffer concentrations, and antibody dilutions; added the azide and 2-mercaptoethanol hazards; dropped unsourced claims. Credited Abcam for the chicken-antibody note and Jackson ImmunoResearch for the mouse-and-rat multiplexing note, which is restored with the reason it matters."
+        }]
+  },{
+    "id": "SOP0045",
+    "filename": "sop_0045-v2-imac_his_tag_purification",
+    "changes": [{
+          "time": "2026-10-19",
+          "text": "Version 1, 2026. Consolidates the Ni-NTA gravity workflow (Daniel Summerer lab) and the Ulp1 production workflow (Tom Muir lab) into one protocol, ports the HisTrap FF gradient from the TEV protease production protocol, and adds the denaturing-IMAC and reverse-IMAC variants, the uninduced sample and pellet weight, and culture sampling as a fixed cell equivalent."
+        },{
+          "time": "2026-11-03",
+          "text": "Version 2. The binding capacity of Ni-NTA agarose is 5 to 10 mg per mL settled bed; the 50 mg once given is QIAGEN’s Superflow figure. The denaturing urea buffer carries 150 millimolar sodium chloride. Credits: PMID:21602383 for the SlyD and ArnA bands and the NiCo21(DE3) alternative; Cytiva, “HisTrap FF crude data file”, for the capacity and the reductant limits; PMID:19892204 for the mixed-bed deionization and the ammonium chloride, the 30 °C ceiling being the author’s."
         }]
   },{
     "id": "SOP0042",
@@ -447,6 +412,9 @@
     "changes": [{
           "time": "2026-05-10",
           "text": "Initial commit; scope informed by Robert Haase, \"Managing Scientific Python environments using Conda, Mamba and friends\", FocalPlane (Company of Biologists, 8 December 2022)."
+        },{
+          "time": "2026-10-30",
+          "text": "Promotion now rebuilds the environment from the lockfile under its original name instead of renaming the trial, which also tests the lockfile being merged; mamba 2 has no rename subcommand in any case. Dropped the Anaconda default channel from the example environment file, where it contradicted the reason for installing miniforge."
         }]
   },{
     "id": "SOP0014",
@@ -463,6 +431,39 @@
         },{
           "time": "2023-03-14",
           "text": "Adaptation as SOP."
+        },{
+          "time": "2026-10-26",
+          "text": "Credited PMID:26529666 and the Bitesize Bio handout (Grigoryev); corrected the hemocytometer grid area to 1 mm²; added the Trypan blue counting window and its carcinogen hazard. The 200-cell threshold now carries the Poisson basis the same source gives."
+        }]
+  },{
+    "id": "SOP0017",
+    "filename": "sop_0017-v4-stable_cell_lines_lentiviral",
+    "changes": [{
+          "time": "2026-05-22",
+          "text": "Version 3, 2023 to 2026. Adapted as an SOP in 2023 from the Addgene “Lentivirus Production Protocol” and the Tom Muir lab “Lentivirus generation” reference table, with biosafety guidance from Princeton University Environmental Health & Safety; low-speed PEG 8000 concentration from the Xin Chen lab (Johns Hopkins University) and the Functional Genomics Core (MD Anderson Cancer Center), high-speed concentration from the cited references."
+        },{
+          "time": "2026-10-26",
+          "text": "Version 4. Credited PMID:8396259, PMID:9765382, PMID:9971760, PMID:26348152, Addgene and Princeton EHS; corrected the sucrose cushion to 10 percent, the sodium butyrate concentration and its rationale, the viral stability figures, the antibiotic rationale, the Lenti-X identifier, the Polybrene range, the MOI logarithm, and the disinfectant concentrations; added that Polybrene does not survive repeated freeze-thaw, after Addgene."
+        }]
+  },{
+    "id": "SOP0015",
+    "filename": "sop_0015-v2-routine_cell_culture_HeLa",
+    "changes": [{
+          "time": "2023-03-13",
+          "text": "Version 1, 2012 to 2023. The HeLa S3 suspension protocol of The Scripps Research Institute, released on ResearchGate; published in part as Woods Hole Physiology Course 2006 (doi:10.1575/1912/8720). Adapted as an SOP in 2023."
+        },{
+          "time": "2026-10-26",
+          "text": "Version 2. Credited ATCC (CCL-2), Puck et al. (1955, 1956), PMID:9892199, the Woods Hole HeLa protocols, and Elisabeth Gardiner (Scripps) for the suspension culture; corrected the centrifugation to 200 × g, the karyotype range, the glutamine supplement, the freezing density, the passage limit, and the trypsin inhibitor quench."
+        }]
+  },{
+    "id": "SOP0039",
+    "filename": "sop_0039-v2-pcr_qualitative",
+    "changes": [{
+          "time": "2026-05-22",
+          "text": "Version 1, 2011 to 2026. Colony PCR from yeast cells with self-made Taq DNA polymerase, and generic buffers for high-fidelity DNA polymerases (VELOCITY), both from the Michael Knop lab; adapted as an SOP in 2025. Corrected the long incubation buffer Tris-Cl to 9.0 mL, which delivers the intended 200 mM in the 10-fold buffer."
+        },{
+          "time": "2026-11-02",
+          "text": "Version 2. Reaction composition changes: 400 micromolar of each dNTP where the text said 1.0 millimolar, which leaves free magnesium in the reaction, and 25 to 30 cycles for a colony reaction. Credits: Bustin:2004 for the Taq half-life, PMID:8836181 for the error rate, PMID:8418834 for betaine. Also corrected the template ceiling, the DMSO share and the high-fidelity extension time."
         }]
   },{
     "id": "SOP0024",
@@ -473,29 +474,19 @@
         },{
           "time": "2023-11-11",
           "text": "Adaptation as SOP; supplemented from the Invitrogen \"PureLink Genomic DNA Mini Kit\" user manual (rev. 2007)."
+        },{
+          "time": "2026-10-27",
+          "text": "Corrected Buffer PB to pH 5.0 in line with the canonical recipe; added the guanidine and bleach hazard and the matching disposal line; attributed the cell lysis buffer to the Bentires-Alj lab; softened the freeze-thaw claim; widened the DNA size to 20-50 kb, the figure the credited manual states; filed that manual and recorded where this protocol follows it and where it does not."
         }]
   },{
-    "id": "SOP0039",
-    "filename": "sop_0039-v1-pcr_qualitative",
+    "id": "SOP0003",
+    "filename": "sop_0003-v2-native_page",
     "changes": [{
-          "time": "2011-11-08",
-          "text": "Colony PCR from yeast cells with self-made Taq DNA polymerase."
+          "time": "2025-03-30",
+          "text": "Version 1, 2022 to 2025. Initial native PAGE protocol, revised and expanded in 2025; APS and TEMED concentrations for the stacking layer optimized by Jeremy A. Owen."
         },{
-          "time": "2014-08-08",
-          "text": "Generic buffers for high-fidelity DNA polymerases (VELOCITY)."
-        },{
-          "time": "2025-06-08",
-          "text": "Adaptation as SOP."
-        },{
-          "time": "2026-05-22",
-          "text": "Fix Long incubation buffer Tris-Cl amount (20 → 9.0 mL) to deliver the intended 200 mM in the 10× buffer (20 mM in 1× working buffer), matching KCl and ammonium sulfate which were already correct and the standard NEB ThermoPol / Promega long-PCR composition."
-        }]
-  },{
-    "id": "SOP0033",
-    "filename": "sop_0033-v1-restriction_ligation_cloning",
-    "changes": [{
-          "time": "2024-07-22",
-          "text": "Adaptation as SOP, drawing on NEB product technical resources (neb.com) for restriction, end-modification (CIP, SAP, PNK), DpnI digestion, and T4 ligation procedures."
+          "time": "2026-11-02",
+          "text": "Version 2. Gel recipe volumes and the running buffer change to TBE at 8.3, cast in 1 fold TBE. Credits: the Tom Muir lab, “Pouring and running native PAGE gels”, adapted from PMID:22485449, and Bio-Rad Bulletin 6040 (2017)."
         }]
   },{
     "id": "SOP0027",
@@ -511,36 +502,14 @@
           "text": "Scope narrowed to soluble targets; chromatin-bound histones and nucleosomes moved to the native chromatin protocol. Corrected the EDTA ingredient of the Nuclear IP buffer, which pointed at the EGTA stock."
         }]
   },{
-    "id": "SOP0023",
-    "filename": "sop_0023-v1-rna_isolation_trizol",
+    "id": "SOP0011",
+    "filename": "sop_0011-v2-protein_gel_silver_staining",
     "changes": [{
-          "time": "2023-06-10",
-          "text": "Adaptation as SOP, based on the cited Chomczynski & Sacchi (1987) chemistry; water-saturated phenol preparation (recipe R0140) adapted from Audrey L. Atkin \"Preparation of Buffer Saturated Phenol for RNA Extractions\" (University of Nebraska–Lincoln)."
-        }]
-  },{
-    "id": "SOP0004",
-    "filename": "sop_0004-v3-production_recombinant_histones",
-    "changes": [{
-          "time": "2020-09-01",
-          "text": ""
-        },{
-          "time": "2022-08-17",
-          "text": ""
-        },{
-          "time": "2024-04-30",
-          "text": ""
-        },{
-          "time": "2025-03-23",
-          "text": ""
-        },{
           "time": "2026-05-22",
-          "text": ""
+          "text": "Version 1, 2006 to 2026. Initial, peer-reviewed protocol article, adapted as an SOP in 2023 and revised in 2025; the sensitizing solution and developer arithmetic reconciled in 2026 without changing the reagent chemistry."
         },{
-          "time": "2026-07-31",
-          "text": ""
-        },{
-          "time": "2026-10-22",
-          "text": ""
+          "time": "2026-11-02",
+          "text": "Version 2. Sensitivity changes with the stain: thiosulfate as a 640 millimolar stock, the sensitizer at 0.8 mM, and new development and fixing times. Credits: DOI:10.1002/elps.1150080203, PMID:17487168, PMID:11503208, and the Invitrogen SilverQuest kit. Also corrected the developer formalin, the fixation, the silver nitrate hazard, the tetrathionate rinse and the stop solution."
         }]
   },{
     "id": "SOP0013",
@@ -553,6 +522,9 @@
           "text": ""
         },{
           "time": "2023-03-09",
+          "text": ""
+        },{
+          "time": "2026-10-26",
           "text": ""
         }]
   },{
@@ -570,6 +542,9 @@
         },{
           "time": "2026-07-31",
           "text": ""
+        },{
+          "time": "2026-11-01",
+          "text": ""
         }]
   },{
     "id": "SOP0040",
@@ -583,6 +558,9 @@
         },{
           "time": "2026-05-22",
           "text": ""
+        },{
+          "time": "2026-10-29",
+          "text": ""
         }]
   },{
     "id": "SOP0028",
@@ -593,10 +571,13 @@
         },{
           "time": "2025-04-17",
           "text": ""
+        },{
+          "time": "2026-11-01",
+          "text": ""
         }]
   },{
     "id": "SOP0006",
-    "filename": "sop_0006-v3-production_nucleosome",
+    "filename": "sop_0006-v4-production_nucleosome",
     "changes": [{
           "time": "2020-06-12",
           "text": ""
@@ -614,6 +595,19 @@
           "text": ""
         },{
           "time": "2026-05-10",
+          "text": ""
+        },{
+          "time": "2026-10-26",
+          "text": ""
+        }]
+  },{
+    "id": "SOP0004",
+    "filename": "sop_0004-v4-production_recombinant_histones",
+    "changes": [{
+          "time": "2026-10-26",
+          "text": ""
+        },{
+          "time": "2026-11-03",
           "text": ""
         }]
   }]
